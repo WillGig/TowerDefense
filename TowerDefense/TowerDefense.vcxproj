@@ -1,0 +1,473 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <VCProjectVersion>16.0</VCProjectVersion>
+    <Keyword>Win32Proj</Keyword>
+    <ProjectGuid>{5751906d-e506-4735-be42-94c136045772}</ProjectGuid>
+    <RootNamespace>TowerDefense</RootNamespace>
+    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v142</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v142</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v142</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v142</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="Shared">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <LinkIncremental>true</LinkIncremental>
+    <OutDir>$(SolutionDir)bin\$(Platform)\$(Configuration)\</OutDir>
+    <IntDir>$(SolutionDir)bin\intermediates\$(Platform)\$(Configuration)\</IntDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <LinkIncremental>false</LinkIncremental>
+    <OutDir>$(SolutionDir)bin\$(Platform)\$(Configuration)\</OutDir>
+    <IntDir>$(SolutionDir)bin\intermediates\$(Platform)\$(Configuration)\</IntDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <LinkIncremental>true</LinkIncremental>
+    <OutDir>$(SolutionDir)bin\$(Platform)\$(Configuration)\</OutDir>
+    <IntDir>$(SolutionDir)bin\intermediates\$(Platform)\$(Configuration)\</IntDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <LinkIncremental>false</LinkIncremental>
+    <OutDir>$(SolutionDir)bin\$(Platform)\$(Configuration)\</OutDir>
+    <IntDir>$(SolutionDir)bin\intermediates\$(Platform)\$(Configuration)\</IntDir>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>GLEW_STATIC;WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>src;src\vendor;$(SolutionDir)Dependencies\GLFW\include;$(SolutionDir)Dependencies\glew-2.1.0\include</AdditionalIncludeDirectories>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
+      <ObjectFileName>$(IntDir)%(RelativeDir)</ObjectFileName>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalLibraryDirectories>$(SolutionDir)Dependencies\GLFW\lib-vc2019;$(SolutionDir)Dependencies\glew-2.1.0\lib\Release\Win32</AdditionalLibraryDirectories>
+      <AdditionalDependencies>glfw3.lib;opengl32.lib;User32.lib;Gdi32.lib;Shell32.lib;glew32s.lib</AdditionalDependencies>
+      <AdditionalOptions>/NODEFAULTLIB:MSVCRT /NODEFAULTLIB:LIBCMT %(AdditionalOptions)</AdditionalOptions>
+    </Link>
+    <ProjectReference>
+      <LinkLibraryDependencies>false</LinkLibraryDependencies>
+    </ProjectReference>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>GLEW_STATIC;WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>src;src\vendor;$(SolutionDir)Dependencies\GLFW\include;$(SolutionDir)Dependencies\glew-2.1.0\include</AdditionalIncludeDirectories>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
+      <ObjectFileName>$(IntDir)%(RelativeDir)</ObjectFileName>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalLibraryDirectories>$(SolutionDir)Dependencies\GLFW\lib-vc2019;$(SolutionDir)Dependencies\glew-2.1.0\lib\Release\Win32</AdditionalLibraryDirectories>
+      <AdditionalDependencies>glfw3.lib;opengl32.lib;User32.lib;Gdi32.lib;Shell32.lib;glew32s.lib</AdditionalDependencies>
+      <AdditionalOptions>/NODEFAULTLIB:LIBCMT %(AdditionalOptions)</AdditionalOptions>
+    </Link>
+    <ProjectReference>
+      <LinkLibraryDependencies>false</LinkLibraryDependencies>
+    </ProjectReference>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="src\core\Board.cpp" />
+    <ClCompile Include="src\cards\Card.cpp" />
+    <ClCompile Include="src\cards\CardChoice.cpp" />
+    <ClCompile Include="src\cards\CardPile.cpp" />
+    <ClCompile Include="src\cards\FireBall.cpp" />
+    <ClCompile Include="src\cards\Focus.cpp" />
+    <ClCompile Include="src\cards\FrostBall.cpp" />
+    <ClCompile Include="src\cards\Hand.cpp" />
+    <ClCompile Include="src\cards\HeroCard.cpp" />
+    <ClCompile Include="src\cards\quirks\BattleReady.cpp" />
+    <ClCompile Include="src\cards\quirks\Explorer.cpp" />
+    <ClCompile Include="src\cards\quirks\Giant.cpp" />
+    <ClCompile Include="src\cards\quirks\Gnome.cpp" />
+    <ClCompile Include="src\cards\quirks\NearSighted.cpp" />
+    <ClCompile Include="src\cards\quirks\Orc.cpp" />
+    <ClCompile Include="src\cards\PotOfGreed.cpp" />
+    <ClCompile Include="src\cards\quirks\Dwarf.cpp" />
+    <ClCompile Include="src\cards\quirks\HighElf.cpp" />
+    <ClCompile Include="src\cards\quirks\Human.cpp" />
+    <ClCompile Include="src\cards\quirks\Quirk.cpp" />
+    <ClCompile Include="src\cards\TowerCard.cpp" />
+    <ClCompile Include="src\cards\TowerCards.cpp" />
+    <ClCompile Include="src\cards\quirks\WoodElf.cpp" />
+    <ClCompile Include="src\cards\upgrades\Upgrades.cpp" />
+    <ClCompile Include="src\enemies\Enemy.cpp" />
+    <ClCompile Include="src\enemies\Fight.cpp" />
+    <ClCompile Include="src\enemies\HealthBar.cpp" />
+    <ClCompile Include="src\enemies\Wave.cpp" />
+    <ClCompile Include="src\engine\Animation.cpp" />
+    <ClCompile Include="src\core\AnimationEffect.cpp" />
+    <ClCompile Include="src\engine\Circle.cpp" />
+    <ClCompile Include="src\engine\Rectangle.cpp" />
+    <ClCompile Include="src\math\Random.cpp" />
+    <ClCompile Include="src\core\Player.cpp" />
+    <ClCompile Include="src\scenes\Base.cpp" />
+    <ClCompile Include="src\core\Button.cpp" />
+    <ClCompile Include="src\core\Entity.cpp" />
+    <ClCompile Include="src\engine\Image.cpp" />
+    <ClCompile Include="src\engine\IndexBuffer.cpp" />
+    <ClCompile Include="src\engine\Input.cpp" />
+    <ClCompile Include="src\engine\Log.cpp" />
+    <ClCompile Include="src\Main.cpp" />
+    <ClCompile Include="src\scenes\Combat.cpp" />
+    <ClCompile Include="src\scenes\MainMenu.cpp" />
+    <ClCompile Include="src\math\Mat4f.cpp" />
+    <ClCompile Include="src\engine\Renderer.cpp" />
+    <ClCompile Include="src\engine\Shader.cpp" />
+    <ClCompile Include="src\engine\Text.cpp" />
+    <ClCompile Include="src\engine\Texture.cpp" />
+    <ClCompile Include="src\pch.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="src\scenes\PostCombatScreen.cpp" />
+    <ClCompile Include="src\scenes\PreCombatScreen.cpp" />
+    <ClCompile Include="src\core\Tile.cpp" />
+    <ClCompile Include="src\core\Clock.cpp" />
+    <ClCompile Include="src\TowerDefense.cpp" />
+    <ClCompile Include="src\towers\Alchemist.cpp" />
+    <ClCompile Include="src\towers\Archer.cpp" />
+    <ClCompile Include="src\towers\Bard.cpp" />
+    <ClCompile Include="src\towers\buffs\Buff.cpp" />
+    <ClCompile Include="src\towers\buffs\DamageBuff.cpp" />
+    <ClCompile Include="src\towers\buffs\SpeedBuff.cpp" />
+    <ClCompile Include="src\towers\Cleric.cpp" />
+    <ClCompile Include="src\towers\Giant.cpp" />
+    <ClCompile Include="src\towers\Monk.cpp" />
+    <ClCompile Include="src\towers\Paladin.cpp" />
+    <ClCompile Include="src\towers\projectiles\Projectile.cpp" />
+    <ClCompile Include="src\towers\projectiles\Projectiles.cpp" />
+    <ClCompile Include="src\towers\Tower.cpp" />
+    <ClCompile Include="src\towers\Wizard.cpp" />
+    <ClCompile Include="src\vendor\stb_image\stb_image.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="src\engine\VertexArray.cpp" />
+    <ClCompile Include="src\engine\VertexBuffer.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="res\shaders\Texture.shader" />
+    <None Include="res\shaders\Circle.shader" />
+    <None Include="res\shaders\Rectangle.shader" />
+    <None Include="res\shaders\Text.shader" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="res\textures\speed1.png" />
+    <Image Include="res\textures\speed1Selected.png" />
+    <Image Include="res\textures\speed2.png" />
+    <Image Include="res\textures\speed2Selected.png" />
+    <Image Include="res\textures\speed3.png" />
+    <Image Include="res\textures\speed3Selected.png" />
+    <Image Include="res\textures\acidExplosion.png" />
+    <Image Include="res\textures\alchemist.png" />
+    <Image Include="res\textures\alchemistCard.png" />
+    <Image Include="res\textures\alchemistCardUpgraded.png" />
+    <Image Include="res\textures\alchemistHighlighted.png" />
+    <Image Include="res\textures\archer.png" />
+    <Image Include="res\textures\archerCard.png" />
+    <Image Include="res\textures\archerCardUpgraded.png" />
+    <Image Include="res\textures\archerHighlighted.png" />
+    <Image Include="res\textures\arrow.png" />
+    <Image Include="res\textures\attackSpeedUpgrade.png" />
+    <Image Include="res\textures\bard.png" />
+    <Image Include="res\textures\bardCard.png" />
+    <Image Include="res\textures\bardCardUpgraded.png" />
+    <Image Include="res\textures\bardhighlighted.png" />
+    <Image Include="res\textures\beginCombatButton.png" />
+    <Image Include="res\textures\beginCombatButtonSelected.png" />
+    <Image Include="res\textures\BossRat.png" />
+    <Image Include="res\textures\BossRatSelected.png" />
+    <Image Include="res\textures\cancelButton.png" />
+    <Image Include="res\textures\cancelButtonSelected.png" />
+    <Image Include="res\textures\CardBackgrounds.png" />
+    <Image Include="res\textures\cleric.png" />
+    <Image Include="res\textures\clericCard.png" />
+    <Image Include="res\textures\clericCardUpgraded.png" />
+    <Image Include="res\textures\clericHighlighted.png" />
+    <Image Include="res\textures\confirmButton.png" />
+    <Image Include="res\textures\confirmButtonSelected.png" />
+    <Image Include="res\textures\damageUpgrade.png" />
+    <Image Include="res\textures\deckEmpty.png" />
+    <Image Include="res\textures\deckFull.png" />
+    <Image Include="res\textures\endButton.png" />
+    <Image Include="res\textures\endButtonOn.png" />
+    <Image Include="res\textures\exitButton.png" />
+    <Image Include="res\textures\exitButtonSelected.png" />
+    <Image Include="res\textures\exploreCavesButton.png" />
+    <Image Include="res\textures\exploreCavesButtonSelected.png" />
+    <Image Include="res\textures\explosion.png" />
+    <Image Include="res\textures\fireball.png" />
+    <Image Include="res\textures\fireballUpgraded.png" />
+    <Image Include="res\textures\Focus.png" />
+    <Image Include="res\textures\FocusExhausts.png" />
+    <Image Include="res\textures\FocusExhaustsUpgraded.png" />
+    <Image Include="res\textures\focusUpgraded.png" />
+    <Image Include="res\textures\font.png" />
+    <Image Include="res\textures\frostBall.png" />
+    <Image Include="res\textures\frostBallUpgraded.png" />
+    <Image Include="res\textures\frostExplosion.png" />
+    <Image Include="res\textures\giant.png" />
+    <Image Include="res\textures\giantCard.png" />
+    <Image Include="res\textures\giantCardUpgraded.png" />
+    <Image Include="res\textures\giantHighlighted.png" />
+    <Image Include="res\textures\giantRat.png" />
+    <Image Include="res\textures\giantRatSelected.png" />
+    <Image Include="res\textures\giantRock.png" />
+    <Image Include="res\textures\goblin.png" />
+    <Image Include="res\textures\goblinSelected.png" />
+    <Image Include="res\textures\goFishingButton.png" />
+    <Image Include="res\textures\goFishingButtonSelected.png" />
+    <Image Include="res\textures\goTavernButton.png" />
+    <Image Include="res\textures\goTavernButtonSelected.png" />
+    <Image Include="res\textures\left.png" />
+    <Image Include="res\textures\leftOn.png" />
+    <Image Include="res\textures\loadGameButton.png" />
+    <Image Include="res\textures\loadGameButtonSelected.png" />
+    <Image Include="res\textures\magicMissile.png" />
+    <Image Include="res\textures\monk.png" />
+    <Image Include="res\textures\monk2.png" />
+    <Image Include="res\textures\monkCard.png" />
+    <Image Include="res\textures\monkCardUpgraded.png" />
+    <Image Include="res\textures\monkHighlighted.png" />
+    <Image Include="res\textures\monkSelected.png" />
+    <Image Include="res\textures\newGameButton.png" />
+    <Image Include="res\textures\newGameButtonSelected.png" />
+    <Image Include="res\textures\nextDayButton.png" />
+    <Image Include="res\textures\nextDayButtonSelected.png" />
+    <Image Include="res\textures\orc.png" />
+    <Image Include="res\textures\orcSelected.png" />
+    <Image Include="res\textures\outline.png" />
+    <Image Include="res\textures\paladin.png" />
+    <Image Include="res\textures\paladinCard.png" />
+    <Image Include="res\textures\paladinCardUpgraded.png" />
+    <Image Include="res\textures\paladinHighlighted.png" />
+    <Image Include="res\textures\panelAlchemist.png" />
+    <Image Include="res\textures\panelArcher.png" />
+    <Image Include="res\textures\panelBard.png" />
+    <Image Include="res\textures\panelCleric.png" />
+    <Image Include="res\textures\panelGiant.png" />
+    <Image Include="res\textures\panelMonk.png" />
+    <Image Include="res\textures\panelPaladin.png" />
+    <Image Include="res\textures\panelWizard.png" />
+    <Image Include="res\textures\path.png" />
+    <Image Include="res\textures\pause.png" />
+    <Image Include="res\textures\pauseOn.png" />
+    <Image Include="res\textures\poisonBomb.png" />
+    <Image Include="res\textures\potOfGreed.png" />
+    <Image Include="res\textures\potOfGreedUpgraded.png" />
+    <Image Include="res\textures\rangeUpgrade.png" />
+    <Image Include="res\textures\rat.png" />
+    <Image Include="res\textures\ratSelected.png" />
+    <Image Include="res\textures\restButton.png" />
+    <Image Include="res\textures\restButtonSelected.png" />
+    <Image Include="res\textures\returnToCampButton.png" />
+    <Image Include="res\textures\returnToCampButtonSelected.png" />
+    <Image Include="res\textures\right.png" />
+    <Image Include="res\textures\rightOn.png" />
+    <Image Include="res\textures\settingsButton.png" />
+    <Image Include="res\textures\settingsButtonSelected.png" />
+    <Image Include="res\textures\smiteAnimation.png" />
+    <Image Include="res\textures\smithArrow.png" />
+    <Image Include="res\textures\smithButton.png" />
+    <Image Include="res\textures\smithButtonSelected.png" />
+    <Image Include="res\textures\startButton.png" />
+    <Image Include="res\textures\startButtonSelected.png" />
+    <Image Include="res\textures\testTexture.png" />
+    <Image Include="res\textures\tile.png" />
+    <Image Include="res\textures\viewDeckButton.png" />
+    <Image Include="res\textures\viewDeckButtonSelected.png" />
+    <Image Include="res\textures\visitLibraryButton.png" />
+    <Image Include="res\textures\visitLibraryButtonSelected.png" />
+    <Image Include="res\textures\wizard.png" />
+    <Image Include="res\textures\wizardCard.png" />
+    <Image Include="res\textures\wizardCardUpgraded.png" />
+    <Image Include="res\textures\wizardHighlighted.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="src\core\Board.h" />
+    <ClInclude Include="src\cards\Card.h" />
+    <ClInclude Include="src\cards\CardChoice.h" />
+    <ClInclude Include="src\cards\CardPile.h" />
+    <ClInclude Include="src\cards\FireBall.h" />
+    <ClInclude Include="src\cards\Focus.h" />
+    <ClInclude Include="src\cards\FrostBall.h" />
+    <ClInclude Include="src\cards\Hand.h" />
+    <ClInclude Include="src\cards\HeroCard.h" />
+    <ClInclude Include="src\cards\PotOfGreed.h" />
+    <ClInclude Include="src\cards\quirks\BattleReady.h" />
+    <ClInclude Include="src\cards\quirks\Dwarf.h" />
+    <ClInclude Include="src\cards\quirks\Explorer.h" />
+    <ClInclude Include="src\cards\quirks\Giant.h" />
+    <ClInclude Include="src\cards\quirks\Gnome.h" />
+    <ClInclude Include="src\cards\quirks\HighElf.h" />
+    <ClInclude Include="src\cards\quirks\Human.h" />
+    <ClInclude Include="src\cards\quirks\NearSighted.h" />
+    <ClInclude Include="src\cards\quirks\Orc.h" />
+    <ClInclude Include="src\cards\quirks\Quirk.h" />
+    <ClInclude Include="src\cards\quirks\WoodElf.h" />
+    <ClInclude Include="src\cards\TowerCard.h" />
+    <ClInclude Include="src\cards\TowerCards.h" />
+    <ClInclude Include="src\cards\upgrades\Upgrades.h" />
+    <ClInclude Include="src\cards\upgrades\Upgrade.h" />
+    <ClInclude Include="src\enemies\Enemies.h" />
+    <ClInclude Include="src\enemies\Enemy.h" />
+    <ClInclude Include="src\enemies\Fight.h" />
+    <ClInclude Include="src\enemies\HealthBar.h" />
+    <ClInclude Include="src\enemies\Wave.h" />
+    <ClInclude Include="src\engine\Animation.h" />
+    <ClInclude Include="src\core\AnimationEffect.h" />
+    <ClInclude Include="src\engine\Circle.h" />
+    <ClInclude Include="src\engine\Rectangle.h" />
+    <ClInclude Include="src\math\Random.h" />
+    <ClInclude Include="src\core\Player.h" />
+    <ClInclude Include="src\scenes\Base.h" />
+    <ClInclude Include="src\core\Button.h" />
+    <ClInclude Include="src\core\Entity.h" />
+    <ClInclude Include="src\engine\Input.h" />
+    <ClInclude Include="src\core\StaticImage.h" />
+    <ClInclude Include="src\engine\Image.h" />
+    <ClInclude Include="src\engine\IndexBuffer.h" />
+    <ClInclude Include="src\engine\Log.h" />
+    <ClInclude Include="src\scenes\Combat.h" />
+    <ClInclude Include="src\scenes\MainMenu.h" />
+    <ClInclude Include="src\math\Mat4f.h" />
+    <ClInclude Include="src\math\Vector.h" />
+    <ClInclude Include="src\engine\Renderer.h" />
+    <ClInclude Include="src\engine\Shader.h" />
+    <ClInclude Include="src\engine\Text.h" />
+    <ClInclude Include="src\engine\Texture.h" />
+    <ClInclude Include="src\pch.h" />
+    <ClInclude Include="src\scenes\PostCombatScreen.h" />
+    <ClInclude Include="src\scenes\PreCombatScreen.h" />
+    <ClInclude Include="src\scenes\Scene.h" />
+    <ClInclude Include="src\core\Tile.h" />
+    <ClInclude Include="src\core\Clock.h" />
+    <ClInclude Include="src\TowerDefense.h" />
+    <ClInclude Include="src\towers\Alchemist.h" />
+    <ClInclude Include="src\towers\Archer.h" />
+    <ClInclude Include="src\towers\Bard.h" />
+    <ClInclude Include="src\towers\buffs\Buff.h" />
+    <ClInclude Include="src\towers\buffs\DamageBuff.h" />
+    <ClInclude Include="src\towers\buffs\SpeedBuff.h" />
+    <ClInclude Include="src\towers\Cleric.h" />
+    <ClInclude Include="src\towers\Giant.h" />
+    <ClInclude Include="src\towers\Monk.h" />
+    <ClInclude Include="src\towers\Paladin.h" />
+    <ClInclude Include="src\towers\projectiles\Projectile.h" />
+    <ClInclude Include="src\towers\projectiles\Projectiles.h" />
+    <ClInclude Include="src\towers\Tower.h" />
+    <ClInclude Include="src\towers\Wizard.h" />
+    <ClInclude Include="src\vendor\stb_image\stb_image.h" />
+    <ClInclude Include="src\engine\VertexArray.h" />
+    <ClInclude Include="src\engine\VertexBuffer.h" />
+    <ClInclude Include="src\engine\VertexBufferLayout.h" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

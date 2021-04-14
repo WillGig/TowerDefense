@@ -1,0 +1,22 @@
+#pragma once
+#include "Card.h"
+
+namespace TowerDefense
+{
+	class FireBall : public Card
+	{
+	public:
+		FireBall();
+		void Render() override;
+		void Update() override;
+		void Upgrade() override;
+		void Play() override;
+		std::shared_ptr<Card> Clone() override;
+
+	private:
+		float m_Damage, m_Radius;
+		bool m_OverBoard;
+
+		std::unique_ptr<Circle> m_Circle;
+	};
+}
