@@ -7,7 +7,7 @@ namespace TowerDefense
 	public:
 		Card(std::string name, int cost, const std::string& image, const std::string& upgradedImage);
 
-		virtual void Play();
+		virtual bool Play() = 0;
 
 		void Update() override;
 
@@ -26,6 +26,8 @@ namespace TowerDefense
 		inline void SetCost(int cost) { m_Cost = cost; }
 
 		inline bool IsUpgraded() const { return m_Upgraded; }
+
+		inline bool Exhausts() const { return m_Exhausts; }
 
 		static std::shared_ptr<Card> GetCommonCard();
 		static std::shared_ptr<Card> GetUncommonCard();

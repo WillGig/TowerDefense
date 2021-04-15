@@ -63,11 +63,11 @@ void TowerDefense::TowerCard::Update()
 
 }
 
-void TowerDefense::TowerCard::Play()
+bool TowerDefense::TowerCard::Play()
 {
 	Board& board = Board::Get();
 
-	if (m_OverBoard && Player::Get().GetEnergy() >= GetCost() && board.ValidPlace()) {
+	if (m_OverBoard && board.ValidPlace()) {
 		//Add tower to board
 		m_HeldTower->SetX(board.GetSelectedTile()->GetX());
 		m_HeldTower->SetY(board.GetSelectedTile()->GetY());
@@ -82,11 +82,10 @@ void TowerDefense::TowerCard::Play()
 				t->SetContainedObject(m_HeldTower);
 			}
 		}
-
-		//Change energy and move card to discard pile
-		Card::Play();
+		m_OverBoard = false;
+		m_HeldTower.reset();
+		return true;
 	}
 	m_OverBoard = false;
-	if(!m_Exhausts)
-		m_HeldTower.reset();
+	return false;
 }

@@ -26,5 +26,7 @@ std::shared_ptr<TowerDefense::Tower::Tower> TowerDefense::Tower::Alchemist::Clon
 	auto tower = std::make_shared<Alchemist>(GetAttackTime(), GetRange(), m_MagicDamage);
 	tower->SetDamageModifier(m_PhysicalDamageModifier, DamageType::PHYSICAL);
 	tower->SetDamageModifier(m_MagicDamageModifier, DamageType::MAGIC);
+	tower->SetWidth(m_Width);
+	tower->SetHeight(m_Height);
 	return tower;
 }

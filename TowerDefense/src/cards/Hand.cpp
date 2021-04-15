@@ -32,8 +32,19 @@ void TowerDefense::Hand::Update()
 			if (!Input::GetMouseClicked())
 			{
 				m_Dragging = false;
-				if (Input::GetMouseY() > HEIGHT*.35f)
-					m_Cards[m_SelectedCard]->Play();
+				if (Input::GetMouseY() > HEIGHT * .35f)
+				{
+					if (Player::Get().GetEnergy() >= m_Cards[m_SelectedCard]->GetCost())
+					{
+						if (m_Cards[m_SelectedCard]->Play())
+						{
+							Player::Get().ChangeEnergy(0 - m_Cards[m_SelectedCard]->GetCost());
+							std::shared_ptr<Card> c = Player::Get().GetHand()->RemoveCard(m_Cards[m_SelectedCard]->GetHandPosition());
+							if (!c->Exhausts())
+								Player::Get().GetDiscardPile()->AddCard(c);
+						}
+					}
+				}		
 			}
 		}
 		else

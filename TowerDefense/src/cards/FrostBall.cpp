@@ -54,10 +54,9 @@ void TowerDefense::FrostBall::Upgrade()
 	m_SlowTime = 300;
 }
 
-void TowerDefense::FrostBall::Play()
+bool TowerDefense::FrostBall::Play()
 {
-	if (m_OverBoard && TowerDefense::Player::Get().GetEnergy() >= GetCost()) {
-		Card::Play();
+	if (m_OverBoard) {
 		m_OverBoard = false;
 
 		//Slow all enemies in range
@@ -73,7 +72,9 @@ void TowerDefense::FrostBall::Play()
 			}
 		}
 		Combat::AddEntity(std::make_shared<AnimationEffect>(m_X, m_Y, 100, 100, "res/textures/frostExplosion.png", 7));
+		return true;
 	}
+	return false;
 }
 
 std::shared_ptr<TowerDefense::Card> TowerDefense::FrostBall::Clone()

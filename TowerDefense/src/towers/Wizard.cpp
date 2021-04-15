@@ -30,5 +30,7 @@ std::shared_ptr<TowerDefense::Tower::Tower> TowerDefense::Tower::Wizard::Clone()
 	auto tower = std::make_shared<Wizard>(GetAttackTime(), GetRange(), m_MagicDamage, m_NumberOfMissiles);
 	tower->SetDamageModifier(m_PhysicalDamageModifier, DamageType::PHYSICAL);
 	tower->SetDamageModifier(m_MagicDamageModifier, DamageType::MAGIC);
+	tower->SetWidth(m_Width);
+	tower->SetHeight(m_Height);
 	return tower;
 }

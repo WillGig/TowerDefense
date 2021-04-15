@@ -53,10 +53,9 @@ void TowerDefense::FireBall::Upgrade()
 	m_Damage = 15.0f;
 }
 
-void TowerDefense::FireBall::Play()
+bool TowerDefense::FireBall::Play()
 {
-	if (m_OverBoard  && TowerDefense::Player::Get().GetEnergy() >= GetCost()) {
-		Card::Play();
+	if (m_OverBoard) {
 		m_OverBoard = false;
 
 		//Damage all enemies in range
@@ -72,7 +71,9 @@ void TowerDefense::FireBall::Play()
 			}
 		}
 		Combat::AddEntity(std::make_shared<AnimationEffect>(m_X, m_Y, 100, 100, "res/textures/explosion.png", 7));
+		return true;
 	}
+	return false;
 }
 
 std::shared_ptr<TowerDefense::Card> TowerDefense::FireBall::Clone()

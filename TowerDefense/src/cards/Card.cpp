@@ -22,18 +22,6 @@ void TowerDefense::Card::Update()
 
 }
 
-//Reduces player energy by card cost and adds card to discard pile
-//Cards should overwrite this function and call Card::Play()
-void TowerDefense::Card::Play()
-{
-	if (Player::Get().GetEnergy() >= m_Cost) {
-		Player::Get().ChangeEnergy(0 - m_Cost);
-		std::shared_ptr<Card> c = Player::Get().GetHand()->RemoveCard(m_HandPosition);
-		if (!m_Exhausts)
-			Player::Get().GetDiscardPile()->AddCard(c);
-	}
-}
-
 void TowerDefense::Card::RenderUpgrade(float x, float y)
 {
 	m_UpgradedImage->SetPosition(x, y, 0.0f);

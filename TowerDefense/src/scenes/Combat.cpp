@@ -40,6 +40,7 @@ void TowerDefense::Combat::Render()
 	//Towers, Enemies, Projectiles
 	for (unsigned int i = 0; i < s_Entities->size(); i++)
 		s_Entities->at(i)->Render();
+		
 
 	//Range Indicator
 	if (m_SelectedTower)
@@ -150,6 +151,7 @@ void TowerDefense::Combat::UpdateEntities()
 	{
 		for (unsigned int i = 0; i < s_Entities->size(); i++)
 			s_Entities->at(i)->Update();
+			
 	}
 
 	//Add all entities from adders and clear

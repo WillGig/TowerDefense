@@ -11,6 +11,8 @@ void TowerDefense::Quirk::Giant::Apply(TowerDefense::HeroCard& h)
 {
 	h.GetTower()->SetDamageModifier(h.GetTower()->GetDamageModifier(Tower::DamageType::PHYSICAL) + 4, Tower::DamageType::PHYSICAL);
 	h.GetTower()->SetAttackTime(h.GetTower()->GetAttackTime() * 1.2f);
+	h.GetTower()->SetWidth(h.GetTower()->GetWidth() * 2);
+	h.GetTower()->SetHeight(h.GetTower()->GetHeight() * 2);
 }
 
 std::string TowerDefense::Quirk::Giant::GetNameText(Gender gender) const

@@ -16,25 +16,41 @@ namespace TowerDefense
 		{
 		public:
 			Tower(float x, float y, int width, int height, float fireTime, int range, TowerType type, const std::string& regularImage, const std::string& highlightedImage);
+
 			void Update() override;
+
 			void Destroy();
+
 			virtual std::shared_ptr<Tower> Clone() = 0;
+
 			void SetX(float x) override;
 			void SetY(float y) override;
+
 			inline int GetRange() const { return m_Range; }
 			inline void SetRange(int range) { m_Range = range; }
+
 			inline float GetAttackTime() const { return m_FireTime; }
 			inline void SetAttackTime(float speed) { m_FireTime = speed; }
+
 			inline float GetDamageModifier(DamageType type) const { return type == DamageType::PHYSICAL ? m_PhysicalDamageModifier : m_MagicDamageModifier; }
 			inline void SetDamageModifier(float modifier, DamageType type) { type == DamageType::PHYSICAL ? m_PhysicalDamageModifier = modifier : m_MagicDamageModifier = modifier; }
+
 			inline void SetHighlighted() { m_Highlighted = true; }
+
 			inline bool GetClicked() { return m_Clicked; };
+
 			inline std::shared_ptr<Circle> GetRangeCircle() const { return m_RangeCircle; }
+
 			inline TowerType GetType() const { return m_TowerType; }
+
 			std::shared_ptr<CardChoice> GetUpgrades();
+
 			void ApplyBuff(std::shared_ptr<Buff> buff);
+
 			void RemoveBuff(int buffID);
+
 			void ClearBuffs();
+
 			bool IsBuffedBy(Tower& t);
 
 		protected:

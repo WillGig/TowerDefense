@@ -10,7 +10,7 @@ namespace TowerDefense
 		TowerCard(const std::string& name, int cost, const std::string& image, const std::string& upgradedImage);
 		void Render() override;
 		void Update() override;
-		void Play() override;
+		bool Play() override;
 
 	protected:
 		virtual std::shared_ptr<Tower::Tower> GetTower() = 0;

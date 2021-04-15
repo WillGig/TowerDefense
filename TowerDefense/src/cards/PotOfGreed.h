@@ -7,7 +7,7 @@ namespace TowerDefense
 	{
 	public:
 		PotOfGreed();
-		void Play() override;
+		bool Play() override;
 		std::shared_ptr<Card> Clone() override;
 	};
 }

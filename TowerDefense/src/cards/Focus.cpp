@@ -8,13 +8,13 @@ TowerDefense::Focus::Focus(bool exhausts)
 	m_Exhausts = exhausts;
 }
 
-void TowerDefense::Focus::Play()
+bool TowerDefense::Focus::Play()
 {
 	if (m_Upgraded)
 		TowerDefense::Player::Get().ChangeEnergy(30);
 	else
 		TowerDefense::Player::Get().ChangeEnergy(20);
-	Card::Play();
+	return true;
 }
 
 std::shared_ptr<TowerDefense::Card> TowerDefense::Focus::Clone()

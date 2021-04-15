@@ -1,1 +1,76 @@
-add to github
+Current:
+	
+	Increase tower size for giant race
+	
+	add more potential hero upgrades
+		- range, damage, speed, more missiles, new spells, attacks stun/slow
+	
+	Start on random events - explore the caves!
+
+	quirks
+		- Near Sighted		reduced range			Done
+		- Veteran		starts upgraded			
+		- Just lucky		can crit			
+		- Bad shot		increased spread		
+		- Battleready		costs 10% less			Done
+		- Explorer		draws a card when played	Done
+
+	Races (still need to add giant size increase)
+		- wood elf	+1 physical damage, -10% cast time
+		- high elf	+1 magic damage, -10% cast time
+		- dwarve	+2 physical damage
+		- gnome		+2 magic damage
+		- human		-20% cost
+		- giant		+4 physical damage, +20% cast time, increased size
+		- Orc		+3 physical damage, -1 magic damage
+
+	Daily activities
+		Explore Caves 	- Random event						- In progress
+		Visit Library 	- Choose a new card					- Done
+		Go Fishing	- Get a random relic/gold - minigame?			- 
+		Smith		- upgrade a card					- Done
+		Go to Tavern	- Choose from 3 recruits (refreshes every few days)	- Done
+		rest 		- heal by 20						- Done
+
+Soon:
+	Add descriptions to cards (especially heros)
+	Add confirm button to resting
+	Add info for towers
+	Add info for enemies
+	design more enemies and possible combats for days 1-10
+	design auras and more cards
+	relics
+		- glasses (cures nearsightedness)
+		- laser-sword (could be used to fix nearsightedness... maybe)
+	Shop/merchants
+	can scout next battle for gold price (towers cost gold in battle? 1 currency or two?)
+
+Long Term:
+	Change leveling for heros - add new types of attacks, etc.
+	Add combat info on precombat screen (at least name and picture)
+	Add post combat info and rewards
+	Saving and Loading
+	Settings menu
+	In Game Menu
+	More Cards - Auras - cards like powers - need alter/concentrating tower?
+	indicators for buffs on towers
+	Damage Types - physical, magical, special - shields protect from physical, spellcasters grant mass spell protection
+	Placable building towers?
+	More Towers - Disabling slowing/freezing towers
+		Druid 		- 
+		Melee Towers that fight enemies???
+		Fewer towers with branching class upgrades? Learn new spells?
+	Better graphics for towers
+	change image for enemies depending on the direction they face
+	Selling Towers?
+	Allow targeting priority for towers - select enemy?
+	Artifact/advisor system - token of the speechless, token of the armored, token of the broken, token of the vigilant
+		
+
+Far away:
+	idle and cast animations for towers
+	Enemy walk animations
+	Animation for drawing and discarding cards
+	Add sound effects and music
+
+

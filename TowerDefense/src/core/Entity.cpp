@@ -32,6 +32,12 @@ float TowerDefense::Entity::GetDistance(float x, float y) const
 
 void TowerDefense::Entity::SetImage(std::shared_ptr<Image> image) 
 { 
+	if (m_Image->GetWidth() != image->GetWidth())
+	{
+		m_Image = std::make_shared<Image>(image->GetFile(), m_X, m_Y, m_Width, m_Height, m_Rotation);
+		return;
+	}
+
 	image->SetPosition(m_Image->GetPosition().x, m_Image->GetPosition().y, m_Image->GetPosition().z);
 	image->SetRotation(m_Image->GetRotation());
 	m_Image = image; 

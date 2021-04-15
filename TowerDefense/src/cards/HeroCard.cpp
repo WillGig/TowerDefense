@@ -34,14 +34,16 @@ void TowerDefense::HeroCard::Upgrade()
 	m_Upgrades = m_Tower->GetUpgrades();
 }
 
-void TowerDefense::HeroCard::Play()
+bool TowerDefense::HeroCard::Play()
 {
-	if (Player::Get().GetEnergy() >= m_Cost && Board::Get().ValidPlace() && m_OverBoard) {
+	if (Board::Get().ValidPlace() && m_OverBoard) {
 		for (unsigned int i = 0; i < m_Quirks->size(); i++) {
 			m_Quirks->at(i)->OnPlay();
 		}
+		TowerCard::Play();
+		return true;
 	}
-	TowerCard::Play();
+	return false;
 }
 
 //Create exact copy of hero card with copy of quirks and tower

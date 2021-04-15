@@ -45,5 +45,7 @@ std::shared_ptr<TowerDefense::Tower::Tower> TowerDefense::Tower::Monk::Clone()
 	auto tower = std::make_shared<Monk>(m_Upgraded);
 	tower->SetDamageModifier(m_PhysicalDamageModifier, DamageType::PHYSICAL);
 	tower->SetDamageModifier(m_MagicDamageModifier, DamageType::MAGIC);
+	tower->SetWidth(m_Width);
+	tower->SetHeight(m_Height);
 	return tower;
 }
