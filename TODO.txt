@@ -1,16 +1,10 @@
 Current:
-	
+	Adding text to cards	
+
 	add more potential hero upgrades
 		- range, damage, speed, more missiles, new spells, attacks stun/slow
 	
-	Start on random events - explore the caves!
-
-	quirks
-		- Near Sighted		reduced range				Done
-		- Veteran		starts upgraded				Done
-		- Just lucky		can crit				Done
-		- Battleready		costs 10% less				Done
-		- Explorer		draws a card when played		Done
+	Start on random events - explore the caves!	
 
 	Daily activities
 		Explore Caves 	- Random event						- In progress
@@ -73,4 +67,11 @@ Notes:
 	- human		-20% cost
 	- giant		+4 physical damage, +20% cast time, increased size
 	- Orc		+3 physical damage, -1 magic damage
+
+	quirks
+	- Near Sighted	reduced range				
+	- Veteran	starts upgraded				
+	- Just lucky	can crit				
+	- Battleready	costs 10% less				
+	- Explorer	draws a card when played	
 
