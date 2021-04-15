@@ -1,5 +1,5 @@
 Current:
-	Adding text to cards	
+	Adding names to cards	
 
 	add more potential hero upgrades
 		- range, damage, speed, more missiles, new spells, attacks stun/slow
