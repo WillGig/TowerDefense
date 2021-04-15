@@ -70,7 +70,7 @@ bool TowerDefense::FireBall::Play()
 				}
 			}
 		}
-		Combat::AddEntity(std::make_shared<AnimationEffect>(m_X, m_Y, 100, 100, "res/textures/explosion.png", 7));
+		Combat::AddEntity(std::make_shared<AnimationEffect>(m_X, m_Y, 100, 100, "res/textures/explosion.png", 7, 30));
 		return true;
 	}
 	return false;

@@ -171,6 +171,8 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\cards\quirks\JustLucky.cpp" />
+    <ClCompile Include="src\cards\quirks\Veteran.cpp" />
     <ClCompile Include="src\core\Board.cpp" />
     <ClCompile Include="src\cards\Card.cpp" />
     <ClCompile Include="src\cards\CardChoice.cpp" />
@@ -389,6 +391,8 @@
     <Image Include="res\textures\wizardHighlighted.png" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\cards\quirks\JustLucky.h" />
+    <ClInclude Include="src\cards\quirks\Veteran.h" />
     <ClInclude Include="src\core\Board.h" />
     <ClInclude Include="src\cards\Card.h" />
     <ClInclude Include="src\cards\CardChoice.h" />

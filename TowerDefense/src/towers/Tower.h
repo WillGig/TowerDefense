@@ -35,6 +35,12 @@ namespace TowerDefense
 			inline float GetDamageModifier(DamageType type) const { return type == DamageType::PHYSICAL ? m_PhysicalDamageModifier : m_MagicDamageModifier; }
 			inline void SetDamageModifier(float modifier, DamageType type) { type == DamageType::PHYSICAL ? m_PhysicalDamageModifier = modifier : m_MagicDamageModifier = modifier; }
 
+			inline float GetCritChance() const { return m_CritChance; }
+			inline void SetCritChance(float chance) { m_CritChance = chance; }
+
+			inline float GetCritMultiplier() const { return m_CritMultiplier; }
+			inline void SetCritMultiplier(float multiplier) { m_CritMultiplier = multiplier; }
+
 			inline void SetHighlighted() { m_Highlighted = true; }
 
 			inline bool GetClicked() { return m_Clicked; };
@@ -60,7 +66,7 @@ namespace TowerDefense
 			std::shared_ptr<Card> GetRandomUpgrade(std::shared_ptr<std::vector<std::shared_ptr<Card>>> exclude);
 
 
-			float m_PhysicalDamage, m_PhysicalDamageModifier, m_MagicDamage, m_MagicDamageModifier, m_Spread;
+			float m_PhysicalDamage, m_PhysicalDamageModifier, m_MagicDamage, m_MagicDamageModifier, m_Spread, m_CritChance, m_CritMultiplier;
 
 		private:
 			std::shared_ptr<TowerDefense::Entity> FindTarget();

@@ -10,6 +10,8 @@
 #include "BattleReady.h"
 #include "Explorer.h"
 #include "NearSighted.h"
+#include "Veteran.h"
+#include "JustLucky.h"
 
 TowerDefense::Quirk::Quirk::Quirk(const std::string& name)
 	:m_Name(name)
@@ -66,11 +68,15 @@ std::shared_ptr<TowerDefense::Quirk::Quirk> TowerDefense::Quirk::Quirk::GetRando
 	{
 		while (!q || Contains(exclude, q)) 
 		{
-			int quirkNumber = (int)(Random::GetFloat() * 2.0f);
+			int quirkNumber = (int)(Random::GetFloat() * 4.0f);
 			if (quirkNumber == 0)
 				q = std::make_shared<BattleReady>();
 			else if (quirkNumber == 1)
 				q = std::make_shared<Explorer>();
+			else if (quirkNumber == 2)
+				q = std::make_shared<Veteran>();
+			else if (quirkNumber == 3)
+				q = std::make_shared<JustLucky>();
 		}
 	}
 	else {

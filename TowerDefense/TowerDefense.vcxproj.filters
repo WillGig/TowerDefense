@@ -231,6 +231,12 @@
     <ClCompile Include="src\cards\upgrades\Upgrades.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="src\cards\quirks\Veteran.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\cards\quirks\JustLucky.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="res\shaders\Texture.shader" />
@@ -860,6 +866,12 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\cards\upgrades\Upgrades.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\cards\quirks\Veteran.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\cards\quirks\JustLucky.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

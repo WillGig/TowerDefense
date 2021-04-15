@@ -19,9 +19,15 @@ TowerDefense::Tower::Wizard::Wizard(float fireTime, int range, float damage, int
 
 void TowerDefense::Tower::Wizard::Fire(std::shared_ptr<TowerDefense::Entity> target)
 {
+	float damage = m_MagicDamage + m_MagicDamageModifier;
+	if (Random::GetFloat() < m_CritChance)
+	{
+		damage *= m_CritMultiplier;
+		Combat::AddEntity(std::make_shared<AnimationEffect>(m_X, m_Y, 100, 100, "res/textures/critAnimation.png", 7, 30));
+	}
 	for (int i = 0; i < m_NumberOfMissiles; i++) {
 		float angle = (i - ((m_NumberOfMissiles - 1) / 2.0f)) * (180.0f / m_NumberOfMissiles);
-		Combat::AddEntity(std::make_shared<TowerDefense::MagicMissile>(m_X, m_Y, m_Rotation + angle, m_MagicDamage + m_MagicDamageModifier));
+		Combat::AddEntity(std::make_shared<TowerDefense::MagicMissile>(m_X, m_Y, m_Rotation + angle, damage));
 	}
 }
 
@@ -30,6 +36,8 @@ std::shared_ptr<TowerDefense::Tower::Tower> TowerDefense::Tower::Wizard::Clone()
 	auto tower = std::make_shared<Wizard>(GetAttackTime(), GetRange(), m_MagicDamage, m_NumberOfMissiles);
 	tower->SetDamageModifier(m_PhysicalDamageModifier, DamageType::PHYSICAL);
 	tower->SetDamageModifier(m_MagicDamageModifier, DamageType::MAGIC);
+	tower->SetCritChance(m_CritChance);
+	tower->SetCritMultiplier(m_CritMultiplier);
 	tower->SetWidth(m_Width);
 	tower->SetHeight(m_Height);
 	return tower;

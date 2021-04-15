@@ -56,7 +56,7 @@ void TowerDefense::PoisonBomb::HitEntity(std::shared_ptr<TowerDefense::Entity> e
 			}
 		}
 	}
-	Combat::AddEntity(std::make_shared<AnimationEffect>(m_X, m_Y, 100, 100, "res/textures/acidExplosion.png", 7));
+	Combat::AddEntity(std::make_shared<AnimationEffect>(m_X, m_Y, 100, 100, "res/textures/acidExplosion.png", 7, 60));
 	Destroy();
 }
 

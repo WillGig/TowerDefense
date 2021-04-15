@@ -82,7 +82,7 @@ void TowerDefense::Projectile::CheckCollisions()
 	auto entities = Combat::GetEntities();
 	for (unsigned int i = 0; i < entities->size(); i++) {
 		std::shared_ptr<TowerDefense::Entity> e = entities->at(i);
-		if (e->GetEntityType() == Type::TOWER || e->GetEntityType() == Type::PROJECTILE)
+		if (e->GetEntityType() == Type::TOWER || e->GetEntityType() == Type::PROJECTILE || e->GetEntityType() == Type::ANIMATION)
 			continue;
 
 		float eX = e->GetX();

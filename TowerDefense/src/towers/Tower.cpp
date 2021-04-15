@@ -12,9 +12,9 @@
 
 TowerDefense::Tower::Tower::Tower(float x, float y, int width, int height, float fireTime, int range, TowerType type, const std::string& regularImage, const std::string& highlightedImage)
 	:Entity(width, height, x, y, 0.0f, regularImage, Type::TOWER), m_PhysicalDamage(0.0f), m_PhysicalDamageModifier(0.0f),
-	m_MagicDamage(0.0f), m_MagicDamageModifier(0.0f), m_Spread(0.0f), m_FireTime(fireTime), m_LastFire(-1),
-	m_Range(range), m_Highlighted(false), m_Clicked(false), m_TowerType(type), m_TargetType(Targeting::FIRST),
-	m_RegularImage(std::make_shared<Image>(regularImage, x, y, width, height, 0.0f)),
+	m_MagicDamage(0.0f), m_MagicDamageModifier(0.0f), m_Spread(0.0f), m_CritChance(0.0f), m_CritMultiplier(2.0f),
+	m_FireTime(fireTime), m_LastFire(-1), m_Range(range), m_Highlighted(false), m_Clicked(false), m_TowerType(type), 
+	m_TargetType(Targeting::FIRST), m_RegularImage(std::make_shared<Image>(regularImage, x, y, width, height, 0.0f)),
 	m_HighlightedImage(std::make_shared<Image>(highlightedImage, x, y, width, height, 0.0f)),
 	m_RangeCircle(std::make_shared<Circle>(0.0f, 0.0f, (float)range)),
 	m_Buffs(std::make_unique<std::vector<std::shared_ptr<Buff>>>()), 

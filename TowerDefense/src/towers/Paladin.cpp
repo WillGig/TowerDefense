@@ -17,9 +17,15 @@ TowerDefense::Tower::Paladin::Paladin(float fireTime, int range, float damage)
 
 void TowerDefense::Tower::Paladin::Fire(std::shared_ptr<TowerDefense::Entity> target)
 {
+	float damage = m_MagicDamage;
+	if (Random::GetFloat() < m_CritChance)
+	{
+		damage *= m_CritMultiplier;
+		Combat::AddEntity(std::make_shared<AnimationEffect>(m_X, m_Y, 100, 100, "res/textures/critAnimation.png", 7, 30));
+	}
 	std::shared_ptr<Enemy::Enemy> e = std::dynamic_pointer_cast<Enemy::Enemy>(target);
-	e->TakeDamage(e->GetMaxHealth() * m_MagicDamage);
-	Combat::AddEntity(std::make_shared<AnimationEffect>(e->GetX(), e->GetY(), 100, 100, "res/textures/smiteAnimation.png", 7));
+	e->TakeDamage(e->GetMaxHealth() * damage);
+	Combat::AddEntity(std::make_shared<AnimationEffect>(e->GetX(), e->GetY(), 100, 100, "res/textures/smiteAnimation.png", 7, 30));
 }
 
 std::shared_ptr<TowerDefense::Tower::Tower> TowerDefense::Tower::Paladin::Clone()

@@ -10,9 +10,11 @@ namespace TowerDefense
 		CardChoice(std::shared_ptr<std::vector<std::shared_ptr<Card>>> cards, int generationDay);
 		void Update();
 		void Render();
+		inline void SetSelectedCard(int selection) { m_SelectedCard = selection; }
 		std::shared_ptr<Card> GetSelectedCard() const;
 		void RemoveSelectedCard();
 		inline int GetGenerationDay() const { return m_GenerationDay; }
+		inline int NumberOfChoices() const { return (int)m_Cards->size(); }
 
 	private:
 		std::shared_ptr<Card> PickACard();

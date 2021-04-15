@@ -19,7 +19,13 @@ TowerDefense::Tower::Giant::Giant(float fireTime, int range, float damage)
 
 void TowerDefense::Tower::Giant::Fire(std::shared_ptr<TowerDefense::Entity> target)
 {
-	Combat::AddEntity(std::make_shared<TowerDefense::GiantRock>(m_X, m_Y, m_Rotation, m_PhysicalDamage + m_PhysicalDamageModifier));
+	float damage = m_PhysicalDamage + m_PhysicalDamageModifier;
+	if (Random::GetFloat() < m_CritChance)
+	{
+		damage *= m_CritMultiplier;
+		Combat::AddEntity(std::make_shared<AnimationEffect>(m_X, m_Y, 100, 100, "res/textures/critAnimation.png", 7, 30));
+	}
+	Combat::AddEntity(std::make_shared<TowerDefense::GiantRock>(m_X, m_Y, m_Rotation, damage));
 }
 
 std::shared_ptr<TowerDefense::Tower::Tower> TowerDefense::Tower::Giant::Clone()
@@ -27,6 +33,8 @@ std::shared_ptr<TowerDefense::Tower::Tower> TowerDefense::Tower::Giant::Clone()
 	auto tower = std::make_shared<Giant>(GetAttackTime(), GetRange(), m_PhysicalDamage);
 	tower->SetDamageModifier(m_PhysicalDamageModifier, DamageType::PHYSICAL);
 	tower->SetDamageModifier(m_MagicDamageModifier, DamageType::MAGIC);
+	tower->SetCritChance(m_CritChance);
+	tower->SetCritMultiplier(m_CritMultiplier);
 	tower->SetWidth(m_Width);
 	tower->SetHeight(m_Height);
 	return tower;

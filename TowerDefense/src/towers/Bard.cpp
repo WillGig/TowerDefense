@@ -27,6 +27,8 @@ std::shared_ptr<TowerDefense::Tower::Tower> TowerDefense::Tower::Bard::Clone()
 	auto tower = std::make_shared<Bard>(GetAttackTime(), GetRange(), m_AttackSpeedBuff);
 	tower->SetDamageModifier(m_PhysicalDamageModifier, DamageType::PHYSICAL);
 	tower->SetDamageModifier(m_MagicDamageModifier, DamageType::MAGIC);
+	tower->SetCritChance(m_CritChance);
+	tower->SetCritMultiplier(m_CritMultiplier);
 	tower->SetWidth(m_Width);
 	tower->SetHeight(m_Height);
 	return tower;
