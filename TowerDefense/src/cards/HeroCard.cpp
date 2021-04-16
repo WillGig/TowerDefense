@@ -14,6 +14,9 @@ TowerDefense::HeroCard::HeroCard(const std::string& name, int cost, const std::s
 {
 	m_Exhausts = true;
 
+	//Generate upgrade choices for tower
+	m_Upgrades = m_Tower->GetUpgrades();
+
 	//Apply effects of quirks
 	if (m_Quirks)
 	{
@@ -21,9 +24,6 @@ TowerDefense::HeroCard::HeroCard(const std::string& name, int cost, const std::s
 			m_Quirks->at(i)->Apply(*this);
 		}
 	}
-	
-	//Generate upgrade choices for tower
-	m_Upgrades = m_Tower->GetUpgrades();
 }
 
 //Apply chosen upgrade and generate new choices

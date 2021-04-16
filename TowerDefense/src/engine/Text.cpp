@@ -13,7 +13,7 @@ Text::Text(std::string msg, float x, float y, float size, float maxWidth)
 	//positions of a single character that will be added to the vertex buffer data
 	std::unique_ptr<float[]> tempPositions;
 
-	int longestLine = 0;
+	float longestLine = 0.0f;
 
 	//Offset of current character
 	int xOffSet = 0;
@@ -30,15 +30,15 @@ Text::Text(std::string msg, float x, float y, float size, float maxWidth)
 		else if (msg[i] == '\n' || (maxWidth > 0 && xOffSet + GetWidth(msg[i]) > maxWidth))
 		{
 			if (msg[i] == '\n') {
-				longestLine = (int)(maxWidth > longestLine ? maxWidth : longestLine);
+				longestLine = maxWidth > longestLine ? maxWidth : longestLine;
 			}
 			else {
-				longestLine = (int)(maxWidth*scale);
+				longestLine = maxWidth*scale;
 			}
 
 			yOffSet -= (int)(20 * scale);
 			xOffSet = 0;
-			m_Width = 0;
+			m_Width = 0.0f;
 			continue;
 		}
 
@@ -60,9 +60,12 @@ Text::Text(std::string msg, float x, float y, float size, float maxWidth)
 
 		//Update offset based on the width of the current character and the following one
 		if (i != msg.length() - 1)
+		{
 			xOffSet += (int)((GetWidth(msg[i]) / 2 + GetWidth(msg[i + 1]) / 2 + 2));
+			m_Width += 2;
+		}
 
-		m_Width += (int)(GetWidth(msg[i]) * scale);
+		m_Width += GetWidth(msg[i]);	
 	}
 
 	if (longestLine > m_Width)

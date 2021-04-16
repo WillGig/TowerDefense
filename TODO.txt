@@ -1,7 +1,4 @@
 Current:
-	fix width calculation for text
-	check out bug with veteran?
-
 	Add descriptions to heros	
 
 	Start on random events - explore the caves!	

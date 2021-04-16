@@ -18,7 +18,7 @@ public:
 
 	inline std::string GetMessage() { return m_Message; }
 
-	inline int GetWidth() const { return m_Width; }
+	inline float GetWidth() const { return m_Width; }
 
 private:
 	std::unique_ptr<float[]> GetPositions(char c, int xOff, int yOff, float scale);
@@ -41,5 +41,5 @@ private:
 	//Color using floats from 0.0f to 1.0f in rgba format
 	Vec4 m_Color;
 
-	int m_Width;
+	float m_Width;
 };
