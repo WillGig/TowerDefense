@@ -5,7 +5,7 @@
 
 namespace TowerDefense
 {
-	enum class SubMenu { SMITHING, LIBRARY, TAVERN, NONE };
+	enum class SubMenu { SMITHING, LIBRARY, TAVERN, REST, NONE };
 
 	class Base : public Scene
 	{
@@ -18,9 +18,11 @@ namespace TowerDefense
 		void RenderSmithing();
 		void RenderLibrary();
 		void RenderTavern();
+		void RenderRest();
 		void UpdateSmithing();
 		void UpdateLibrary();
 		void UpdateTavern();
+		void UpdateRest();
 		void UpdateDeck();
 		void UpdateActivities();
 		void UpdateActivityDescription();
@@ -37,7 +39,7 @@ namespace TowerDefense
 
 		//String that is set on update to check if description text object needs to be updated
 		std::string m_ActivityText;
-		Text m_ActivityDescription;
+		std::unique_ptr<Text> m_ActivityDescription, m_RestText, m_Health, m_Day;
 
 		//Selected card that is shown in smithing menu
 		std::shared_ptr<Card> m_SelectedCard, m_SelectedCardImage;

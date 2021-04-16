@@ -5,8 +5,11 @@
 #include "cards/HeroCard.h"
 
 TowerDefense::Base::Base()
-	:m_SubMenu(SubMenu::NONE), m_ActivityDone(false), 
-	m_ActivityText(""), m_ActivityDescription("", 400.0f, 235.0f, 12.0f, 0),
+	:m_SubMenu(SubMenu::NONE), m_ActivityDone(false),
+	m_ActivityText(""), m_ActivityDescription(std::make_unique<Text>("", 400.0f, 235.0f, 12.0f, 0.0f)),
+	m_RestText(std::make_unique<Text>("", 400.0f, 300.0f, 12.0f, 0.0f)),
+	m_Health(std::make_unique<Text>("", 610.0f, 575.0f, 10.0f, 0.0f)),
+	m_Day(std::make_unique<Text>("", 400.0f, 575.0f, 10.0f, 0.0f)),
 	m_SmithingArrow(std::make_unique<StaticImage>(400.0f, 300.0f, 36, 36, 0.0f, "res/textures/smithArrow.png")),
 	m_Fade(std::make_unique<Rectangle>((float)WIDTH / 2.0f, (float)HEIGHT / 2.0f, (float)WIDTH, (float)HEIGHT))
 {
@@ -25,6 +28,8 @@ TowerDefense::Base::Base()
 		std::make_unique<Button>(50, 43, 570.0f, 578.0f, "res/textures/viewDeckButton.png", "res/textures/viewDeckButtonSelected.png")
 	};
 	m_Fade->SetColor(0.0f, 0.0f, 0.0f, 0.95f);
+	m_Health->SetColor(0.0f, 0.0f, 0.0f, 1.0f);
+	m_Day->SetColor(0.0f, 0.0f, 0.0f, 1.0f);
 }
 
 void TowerDefense::Base::Render()
@@ -38,6 +43,9 @@ void TowerDefense::Base::Render()
 	m_Buttons[6]->Render();
 	m_Buttons[9]->Render();
 
+	m_Health->Render();
+	m_Day->Render();
+
 	switch (m_SubMenu)
 	{
 	case SubMenu::SMITHING:
@@ -49,6 +57,9 @@ void TowerDefense::Base::Render()
 	case SubMenu::TAVERN:
 		RenderTavern();
 		break;
+	case SubMenu::REST:
+		RenderRest();
+		break;
 	case SubMenu::NONE:
 		if (Player::Get().GetDeck()->IsShowing())
 		{
@@ -59,7 +70,7 @@ void TowerDefense::Base::Render()
 	}
 
 	if (m_ActivityText.size() > 0)
-		m_ActivityDescription.Render();
+		m_ActivityDescription->Render();
 }
 
 void TowerDefense::Base::Update()
@@ -74,6 +85,9 @@ void TowerDefense::Base::Update()
 		break;
 	case SubMenu::TAVERN:
 		UpdateTavern();
+		break;
+	case SubMenu::REST:
+		UpdateRest();
 		break;
 	case SubMenu::NONE:
 		if (Player::Get().GetDeck()->IsShowing())
@@ -92,6 +106,16 @@ void TowerDefense::Base::Update()
 void TowerDefense::Base::OnSwitch()
 {
 	m_ActivityDone = false;
+
+	m_Day = std::make_unique<Text>(std::string("Day: ") + std::to_string(GetDay()), 400.0f, 575.0f, 10.0f, 0.0f);
+	m_Day->SetColor(1.0f, 1.0f, 1.0f, 1.0f);
+
+	m_Health = std::make_unique<Text>(std::string("Health: ") + std::to_string(Player::Get().GetHealth()) + "/" + std::to_string(Player::Get().GetMaxHealth()), 610.0f, 575.0f, 10.0f, 0.0f);
+	m_Health->SetColor(1.0f, 1.0f, 1.0f, 1.0f);
+
+	m_RestText = std::make_unique<Text>("Rest to restore " + std::to_string(Player::Get().GetMaxHealth() / 10) + " health", 400.0f, 300.0f, 12.0f, 0.0f);
+	m_RestText->SetPosition(400.0f - m_RestText->GetWidth() / 2, 300.0f, 0);
+	m_RestText->SetColor(1.0f, 1.0f, 1.0f, 1.0f);
 }
 
 void TowerDefense::Base::RenderSmithing()
@@ -144,6 +168,15 @@ void TowerDefense::Base::RenderTavern()
 		Player::Get().GetDeck()->RenderCards();
 		m_Buttons[9]->Render();
 	}
+}
+
+void TowerDefense::Base::RenderRest()
+{
+	m_Fade->Render();
+	m_Health->Render();
+	m_RestText->Render();
+	m_Buttons[7]->Render();
+	m_Buttons[8]->Render();
 }
 
 void TowerDefense::Base::UpdateSmithing()
@@ -250,6 +283,25 @@ void TowerDefense::Base::UpdateTavern()
 		player.GetDeck()->Show(!player.GetDeck()->IsShowing());
 }
 
+void TowerDefense::Base::UpdateRest()
+{
+	m_Buttons[7]->Update();
+	if (m_Buttons[7]->IsClicked())
+	{
+		Player::Get().ChangeHealth(10);
+		m_Health = std::make_unique<Text>(std::string("Health: ") + std::to_string(Player::Get().GetHealth()) + "/" + std::to_string(Player::Get().GetMaxHealth()), 610.0f, 575.0f, 10.0f, 0.0f);
+		m_Health->SetColor(1.0f, 1.0f, 1.0f, 1.0f);
+		m_ActivityDone = true;
+		m_SubMenu = SubMenu::NONE;
+	}
+
+	m_Buttons[8]->Update();
+	if (m_Buttons[8]->IsClicked())
+	{
+		m_SubMenu = SubMenu::NONE;
+	}
+}
+
 void TowerDefense::Base::UpdateDeck()
 {
 	Player& player = Player::Get();
@@ -309,8 +361,7 @@ void TowerDefense::Base::UpdateActivities()
 	m_Buttons[5]->Update();
 	if (m_Buttons[5]->IsClicked())
 	{
-		player.ChangeHealth(10);
-		m_ActivityDone = true;
+		m_SubMenu = SubMenu::REST;
 		m_Buttons[5]->SetSelected(false);
 	}
 
@@ -335,11 +386,11 @@ void TowerDefense::Base::UpdateActivityDescription()
 	if (m_ActivityText.size() < 1)
 		return;
 
-	if (m_ActivityDescription.GetMessage() != m_ActivityText)
+	if (m_ActivityDescription->GetMessage() != m_ActivityText)
 	{
-		m_ActivityDescription = Text(m_ActivityText, 400.0f, 235.0f, 12.0f, 0);
-		m_ActivityDescription.SetPosition(400.0f - m_ActivityDescription.GetWidth() / 2, 235.0f, 0);
-		m_ActivityDescription.SetColor(1.0f, 1.0f, 1.0f, 1.0f);
+		m_ActivityDescription = std::make_unique<Text>(m_ActivityText, 400.0f, 235.0f, 12.0f, 0.0f);
+		m_ActivityDescription->SetPosition(400.0f - m_ActivityDescription->GetWidth() / 2, 235.0f, 0);
+		m_ActivityDescription->SetColor(1.0f, 1.0f, 1.0f, 1.0f);
 	}
 }
 

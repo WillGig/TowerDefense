@@ -1,4 +1,7 @@
 Current:
+	fix width calculation for text
+	check out bug with veteran?
+
 	Add descriptions to heros	
 
 	Start on random events - explore the caves!	
@@ -13,7 +16,6 @@ Current:
 
 Soon:
 	
-	Add confirm button to resting
 	Add info for towers
 	Add info for enemies
 	design more enemies and possible combats for days 1-10

@@ -16,7 +16,9 @@ namespace TowerDefense
 
 		inline int GetHealth() const { return m_Health; }
 		void ChangeHealth(int change);
-		
+
+		inline int GetMaxHealth() const { return m_MaxHealth; }
+
 		void DrawHand();
 
 		void ResetCardPiles();
@@ -33,7 +35,7 @@ namespace TowerDefense
 	private:
 		Player();
 
-		int m_Health, m_Energy;
+		int m_Health, m_MaxHealth, m_Energy;
 		std::shared_ptr<Hand> m_Hand;
 		std::shared_ptr<CardPile> m_Deck, m_DrawPile, m_DiscardPile;
 	};
