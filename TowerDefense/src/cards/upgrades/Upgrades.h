@@ -46,7 +46,7 @@ namespace TowerDefense
 	{
 	public:
 		MoreMissiles()
-			:Upgrade("More Missiles", "res/textures/moremissiles.png"), m_RangeIncrease()
+			:Upgrade("More Missiles", "res/textures/moremissiles.png")
 		{
 		}
 		void UpgradeHero(HeroCard& hero);
