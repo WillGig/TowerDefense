@@ -63,14 +63,14 @@ namespace TowerDefense
 			virtual void Fire(std::shared_ptr<TowerDefense::Entity> target) = 0;
 			virtual void Clicked();
 			float FindDirection(float x, float y);
-			std::shared_ptr<Card> GetRandomUpgrade(std::shared_ptr<std::vector<std::shared_ptr<Card>>> exclude);
+			bool ContainsCard(std::shared_ptr<std::vector<std::shared_ptr<Card>>> exclude, std::shared_ptr<Card> card);
+			virtual std::shared_ptr<Card> GetRandomUpgrade(std::shared_ptr<std::vector<std::shared_ptr<Card>>> exclude);
 
 
 			float m_PhysicalDamage, m_PhysicalDamageModifier, m_MagicDamage, m_MagicDamageModifier, m_Spread, m_CritChance, m_CritMultiplier;
 
 		private:
 			std::shared_ptr<TowerDefense::Entity> FindTarget();
-			bool ContainsCard(std::shared_ptr<std::vector<std::shared_ptr<Card>>> exclude, std::shared_ptr<Card> card);
 			void UpdateImage();
 			void Attack();
 			void UpdateBuffs();

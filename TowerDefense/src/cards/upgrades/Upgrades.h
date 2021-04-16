@@ -41,4 +41,14 @@ namespace TowerDefense
 	private:
 		int m_RangeIncrease;
 	};
+
+	class MoreMissiles : public Upgrade
+	{
+	public:
+		MoreMissiles()
+			:Upgrade("More Missiles", "res/textures/moremissiles.png"), m_RangeIncrease()
+		{
+		}
+		void UpgradeHero(HeroCard& hero);
+	};
 }

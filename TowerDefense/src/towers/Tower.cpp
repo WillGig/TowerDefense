@@ -109,7 +109,7 @@ std::shared_ptr<TowerDefense::CardChoice> TowerDefense::Tower::Tower::GetUpgrade
 }
 
 //Generates random upgrade, excluding already chosen types of upgrades
-//Will later be overwritten in specific tower classes to customize buffs to specific towers
+//Can be overwritten in specific tower classes to customize buffs to specific towers
 std::shared_ptr<TowerDefense::Card> TowerDefense::Tower::Tower::GetRandomUpgrade(std::shared_ptr<std::vector<std::shared_ptr<Card>>> exclude)
 {
 	std::shared_ptr<Card> card;

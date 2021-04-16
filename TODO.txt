@@ -1,9 +1,6 @@
 Current:
-	Adding names to cards	
+	Add descriptions to heros	
 
-	add more potential hero upgrades
-		- range, damage, speed, more missiles, new spells, attacks stun/slow
-	
 	Start on random events - explore the caves!	
 
 	Daily activities
@@ -15,12 +12,14 @@ Current:
 		rest 		- heal by 20						- Done
 
 Soon:
-	Add descriptions to cards (especially heros)
+	
 	Add confirm button to resting
 	Add info for towers
 	Add info for enemies
 	design more enemies and possible combats for days 1-10
 	design auras and more cards
+	add more potential hero upgrades
+		- range, damage, speed, more missiles, new spells, attacks stun/slow
 	relics
 		- glasses (cures nearsightedness)
 		- laser-sword (could be used to fix nearsightedness... maybe)

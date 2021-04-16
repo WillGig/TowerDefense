@@ -1,5 +1,6 @@
 #include "pch.h"
 #include "Upgrades.h"
+#include "towers/Wizard.h"
 
 void TowerDefense::AttackSpeedUpgrade::UpgradeHero(HeroCard& hero)
 {
@@ -15,4 +16,11 @@ void TowerDefense::DamageUpgrade::UpgradeHero(HeroCard& hero)
 void TowerDefense::RangeUpgrade::UpgradeHero(HeroCard& hero)
 {
 	hero.GetTower()->SetRange(hero.GetTower()->GetRange() + m_RangeIncrease);
+}
+
+void TowerDefense::MoreMissiles::UpgradeHero(HeroCard& hero)
+{
+	auto wizard = std::dynamic_pointer_cast<Tower::Wizard>(hero.GetTower());
+	if(wizard)
+		wizard->SetNumberOfMissiles(wizard->GetNumberOfMissiles() + 1);
 }
