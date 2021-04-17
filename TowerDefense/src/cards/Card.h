@@ -29,6 +29,8 @@ namespace TowerDefense
 
 		inline bool Exhausts() const { return m_Exhausts; }
 
+		inline void SetOverBoard(bool overboard) { m_OverBoard = overboard; }
+
 		static std::shared_ptr<Card> GetCommonCard();
 		static std::shared_ptr<Card> GetUncommonCard();
 		static std::shared_ptr<Card> GetRareCard();
@@ -47,7 +49,7 @@ namespace TowerDefense
 
 	protected:
 		int m_Cost;
-		bool m_Upgraded;
+		bool m_Upgraded, m_OverBoard;
 		//Whether or not the card enters the discard pile after being played
 		//Cards that exhaust DO NOT enter the discard pile. False by default for non-hero cards
 		bool m_Exhausts;

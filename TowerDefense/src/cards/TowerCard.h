@@ -15,8 +15,6 @@ namespace TowerDefense
 	protected:
 		virtual std::shared_ptr<Tower::Tower> GetTower() = 0;
 
-		bool m_OverBoard;
-
 	private:
 		std::shared_ptr<Tower::Tower> m_HeldTower;
 	};

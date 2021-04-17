@@ -110,11 +110,11 @@ void TowerDefense::Base::OnSwitch()
 	m_Day = std::make_unique<Text>(std::string("Day: ") + std::to_string(GetDay()), 400.0f, 575.0f, 10.0f, 0.0f);
 	m_Day->SetColor(1.0f, 1.0f, 1.0f, 1.0f);
 
-	m_Health = std::make_unique<Text>(std::string("Health: ") + std::to_string(Player::Get().GetHealth()) + "/" + std::to_string(Player::Get().GetMaxHealth()), 610.0f, 575.0f, 10.0f, 0.0f);
+	m_Health = std::make_unique<Text>(std::string("Health: ") + std::to_string(Player::Get().GetHealth()) + "/" + std::to_string(Player::Get().GetMaxHealth()), 700.0f, 575.0f, 10.0f, 0.0f);
 	m_Health->SetColor(1.0f, 1.0f, 1.0f, 1.0f);
 
 	m_RestText = std::make_unique<Text>("Rest to restore " + std::to_string(Player::Get().GetMaxHealth() / 10) + " health", 400.0f, 300.0f, 12.0f, 0.0f);
-	m_RestText->SetPosition(400.0f - m_RestText->GetWidth() / 2, 300.0f, 0);
+	m_RestText->SetPosition(400.0f, 300.0f, 0);
 	m_RestText->SetColor(1.0f, 1.0f, 1.0f, 1.0f);
 }
 
@@ -289,7 +289,7 @@ void TowerDefense::Base::UpdateRest()
 	if (m_Buttons[7]->IsClicked())
 	{
 		Player::Get().ChangeHealth(10);
-		m_Health = std::make_unique<Text>(std::string("Health: ") + std::to_string(Player::Get().GetHealth()) + "/" + std::to_string(Player::Get().GetMaxHealth()), 610.0f, 575.0f, 10.0f, 0.0f);
+		m_Health = std::make_unique<Text>(std::string("Health: ") + std::to_string(Player::Get().GetHealth()) + "/" + std::to_string(Player::Get().GetMaxHealth()), 700.0f, 575.0f, 10.0f, 0.0f);
 		m_Health->SetColor(1.0f, 1.0f, 1.0f, 1.0f);
 		m_ActivityDone = true;
 		m_SubMenu = SubMenu::NONE;
@@ -389,7 +389,7 @@ void TowerDefense::Base::UpdateActivityDescription()
 	if (m_ActivityDescription->GetMessage() != m_ActivityText)
 	{
 		m_ActivityDescription = std::make_unique<Text>(m_ActivityText, 400.0f, 235.0f, 12.0f, 0.0f);
-		m_ActivityDescription->SetPosition(400.0f - m_ActivityDescription->GetWidth() / 2, 235.0f, 0);
+		m_ActivityDescription->SetPosition(400.0f, 235.0f, 0);
 		m_ActivityDescription->SetColor(1.0f, 1.0f, 1.0f, 1.0f);
 	}
 }

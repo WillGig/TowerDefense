@@ -22,6 +22,7 @@
 #include "stb_image/stb_image.h"
 
 //Math
+#define PI 3.14159265f
 #include "math/Mat4f.h"
 #include "math/Vector.h"
 #include "math/Random.h"

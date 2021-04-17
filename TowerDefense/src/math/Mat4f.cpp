@@ -1,7 +1,5 @@
 #include "pch.h"
 
-#define PI 3.14159265
-
 Mat4f::Mat4f()
 {
 	for (int i = 0; i < 16; i++)

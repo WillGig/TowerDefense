@@ -4,7 +4,7 @@
 #include "projectiles/Projectiles.h"
 
 TowerDefense::Tower::Archer::Archer()
-	:Tower(0.0f, 0.0f, 32, 32, 100.0f, 100, TowerType::DAMAGE, "res/textures/archer.png", "res/textures/archerHighlighted.png")
+	:Tower(0.0f, 0.0f, 32, 32, 20.0f, 100, TowerType::DAMAGE, "res/textures/archer.png", "res/textures/archerHighlighted.png")
 {
 	m_Spread = .1f;
 	m_PhysicalDamage = 1.0f;

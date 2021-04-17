@@ -8,8 +8,6 @@
 #include "core/Player.h"
 #include "cards/Upgrades/Upgrades.h"
 
-#define PI 3.14159265f
-
 TowerDefense::Tower::Tower::Tower(float x, float y, int width, int height, float fireTime, int range, TowerType type, const std::string& regularImage, const std::string& highlightedImage)
 	:Entity(width, height, x, y, 0.0f, regularImage, Type::TOWER), m_PhysicalDamage(0.0f), m_PhysicalDamageModifier(0.0f),
 	m_MagicDamage(0.0f), m_MagicDamageModifier(0.0f), m_Spread(0.0f), m_CritChance(0.0f), m_CritMultiplier(2.0f),

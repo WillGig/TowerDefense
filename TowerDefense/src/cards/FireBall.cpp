@@ -7,7 +7,7 @@
 
 TowerDefense::FireBall::FireBall()
 	:Card("Fire Ball", 20, "res/textures/fireBall.png", "res/textures/fireBallUpgraded.png"), 
-	m_Damage(10.0f), m_Radius(50.0f), m_OverBoard(false), m_Circle(std::make_unique<Circle>(0.0f, 0.0f, m_Radius))
+	m_Damage(10.0f), m_Radius(50.0f), m_Circle(std::make_unique<Circle>(0.0f, 0.0f, m_Radius))
 {
 	m_Circle->SetColor(1.0f, 0.0f, 0.0f, 1.0f);
 }

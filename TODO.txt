@@ -1,5 +1,5 @@
 Current:
-	Add descriptions to heros	
+	Change hero name generation	
 
 	Start on random events - explore the caves!	
 

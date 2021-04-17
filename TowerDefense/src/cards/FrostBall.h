@@ -16,7 +16,6 @@ namespace TowerDefense
 	private:
 		float m_SlowPercent, m_Radius;
 		int m_SlowTime;
-		bool m_OverBoard;
 
 		std::unique_ptr<Circle> m_Circle;
 	};

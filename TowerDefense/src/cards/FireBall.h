@@ -15,7 +15,6 @@ namespace TowerDefense
 
 	private:
 		float m_Damage, m_Radius;
-		bool m_OverBoard;
 
 		std::unique_ptr<Circle> m_Circle;
 	};

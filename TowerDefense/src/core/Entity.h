@@ -35,7 +35,7 @@ namespace TowerDefense
 		inline virtual void SetY(float y) { m_Y = y; m_Image->SetPosition(m_X, m_Y, 0.0f); }
 
 		inline float GetRotation() const { return m_Rotation; }
-		inline void SetRotation(float rotation) { m_Rotation = rotation; m_Image->SetRotation(m_Rotation); }
+		inline virtual void SetRotation(float rotation) { m_Rotation = rotation; m_Image->SetRotation(m_Rotation); }
 
 		void SetImage(std::shared_ptr<Image> image);
 

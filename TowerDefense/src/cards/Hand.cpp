@@ -44,6 +44,8 @@ void TowerDefense::Hand::Update()
 								Player::Get().GetDiscardPile()->AddCard(c);
 						}
 					}
+					else
+						m_Cards[m_SelectedCard]->SetOverBoard(false);
 				}		
 			}
 		}

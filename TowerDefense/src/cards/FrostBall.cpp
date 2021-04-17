@@ -7,7 +7,7 @@
 
 TowerDefense::FrostBall::FrostBall()
 	:Card("Frost Ball", 20, "res/textures/frostBall.png", "res/textures/frostBallUpgraded.png"),
-	m_SlowPercent(0.8f), m_Radius(75.0f), m_SlowTime(180), m_OverBoard(false), 
+	m_SlowPercent(0.8f), m_Radius(75.0f), m_SlowTime(180), 
 	m_Circle(std::make_unique<Circle>(0.0f, 0.0f, m_Radius))
 {
 	m_Circle->SetColor(0.0f, 0.0f, 1.0f, 1.0f);

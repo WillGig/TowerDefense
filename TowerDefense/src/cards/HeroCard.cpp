@@ -10,7 +10,8 @@
 #include "upgrades/Upgrade.h"
 
 TowerDefense::HeroCard::HeroCard(const std::string& name, int cost, const std::string& image, std::shared_ptr<Tower::Tower> tower, std::shared_ptr<std::vector<std::shared_ptr<Quirk::Quirk>>> quirks)
-	:TowerCard(name, cost, image, image), m_Level(1), m_Tower(tower), m_Quirks(quirks)
+	:TowerCard(name, cost, image, image), m_Level(1), m_Tower(tower), m_Quirks(quirks),
+	m_NameText(std::make_unique<Text>(name, 0.0f, 0.0f, 10.0f, (float)m_Width))
 {
 	m_Exhausts = true;
 
@@ -24,6 +25,15 @@ TowerDefense::HeroCard::HeroCard(const std::string& name, int cost, const std::s
 			m_Quirks->at(i)->Apply(*this);
 		}
 	}
+
+	m_NameText->SetColor(1.0f, 1.0f, 1.0f, 1.0f);
+}
+
+void TowerDefense::HeroCard::Render()
+{
+	TowerCard::Render();
+	if (!m_OverBoard)
+		m_NameText->Render();
 }
 
 //Apply chosen upgrade and generate new choices
@@ -44,6 +54,31 @@ bool TowerDefense::HeroCard::Play()
 		return true;
 	}
 	return false;
+}
+
+void TowerDefense::HeroCard::SetX(float x)
+{
+	Entity::SetX(x);
+	float xOff = 55.0f * -sin(m_Rotation * PI / 180.0f);
+	float yOff = 55.0f * cos(m_Rotation * PI / 180.0f);
+	m_NameText->SetPosition(m_X + xOff, m_Y + yOff, 0.0f);
+}
+
+void TowerDefense::HeroCard::SetY(float y)
+{
+	Entity::SetY(y);
+	float xOff = 55.0f * -sin(m_Rotation * PI / 180.0f);
+	float yOff = 55.0f * cos(m_Rotation * PI / 180.0f);
+	m_NameText->SetPosition(m_X + xOff, m_Y + yOff, 0.0f);
+}
+
+void TowerDefense::HeroCard::SetRotation(float rotation)
+{
+	Entity::SetRotation(rotation);
+	m_NameText->SetRotation(m_Rotation);
+	float xOff = 55.0f * -sin(m_Rotation * PI / 180.0f);
+	float yOff = 55.0f * cos(m_Rotation * PI / 180.0f);
+	m_NameText->SetPosition(m_X + xOff, m_Y + yOff, 0.0f);
 }
 
 //Create exact copy of hero card with copy of quirks and tower
@@ -119,6 +154,8 @@ std::string TowerDefense::HeroCard::GenerateName(std::shared_ptr<std::vector<std
 	Quirk::Gender gender = 2.0f * Random::GetFloat() > 1.0f ? Quirk::Gender::MALE : Quirk::Gender::FEMALE;
 
 	std::string name = quirks->at(0)->GetNameText(gender);
+
+	return name;
 
 	name += " the ";
 

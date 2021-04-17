@@ -19,8 +19,8 @@ TowerDefense::Combat::Combat()
 	m_ViewDeck(std::make_unique<Button>(50, 43, 570.0f, 578.0f, "res/textures/viewDeckButton.png", "res/textures/viewDeckButtonSelected.png")),
 	m_StartButton(std::make_unique<Button>(96, 32, 76.0f, 201.0f, "res/textures/startButton.png", "res/textures/startButtonSelected.png")),
 	m_SpeedButton(std::make_unique<Button>(96, 32, 76.0f, 159.0f, "res/textures/speed1.png", "res/textures/speed1Selected.png")),
-	m_Health(std::make_unique<Text>(std::string("Health: ") + std::to_string(Player::Get().GetHealth()), 610.0f, 575.0f, 10.0f, 0.0f)), 
-	m_Energy(std::make_unique<Text>(std::string("Energy: ") + std::to_string(Player::Get().GetEnergy()), 700.0f, 575.0f, 10.0f, 0.0f)),
+	m_Health(std::make_unique<Text>(std::string("Health: ") + std::to_string(Player::Get().GetHealth()), 650.0f, 575.0f, 10.0f, 0.0f)), 
+	m_Energy(std::make_unique<Text>(std::string("Energy: ") + std::to_string(Player::Get().GetEnergy()), 740.0f, 575.0f, 10.0f, 0.0f)),
 	m_Day(std::make_unique<Text>(std::string("Day: ") + std::to_string(GetDay()), 400.0f, 575.0f, 10.0f, 0.0f))
 {
 	//Set Draw and discard piles to be shown in random orders
@@ -286,13 +286,13 @@ void TowerDefense::Combat::UpdateHealthandEnergy()
 	Player& player = Player::Get();
 	if (m_PlayerHealth != player.GetHealth())
 	{
-		m_Health = std::make_unique<Text>(std::string("Health: ") + std::to_string(player.GetHealth()), 610.0f, 575.0f, 10.0f, 0.0f);
+		m_Health = std::make_unique<Text>(std::string("Health: ") + std::to_string(player.GetHealth()), 650.0f, 575.0f, 10.0f, 0.0f);
 		m_PlayerHealth = player.GetHealth();
 	}
 
 	if (m_PlayerEnergy != player.GetEnergy())
 	{
-		m_Energy = std::make_unique<Text>(std::string("Energy: ") + std::to_string(player.GetEnergy()), 700.0f, 575.0f, 10.0f, 0.0f);
+		m_Energy = std::make_unique<Text>(std::string("Energy: ") + std::to_string(player.GetEnergy()), 740.0f, 575.0f, 10.0f, 0.0f);
 		m_PlayerEnergy = player.GetEnergy();
 	}
 }

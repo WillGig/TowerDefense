@@ -6,8 +6,6 @@
 #include "scenes/Combat.h"
 #include "core/Clock.h"
 
-#define PI 3.14159265f
-
 int TowerDefense::Enemy::Enemy::POISONTICKRATE = 30;
 
 TowerDefense::Enemy::Enemy::Enemy(int width, int height, float health, float speed, const std::string& regularImage, const std::string& selectedImage)

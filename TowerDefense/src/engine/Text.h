@@ -14,14 +14,15 @@ public:
 
 	inline void SetPosition(float v1, float v2, float v3) { m_Position.x = v1; m_Position.y = v2, m_Position.z = v3; }
 
+	inline void SetRotation(float rot) { m_Rotation = rot; }
+
 	void SetColor(float r, float g, float b, float a);
 
 	inline std::string GetMessage() { return m_Message; }
 
-	inline float GetWidth() const { return m_Width; }
-
 private:
 	std::unique_ptr<float[]> GetPositions(char c, int xOff, int yOff, float scale);
+	std::pair<int, int> GetMessageSize(const std::string& msg, float size, float maxWidth);
 
 	float GetWidth(char c) const;
 
@@ -41,5 +42,5 @@ private:
 	//Color using floats from 0.0f to 1.0f in rgba format
 	Vec4 m_Color;
 
-	float m_Width;
+	float m_Rotation;
 };

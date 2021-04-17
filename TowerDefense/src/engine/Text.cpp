@@ -2,7 +2,7 @@
 #include "TowerDefense.h"
 
 Text::Text(std::string msg, float x, float y, float size, float maxWidth)
-	:m_Message(msg), m_Position(x, y, 0.0f), m_Color(0.0f, 0.0f, 0.0f, 1.0f), m_Width(0)
+	:m_Message(msg), m_Position(x, y, 0.0f), m_Color(0.0f, 0.0f, 0.0f, 1.0f), m_Rotation(0.0f)
 {
 	float scale = size / 12.0f;
 
@@ -13,37 +13,32 @@ Text::Text(std::string msg, float x, float y, float size, float maxWidth)
 	//positions of a single character that will be added to the vertex buffer data
 	std::unique_ptr<float[]> tempPositions;
 
-	float longestLine = 0.0f;
+	auto msgSize = GetMessageSize(msg, size, maxWidth);
+	int width = msgSize.first;
+	int height = msgSize.second;
 
 	//Offset of current character
-	int xOffSet = 0;
-	int yOffSet = 0;
+	int xOffSet = 0; 
+	int yOffSet = (int)(size / 2);
+
 	for (unsigned int i = 0; i < msg.length(); i++)
 	{
 
 		if (msg[i] == ' ')
 		{
 			xOffSet += 6;
-			m_Width += 6;
 			continue;
 		}
 		else if (msg[i] == '\n' || (maxWidth > 0 && xOffSet + GetWidth(msg[i]) > maxWidth))
 		{
-			if (msg[i] == '\n') {
-				longestLine = maxWidth > longestLine ? maxWidth : longestLine;
-			}
-			else {
-				longestLine = maxWidth*scale;
-			}
 
 			yOffSet -= (int)(20 * scale);
 			xOffSet = 0;
-			m_Width = 0.0f;
 			continue;
 		}
 
 		//Get vertex data for current character
-		tempPositions = GetPositions(msg[i], xOffSet, yOffSet, scale);
+		tempPositions = GetPositions(msg[i], xOffSet - width / 2, yOffSet - height / 2, scale);
 		for (int j = 0; j < 16; j++)
 		{
 			positions[i * 16 + j] = tempPositions[j];
@@ -60,16 +55,8 @@ Text::Text(std::string msg, float x, float y, float size, float maxWidth)
 
 		//Update offset based on the width of the current character and the following one
 		if (i != msg.length() - 1)
-		{
 			xOffSet += (int)((GetWidth(msg[i]) / 2 + GetWidth(msg[i + 1]) / 2 + 2));
-			m_Width += 2;
-		}
-
-		m_Width += GetWidth(msg[i]);	
 	}
-
-	if (longestLine > m_Width)
-		m_Width = longestLine;
 
 	m_VAO = std::make_unique<VertexArray>();
 	m_VertexBuffer = std::make_unique<VertexBuffer>(&positions[0], msg.length() * 16 * sizeof(float), false);
@@ -86,11 +73,55 @@ Text::Text(std::string msg, float x, float y, float size, float maxWidth)
 	m_Shader->SetUniform1i("u_Texture", 0);
 }
 
+std::pair<int,int> Text::GetMessageSize(const std::string& msg, float size, float maxWidth)
+{
+	int width = 0;
+	int height = (int)size;
+	int longestLine = 0;
+	int xOffSet = 0;
+	for (unsigned int i = 0; i < msg.length(); i++)
+	{
+		if (msg[i] == ' ')
+		{
+			width += 6;
+			continue;
+		}
+		else if (msg[i] == '\n' || (maxWidth > 0 && xOffSet + GetWidth(msg[i]) > maxWidth))
+		{
+			if (msg[i] == '\n') {
+				longestLine = width > longestLine ? width : longestLine;
+			}
+			else {
+				longestLine = maxWidth;
+			}
+
+			xOffSet = 0;
+			width = 0;
+			height += (int)size;
+			continue;
+		}
+
+		if (i != msg.length() - 1)
+		{
+			xOffSet += (int)((GetWidth(msg[i]) / 2 + GetWidth(msg[i + 1]) / 2 + 2));
+			width += 2;
+		}
+
+		width += (int)GetWidth(msg[i]);
+	}
+
+	if (longestLine > width)
+		width = longestLine;
+
+	return {width, height};
+}
+
 void Text::Render()
 {
 	m_Texture->Bind();
 	{
-		Mat4f mvp = Renderer::Get().GetProjectionMatrix() * Mat4f::Translate(m_Position);
+		Mat4f model = Mat4f::Translate(m_Position) * Mat4f::Rotate(m_Rotation);
+		Mat4f mvp = Renderer::Get().GetProjectionMatrix() * model;
 		m_Shader->Bind();
 		m_Shader->SetUniformMat4f("u_MVP", mvp);
 		m_Shader->SetUniform4f("u_Color", m_Color.w, m_Color.x, m_Color.y, m_Color.z);
