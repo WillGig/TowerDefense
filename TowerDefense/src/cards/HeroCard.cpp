@@ -9,9 +9,10 @@
 #include "towers/Paladin.h"
 #include "upgrades/Upgrade.h"
 
-TowerDefense::HeroCard::HeroCard(const std::string& name, int cost, const std::string& image, std::shared_ptr<Tower::Tower> tower, std::shared_ptr<std::vector<std::shared_ptr<Quirk::Quirk>>> quirks)
-	:TowerCard(name, cost, image, image), m_Level(1), m_Tower(tower), m_Quirks(quirks),
-	m_NameText(std::make_unique<Text>(name, 0.0f, 0.0f, 10.0f, (float)m_Width))
+TowerDefense::HeroCard::HeroCard(const std::string& name, const std::string& text, int cost, const std::string& image, std::shared_ptr<Tower::Tower> tower, std::shared_ptr<std::vector<std::shared_ptr<Quirk::Quirk>>> quirks)
+	:TowerCard(name, cost, image, image), m_Level(1), m_CardText(text), m_Tower(tower), m_Quirks(quirks),
+	m_NameText(std::make_unique<Text>(name, 0.0f, 0.0f, 10.0f, (float)m_Width)),
+	m_BodyText(std::make_unique<Text>(text, 0.0f, 0.0f, 6.0f, (float)m_Width))
 {
 	m_Exhausts = true;
 
@@ -27,13 +28,18 @@ TowerDefense::HeroCard::HeroCard(const std::string& name, int cost, const std::s
 	}
 
 	m_NameText->SetColor(1.0f, 1.0f, 1.0f, 1.0f);
+	m_BodyText->SetColor(1.0f, 1.0f, 1.0f, 1.0f);
 }
 
 void TowerDefense::HeroCard::Render()
 {
 	TowerCard::Render();
 	if (!m_OverBoard)
+	{
 		m_NameText->Render();
+		m_BodyText->Render();
+	}
+	
 }
 
 //Apply chosen upgrade and generate new choices
@@ -59,33 +65,46 @@ bool TowerDefense::HeroCard::Play()
 void TowerDefense::HeroCard::SetX(float x)
 {
 	Entity::SetX(x);
-	float xOff = 55.0f * -sin(m_Rotation * PI / 180.0f);
-	float yOff = 55.0f * cos(m_Rotation * PI / 180.0f);
+	float xOff = 58.0f * -sin(m_Rotation * PI / 180.0f);
+	float yOff = 58.0f * cos(m_Rotation * PI / 180.0f);
 	m_NameText->SetPosition(m_X + xOff, m_Y + yOff, 0.0f);
+
+	xOff = -15.0f * -sin(m_Rotation * PI / 180.0f);
+	yOff = -15.0f * cos(m_Rotation * PI / 180.0f);
+	m_BodyText->SetPosition(m_X + xOff, m_Y + yOff, 0.0f);
 }
 
 void TowerDefense::HeroCard::SetY(float y)
 {
 	Entity::SetY(y);
-	float xOff = 55.0f * -sin(m_Rotation * PI / 180.0f);
-	float yOff = 55.0f * cos(m_Rotation * PI / 180.0f);
+	float xOff = 58.0f * -sin(m_Rotation * PI / 180.0f);
+	float yOff = 58.0f * cos(m_Rotation * PI / 180.0f);
 	m_NameText->SetPosition(m_X + xOff, m_Y + yOff, 0.0f);
+
+	xOff = -15.0f * -sin(m_Rotation * PI / 180.0f);
+	yOff = -15.0f * cos(m_Rotation * PI / 180.0f);
+	m_BodyText->SetPosition(m_X + xOff, m_Y + yOff, 0.0f);
 }
 
 void TowerDefense::HeroCard::SetRotation(float rotation)
 {
 	Entity::SetRotation(rotation);
 	m_NameText->SetRotation(m_Rotation);
-	float xOff = 55.0f * -sin(m_Rotation * PI / 180.0f);
-	float yOff = 55.0f * cos(m_Rotation * PI / 180.0f);
+	float xOff = 58.0f * -sin(m_Rotation * PI / 180.0f);
+	float yOff = 58.0f * cos(m_Rotation * PI / 180.0f);
 	m_NameText->SetPosition(m_X + xOff, m_Y + yOff, 0.0f);
+
+	m_BodyText->SetRotation(m_Rotation);
+	xOff = -15.0f * -sin(m_Rotation * PI / 180.0f);
+	yOff = -15.0f * cos(m_Rotation * PI / 180.0f);
+	m_BodyText->SetPosition(m_X + xOff, m_Y + yOff, 0.0f);
 }
 
 //Create exact copy of hero card with copy of quirks and tower
 std::shared_ptr<TowerDefense::Card> TowerDefense::HeroCard::Clone()
 {
 	std::shared_ptr<Tower::Tower> towerClone = m_Tower->Clone();
-	auto hero = std::make_shared<HeroCard>(GetName(), m_Cost, m_Image->GetFile(), towerClone, nullptr);
+	auto hero = std::make_shared<HeroCard>(GetName(), m_CardText, m_Cost, m_Image->GetFile(), towerClone, nullptr);
 	
 	auto quirksClone = std::make_shared<std::vector<std::shared_ptr<Quirk::Quirk>>>();
 	for (unsigned int i = 0; i < m_Quirks->size(); i++)
@@ -135,35 +154,28 @@ std::shared_ptr<TowerDefense::HeroCard> TowerDefense::HeroCard::GenerateHero()
 
 	auto quirks = Quirk::Quirk::GenerateQuirks();
 
-	std::string name = GenerateName(quirks, heroClass);
+	std::string name = "Philius"; //TODO Generate name function
+
+	std::string text = GenerateText(quirks, heroClass);
 
 	std::string image = "res/textures/testTexture.png";
 
-	std::cout << "New Hero! " << name << std::endl;
-
-	return std::make_shared<HeroCard>(name, cost, image, heroTower, quirks);
+	return std::make_shared<HeroCard>(name, text, cost, image, heroTower, quirks);
 }
 
 //Generates a random name based on race, gender, and other quirks
 //Race MUST be the first quirk in the quirks array
-std::string TowerDefense::HeroCard::GenerateName(std::shared_ptr<std::vector<std::shared_ptr<Quirk::Quirk>>> quirks, const std::string& heroClass)
+std::string TowerDefense::HeroCard::GenerateText(std::shared_ptr<std::vector<std::shared_ptr<Quirk::Quirk>>> quirks, const std::string& heroClass)
 {
-
 	std::string race = quirks->at(0)->GetName();
 	
 	Quirk::Gender gender = 2.0f * Random::GetFloat() > 1.0f ? Quirk::Gender::MALE : Quirk::Gender::FEMALE;
 
-	std::string name = quirks->at(0)->GetNameText(gender);
-
-	return name;
-
-	name += " the ";
+	std::string text = "Class:  " + heroClass + "\n";
+	text += "Race:  " + race + "\n";
 
 	for (unsigned int i = 1; i < quirks->size(); i++)
-		name += quirks->at(i)->GetNameText(gender) + " ";
+		text += quirks->at(i)->GetNameText(gender) + "\n";
 
-	name += race + " ";
-	name += heroClass;
-
-	return name;
+	return text;
 }

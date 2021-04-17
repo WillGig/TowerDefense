@@ -14,7 +14,7 @@ namespace TowerDefense
 	class HeroCard : public TowerCard
 	{
 	public:
-		HeroCard(const std::string& name, int cost, const std::string& texture, std::shared_ptr<Tower::Tower> tower, std::shared_ptr<std::vector<std::shared_ptr<Quirk::Quirk>>> quirks);
+		HeroCard(const std::string& name, const std::string& text, int cost, const std::string& texture, std::shared_ptr<Tower::Tower> tower, std::shared_ptr<std::vector<std::shared_ptr<Quirk::Quirk>>> quirks);
 		void Render() override;
 		void Upgrade() override;
 		bool Play() override;
@@ -35,11 +35,13 @@ namespace TowerDefense
 		static std::shared_ptr<HeroCard> GenerateHero();
 
 	private:
-		static std::string GenerateName(std::shared_ptr<std::vector<std::shared_ptr<Quirk::Quirk>>> quirks, const std::string& heroClass);
+		static std::string GenerateText(std::shared_ptr<std::vector<std::shared_ptr<Quirk::Quirk>>> quirks, const std::string& heroClass);
 
 		int m_Level;
 
-		std::unique_ptr<Text> m_NameText;
+		std::string m_CardText;
+
+		std::unique_ptr<Text> m_NameText, m_BodyText;
 
 		std::shared_ptr<Tower::Tower> m_Tower;
 

@@ -16,13 +16,13 @@ TowerDefense::Base::Base()
 
 	m_Buttons =
 	{
-		std::make_unique<Button>(180, 50, 190.0f, 425.0f, "res/textures/exploreCavesButton.png", "res/textures/exploreCavesButtonSelected.png"),
-		std::make_unique<Button>(180, 50, 390.0f, 425.0f, "res/textures/visitLibraryButton.png", "res/textures/visitLibraryButtonSelected.png"),
-		std::make_unique<Button>(180, 50, 590.0f, 425.0f, "res/textures/goFishingButton.png", "res/textures/goFishingButtonSelected.png"),
-		std::make_unique<Button>(180, 50, 190.0f, 355.0f, "res/textures/smithButton.png", "res/textures/smithButtonSelected.png"),
-		std::make_unique<Button>(180, 50, 390.0f, 355.0f, "res/textures/goTavernButton.png", "res/textures/goTavernButtonSelected.png"),
-		std::make_unique<Button>(180, 50, 590.0f, 355.0f, "res/textures/restButton.png", "res/textures/restButtonSelected.png"),
-		std::make_unique<Button>(180, 50, 590.0f, 175.0f, "res/textures/nextDayButton.png", "res/textures/nextDayButtonSelected.png"),
+		std::make_unique<Button>(180, 50, 200.0f, 425.0f, "res/textures/exploreCavesButton.png", "res/textures/exploreCavesButtonSelected.png"),
+		std::make_unique<Button>(180, 50, 400.0f, 425.0f, "res/textures/visitLibraryButton.png", "res/textures/visitLibraryButtonSelected.png"),
+		std::make_unique<Button>(180, 50, 600.0f, 425.0f, "res/textures/goFishingButton.png", "res/textures/goFishingButtonSelected.png"),
+		std::make_unique<Button>(180, 50, 200.0f, 355.0f, "res/textures/smithButton.png", "res/textures/smithButtonSelected.png"),
+		std::make_unique<Button>(180, 50, 400.0f, 355.0f, "res/textures/goTavernButton.png", "res/textures/goTavernButtonSelected.png"),
+		std::make_unique<Button>(180, 50, 600.0f, 355.0f, "res/textures/restButton.png", "res/textures/restButtonSelected.png"),
+		std::make_unique<Button>(180, 50, 600.0f, 175.0f, "res/textures/nextDayButton.png", "res/textures/nextDayButtonSelected.png"),
 		std::make_unique<Button>(180, 50, 400.0f, 190.0f, "res/textures/confirmButton.png", "res/textures/confirmButtonSelected.png"),
 		std::make_unique<Button>(180, 50, 690.0f, 125.0f, "res/textures/cancelButton.png", "res/textures/cancelButtonSelected.png"),
 		std::make_unique<Button>(50, 43, 570.0f, 578.0f, "res/textures/viewDeckButton.png", "res/textures/viewDeckButtonSelected.png")

@@ -13,13 +13,16 @@ Text::Text(std::string msg, float x, float y, float size, float maxWidth)
 	//positions of a single character that will be added to the vertex buffer data
 	std::unique_ptr<float[]> tempPositions;
 
-	auto msgSize = GetMessageSize(msg, size, maxWidth);
+	auto msgSize = GetMessageSize(msg, scale, maxWidth);
 	int width = msgSize.first;
 	int height = msgSize.second;
 
 	//Offset of current character
 	int xOffSet = 0; 
 	int yOffSet = (int)(size / 2);
+
+	if(msg.length() > 0)
+		xOffSet += GetWidth(msg[0])/2;
 
 	for (unsigned int i = 0; i < msg.length(); i++)
 	{
@@ -29,16 +32,16 @@ Text::Text(std::string msg, float x, float y, float size, float maxWidth)
 			xOffSet += 6;
 			continue;
 		}
-		else if (msg[i] == '\n' || (maxWidth > 0 && xOffSet + GetWidth(msg[i]) > maxWidth))
+		else if (msg[i] == '\n' || (maxWidth > 0 && (xOffSet + GetWidth(msg[i]))*scale > maxWidth))
 		{
 
-			yOffSet -= (int)(20 * scale);
+			yOffSet -= 20;
 			xOffSet = 0;
 			continue;
 		}
 
 		//Get vertex data for current character
-		tempPositions = GetPositions(msg[i], xOffSet - width / 2, yOffSet - height / 2, scale);
+		tempPositions = GetPositions(msg[i], xOffSet - width / 2, yOffSet - 10, scale);
 		for (int j = 0; j < 16; j++)
 		{
 			positions[i * 16 + j] = tempPositions[j];
@@ -73,10 +76,10 @@ Text::Text(std::string msg, float x, float y, float size, float maxWidth)
 	m_Shader->SetUniform1i("u_Texture", 0);
 }
 
-std::pair<int,int> Text::GetMessageSize(const std::string& msg, float size, float maxWidth)
+std::pair<int,int> Text::GetMessageSize(const std::string& msg, float scale, float maxWidth)
 {
 	int width = 0;
-	int height = (int)size;
+	int height = 20;
 	int longestLine = 0;
 	int xOffSet = 0;
 	for (unsigned int i = 0; i < msg.length(); i++)
@@ -86,18 +89,18 @@ std::pair<int,int> Text::GetMessageSize(const std::string& msg, float size, floa
 			width += 6;
 			continue;
 		}
-		else if (msg[i] == '\n' || (maxWidth > 0 && xOffSet + GetWidth(msg[i]) > maxWidth))
+		else if (msg[i] == '\n' || (maxWidth > 0 && (xOffSet + GetWidth(msg[i]))*scale > maxWidth))
 		{
 			if (msg[i] == '\n') {
 				longestLine = width > longestLine ? width : longestLine;
 			}
 			else {
-				longestLine = maxWidth;
+				longestLine = (int)maxWidth;
 			}
 
 			xOffSet = 0;
 			width = 0;
-			height += (int)size;
+			height += 20;
 			continue;
 		}
 
