@@ -65,8 +65,8 @@ bool TowerDefense::HeroCard::Play()
 void TowerDefense::HeroCard::SetX(float x)
 {
 	Entity::SetX(x);
-	float xOff = 58.0f * -sin(m_Rotation * PI / 180.0f);
-	float yOff = 58.0f * cos(m_Rotation * PI / 180.0f);
+	float xOff = 63.0f * -sin(m_Rotation * PI / 180.0f);
+	float yOff = 63.0f * cos(m_Rotation * PI / 180.0f);
 	m_NameText->SetPosition(m_X + xOff, m_Y + yOff, 0.0f);
 
 	xOff = -15.0f * -sin(m_Rotation * PI / 180.0f);
@@ -77,8 +77,8 @@ void TowerDefense::HeroCard::SetX(float x)
 void TowerDefense::HeroCard::SetY(float y)
 {
 	Entity::SetY(y);
-	float xOff = 58.0f * -sin(m_Rotation * PI / 180.0f);
-	float yOff = 58.0f * cos(m_Rotation * PI / 180.0f);
+	float xOff = 63.0f * -sin(m_Rotation * PI / 180.0f);
+	float yOff = 63.0f * cos(m_Rotation * PI / 180.0f);
 	m_NameText->SetPosition(m_X + xOff, m_Y + yOff, 0.0f);
 
 	xOff = -15.0f * -sin(m_Rotation * PI / 180.0f);
@@ -90,8 +90,8 @@ void TowerDefense::HeroCard::SetRotation(float rotation)
 {
 	Entity::SetRotation(rotation);
 	m_NameText->SetRotation(m_Rotation);
-	float xOff = 58.0f * -sin(m_Rotation * PI / 180.0f);
-	float yOff = 58.0f * cos(m_Rotation * PI / 180.0f);
+	float xOff = 63.0f * -sin(m_Rotation * PI / 180.0f);
+	float yOff = 63.0f * cos(m_Rotation * PI / 180.0f);
 	m_NameText->SetPosition(m_X + xOff, m_Y + yOff, 0.0f);
 
 	m_BodyText->SetRotation(m_Rotation);
@@ -154,7 +154,7 @@ std::shared_ptr<TowerDefense::HeroCard> TowerDefense::HeroCard::GenerateHero()
 
 	auto quirks = Quirk::Quirk::GenerateQuirks();
 
-	std::string name = "Philius"; //TODO Generate name function
+	std::string name = GenerateName();
 
 	std::string text = GenerateText(quirks, heroClass);
 
@@ -163,19 +163,67 @@ std::shared_ptr<TowerDefense::HeroCard> TowerDefense::HeroCard::GenerateHero()
 	return std::make_shared<HeroCard>(name, text, cost, image, heroTower, quirks);
 }
 
-//Generates a random name based on race, gender, and other quirks
+std::string TowerDefense::HeroCard::GenerateName()
+{
+	Quirk::Gender gender = 2.0f * Random::GetFloat() > 1.0f ? Quirk::Gender::MALE : Quirk::Gender::FEMALE;
+
+	static std::array<std::string, 17> maleNames = {
+		"Philius",
+		"Lionel",
+		"Ahab",
+		"Elvis",
+		"Mac",
+		"Richard",
+		"Samuel",
+		"Reginald",
+		"Averbakh",
+		"Donatello",
+		"Harold",
+		"Elmo",
+		"Douglas",
+		"Togrin",
+		"Lance",
+		"Ol' Micky",
+		"Thorly"
+	};
+
+	static std::array<std::string, 16> femaleNames{
+		"Gertrude",
+		"Hannah",
+		"Beth",
+		"Susan",
+		"Jane-a-lin",
+		"Bertha",
+		"Lilly",
+		"Penelope",
+		"Harriet",
+		"Mildred",
+		"Vivian",
+		"Lydia",
+		"Thorly",
+		"Qiqi",
+		"Alexandria",
+		"Persephone"
+	};
+
+	if (gender == Quirk::Gender::MALE)
+		return maleNames[(int)(Random::GetFloat() * maleNames.size())];
+	else
+		return femaleNames[(int)(Random::GetFloat() * femaleNames.size())];
+
+}
+
+//Generates info based on race, gender, and other quirks
 //Race MUST be the first quirk in the quirks array
 std::string TowerDefense::HeroCard::GenerateText(std::shared_ptr<std::vector<std::shared_ptr<Quirk::Quirk>>> quirks, const std::string& heroClass)
 {
 	std::string race = quirks->at(0)->GetName();
 	
-	Quirk::Gender gender = 2.0f * Random::GetFloat() > 1.0f ? Quirk::Gender::MALE : Quirk::Gender::FEMALE;
-
 	std::string text = "Class:  " + heroClass + "\n";
 	text += "Race:  " + race + "\n";
 
 	for (unsigned int i = 1; i < quirks->size(); i++)
-		text += quirks->at(i)->GetNameText(gender) + "\n";
+		text += quirks->at(i)->GetText() + "\n";
 
 	return text;
 }

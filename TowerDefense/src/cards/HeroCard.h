@@ -35,6 +35,7 @@ namespace TowerDefense
 		static std::shared_ptr<HeroCard> GenerateHero();
 
 	private:
+		static std::string GenerateName();
 		static std::string GenerateText(std::shared_ptr<std::vector<std::shared_ptr<Quirk::Quirk>>> quirks, const std::string& heroClass);
 
 		int m_Level;

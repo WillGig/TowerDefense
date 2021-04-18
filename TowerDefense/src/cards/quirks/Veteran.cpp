@@ -13,7 +13,7 @@ void TowerDefense::Quirk::Veteran::Apply(TowerDefense::HeroCard& h)
 	h.Upgrade();
 }
 
-std::string TowerDefense::Quirk::Veteran::GetNameText(Gender gender) const
+std::string TowerDefense::Quirk::Veteran::GetText() const
 {
 	return "veteran";
 }

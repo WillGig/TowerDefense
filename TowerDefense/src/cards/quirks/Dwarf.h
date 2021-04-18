@@ -10,8 +10,8 @@ namespace TowerDefense
 		public:
 			Dwarf();
 			void Apply(TowerDefense::HeroCard& h) override;
-			std::string GetNameText(Gender gender) const;
-			std::shared_ptr<Quirk> Clone();
+			inline std::string GetText() const override { return ""; };
+			std::shared_ptr<Quirk> Clone() override;
 		};
 	}
 }

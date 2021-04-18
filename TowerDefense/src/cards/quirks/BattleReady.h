@@ -10,8 +10,8 @@ namespace TowerDefense
 		public:
 			BattleReady();
 			void Apply(TowerDefense::HeroCard& h) override;
-			std::string GetNameText(Gender gender) const override;
-			std::shared_ptr<Quirk> Clone();
+			std::string GetText() const override;
+			std::shared_ptr<Quirk> Clone() override;
 		};
 	}
 }

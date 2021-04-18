@@ -13,7 +13,7 @@ void TowerDefense::Quirk::Explorer::OnPlay()
 	Player::Get().GetHand()->DrawCard();
 }
 
-std::string TowerDefense::Quirk::Explorer::GetNameText(Gender gender) const
+std::string TowerDefense::Quirk::Explorer::GetText() const
 {
 	return "adventurous";
 }

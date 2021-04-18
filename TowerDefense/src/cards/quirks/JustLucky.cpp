@@ -12,7 +12,7 @@ void TowerDefense::Quirk::JustLucky::Apply(TowerDefense::HeroCard& h)
 	h.GetTower()->SetCritChance(h.GetTower()->GetCritChance()+0.1f);
 }
 
-std::string TowerDefense::Quirk::JustLucky::GetNameText(Gender gender) const
+std::string TowerDefense::Quirk::JustLucky::GetText() const
 {
 	return "lucky";
 }

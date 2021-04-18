@@ -1,14 +1,9 @@
 Current:
-	Change hero name generation to single line names that do not depend on race
-	Add hero text generation for the bottom that looks like:
-		Class: Archer
-		Race:  Orc
-		   Notes: 
-		Adventurous
-		Lucky
-		Near-Sighted
-	Adjust projection calculation to allow for different resolutions
-	while scaling the center to be 800 by 600	
+	Adjust projection calculation to allow for different resolutions while scaling the center to be 800 by 600
+
+	Add bold version of font
+
+	Allow clicking on cards to render larger copies with information (right clicking?)
 
 	Start on random events - explore the caves!	
 

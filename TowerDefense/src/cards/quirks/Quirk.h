@@ -1,3 +1,4 @@
+
 #pragma once
 #include "cards/HeroCard.h"
 
@@ -18,7 +19,7 @@ namespace TowerDefense
 			virtual void Apply(TowerDefense::HeroCard& h);
 			virtual void OnPlay();
 			inline std::string GetName() const { return m_Name; }
-			virtual std::string GetNameText(Gender gender) const = 0;
+			virtual std::string GetText() const = 0;
 			virtual std::shared_ptr<Quirk> Clone() = 0;
 
 			static std::shared_ptr<std::vector<std::shared_ptr<Quirk>>> GenerateQuirks();

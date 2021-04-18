@@ -12,7 +12,7 @@ void TowerDefense::Quirk::NearSighted::Apply(TowerDefense::HeroCard& h)
 	h.GetTower()->SetRange((int)(h.GetTower()->GetRange() * .7f));
 }
 
-std::string TowerDefense::Quirk::NearSighted::GetNameText(Gender gender) const
+std::string TowerDefense::Quirk::NearSighted::GetText() const
 {
 	return "near-sighted";
 }

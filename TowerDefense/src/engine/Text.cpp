@@ -22,7 +22,7 @@ Text::Text(std::string msg, float x, float y, float size, float maxWidth)
 	int yOffSet = (int)(size / 2);
 
 	if(msg.length() > 0)
-		xOffSet += GetWidth(msg[0])/2;
+		xOffSet += (int)GetWidth(msg[0])/2;
 
 	for (unsigned int i = 0; i < msg.length(); i++)
 	{
@@ -36,7 +36,8 @@ Text::Text(std::string msg, float x, float y, float size, float maxWidth)
 		{
 
 			yOffSet -= 20;
-			xOffSet = 0;
+			if (msg.length() > i+1)
+				xOffSet = (int)GetWidth(msg[i+1]) / 2;
 			continue;
 		}
 

@@ -12,7 +12,7 @@ void TowerDefense::Quirk::BattleReady::Apply(TowerDefense::HeroCard& h)
 	h.SetCost((int)(h.GetCost() * 0.9f));
 }
 
-std::string TowerDefense::Quirk::BattleReady::GetNameText(Gender gender) const
+std::string TowerDefense::Quirk::BattleReady::GetText() const
 {
 	return "battle-ready";
 }
