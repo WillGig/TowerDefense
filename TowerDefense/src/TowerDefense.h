@@ -2,8 +2,6 @@
 
 namespace TowerDefense
 {
-	static int TILESIZE = 32;
-
 	bool Init();
 	void Run();
 	void Stop();

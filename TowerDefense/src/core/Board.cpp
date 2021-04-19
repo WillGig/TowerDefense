@@ -3,6 +3,8 @@
 #include "TowerDefense.h"
 #include "Player.h"
 
+int TowerDefense::Board::TILESIZE = 32;
+
 TowerDefense::Board::Board(int width, int height)
     :m_X((800.0f - TILESIZE * width) / 2.0f), m_Y(TILESIZE * 7.8f), m_Width(width), m_Height(height),
     m_TileSelected(false), m_CurrentTile(), 

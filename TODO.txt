@@ -1,6 +1,4 @@
 Current:
-	increase resolution of bold version of font
-
 	Allow clicking on cards to render larger copies with information (right clicking?)
 
 	Add images to heroes

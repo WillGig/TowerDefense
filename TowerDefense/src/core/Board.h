@@ -40,6 +40,8 @@ namespace TowerDefense
 		void CleanUp();
 
 	private:
+		static int TILESIZE;
+
 		Board(int width, int height);
 
 		void SetTileImage(int x, int y, int tileImage);
