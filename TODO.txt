@@ -1,9 +1,9 @@
 Current:
-	Adjust projection calculation to allow for different resolutions while scaling the center to be 800 by 600
-
 	Add bold version of font
 
 	Allow clicking on cards to render larger copies with information (right clicking?)
+
+	Add images to heroes
 
 	Start on random events - explore the caves!	
 

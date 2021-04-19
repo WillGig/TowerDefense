@@ -7,7 +7,7 @@ TowerDefense::CardPile::CardPile(float x, float y)
 	m_Scroll(0), m_Showing(false), m_Ordered(true), m_Cards(), m_RandomOrder(), 
 	m_FullImage(std::make_shared<Image>("res/textures/deckFull.png", x, y, 66, 84, 0.0f)),
 	m_EmptyImage(std::make_shared<Image>("res/textures/deckEmpty.png", x, y, 66, 84, 0.0f)),
-	m_Fade(std::make_unique<Rectangle>((float)WIDTH/2.0f, (float)HEIGHT/2.0f, (float)WIDTH, (float)HEIGHT))
+	m_Fade(std::make_unique<Rectangle>(400.0f, 300.0f, 800.0f, 600.0f))
 {
 	m_Fade->SetColor(0.0f, 0.0f, 0.0f, 0.9f);
 }

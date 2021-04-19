@@ -14,9 +14,9 @@ Renderer::Renderer()
     GLCall(glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA));
 }
 
-void Renderer::SetProjectionMatrix(float width, float height)
+void Renderer::SetProjectionMatrix(float left, float right, float bottom, float top, float near, float far)
 {
-    m_Proj = Mat4f::Orthographic(0.0f, width, 0.0f, height, -1.0f, 1.0f);
+    m_Proj = Mat4f::Orthographic(left, right, bottom, top, near, far);
 }
 
 void Renderer::Clear() const

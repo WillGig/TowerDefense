@@ -11,7 +11,7 @@ public:
 
     inline Mat4f GetProjectionMatrix() { return m_Proj; }
 
-    void SetProjectionMatrix(float width, float height);
+    void SetProjectionMatrix(float left, float right, float bottom, float top, float near, float far);
 
     void Clear() const;
 

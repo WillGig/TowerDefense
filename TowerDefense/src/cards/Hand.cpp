@@ -54,8 +54,8 @@ void TowerDefense::Hand::Update()
 			float power = 3.0f;
 			if (m_Cards.size() > 6)
 				power = 2.5;
-			m_Cards[m_SelectedCard]->SetX(WIDTH/2 + (m_Cards[m_SelectedCard]->GetHandPosition() - (m_Cards.size() - 1) / 2.0f) * m_CardSpacing);
-			m_Cards[m_SelectedCard]->SetY(HEIGHT * .15f - pow(abs(m_Cards[m_SelectedCard]->GetHandPosition() - (m_Cards.size() - 1) / 2.0f), power));
+			m_Cards[m_SelectedCard]->SetX(400.0f + (m_Cards[m_SelectedCard]->GetHandPosition() - (m_Cards.size() - 1) / 2.0f) * m_CardSpacing);
+			m_Cards[m_SelectedCard]->SetY(90.0f - pow(abs(m_Cards[m_SelectedCard]->GetHandPosition() - (m_Cards.size() - 1) / 2.0f), power));
 			m_Cards[m_SelectedCard]->SetRotation(0.0f - (m_Cards[m_SelectedCard]->GetHandPosition() - (m_Cards.size() - 1) / 2.0f) * 5);
 		}
 	}
@@ -122,8 +122,8 @@ void TowerDefense::Hand::UpdateSpacing()
 	for (unsigned int i = 0; i < m_Cards.size(); i++) {
 		m_Cards[i]->SetRotation(0.0f - (m_Cards[i]->GetHandPosition() - (m_Cards.size() - 1) / 2.0f) * 5);
 		if (i != m_SelectedCard) {
-			m_Cards[i]->SetX(TowerDefense::WIDTH / 2 + (m_Cards[i]->GetHandPosition() - (m_Cards.size() - 1) / 2.0f) * m_CardSpacing);
-			m_Cards[i]->SetY((TowerDefense::HEIGHT * .15f) - pow(abs((m_Cards[i]->GetHandPosition() - (m_Cards.size() - 1) / 2.0f)), power));
+			m_Cards[i]->SetX(400.0f + (m_Cards[i]->GetHandPosition() - (m_Cards.size() - 1) / 2.0f) * m_CardSpacing);
+			m_Cards[i]->SetY(90.0f - pow(abs((m_Cards[i]->GetHandPosition() - (m_Cards.size() - 1) / 2.0f)), power));
 		}
 	}
 }

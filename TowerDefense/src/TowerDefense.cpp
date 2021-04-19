@@ -36,7 +36,7 @@ bool TowerDefense::Init()
     glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
     glfwWindowHint(GLFW_RESIZABLE, GL_FALSE);
 
-    window = glfwCreateWindow((int)(WIDTH*SCALE), (int)(HEIGHT*SCALE), "Tower Defense", NULL, NULL);
+    window = glfwCreateWindow(WIDTH, HEIGHT, "Tower Defense", NULL, NULL);
     if (!window)
     {
         glfwTerminate();
@@ -45,7 +45,7 @@ bool TowerDefense::Init()
 
     //Center Window
     const GLFWvidmode* vidmode = glfwGetVideoMode(glfwGetPrimaryMonitor());
-    glfwSetWindowPos(window, (int)((vidmode->width - WIDTH*SCALE) / 2), (int)((vidmode->height - HEIGHT*SCALE) / 2));
+    glfwSetWindowPos(window, (int)((vidmode->width - WIDTH) / 2), (int)((vidmode->height - HEIGHT) / 2));
 
     glfwMakeContextCurrent(window);
     glfwSwapInterval(0);
@@ -61,10 +61,24 @@ bool TowerDefense::Init()
     std::cout << glGetString(GL_VERSION) << std::endl;
 
     //Setting Renderer Projection Matrix to game dimensions
-    Renderer::Get().SetProjectionMatrix((float)WIDTH, (float)HEIGHT);
+    float scale;
+    float hOffSet = 0.0f;
+    float vOffSet = 0.0f;
+    if ((float)HEIGHT / 600.0f > (float)WIDTH / 800.0f)
+    {
+        scale = ((float)WIDTH / 800.0f);
+        vOffSet = (HEIGHT - 600.0f * scale) / (2 * scale);
+    }
+    else
+    {
+        scale = ((float)HEIGHT / 600.0f);
+        hOffSet = (WIDTH - 800.0f * scale) / (2 * scale);
+    }
+
+    Renderer::Get().SetProjectionMatrix(-hOffSet, 800.0f + hOffSet, -vOffSet, 600.0f + vOffSet, -1.0f, 1.0f);
 
     //Set Mouse Input dimensions
-    Input::SetScale(SCALE, window);
+    Input::SetScale(scale, hOffSet, vOffSet, 600, window);
 
     //Game Object Initialization
     scenes = {

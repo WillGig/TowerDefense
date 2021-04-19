@@ -4,7 +4,7 @@
 #include "Player.h"
 
 TowerDefense::Board::Board(int width, int height)
-    :m_X((WIDTH - TILESIZE * width) / 2.0f), m_Y(TILESIZE * 7.8f), m_Width(width), m_Height(height),
+    :m_X((800.0f - TILESIZE * width) / 2.0f), m_Y(TILESIZE * 7.8f), m_Width(width), m_Height(height),
     m_TileSelected(false), m_CurrentTile(), 
     m_SelectedTile(std::make_shared<StaticImage>(0.0f, 0.0f, TILESIZE, TILESIZE, 0.0f, "res/textures/selectedTile.png")),
     m_Tiles(std::make_shared<std::vector<std::shared_ptr<Tile>>>()), 

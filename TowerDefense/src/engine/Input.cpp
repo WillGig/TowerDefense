@@ -2,26 +2,35 @@
 #include "TowerDefense.h"
 
 float Input::SCALE = 1.0f;
+float Input::XOFF = 0.0f;
+float Input::YOFF = 0.0f;
 int Input::HEIGHT = 0;
-float Input::MOUSEX = 0;
-float Input::MOUSEY = 0;
+int Input::WIDTH = 0;
+int Input::MAXHEIGHT = 0;
+float Input::MOUSEX = 0.0f;
+float Input::MOUSEY = 0.0f;
 int Input::MOUSESCROLL = 0;
 bool Input::MOUSECLICKED = false;
 
 //Sets the scale and sets HEIGHT to the height of the window
 //Must be called before use to set HEIGHT, even if scale is left at 1.0f
-void Input::SetScale(float scale, GLFWwindow* window)
+//XOffset and YOffset represent the blank side bars on either side of the screen if the aspect ratio is not 4:3
+void Input::SetScale(float scale, float hOffSet, float vOffSet, int maxHeight, GLFWwindow* window)
 { 
-    glfwGetWindowSize(window, nullptr, &HEIGHT);
+    glfwGetWindowSize(window, &WIDTH, &HEIGHT);
+    XOFF = hOffSet;
+    YOFF = vOffSet;
     SCALE = scale;
+    MAXHEIGHT = maxHeight;
 }
 
-//Scales x and y positions of mouse in window. Values range from 0 to the Width of the window and 0 to HEIGHT respectively
-//The bottom left corner is 0,0
+//Scales x and y positions of mouse in window. Values range from 0 to 800 and 0 to 600 respectively if the 
+// mouse is in the game portion of the window. The bottom left corner of the game (not the window) is 0,0
+//XOffset and YOffset represent the blank side bars on either side of the screen if the aspect ratio is not 4:3
 void Input::cursor_position_callback(GLFWwindow* window, double xpos, double ypos)
 {
-    MOUSEX = (float)(xpos/SCALE);
-    MOUSEY = (float)((HEIGHT- ypos)/ SCALE);
+        MOUSEX = (float)(xpos / SCALE - XOFF);
+        MOUSEY = (float)(MAXHEIGHT - (ypos/SCALE - YOFF));
 }
 
 void Input::mouse_button_callback(GLFWwindow* window, int button, int action, int mods)

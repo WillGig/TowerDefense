@@ -11,7 +11,7 @@ TowerDefense::Base::Base()
 	m_Health(std::make_unique<Text>("", 610.0f, 575.0f, 10.0f, 0.0f)),
 	m_Day(std::make_unique<Text>("", 400.0f, 575.0f, 10.0f, 0.0f)),
 	m_SmithingArrow(std::make_unique<StaticImage>(400.0f, 300.0f, 36, 36, 0.0f, "res/textures/smithArrow.png")),
-	m_Fade(std::make_unique<Rectangle>((float)WIDTH / 2.0f, (float)HEIGHT / 2.0f, (float)WIDTH, (float)HEIGHT))
+	m_Fade(std::make_unique<Rectangle>(400.0f, 300.0f, 800.0f, 600.0f))
 {
 
 	m_Buttons =
