@@ -81,7 +81,7 @@ void TowerDefense::Board::Update()
         {
             m_CurrentTile = m_Tiles->at(i);
 
-            if (Player::Get().GetHand()->GetSelectedCard() != -1) {
+            if (Player::Get().GetHand()->GetSelectedCard() != -1 && !Player::Get().GetHand()->ShowingCardInfo()) {
                 m_TileSelected = true;
 
                 float selectedTileX, selectedTileY;

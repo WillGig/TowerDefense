@@ -10,7 +10,8 @@ int Input::MAXHEIGHT = 0;
 float Input::MOUSEX = 0.0f;
 float Input::MOUSEY = 0.0f;
 int Input::MOUSESCROLL = 0;
-bool Input::MOUSECLICKED = false;
+bool Input::LEFTMOUSECLICKED = false;
+bool Input::RIGHTMOUSECLICKED = false;
 
 //Sets the scale and sets HEIGHT to the height of the window
 //Must be called before use to set HEIGHT, even if scale is left at 1.0f
@@ -36,9 +37,19 @@ void Input::cursor_position_callback(GLFWwindow* window, double xpos, double ypo
 void Input::mouse_button_callback(GLFWwindow* window, int button, int action, int mods)
 {
     if (action == GLFW_PRESS)
-        MOUSECLICKED = true;
+    {
+        if(button == GLFW_MOUSE_BUTTON_LEFT)
+            LEFTMOUSECLICKED = true;
+        else if(button == GLFW_MOUSE_BUTTON_RIGHT)
+            RIGHTMOUSECLICKED = true;
+    } 
     else if (action == GLFW_RELEASE)
-        MOUSECLICKED = false;
+    {
+        if (button == GLFW_MOUSE_BUTTON_LEFT)
+            LEFTMOUSECLICKED = false;
+        else if (button == GLFW_MOUSE_BUTTON_RIGHT)
+            RIGHTMOUSECLICKED = false;
+    }
 }
 
 void Input::scroll_callback(GLFWwindow* window, double xoffset, double yoffset)

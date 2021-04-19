@@ -25,11 +25,14 @@ public:
     //Returns 1 for scroll up, -1 for scroll down, 0 otherwise
     inline static int GetMouseSCROLL() { int returner = MOUSESCROLL; MOUSESCROLL = 0; return returner; }
 
-    inline static bool GetMouseClicked() { return MOUSECLICKED; }
-    inline static bool GetMouseClickedAndSetFalse() { if (MOUSECLICKED) { MOUSECLICKED = false; return true; } else return false; }
+    inline static bool GetLeftMouseClicked() { return LEFTMOUSECLICKED; }
+    inline static bool GetLeftMouseClickedAndSetFalse() { if (LEFTMOUSECLICKED) { LEFTMOUSECLICKED = false; return true; } else return false; }
+    inline static bool GetRightMouseClicked() { return RIGHTMOUSECLICKED; }
+    inline static bool GetRightMouseClickedAndSetFalse() { if (RIGHTMOUSECLICKED) { RIGHTMOUSECLICKED = false; return true; } else return false; }
+
 
 private:
     static float SCALE, MOUSEX, MOUSEY, XOFF, YOFF;
     static int HEIGHT, WIDTH, MOUSESCROLL, MAXHEIGHT;
-    static bool MOUSECLICKED;
+    static bool LEFTMOUSECLICKED, RIGHTMOUSECLICKED;
 };

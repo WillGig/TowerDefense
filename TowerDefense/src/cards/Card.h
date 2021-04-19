@@ -13,6 +13,8 @@ namespace TowerDefense
 
 		void RenderUpgrade(float x, float y);
 
+		virtual void RenderCardDetails();
+
 		virtual void Upgrade();
 
 		virtual std::shared_ptr<Card> Clone() = 0;
@@ -54,5 +56,6 @@ namespace TowerDefense
 		//Cards that exhaust DO NOT enter the discard pile. False by default for non-hero cards
 		bool m_Exhausts;
 		std::shared_ptr<Image> m_UpgradedImage;
+		std::unique_ptr<Image> m_DetailedImage;
 	};
 }

@@ -1,9 +1,7 @@
 Current:
-	Allow clicking on cards to render larger copies with information (right clicking?)
+	Add aditional information when showing card info
 
 	Add images to heroes
-
-
 
 	Start on random events - explore the caves!	
 

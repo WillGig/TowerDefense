@@ -14,6 +14,7 @@ float TowerDefense::Card::s_RareCardChance = .02f;
 TowerDefense::Card::Card(std::string name, int cost, const std::string& image, const std::string& upgradedImage)
 	:Entity(110, 140, 0.0f, 0.0f, 0.0f, image, Type::CARD), m_Name(name), m_HandPosition(-1), m_Cost(cost), 
 	m_Upgraded(false), m_OverBoard(false), m_Exhausts(false),
+	m_DetailedImage(std::make_unique<Image>(image, 400.0f, 300.0f, 220, 280, 0.0f)),
 	m_UpgradedImage(std::make_shared<Image>(upgradedImage, 0.0f, 0.0f, 110, 140, 0.0f))
 {
 }
@@ -27,6 +28,11 @@ void TowerDefense::Card::RenderUpgrade(float x, float y)
 {
 	m_UpgradedImage->SetPosition(x, y, 0.0f);
 	m_UpgradedImage->Render();
+}
+
+void TowerDefense::Card::RenderCardDetails()
+{
+	m_DetailedImage->Render();
 }
 
 void TowerDefense::Card::Upgrade()

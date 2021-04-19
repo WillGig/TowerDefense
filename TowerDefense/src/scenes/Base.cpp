@@ -64,7 +64,8 @@ void TowerDefense::Base::Render()
 		if (Player::Get().GetDeck()->IsShowing())
 		{
 			Player::Get().GetDeck()->RenderCards();
-			m_Buttons[9]->Render();
+			if (!Player::Get().GetDeck()->GetSelectedCard())
+				m_Buttons[9]->Render();
 		}
 		break;
 	}
@@ -137,7 +138,9 @@ void TowerDefense::Base::RenderSmithing()
 		m_SmithingArrow->Render();
 		m_Buttons[7]->Render();
 	}
-	m_Buttons[8]->Render();
+
+	if(!Player::Get().GetDeck()->GetSelectedCard())
+		m_Buttons[8]->Render();
 }
 
 void TowerDefense::Base::RenderLibrary()
@@ -208,21 +211,26 @@ void TowerDefense::Base::UpdateSmithing()
 			m_SelectedCard->Upgrade();
 		}
 	}
-	m_Buttons[8]->Update();
-	if (m_Buttons[8]->IsClicked())
+	if (!Player::Get().GetDeck()->GetSelectedCard())
 	{
-		if (m_SelectedCard && !m_SelectedCard->IsUpgraded())
-			m_SelectedCard.reset();
-		else
+		m_Buttons[8]->Update();
+		if (m_Buttons[8]->IsClicked())
 		{
-			m_SubMenu = SubMenu::NONE;
-			Player::Get().GetDeck()->Show(false);
+			if (m_SelectedCard && !m_SelectedCard->IsUpgraded())
+				m_SelectedCard.reset();
+			else
+			{
+				m_SubMenu = SubMenu::NONE;
+				Player::Get().GetDeck()->Show(false);
+			}
 		}
 	}
 	if (!m_SelectedCard || m_SelectedCard->IsUpgraded())
 	{
-		Player::Get().GetDeck()->Update();
-		FindSelectedCard();
+		if(!Player::Get().GetDeck()->GetSelectedCard())
+			FindSelectedCard();
+		if(!m_SelectedCard)
+			Player::Get().GetDeck()->Update();
 	}
 	m_ActivityText = "";
 }
@@ -305,10 +313,13 @@ void TowerDefense::Base::UpdateRest()
 void TowerDefense::Base::UpdateDeck()
 {
 	Player& player = Player::Get();
+	if (!player.GetDeck()->GetSelectedCard())
+	{
+		m_Buttons[9]->Update();
+		if (m_Buttons[9]->IsClicked())
+			player.GetDeck()->Show(!player.GetDeck()->IsShowing());
+	}
 	player.GetDeck()->Update();
-	m_Buttons[9]->Update();
-	if (m_Buttons[9]->IsClicked())
-		player.GetDeck()->Show(!player.GetDeck()->IsShowing());
 	m_ActivityText = "";
 }
 
@@ -414,10 +425,10 @@ void TowerDefense::Base::UpdateNextDay()
 
 void TowerDefense::Base::FindSelectedCard()
 {
-	if (!Input::GetMouseClicked())
+	if (!Input::GetLeftMouseClicked())
 		return;
 
-	m_SelectedCard = Player::Get().GetDeck()->GetSelectedCard();
+	m_SelectedCard = Player::Get().GetDeck()->GetClickedCard();
 	if (m_SelectedCard)
 	{
 		m_SelectedCardImage = m_SelectedCard->Clone();

@@ -16,6 +16,7 @@ namespace TowerDefense
 	public:
 		HeroCard(const std::string& name, const std::string& text, int cost, const std::string& texture, std::shared_ptr<Tower::Tower> tower, std::shared_ptr<std::vector<std::shared_ptr<Quirk::Quirk>>> quirks);
 		void Render() override;
+		void RenderCardDetails() override;
 		void Upgrade() override;
 		bool Play() override;
 		std::shared_ptr<Card> Clone() override;
@@ -42,7 +43,7 @@ namespace TowerDefense
 
 		std::string m_CardText;
 
-		std::unique_ptr<Text> m_NameText, m_BodyText;
+		std::unique_ptr<Text> m_NameText, m_BodyText, m_DetailedNameText, m_DetailedBodyText;
 
 		std::shared_ptr<Tower::Tower> m_Tower;
 

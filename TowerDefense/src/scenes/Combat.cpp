@@ -51,13 +51,15 @@ void TowerDefense::Combat::Render()
 	m_StartButton->Render();
 	m_SpeedButton->Render();
 
-	//Drawpile, Discardpile, Hand
-	RenderCards();
-
 	//Stats at top of screen
 	m_Health->Render();
 	m_Energy->Render();
 	m_Day->Render();
+
+	//Drawpile, Discardpile, Hand
+	RenderCards();
+
+	
 }
 
 void TowerDefense::Combat::Update()
@@ -138,7 +140,8 @@ void TowerDefense::Combat::RenderCards()
 	if (player.GetDeck()->IsShowing())
 	{
 		player.GetDeck()->RenderCards();
-		m_ViewDeck->Render();
+		if(!player.GetDeck()->GetSelectedCard())
+			m_ViewDeck->Render();
 	}
 }
 
@@ -183,19 +186,22 @@ void TowerDefense::Combat::UpdateCards()
 	bool discardShow = player.GetDiscardPile()->IsShowing();
 	bool cardSelected = player.GetHand()->GetSelectedCard() != -1;
 
-	if (!m_Paused && !deckShow && !drawShow && !discardShow)
-		player.GetHand()->Update();
 	if (!cardSelected && !drawShow && !discardShow)
 	{
+		if (!player.GetDeck()->GetSelectedCard())
+		{
+			m_ViewDeck->Update();
+			if (m_ViewDeck->IsClicked())
+				player.GetDeck()->Show(!player.GetDeck()->IsShowing());
+		}
 		player.GetDeck()->Update();
-		m_ViewDeck->Update();
-		if (m_ViewDeck->IsClicked())
-			player.GetDeck()->Show(!player.GetDeck()->IsShowing());
 	}
 	if (!cardSelected && !deckShow && !discardShow)
 		player.GetDrawPile()->Update();
 	if (!cardSelected && !deckShow && !drawShow)
 		player.GetDiscardPile()->Update();
+	if (!m_Paused && !deckShow && !drawShow && !discardShow)
+		player.GetHand()->Update();
 }
 
 void TowerDefense::Combat::UpdateWave()
@@ -267,7 +273,7 @@ void TowerDefense::Combat::UpdateButtons()
 //Find if a tower has been clicked, or deselected
 void TowerDefense::Combat::FindSelectedTower()
 {
-	if (Input::GetMouseClicked())
+	if (Input::GetLeftMouseClicked())
 		m_SelectedTower.reset();
 	for (unsigned int i = 0; i < s_Entities->size(); i++)
 	{

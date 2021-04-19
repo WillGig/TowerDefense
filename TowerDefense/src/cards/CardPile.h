@@ -18,6 +18,8 @@ namespace TowerDefense
 
 		std::shared_ptr<Card> GetSelectedCard();
 
+		std::shared_ptr<Card> GetClickedCard();
+
 		void Transfer(std::shared_ptr<CardPile> p);
 
 		void Copy(std::shared_ptr<CardPile> p);
@@ -26,7 +28,7 @@ namespace TowerDefense
 
 		void Shuffle();
 
-		inline std::shared_ptr<Card> GetCard(int index) const { return m_Cards[index]; }
+		inline std::shared_ptr<Card> GetCard(int index) const { return m_Cards->at(index); }
 
 		inline void Show(bool showing) { m_Showing = showing; m_Scroll = 0; }
 
@@ -34,7 +36,7 @@ namespace TowerDefense
 
 		inline void SetOrdered(bool ordered) { m_Ordered = ordered; }
 
-		inline int GetSize() const { return m_Cards.size(); }
+		inline int GetSize() const { return m_Cards->size(); }
 
 	private:
 		void Swap(int i, int j);
@@ -42,13 +44,13 @@ namespace TowerDefense
 		void Randomize();
 
 		//Scroll offset when viewing cardpile
-		int m_Scroll;
+		int m_Scroll, m_SelectedCard;
 
 		bool m_Showing;
 		//Whether the pile is shown in order or random. Ordered by default
 		bool m_Ordered;
 
-		std::vector<std::shared_ptr<Card>> m_Cards;
+		std::unique_ptr<std::vector<std::shared_ptr<Card>>> m_Cards;
 
 		//Order that cards are shown in if randomized
 		std::vector<int> m_RandomOrder;

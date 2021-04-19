@@ -16,7 +16,7 @@ void TowerDefense::Button::Update()
 	{
 		m_Selected = true;
 		SetImage(m_SelectedImage);
-		if (Input::GetMouseClickedAndSetFalse())
+		if (Input::GetLeftMouseClickedAndSetFalse())
 		{
 			m_Clicked = true;
 		}

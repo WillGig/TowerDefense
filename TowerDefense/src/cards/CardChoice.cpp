@@ -32,7 +32,7 @@ void TowerDefense::CardChoice::Update()
 	{
 		if (m_Cards->at(i)->Contains(Input::GetMouseX(), Input::GetMouseY()))
 		{
-			if (Input::GetMouseClickedAndSetFalse())
+			if (Input::GetLeftMouseClickedAndSetFalse())
 			{
 				m_SelectedCard = i;
 				m_Outline->SetX(m_Cards->at(i)->GetX());

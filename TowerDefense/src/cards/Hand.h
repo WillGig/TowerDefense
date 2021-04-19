@@ -22,13 +22,15 @@ namespace TowerDefense
 
 		void DrawCard();
 
-		inline std::shared_ptr<Card> GetCard(int index) const { return m_Cards[index]; }
+		inline std::shared_ptr<Card> GetCard(int index) const { return m_Cards->at(index); }
 
 		void DiscardHand();
 
-		inline int GetSize() const { return m_Cards.size(); }
+		inline int GetSize() const { return m_Cards->size(); }
 
 		inline int GetSelectedCard() const { return m_SelectedCard; }
+
+		inline bool ShowingCardInfo() const { return m_ShowingInfo; }
 
 	private:
 
@@ -37,7 +39,10 @@ namespace TowerDefense
 		//m_CardSpacing represents how far apart each card is and gets smaller the more cards are in the hand
 		unsigned int m_MaxSize, m_CardSpacing;
 		int m_SelectedCard;
-		bool m_Dragging;
-		std::vector<std::shared_ptr<Card>> m_Cards;
+		bool m_Dragging, m_ShowingInfo;
+		std::unique_ptr<std::vector<std::shared_ptr<Card>>> m_Cards;
+
+		//Fade background when showing card info
+		std::unique_ptr<Rectangle> m_Fade;
 	};
 }

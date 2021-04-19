@@ -12,7 +12,9 @@
 TowerDefense::HeroCard::HeroCard(const std::string& name, const std::string& text, int cost, const std::string& image, std::shared_ptr<Tower::Tower> tower, std::shared_ptr<std::vector<std::shared_ptr<Quirk::Quirk>>> quirks)
 	:TowerCard(name, cost, image, image), m_Level(1), m_CardText(text), m_Tower(tower), m_Quirks(quirks),
 	m_NameText(std::make_unique<Text>(name, 0.0f, 0.0f, 10.0f, (float)m_Width)),
-	m_BodyText(std::make_unique<Text>(text, 0.0f, 0.0f, 6.0f, (float)m_Width))
+	m_BodyText(std::make_unique<Text>(text, 0.0f, 0.0f, 6.0f, (float)m_Width)),
+	m_DetailedNameText(std::make_unique<Text>(name, 400.0f, 410.0f, 20.0f, (float)m_Width*2)),
+	m_DetailedBodyText(std::make_unique<Text>(text, 400.0f, 270.0f, 12.0f, (float)m_Width*2))
 {
 	m_Exhausts = true;
 
@@ -29,6 +31,8 @@ TowerDefense::HeroCard::HeroCard(const std::string& name, const std::string& tex
 
 	m_NameText->SetColor(1.0f, 1.0f, 1.0f, 1.0f);
 	m_BodyText->SetColor(1.0f, 1.0f, 1.0f, 1.0f);
+	m_DetailedNameText->SetColor(1.0f, 1.0f, 1.0f, 1.0f);
+	m_DetailedBodyText->SetColor(1.0f, 1.0f, 1.0f, 1.0f);
 }
 
 void TowerDefense::HeroCard::Render()
@@ -39,7 +43,13 @@ void TowerDefense::HeroCard::Render()
 		m_NameText->Render();
 		m_BodyText->Render();
 	}
-	
+}
+
+void TowerDefense::HeroCard::RenderCardDetails()
+{
+	Card::RenderCardDetails();
+	m_DetailedNameText->Render();
+	m_DetailedBodyText->Render();
 }
 
 //Apply chosen upgrade and generate new choices
@@ -184,13 +194,13 @@ std::string TowerDefense::HeroCard::GenerateName()
 		"Togrin",
 		"Lance",
 		"Ol' Micky",
-		"Thorly"
+		"Thorley"
 	};
 
 	static std::array<std::string, 16> femaleNames{
 		"Gertrude",
 		"Hannah",
-		"Beth",
+		"Millie",
 		"Susan",
 		"Jane-a-lin",
 		"Bertha",
@@ -200,7 +210,7 @@ std::string TowerDefense::HeroCard::GenerateName()
 		"Mildred",
 		"Vivian",
 		"Lydia",
-		"Thorly",
+		"Thorley",
 		"Qiqi",
 		"Alexandria",
 		"Persephone"
