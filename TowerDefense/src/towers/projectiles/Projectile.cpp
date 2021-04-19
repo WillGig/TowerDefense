@@ -97,7 +97,7 @@ void TowerDefense::Projectile::CheckCollisions()
 
 bool TowerDefense::Projectile::OffScreen()
 {
-	return (m_X - m_Width / 2 < 0.0f || m_X + m_Width / 2 > (float)TowerDefense::WIDTH || m_Y - m_Height / 2 < 0.0f || m_Y + m_Height / 2 > (float)TowerDefense::HEIGHT);
+	return (m_X - m_Width / 2 < 0.0f || m_X + m_Width / 2 > 800.0f || m_Y - m_Height / 2 < 0.0f || m_Y + m_Height / 2 > 600.0f);
 }
 
 std::shared_ptr<TowerDefense::Enemy::Enemy> TowerDefense::Projectile::FindTarget()

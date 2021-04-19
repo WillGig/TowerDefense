@@ -9,6 +9,7 @@ public:
     static void cursor_position_callback(GLFWwindow* window, double xpos, double ypos);
     static void mouse_button_callback(GLFWwindow* window, int button, int action, int mods);
     static void scroll_callback(GLFWwindow* window, double xoffset, double yoffset);
+    static void window_size_callback(GLFWwindow* window, int width, int height);
 
     //Sets the scale and sets the dimesions of the window
     //Also sets the offsets horizontal or vertical offsets if the aspect ratio is not 4:3

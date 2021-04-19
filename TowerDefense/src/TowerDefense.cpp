@@ -34,7 +34,7 @@ bool TowerDefense::Init()
     glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
     glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
     glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
-    glfwWindowHint(GLFW_RESIZABLE, GL_FALSE);
+    //glfwWindowHint(GLFW_RESIZABLE, GL_FALSE);
 
     window = glfwCreateWindow(WIDTH, HEIGHT, "Tower Defense", NULL, NULL);
     if (!window)
@@ -53,6 +53,7 @@ bool TowerDefense::Init()
     glfwSetCursorPosCallback(window, Input::cursor_position_callback);
     glfwSetMouseButtonCallback(window, Input::mouse_button_callback);
     glfwSetScrollCallback(window, Input::scroll_callback);
+    glfwSetWindowSizeCallback(window, Input::window_size_callback);
 
     //GLEW INitialization
     if (glewInit() != GLEW_OK)

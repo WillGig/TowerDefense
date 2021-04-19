@@ -1,4 +1,6 @@
 Current:
+	Make window resizing work
+
 	Add bold version of font
 
 	Allow clicking on cards to render larger copies with information (right clicking?)

@@ -45,3 +45,27 @@ void Input::scroll_callback(GLFWwindow* window, double xoffset, double yoffset)
 {
     MOUSESCROLL = (int)yoffset;
 }
+
+void Input::window_size_callback(GLFWwindow* window, int width, int height)
+{
+    std::cout << "resizing window to " << width << " " << height << std::endl;
+    //Setting Renderer Projection Matrix to game dimensions
+    float scale;
+    float hOffSet = 0.0f;
+    float vOffSet = 0.0f;
+    if ((float)height / 600.0f > (float)width / 800.0f)
+    {
+        scale = ((float)width / 800.0f);
+        vOffSet = (height - 600.0f * scale) / (2 * scale);
+    }
+    else
+    {
+        scale = ((float)height / 600.0f);
+        hOffSet = (width - 800.0f * scale) / (2 * scale);
+    }
+
+    Renderer::Get().SetProjectionMatrix(-hOffSet, 800.0f + hOffSet, -vOffSet, 600.0f + vOffSet, -1.0f, 1.0f);
+
+    //Set Mouse Input dimensions
+    Input::SetScale(scale, hOffSet, vOffSet, 600, window);
+}
