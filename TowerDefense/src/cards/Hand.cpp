@@ -32,7 +32,7 @@ void TowerDefense::Hand::Update()
 			if (!Input::GetMouseClicked())
 			{
 				m_Dragging = false;
-				if (Input::GetMouseY() > HEIGHT * .35f)
+				if (Input::GetMouseY() > 600.0f * .35f)
 				{
 					if (Player::Get().GetEnergy() >= m_Cards[m_SelectedCard]->GetCost())
 					{

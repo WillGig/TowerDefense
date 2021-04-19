@@ -27,6 +27,8 @@ bool running;
 //Initializes GLFW, GLEW, and objects needed for the game
 bool TowerDefense::Init()
 {
+    int width = 1600, height = 1200;
+
     //GLFW Setup and Window Creation
     if (!glfwInit())
         return false;
@@ -34,9 +36,8 @@ bool TowerDefense::Init()
     glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
     glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
     glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
-    //glfwWindowHint(GLFW_RESIZABLE, GL_FALSE);
 
-    window = glfwCreateWindow(WIDTH, HEIGHT, "Tower Defense", NULL, NULL);
+    window = glfwCreateWindow(width, height, "Tower Defense", NULL, NULL);
     if (!window)
     {
         glfwTerminate();
@@ -45,7 +46,7 @@ bool TowerDefense::Init()
 
     //Center Window
     const GLFWvidmode* vidmode = glfwGetVideoMode(glfwGetPrimaryMonitor());
-    glfwSetWindowPos(window, (int)((vidmode->width - WIDTH) / 2), (int)((vidmode->height - HEIGHT) / 2));
+    glfwSetWindowPos(window, (int)((vidmode->width - width) / 2), (int)((vidmode->height - height) / 2));
 
     glfwMakeContextCurrent(window);
     glfwSwapInterval(0);
@@ -65,15 +66,15 @@ bool TowerDefense::Init()
     float scale;
     float hOffSet = 0.0f;
     float vOffSet = 0.0f;
-    if ((float)HEIGHT / 600.0f > (float)WIDTH / 800.0f)
+    if ((float)height / 600.0f > (float)width / 800.0f)
     {
-        scale = ((float)WIDTH / 800.0f);
-        vOffSet = (HEIGHT - 600.0f * scale) / (2 * scale);
+        scale = ((float)width / 800.0f);
+        vOffSet = (height - 600.0f * scale) / (2 * scale);
     }
     else
     {
-        scale = ((float)HEIGHT / 600.0f);
-        hOffSet = (WIDTH - 800.0f * scale) / (2 * scale);
+        scale = ((float)height / 600.0f);
+        hOffSet = (width - 800.0f * scale) / (2 * scale);
     }
 
     Renderer::Get().SetProjectionMatrix(-hOffSet, 800.0f + hOffSet, -vOffSet, 600.0f + vOffSet, -1.0f, 1.0f);

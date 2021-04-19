@@ -2,7 +2,7 @@
 
 namespace TowerDefense
 {
-	static int WIDTH = 1600, HEIGHT = 1200, TILESIZE = 32;
+	static int TILESIZE = 32;
 
 	bool Init();
 	void Run();

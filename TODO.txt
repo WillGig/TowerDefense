@@ -1,6 +1,4 @@
 Current:
-	Make window resizing work
-
 	Add bold version of font
 
 	Allow clicking on cards to render larger copies with information (right clicking?)
@@ -33,6 +31,7 @@ Soon:
 	can scout next battle for gold price (towers cost gold in battle? 1 currency or two?)
 
 Long Term:
+	Make resolution adjustable
 	Change leveling for heros - add new types of attacks, etc.
 	Add combat info on precombat screen (at least name and picture)
 	Add post combat info and rewards
