@@ -1,9 +1,11 @@
 Current:
-	Add bold version of font
+	increase resolution of bold version of font
 
 	Allow clicking on cards to render larger copies with information (right clicking?)
 
 	Add images to heroes
+
+
 
 	Start on random events - explore the caves!	
 
