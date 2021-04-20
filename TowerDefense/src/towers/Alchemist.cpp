@@ -4,13 +4,13 @@
 #include "projectiles/Projectiles.h"
 
 TowerDefense::Tower::Alchemist::Alchemist()
-	:Tower(0.0f, 0.0f, 32, 32, 120.0f, 100, TowerType::DAMAGE, "res/textures/alchemist.png", "res/textures/alchemistHighlighted.png")
+	:Tower(0.0f, 0.0f, 32, 32, 120.0f, 100, TowerType::DAMAGE, "alchemist", "alchemistHighlighted")
 {
 	m_MagicDamage = 1.0f;
 }
 
 TowerDefense::Tower::Alchemist::Alchemist(float fireTime, int range, float damage)
-	: Tower(0.0f, 0.0f, 32, 32, fireTime, range, TowerType::DAMAGE, "res/textures/alchemist.png", "res/textures/alchemistHighlighted.png")
+	: Tower(0.0f, 0.0f, 32, 32, fireTime, range, TowerType::DAMAGE, "alchemist", "alchemistHighlighted")
 {
 	m_Spread = .1f;
 	m_MagicDamage = damage;
@@ -22,7 +22,7 @@ void TowerDefense::Tower::Alchemist::Fire(std::shared_ptr<TowerDefense::Entity> 
 	if (Random::GetFloat() < m_CritChance)
 	{
 		damage *= m_CritMultiplier;
-		Combat::AddEntity(std::make_shared<AnimationEffect>(m_X, m_Y, 100, 100, "res/textures/critAnimation.png", 7, 30));
+		Combat::AddEntity(std::make_shared<AnimationEffect>(m_X, m_Y, 100, 100, "critAnimation", 7, 30));
 	}
 	Combat::AddEntity(std::make_shared<TowerDefense::PoisonBomb>(m_X, m_Y, m_Rotation, damage));
 }

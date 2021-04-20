@@ -25,7 +25,7 @@ namespace TowerDefense
 	{
 	public:
 		SummonInfo()
-			:CardInfo("Summon", "res/textures/SummonInfo.png")
+			:CardInfo("Summon", "SummonInfo")
 		{}
 	};
 
@@ -33,7 +33,7 @@ namespace TowerDefense
 	{
 	public:
 		UpgradedInfo()
-			:CardInfo("Upgraded", "res/textures/UpgradedInfo.png")
+			:CardInfo("Upgraded", "UpgradedInfo")
 		{}
 	};
 }

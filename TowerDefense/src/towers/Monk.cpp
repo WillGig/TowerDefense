@@ -6,8 +6,8 @@
 #include "core/Player.h"
 
 TowerDefense::Tower::Monk::Monk(bool upgraded)
-	:Tower(0.0f, 0.0f, 32, 32, 600.0f, 50, TowerType::SUPPORT, "res/textures/monk.png", "res/textures/monkHighlighted.png"),
-	m_Upgraded(upgraded), m_Focused(false), m_FocusedImage(std::make_shared<Image>("res/textures/monkSelected.png", 0.0f, 0.0f, m_Width, m_Height, 0.0f))
+	:Tower(0.0f, 0.0f, 32, 32, 600.0f, 50, TowerType::SUPPORT, "monk", "monkHighlighted"),
+	m_Upgraded(upgraded), m_Focused(false), m_FocusedImage(std::make_shared<Image>("monkSelected", 0.0f, 0.0f, m_Width, m_Height, 0.0f))
 {
 }
 

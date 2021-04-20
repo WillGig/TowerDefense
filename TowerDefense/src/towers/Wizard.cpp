@@ -5,14 +5,14 @@
 #include "cards/upgrades/Upgrades.h"
 
 TowerDefense::Tower::Wizard::Wizard()
-	:Tower(0.0f, 0.0f, 32, 32, 60.0f, 150, TowerType::DAMAGE, "res/textures/wizard.png", "res/textures/wizardHighlighted.png"),
+	:Tower(0.0f, 0.0f, 32, 32, 60.0f, 150, TowerType::DAMAGE, "wizard", "wizardHighlighted"),
 	m_NumberOfMissiles(3)
 {
 	m_MagicDamage = 1.0f;
 }
 
 TowerDefense::Tower::Wizard::Wizard(float fireTime, int range, float damage, int numberOfMissiles)
-	: Tower(0.0f, 0.0f, 32, 32, fireTime, range, TowerType::DAMAGE, "res/textures/wizard.png", "res/textures/wizardHighlighted.png"),
+	: Tower(0.0f, 0.0f, 32, 32, fireTime, range, TowerType::DAMAGE, "wizard", "wizardHighlighted"),
 	m_NumberOfMissiles(numberOfMissiles)
 {
 	m_MagicDamage = damage;
@@ -24,7 +24,7 @@ void TowerDefense::Tower::Wizard::Fire(std::shared_ptr<TowerDefense::Entity> tar
 	if (Random::GetFloat() < m_CritChance)
 	{
 		damage *= m_CritMultiplier;
-		Combat::AddEntity(std::make_shared<AnimationEffect>(m_X, m_Y, 100, 100, "res/textures/critAnimation.png", 7, 30));
+		Combat::AddEntity(std::make_shared<AnimationEffect>(m_X, m_Y, 100, 100, "critAnimation", 7, 30));
 	}
 	for (int i = 0; i < m_NumberOfMissiles; i++) {
 		float angle = (i - ((m_NumberOfMissiles - 1) / 2.0f)) * (180.0f / m_NumberOfMissiles);

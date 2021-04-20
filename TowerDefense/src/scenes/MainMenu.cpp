@@ -6,10 +6,10 @@ TowerDefense::MainMenu::MainMenu()
 {
 	m_Buttons =
 	{
-		std::make_unique<Button>(200, 50, 400.0f, 350.0f, "res/textures/newGameButton.png", "res/textures/newGameButtonSelected.png"),
-		std::make_unique<Button>(200, 50, 400.0f, 300.0f, "res/textures/loadGameButton.png", "res/textures/loadGameButtonSelected.png"),
-		std::make_unique<Button>(200, 50, 400.0f, 250.0f, "res/textures/settingsButton.png", "res/textures/settingsButtonSelected.png"),
-		std::make_unique<Button>(200, 50, 400.0f, 200.0f, "res/textures/exitButton.png", "res/textures/exitButtonSelected.png"),
+		std::make_unique<Button>(200, 50, 400.0f, 350.0f, "newGameButton", "newGameButtonSelected"),
+		std::make_unique<Button>(200, 50, 400.0f, 300.0f, "loadGameButton", "loadGameButtonSelected"),
+		std::make_unique<Button>(200, 50, 400.0f, 250.0f, "settingsButton", "settingsButtonSelected"),
+		std::make_unique<Button>(200, 50, 400.0f, 200.0f, "exitButton", "exitButtonSelected"),
 	};
 }
 

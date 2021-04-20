@@ -28,7 +28,7 @@ Image::Image(const std::string& file, float x, float y, int width, int height, f
 
 	m_Shader = std::make_unique<Shader>("res/shaders/Texture.Shader");
 	m_Shader->Bind();
-	m_Texture = std::make_unique<Texture>(file);
+	m_Texture = Texture::GetTexture(file);
 	m_Shader->SetUniform1i("u_Texture", 0);
 }
 

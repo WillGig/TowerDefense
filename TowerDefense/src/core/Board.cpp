@@ -8,7 +8,7 @@ int TowerDefense::Board::TILESIZE = 32;
 TowerDefense::Board::Board(int width, int height)
     :m_X((800.0f - TILESIZE * width) / 2.0f), m_Y(TILESIZE * 7.8f), m_Width(width), m_Height(height),
     m_TileSelected(false), m_CurrentTile(), 
-    m_SelectedTile(std::make_shared<StaticImage>(0.0f, 0.0f, TILESIZE, TILESIZE, 0.0f, "res/textures/selectedTile.png")),
+    m_SelectedTile(std::make_shared<StaticImage>(0.0f, 0.0f, TILESIZE, TILESIZE, 0.0f, "selectedTile")),
     m_Tiles(std::make_shared<std::vector<std::shared_ptr<Tile>>>()), 
     m_Positions(std::make_unique<float[]>(width* height * 16)),
     m_Path(), m_Position(m_X, m_Y, 0.0f)
@@ -59,7 +59,7 @@ TowerDefense::Board::Board(int width, int height)
 
     m_Shader = std::make_unique<Shader>("res/shaders/Texture.Shader");
     m_Shader->Bind();
-    m_Texture = std::make_unique<Texture>("res/textures/tiles.png");
+    m_Texture = Texture::GetTexture("tiles");
     m_Shader->SetUniform1i("u_Texture", 0);
 }
 

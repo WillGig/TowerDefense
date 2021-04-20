@@ -7,7 +7,7 @@ namespace TowerDefense
 	{
 	public:
 		AttackSpeedUpgrade(float percent)
-			:Upgrade("Attack Speed Upgrade", "res/textures/attackSpeedUpgrade.png"), m_Percent(percent)
+			:Upgrade("Attack Speed Upgrade", "attackSpeedUpgrade"), m_Percent(percent)
 		{
 		}
 		void UpgradeHero(HeroCard& hero);
@@ -20,7 +20,7 @@ namespace TowerDefense
 	{
 	public:
 		DamageUpgrade(float physicalIncrease, float magicIncrease)
-			:Upgrade("Damage Upgrade", "res/textures/damageUpgrade.png"), m_PhysicalIncrease(physicalIncrease), m_MagicIncrease(magicIncrease)
+			:Upgrade("Damage Upgrade", "damageUpgrade"), m_PhysicalIncrease(physicalIncrease), m_MagicIncrease(magicIncrease)
 		{
 		}
 		void UpgradeHero(HeroCard& hero);
@@ -33,7 +33,7 @@ namespace TowerDefense
 	{
 	public:
 		RangeUpgrade(int rangeIncrease)
-			:Upgrade("Range Upgrade", "res/textures/rangeUpgrade.png"), m_RangeIncrease(rangeIncrease)
+			:Upgrade("Range Upgrade", "rangeUpgrade"), m_RangeIncrease(rangeIncrease)
 		{
 		}
 		void UpgradeHero(HeroCard& hero);
@@ -46,7 +46,7 @@ namespace TowerDefense
 	{
 	public:
 		MoreMissiles()
-			:Upgrade("More Missiles", "res/textures/moremissiles.png")
+			:Upgrade("More Missiles", "moremissiles")
 		{
 		}
 		void UpgradeHero(HeroCard& hero);

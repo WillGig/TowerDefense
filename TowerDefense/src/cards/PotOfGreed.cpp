@@ -3,7 +3,7 @@
 #include "core/Player.h"
 
 TowerDefense::PotOfGreed::PotOfGreed()
-	:Card("Pot of Greed", 20, "res/textures/potOfGreed.png", "res/textures/potOfGreedUpgraded.png")
+	:Card("Pot of Greed", 20, "potOfGreed", "potOfGreedUpgraded")
 {
 }
 

@@ -4,14 +4,14 @@
 #include "projectiles/Projectiles.h"
 
 TowerDefense::Tower::Giant::Giant()
-	:Tower(0.0f, 0.0f, 64, 64, 300.0f, 100, TowerType::DAMAGE, "res/textures/giant.png", "res/textures/giantHighlighted.png")
+	:Tower(0.0f, 0.0f, 64, 64, 300.0f, 100, TowerType::DAMAGE, "giant", "giantHighlighted")
 {
 	m_Spread = .1f;
 	m_PhysicalDamage = 20.0f;
 }
 
 TowerDefense::Tower::Giant::Giant(float fireTime, int range, float damage)
-	: Tower(0.0f, 0.0f, 64, 64, fireTime, range, TowerType::DAMAGE, "res/textures/giant.png", "res/textures/giantHighlighted.png")
+	: Tower(0.0f, 0.0f, 64, 64, fireTime, range, TowerType::DAMAGE, "giant", "giantHighlighted")
 {
 	m_Spread = .1f;
 	m_PhysicalDamage = damage;
@@ -23,7 +23,7 @@ void TowerDefense::Tower::Giant::Fire(std::shared_ptr<TowerDefense::Entity> targ
 	if (Random::GetFloat() < m_CritChance)
 	{
 		damage *= m_CritMultiplier;
-		Combat::AddEntity(std::make_shared<AnimationEffect>(m_X, m_Y, 100, 100, "res/textures/critAnimation.png", 7, 30));
+		Combat::AddEntity(std::make_shared<AnimationEffect>(m_X, m_Y, 100, 100, "critAnimation", 7, 30));
 	}
 	Combat::AddEntity(std::make_shared<TowerDefense::GiantRock>(m_X, m_Y, m_Rotation, damage));
 }

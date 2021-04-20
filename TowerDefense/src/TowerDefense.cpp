@@ -164,6 +164,7 @@ void TowerDefense::CleanUp()
     Player::Get().CleanUp();
     Board::Get().CleanUp();
     Combat::CleanUp();
+    Texture::FreeTextures();
     glfwTerminate();
 }
 

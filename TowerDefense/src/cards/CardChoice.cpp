@@ -4,7 +4,7 @@
 //Chooses random cards and arranges them evenly in the center of the screen
 TowerDefense::CardChoice::CardChoice(int numCards, int generationDay)
 	:m_SelectedCard(-1), m_GenerationDay(generationDay), m_Cards(std::make_shared<std::vector<std::shared_ptr<Card>>>()), 
-	m_Outline(std::make_unique<StaticImage>(0.0f, 0.0f, 116, 146, 0.0f, "res/textures/outline.png"))
+	m_Outline(std::make_unique<StaticImage>(0.0f, 0.0f, 116, 146, 0.0f, "outline"))
 {
 	for (int i = 0; i < numCards; i++)
 	{
@@ -17,7 +17,7 @@ TowerDefense::CardChoice::CardChoice(int numCards, int generationDay)
 
 //Uses specific card list and arranges them evenly in the center of the screen
 TowerDefense::CardChoice::CardChoice(std::shared_ptr<std::vector<std::shared_ptr<Card>>> cards, int generationDay)
-	:m_SelectedCard(-1), m_GenerationDay(generationDay), m_Cards(cards), m_Outline(std::make_unique<StaticImage>(0.0f, 0.0f, 116, 146, 0.0f, "res/textures/outline.png"))
+	:m_SelectedCard(-1), m_GenerationDay(generationDay), m_Cards(cards), m_Outline(std::make_unique<StaticImage>(0.0f, 0.0f, 116, 146, 0.0f, "outline"))
 {
 	for (int i = 0; i < (int)cards->size(); i++)
 	{

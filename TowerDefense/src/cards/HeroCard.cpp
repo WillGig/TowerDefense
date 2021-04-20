@@ -244,38 +244,38 @@ std::string TowerDefense::HeroCard::GenerateImage(Quirk::Gender gender, const st
 	if (gender == Quirk::Gender::MALE)
 	{
 		if (race == "Human")
-			return "res/textures/testTexture.png";
+			return "testTexture";
 		else if (race == "Dwarf")
-			return "res/textures/testTexture.png";
+			return "testTexture";
 		else if (race == "HighElf")
-			return "res/textures/testTexture.png";
+			return "testTexture";
 		else if (race == "WoodElf")
-			return "res/textures/testTexture.png";
+			return "testTexture";
 		else if (race == "Gnome")
-			return "res/textures/testTexture.png";
+			return "testTexture";
 		else if (race == "Orc")
-			return "res/textures/testTexture.png";
+			return "testTexture";
 		else if (race == "Giant")
-			return "res/textures/testTexture.png";
+			return "testTexture";
 		std::cout << "Error Generating Hero: Could not find Race " << race << std::endl;
 		return "";
 	}
 	else if (gender == Quirk::Gender::FEMALE)
 	{
 		if (race == "Human")
-			return "res/textures/testTexture.png";
+			return "testTexture";
 		else if (race == "Dwarf")
-			return "res/textures/testTexture.png";
+			return "testTexture";
 		else if (race == "HighElf")
-			return "res/textures/testTexture.png";
+			return "testTexture";
 		else if (race == "WoodElf")
-			return "res/textures/testTexture.png";
+			return "testTexture";
 		else if (race == "Gnome")
-			return "res/textures/testTexture.png";
+			return "testTexture";
 		else if (race == "Orc")
-			return "res/textures/testTexture.png";
+			return "testTexture";
 		else if (race == "Giant")
-			return "res/textures/testTexture.png";
+			return "testTexture";
 		std::cout << "Error Generating Hero: Could not find Race " << race << std::endl;
 		return "";
 	}

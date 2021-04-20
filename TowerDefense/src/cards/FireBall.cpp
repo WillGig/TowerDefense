@@ -6,7 +6,7 @@
 #include "core/Board.h"
 
 TowerDefense::FireBall::FireBall()
-	:Card("Fire Ball", 20, "res/textures/fireBall.png", "res/textures/fireBallUpgraded.png"), 
+	:Card("Fire Ball", 20, "fireBall", "fireBallUpgraded"), 
 	m_Damage(10.0f), m_Radius(50.0f), m_Circle(std::make_unique<Circle>(0.0f, 0.0f, m_Radius))
 {
 	m_Circle->SetColor(1.0f, 0.0f, 0.0f, 1.0f);
@@ -70,7 +70,7 @@ bool TowerDefense::FireBall::Play()
 				}
 			}
 		}
-		Combat::AddEntity(std::make_shared<AnimationEffect>(m_X, m_Y, 100, 100, "res/textures/explosion.png", 7, 30));
+		Combat::AddEntity(std::make_shared<AnimationEffect>(m_X, m_Y, 100, 100, "explosion", 7, 30));
 		return true;
 	}
 	return false;

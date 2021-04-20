@@ -6,7 +6,7 @@
 #include "core/Board.h"
 
 TowerDefense::FrostBall::FrostBall()
-	:Card("Frost Ball", 20, "res/textures/frostBall.png", "res/textures/frostBallUpgraded.png"),
+	:Card("Frost Ball", 20, "frostBall", "frostBallUpgraded"),
 	m_SlowPercent(0.8f), m_Radius(75.0f), m_SlowTime(180), 
 	m_Circle(std::make_unique<Circle>(0.0f, 0.0f, m_Radius))
 {
@@ -71,7 +71,7 @@ bool TowerDefense::FrostBall::Play()
 				}
 			}
 		}
-		Combat::AddEntity(std::make_shared<AnimationEffect>(m_X, m_Y, 100, 100, "res/textures/frostExplosion.png", 7, 30));
+		Combat::AddEntity(std::make_shared<AnimationEffect>(m_X, m_Y, 100, 100, "frostExplosion", 7, 30));
 		return true;
 	}
 	return false;

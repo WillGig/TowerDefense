@@ -10,22 +10,22 @@ TowerDefense::Base::Base()
 	m_RestText(std::make_unique<Text>("", 400.0f, 300.0f, 12.0f, 0.0f)),
 	m_Health(std::make_unique<Text>("", 610.0f, 575.0f, 10.0f, 0.0f)),
 	m_Day(std::make_unique<Text>("", 400.0f, 575.0f, 10.0f, 0.0f)),
-	m_SmithingArrow(std::make_unique<StaticImage>(400.0f, 300.0f, 36, 36, 0.0f, "res/textures/smithArrow.png")),
+	m_SmithingArrow(std::make_unique<StaticImage>(400.0f, 300.0f, 36, 36, 0.0f, "smithArrow")),
 	m_Fade(std::make_unique<Rectangle>(400.0f, 300.0f, 800.0f, 600.0f))
 {
 
 	m_Buttons =
 	{
-		std::make_unique<Button>(180, 50, 200.0f, 425.0f, "res/textures/exploreCavesButton.png", "res/textures/exploreCavesButtonSelected.png"),
-		std::make_unique<Button>(180, 50, 400.0f, 425.0f, "res/textures/visitLibraryButton.png", "res/textures/visitLibraryButtonSelected.png"),
-		std::make_unique<Button>(180, 50, 600.0f, 425.0f, "res/textures/goFishingButton.png", "res/textures/goFishingButtonSelected.png"),
-		std::make_unique<Button>(180, 50, 200.0f, 355.0f, "res/textures/smithButton.png", "res/textures/smithButtonSelected.png"),
-		std::make_unique<Button>(180, 50, 400.0f, 355.0f, "res/textures/goTavernButton.png", "res/textures/goTavernButtonSelected.png"),
-		std::make_unique<Button>(180, 50, 600.0f, 355.0f, "res/textures/restButton.png", "res/textures/restButtonSelected.png"),
-		std::make_unique<Button>(180, 50, 600.0f, 175.0f, "res/textures/nextDayButton.png", "res/textures/nextDayButtonSelected.png"),
-		std::make_unique<Button>(180, 50, 400.0f, 190.0f, "res/textures/confirmButton.png", "res/textures/confirmButtonSelected.png"),
-		std::make_unique<Button>(180, 50, 690.0f, 125.0f, "res/textures/cancelButton.png", "res/textures/cancelButtonSelected.png"),
-		std::make_unique<Button>(50, 43, 570.0f, 578.0f, "res/textures/viewDeckButton.png", "res/textures/viewDeckButtonSelected.png")
+		std::make_unique<Button>(180, 50, 200.0f, 425.0f,	"exploreCavesButton",	"exploreCavesButtonSelected"),
+		std::make_unique<Button>(180, 50, 400.0f, 425.0f,	"visitLibraryButton",	"visitLibraryButtonSelected"),
+		std::make_unique<Button>(180, 50, 600.0f, 425.0f,	"goFishingButton",		"goFishingButtonSelected"),
+		std::make_unique<Button>(180, 50, 200.0f, 355.0f,	"smithButton",			"smithButtonSelected"),
+		std::make_unique<Button>(180, 50, 400.0f, 355.0f,	"goTavernButton",		"goTavernButtonSelected"),
+		std::make_unique<Button>(180, 50, 600.0f, 355.0f,	"restButton",			"restButtonSelected"),
+		std::make_unique<Button>(180, 50, 600.0f, 175.0f,	"nextDayButton",		"nextDayButtonSelected"),
+		std::make_unique<Button>(180, 50, 400.0f, 190.0f,	"confirmButton",		"confirmButtonSelected"),
+		std::make_unique<Button>(180, 50, 690.0f, 125.0f,	"cancelButton",			"cancelButtonSelected"),
+		std::make_unique<Button>(50, 43, 570.0f, 578.0f,	"viewDeckButton",		"viewDeckButtonSelected")
 	};
 	m_Fade->SetColor(0.0f, 0.0f, 0.0f, 0.95f);
 	m_Health->SetColor(0.0f, 0.0f, 0.0f, 1.0f);

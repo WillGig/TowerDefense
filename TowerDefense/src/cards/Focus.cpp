@@ -3,7 +3,7 @@
 #include "core/Player.h"
 
 TowerDefense::Focus::Focus(bool exhausts)
-	:Card("Focus", 0, exhausts ? "res/textures/focusExhausts.png" : "res/textures/focus.png", exhausts ? "res/textures/focusExhaustsUpgraded.png" : "res/textures/focusUpgraded.png")
+	:Card("Focus", 0, exhausts ? "focusExhausts" : "focus", exhausts ? "focusExhaustsUpgraded" : "focusUpgraded")
 {
 	m_Exhausts = exhausts;
 }

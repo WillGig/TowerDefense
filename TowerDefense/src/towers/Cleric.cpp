@@ -5,13 +5,13 @@
 #include "buffs/DamageBuff.h"
 
 TowerDefense::Tower::Cleric::Cleric()
-	:Tower(0.0f, 0.0f, 32, 32, 60.0f, 75, TowerType::SUPPORT, "res/textures/cleric.png", "res/textures/clericHighlighted.png")
+	:Tower(0.0f, 0.0f, 32, 32, 60.0f, 75, TowerType::SUPPORT, "cleric", "clericHighlighted")
 {
 	m_DamageBuff = 1.0f;
 }
 
 TowerDefense::Tower::Cleric::Cleric(float fireTime, int range, float buff)
-	: Tower(0.0f, 0.0f, 32, 32, fireTime, range, TowerType::SUPPORT, "res/textures/cleric.png", "res/textures/clericHighlighted.png")
+	: Tower(0.0f, 0.0f, 32, 32, fireTime, range, TowerType::SUPPORT, "cleric", "clericHighlighted")
 {
 	m_DamageBuff = buff;
 }

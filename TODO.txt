@@ -1,11 +1,15 @@
 Current:
+	
+	add spritesheets (loading multiple textures from single image)
+
+	reduce number of shaders used?
+
 	Add images to heroes
 
 	Add info for towers
 	Add info for enemies
 
-	load all textures into map of shared pointers in texture file to be loaded at the start of the program?
-
+	
 	Start on random events - explore the caves!	
 
 	Daily activities
