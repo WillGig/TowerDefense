@@ -1,7 +1,10 @@
 Current:
 	Add images to heroes
 
-	take a look at font quality
+	Add info for towers
+	Add info for enemies
+
+	load all textures into map of shared pointers in texture file to be loaded at the start of the program?
 
 	Start on random events - explore the caves!	
 
@@ -14,9 +17,6 @@ Current:
 		rest 		- heal by 20						- Done
 
 Soon:
-	
-	Add info for towers
-	Add info for enemies
 	design more enemies and possible combats for days 1-10
 	design auras and more cards
 	add more potential hero upgrades
@@ -27,6 +27,7 @@ Soon:
 		- Spy Glass - scout fights in advance
 	Shop/merchants
 	can scout next battle for gold price (towers cost gold in battle? 1 currency or two?)
+	Gold price to buy fishing, smithing, library, tavern, etc. Default options sleeping and exploring?
 
 Long Term:
 	Make resolution adjustable

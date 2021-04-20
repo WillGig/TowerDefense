@@ -257,6 +257,7 @@ std::string TowerDefense::HeroCard::GenerateImage(Quirk::Gender gender, const st
 			return "res/textures/testTexture.png";
 		else if (race == "Giant")
 			return "res/textures/testTexture.png";
+		std::cout << "Error Generating Hero: Could not find Race " << race << std::endl;
 		return "";
 	}
 	else if (gender == Quirk::Gender::FEMALE)
@@ -275,7 +276,9 @@ std::string TowerDefense::HeroCard::GenerateImage(Quirk::Gender gender, const st
 			return "res/textures/testTexture.png";
 		else if (race == "Giant")
 			return "res/textures/testTexture.png";
+		std::cout << "Error Generating Hero: Could not find Race " << race << std::endl;
 		return "";
 	}
+	std::cout << "Error Generating Hero: Could not find Gender " << (int)gender << std::endl;
 	return "";
 }
