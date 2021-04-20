@@ -1,6 +1,4 @@
 Current:
-	Add aditional information when showing card info
-
 	Add images to heroes
 
 	Start on random events - explore the caves!	

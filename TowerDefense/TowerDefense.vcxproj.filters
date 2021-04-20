@@ -874,5 +874,8 @@
     <ClInclude Include="src\cards\quirks\JustLucky.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="src\cards\CardInfo.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

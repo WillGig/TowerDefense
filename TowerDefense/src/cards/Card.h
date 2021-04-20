@@ -1,4 +1,5 @@
 #pragma once
+#include "CardInfo.h"
 
 namespace TowerDefense
 {
@@ -49,7 +50,12 @@ namespace TowerDefense
 		//Chances for randomly generated cards
 		static float s_UncommonCardChance, s_RareCardChance;
 
+		//List of keywords that are shown when rendering the card info
+		std::unique_ptr<std::vector<std::shared_ptr<CardInfo>>> m_InfoCards;
+
 	protected:
+		void AddInfoCard(std::shared_ptr<CardInfo> cardInfo);
+
 		int m_Cost;
 		bool m_Upgraded, m_OverBoard;
 		//Whether or not the card enters the discard pile after being played

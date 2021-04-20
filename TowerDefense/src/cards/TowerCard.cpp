@@ -89,3 +89,9 @@ bool TowerDefense::TowerCard::Play()
 	m_OverBoard = false;
 	return false;
 }
+
+void TowerDefense::TowerCard::Upgrade()
+{
+	Card::Upgrade();
+	AddInfoCard(std::make_shared<UpgradedInfo>());
+}

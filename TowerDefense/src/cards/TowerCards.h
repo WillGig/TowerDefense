@@ -1,5 +1,6 @@
 #pragma once
 #include "TowerCard.h"
+#include "CardInfo.h"
 
 namespace TowerDefense
 {
@@ -9,6 +10,7 @@ namespace TowerDefense
 		ArcherCard()
 			:TowerCard("Archer", 50, "res/textures/archerCard.png", "res/textures/archerCardUpgraded.png")
 		{
+			AddInfoCard(std::make_shared<SummonInfo>());
 		}
 		std::shared_ptr<Card> Clone() override;
 
@@ -22,6 +24,7 @@ namespace TowerDefense
 		WizardCard()
 			:TowerCard("Wizard", 100, "res/textures/wizardCard.png", "res/textures/wizardCardUpgraded.png")
 		{
+			AddInfoCard(std::make_shared<SummonInfo>());
 		}
 		std::shared_ptr<Card> Clone() override;
 
@@ -35,6 +38,7 @@ namespace TowerDefense
 		GiantCard()
 			:TowerCard("Giant", 300, "res/textures/giantCard.png", "res/textures/giantCardUpgraded.png")
 		{
+			AddInfoCard(std::make_shared<SummonInfo>());
 		}
 		std::shared_ptr<Card> Clone() override;
 
@@ -48,6 +52,7 @@ namespace TowerDefense
 		AlchemistCard()
 			:TowerCard("Alchemist", 100, "res/textures/alchemistCard.png", "res/textures/alchemistCardUpgraded.png")
 		{
+			AddInfoCard(std::make_shared<SummonInfo>());
 		}
 		std::shared_ptr<Card> Clone() override;
 
@@ -61,6 +66,7 @@ namespace TowerDefense
 		BardCard()
 			:TowerCard("Bard", 100, "res/textures/bardCard.png", "res/textures/bardCardUpgraded.png")
 		{
+			AddInfoCard(std::make_shared<SummonInfo>());
 		}
 		std::shared_ptr<Card> Clone() override;
 
@@ -74,6 +80,7 @@ namespace TowerDefense
 		ClericCard()
 			:TowerCard("Cleric", 100, "res/textures/clericCard.png", "res/textures/clericCardUpgraded.png")
 		{
+			AddInfoCard(std::make_shared<SummonInfo>());
 		}
 		std::shared_ptr<Card> Clone() override;
 
@@ -87,6 +94,7 @@ namespace TowerDefense
 		PaladinCard()
 			:TowerCard("Paladin", 100, "res/textures/paladinCard.png", "res/textures/paladinCardUpgraded.png")
 		{
+			AddInfoCard(std::make_shared<SummonInfo>());
 		}
 		std::shared_ptr<Card> Clone() override;
 
@@ -100,6 +108,7 @@ namespace TowerDefense
 		MonkCard()
 			:TowerCard("Monk", 100, "res/textures/monkCard.png", "res/textures/monkCardUpgraded.png")
 		{
+			AddInfoCard(std::make_shared<SummonInfo>());
 		}
 		std::shared_ptr<Card> Clone() override;
 

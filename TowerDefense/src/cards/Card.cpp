@@ -15,13 +15,14 @@ TowerDefense::Card::Card(std::string name, int cost, const std::string& image, c
 	:Entity(110, 140, 0.0f, 0.0f, 0.0f, image, Type::CARD), m_Name(name), m_HandPosition(-1), m_Cost(cost), 
 	m_Upgraded(false), m_OverBoard(false), m_Exhausts(false),
 	m_DetailedImage(std::make_unique<Image>(image, 400.0f, 300.0f, 220, 280, 0.0f)),
-	m_UpgradedImage(std::make_shared<Image>(upgradedImage, 0.0f, 0.0f, 110, 140, 0.0f))
+	m_UpgradedImage(std::make_shared<Image>(upgradedImage, 0.0f, 0.0f, 110, 140, 0.0f)),
+	m_InfoCards(std::make_unique<std::vector<std::shared_ptr<CardInfo>>>())
 {
 }
 
 void TowerDefense::Card::Update()
 {
-
+	
 }
 
 void TowerDefense::Card::RenderUpgrade(float x, float y)
@@ -33,12 +34,24 @@ void TowerDefense::Card::RenderUpgrade(float x, float y)
 void TowerDefense::Card::RenderCardDetails()
 {
 	m_DetailedImage->Render();
+	for (unsigned int i = 0; i < m_InfoCards->size(); i++)
+		m_InfoCards->at(i)->Render();
 }
 
 void TowerDefense::Card::Upgrade()
 {
 	m_Upgraded = true;
 	SetImage(m_UpgradedImage);
+	m_DetailedImage = std::make_unique<Image>(m_UpgradedImage->GetFile(), 400.0f, 300.0f, 220, 280, 0.0f);
+}
+
+void TowerDefense::Card::AddInfoCard(std::shared_ptr<CardInfo> cardInfo)
+{
+	if(m_InfoCards->size() > 2)
+		cardInfo->SetPosition(650.0f, 400.0f  - 100.0f*(m_InfoCards->size()-3));
+	else
+		cardInfo->SetPosition(150.0f, 400.0f - 100.0f * m_InfoCards->size());
+	m_InfoCards->push_back(cardInfo);
 }
 
 std::shared_ptr<TowerDefense::Card> TowerDefense::Card::GetCommonCard()

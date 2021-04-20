@@ -11,6 +11,7 @@ namespace TowerDefense
 		void Render() override;
 		void Update() override;
 		bool Play() override;
+		void Upgrade() override;
 
 	protected:
 		virtual std::shared_ptr<Tower::Tower> GetTower() = 0;
