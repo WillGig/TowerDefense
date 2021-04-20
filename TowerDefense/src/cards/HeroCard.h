@@ -9,6 +9,7 @@ namespace TowerDefense
 	namespace Quirk
 	{
 		class Quirk;
+		enum class Gender;
 	}
 	
 	class HeroCard : public TowerCard
@@ -36,8 +37,9 @@ namespace TowerDefense
 		static std::shared_ptr<HeroCard> GenerateHero();
 
 	private:
-		static std::string GenerateName();
+		static std::string GenerateName(Quirk::Gender gender);
 		static std::string GenerateText(std::shared_ptr<std::vector<std::shared_ptr<Quirk::Quirk>>> quirks, const std::string& heroClass);
+		static std::string GenerateImage(Quirk::Gender gender, const std::string& race);
 
 		int m_Level;
 

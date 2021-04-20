@@ -164,19 +164,19 @@ std::shared_ptr<TowerDefense::HeroCard> TowerDefense::HeroCard::GenerateHero()
 
 	auto quirks = Quirk::Quirk::GenerateQuirks();
 
-	std::string name = GenerateName();
+	Quirk::Gender gender = 2.0f * Random::GetFloat() > 1.0f ? Quirk::Gender::MALE : Quirk::Gender::FEMALE;
+
+	std::string name = GenerateName(gender);
 
 	std::string text = GenerateText(quirks, heroClass);
 
-	std::string image = "res/textures/testTexture.png";
+	std::string image = GenerateImage(gender, quirks->at(0)->GetName());
 
 	return std::make_shared<HeroCard>(name, text, cost, image, heroTower, quirks);
 }
 
-std::string TowerDefense::HeroCard::GenerateName()
+std::string TowerDefense::HeroCard::GenerateName(Quirk::Gender gender)
 {
-	Quirk::Gender gender = 2.0f * Random::GetFloat() > 1.0f ? Quirk::Gender::MALE : Quirk::Gender::FEMALE;
-
 	static std::array<std::string, 17> maleNames = {
 		"Philius",
 		"Lionel",
@@ -236,4 +236,46 @@ std::string TowerDefense::HeroCard::GenerateText(std::shared_ptr<std::vector<std
 		text += quirks->at(i)->GetText() + "\n";
 
 	return text;
+}
+
+//Returns an image associated with the given gender and race of the hero
+std::string TowerDefense::HeroCard::GenerateImage(Quirk::Gender gender, const std::string& race)
+{
+	if (gender == Quirk::Gender::MALE)
+	{
+		if (race == "Human")
+			return "res/textures/testTexture.png";
+		else if (race == "Dwarf")
+			return "res/textures/testTexture.png";
+		else if (race == "HighElf")
+			return "res/textures/testTexture.png";
+		else if (race == "WoodElf")
+			return "res/textures/testTexture.png";
+		else if (race == "Gnome")
+			return "res/textures/testTexture.png";
+		else if (race == "Orc")
+			return "res/textures/testTexture.png";
+		else if (race == "Giant")
+			return "res/textures/testTexture.png";
+		return "";
+	}
+	else if (gender == Quirk::Gender::FEMALE)
+	{
+		if (race == "Human")
+			return "res/textures/testTexture.png";
+		else if (race == "Dwarf")
+			return "res/textures/testTexture.png";
+		else if (race == "HighElf")
+			return "res/textures/testTexture.png";
+		else if (race == "WoodElf")
+			return "res/textures/testTexture.png";
+		else if (race == "Gnome")
+			return "res/textures/testTexture.png";
+		else if (race == "Orc")
+			return "res/textures/testTexture.png";
+		else if (race == "Giant")
+			return "res/textures/testTexture.png";
+		return "";
+	}
+	return "";
 }

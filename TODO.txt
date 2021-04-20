@@ -1,6 +1,8 @@
 Current:
 	Add images to heroes
 
+	take a look at font quality
+
 	Start on random events - explore the caves!	
 
 	Daily activities
