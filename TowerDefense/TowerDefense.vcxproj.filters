@@ -237,6 +237,9 @@
     <ClCompile Include="src\cards\quirks\JustLucky.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="src\engine\SpriteSheet.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="res\shaders\Texture.shader" />
@@ -365,12 +368,6 @@
     <Image Include="res\textures\endButtonOn.png">
       <Filter>Resource Files</Filter>
     </Image>
-    <Image Include="res\textures\exitButton.png">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="res\textures\exitButtonSelected.png">
-      <Filter>Resource Files</Filter>
-    </Image>
     <Image Include="res\textures\exploreCavesButton.png">
       <Filter>Resource Files</Filter>
     </Image>
@@ -452,12 +449,6 @@
     <Image Include="res\textures\leftOn.png">
       <Filter>Resource Files</Filter>
     </Image>
-    <Image Include="res\textures\loadGameButton.png">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="res\textures\loadGameButtonSelected.png">
-      <Filter>Resource Files</Filter>
-    </Image>
     <Image Include="res\textures\magicMissile.png">
       <Filter>Resource Files</Filter>
     </Image>
@@ -477,12 +468,6 @@
       <Filter>Resource Files</Filter>
     </Image>
     <Image Include="res\textures\monkSelected.png">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="res\textures\newGameButton.png">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="res\textures\newGameButtonSelected.png">
       <Filter>Resource Files</Filter>
     </Image>
     <Image Include="res\textures\nextDayButton.png">
@@ -581,12 +566,6 @@
     <Image Include="res\textures\rightOn.png">
       <Filter>Resource Files</Filter>
     </Image>
-    <Image Include="res\textures\settingsButton.png">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="res\textures\settingsButtonSelected.png">
-      <Filter>Resource Files</Filter>
-    </Image>
     <Image Include="res\textures\smiteAnimation.png">
       <Filter>Resource Files</Filter>
     </Image>
@@ -633,6 +612,39 @@
       <Filter>Resource Files</Filter>
     </Image>
     <Image Include="res\textures\wizardHighlighted.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\textures\ArialBoldHighRes.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\textures\critAnimation.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\textures\endButtonSelected.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\textures\highResFont.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\textures\MainMenuButtons.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\textures\moreMissiles.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\textures\pauseSelected.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\textures\selectedTile.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\textures\SummonInfo.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\textures\tiles.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\textures\UpgradedInfo.png">
       <Filter>Resource Files</Filter>
     </Image>
   </ItemGroup>
@@ -875,6 +887,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\cards\CardInfo.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\engine\SpriteSheet.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

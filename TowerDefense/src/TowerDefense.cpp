@@ -17,6 +17,7 @@
 
 void Update();
 void Render();
+void LoadTextures();
 
 GLFWwindow* window;
 std::array<std::unique_ptr<TowerDefense::Scene>, 5> scenes;
@@ -81,6 +82,8 @@ bool TowerDefense::Init()
 
     //Set Mouse Input dimensions
     Input::SetScale(scale, hOffSet, vOffSet, 600, window);
+
+    LoadTextures();
 
     //Game Object Initialization
     scenes = {
@@ -197,4 +200,19 @@ int TowerDefense::GetDay()
 void TowerDefense::NextDay()
 {
     day++;
+}
+
+void LoadTextures()
+{
+    SpriteSheet mainMenuButtons("res/textures/MainMenuButtons.png", 200, 50);
+    Texture::LoadTexture("newGameButton",           mainMenuButtons.load(0, 0));
+    Texture::LoadTexture("newGameButtonSelected",   mainMenuButtons.load(1, 0));
+    Texture::LoadTexture("loadGameButton",          mainMenuButtons.load(0, 1));
+    Texture::LoadTexture("loadGameButtonSelected",  mainMenuButtons.load(1, 1));
+    Texture::LoadTexture("settingsButton",          mainMenuButtons.load(0, 2));
+    Texture::LoadTexture("settingsButtonSelected",  mainMenuButtons.load(1, 2));
+    Texture::LoadTexture("exitButton",              mainMenuButtons.load(0, 3));
+    Texture::LoadTexture("exitButtonSelected",      mainMenuButtons.load(1, 3));
+
+
 }

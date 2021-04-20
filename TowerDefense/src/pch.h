@@ -30,6 +30,7 @@
 //Engine
 #include "engine/Log.h"
 #include "engine/Texture.h"
+#include "engine/SpriteSheet.h"
 #include "engine/Image.h"
 #include "engine/Rectangle.h"
 #include "engine/Circle.h"

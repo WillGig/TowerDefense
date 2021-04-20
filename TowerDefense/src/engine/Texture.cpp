@@ -26,6 +26,12 @@ Texture::Texture(const std::string& path)
 		std::cout << "Failed to load texture " << path << std::endl;
 }
 
+Texture::Texture(unsigned int rendererID, int width, int height, int BPP)
+	:m_RendererID(rendererID), m_LocalBuffer(nullptr), m_Width(width), m_Height(height), m_BPP(BPP)
+{
+}
+
+
 Texture::~Texture()
 {
 	GLCall(glDeleteTextures(1, &m_RendererID));
@@ -58,6 +64,11 @@ std::shared_ptr<Texture> Texture::GetTexture(const std::string& name)
 void Texture::LoadTexture(const std::string& path)
 {
 	s_TextureCache->insert({ path,  std::make_shared<Texture>("res/textures/" + path + ".png") });
+}
+
+void Texture::LoadTexture(const std::string& path, std::shared_ptr<Texture> tex)
+{
+	s_TextureCache->insert({ path,  tex });
 }
 
 void Texture::FreeTextures()

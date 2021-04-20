@@ -205,6 +205,7 @@
     <ClCompile Include="src\core\AnimationEffect.cpp" />
     <ClCompile Include="src\engine\Circle.cpp" />
     <ClCompile Include="src\engine\Rectangle.cpp" />
+    <ClCompile Include="src\engine\SpriteSheet.cpp" />
     <ClCompile Include="src\math\Random.cpp" />
     <ClCompile Include="src\core\Player.cpp" />
     <ClCompile Include="src\scenes\Base.cpp" />
@@ -259,6 +260,14 @@
     <None Include="res\shaders\Text.shader" />
   </ItemGroup>
   <ItemGroup>
+    <Image Include="res\textures\ArialBoldHighRes.png" />
+    <Image Include="res\textures\critAnimation.png" />
+    <Image Include="res\textures\endButtonSelected.png" />
+    <Image Include="res\textures\highResFont.png" />
+    <Image Include="res\textures\MainMenuButtons.png" />
+    <Image Include="res\textures\moreMissiles.png" />
+    <Image Include="res\textures\pauseSelected.png" />
+    <Image Include="res\textures\selectedTile.png" />
     <Image Include="res\textures\speed1.png" />
     <Image Include="res\textures\speed1Selected.png" />
     <Image Include="res\textures\speed2.png" />
@@ -298,8 +307,6 @@
     <Image Include="res\textures\deckFull.png" />
     <Image Include="res\textures\endButton.png" />
     <Image Include="res\textures\endButtonOn.png" />
-    <Image Include="res\textures\exitButton.png" />
-    <Image Include="res\textures\exitButtonSelected.png" />
     <Image Include="res\textures\exploreCavesButton.png" />
     <Image Include="res\textures\exploreCavesButtonSelected.png" />
     <Image Include="res\textures\explosion.png" />
@@ -328,8 +335,6 @@
     <Image Include="res\textures\goTavernButtonSelected.png" />
     <Image Include="res\textures\left.png" />
     <Image Include="res\textures\leftOn.png" />
-    <Image Include="res\textures\loadGameButton.png" />
-    <Image Include="res\textures\loadGameButtonSelected.png" />
     <Image Include="res\textures\magicMissile.png" />
     <Image Include="res\textures\monk.png" />
     <Image Include="res\textures\monk2.png" />
@@ -337,8 +342,6 @@
     <Image Include="res\textures\monkCardUpgraded.png" />
     <Image Include="res\textures\monkHighlighted.png" />
     <Image Include="res\textures\monkSelected.png" />
-    <Image Include="res\textures\newGameButton.png" />
-    <Image Include="res\textures\newGameButtonSelected.png" />
     <Image Include="res\textures\nextDayButton.png" />
     <Image Include="res\textures\nextDayButtonSelected.png" />
     <Image Include="res\textures\orc.png" />
@@ -371,16 +374,17 @@
     <Image Include="res\textures\returnToCampButtonSelected.png" />
     <Image Include="res\textures\right.png" />
     <Image Include="res\textures\rightOn.png" />
-    <Image Include="res\textures\settingsButton.png" />
-    <Image Include="res\textures\settingsButtonSelected.png" />
     <Image Include="res\textures\smiteAnimation.png" />
     <Image Include="res\textures\smithArrow.png" />
     <Image Include="res\textures\smithButton.png" />
     <Image Include="res\textures\smithButtonSelected.png" />
     <Image Include="res\textures\startButton.png" />
     <Image Include="res\textures\startButtonSelected.png" />
+    <Image Include="res\textures\SummonInfo.png" />
     <Image Include="res\textures\testTexture.png" />
     <Image Include="res\textures\tile.png" />
+    <Image Include="res\textures\tiles.png" />
+    <Image Include="res\textures\UpgradedInfo.png" />
     <Image Include="res\textures\viewDeckButton.png" />
     <Image Include="res\textures\viewDeckButtonSelected.png" />
     <Image Include="res\textures\visitLibraryButton.png" />
@@ -428,6 +432,7 @@
     <ClInclude Include="src\core\AnimationEffect.h" />
     <ClInclude Include="src\engine\Circle.h" />
     <ClInclude Include="src\engine\Rectangle.h" />
+    <ClInclude Include="src\engine\SpriteSheet.h" />
     <ClInclude Include="src\math\Random.h" />
     <ClInclude Include="src\core\Player.h" />
     <ClInclude Include="src\scenes\Base.h" />

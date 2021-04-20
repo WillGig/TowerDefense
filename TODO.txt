@@ -1,6 +1,5 @@
 Current:
-	
-	add spritesheets (loading multiple textures from single image)
+	refactor textures into sprite sheet groups
 
 	reduce number of shaders used?
 

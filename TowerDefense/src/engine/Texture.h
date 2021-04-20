@@ -3,7 +3,11 @@
 class Texture
 {
 public:
+	//Use for normal texture loading from file
 	Texture(const std::string& path);
+
+	//Use for creating a texture from an already existing GLTexture
+	Texture(unsigned int rendererID, int width, int height, int BPP);
 	~Texture();
 
 	void Bind() const;
@@ -14,6 +18,7 @@ public:
 
 	static std::shared_ptr<Texture> GetTexture(const std::string& name);
 	static void LoadTexture(const std::string& path);
+	static void LoadTexture(const std::string& path, std::shared_ptr<Texture> tex);
 	static void FreeTextures();
 
 private:
