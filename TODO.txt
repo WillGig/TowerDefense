@@ -18,6 +18,7 @@ Current:
 		rest 		- heal by 20 percent of maxhp				- Done
 
 Soon:
+	Allow right clicking on smithing upgrades to show detailed versions of cards
 	design more enemies and possible combats for days 1-10
 	design auras and more cards
 	add more potential hero upgrades
