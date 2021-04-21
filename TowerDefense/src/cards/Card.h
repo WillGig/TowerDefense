@@ -1,5 +1,5 @@
 #pragma once
-#include "CardInfo.h"
+#include "InfoTile.h"
 
 namespace TowerDefense
 {
@@ -51,10 +51,10 @@ namespace TowerDefense
 		static float s_UncommonCardChance, s_RareCardChance;
 
 		//List of keywords that are shown when rendering the card info
-		std::unique_ptr<std::vector<std::shared_ptr<CardInfo>>> m_InfoCards;
+		std::unique_ptr<std::vector<std::shared_ptr<InfoTile>>> m_InfoCards;
 
 	protected:
-		void AddInfoCard(std::shared_ptr<CardInfo> cardInfo);
+		void AddInfoCard(std::shared_ptr<InfoTile> cardInfo);
 
 		int m_Cost;
 		bool m_Upgraded, m_OverBoard;

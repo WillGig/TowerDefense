@@ -1,6 +1,6 @@
 #pragma once
 #include "TowerCard.h"
-#include "CardInfo.h"
+#include "InfoTile.h"
 
 namespace TowerDefense
 {

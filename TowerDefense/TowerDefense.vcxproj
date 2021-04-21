@@ -283,7 +283,7 @@
     <Image Include="res\textures\viewDeckButtonSelected.png" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="src\cards\CardInfo.h" />
+    <ClInclude Include="src\cards\InfoTile.h" />
     <ClInclude Include="src\cards\quirks\JustLucky.h" />
     <ClInclude Include="src\cards\quirks\Veteran.h" />
     <ClInclude Include="src\core\Board.h" />

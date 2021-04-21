@@ -16,7 +16,7 @@ TowerDefense::Card::Card(std::string name, int cost, const std::string& image, c
 	m_Upgraded(false), m_OverBoard(false), m_Exhausts(false),
 	m_DetailedImage(std::make_unique<Image>(image, 400.0f, 300.0f, 220, 280, 0.0f)),
 	m_UpgradedImage(std::make_shared<Image>(upgradedImage, 0.0f, 0.0f, 110, 140, 0.0f)),
-	m_InfoCards(std::make_unique<std::vector<std::shared_ptr<CardInfo>>>())
+	m_InfoCards(std::make_unique<std::vector<std::shared_ptr<InfoTile>>>())
 {
 }
 
@@ -45,7 +45,7 @@ void TowerDefense::Card::Upgrade()
 	m_DetailedImage = std::make_unique<Image>(m_UpgradedImage->GetFile(), 400.0f, 300.0f, 220, 280, 0.0f);
 }
 
-void TowerDefense::Card::AddInfoCard(std::shared_ptr<CardInfo> cardInfo)
+void TowerDefense::Card::AddInfoCard(std::shared_ptr<InfoTile> cardInfo)
 {
 	if(m_InfoCards->size() > 2)
 		cardInfo->SetPosition(650.0f, 400.0f  - 100.0f*(m_InfoCards->size()-3));

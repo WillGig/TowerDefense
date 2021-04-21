@@ -550,7 +550,7 @@
     <ClInclude Include="src\cards\quirks\JustLucky.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\cards\CardInfo.h">
+    <ClInclude Include="src\cards\InfoTile.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\engine\SpriteSheet.h">

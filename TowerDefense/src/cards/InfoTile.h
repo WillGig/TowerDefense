@@ -3,10 +3,10 @@
 
 namespace TowerDefense
 {
-	class CardInfo
+	class InfoTile
 	{
 	public:
-		CardInfo(const std::string& tag, const std::string& image)
+		InfoTile(const std::string& tag, const std::string& image)
 		{
 			m_Tag = tag;
 			m_Image = std::make_unique<StaticImage>(0.0f, 0.0f, 220, 85, 0.0f, image);
@@ -21,19 +21,19 @@ namespace TowerDefense
 		std::unique_ptr<StaticImage> m_Image;
 	};
 
-	class SummonInfo : public CardInfo
+	class SummonInfo : public InfoTile
 	{
 	public:
 		SummonInfo()
-			:CardInfo("Summon", "summonInfo")
+			:InfoTile("Summon", "summonInfo")
 		{}
 	};
 
-	class UpgradedInfo : public CardInfo
+	class UpgradedInfo : public InfoTile
 	{
 	public:
 		UpgradedInfo()
-			:CardInfo("Upgraded", "upgradedInfo")
+			:InfoTile("Upgraded", "upgradedInfo")
 		{}
 	};
 }

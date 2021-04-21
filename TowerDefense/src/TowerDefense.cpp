@@ -327,7 +327,7 @@ void LoadTextures()
     Texture::LoadTexture("frostBall",               skillCards.load(2, 1));
     Texture::LoadTexture("frostBallUpgraded",       skillCards.load(3, 1));
 
-    SpriteSheet cardInfo("res/textures/CardInfo.png", 440, 170);
+    SpriteSheet cardInfo("res/textures/InfoTiles.png", 440, 170);
     Texture::LoadTexture("summonInfo", cardInfo.load(0, 0));
     Texture::LoadTexture("upgradedInfo", cardInfo.load(1, 0));
 
