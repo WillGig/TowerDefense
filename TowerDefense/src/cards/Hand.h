@@ -28,6 +28,8 @@ namespace TowerDefense
 
 		inline int GetSize() const { return m_Cards->size(); }
 
+		inline void SetSelectedCard(int selectedCard) { m_SelectedCard = selectedCard; }
+
 		inline int GetSelectedCard() const { return m_SelectedCard; }
 
 		inline bool ShowingCardInfo() const { return m_ShowingInfo; }
