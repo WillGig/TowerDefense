@@ -73,7 +73,7 @@ Text::Text(std::string msg, float x, float y, float size, float maxWidth)
 
 	m_Shader = std::make_unique<Shader>("res/shaders/Text.Shader");
 	m_Shader->Bind();
-	m_Texture = std::make_unique<Texture>("res/textures/ArialBoldHighRes.png");
+	m_Texture = Texture::GetTexture("fonts/ArialBold");
 	m_Shader->SetUniform1i("u_Texture", 0);
 }
 

@@ -248,112 +248,7 @@
     <None Include="res\shaders\Rectangle.shader" />
   </ItemGroup>
   <ItemGroup>
-    <Image Include="res\textures\font.png">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="res\textures\speed1.png">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="res\textures\speed1Selected.png">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="res\textures\speed2.png">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="res\textures\speed2Selected.png">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="res\textures\speed3.png">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="res\textures\speed3Selected.png">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="res\textures\acidExplosion.png">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="res\textures\alchemist.png">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="res\textures\alchemistCard.png">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="res\textures\alchemistCardUpgraded.png">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="res\textures\alchemistHighlighted.png">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="res\textures\archer.png">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="res\textures\archerCard.png">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="res\textures\archerCardUpgraded.png">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="res\textures\archerHighlighted.png">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="res\textures\arrow.png">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="res\textures\attackSpeedUpgrade.png">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="res\textures\bard.png">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="res\textures\bardCard.png">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="res\textures\bardCardUpgraded.png">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="res\textures\bardhighlighted.png">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="res\textures\beginCombatButton.png">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="res\textures\beginCombatButtonSelected.png">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="res\textures\BossRat.png">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="res\textures\BossRatSelected.png">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="res\textures\cancelButton.png">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="res\textures\cancelButtonSelected.png">
-      <Filter>Resource Files</Filter>
-    </Image>
     <Image Include="res\textures\CardBackgrounds.png">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="res\textures\cleric.png">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="res\textures\clericCard.png">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="res\textures\clericCardUpgraded.png">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="res\textures\clericHighlighted.png">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="res\textures\confirmButton.png">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="res\textures\confirmButtonSelected.png">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="res\textures\damageUpgrade.png">
       <Filter>Resource Files</Filter>
     </Image>
     <Image Include="res\textures\deckEmpty.png">
@@ -362,232 +257,19 @@
     <Image Include="res\textures\deckFull.png">
       <Filter>Resource Files</Filter>
     </Image>
-    <Image Include="res\textures\endButton.png">
-      <Filter>Resource Files</Filter>
-    </Image>
     <Image Include="res\textures\endButtonOn.png">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="res\textures\exploreCavesButton.png">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="res\textures\exploreCavesButtonSelected.png">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="res\textures\explosion.png">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="res\textures\fireball.png">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="res\textures\fireballUpgraded.png">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="res\textures\Focus.png">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="res\textures\FocusExhausts.png">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="res\textures\FocusExhaustsUpgraded.png">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="res\textures\focusUpgraded.png">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="res\textures\frostBall.png">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="res\textures\frostBallUpgraded.png">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="res\textures\frostExplosion.png">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="res\textures\giant.png">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="res\textures\giantCard.png">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="res\textures\giantCardUpgraded.png">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="res\textures\giantHighlighted.png">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="res\textures\giantRat.png">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="res\textures\giantRatSelected.png">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="res\textures\giantRock.png">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="res\textures\goblin.png">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="res\textures\goblinSelected.png">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="res\textures\goFishingButton.png">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="res\textures\goFishingButtonSelected.png">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="res\textures\goTavernButton.png">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="res\textures\goTavernButtonSelected.png">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="res\textures\left.png">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="res\textures\leftOn.png">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="res\textures\magicMissile.png">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="res\textures\monk.png">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="res\textures\monk2.png">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="res\textures\monkCard.png">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="res\textures\monkCardUpgraded.png">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="res\textures\monkHighlighted.png">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="res\textures\monkSelected.png">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="res\textures\nextDayButton.png">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="res\textures\nextDayButtonSelected.png">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="res\textures\orc.png">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="res\textures\orcSelected.png">
       <Filter>Resource Files</Filter>
     </Image>
     <Image Include="res\textures\outline.png">
       <Filter>Resource Files</Filter>
     </Image>
-    <Image Include="res\textures\paladin.png">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="res\textures\paladinCard.png">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="res\textures\paladinCardUpgraded.png">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="res\textures\paladinHighlighted.png">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="res\textures\panelAlchemist.png">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="res\textures\panelArcher.png">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="res\textures\panelBard.png">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="res\textures\panelCleric.png">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="res\textures\panelGiant.png">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="res\textures\panelMonk.png">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="res\textures\panelPaladin.png">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="res\textures\panelWizard.png">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="res\textures\path.png">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="res\textures\pause.png">
-      <Filter>Resource Files</Filter>
-    </Image>
     <Image Include="res\textures\pauseOn.png">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="res\textures\poisonBomb.png">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="res\textures\potOfGreed.png">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="res\textures\potOfGreedUpgraded.png">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="res\textures\rangeUpgrade.png">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="res\textures\rat.png">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="res\textures\ratSelected.png">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="res\textures\restButton.png">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="res\textures\restButtonSelected.png">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="res\textures\returnToCampButton.png">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="res\textures\returnToCampButtonSelected.png">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="res\textures\right.png">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="res\textures\rightOn.png">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="res\textures\smiteAnimation.png">
       <Filter>Resource Files</Filter>
     </Image>
     <Image Include="res\textures\smithArrow.png">
       <Filter>Resource Files</Filter>
     </Image>
-    <Image Include="res\textures\smithButton.png">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="res\textures\smithButtonSelected.png">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="res\textures\startButton.png">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="res\textures\startButtonSelected.png">
-      <Filter>Resource Files</Filter>
-    </Image>
     <Image Include="res\textures\testTexture.png">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="res\textures\tile.png">
       <Filter>Resource Files</Filter>
     </Image>
     <Image Include="res\textures\viewDeckButton.png">
@@ -596,55 +278,37 @@
     <Image Include="res\textures\viewDeckButtonSelected.png">
       <Filter>Resource Files</Filter>
     </Image>
-    <Image Include="res\textures\visitLibraryButton.png">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="res\textures\visitLibraryButtonSelected.png">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="res\textures\wizard.png">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="res\textures\wizardCard.png">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="res\textures\wizardCardUpgraded.png">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="res\textures\wizardHighlighted.png">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="res\textures\ArialBoldHighRes.png">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="res\textures\critAnimation.png">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="res\textures\endButtonSelected.png">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="res\textures\highResFont.png">
-      <Filter>Resource Files</Filter>
-    </Image>
     <Image Include="res\textures\MainMenuButtons.png">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="res\textures\moreMissiles.png">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="res\textures\pauseSelected.png">
       <Filter>Resource Files</Filter>
     </Image>
     <Image Include="res\textures\selectedTile.png">
       <Filter>Resource Files</Filter>
     </Image>
-    <Image Include="res\textures\SummonInfo.png">
-      <Filter>Resource Files</Filter>
-    </Image>
     <Image Include="res\textures\tiles.png">
       <Filter>Resource Files</Filter>
     </Image>
-    <Image Include="res\textures\UpgradedInfo.png">
+    <Image Include="res\textures\Arial.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\textures\ArialBold.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\textures\CombatButtons.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\textures\Enemies.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\textures\HeroUpgrades.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\textures\SkillCards.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\textures\TowerCards.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\textures\Towers.png">
       <Filter>Resource Files</Filter>
     </Image>
   </ItemGroup>

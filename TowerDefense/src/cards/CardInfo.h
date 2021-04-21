@@ -25,7 +25,7 @@ namespace TowerDefense
 	{
 	public:
 		SummonInfo()
-			:CardInfo("Summon", "SummonInfo")
+			:CardInfo("Summon", "summonInfo")
 		{}
 	};
 
@@ -33,7 +33,7 @@ namespace TowerDefense
 	{
 	public:
 		UpgradedInfo()
-			:CardInfo("Upgraded", "UpgradedInfo")
+			:CardInfo("Upgraded", "upgradedInfo")
 		{}
 	};
 }

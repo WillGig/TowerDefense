@@ -1,6 +1,4 @@
 Current:
-	refactor textures into sprite sheet groups
-
 	reduce number of shaders used?
 
 	Add images to heroes
@@ -8,7 +6,6 @@ Current:
 	Add info for towers
 	Add info for enemies
 
-	
 	Start on random events - explore the caves!	
 
 	Daily activities
