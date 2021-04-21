@@ -244,38 +244,38 @@ std::string TowerDefense::HeroCard::GenerateImage(Quirk::Gender gender, const st
 	if (gender == Quirk::Gender::MALE)
 	{
 		if (race == "Human")
-			return "testTexture";
+			return "humanMale";
 		else if (race == "Dwarf")
-			return "testTexture";
+			return "dwarfMale";
 		else if (race == "HighElf")
-			return "testTexture";
+			return "highElfMale";
 		else if (race == "WoodElf")
-			return "testTexture";
+			return "woodElfMale";
 		else if (race == "Gnome")
-			return "testTexture";
+			return "gnomeMale";
 		else if (race == "Orc")
-			return "testTexture";
+			return "orcMale";
 		else if (race == "Giant")
-			return "testTexture";
+			return "giantMale";
 		std::cout << "Error Generating Hero: Could not find Race " << race << std::endl;
 		return "";
 	}
 	else if (gender == Quirk::Gender::FEMALE)
 	{
 		if (race == "Human")
-			return "testTexture";
+			return "humanFemale";
 		else if (race == "Dwarf")
-			return "testTexture";
+			return "dwarfFemale";
 		else if (race == "HighElf")
-			return "testTexture";
+			return "highElfFemale";
 		else if (race == "WoodElf")
-			return "testTexture";
+			return "woodElfFemale";
 		else if (race == "Gnome")
-			return "testTexture";
+			return "gnomeFemale";
 		else if (race == "Orc")
-			return "testTexture";
+			return "orcFemale";
 		else if (race == "Giant")
-			return "testTexture";
+			return "giantFemale";
 		std::cout << "Error Generating Hero: Could not find Race " << race << std::endl;
 		return "";
 	}

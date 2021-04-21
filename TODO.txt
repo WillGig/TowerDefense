@@ -1,6 +1,4 @@
 Current:
-	Add images to heroes
-
 	Add info for towers
 	Add info for enemies
 
@@ -10,16 +8,17 @@ Current:
 		Explore Caves 	- Random event						- In progress
 		Visit Library 	- Choose a new card					- Done
 		Go Fishing	- Get a random relic/gold - minigame?			- 
+				- different fishing rods/tools?
 		Smith		- upgrade a card					- Done
 		Go to Tavern	- Choose from 3 recruits (refreshes every few days)	- Done
-		rest 		- heal by 20						- Done
+		rest 		- heal by 20 percent of maxhp				- Done
 
 Soon:
 	design more enemies and possible combats for days 1-10
 	design auras and more cards
 	add more potential hero upgrades
 		- range, damage, speed, more missiles, new spells, attacks stun/slow
-	relics
+	Artifacts
 		- glasses (cures nearsightedness)
 		- laser-sword (could be used to fix nearsightedness... maybe)
 		- Spy Glass - scout fights in advance
@@ -47,7 +46,7 @@ Long Term:
 	change image for enemies depending on the direction they face
 	Selling Towers?
 	Allow targeting priority for towers - select enemy?
-	Artifact/advisor system - token of the speechless, token of the armored, token of the broken, token of the vigilant
+	Artifact system - token of the speechless, token of the armored, token of the broken, token of the vigilant
 		
 
 Far away:
@@ -58,6 +57,16 @@ Far away:
 
 
 Notes:
+
+	Towers
+	- Archer	Fires arrows
+	- Wizard	Shoots magic missiles
+	- Alchemist	Throws poison bombs
+	- Bard		Boosts nearby attack speed
+	- Cleric	blesses nearby attacks (extra damage)
+	- Paladin	Smites enemies for a percent of their maxHP
+	- Giant		Throws boulders
+	- Monk		Generates focus each round
 
 	Races
 	- wood elf	+1 physical damage, -10% cast time
@@ -75,3 +84,9 @@ Notes:
 	- Battleready	costs 10% less				
 	- Explorer	draws a card when played	
 
+	Enemies
+	- Rat		fast but weak
+	- Giant Rat	slower and sturdier
+	- Boss Rat	very slow but with 100s of hp
+	- Goblin	fast and tough
+	- Orc		slow and extra tough

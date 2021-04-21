@@ -331,6 +331,22 @@ void LoadTextures()
     Texture::LoadTexture("summonInfo", cardInfo.load(0, 0));
     Texture::LoadTexture("upgradedInfo", cardInfo.load(1, 0));
 
+    SpriteSheet heroImages("res/textures/HeroImages.png", 440, 560);
+    Texture::LoadTexture("humanMale",       heroImages.load(0, 0));
+    Texture::LoadTexture("humanFemale",     heroImages.load(1, 0));
+    Texture::LoadTexture("dwarfMale",       heroImages.load(2, 0));
+    Texture::LoadTexture("dwarfFemale",     heroImages.load(3, 0));
+    Texture::LoadTexture("highElfMale",     heroImages.load(4, 0));
+    Texture::LoadTexture("highElfFemale",   heroImages.load(5, 0));
+    Texture::LoadTexture("woodElfMale",     heroImages.load(0, 1));
+    Texture::LoadTexture("woodElfFemale",   heroImages.load(1, 1));
+    Texture::LoadTexture("gnomeMale",       heroImages.load(2, 1));
+    Texture::LoadTexture("gnomeFemale",     heroImages.load(3, 1));
+    Texture::LoadTexture("OrcMale",         heroImages.load(4, 1));
+    Texture::LoadTexture("OrcFemale",       heroImages.load(5, 1));
+    Texture::LoadTexture("giantMale",       heroImages.load(0, 2));
+    Texture::LoadTexture("giantFemale",     heroImages.load(1, 2));
+
     SpriteSheet heroUpgrades("res/textures/HeroUpgrades.png", 440, 560);
     Texture::LoadTexture("damageUpgrade", heroUpgrades.load(0, 0));
     Texture::LoadTexture("rangeUpgrade", heroUpgrades.load(1, 0));

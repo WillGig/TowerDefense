@@ -114,7 +114,7 @@ void TowerDefense::Base::OnSwitch()
 	m_Health = std::make_unique<Text>(std::string("Health: ") + std::to_string(Player::Get().GetHealth()) + "/" + std::to_string(Player::Get().GetMaxHealth()), 700.0f, 575.0f, 10.0f, 0.0f);
 	m_Health->SetColor(1.0f, 1.0f, 1.0f, 1.0f);
 
-	m_RestText = std::make_unique<Text>("Rest to restore " + std::to_string(Player::Get().GetMaxHealth() / 10) + " health", 400.0f, 300.0f, 12.0f, 0.0f);
+	m_RestText = std::make_unique<Text>("Rest to restore " + std::to_string(Player::Get().GetMaxHealth() / 5) + " health", 400.0f, 300.0f, 12.0f, 0.0f);
 	m_RestText->SetPosition(400.0f, 300.0f, 0);
 	m_RestText->SetColor(1.0f, 1.0f, 1.0f, 1.0f);
 }
@@ -296,7 +296,7 @@ void TowerDefense::Base::UpdateRest()
 	m_Buttons[7]->Update();
 	if (m_Buttons[7]->IsClicked())
 	{
-		Player::Get().ChangeHealth(10);
+		Player::Get().ChangeHealth(Player::Get().GetMaxHealth()/5);
 		m_Health = std::make_unique<Text>(std::string("Health: ") + std::to_string(Player::Get().GetHealth()) + "/" + std::to_string(Player::Get().GetMaxHealth()), 700.0f, 575.0f, 10.0f, 0.0f);
 		m_Health->SetColor(1.0f, 1.0f, 1.0f, 1.0f);
 		m_ActivityDone = true;
