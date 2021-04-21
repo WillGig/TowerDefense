@@ -1,5 +1,5 @@
 Current:
-	Do something about Hero names overlapping with cost	
+	Add outline or whitestroke to hero names	
 
 	Add info tiles for Hero Quirks
 	

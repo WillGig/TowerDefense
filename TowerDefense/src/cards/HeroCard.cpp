@@ -185,7 +185,7 @@ std::shared_ptr<TowerDefense::HeroCard> TowerDefense::HeroCard::GenerateHero()
 
 std::string TowerDefense::HeroCard::GenerateName(Quirk::Gender gender)
 {
-	static std::array<std::string, 17> maleNames = {
+	static std::array<std::string, 20> maleNames = {
 		"Philius",
 		"Lionel",
 		"Ahab",
@@ -193,24 +193,27 @@ std::string TowerDefense::HeroCard::GenerateName(Quirk::Gender gender)
 		"Mac",
 		"Richard",
 		"Samuel",
-		"Reginald",
-		"Averbakh",
-		"Donatello",
+		"Gerald",
+		"Bach",
+		"Donny",
 		"Harold",
 		"Elmo",
 		"Douglas",
 		"Togrin",
+		"Stheno",
+		"Zirez",
+		"Atty",
 		"Lance",
-		"Ol' Micky",
+		"Micky",
 		"Thorley"
 	};
 
 	static std::array<std::string, 16> femaleNames{
-		"Gertrude",
+		"Gerd",
 		"Hannah",
 		"Millie",
 		"Susan",
-		"Jane-a-lin",
+		"Janice",
 		"Bertha",
 		"Lilly",
 		"Penelope",
@@ -220,8 +223,8 @@ std::string TowerDefense::HeroCard::GenerateName(Quirk::Gender gender)
 		"Lydia",
 		"Thorley",
 		"Qiqi",
-		"Alexandria",
-		"Persephone"
+		"Alex",
+		"Pixie"
 	};
 
 	if (gender == Quirk::Gender::MALE)
