@@ -1,6 +1,4 @@
 Current:
-	reduce number of shaders used?
-
 	Add images to heroes
 
 	Add info for towers

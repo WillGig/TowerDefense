@@ -71,7 +71,7 @@ Text::Text(std::string msg, float x, float y, float size, float maxWidth)
 	m_VAO->AddBuffer(*m_VertexBuffer, layout);
 	m_IndexBuffer = std::make_unique<IndexBuffer>(&indices[0], msg.length() * 6);
 
-	m_Shader = std::make_unique<Shader>("res/shaders/Text.Shader");
+	m_Shader = Shader::GetShader("res/shaders/Text.Shader");
 	m_Shader->Bind();
 	m_Texture = Texture::GetTexture("fonts/ArialBold");
 	m_Shader->SetUniform1i("u_Texture", 0);

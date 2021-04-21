@@ -1,5 +1,7 @@
 #include "pch.h"
 
+std::unique_ptr<std::unordered_map<std::string, std::shared_ptr<Shader>>> Shader::s_ShaderCache = std::make_unique<std::unordered_map<std::string, std::shared_ptr<Shader>>>();
+
 Shader::Shader(const std::string& filepath)
 	: m_FilePath(filepath), m_RendererID(0)
 {
@@ -135,4 +137,19 @@ int Shader::GetUniformLocation(const std::string& name)
         std::cout << "Warning: Uniform '" << name << "' doesn't exist!" << std::endl;
     m_UniformLocationCache[name] = location;
     return location;
+}
+
+std::shared_ptr<Shader> Shader::GetShader(const std::string& file)
+{
+    if (s_ShaderCache->find(file) != s_ShaderCache->end())
+        return s_ShaderCache->at(file);
+
+    std::shared_ptr<Shader> s = std::make_shared<Shader>(file);
+    s_ShaderCache->insert({file, s});
+    return s;
+}
+
+void Shader::DeleteShaders()
+{
+    s_ShaderCache.reset();
 }

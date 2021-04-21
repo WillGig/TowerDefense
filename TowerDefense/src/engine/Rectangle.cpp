@@ -25,7 +25,7 @@ Rectangle::Rectangle(float x, float y, float width, float height)
 	m_VAO->AddBuffer(*m_VertexBuffer, layout);
 	m_IndexBuffer = std::make_unique<IndexBuffer>(indices, 6);
 
-	m_Shader = std::make_unique<Shader>("res/shaders/Rectangle.Shader");
+	m_Shader = Shader::GetShader("res/shaders/Rectangle.Shader");
 	m_Shader->Bind();
 }
 

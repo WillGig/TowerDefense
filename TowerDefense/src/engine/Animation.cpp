@@ -22,7 +22,7 @@ Animation::Animation(const std::string& file, float x, float y, int width, int h
 	m_VAO->AddBuffer(*m_VertexBuffer, layout);
 	m_IndexBuffer = std::make_unique<IndexBuffer>(indices, 6);
 
-	m_Shader = std::make_unique<Shader>("res/shaders/Texture.Shader");
+	m_Shader = Shader::GetShader("res/shaders/Texture.Shader");
 	m_Shader->Bind();
 	m_Texture = Texture::GetTexture(file);
 	m_Shader->SetUniform1i("u_Texture", 0);

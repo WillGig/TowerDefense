@@ -14,6 +14,8 @@ private:
 	unsigned int m_RendererID;
 	std::unordered_map<std::string, int> m_UniformLocationCache;
 public:
+	//Note: Shader should not be created directly. Instead use the GetShader function, which will compile and create the shader
+	//if it has yet been used
 	Shader(const std::string& filepath);
 	~Shader();
 
@@ -25,6 +27,10 @@ public:
 	void SetUniform4f(const std::string& name, float v0, float v1, float v2, float v3);
 	void SetUniformMat4f(const std::string& name, const Mat4f& matrix);
 
+	static std::shared_ptr<Shader> GetShader(const std::string& file);
+
+	static void DeleteShaders();
+
 private:
 	//Loads in vertex and fragment shader from file
 	ShaderProgramSource ParseShader(const std::string& filepath);
@@ -34,4 +40,6 @@ private:
 	unsigned int CreateShader(const std::string& vertexShader, const std::string& fileShader);
 
 	int GetUniformLocation(const std::string& name);
+
+	static std::unique_ptr<std::unordered_map<std::string, std::shared_ptr<Shader>>> s_ShaderCache;
 };

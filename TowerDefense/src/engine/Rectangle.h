@@ -15,7 +15,7 @@ private:
 	std::unique_ptr<VertexArray> m_VAO;
 	std::unique_ptr<VertexBuffer> m_VertexBuffer;
 	std::unique_ptr<IndexBuffer> m_IndexBuffer;
-	std::unique_ptr<Shader> m_Shader;
+	std::shared_ptr<Shader> m_Shader;
 
 	//Color using floats from 0.0f to 1.0f in rgba format
 	Vec4 m_Color;

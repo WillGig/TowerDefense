@@ -57,7 +57,7 @@ TowerDefense::Board::Board(int width, int height)
     m_VAO->AddBuffer(*m_VertexBuffer, layout);
     m_IndexBuffer = std::make_unique<IndexBuffer>(&indices[0], width * height * 6);
 
-    m_Shader = std::make_unique<Shader>("res/shaders/Texture.Shader");
+    m_Shader = Shader::GetShader("res/shaders/Texture.Shader");
     m_Shader->Bind();
     m_Texture = Texture::GetTexture("tiles");
     m_Shader->SetUniform1i("u_Texture", 0);

@@ -67,7 +67,7 @@ namespace TowerDefense
 		std::unique_ptr<VertexArray> m_VAO;
 		std::unique_ptr<VertexBuffer> m_VertexBuffer;
 		std::unique_ptr<IndexBuffer> m_IndexBuffer;
-		std::unique_ptr<Shader> m_Shader;
+		std::shared_ptr<Shader> m_Shader;
 		std::shared_ptr<Texture> m_Texture;
 		std::unique_ptr<float[]> m_Positions;
 

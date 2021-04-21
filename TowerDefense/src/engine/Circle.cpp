@@ -26,7 +26,7 @@ Circle::Circle(float x, float y, float radius)
 	m_VAO->AddBuffer(*m_VertexBuffer, layout);
 	m_IndexBuffer = std::make_unique<IndexBuffer>(indices, 6);
 
-	m_Shader = std::make_unique<Shader>("res/shaders/Circle.Shader");
+	m_Shader = Shader::GetShader("res/shaders/Circle.Shader");
 	m_Shader->Bind();
 }
 
