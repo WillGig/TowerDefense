@@ -328,8 +328,20 @@ void LoadTextures()
     Texture::LoadTexture("frostBallUpgraded",       skillCards.load(3, 1));
 
     SpriteSheet cardInfo("res/textures/InfoTiles.png", 440, 170);
-    Texture::LoadTexture("summonInfo", cardInfo.load(0, 0));
-    Texture::LoadTexture("upgradedInfo", cardInfo.load(1, 0));
+    Texture::LoadTexture("SummonInfo",      cardInfo.load(0, 0));
+    Texture::LoadTexture("UpgradedInfo",    cardInfo.load(1, 0));
+    Texture::LoadTexture("Human",           cardInfo.load(2, 0));
+    Texture::LoadTexture("Dwarf",           cardInfo.load(3, 0));
+    Texture::LoadTexture("High Elf",        cardInfo.load(0, 1));
+    Texture::LoadTexture("Wood Elf",        cardInfo.load(1, 1));
+    Texture::LoadTexture("Gnome",           cardInfo.load(2, 1));
+    Texture::LoadTexture("Orc",             cardInfo.load(3, 1));
+    Texture::LoadTexture("Giant",           cardInfo.load(0, 2));
+    Texture::LoadTexture("Explorer",        cardInfo.load(1, 2));
+    Texture::LoadTexture("Battle Ready",    cardInfo.load(2, 2));
+    Texture::LoadTexture("Veteran",         cardInfo.load(3, 2));
+    Texture::LoadTexture("Just Lucky",           cardInfo.load(0, 3));
+    Texture::LoadTexture("Nearsighted",     cardInfo.load(1, 3));
 
     SpriteSheet heroImages("res/textures/HeroImages.png", 440, 560);
     Texture::LoadTexture("humanMale",       heroImages.load(0, 0));

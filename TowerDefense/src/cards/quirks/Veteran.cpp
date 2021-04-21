@@ -13,11 +13,6 @@ void TowerDefense::Quirk::Veteran::Apply(TowerDefense::HeroCard& h)
 	h.Upgrade();
 }
 
-std::string TowerDefense::Quirk::Veteran::GetText() const
-{
-	return "veteran";
-}
-
 std::shared_ptr<TowerDefense::Quirk::Quirk> TowerDefense::Quirk::Veteran::Clone()
 {
 	return std::make_shared<Veteran>();

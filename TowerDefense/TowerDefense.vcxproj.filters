@@ -269,9 +269,6 @@
     <Image Include="res\textures\smithArrow.png">
       <Filter>Resource Files</Filter>
     </Image>
-    <Image Include="res\textures\testTexture.png">
-      <Filter>Resource Files</Filter>
-    </Image>
     <Image Include="res\textures\viewDeckButton.png">
       <Filter>Resource Files</Filter>
     </Image>
@@ -309,6 +306,18 @@
       <Filter>Resource Files</Filter>
     </Image>
     <Image Include="res\textures\Towers.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\textures\AnimationEffects.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\textures\BaseButtons.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\textures\HeroImages.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\textures\InfoTiles.png">
       <Filter>Resource Files</Filter>
     </Image>
   </ItemGroup>

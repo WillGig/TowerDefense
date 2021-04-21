@@ -2,7 +2,7 @@
 #include "WoodElf.h"
 
 TowerDefense::Quirk::WoodElf::WoodElf()
-	:Quirk("WoodElf")
+	:Quirk("Wood Elf")
 {
 
 }

@@ -1,8 +1,6 @@
 Current:
 	Add outline or whitestroke to hero names	
 
-	Add info tiles for Hero Quirks
-	
 	Add info for towers
 	Add info for enemies
 

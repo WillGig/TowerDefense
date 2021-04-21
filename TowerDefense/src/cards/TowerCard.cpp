@@ -93,5 +93,5 @@ bool TowerDefense::TowerCard::Play()
 void TowerDefense::TowerCard::Upgrade()
 {
 	Card::Upgrade();
-	AddInfoCard(std::make_shared<UpgradedInfo>());
+	AddInfoCard(std::make_shared<InfoTile>("UpgradedInfo"));
 }

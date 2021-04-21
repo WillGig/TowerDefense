@@ -2,7 +2,7 @@
 #include "HighElf.h"
 
 TowerDefense::Quirk::HighElf::HighElf()
-	:Quirk("HighElf")
+	:Quirk("High Elf")
 {
 
 }

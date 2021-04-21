@@ -26,6 +26,7 @@ TowerDefense::HeroCard::HeroCard(const std::string& name, const std::string& tex
 	{
 		for (unsigned int i = 0; i < m_Quirks->size(); i++) {
 			m_Quirks->at(i)->Apply(*this);
+			AddInfoCard(std::make_shared<InfoTile>(m_Quirks->at(i)->GetName()));
 		}
 	}
 
@@ -244,7 +245,7 @@ std::string TowerDefense::HeroCard::GenerateText(std::shared_ptr<std::vector<std
 	text += "Race:  " + race + "\n";
 
 	for (unsigned int i = 1; i < quirks->size(); i++)
-		text += quirks->at(i)->GetText() + "\n";
+		text += quirks->at(i)->GetName() + "\n";
 
 	return text;
 }
@@ -258,9 +259,9 @@ std::string TowerDefense::HeroCard::GenerateImage(Quirk::Gender gender, const st
 			return "humanMale";
 		else if (race == "Dwarf")
 			return "dwarfMale";
-		else if (race == "HighElf")
+		else if (race == "High Elf")
 			return "highElfMale";
-		else if (race == "WoodElf")
+		else if (race == "Wood Elf")
 			return "woodElfMale";
 		else if (race == "Gnome")
 			return "gnomeMale";
@@ -277,9 +278,9 @@ std::string TowerDefense::HeroCard::GenerateImage(Quirk::Gender gender, const st
 			return "humanFemale";
 		else if (race == "Dwarf")
 			return "dwarfFemale";
-		else if (race == "HighElf")
+		else if (race == "High Elf")
 			return "highElfFemale";
-		else if (race == "WoodElf")
+		else if (race == "Wood Elf")
 			return "woodElfFemale";
 		else if (race == "Gnome")
 			return "gnomeFemale";

@@ -13,11 +13,6 @@ void TowerDefense::Quirk::Explorer::OnPlay()
 	Player::Get().GetHand()->DrawCard();
 }
 
-std::string TowerDefense::Quirk::Explorer::GetText() const
-{
-	return "adventurous";
-}
-
 std::shared_ptr<TowerDefense::Quirk::Quirk> TowerDefense::Quirk::Explorer::Clone()
 {
 	return std::make_shared<Explorer>();

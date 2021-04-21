@@ -10,7 +10,6 @@ namespace TowerDefense
 		public:
 			Explorer();
 			void OnPlay() override;
-			std::string GetText() const override;
 			std::shared_ptr<Quirk> Clone() override;
 		};
 	}

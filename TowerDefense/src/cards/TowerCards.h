@@ -10,7 +10,7 @@ namespace TowerDefense
 		ArcherCard()
 			:TowerCard("Archer", 50, "archerCard", "archerCardUpgraded")
 		{
-			AddInfoCard(std::make_shared<SummonInfo>());
+			AddInfoCard(std::make_shared<InfoTile>("SummonInfo"));
 		}
 		std::shared_ptr<Card> Clone() override;
 
@@ -24,7 +24,7 @@ namespace TowerDefense
 		WizardCard()
 			:TowerCard("Wizard", 100, "wizardCard", "wizardCardUpgraded")
 		{
-			AddInfoCard(std::make_shared<SummonInfo>());
+			AddInfoCard(std::make_shared<InfoTile>("SummonInfo"));
 		}
 		std::shared_ptr<Card> Clone() override;
 
@@ -38,7 +38,7 @@ namespace TowerDefense
 		GiantCard()
 			:TowerCard("Giant", 300, "giantCard", "giantCardUpgraded")
 		{
-			AddInfoCard(std::make_shared<SummonInfo>());
+			AddInfoCard(std::make_shared<InfoTile>("summonInfo"));
 		}
 		std::shared_ptr<Card> Clone() override;
 
@@ -52,7 +52,7 @@ namespace TowerDefense
 		AlchemistCard()
 			:TowerCard("Alchemist", 100, "alchemistCard", "alchemistCardUpgraded")
 		{
-			AddInfoCard(std::make_shared<SummonInfo>());
+			AddInfoCard(std::make_shared<InfoTile>("summonInfo"));
 		}
 		std::shared_ptr<Card> Clone() override;
 
@@ -66,7 +66,7 @@ namespace TowerDefense
 		BardCard()
 			:TowerCard("Bard", 100, "bardCard", "bardCardUpgraded")
 		{
-			AddInfoCard(std::make_shared<SummonInfo>());
+			AddInfoCard(std::make_shared<InfoTile>("summonInfo"));
 		}
 		std::shared_ptr<Card> Clone() override;
 
@@ -80,7 +80,7 @@ namespace TowerDefense
 		ClericCard()
 			:TowerCard("Cleric", 100, "clericCard", "clericCardUpgraded")
 		{
-			AddInfoCard(std::make_shared<SummonInfo>());
+			AddInfoCard(std::make_shared<InfoTile>("summonInfo"));
 		}
 		std::shared_ptr<Card> Clone() override;
 
@@ -94,7 +94,7 @@ namespace TowerDefense
 		PaladinCard()
 			:TowerCard("Paladin", 100, "paladinCard", "paladinCardUpgraded")
 		{
-			AddInfoCard(std::make_shared<SummonInfo>());
+			AddInfoCard(std::make_shared<InfoTile>("summonInfo"));
 		}
 		std::shared_ptr<Card> Clone() override;
 
@@ -108,7 +108,7 @@ namespace TowerDefense
 		MonkCard()
 			:TowerCard("Monk", 100, "monkCard", "monkCardUpgraded")
 		{
-			AddInfoCard(std::make_shared<SummonInfo>());
+			AddInfoCard(std::make_shared<InfoTile>("summonInfo"));
 		}
 		std::shared_ptr<Card> Clone() override;
 
