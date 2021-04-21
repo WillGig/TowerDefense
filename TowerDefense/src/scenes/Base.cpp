@@ -146,11 +146,11 @@ void TowerDefense::Base::RenderSmithing()
 void TowerDefense::Base::RenderLibrary()
 {
 	m_Fade->Render();
-	m_CardChoice->Render();
 	m_Buttons[8]->Render();
 	m_Buttons[9]->Render();
 	if (m_CardChoice->GetSelectedCard())
 		m_Buttons[7]->Render();
+	m_CardChoice->Render();
 	if (Player::Get().GetDeck()->IsShowing())
 	{
 		Player::Get().GetDeck()->RenderCards();
@@ -162,11 +162,11 @@ void TowerDefense::Base::RenderLibrary()
 void TowerDefense::Base::RenderTavern()
 {
 	m_Fade->Render();
-	m_TavernChoice->Render();
 	m_Buttons[8]->Render();
 	m_Buttons[9]->Render();
 	if (m_TavernChoice->GetSelectedCard())
 		m_Buttons[7]->Render();
+	m_TavernChoice->Render();
 	if (Player::Get().GetDeck()->IsShowing())
 	{
 		Player::Get().GetDeck()->RenderCards();
@@ -240,7 +240,9 @@ void TowerDefense::Base::UpdateSmithing()
 void TowerDefense::Base::UpdateLibrary()
 {
 	Player& player = Player::Get();
-	if (!player.GetDeck()->GetSelectedCard())
+	bool showingInfo = m_CardChoice && m_CardChoice->ShowingInfo();
+
+	if (!player.GetDeck()->GetSelectedCard() && !showingInfo)
 	{
 		m_Buttons[9]->Update();
 		if (m_Buttons[9]->IsClicked())
@@ -251,8 +253,7 @@ void TowerDefense::Base::UpdateLibrary()
 		player.GetDeck()->Update();
 	else
 	{
-		m_CardChoice->Update();
-		if (m_CardChoice->GetSelectedCard())
+		if (m_CardChoice->GetSelectedCard() && !showingInfo)
 		{
 			m_Buttons[7]->Update();
 			if (m_Buttons[7]->IsClicked())
@@ -263,16 +264,23 @@ void TowerDefense::Base::UpdateLibrary()
 				m_CardChoice.reset();
 			}
 		}
-		m_Buttons[8]->Update();
-		if (m_Buttons[8]->IsClicked())
-			m_SubMenu = SubMenu::NONE;
+		if (!showingInfo)
+		{
+			m_Buttons[8]->Update();
+			if (m_Buttons[8]->IsClicked())
+				m_SubMenu = SubMenu::NONE;
+		}
+		if(m_CardChoice)
+			m_CardChoice->Update();
 	}
 }
 
 void TowerDefense::Base::UpdateTavern()
 {
 	Player& player = Player::Get();
-	if (!player.GetDeck()->GetSelectedCard())
+	bool showingInfo = m_TavernChoice && m_TavernChoice->ShowingInfo();
+
+	if (!player.GetDeck()->GetSelectedCard() && !showingInfo)
 	{
 		m_Buttons[9]->Update();
 		if (m_Buttons[9]->IsClicked())
@@ -283,8 +291,7 @@ void TowerDefense::Base::UpdateTavern()
 		player.GetDeck()->Update();
 	else
 	{
-		m_TavernChoice->Update();
-		if (m_TavernChoice->GetSelectedCard())
+		if (m_TavernChoice->GetSelectedCard() && !showingInfo)
 		{
 			m_Buttons[7]->Update();
 			if (m_Buttons[7]->IsClicked())
@@ -295,9 +302,14 @@ void TowerDefense::Base::UpdateTavern()
 				m_TavernChoice->RemoveSelectedCard();
 			}
 		}
-		m_Buttons[8]->Update();
-		if (m_Buttons[8]->IsClicked())
-			m_SubMenu = SubMenu::NONE;
+		if (!showingInfo)
+		{
+			m_Buttons[8]->Update();
+			if (m_Buttons[8]->IsClicked())
+				m_SubMenu = SubMenu::NONE;
+		}
+		if(m_TavernChoice)
+			m_TavernChoice->Update();
 	}
 }
 

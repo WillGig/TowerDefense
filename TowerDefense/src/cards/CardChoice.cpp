@@ -3,9 +3,12 @@
 
 //Chooses random cards and arranges them evenly in the center of the screen
 TowerDefense::CardChoice::CardChoice(int numCards, int generationDay)
-	:m_SelectedCard(-1), m_GenerationDay(generationDay), m_Cards(std::make_shared<std::vector<std::shared_ptr<Card>>>()), 
-	m_Outline(std::make_unique<StaticImage>(0.0f, 0.0f, 116, 146, 0.0f, "outline"))
+	:m_SelectedCard(-1), m_InfoCard(-1), m_GenerationDay(generationDay),
+	m_Cards(std::make_shared<std::vector<std::shared_ptr<Card>>>()), 
+	m_Outline(std::make_unique<StaticImage>(0.0f, 0.0f, 116, 146, 0.0f, "outline")),
+	m_Fade(std::make_unique<Rectangle>(400.0f, 300.0f, 800.0f, 600.0f))
 {
+	m_Fade->SetColor(0.0f, 0.0f, 0.0f, 0.9f);
 	for (int i = 0; i < numCards; i++)
 	{
 		std::shared_ptr<Card> c = PickACard();
@@ -17,8 +20,11 @@ TowerDefense::CardChoice::CardChoice(int numCards, int generationDay)
 
 //Uses specific card list and arranges them evenly in the center of the screen
 TowerDefense::CardChoice::CardChoice(std::shared_ptr<std::vector<std::shared_ptr<Card>>> cards, int generationDay)
-	:m_SelectedCard(-1), m_GenerationDay(generationDay), m_Cards(cards), m_Outline(std::make_unique<StaticImage>(0.0f, 0.0f, 116, 146, 0.0f, "outline"))
+	:m_SelectedCard(-1), m_InfoCard(-1), m_GenerationDay(generationDay), m_Cards(cards), 
+	m_Outline(std::make_unique<StaticImage>(0.0f, 0.0f, 116, 146, 0.0f, "outline")),
+	m_Fade(std::make_unique<Rectangle>(400.0f, 300.0f, 800.0f, 600.0f))
 {
+	m_Fade->SetColor(0.0f, 0.0f, 0.0f, 0.9f);
 	for (int i = 0; i < (int)cards->size(); i++)
 	{
 		m_Cards->at(i)->SetX(400.0f + (i - ((float)cards->size() - 1.0f) / 2.0f) * 140);
@@ -32,21 +38,34 @@ void TowerDefense::CardChoice::Update()
 	{
 		if (m_Cards->at(i)->Contains(Input::GetMouseX(), Input::GetMouseY()))
 		{
-			if (Input::GetLeftMouseClickedAndSetFalse())
+			if (m_InfoCard == -1 && Input::GetLeftMouseClickedAndSetFalse())
 			{
 				m_SelectedCard = i;
 				m_Outline->SetX(m_Cards->at(i)->GetX());
 				m_Outline->SetY(m_Cards->at(i)->GetY());
 			}
+			else if (Input::GetRightMouseClickedAndSetFalse())
+			{
+				m_InfoCard = i;
+			}
 		}
 	}
+
+	if (Input::GetLeftMouseClickedAndSetFalse() || Input::GetRightMouseClickedAndSetFalse())
+		m_InfoCard = -1;
 }
 
 void TowerDefense::CardChoice::Render()
 {
 	for (unsigned int i = 0; i < m_Cards->size(); i++)
 		m_Cards->at(i)->Render();
-	if (m_SelectedCard != -1)
+
+	if (m_InfoCard != -1)
+	{
+		m_Fade->Render();
+		m_Cards->at(m_InfoCard)->RenderCardDetails();
+	}
+	else if (m_SelectedCard != -1)
 		m_Outline->Render();
 }
 

@@ -1,5 +1,8 @@
 Current:
+	Do something about Hero names overlapping with cost	
+
 	Add info tiles for Hero Quirks
+	
 	Add info for towers
 	Add info for enemies
 
