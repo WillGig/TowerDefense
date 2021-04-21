@@ -1,4 +1,7 @@
 Current:
+	fix bug: getting stuck when attempting to look at deck while viewing library and tavern choice
+
+	Add cost information to herocards
 	Add info for towers
 	Add info for enemies
 

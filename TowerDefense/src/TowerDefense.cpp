@@ -342,8 +342,8 @@ void LoadTextures()
     Texture::LoadTexture("woodElfFemale",   heroImages.load(1, 1));
     Texture::LoadTexture("gnomeMale",       heroImages.load(2, 1));
     Texture::LoadTexture("gnomeFemale",     heroImages.load(3, 1));
-    Texture::LoadTexture("OrcMale",         heroImages.load(4, 1));
-    Texture::LoadTexture("OrcFemale",       heroImages.load(5, 1));
+    Texture::LoadTexture("orcMale",         heroImages.load(4, 1));
+    Texture::LoadTexture("orcFemale",       heroImages.load(5, 1));
     Texture::LoadTexture("giantMale",       heroImages.load(0, 2));
     Texture::LoadTexture("giantFemale",     heroImages.load(1, 2));
 

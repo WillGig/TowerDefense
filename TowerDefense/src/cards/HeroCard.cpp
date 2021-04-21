@@ -13,7 +13,7 @@ TowerDefense::HeroCard::HeroCard(const std::string& name, const std::string& tex
 	:TowerCard(name, cost, image, image), m_Level(1), m_CardText(text), m_Tower(tower), m_Quirks(quirks),
 	m_NameText(std::make_unique<Text>(name, 0.0f, 0.0f, 10.0f, (float)m_Width)),
 	m_BodyText(std::make_unique<Text>(text, 0.0f, 0.0f, 6.0f, (float)m_Width)),
-	m_DetailedNameText(std::make_unique<Text>(name, 400.0f, 410.0f, 20.0f, (float)m_Width*2)),
+	m_DetailedNameText(std::make_unique<Text>(name, 400.0f, 417.0f, 20.0f, (float)m_Width*2)),
 	m_DetailedBodyText(std::make_unique<Text>(text, 400.0f, 270.0f, 12.0f, (float)m_Width*2))
 {
 	m_Exhausts = true;
@@ -29,9 +29,14 @@ TowerDefense::HeroCard::HeroCard(const std::string& name, const std::string& tex
 		}
 	}
 
+	m_CostText = std::make_unique<Text>(std::to_string(m_Cost), 0.0f, 0.0f, 12.0f, (float)m_Width);
+	m_DetailedCostText = std::make_unique<Text>(std::to_string(m_Cost), 320.0f, 412.0f, 24.0f, (float)m_Width);
+
 	m_NameText->SetColor(1.0f, 1.0f, 1.0f, 1.0f);
+	m_CostText->SetColor(1.0f, 1.0f, 1.0f, 1.0f);
 	m_BodyText->SetColor(1.0f, 1.0f, 1.0f, 1.0f);
 	m_DetailedNameText->SetColor(1.0f, 1.0f, 1.0f, 1.0f);
+	m_DetailedCostText->SetColor(1.0f, 1.0f, 1.0f, 1.0f);
 	m_DetailedBodyText->SetColor(1.0f, 1.0f, 1.0f, 1.0f);
 }
 
@@ -41,6 +46,7 @@ void TowerDefense::HeroCard::Render()
 	if (!m_OverBoard)
 	{
 		m_NameText->Render();
+		m_CostText->Render();
 		m_BodyText->Render();
 	}
 }
@@ -49,6 +55,7 @@ void TowerDefense::HeroCard::RenderCardDetails()
 {
 	Card::RenderCardDetails();
 	m_DetailedNameText->Render();
+	m_DetailedCostText->Render();
 	m_DetailedBodyText->Render();
 }
 
@@ -75,38 +82,39 @@ bool TowerDefense::HeroCard::Play()
 void TowerDefense::HeroCard::SetX(float x)
 {
 	Entity::SetX(x);
-	float xOff = 63.0f * -sin(m_Rotation * PI / 180.0f);
-	float yOff = 63.0f * cos(m_Rotation * PI / 180.0f);
-	m_NameText->SetPosition(m_X + xOff, m_Y + yOff, 0.0f);
-
-	xOff = -15.0f * -sin(m_Rotation * PI / 180.0f);
-	yOff = -15.0f * cos(m_Rotation * PI / 180.0f);
-	m_BodyText->SetPosition(m_X + xOff, m_Y + yOff, 0.0f);
+	UpdateTextPosition();
 }
 
 void TowerDefense::HeroCard::SetY(float y)
 {
 	Entity::SetY(y);
-	float xOff = 63.0f * -sin(m_Rotation * PI / 180.0f);
-	float yOff = 63.0f * cos(m_Rotation * PI / 180.0f);
-	m_NameText->SetPosition(m_X + xOff, m_Y + yOff, 0.0f);
-
-	xOff = -15.0f * -sin(m_Rotation * PI / 180.0f);
-	yOff = -15.0f * cos(m_Rotation * PI / 180.0f);
-	m_BodyText->SetPosition(m_X + xOff, m_Y + yOff, 0.0f);
+	UpdateTextPosition();
 }
 
 void TowerDefense::HeroCard::SetRotation(float rotation)
 {
 	Entity::SetRotation(rotation);
+	UpdateTextPosition();
+
 	m_NameText->SetRotation(m_Rotation);
-	float xOff = 63.0f * -sin(m_Rotation * PI / 180.0f);
-	float yOff = 63.0f * cos(m_Rotation * PI / 180.0f);
+	m_CostText->SetRotation(m_Rotation);
+	m_BodyText->SetRotation(m_Rotation);
+}
+
+void TowerDefense::HeroCard::UpdateTextPosition()
+{
+	float rot = m_Rotation * PI / 180.0f;
+
+	float xOff = 63.0f * -sin(rot);
+	float yOff = 63.0f * cos(rot);
 	m_NameText->SetPosition(m_X + xOff, m_Y + yOff, 0.0f);
 
-	m_BodyText->SetRotation(m_Rotation);
-	xOff = -15.0f * -sin(m_Rotation * PI / 180.0f);
-	yOff = -15.0f * cos(m_Rotation * PI / 180.0f);
+	xOff = 63 * -sin(rot) - 40 * cos(rot);
+	yOff = 63 * cos(rot) - 40 * sin(rot);
+	m_CostText->SetPosition(m_X + xOff, m_Y + yOff, 0.0f);
+
+	xOff = -15.0f * -sin(rot);
+	yOff = -15.0f * cos(rot);
 	m_BodyText->SetPosition(m_X + xOff, m_Y + yOff, 0.0f);
 }
 

@@ -32,6 +32,7 @@ namespace TowerDefense
 		void SetX(float x) override;
 		void SetY(float y) override;
 		void SetRotation(float rotation) override;
+		void UpdateTextPosition();
 
 
 		static std::shared_ptr<HeroCard> GenerateHero();
@@ -45,7 +46,7 @@ namespace TowerDefense
 
 		std::string m_CardText;
 
-		std::unique_ptr<Text> m_NameText, m_BodyText, m_DetailedNameText, m_DetailedBodyText;
+		std::unique_ptr<Text> m_NameText, m_CostText, m_BodyText, m_DetailedNameText, m_DetailedCostText, m_DetailedBodyText;
 
 		std::shared_ptr<Tower::Tower> m_Tower;
 

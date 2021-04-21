@@ -154,7 +154,8 @@ void TowerDefense::Base::RenderLibrary()
 	if (Player::Get().GetDeck()->IsShowing())
 	{
 		Player::Get().GetDeck()->RenderCards();
-		m_Buttons[9]->Render();
+		if(!Player::Get().GetDeck()->GetSelectedCard())
+			m_Buttons[9]->Render();
 	}
 }
 
@@ -169,7 +170,8 @@ void TowerDefense::Base::RenderTavern()
 	if (Player::Get().GetDeck()->IsShowing())
 	{
 		Player::Get().GetDeck()->RenderCards();
-		m_Buttons[9]->Render();
+		if (!Player::Get().GetDeck()->GetSelectedCard())
+			m_Buttons[9]->Render();
 	}
 }
 
@@ -238,6 +240,13 @@ void TowerDefense::Base::UpdateSmithing()
 void TowerDefense::Base::UpdateLibrary()
 {
 	Player& player = Player::Get();
+	if (!player.GetDeck()->GetSelectedCard())
+	{
+		m_Buttons[9]->Update();
+		if (m_Buttons[9]->IsClicked())
+			player.GetDeck()->Show(!player.GetDeck()->IsShowing());
+	}
+
 	if (player.GetDeck()->IsShowing())
 		player.GetDeck()->Update();
 	else
@@ -258,14 +267,18 @@ void TowerDefense::Base::UpdateLibrary()
 		if (m_Buttons[8]->IsClicked())
 			m_SubMenu = SubMenu::NONE;
 	}
-	m_Buttons[9]->Update();
-	if (m_Buttons[9]->IsClicked())
-		player.GetDeck()->Show(!player.GetDeck()->IsShowing());
 }
 
 void TowerDefense::Base::UpdateTavern()
 {
 	Player& player = Player::Get();
+	if (!player.GetDeck()->GetSelectedCard())
+	{
+		m_Buttons[9]->Update();
+		if (m_Buttons[9]->IsClicked())
+			player.GetDeck()->Show(!player.GetDeck()->IsShowing());
+	}
+
 	if (player.GetDeck()->IsShowing())
 		player.GetDeck()->Update();
 	else
@@ -286,9 +299,6 @@ void TowerDefense::Base::UpdateTavern()
 		if (m_Buttons[8]->IsClicked())
 			m_SubMenu = SubMenu::NONE;
 	}
-	m_Buttons[9]->Update();
-	if (m_Buttons[9]->IsClicked())
-		player.GetDeck()->Show(!player.GetDeck()->IsShowing());
 }
 
 void TowerDefense::Base::UpdateRest()
