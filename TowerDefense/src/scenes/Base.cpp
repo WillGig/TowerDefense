@@ -407,10 +407,12 @@ void TowerDefense::Base::UpdateActivityDescription()
 
 void TowerDefense::Base::UpdateViewDeck()
 {
-	Player::Get().GetDeck()->Update();
 	m_Buttons[9]->Update();
 	if (m_Buttons[9]->IsClicked())
+	{
 		Player::Get().GetDeck()->Show(!Player::Get().GetDeck()->IsShowing());
+	}
+	Player::Get().GetDeck()->Update();
 }
 
 void TowerDefense::Base::UpdateNextDay()
