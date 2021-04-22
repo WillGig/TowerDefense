@@ -26,7 +26,7 @@ namespace TowerDefense
 		inline std::shared_ptr<CardChoice> GetUpgrades() const { return m_Upgrades; }
 		inline std::shared_ptr<Tower::Tower> GetTower() override { return m_Tower; }
 		inline void SetTower(std::shared_ptr<Tower::Tower> t) { m_Tower = t; }
-		inline void SetQuirks(std::shared_ptr<std::vector<std::shared_ptr<Quirk::Quirk>>> quirks) { m_Quirks = quirks; }
+		void SetQuirks(std::shared_ptr<std::vector<std::shared_ptr<Quirk::Quirk>>> quirks);
 		inline void SetLevel(int level) { m_Level = level; }
 
 		void SetX(float x) override;

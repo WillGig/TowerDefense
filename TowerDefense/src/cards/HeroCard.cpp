@@ -143,6 +143,13 @@ std::shared_ptr<TowerDefense::Card> TowerDefense::HeroCard::Clone()
 	return hero;
 }
 
+void TowerDefense::HeroCard::SetQuirks(std::shared_ptr<std::vector<std::shared_ptr<Quirk::Quirk>>> quirks)
+{
+	m_Quirks = quirks;
+	for (unsigned int i = 0; i < m_Quirks->size(); i++)
+		AddInfoCard(std::make_shared<InfoTile>(m_Quirks->at(i)->GetName()));
+}
+
 //Return a randomized hero 
 std::shared_ptr<TowerDefense::HeroCard> TowerDefense::HeroCard::GenerateHero()
 {

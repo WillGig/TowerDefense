@@ -1,8 +1,8 @@
 Current:
-	Add outline or whitestroke to hero names	
-
 	Add info for towers
 	Add info for enemies
+
+	Add specifics to upgrades when right clicking on them to make it clear what they do
 
 	Start on random events - explore the caves!	
 
