@@ -23,7 +23,7 @@ void TowerDefense::Tower::Giant::Fire(std::shared_ptr<TowerDefense::Entity> targ
 	if (Random::GetFloat() < m_CritChance)
 	{
 		damage *= m_CritMultiplier;
-		Combat::AddEntity(std::make_shared<AnimationEffect>(m_X, m_Y, 100, 100, "critAnimation", 7, 30));
+		Combat::AddEntity(std::make_shared<AnimationEffect>(m_X, m_Y, 32, 32, "critAnimation", 7, 30));
 	}
 	Combat::AddEntity(std::make_shared<TowerDefense::GiantRock>(m_X, m_Y, m_Rotation, damage));
 }

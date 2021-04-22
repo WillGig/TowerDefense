@@ -21,7 +21,7 @@ void TowerDefense::Tower::Paladin::Fire(std::shared_ptr<TowerDefense::Entity> ta
 	if (Random::GetFloat() < m_CritChance)
 	{
 		damage *= m_CritMultiplier;
-		Combat::AddEntity(std::make_shared<AnimationEffect>(m_X, m_Y, 100, 100, "critAnimation", 7, 30));
+		Combat::AddEntity(std::make_shared<AnimationEffect>(m_X, m_Y, 32, 32, "critAnimation", 7, 30));
 	}
 	std::shared_ptr<Enemy::Enemy> e = std::dynamic_pointer_cast<Enemy::Enemy>(target);
 	e->TakeDamage(e->GetMaxHealth() * damage);

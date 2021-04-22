@@ -102,6 +102,7 @@ void TowerDefense::Combat::OnSwitch()
 
 	m_StartButton->SetImages("startButton", "startButtonSelected");
 	m_SelectedTower.reset();
+	m_TowerInfo.reset();
 
 	ClearProjectiles();
 	ClearTowers();

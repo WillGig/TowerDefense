@@ -24,7 +24,7 @@ void TowerDefense::Tower::Wizard::Fire(std::shared_ptr<TowerDefense::Entity> tar
 	if (Random::GetFloat() < m_CritChance)
 	{
 		damage *= m_CritMultiplier;
-		Combat::AddEntity(std::make_shared<AnimationEffect>(m_X, m_Y, 100, 100, "critAnimation", 7, 30));
+		Combat::AddEntity(std::make_shared<AnimationEffect>(m_X, m_Y, 32, 32, "critAnimation", 7, 30));
 	}
 	for (int i = 0; i < m_NumberOfMissiles; i++) {
 		float angle = (i - ((m_NumberOfMissiles - 1) / 2.0f)) * (180.0f / m_NumberOfMissiles);
