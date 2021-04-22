@@ -9,7 +9,7 @@ namespace TowerDefense
 	namespace Tower
 	{
 		enum class TowerType { DAMAGE, SUPPORT };
-		enum class Targeting { FIRST, LAST, CLOSE, STRONG, WEAK };
+		enum class TargetType { FIRST, LAST, CLOSE, STRONG, WEAK };
 		enum class DamageType { PHYSICAL, MAGIC };
 
 		class Tower : public Entity
@@ -39,6 +39,9 @@ namespace TowerDefense
 			inline void SetDamage(float modifier, DamageType type) { type == DamageType::PHYSICAL ? m_PhysicalDamage = modifier : m_MagicDamage = modifier; }
 
 			inline DamageType GetDamageType() const { return m_DamageType; }
+
+			inline TargetType GetTargetType() const { return m_TargetType; }
+			inline void SetTargetType(TargetType t) { m_TargetType = t; }
 
 			inline float GetCritChance() const { return m_CritChance; }
 			inline void SetCritChance(float chance) { m_CritChance = chance; }
@@ -86,7 +89,7 @@ namespace TowerDefense
 			int m_LastFire, m_Range;
 			bool m_Highlighted, m_Clicked;
 			TowerType m_TowerType;
-			Targeting m_TargetType;
+			TargetType m_TargetType;
 			std::string m_Name;
 
 			std::shared_ptr<Image> m_RegularImage, m_HighlightedImage;

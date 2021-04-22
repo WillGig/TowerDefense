@@ -14,6 +14,7 @@ TowerDefense::Tower::Paladin::Paladin(float fireTime, int range, float damage)
 	: Tower(0.0f, 0.0f, 32, 32, fireTime, range, TowerType::DAMAGE, "Paladin")
 {
 	m_MagicDamage = damage;
+	m_DamageType = DamageType::MAGIC;
 }
 
 void TowerDefense::Tower::Paladin::Fire(std::shared_ptr<TowerDefense::Entity> target)

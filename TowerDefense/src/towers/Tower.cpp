@@ -13,7 +13,7 @@ TowerDefense::Tower::Tower::Tower(float x, float y, int width, int height, float
 	m_DamageType(), m_PhysicalDamage(0.0f), m_MagicDamage(0.0f), 
 	m_Spread(0.0f), m_CritChance(0.0f), m_CritMultiplier(2.0f),
 	m_FireTime(fireTime), m_LastFire(-1), m_Range(range), m_Highlighted(false), m_Clicked(false), m_TowerType(type), m_Name(name),
-	m_TargetType(Targeting::FIRST), m_RegularImage(std::make_shared<Image>(name, x, y, width, height, 0.0f)),
+	m_TargetType(TargetType::FIRST), m_RegularImage(std::make_shared<Image>(name, x, y, width, height, 0.0f)),
 	m_HighlightedImage(std::make_shared<Image>(name + "Highlighted", x, y, width, height, 0.0f)),
 	m_RangeCircle(std::make_shared<Circle>(0.0f, 0.0f, (float)range)),
 	m_Buffs(std::make_unique<std::vector<std::shared_ptr<Buff>>>()), 
@@ -179,15 +179,15 @@ std::shared_ptr<TowerDefense::Entity>  TowerDefense::Tower::Tower::FindTarget()
 			if (std::shared_ptr<Enemy::Enemy> enemy = std::dynamic_pointer_cast<Enemy::Enemy>(e)) {
 				if (!targetEnemy)
 					targetEnemy = enemy;
-				else if (m_TargetType == Targeting::FIRST && enemy->GetDistanceTraveled() > targetEnemy->GetDistanceTraveled())
+				else if (m_TargetType == TargetType::FIRST && enemy->GetDistanceTraveled() > targetEnemy->GetDistanceTraveled())
 					targetEnemy = enemy;
-				else if (m_TargetType == Targeting::LAST && enemy->GetDistanceTraveled() < targetEnemy->GetDistanceTraveled())
+				else if (m_TargetType == TargetType::LAST && enemy->GetDistanceTraveled() < targetEnemy->GetDistanceTraveled())
 					targetEnemy = enemy;
-				else if (m_TargetType == Targeting::CLOSE && GetDistance(e->GetX(), e->GetY()) < GetDistance(targetEnemy->GetX(), targetEnemy->GetY()))
+				else if (m_TargetType == TargetType::CLOSE && GetDistance(e->GetX(), e->GetY()) < GetDistance(targetEnemy->GetX(), targetEnemy->GetY()))
 					targetEnemy = enemy;
-				else if (m_TargetType == Targeting::STRONG && enemy->GetHealth() > targetEnemy->GetHealth())
+				else if (m_TargetType == TargetType::STRONG && enemy->GetHealth() > targetEnemy->GetHealth())
 					targetEnemy = enemy;
-				else if (m_TargetType == Targeting::WEAK && enemy->GetHealth() < targetEnemy->GetHealth())
+				else if (m_TargetType == TargetType::WEAK && enemy->GetHealth() < targetEnemy->GetHealth())
 					targetEnemy = enemy;
 			}
 		}

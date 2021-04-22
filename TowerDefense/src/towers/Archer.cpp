@@ -16,6 +16,7 @@ TowerDefense::Tower::Archer::Archer(float fireTime, int range, float damage)
 {
 	m_Spread = .1f;
 	m_PhysicalDamage = damage;
+	m_DamageType = DamageType::PHYSICAL;
 }
 
 void TowerDefense::Tower::Archer::Fire(std::shared_ptr<TowerDefense::Entity> target)

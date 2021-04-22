@@ -17,6 +17,7 @@ TowerDefense::Tower::Wizard::Wizard(float fireTime, int range, float damage, int
 	m_NumberOfMissiles(numberOfMissiles)
 {
 	m_MagicDamage = damage;
+	m_DamageType = DamageType::MAGIC;
 }
 
 void TowerDefense::Tower::Wizard::Fire(std::shared_ptr<TowerDefense::Entity> target)

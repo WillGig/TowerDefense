@@ -276,7 +276,7 @@ void LoadTextures()
     Texture::LoadTexture("ClericHighlighted",       towers.load(1, 2));
     Texture::LoadTexture("Paladin",                 towers.load(2, 2));
     Texture::LoadTexture("PaladinHighlighted",      towers.load(3, 2));
-    Texture::LoadTexture("Giant",                   towers.load(0, 3));
+    Texture::LoadTexture("GIANT",                   towers.load(0, 3));
     Texture::LoadTexture("GiantHighlighted",        towers.load(1, 3));
     Texture::LoadTexture("Monk",                    towers.load(2, 3));
     Texture::LoadTexture("MonkHighlighted",         towers.load(3, 3));

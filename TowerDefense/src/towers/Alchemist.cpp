@@ -13,8 +13,8 @@ TowerDefense::Tower::Alchemist::Alchemist()
 TowerDefense::Tower::Alchemist::Alchemist(float fireTime, int range, float damage)
 	: Tower(0.0f, 0.0f, 32, 32, fireTime, range, TowerType::DAMAGE, "Alchemist")
 {
-	m_Spread = .1f;
 	m_MagicDamage = damage;
+	m_DamageType = DamageType::MAGIC;
 }
 
 void TowerDefense::Tower::Alchemist::Fire(std::shared_ptr<TowerDefense::Entity> target)

@@ -19,7 +19,6 @@ namespace TowerDefense
 		bool m_Dragging;
 		float m_PreviousMouseX, m_PreviousMouseY;
 
-		std::unique_ptr<Text> m_Name;
-		std::unique_ptr<Text> m_Stats;
+		std::unique_ptr<Text> m_Name, m_Target, m_Stats;
 	};
 }
