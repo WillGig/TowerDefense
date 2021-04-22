@@ -264,22 +264,22 @@ void LoadTextures()
     std::cout << "...Towers" << std::endl;
 
     SpriteSheet towers("res/textures/Towers.png", 64, 64);
-    Texture::LoadTexture("archer",                  towers.load(0, 0));
-    Texture::LoadTexture("archerHighlighted",       towers.load(1, 0));
-    Texture::LoadTexture("wizard",                  towers.load(2, 0));
-    Texture::LoadTexture("wizardHighlighted",       towers.load(3, 0));
-    Texture::LoadTexture("alchemist",               towers.load(0, 1));
-    Texture::LoadTexture("alchemistHighlighted",    towers.load(1, 1));
-    Texture::LoadTexture("bard",                    towers.load(2, 1));
-    Texture::LoadTexture("bardHighlighted",         towers.load(3, 1));
-    Texture::LoadTexture("cleric",                  towers.load(0, 2));
-    Texture::LoadTexture("clericHighlighted",       towers.load(1, 2));
-    Texture::LoadTexture("paladin",                 towers.load(2, 2));
-    Texture::LoadTexture("paladinHighlighted",      towers.load(3, 2));
-    Texture::LoadTexture("giant",                   towers.load(0, 3));
-    Texture::LoadTexture("giantHighlighted",        towers.load(1, 3));
-    Texture::LoadTexture("monk",                    towers.load(2, 3));
-    Texture::LoadTexture("monkHighlighted",         towers.load(3, 3));
+    Texture::LoadTexture("Archer",                  towers.load(0, 0));
+    Texture::LoadTexture("ArcherHighlighted",       towers.load(1, 0));
+    Texture::LoadTexture("Wizard",                  towers.load(2, 0));
+    Texture::LoadTexture("WizardHighlighted",       towers.load(3, 0));
+    Texture::LoadTexture("Alchemist",               towers.load(0, 1));
+    Texture::LoadTexture("AlchemistHighlighted",    towers.load(1, 1));
+    Texture::LoadTexture("Bard",                    towers.load(2, 1));
+    Texture::LoadTexture("BardHighlighted",         towers.load(3, 1));
+    Texture::LoadTexture("Cleric",                  towers.load(0, 2));
+    Texture::LoadTexture("ClericHighlighted",       towers.load(1, 2));
+    Texture::LoadTexture("Paladin",                 towers.load(2, 2));
+    Texture::LoadTexture("PaladinHighlighted",      towers.load(3, 2));
+    Texture::LoadTexture("Giant",                   towers.load(0, 3));
+    Texture::LoadTexture("GiantHighlighted",        towers.load(1, 3));
+    Texture::LoadTexture("Monk",                    towers.load(2, 3));
+    Texture::LoadTexture("MonkHighlighted",         towers.load(3, 3));
 
     std::cout << "...Enemies" << std::endl;
 

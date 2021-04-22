@@ -32,6 +32,8 @@ namespace TowerDefense
 		
 		static inline int GetRoundSpeed() { return s_RoundSpeed; }
 		
+		static inline bool DraggingInfo() { return s_TowerInfo && s_TowerInfo->Dragging(); }
+
 		//Called at end of program to clean up memory
 		//Necessary to unbind static and singleton GLFW textures before calling glfwTerminate
 		static void CleanUp();
@@ -50,7 +52,7 @@ namespace TowerDefense
 
 		void UpdateHealthandEnergy();
 
-		void FindSelectedTower();
+		void UpdateSelectedTower();
 
 		void EndRound();
 
@@ -67,7 +69,8 @@ namespace TowerDefense
 		std::unique_ptr<TowerDefense::Button> m_ViewDeck, m_StartButton, m_SpeedButton;
 		std::unique_ptr<Text> m_Health, m_Energy, m_Day;
 		std::shared_ptr<TowerDefense::Tower::Tower> m_SelectedTower;
-		std::unique_ptr<TowerDefense::TowerInfo> m_TowerInfo;
+
+		static std::unique_ptr<TowerDefense::TowerInfo> s_TowerInfo;
 
 		static std::shared_ptr<std::vector<std::shared_ptr<TowerDefense::Entity>>> s_Entities, s_Adders;
 		static std::shared_ptr<std::vector<int>> s_Removers;

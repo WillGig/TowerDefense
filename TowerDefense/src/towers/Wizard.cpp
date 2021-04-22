@@ -5,14 +5,14 @@
 #include "cards/upgrades/Upgrades.h"
 
 TowerDefense::Tower::Wizard::Wizard()
-	:Tower(0.0f, 0.0f, 32, 32, 60.0f, 150, TowerType::DAMAGE, "wizard", "wizardHighlighted"),
+	:Tower(0.0f, 0.0f, 32, 32, 60.0f, 150, TowerType::DAMAGE, "Wizard"),
 	m_NumberOfMissiles(3)
 {
 	m_MagicDamage = 1.0f;
 }
 
 TowerDefense::Tower::Wizard::Wizard(float fireTime, int range, float damage, int numberOfMissiles)
-	: Tower(0.0f, 0.0f, 32, 32, fireTime, range, TowerType::DAMAGE, "wizard", "wizardHighlighted"),
+	: Tower(0.0f, 0.0f, 32, 32, fireTime, range, TowerType::DAMAGE, "Wizard"),
 	m_NumberOfMissiles(numberOfMissiles)
 {
 	m_MagicDamage = damage;

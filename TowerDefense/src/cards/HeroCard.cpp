@@ -18,6 +18,8 @@ TowerDefense::HeroCard::HeroCard(const std::string& name, const std::string& tex
 {
 	m_Exhausts = true;
 
+	m_Tower->SetName(name);
+
 	//Generate upgrade choices for tower
 	m_Upgrades = m_Tower->GetUpgrades();
 

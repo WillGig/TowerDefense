@@ -5,13 +5,13 @@
 #include "buffs/SpeedBuff.h"
 
 TowerDefense::Tower::Bard::Bard()
-	:Tower(0.0f, 0.0f, 32, 32, 60.0f, 75, TowerType::SUPPORT, "bard", "bardHighlighted")
+	:Tower(0.0f, 0.0f, 32, 32, 60.0f, 75, TowerType::SUPPORT, "Bard")
 {
 	m_AttackSpeedBuff = 1.25f;
 }
 
 TowerDefense::Tower::Bard::Bard(float fireTime, int range, float buff)
-	: Tower(0.0f, 0.0f, 32, 32, fireTime, range, TowerType::SUPPORT, "bard", "bardHighlighted")
+	: Tower(0.0f, 0.0f, 32, 32, fireTime, range, TowerType::SUPPORT, "Bard")
 {
 	m_AttackSpeedBuff = buff;
 }

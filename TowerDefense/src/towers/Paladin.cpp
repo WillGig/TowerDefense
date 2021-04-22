@@ -4,13 +4,13 @@
 #include "projectiles/Projectiles.h"
 
 TowerDefense::Tower::Paladin::Paladin()
-	:Tower(0.0f, 0.0f, 32, 32, 120.0f, 50, TowerType::DAMAGE, "paladin", "paladinHighlighted")
+	:Tower(0.0f, 0.0f, 32, 32, 120.0f, 50, TowerType::DAMAGE, "Paladin")
 {
 	m_MagicDamage = .25f;
 }
 
 TowerDefense::Tower::Paladin::Paladin(float fireTime, int range, float damage)
-	: Tower(0.0f, 0.0f, 32, 32, fireTime, range, TowerType::DAMAGE, "paladin", "paladinHighlighted")
+	: Tower(0.0f, 0.0f, 32, 32, fireTime, range, TowerType::DAMAGE, "Paladin")
 {
 	m_MagicDamage = damage;
 }

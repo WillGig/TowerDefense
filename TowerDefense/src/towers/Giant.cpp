@@ -4,14 +4,14 @@
 #include "projectiles/Projectiles.h"
 
 TowerDefense::Tower::Giant::Giant()
-	:Tower(0.0f, 0.0f, 64, 64, 300.0f, 100, TowerType::DAMAGE, "giant", "giantHighlighted")
+	:Tower(0.0f, 0.0f, 64, 64, 300.0f, 100, TowerType::DAMAGE, "Giant")
 {
 	m_Spread = .1f;
 	m_PhysicalDamage = 20.0f;
 }
 
 TowerDefense::Tower::Giant::Giant(float fireTime, int range, float damage)
-	: Tower(0.0f, 0.0f, 64, 64, fireTime, range, TowerType::DAMAGE, "giant", "giantHighlighted")
+	: Tower(0.0f, 0.0f, 64, 64, fireTime, range, TowerType::DAMAGE, "Giant")
 {
 	m_Spread = .1f;
 	m_PhysicalDamage = damage;

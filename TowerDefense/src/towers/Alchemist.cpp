@@ -4,13 +4,13 @@
 #include "projectiles/Projectiles.h"
 
 TowerDefense::Tower::Alchemist::Alchemist()
-	:Tower(0.0f, 0.0f, 32, 32, 120.0f, 100, TowerType::DAMAGE, "alchemist", "alchemistHighlighted")
+	:Tower(0.0f, 0.0f, 32, 32, 120.0f, 100, TowerType::DAMAGE, "Alchemist")
 {
 	m_MagicDamage = 1.0f;
 }
 
 TowerDefense::Tower::Alchemist::Alchemist(float fireTime, int range, float damage)
-	: Tower(0.0f, 0.0f, 32, 32, fireTime, range, TowerType::DAMAGE, "alchemist", "alchemistHighlighted")
+	: Tower(0.0f, 0.0f, 32, 32, fireTime, range, TowerType::DAMAGE, "Alchemist")
 {
 	m_Spread = .1f;
 	m_MagicDamage = damage;

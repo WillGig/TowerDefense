@@ -4,14 +4,14 @@
 #include "projectiles/Projectiles.h"
 
 TowerDefense::Tower::Archer::Archer()
-	:Tower(0.0f, 0.0f, 32, 32, 20.0f, 100, TowerType::DAMAGE, "archer", "archerHighlighted")
+	:Tower(0.0f, 0.0f, 32, 32, 20.0f, 100, TowerType::DAMAGE, "Archer")
 {
 	m_Spread = .1f;
 	m_PhysicalDamage = 1.0f;
 }
 
 TowerDefense::Tower::Archer::Archer(float fireTime, int range, float damage)
-	: Tower(0.0f, 0.0f, 32, 32, fireTime, range, TowerType::DAMAGE, "archer", "archerHighlighted")
+	: Tower(0.0f, 0.0f, 32, 32, fireTime, range, TowerType::DAMAGE, "Archer")
 {
 	m_Spread = .1f;
 	m_PhysicalDamage = damage;

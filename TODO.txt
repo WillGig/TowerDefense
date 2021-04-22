@@ -16,6 +16,7 @@ Current:
 		Smith		- upgrade a card					- Done
 		Go to Tavern	- Choose from 3 recruits (refreshes every few days)	- Done
 		rest 		- heal by 20 percent of maxhp				- Done
+		Pray in Chapel	- Remove a card						- 
 
 Soon:
 	Allow right clicking on smithing upgrades to show detailed versions of cards

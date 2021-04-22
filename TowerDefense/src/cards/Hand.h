@@ -32,6 +32,8 @@ namespace TowerDefense
 
 		inline int GetSelectedCard() const { return m_SelectedCard; }
 
+		inline bool DraggingCard() const { return m_Dragging; }
+
 		inline bool ShowingCardInfo() const { return m_ShowingInfo; }
 
 	private:

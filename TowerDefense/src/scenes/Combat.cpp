@@ -13,6 +13,8 @@ std::shared_ptr<std::vector<std::shared_ptr<TowerDefense::Entity>>> TowerDefense
 std::shared_ptr<std::vector<int>> TowerDefense::Combat::s_Removers = std::make_shared<std::vector<int>>();
 std::unique_ptr<std::vector<std::shared_ptr<TowerDefense::Fight>>> TowerDefense::Combat::s_Fights = std::make_unique<std::vector<std::shared_ptr<TowerDefense::Fight>>>();
 
+std::unique_ptr<TowerDefense::TowerInfo> TowerDefense::Combat::s_TowerInfo;
+
 TowerDefense::Combat::Combat()
 	:m_PlayerHealth(Player::Get().GetHealth()), m_PlayerEnergy(Player::Get().GetEnergy()), m_CurrentFight(-1),
 	m_Paused(false), m_TurnPhase(Phase::START),
@@ -60,8 +62,12 @@ void TowerDefense::Combat::Render()
 	RenderCards();
 
 	//Render Tower Information
-	if(m_TowerInfo)
-		m_TowerInfo->Render();
+	if(s_TowerInfo)
+		s_TowerInfo->Render();
+
+	//Draw Selected Card on top of tower info
+	if (Player::Get().GetHand()->DraggingCard())
+		Player::Get().GetHand()->GetCard(Player::Get().GetHand()->GetSelectedCard())->Render();
 }
 
 void TowerDefense::Combat::Update()
@@ -75,14 +81,13 @@ void TowerDefense::Combat::Update()
 	bool deckShow = Player::Get().GetDeck()->IsShowing();
 	bool drawShow = Player::Get().GetDrawPile()->IsShowing();
 	bool discardShow = Player::Get().GetDiscardPile()->IsShowing();
-	bool cardSelected = Player::Get().GetHand()->GetSelectedCard() != -1;
-	bool draggingTowerInfo = m_TowerInfo && m_TowerInfo->Dragging();
-	if (!cardSelected && !deckShow && !drawShow && !discardShow) 
-	{
-		if(!draggingTowerInfo)
+	bool cardDragging = Player::Get().GetHand()->DraggingCard();
+	bool draggingTowerInfo = s_TowerInfo && s_TowerInfo->Dragging();
+	if (!cardDragging && !deckShow && !drawShow && !discardShow && !draggingTowerInfo)
 			UpdateButtons();
-		FindSelectedTower();
-	}
+
+	if(!deckShow && !drawShow && !discardShow)
+		UpdateSelectedTower();
 
 	UpdateEntities();
 
@@ -102,7 +107,7 @@ void TowerDefense::Combat::OnSwitch()
 
 	m_StartButton->SetImages("startButton", "startButtonSelected");
 	m_SelectedTower.reset();
-	m_TowerInfo.reset();
+	s_TowerInfo.reset();
 
 	ClearProjectiles();
 	ClearTowers();
@@ -121,6 +126,7 @@ void TowerDefense::Combat::CleanUp()
 	s_Adders.reset();
 	s_Removers.reset();
 	s_Fights.reset();
+	s_TowerInfo.reset();
 }
 
 //Draw Hand, Deck, Draw Pile, and Discard Pile
@@ -191,7 +197,7 @@ void TowerDefense::Combat::UpdateCards()
 	bool drawShow = player.GetDrawPile()->IsShowing();
 	bool discardShow = player.GetDiscardPile()->IsShowing();
 	bool cardSelected = player.GetHand()->GetSelectedCard() != -1;
-	bool draggingTowerInfo = m_TowerInfo && m_TowerInfo->Dragging();
+	bool draggingTowerInfo = s_TowerInfo && s_TowerInfo->Dragging();
 
 	if (!cardSelected && !drawShow && !discardShow && !draggingTowerInfo)
 	{
@@ -278,19 +284,22 @@ void TowerDefense::Combat::UpdateButtons()
 }
 
 //Find if a tower has been clicked, or deselected
-void TowerDefense::Combat::FindSelectedTower()
+void TowerDefense::Combat::UpdateSelectedTower()
 {
-	if (m_TowerInfo)
-		m_TowerInfo->Update();
+	if (s_TowerInfo)
+		s_TowerInfo->Update();
 	if (m_SelectedTower)
 		m_SelectedTower->SetHighlighted();
 
-	if (Input::GetLeftMouseClicked() && m_TowerInfo && !m_TowerInfo->Dragging())
+	if (Player::Get().GetHand()->DraggingCard())
+		return;
+
+	if (Input::GetLeftMouseClicked() && s_TowerInfo && !s_TowerInfo->Dragging())
 	{
 		if (!m_SelectedTower || !m_SelectedTower->Contains(Input::GetMouseX(), Input::GetMouseY()))
 		{
 			m_SelectedTower.reset();
-			m_TowerInfo.reset();
+			s_TowerInfo.reset();
 		}
 	}
 
@@ -306,9 +315,9 @@ void TowerDefense::Combat::FindSelectedTower()
 			{
 				m_SelectedTower = tower;
 				if(tower->GetX() < 550)
-					m_TowerInfo = std::make_unique<TowerInfo>(tower->GetX() + 130, tower->GetY());
+					s_TowerInfo = std::make_unique<TowerInfo>(tower->GetX() + 130, tower->GetY(), m_SelectedTower);
 				else
-					m_TowerInfo = std::make_unique<TowerInfo>(tower->GetX() - 130, tower->GetY());
+					s_TowerInfo = std::make_unique<TowerInfo>(tower->GetX() - 130, tower->GetY(), m_SelectedTower);
 			}
 		}
 	}

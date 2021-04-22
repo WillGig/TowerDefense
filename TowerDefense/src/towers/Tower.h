@@ -15,7 +15,7 @@ namespace TowerDefense
 		class Tower : public Entity
 		{
 		public:
-			Tower(float x, float y, int width, int height, float fireTime, int range, TowerType type, const std::string& regularImage, const std::string& highlightedImage);
+			Tower(float x, float y, int width, int height, float fireTime, int range, TowerType type, const std::string& name);
 
 			void Update() override;
 
@@ -25,6 +25,9 @@ namespace TowerDefense
 
 			void SetX(float x) override;
 			void SetY(float y) override;
+
+			inline std::string GetName() const { return m_Name; }
+			inline void SetName(const std::string& name) { m_Name = name; }
 
 			inline int GetRange() const { return m_Range; }
 			inline void SetRange(int range) { m_Range = range; }
@@ -81,6 +84,7 @@ namespace TowerDefense
 			bool m_Highlighted, m_Clicked;
 			TowerType m_TowerType;
 			Targeting m_TargetType;
+			std::string m_Name;
 
 			std::shared_ptr<Image> m_RegularImage, m_HighlightedImage;
 			std::shared_ptr<Circle> m_RangeCircle;
