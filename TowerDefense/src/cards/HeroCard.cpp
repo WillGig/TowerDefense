@@ -39,6 +39,13 @@ TowerDefense::HeroCard::HeroCard(const std::string& name, const std::string& tex
 	m_DetailedNameText->SetColor(1.0f, 1.0f, 1.0f, 1.0f);
 	m_DetailedCostText->SetColor(1.0f, 1.0f, 1.0f, 1.0f);
 	m_DetailedBodyText->SetColor(1.0f, 1.0f, 1.0f, 1.0f);
+
+	m_NameText->SetDropShadow(1.0f);
+	m_CostText->SetDropShadow(1.0f);
+	m_BodyText->SetDropShadow(0.5f);
+	m_DetailedNameText->SetDropShadow(1.0f);
+	m_DetailedCostText->SetDropShadow(1.0f);
+	m_DetailedBodyText->SetDropShadow(1.0f);
 }
 
 void TowerDefense::HeroCard::Render()

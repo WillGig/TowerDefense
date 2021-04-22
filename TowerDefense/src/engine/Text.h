@@ -18,6 +18,8 @@ public:
 
 	void SetColor(float r, float g, float b, float a);
 
+	inline void SetDropShadow(float offset) { m_DropShadowOffset = offset; }
+
 	inline std::string GetMessage() { return m_Message; }
 
 private:
@@ -28,7 +30,6 @@ private:
 
 	std::pair<float, float> GetCoords(char c);
 
-private:
 	std::string m_Message;
 	std::unique_ptr<VertexArray> m_VAO;
 	std::unique_ptr<VertexBuffer> m_VertexBuffer;
@@ -42,5 +43,5 @@ private:
 	//Color using floats from 0.0f to 1.0f in rgba format
 	Vec4 m_Color;
 
-	float m_Rotation;
+	float m_Rotation, m_DropShadowOffset;
 };

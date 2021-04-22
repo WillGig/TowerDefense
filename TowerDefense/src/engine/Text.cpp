@@ -2,7 +2,7 @@
 #include "TowerDefense.h"
 
 Text::Text(std::string msg, float x, float y, float size, float maxWidth)
-	:m_Message(msg), m_Position(x, y, 0.0f), m_Color(0.0f, 0.0f, 0.0f, 1.0f), m_Rotation(0.0f)
+	:m_Message(msg), m_Position(x, y, 0.0f), m_Color(0.0f, 0.0f, 0.0f, 1.0f), m_Rotation(0.0f), m_DropShadowOffset(0.0f)
 {
 	float scale = size / 12.0f;
 
@@ -124,13 +124,25 @@ void Text::Render()
 {
 	m_Texture->Bind();
 	{
+		m_Shader->Bind();
+
+		if (m_DropShadowOffset != 0)
+		{
+			Mat4f model = Mat4f::Translate(m_Position + Vec3(m_DropShadowOffset, -m_DropShadowOffset, 0.0f)) * Mat4f::Rotate(m_Rotation);
+			Mat4f mvp = Renderer::Get().GetProjectionMatrix() * model;
+			m_Shader->SetUniformMat4f("u_MVP", mvp);
+			m_Shader->SetUniform4f("u_Color", 0.0f, 0.0f, 0.0f, 1.0f);
+			Renderer::Get().Draw(*m_VAO, *m_IndexBuffer, *m_Shader);
+		}
+
 		Mat4f model = Mat4f::Translate(m_Position) * Mat4f::Rotate(m_Rotation);
 		Mat4f mvp = Renderer::Get().GetProjectionMatrix() * model;
-		m_Shader->Bind();
 		m_Shader->SetUniformMat4f("u_MVP", mvp);
 		m_Shader->SetUniform4f("u_Color", m_Color.w, m_Color.x, m_Color.y, m_Color.z);
 		Renderer::Get().Draw(*m_VAO, *m_IndexBuffer, *m_Shader);
 	}
+
+	
 }
 
 void Text::SetColor(float r, float g, float b, float a)
