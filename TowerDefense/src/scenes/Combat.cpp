@@ -59,7 +59,9 @@ void TowerDefense::Combat::Render()
 	//Drawpile, Discardpile, Hand
 	RenderCards();
 
-	
+	//Render Tower Information
+	if(m_TowerInfo)
+		m_TowerInfo->Render();
 }
 
 void TowerDefense::Combat::Update()
@@ -74,9 +76,11 @@ void TowerDefense::Combat::Update()
 	bool drawShow = Player::Get().GetDrawPile()->IsShowing();
 	bool discardShow = Player::Get().GetDiscardPile()->IsShowing();
 	bool cardSelected = Player::Get().GetHand()->GetSelectedCard() != -1;
+	bool draggingTowerInfo = m_TowerInfo && m_TowerInfo->Dragging();
 	if (!cardSelected && !deckShow && !drawShow && !discardShow) 
 	{
-		UpdateButtons();
+		if(!draggingTowerInfo)
+			UpdateButtons();
 		FindSelectedTower();
 	}
 
@@ -186,8 +190,9 @@ void TowerDefense::Combat::UpdateCards()
 	bool drawShow = player.GetDrawPile()->IsShowing();
 	bool discardShow = player.GetDiscardPile()->IsShowing();
 	bool cardSelected = player.GetHand()->GetSelectedCard() != -1;
+	bool draggingTowerInfo = m_TowerInfo && m_TowerInfo->Dragging();
 
-	if (!cardSelected && !drawShow && !discardShow)
+	if (!cardSelected && !drawShow && !discardShow && !draggingTowerInfo)
 	{
 		if (!player.GetDeck()->GetSelectedCard())
 		{
@@ -197,11 +202,11 @@ void TowerDefense::Combat::UpdateCards()
 		}
 		player.GetDeck()->Update();
 	}
-	if (!cardSelected && !deckShow && !discardShow)
+	if (!cardSelected && !deckShow && !discardShow && !draggingTowerInfo)
 		player.GetDrawPile()->Update();
-	if (!cardSelected && !deckShow && !drawShow)
+	if (!cardSelected && !deckShow && !drawShow && !draggingTowerInfo)
 		player.GetDiscardPile()->Update();
-	if (!m_Paused && !deckShow && !drawShow && !discardShow)
+	if (!m_Paused && !deckShow && !drawShow && !discardShow && !draggingTowerInfo)
 		player.GetHand()->Update();
 }
 
@@ -274,15 +279,33 @@ void TowerDefense::Combat::UpdateButtons()
 //Find if a tower has been clicked, or deselected
 void TowerDefense::Combat::FindSelectedTower()
 {
-	if (Input::GetLeftMouseClicked())
+	if (m_TowerInfo)
+		m_TowerInfo->Update();
+	if (m_SelectedTower)
+		m_SelectedTower->SetHighlighted();
+
+	if (Input::GetLeftMouseClicked() && m_TowerInfo && !m_TowerInfo->Dragging())
+	{
 		m_SelectedTower.reset();
+		m_TowerInfo.reset();
+	}
+
+	if (m_SelectedTower)
+		return;
+
 	for (unsigned int i = 0; i < s_Entities->size(); i++)
 	{
 		if (s_Entities->at(i)->GetEntityType() == Type::TOWER)
 		{
 			auto tower = std::dynamic_pointer_cast<Tower::Tower>(s_Entities->at(i));
 			if (tower->GetClicked())
+			{
 				m_SelectedTower = tower;
+				if(tower->GetX() < 550)
+					m_TowerInfo = std::make_unique<TowerInfo>(tower->GetX() + 130, tower->GetY());
+				else
+					m_TowerInfo = std::make_unique<TowerInfo>(tower->GetX() - 130, tower->GetY());
+			}
 		}
 	}
 }

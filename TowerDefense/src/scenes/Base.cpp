@@ -143,8 +143,10 @@ void TowerDefense::Base::RenderSmithing()
 		m_SmithingArrow->Render();
 		m_Buttons[7]->Render();
 	}
-
-	
+	else if(!Player::Get().GetDeck()->GetSelectedCard())
+	{
+		m_Buttons[8]->Render();
+	}
 }
 
 void TowerDefense::Base::RenderLibrary()
@@ -211,15 +213,7 @@ void TowerDefense::Base::UpdateSmithing()
 		{
 			m_Buttons[8]->Update();
 			if (m_Buttons[8]->IsClicked())
-			{
-				if (m_SelectedCard && !m_SelectedCard->IsUpgraded())
-					m_SelectedCard.reset();
-				else
-				{
-					m_SubMenu = SubMenu::NONE;
-					Player::Get().GetDeck()->Show(false);
-				}
-			}
+				m_SelectedCard.reset();
 		}
 
 		if(heroCard->GetUpgrades())
@@ -239,15 +233,16 @@ void TowerDefense::Base::UpdateSmithing()
 		{
 			m_Buttons[8]->Update();
 			if (m_Buttons[8]->IsClicked())
-			{
-				if (m_SelectedCard && !m_SelectedCard->IsUpgraded())
-					m_SelectedCard.reset();
-				else
-				{
-					m_SubMenu = SubMenu::NONE;
-					Player::Get().GetDeck()->Show(false);
-				}
-			}
+				m_SelectedCard.reset();
+		}
+	}
+	else if(!Player::Get().GetDeck()->GetSelectedCard())
+	{
+		m_Buttons[8]->Update();
+		if (m_Buttons[8]->IsClicked())
+		{
+			m_SubMenu = SubMenu::NONE;
+			Player::Get().GetDeck()->Show(false);
 		}
 	}
 	

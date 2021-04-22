@@ -5,6 +5,7 @@
 #include "engine/Text.h"
 #include "towers/Tower.h"
 #include "enemies/Fight.h"
+#include "towers/TowerInfo.h"
 
 namespace TowerDefense
 {
@@ -66,6 +67,7 @@ namespace TowerDefense
 		std::unique_ptr<TowerDefense::Button> m_ViewDeck, m_StartButton, m_SpeedButton;
 		std::unique_ptr<Text> m_Health, m_Energy, m_Day;
 		std::shared_ptr<TowerDefense::Tower::Tower> m_SelectedTower;
+		std::unique_ptr<TowerDefense::TowerInfo> m_TowerInfo;
 
 		static std::shared_ptr<std::vector<std::shared_ptr<TowerDefense::Entity>>> s_Entities, s_Adders;
 		static std::shared_ptr<std::vector<int>> s_Removers;

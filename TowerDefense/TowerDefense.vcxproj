@@ -245,6 +245,7 @@
     <ClCompile Include="src\towers\projectiles\Projectile.cpp" />
     <ClCompile Include="src\towers\projectiles\Projectiles.cpp" />
     <ClCompile Include="src\towers\Tower.cpp" />
+    <ClCompile Include="src\towers\TowerInfo.cpp" />
     <ClCompile Include="src\towers\Wizard.cpp" />
     <ClCompile Include="src\vendor\stb_image\stb_image.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
@@ -362,6 +363,7 @@
     <ClInclude Include="src\towers\projectiles\Projectile.h" />
     <ClInclude Include="src\towers\projectiles\Projectiles.h" />
     <ClInclude Include="src\towers\Tower.h" />
+    <ClInclude Include="src\towers\TowerInfo.h" />
     <ClInclude Include="src\towers\Wizard.h" />
     <ClInclude Include="src\vendor\stb_image\stb_image.h" />
     <ClInclude Include="src\engine\VertexArray.h" />
