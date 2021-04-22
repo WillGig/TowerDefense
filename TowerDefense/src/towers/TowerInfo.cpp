@@ -5,21 +5,14 @@
 TowerDefense::TowerInfo::TowerInfo(float x, float y, std::shared_ptr<Tower::Tower> t)
 	:Entity(200, 140, x, y, 0.0f, "TowerInfo", Type::STATICIMAGE), m_Dragging(false),
 	m_PreviousMouseX(0.0f), m_PreviousMouseY(0.0f),
-	m_Name(std::make_unique<Text>(t->GetName() , x, y + 52.0f, 14.0f, 200.0f))
+	m_Name(std::make_unique<Text>(t->GetName() , x, y + 52.0f, 14.0f, 200.0f)),
+	m_TargetLeft(std::make_unique<Button>(10, 20, x - 65, y + 30, "ArrowButton", "ArrowButtonSelected")),
+	m_TargetRight(std::make_unique<Button>(10, 20, x + 65, y + 30, "ArrowButton", "ArrowButtonSelected")),
+	m_Tower(t)
 {
-	std::string target = "Target - ";
-	if (t->GetTargetType() == Tower::TargetType::FIRST)
-		target += "First";
-	else if (t->GetTargetType() == Tower::TargetType::LAST)
-		target += "Last";
-	else if (t->GetTargetType() == Tower::TargetType::CLOSE)
-		target += "Close";
-	else if (t->GetTargetType() == Tower::TargetType::STRONG)
-		target += "Strong";
-	else if (t->GetTargetType() == Tower::TargetType::WEAK)
-		target += "Weak";
+	m_TargetLeft->SetRotation(180.0f);
 
-	m_Target = std::make_unique<Text>(target, x, y + 32.0f, 10.0f, 200.0f);
+	SetTargetText();
 
 	std::string stats = "Damage Type: ";
 	if (t->GetDamageType() == Tower::DamageType::PHYSICAL)
@@ -53,6 +46,8 @@ void TowerDefense::TowerInfo::Render()
 	m_Name->Render();
 	m_Target->Render();
 	m_Stats->Render();
+	m_TargetLeft->Render();
+	m_TargetRight->Render();
 }
 
 void TowerDefense::TowerInfo::Update()
@@ -60,12 +55,12 @@ void TowerDefense::TowerInfo::Update()
 	if (Player::Get().GetHand()->DraggingCard())
 		return;
 
+	m_TargetLeft->Update();
+	m_TargetRight->Update();
+
 	if (!Input::GetLeftMouseClicked())
-	{
 		m_Dragging = false;
-		return;
-	}
-		
+
 	if (m_Dragging)
 	{
 		float currentMouseX = Input::GetMouseX();
@@ -76,6 +71,16 @@ void TowerDefense::TowerInfo::Update()
 
 		m_PreviousMouseX = currentMouseX;
 		m_PreviousMouseY = currentMouseY;
+	}
+	else if (m_TargetLeft->IsClicked())
+	{
+		m_Tower->SetTargetType((Tower::TargetType)(((int)m_Tower->GetTargetType() - 1)%5));
+		SetTargetText();
+	}
+	else if (m_TargetRight->IsClicked())
+	{
+		m_Tower->SetTargetType((Tower::TargetType)(((int)m_Tower->GetTargetType() + 1) % 5));
+		SetTargetText();
 	}
 	else if (Contains(Input::GetMouseX(), Input::GetMouseY()) && Input::GetLeftMouseClicked())
 	{
@@ -91,6 +96,8 @@ void TowerDefense::TowerInfo::SetX(float x)
 	m_Name->SetPosition(m_X, m_Y + 52.0f, 0.0f);
 	m_Target->SetPosition(m_X, m_Y + 32.0f, 0.0f);
 	m_Stats->SetPosition(m_X, m_Y + 14.0f, 0.0f);
+	m_TargetLeft->SetX(x - 65);
+	m_TargetRight->SetX(x + 65);
 }
 
 void TowerDefense::TowerInfo::SetY(float y)
@@ -99,4 +106,23 @@ void TowerDefense::TowerInfo::SetY(float y)
 	m_Name->SetPosition(m_X, m_Y + 52.0f, 0.0f);
 	m_Target->SetPosition(m_X, m_Y + 32.0f, 0.0f);
 	m_Stats->SetPosition(m_X, m_Y + 14.0f, 0.0f);
+	m_TargetLeft->SetY(y + 30);
+	m_TargetRight->SetY(y + 30);
+}
+
+void TowerDefense::TowerInfo::SetTargetText()
+{
+	std::string target = "Target - ";
+	if (m_Tower->GetTargetType() == Tower::TargetType::FIRST)
+		target += "First";
+	else if (m_Tower->GetTargetType() == Tower::TargetType::LAST)
+		target += "Last";
+	else if (m_Tower->GetTargetType() == Tower::TargetType::CLOSE)
+		target += "Close";
+	else if (m_Tower->GetTargetType() == Tower::TargetType::STRONG)
+		target += "Strong";
+	else if (m_Tower->GetTargetType() == Tower::TargetType::WEAK)
+		target += "Weak";
+
+	m_Target = std::make_unique<Text>(target, m_X, m_Y + 32.0f, 10.0f, 200.0f);
 }

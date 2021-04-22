@@ -1,8 +1,7 @@
 Current:
 	Add info for towers
 	- Need to adjust info for non-combat towers
-	- Need to add buttons to control target
-	- Fix bug where dragging stops over towers
+
 	Add info for enemies
 
 	Add specifics to upgrades when right clicking on them to make it clear what they do
