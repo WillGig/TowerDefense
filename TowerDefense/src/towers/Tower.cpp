@@ -30,7 +30,7 @@ void TowerDefense::Tower::Tower::Update()
 		Attack();
 
 	m_Clicked = false;
-	if (Contains(Input::GetMouseX(), Input::GetMouseY()) && (Player::Get().GetHand()->GetSelectedCard() == -1 && Input::GetLeftMouseClickedAndSetFalse()))
+	if (Contains(Input::GetMouseX(), Input::GetMouseY()) && (Player::Get().GetHand()->GetSelectedCard() == -1 && Input::GetLeftMouseClicked()))
 		Clicked();
 
 	UpdateBuffs();

@@ -287,8 +287,11 @@ void TowerDefense::Combat::FindSelectedTower()
 
 	if (Input::GetLeftMouseClicked() && m_TowerInfo && !m_TowerInfo->Dragging())
 	{
-		m_SelectedTower.reset();
-		m_TowerInfo.reset();
+		if (!m_SelectedTower || !m_SelectedTower->Contains(Input::GetMouseX(), Input::GetMouseY()))
+		{
+			m_SelectedTower.reset();
+			m_TowerInfo.reset();
+		}
 	}
 
 	if (m_SelectedTower)
