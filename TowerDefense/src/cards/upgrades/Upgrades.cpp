@@ -9,8 +9,8 @@ void TowerDefense::AttackSpeedUpgrade::UpgradeHero(HeroCard& hero)
 
 void TowerDefense::DamageUpgrade::UpgradeHero(HeroCard& hero)
 {
-	hero.GetTower()->SetDamageModifier(hero.GetTower()->GetDamageModifier(Tower::DamageType::PHYSICAL) + m_PhysicalIncrease, Tower::DamageType::PHYSICAL);
-	hero.GetTower()->SetDamageModifier(hero.GetTower()->GetDamageModifier(Tower::DamageType::MAGIC) + m_MagicIncrease, Tower::DamageType::MAGIC);
+	hero.GetTower()->SetDamage(hero.GetTower()->GetDamage(Tower::DamageType::PHYSICAL) + m_PhysicalIncrease, Tower::DamageType::PHYSICAL);
+	hero.GetTower()->SetDamage(hero.GetTower()->GetDamage(Tower::DamageType::MAGIC) + m_MagicIncrease, Tower::DamageType::MAGIC);
 }
 
 void TowerDefense::RangeUpgrade::UpgradeHero(HeroCard& hero)

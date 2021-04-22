@@ -9,6 +9,7 @@ TowerDefense::Tower::Wizard::Wizard()
 	m_NumberOfMissiles(3)
 {
 	m_MagicDamage = 1.0f;
+	m_DamageType = DamageType::MAGIC;
 }
 
 TowerDefense::Tower::Wizard::Wizard(float fireTime, int range, float damage, int numberOfMissiles)
@@ -20,7 +21,7 @@ TowerDefense::Tower::Wizard::Wizard(float fireTime, int range, float damage, int
 
 void TowerDefense::Tower::Wizard::Fire(std::shared_ptr<TowerDefense::Entity> target)
 {
-	float damage = m_MagicDamage + m_MagicDamageModifier;
+	float damage = m_MagicDamage;
 	if (Random::GetFloat() < m_CritChance)
 	{
 		damage *= m_CritMultiplier;
@@ -54,8 +55,8 @@ std::shared_ptr<TowerDefense::Card> TowerDefense::Tower::Wizard::GetRandomUpgrad
 std::shared_ptr<TowerDefense::Tower::Tower> TowerDefense::Tower::Wizard::Clone()
 {
 	auto tower = std::make_shared<Wizard>(GetAttackTime(), GetRange(), m_MagicDamage, m_NumberOfMissiles);
-	tower->SetDamageModifier(m_PhysicalDamageModifier, DamageType::PHYSICAL);
-	tower->SetDamageModifier(m_MagicDamageModifier, DamageType::MAGIC);
+	tower->SetDamage(m_PhysicalDamage, DamageType::PHYSICAL);
+	tower->SetDamage(m_MagicDamage, DamageType::MAGIC);
 	tower->SetCritChance(m_CritChance);
 	tower->SetCritMultiplier(m_CritMultiplier);
 	tower->SetWidth(m_Width);

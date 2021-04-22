@@ -9,8 +9,8 @@ TowerDefense::Quirk::Orc::Orc()
 
 void TowerDefense::Quirk::Orc::Apply(TowerDefense::HeroCard& h)
 {
-	h.GetTower()->SetDamageModifier(h.GetTower()->GetDamageModifier(Tower::DamageType::PHYSICAL) + 3, Tower::DamageType::PHYSICAL);
-	h.GetTower()->SetDamageModifier(h.GetTower()->GetDamageModifier(Tower::DamageType::MAGIC) - 1, Tower::DamageType::MAGIC);
+	h.GetTower()->SetDamage(h.GetTower()->GetDamage(Tower::DamageType::PHYSICAL) + 3, Tower::DamageType::PHYSICAL);
+	h.GetTower()->SetDamage(h.GetTower()->GetDamage(Tower::DamageType::MAGIC) - 1, Tower::DamageType::MAGIC);
 }
 
 std::shared_ptr<TowerDefense::Quirk::Quirk> TowerDefense::Quirk::Orc::Clone()

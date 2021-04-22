@@ -26,8 +26,8 @@ void TowerDefense::Tower::Cleric::Fire(std::shared_ptr<TowerDefense::Entity> tar
 std::shared_ptr<TowerDefense::Tower::Tower> TowerDefense::Tower::Cleric::Clone()
 {
 	auto tower = std::make_shared<Cleric>(GetAttackTime(), GetRange(), m_DamageBuff);
-	tower->SetDamageModifier(m_PhysicalDamageModifier, DamageType::PHYSICAL);
-	tower->SetDamageModifier(m_MagicDamageModifier, DamageType::MAGIC);
+	tower->SetDamage(m_PhysicalDamage, DamageType::PHYSICAL);
+	tower->SetDamage(m_MagicDamage, DamageType::MAGIC);
 	tower->SetCritChance(m_CritChance);
 	tower->SetCritMultiplier(m_CritMultiplier);
 	tower->SetWidth(m_Width);

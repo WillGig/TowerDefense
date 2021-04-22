@@ -8,12 +8,21 @@ TowerDefense::TowerInfo::TowerInfo(float x, float y, std::shared_ptr<Tower::Towe
 	m_Name(std::make_unique<Text>(t->GetName() , x, y + 50.0f, 14.0f, 200.0f))
 {
 	std::string stats = "Damage Type: ";
-	//TODO: Get tower damage type
-	stats += "\nDamage:            ";
-	//TODO: Get tower damage
-	stats += "\nRange:                     " + std::to_string(t->GetRange());
+	if (t->GetDamageType() == Tower::DamageType::PHYSICAL)
+		stats += "       PHYS";
+	else if (t->GetDamageType() == Tower::DamageType::MAGIC)
+		stats += "       MAGIC";
 
 	std::stringstream ss;
+	ss << std::fixed << std::setprecision(1) << t->GetDamage(t->GetDamageType());
+	stats += "\nDamage:                   " + ss.str();
+
+	stats += "\nRange:                  ";
+	if (t->GetRange() < 100)
+		stats += " ";
+	stats += std::to_string(t->GetRange()) + ".0";
+
+	ss.str("");
 	ss << std::fixed << std::setprecision(1) << (t->GetAttackTime() / 60.0f);
 	stats += "\nAttack Speed:           " + ss.str() + "s";
 

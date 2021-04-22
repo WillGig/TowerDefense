@@ -9,7 +9,7 @@ TowerDefense::Quirk::WoodElf::WoodElf()
 
 void TowerDefense::Quirk::WoodElf::Apply(TowerDefense::HeroCard& h)
 {
-	h.GetTower()->SetDamageModifier(h.GetTower()->GetDamageModifier(Tower::DamageType::PHYSICAL) + 1, Tower::DamageType::PHYSICAL);
+	h.GetTower()->SetDamage(h.GetTower()->GetDamage(Tower::DamageType::PHYSICAL) + 1, Tower::DamageType::PHYSICAL);
 	h.GetTower()->SetAttackTime(h.GetTower()->GetAttackTime() * .9f);
 }
 

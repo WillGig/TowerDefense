@@ -9,7 +9,7 @@ TowerDefense::Quirk::Dwarf::Dwarf()
 
 void TowerDefense::Quirk::Dwarf::Apply(TowerDefense::HeroCard& h)
 {
-	h.GetTower()->SetDamageModifier(h.GetTower()->GetDamageModifier(Tower::DamageType::PHYSICAL) + 2, Tower::DamageType::PHYSICAL);
+	h.GetTower()->SetDamage(h.GetTower()->GetDamage(Tower::DamageType::PHYSICAL) + 2, Tower::DamageType::PHYSICAL);
 }
 
 std::shared_ptr<TowerDefense::Quirk::Quirk> TowerDefense::Quirk::Dwarf::Clone()

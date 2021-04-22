@@ -10,11 +10,11 @@ TowerDefense::DamageBuff::DamageBuff(int duration, int source, Tower::DamageType
 
 void TowerDefense::DamageBuff::Apply(Tower::Tower& t)
 {
-	t.SetDamageModifier(t.GetDamageModifier(m_Type) + m_Modifier, m_Type);
+	t.SetDamage(t.GetDamage(m_Type) + m_Modifier, m_Type);
 }
 
 void TowerDefense::DamageBuff::Remove(Tower::Tower& t)
 {
-	t.SetDamageModifier(t.GetDamageModifier(m_Type) - m_Modifier, m_Type);
+	t.SetDamage(t.GetDamage(m_Type) - m_Modifier, m_Type);
 	Buff::Remove(t);
 }

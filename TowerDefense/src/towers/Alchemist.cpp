@@ -7,6 +7,7 @@ TowerDefense::Tower::Alchemist::Alchemist()
 	:Tower(0.0f, 0.0f, 32, 32, 120.0f, 100, TowerType::DAMAGE, "Alchemist")
 {
 	m_MagicDamage = 1.0f;
+	m_DamageType = DamageType::MAGIC;
 }
 
 TowerDefense::Tower::Alchemist::Alchemist(float fireTime, int range, float damage)
@@ -18,7 +19,7 @@ TowerDefense::Tower::Alchemist::Alchemist(float fireTime, int range, float damag
 
 void TowerDefense::Tower::Alchemist::Fire(std::shared_ptr<TowerDefense::Entity> target)
 {
-	float damage = m_MagicDamage + m_MagicDamageModifier;
+	float damage = m_MagicDamage;
 	if (Random::GetFloat() < m_CritChance)
 	{
 		damage *= m_CritMultiplier;
@@ -30,8 +31,8 @@ void TowerDefense::Tower::Alchemist::Fire(std::shared_ptr<TowerDefense::Entity> 
 std::shared_ptr<TowerDefense::Tower::Tower> TowerDefense::Tower::Alchemist::Clone()
 {
 	auto tower = std::make_shared<Alchemist>(GetAttackTime(), GetRange(), m_MagicDamage);
-	tower->SetDamageModifier(m_PhysicalDamageModifier, DamageType::PHYSICAL);
-	tower->SetDamageModifier(m_MagicDamageModifier, DamageType::MAGIC);
+	tower->SetDamage(m_PhysicalDamage, DamageType::PHYSICAL);
+	tower->SetDamage(m_MagicDamage, DamageType::MAGIC);
 	tower->SetCritChance(m_CritChance);
 	tower->SetCritMultiplier(m_CritMultiplier);
 	tower->SetWidth(m_Width);

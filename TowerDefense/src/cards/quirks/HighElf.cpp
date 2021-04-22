@@ -9,7 +9,7 @@ TowerDefense::Quirk::HighElf::HighElf()
 
 void TowerDefense::Quirk::HighElf::Apply(TowerDefense::HeroCard& h)
 {
-	h.GetTower()->SetDamageModifier(h.GetTower()->GetDamageModifier(Tower::DamageType::MAGIC) + 1, Tower::DamageType::MAGIC);
+	h.GetTower()->SetDamage(h.GetTower()->GetDamage(Tower::DamageType::MAGIC) + 1, Tower::DamageType::MAGIC);
 	h.GetTower()->SetAttackTime(h.GetTower()->GetAttackTime() * .9f);
 }
 
