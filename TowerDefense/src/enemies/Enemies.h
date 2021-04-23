@@ -9,7 +9,7 @@ namespace TowerDefense
 		{
 		public:
 			Rat()
-				:Enemy(32, 32, 10.0f, 1.0f, "rat", "ratSelected")
+				:Enemy(32, 32, 10.0f, 1.0f, "Rat")
 			{}
 		};
 
@@ -17,7 +17,7 @@ namespace TowerDefense
 		{
 		public:
 			GiantRat()
-				:Enemy(32, 32, 50.0f, 0.75f, "giantRat", "giantRatSelected")
+				:Enemy(32, 32, 50.0f, 0.75f, "Giant Rat")
 			{}
 		};
 
@@ -25,7 +25,7 @@ namespace TowerDefense
 		{
 		public:
 			BossRat()
-				:Enemy(64, 64, 500.0f, 0.3f, "bossRat", "bossRatSelected")
+				:Enemy(64, 64, 500.0f, 0.3f, "Boss Rat")
 			{
 				m_Damage = 20;
 			}
@@ -35,7 +35,7 @@ namespace TowerDefense
 		{
 		public:
 			Goblin()
-				:Enemy(32, 32, 30.0f, 1.0f, "goblin", "goblinSelected")
+				:Enemy(32, 32, 30.0f, 1.0f, "Goblin")
 			{}
 		};
 
@@ -43,7 +43,7 @@ namespace TowerDefense
 		{
 		public:
 			Orc()
-				:Enemy(32, 32, 60.0f, 0.8f, "orc", "orcSelected")
+				:Enemy(32, 32, 60.0f, 0.8f, "Orc")
 			{}
 		};
 	}

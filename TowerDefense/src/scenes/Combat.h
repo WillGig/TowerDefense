@@ -6,6 +6,7 @@
 #include "towers/Tower.h"
 #include "enemies/Fight.h"
 #include "towers/TowerInfo.h"
+#include "enemies/EnemyInfo.h"
 
 namespace TowerDefense
 {
@@ -34,7 +35,10 @@ namespace TowerDefense
 		
 		static inline int GetRoundSpeed() { return s_RoundSpeed; }
 		
-		static inline bool DraggingInfo() { return s_TowerInfo && s_TowerInfo->Dragging(); }
+		static inline bool DraggingInfo() { return (s_TowerInfo && s_TowerInfo->Dragging()) || (s_EnemyInfo && s_EnemyInfo->Dragging()); }
+		static inline bool DraggingTowerInfo() { return s_TowerInfo && s_TowerInfo->Dragging(); }
+		static inline bool DraggingEnemyInfo() { return s_EnemyInfo && s_EnemyInfo->Dragging(); }
+
 
 		//Called at end of program to clean up memory
 		//Necessary to unbind static and singleton GLFW textures before calling glfwTerminate
@@ -76,6 +80,7 @@ namespace TowerDefense
 		std::shared_ptr<Enemy::Enemy> m_SelectedEnemy;
 
 		static std::unique_ptr<TowerInfo> s_TowerInfo;
+		static std::unique_ptr<EnemyInfo> s_EnemyInfo;
 
 		static std::shared_ptr<std::vector<std::shared_ptr<Entity>>> s_Entities, s_Adders;
 		static std::shared_ptr<std::vector<int>> s_Removers;

@@ -198,6 +198,7 @@
     <ClCompile Include="src\cards\quirks\WoodElf.cpp" />
     <ClCompile Include="src\cards\upgrades\Upgrades.cpp" />
     <ClCompile Include="src\enemies\Enemy.cpp" />
+    <ClCompile Include="src\enemies\EnemyInfo.cpp" />
     <ClCompile Include="src\enemies\Fight.cpp" />
     <ClCompile Include="src\enemies\HealthBar.cpp" />
     <ClCompile Include="src\enemies\Wave.cpp" />
@@ -317,6 +318,7 @@
     <ClInclude Include="src\cards\upgrades\Upgrade.h" />
     <ClInclude Include="src\enemies\Enemies.h" />
     <ClInclude Include="src\enemies\Enemy.h" />
+    <ClInclude Include="src\enemies\EnemyInfo.h" />
     <ClInclude Include="src\enemies\Fight.h" />
     <ClInclude Include="src\enemies\HealthBar.h" />
     <ClInclude Include="src\enemies\Wave.h" />

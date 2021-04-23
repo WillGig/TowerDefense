@@ -284,16 +284,16 @@ void LoadTextures()
     std::cout << "...Enemies" << std::endl;
 
     SpriteSheet enemies("res/textures/Enemies.png", 64, 64);
-    Texture::LoadTexture("rat",                 enemies.load(0, 0));
-    Texture::LoadTexture("ratSelected",         enemies.load(1, 0));
-    Texture::LoadTexture("giantRat",            enemies.load(2, 0));
-    Texture::LoadTexture("giantRatSelected",    enemies.load(3, 0));
-    Texture::LoadTexture("bossRat",             enemies.load(0, 1));
-    Texture::LoadTexture("bossRatSelected",     enemies.load(1, 1));
-    Texture::LoadTexture("goblin",              enemies.load(2, 1));
-    Texture::LoadTexture("goblinSelected",      enemies.load(3, 1));
-    Texture::LoadTexture("orc",                 enemies.load(0, 2));
-    Texture::LoadTexture("orcSelected",         enemies.load(1, 2));
+    Texture::LoadTexture("Rat",                 enemies.load(0, 0));
+    Texture::LoadTexture("RatSelected",         enemies.load(1, 0));
+    Texture::LoadTexture("Giant Rat",            enemies.load(2, 0));
+    Texture::LoadTexture("Giant RatSelected",    enemies.load(3, 0));
+    Texture::LoadTexture("Boss Rat",             enemies.load(0, 1));
+    Texture::LoadTexture("Boss RatSelected",     enemies.load(1, 1));
+    Texture::LoadTexture("Goblin",              enemies.load(2, 1));
+    Texture::LoadTexture("GoblinSelected",      enemies.load(3, 1));
+    Texture::LoadTexture("Orc",                 enemies.load(0, 2));
+    Texture::LoadTexture("OrcSelected",         enemies.load(1, 2));
 
     std::cout << "...Cards" << std::endl;
 

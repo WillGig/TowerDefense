@@ -9,12 +9,13 @@
 
 int TowerDefense::Enemy::Enemy::POISONTICKRATE = 30;
 
-TowerDefense::Enemy::Enemy::Enemy(int width, int height, float health, float speed, const std::string& regularImage, const std::string& selectedImage)
-	:Entity(width, height, 0.0f, 0.0f, 0.0f, regularImage, Type::ENEMY), m_Damage(1), m_CurrentTile(0),
+TowerDefense::Enemy::Enemy::Enemy(int width, int height, float health, float speed, const std::string& name)
+	:Entity(width, height, 0.0f, 0.0f, 0.0f, name, Type::ENEMY), m_Damage(1), m_CurrentTile(0),
 	m_SlowTime(0), m_PoisonTime(0), m_LastPoisonTick(-1), m_Health(health), m_MaxHealth(health), m_Speed(speed), 
 	m_SlowPercent(0.0f), m_PoisonAmount(0.0f), m_GoalX(), m_GoalY(), m_DistanceTraveled(0.0f), m_ReachedEnd(false), 
-	m_Selected(false), m_Clicked(false), m_RegularImage(std::make_shared<Image>(regularImage, 0.0f, 0.0f, width, height, 0.0f)), 
-	m_SelectedImage(std::make_shared<Image>(selectedImage, 0.0f, 0.0f, width, height, 0.0f)),
+	m_Selected(false), m_Clicked(false), m_Name(name),
+	m_RegularImage(std::make_shared<Image>(name, 0.0f, 0.0f, width, height, 0.0f)), 
+	m_SelectedImage(std::make_shared<Image>(name + "Selected", 0.0f, 0.0f, width, height, 0.0f)),
 	m_HealthBar(std::make_unique<HealthBar>(m_X, m_Y + height/2, 20.0f, 4.0f))
 {
 	TowerDefense::Board& board = TowerDefense::Board::Get();

@@ -1,7 +1,5 @@
 Current:
-	Add info for enemies
-
-	Change entities to unordered map?
+	Allow enemy and tower info to exist at the same time
 
 	Allow enemies and towers to be selected when paused
 

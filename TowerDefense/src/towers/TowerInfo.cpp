@@ -1,6 +1,7 @@
 #include "pch.h"
 #include "TowerInfo.h"
 #include "core/Player.h"
+#include "scenes/Combat.h"
 
 TowerDefense::TowerInfo::TowerInfo(float x, float y, std::shared_ptr<Tower::Tower> t)
 	:Entity(200, 155, x, y, 0.0f, "TowerInfo", Type::STATICIMAGE), m_Dragging(false),
@@ -34,7 +35,7 @@ void TowerDefense::TowerInfo::Update()
 		m_TowerRange != m_Tower->GetRange() || m_TowercritChance != m_Tower->GetCritChance() || m_TowerDamageDealt != m_Tower->GetDamageDealt())
 		UpdateStatsText();
 
-	if (Player::Get().GetHand()->DraggingCard())
+	if (Player::Get().GetHand()->DraggingCard() || Combat::DraggingEnemyInfo())
 		return;
 
 	m_TargetLeft->Update();

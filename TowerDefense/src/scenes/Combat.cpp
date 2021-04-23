@@ -14,6 +14,7 @@ std::shared_ptr<std::vector<int>> TowerDefense::Combat::s_Removers = std::make_s
 std::unique_ptr<std::vector<std::shared_ptr<TowerDefense::Fight>>> TowerDefense::Combat::s_Fights = std::make_unique<std::vector<std::shared_ptr<TowerDefense::Fight>>>();
 
 std::unique_ptr<TowerDefense::TowerInfo> TowerDefense::Combat::s_TowerInfo;
+std::unique_ptr<TowerDefense::EnemyInfo> TowerDefense::Combat::s_EnemyInfo;
 
 TowerDefense::Combat::Combat()
 	:m_PlayerHealth(Player::Get().GetHealth()), m_PlayerEnergy(Player::Get().GetEnergy()), m_CurrentFight(-1),
@@ -65,7 +66,11 @@ void TowerDefense::Combat::Render()
 	if(s_TowerInfo)
 		s_TowerInfo->Render();
 
-	//Draw Selected Card on top of tower info
+	//Render Enemy Information
+	if (s_EnemyInfo)
+		s_EnemyInfo->Render();
+
+	//Draw Selected Card on top of tower and enemy info
 	if (Player::Get().GetHand()->DraggingCard())
 		Player::Get().GetHand()->GetCard(Player::Get().GetHand()->GetSelectedCard())->Render();
 }
@@ -82,7 +87,7 @@ void TowerDefense::Combat::Update()
 	bool drawShow = Player::Get().GetDrawPile()->IsShowing();
 	bool discardShow = Player::Get().GetDiscardPile()->IsShowing();
 	bool cardDragging = Player::Get().GetHand()->DraggingCard();
-	bool draggingTowerInfo = s_TowerInfo && s_TowerInfo->Dragging();
+	bool draggingTowerInfo = DraggingInfo();
 	if (!cardDragging && !deckShow && !drawShow && !discardShow && !draggingTowerInfo)
 			UpdateButtons();
 
@@ -111,6 +116,8 @@ void TowerDefense::Combat::OnSwitch()
 	m_StartButton->SetImages("startButton", "startButtonSelected");
 	m_SelectedTower.reset();
 	s_TowerInfo.reset();
+	m_SelectedEnemy.reset();
+	s_EnemyInfo.reset();
 
 	Player::Get().GetDeck()->Show(false);
 	Player::Get().GetDrawPile()->Show(false);
@@ -134,6 +141,7 @@ void TowerDefense::Combat::CleanUp()
 	s_Removers.reset();
 	s_Fights.reset();
 	s_TowerInfo.reset();
+	s_EnemyInfo.reset();
 }
 
 //Draw Hand, Deck, Draw Pile, and Discard Pile
@@ -204,7 +212,7 @@ void TowerDefense::Combat::UpdateCards()
 	bool drawShow = player.GetDrawPile()->IsShowing();
 	bool discardShow = player.GetDiscardPile()->IsShowing();
 	bool cardSelected = player.GetHand()->GetSelectedCard() != -1;
-	bool draggingTowerInfo = s_TowerInfo && s_TowerInfo->Dragging();
+	bool draggingTowerInfo = DraggingInfo();
 
 	if (!cardSelected && !drawShow && !discardShow && !draggingTowerInfo)
 	{
@@ -301,9 +309,9 @@ void TowerDefense::Combat::UpdateSelectedTower()
 	if (Player::Get().GetHand()->DraggingCard())
 		return;
 
-	if (Input::GetLeftMouseClicked() && s_TowerInfo && !s_TowerInfo->Dragging())
+	if (Input::GetLeftMouseClicked() && !DraggingInfo())
 	{
-		if (!m_SelectedTower || !m_SelectedTower->Contains(Input::GetMouseX(), Input::GetMouseY()))
+		if ((!m_SelectedTower || !m_SelectedTower->Contains(Input::GetMouseX(), Input::GetMouseY())) && (!m_SelectedEnemy || !m_SelectedEnemy->Contains(Input::GetMouseX(), Input::GetMouseY())))
 		{
 			m_SelectedTower.reset();
 			s_TowerInfo.reset();
@@ -333,17 +341,26 @@ void TowerDefense::Combat::UpdateSelectedTower()
 //Find if an enemy has been clicked, or deselected
 void TowerDefense::Combat::UpdateSelectedEnemy()
 {
+	if (m_SelectedEnemy && !GetEntity(m_SelectedEnemy->GetID()))
+	{
+		m_SelectedEnemy.reset();
+		s_EnemyInfo.reset();
+	}
+
+	if (s_EnemyInfo)
+		s_EnemyInfo->Update();
 	if (m_SelectedEnemy)
 		m_SelectedEnemy->SetSelected(true);
 
 	if (Player::Get().GetHand()->DraggingCard())
 		return;
 
-	if (Input::GetLeftMouseClicked())
+	if (Input::GetLeftMouseClicked() && !DraggingInfo())
 	{
-		if (!m_SelectedEnemy || !m_SelectedEnemy->Contains(Input::GetMouseX(), Input::GetMouseY()))
+		if ((!m_SelectedTower || !m_SelectedTower->Contains(Input::GetMouseX(), Input::GetMouseY())) && (!m_SelectedEnemy || !m_SelectedEnemy->Contains(Input::GetMouseX(), Input::GetMouseY())))
 		{
 			m_SelectedEnemy.reset();
+			s_EnemyInfo.reset();
 		}
 	}
 
@@ -358,6 +375,7 @@ void TowerDefense::Combat::UpdateSelectedEnemy()
 			if (enemy->GetClicked())
 			{
 				m_SelectedEnemy = enemy;
+				s_EnemyInfo = std::make_unique<EnemyInfo>(225.0f, 560.0f, m_SelectedEnemy);
 			}
 		}
 	}

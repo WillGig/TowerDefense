@@ -13,7 +13,7 @@ namespace TowerDefense
 		class Enemy : public Entity
 		{
 		public:
-			Enemy(int width, int height, float health, float speed, const std::string& regularImage, const std::string& selectedImage);
+			Enemy(int width, int height, float health, float speed, const std::string& name);
 			void Update() override;
 			void Render() override;
 			void TakeDamage(float damage, unsigned int source);
@@ -26,6 +26,9 @@ namespace TowerDefense
 			inline float GetHealth() const { return m_Health; }
 			inline float GetMaxHealth() const { return m_MaxHealth; }
 			inline float GetDistanceTraveled() const { return m_DistanceTraveled; }
+			inline float GetSpeed() const { return m_Speed; }
+
+			inline std::string GetName() const { return m_Name; }
 
 			inline bool GetClicked() { return m_Clicked; };
 
@@ -46,6 +49,8 @@ namespace TowerDefense
 			bool m_ReachedEnd, m_Selected, m_Clicked;
 
 			unsigned int m_PoisonSource;
+
+			std::string m_Name;
 
 			std::shared_ptr<Image> m_RegularImage, m_SelectedImage;
 
