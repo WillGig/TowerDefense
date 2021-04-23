@@ -12,6 +12,8 @@ TowerDefense::Projectile::Projectile(float x, float y, int width, int height, fl
 
 void TowerDefense::Projectile::Update()
 {
+	if (Combat::Paused())
+		return;
 
 	UpdateDirection();
 	

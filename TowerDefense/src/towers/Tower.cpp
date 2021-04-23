@@ -28,14 +28,17 @@ void TowerDefense::Tower::Tower::Update()
 {
 	UpdateImage();
 
-	if (m_LastFire == -1 || TowerDefense::Time::Get().GetTime() - m_LastFire > (m_FireTime / Combat::GetRoundSpeed()))
-		Attack();
-
 	m_Clicked = false;
 	bool cardSelected = Player::Get().GetHand()->GetSelectedCard() != -1;
 
 	if (Contains(Input::GetMouseX(), Input::GetMouseY()) && !cardSelected && !Combat::DraggingInfo() && Input::GetLeftMouseClickedAndSetFalse())
 		Clicked();
+
+	if (Combat::Paused())
+		return;
+
+	if (m_LastFire == -1 || TowerDefense::Time::Get().GetTime() - m_LastFire > (m_FireTime / Combat::GetRoundSpeed()))
+		Attack();
 
 	UpdateBuffs();
 }

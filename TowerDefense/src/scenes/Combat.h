@@ -39,6 +39,7 @@ namespace TowerDefense
 		static inline bool DraggingTowerInfo() { return s_TowerInfo && s_TowerInfo->Dragging(); }
 		static inline bool DraggingEnemyInfo() { return s_EnemyInfo && s_EnemyInfo->Dragging(); }
 
+		static inline bool Paused() { return s_Paused; }
 
 		//Called at end of program to clean up memory
 		//Necessary to unbind static and singleton GLFW textures before calling glfwTerminate
@@ -71,8 +72,9 @@ namespace TowerDefense
 		void ClearTowers();
 
 		static int s_RoundSpeed;
+		static bool s_Paused;
+
 		int m_PlayerHealth, m_PlayerEnergy, m_CurrentFight;
-		bool m_Paused;
 		Phase m_TurnPhase;
 		std::unique_ptr<Button> m_ViewDeck, m_StartButton, m_SpeedButton;
 		std::unique_ptr<Text> m_Health, m_Energy, m_Day;

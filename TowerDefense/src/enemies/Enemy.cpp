@@ -28,13 +28,16 @@ TowerDefense::Enemy::Enemy::Enemy(int width, int height, float health, float spe
 
 void TowerDefense::Enemy::Enemy::Update()
 {
+	CheckClicked();
+
 	UpdateImage();
+
+	if (Combat::Paused())
+		return;
 
 	Move();
 
 	UpdateDebuffs();
-
-	CheckClicked();
 
 	//Check if enemy reached the end and Remove
 	if (m_ReachedEnd) {

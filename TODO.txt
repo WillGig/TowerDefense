@@ -1,7 +1,5 @@
 Current:
-	Allow enemy and tower info to exist at the same time
-
-	Allow enemies and towers to be selected when paused
+	Fix bug where pausing allows towers to prepare to fire
 
 	Add specifics to upgrades when right clicking on them to make it clear what they do
 

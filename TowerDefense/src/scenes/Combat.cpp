@@ -7,6 +7,7 @@
 #include "towers/Archer.h"
 
 int TowerDefense::Combat::s_RoundSpeed = 1;
+bool TowerDefense::Combat::s_Paused = false;
 
 std::shared_ptr<std::vector<std::shared_ptr<TowerDefense::Entity>>> TowerDefense::Combat::s_Entities = std::make_shared<std::vector<std::shared_ptr<TowerDefense::Entity>>>();
 std::shared_ptr<std::vector<std::shared_ptr<TowerDefense::Entity>>> TowerDefense::Combat::s_Adders = std::make_shared<std::vector<std::shared_ptr<TowerDefense::Entity>>>();
@@ -18,7 +19,7 @@ std::unique_ptr<TowerDefense::EnemyInfo> TowerDefense::Combat::s_EnemyInfo;
 
 TowerDefense::Combat::Combat()
 	:m_PlayerHealth(Player::Get().GetHealth()), m_PlayerEnergy(Player::Get().GetEnergy()), m_CurrentFight(-1),
-	m_Paused(false), m_TurnPhase(Phase::START),
+	m_TurnPhase(Phase::START),
 	m_ViewDeck(std::make_unique<Button>(50, 43, 570.0f, 578.0f,		"viewDeckButton",	"viewDeckButtonSelected")),
 	m_StartButton(std::make_unique<Button>(96, 32, 76.0f, 201.0f,	"startButton",		"startButtonSelected")),
 	m_SpeedButton(std::make_unique<Button>(96, 32, 76.0f, 159.0f,	"speed1",			"speed1Selected")),
@@ -59,20 +60,16 @@ void TowerDefense::Combat::Render()
 	m_Energy->Render();
 	m_Day->Render();
 
-	//Drawpile, Discardpile, Hand
-	RenderCards();
-
 	//Render Tower Information
-	if(s_TowerInfo)
+	if (s_TowerInfo)
 		s_TowerInfo->Render();
 
 	//Render Enemy Information
 	if (s_EnemyInfo)
 		s_EnemyInfo->Render();
 
-	//Draw Selected Card on top of tower and enemy info
-	if (Player::Get().GetHand()->DraggingCard())
-		Player::Get().GetHand()->GetCard(Player::Get().GetHand()->GetSelectedCard())->Render();
+	//Drawpile, Discardpile, Hand
+	RenderCards();
 }
 
 void TowerDefense::Combat::Update()
@@ -91,11 +88,23 @@ void TowerDefense::Combat::Update()
 	if (!cardDragging && !deckShow && !drawShow && !discardShow && !draggingTowerInfo)
 			UpdateButtons();
 
-	if(!deckShow && !drawShow && !discardShow)
-		UpdateSelectedTower();
+	if (!deckShow && !drawShow && !discardShow)
+	{
+		if (s_EnemyInfo)
+			s_EnemyInfo->Update();
+		if (m_SelectedEnemy)
+			m_SelectedEnemy->SetSelected(true);
+		if (s_TowerInfo)
+			s_TowerInfo->Update();
+		if (m_SelectedTower)
+			m_SelectedTower->SetHighlighted();
+	}
 
 	if (!deckShow && !drawShow && !discardShow)
 		UpdateSelectedEnemy();
+
+	if(!deckShow && !drawShow && !discardShow)
+		UpdateSelectedTower();
 
 	UpdateEntities();
 
@@ -177,12 +186,8 @@ void TowerDefense::Combat::RenderCards()
 void TowerDefense::Combat::UpdateEntities()
 {
 	//Update Entities
-	if (!m_Paused)
-	{
-		for (unsigned int i = 0; i < s_Entities->size(); i++)
-			s_Entities->at(i)->Update();
-			
-	}
+	for (unsigned int i = 0; i < s_Entities->size(); i++)
+		s_Entities->at(i)->Update();
 
 	//Add all entities from adders and clear
 	for (unsigned int i = 0; i < s_Adders->size(); i++)
@@ -228,7 +233,7 @@ void TowerDefense::Combat::UpdateCards()
 		player.GetDrawPile()->Update();
 	if (!cardSelected && !deckShow && !drawShow && !draggingTowerInfo)
 		player.GetDiscardPile()->Update();
-	if (!m_Paused && !deckShow && !drawShow && !discardShow && !draggingTowerInfo)
+	if (!s_Paused && !deckShow && !drawShow && !discardShow && !draggingTowerInfo)
 		player.GetHand()->Update();
 }
 
@@ -243,7 +248,7 @@ void TowerDefense::Combat::UpdateWave()
 	}
 
 	//Add new Enemies from wave
-	if (m_TurnPhase == Phase::COMBAT && wave->HasMoreEnemies() && !m_Paused) {
+	if (m_TurnPhase == Phase::COMBAT && wave->HasMoreEnemies() && !s_Paused) {
 		std::shared_ptr<Enemy::Enemy> e = s_Fights->at(m_CurrentFight)->GetWave()->GetNextEnemy();
 		if (e)
 			AddEntity(e);
@@ -268,7 +273,7 @@ void TowerDefense::Combat::UpdateButtons()
 			}
 			else if (m_TurnPhase == Phase::COMBAT)
 			{
-				m_Paused = !m_Paused;
+				s_Paused = !s_Paused;
 			}
 			else if (m_TurnPhase == Phase::END)
 			{
@@ -301,17 +306,27 @@ void TowerDefense::Combat::UpdateButtons()
 //Find if a tower has been clicked, or deselected
 void TowerDefense::Combat::UpdateSelectedTower()
 {
-	if (s_TowerInfo)
-		s_TowerInfo->Update();
-	if (m_SelectedTower)
-		m_SelectedTower->SetHighlighted();
-
 	if (Player::Get().GetHand()->DraggingCard())
 		return;
 
 	if (Input::GetLeftMouseClicked() && !DraggingInfo())
 	{
-		if ((!m_SelectedTower || !m_SelectedTower->Contains(Input::GetMouseX(), Input::GetMouseY())) && (!m_SelectedEnemy || !m_SelectedEnemy->Contains(Input::GetMouseX(), Input::GetMouseY())))
+
+		bool clickingEnemy = false;
+		for (int i = 0; i < (int)s_Entities->size(); i++)
+		{
+			auto e = s_Entities->at(i);
+			if (e->GetEntityType() == Type::ENEMY)
+			{
+				if (e->Contains(Input::GetMouseX(), Input::GetMouseY()))
+				{
+					clickingEnemy = true;
+					break;
+				}
+			}
+		}
+
+		if ((!m_SelectedTower || !m_SelectedTower->Contains(Input::GetMouseX(), Input::GetMouseY())) && !clickingEnemy)
 		{
 			m_SelectedTower.reset();
 			s_TowerInfo.reset();
@@ -347,17 +362,26 @@ void TowerDefense::Combat::UpdateSelectedEnemy()
 		s_EnemyInfo.reset();
 	}
 
-	if (s_EnemyInfo)
-		s_EnemyInfo->Update();
-	if (m_SelectedEnemy)
-		m_SelectedEnemy->SetSelected(true);
-
 	if (Player::Get().GetHand()->DraggingCard())
 		return;
 
 	if (Input::GetLeftMouseClicked() && !DraggingInfo())
 	{
-		if ((!m_SelectedTower || !m_SelectedTower->Contains(Input::GetMouseX(), Input::GetMouseY())) && (!m_SelectedEnemy || !m_SelectedEnemy->Contains(Input::GetMouseX(), Input::GetMouseY())))
+		bool clickingTower = false;
+		for (int i = 0; i < (int)s_Entities->size(); i++)
+		{
+			auto e = s_Entities->at(i);
+			if (e->GetEntityType() == Type::TOWER)
+			{
+				if (e->Contains(Input::GetMouseX(), Input::GetMouseY()))
+				{
+					clickingTower = true;
+					break;
+				}
+			}
+		}
+
+		if ((!m_SelectedEnemy || !m_SelectedEnemy->Contains(Input::GetMouseX(), Input::GetMouseY())) && !clickingTower)
 		{
 			m_SelectedEnemy.reset();
 			s_EnemyInfo.reset();
