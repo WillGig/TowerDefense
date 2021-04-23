@@ -30,7 +30,7 @@ void TowerDefense::Tower::Wizard::Fire(std::shared_ptr<TowerDefense::Entity> tar
 	}
 	for (int i = 0; i < m_NumberOfMissiles; i++) {
 		float angle = (i - ((m_NumberOfMissiles - 1) / 2.0f)) * (180.0f / m_NumberOfMissiles);
-		Combat::AddEntity(std::make_shared<TowerDefense::MagicMissile>(m_X, m_Y, m_Rotation + angle, damage));
+		Combat::AddEntity(std::make_shared<TowerDefense::MagicMissile>(m_X, m_Y, m_Rotation + angle, damage, GetID()));
 	}
 }
 

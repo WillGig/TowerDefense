@@ -27,7 +27,7 @@ void TowerDefense::Tower::Archer::Fire(std::shared_ptr<TowerDefense::Entity> tar
 		damage *= m_CritMultiplier;
 		Combat::AddEntity(std::make_shared<AnimationEffect>(m_X, m_Y, 32, 32, "critAnimation", 7, 30));
 	}
-	Combat::AddEntity(std::make_shared<TowerDefense::Arrow>(m_X, m_Y, m_Rotation, damage));
+	Combat::AddEntity(std::make_shared<TowerDefense::Arrow>(m_X, m_Y, m_Rotation, damage, GetID()));
 }
 
 std::shared_ptr<TowerDefense::Tower::Tower> TowerDefense::Tower::Archer::Clone()

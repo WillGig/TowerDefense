@@ -6,8 +6,8 @@ namespace TowerDefense
 	class Arrow : public Projectile
 	{
 	public:
-		Arrow(float x, float y, float direction, float damage)
-			:Projectile(x, y, 6, 12, 8, direction, 300, damage, "projectiles/arrow")
+		Arrow(float x, float y, float direction, float damage, unsigned int source)
+			:Projectile(x, y, 6, 12, 8, direction, 300, damage, "projectiles/arrow", source)
 		{
 		}
 
@@ -18,8 +18,8 @@ namespace TowerDefense
 	class MagicMissile : public Projectile
 	{
 	public:
-		MagicMissile(float x, float y, float direction, float damage)
-			:Projectile(x, y, 8, 8, 2, direction, 500, damage, "projectiles/magicMissile")
+		MagicMissile(float x, float y, float direction, float damage, unsigned int source)
+			:Projectile(x, y, 8, 8, 2, direction, 500, damage, "projectiles/magicMissile", source)
 		{
 			m_TurnSpeed = 2.0f;
 		}
@@ -31,8 +31,8 @@ namespace TowerDefense
 	class GiantRock : public Projectile
 	{
 	public:
-		GiantRock(float x, float y, float direction, float damage)
-			:Projectile(x, y, 32, 32, 4, direction, 300, damage, "projectiles/giantRock"), m_Health(5),
+		GiantRock(float x, float y, float direction, float damage, unsigned int source)
+			:Projectile(x, y, 32, 32, 4, direction, 300, damage, "projectiles/giantRock", source), m_Health(5),
 			m_HitObjects(std::make_unique<std::array<int, 5>>())
 		{
 		}
@@ -48,8 +48,8 @@ namespace TowerDefense
 	class PoisonBomb : public Projectile
 	{
 	public:
-		PoisonBomb(float x, float y, float direction, float damage)
-			:Projectile(x, y, 12, 12, 4, direction, 200, damage, "projectiles/poisonBomb"),
+		PoisonBomb(float x, float y, float direction, float damage, unsigned int source)
+			:Projectile(x, y, 12, 12, 4, direction, 200, damage, "projectiles/poisonBomb", source),
 			m_Radius(50), m_PoisonTime(240)
 		{
 		}

@@ -6,7 +6,7 @@ void TowerDefense::Arrow::HitEntity(std::shared_ptr<TowerDefense::Entity> e)
 {
 	if (e->GetEntityType() == Type::ENEMY) {
 		std::shared_ptr<Enemy::Enemy> enemy = std::dynamic_pointer_cast<Enemy::Enemy>(e);
-		enemy->TakeDamage(m_Damage);
+		enemy->TakeDamage(m_Damage, m_TowerSource);
 	}
 	Destroy();
 }
@@ -15,7 +15,7 @@ void TowerDefense::MagicMissile::HitEntity(std::shared_ptr<TowerDefense::Entity>
 {
 	if (e->GetEntityType() == Type::ENEMY) {
 		std::shared_ptr<Enemy::Enemy> enemy = std::dynamic_pointer_cast<Enemy::Enemy>(e);
-		enemy->TakeDamage(m_Damage);
+		enemy->TakeDamage(m_Damage, m_TowerSource);
 	}
 	Destroy();
 }
@@ -33,7 +33,7 @@ void TowerDefense::GiantRock::HitEntity(std::shared_ptr<TowerDefense::Entity> e)
 
 	if (e->GetEntityType() == Type::ENEMY) {
 		std::shared_ptr<Enemy::Enemy> enemy = std::dynamic_pointer_cast<Enemy::Enemy>(e);
-		enemy->TakeDamage(m_Damage);
+		enemy->TakeDamage(m_Damage, m_TowerSource);
 	}
 
 	m_HitObjects->at(m_HitObjects->size() - m_Health) = e->GetID();
@@ -52,7 +52,7 @@ void TowerDefense::PoisonBomb::HitEntity(std::shared_ptr<TowerDefense::Entity> e
 		{
 			if (e->GetEntityType() == Type::ENEMY) {
 				std::shared_ptr<Enemy::Enemy> enemy = std::dynamic_pointer_cast<Enemy::Enemy>(e);
-				enemy->Poison(m_Damage, m_PoisonTime);
+				enemy->Poison(m_Damage, m_PoisonTime, m_TowerSource);
 			}
 		}
 	}

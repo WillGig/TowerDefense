@@ -20,7 +20,7 @@ namespace TowerDefense
 		void UpdateStatsText();
 
 		bool m_Dragging;
-		float m_PreviousMouseX, m_PreviousMouseY, m_TowerDamage, m_TowerAttackSpeed, m_TowercritChance;
+		float m_PreviousMouseX, m_PreviousMouseY, m_TowerDamage, m_TowerAttackSpeed, m_TowercritChance, m_TowerDamageDealt;
 		int m_TowerRange;
 
 		std::unique_ptr<Text> m_Name, m_Target, m_Stats;

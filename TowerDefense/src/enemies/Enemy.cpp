@@ -5,6 +5,7 @@
 #include "core/Player.h"
 #include "scenes/Combat.h"
 #include "core/Clock.h"
+#include "towers/Tower.h"
 
 int TowerDefense::Enemy::Enemy::POISONTICKRATE = 30;
 
@@ -102,13 +103,14 @@ void TowerDefense::Enemy::Enemy::UpdateDebuffs()
 	if (m_PoisonTime > 0) {
 		m_PoisonTime -= Combat::GetRoundSpeed();
 		if (TowerDefense::Time::Get().GetTime() - m_LastPoisonTick >= POISONTICKRATE) {
-			TakeDamage(m_PoisonAmount * Combat::GetRoundSpeed());
+			TakeDamage(m_PoisonAmount * Combat::GetRoundSpeed(), m_PoisonSource);
 			m_LastPoisonTick = TowerDefense::Time::Get().GetTime();
 		}
 		if (m_PoisonTime < 1) {
 			m_PoisonAmount = 0.0;
 			m_PoisonTime = 0;
 			m_HealthBar->SetColor(1.0f, 0.0f, 0.0f, 1.0f);
+			m_PoisonSource = 0;
 		}
 	}
 }
@@ -150,8 +152,18 @@ void TowerDefense::Enemy::Enemy::FindNewGoal()
 	m_CurrentTile += 2;
 }
 
-void TowerDefense::Enemy::Enemy::TakeDamage(float damage)
+void TowerDefense::Enemy::Enemy::TakeDamage(float damage, unsigned int sourceID)
 {
+	auto source = Combat::GetEntity(sourceID);
+	if (source)
+	{
+		if (source->GetEntityType() == Type::TOWER)
+		{
+			auto tower = std::dynamic_pointer_cast<Tower::Tower>(source);
+			tower->AddDamageDelt(damage);
+		}
+	}
+		
 	m_Health -= damage;
 	m_HealthBar->SetFill(m_Health / m_MaxHealth);
 	if (m_Health <= 0)
@@ -166,13 +178,14 @@ void TowerDefense::Enemy::Enemy::Slow(float slowPercent, int slowTime)
 		m_SlowTime = slowTime;
 }
 
-void TowerDefense::Enemy::Enemy::Poison(float poisonDamage, int poisonTime)
+void TowerDefense::Enemy::Enemy::Poison(float poisonDamage, int poisonTime, unsigned int source)
 {
 	if (m_PoisonTime < poisonTime)
 		m_PoisonTime = poisonTime;
 	if (m_PoisonAmount < poisonDamage)
 		m_PoisonAmount = poisonDamage;
 	m_HealthBar->SetColor(0.0f, 1.0f, 0.0f, 1.0f);
+	m_PoisonSource = source;
 }
 
 void TowerDefense::Enemy::Enemy::CheckClicked()

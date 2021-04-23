@@ -6,7 +6,7 @@ namespace TowerDefense
 	class Projectile : public Entity
 	{
 	public:
-		Projectile(float x, float y, int width, int height, float speed, float rotation, float range, float damage, const std::string& image);
+		Projectile(float x, float y, int width, int height, float speed, float rotation, float range, float damage, const std::string& image, unsigned int source);
 		void Update() override;
 		void Destroy();
 
@@ -14,6 +14,8 @@ namespace TowerDefense
 		virtual void HitEntity(std::shared_ptr<Entity> e) = 0;
 
 		float m_TurnSpeed, m_Damage;
+
+		unsigned int m_TowerSource;
 
 	private:
 		void UpdateDirection();

@@ -1,6 +1,8 @@
 Current:
 	Add info for enemies
 
+	Change entities to unordered map?
+
 	Allow enemies and towers to be selected when paused
 
 	Add specifics to upgrades when right clicking on them to make it clear what they do

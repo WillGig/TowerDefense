@@ -49,6 +49,9 @@ namespace TowerDefense
 			inline float GetCritMultiplier() const { return m_CritMultiplier; }
 			inline void SetCritMultiplier(float multiplier) { m_CritMultiplier = multiplier; }
 
+			inline float GetDamageDealt() const { return m_TotalDamageDealt; }
+			inline void AddDamageDelt(float damage) { m_TotalDamageDealt += damage; }
+
 			inline void SetHighlighted() { m_Highlighted = true; }
 
 			inline bool GetClicked() { return m_Clicked; };
@@ -85,7 +88,7 @@ namespace TowerDefense
 			void UpdateBuffs();
 
 			//Attack period in Game Updates (60 per second)
-			float m_FireTime;
+			float m_FireTime, m_TotalDamageDealt;
 			int m_LastFire, m_Range;
 			bool m_Highlighted, m_Clicked;
 			TowerType m_TowerType;

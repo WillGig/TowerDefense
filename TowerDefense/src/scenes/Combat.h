@@ -28,7 +28,9 @@ namespace TowerDefense
 		
 		static inline void RemoveEntity(int entity) { s_Removers->emplace_back(entity); }
 		
-		static inline auto GetEntities() { return s_Entities; }
+		static std::shared_ptr<Entity> GetEntity(unsigned int ID);
+
+		static inline std::shared_ptr<std::vector<std::shared_ptr<Entity>>> GetEntities() { return s_Entities; }
 		
 		static inline int GetRoundSpeed() { return s_RoundSpeed; }
 		

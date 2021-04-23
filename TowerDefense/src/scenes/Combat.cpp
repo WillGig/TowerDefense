@@ -426,6 +426,17 @@ void TowerDefense::Combat::ClearTowers()
 	}
 }
 
+std::shared_ptr<TowerDefense::Entity> TowerDefense::Combat::GetEntity(unsigned int ID)
+{
+	for (unsigned int i = 0; i < s_Entities->size(); i++)
+	{
+		std::shared_ptr<Entity> e = s_Entities->at(i);
+		if (e->GetID() == ID)
+			return e;
+	}
+	return nullptr;
+}
+
 //Create pools of difficulty for different fights and randomly select fights from the appropriate pools to fill up the s_Fights vector for the run
 //Should be called once at the beginning of a run to generate the set of combats
 void TowerDefense::Combat::GenerateFights()
