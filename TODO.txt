@@ -1,6 +1,4 @@
 Current:
-	Fix bug where pausing allows towers to prepare to fire
-
 	Add specifics to upgrades when right clicking on them to make it clear what they do
 
 	Start on random events - explore the caves!	

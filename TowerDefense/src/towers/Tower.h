@@ -89,7 +89,7 @@ namespace TowerDefense
 
 			//Attack period in Game Updates (60 per second)
 			float m_FireTime, m_TotalDamageDealt;
-			int m_LastFire, m_Range;
+			int m_FireReady, m_Range;
 			bool m_Highlighted, m_Clicked;
 			TowerType m_TowerType;
 			TargetType m_TargetType;

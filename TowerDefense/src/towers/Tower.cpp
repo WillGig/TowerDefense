@@ -12,7 +12,7 @@ TowerDefense::Tower::Tower::Tower(float x, float y, int width, int height, float
 	:Entity(width, height, x, y, 0.0f, name, Type::TOWER), 
 	m_DamageType(), m_PhysicalDamage(0.0f), m_MagicDamage(0.0f), 
 	m_Spread(0.0f), m_CritChance(0.0f), m_CritMultiplier(2.0f),
-	m_FireTime(fireTime), m_TotalDamageDealt(0), m_LastFire(-1), m_Range(range), m_Highlighted(false), m_Clicked(false), 
+	m_FireTime(fireTime), m_TotalDamageDealt(0), m_FireReady(1000), m_Range(range), m_Highlighted(false), m_Clicked(false), 
 	m_TowerType(type), m_Name(name), m_TargetType(TargetType::FIRST), 
 	m_RegularImage(std::make_shared<Image>(name, x, y, width, height, 0.0f)),
 	m_HighlightedImage(std::make_shared<Image>(name + "Highlighted", x, y, width, height, 0.0f)),
@@ -37,8 +37,10 @@ void TowerDefense::Tower::Tower::Update()
 	if (Combat::Paused())
 		return;
 
-	if (m_LastFire == -1 || TowerDefense::Time::Get().GetTime() - m_LastFire > (m_FireTime / Combat::GetRoundSpeed()))
+	if (m_FireReady >= (m_FireTime / Combat::GetRoundSpeed()))
 		Attack();
+	else
+		m_FireReady += Combat::GetRoundSpeed();
 
 	UpdateBuffs();
 }
@@ -60,7 +62,7 @@ void TowerDefense::Tower::Tower::Attack()
 	if (target) {
 		SetRotation(FindDirection(target->GetX(), target->GetY()));
 		Fire(target);
-		m_LastFire = TowerDefense::Time::Get().GetTime();
+		m_FireReady = 0;
 	}
 }
 
