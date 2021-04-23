@@ -12,7 +12,7 @@ TowerDefense::Enemy::Enemy::Enemy(int width, int height, float health, float spe
 	:Entity(width, height, 0.0f, 0.0f, 0.0f, regularImage, Type::ENEMY), m_Damage(1), m_CurrentTile(0),
 	m_SlowTime(0), m_PoisonTime(0), m_LastPoisonTick(-1), m_Health(health), m_MaxHealth(health), m_Speed(speed), 
 	m_SlowPercent(0.0f), m_PoisonAmount(0.0f), m_GoalX(), m_GoalY(), m_DistanceTraveled(0.0f), m_ReachedEnd(false), 
-	m_Selected(false), m_RegularImage(std::make_shared<Image>(regularImage, 0.0f, 0.0f, width, height, 0.0f)), 
+	m_Selected(false), m_Clicked(false), m_RegularImage(std::make_shared<Image>(regularImage, 0.0f, 0.0f, width, height, 0.0f)), 
 	m_SelectedImage(std::make_shared<Image>(selectedImage, 0.0f, 0.0f, width, height, 0.0f)),
 	m_HealthBar(std::make_unique<HealthBar>(m_X, m_Y + height/2, 20.0f, 4.0f))
 {
@@ -31,6 +31,8 @@ void TowerDefense::Enemy::Enemy::Update()
 	Move();
 
 	UpdateDebuffs();
+
+	CheckClicked();
 
 	//Check if enemy reached the end and Remove
 	if (m_ReachedEnd) {
@@ -173,3 +175,11 @@ void TowerDefense::Enemy::Enemy::Poison(float poisonDamage, int poisonTime)
 	m_HealthBar->SetColor(0.0f, 1.0f, 0.0f, 1.0f);
 }
 
+void TowerDefense::Enemy::Enemy::CheckClicked()
+{
+	m_Clicked = false;
+	bool cardSelected = Player::Get().GetHand()->GetSelectedCard() != -1;
+
+	if (Contains(Input::GetMouseX(), Input::GetMouseY()) && !cardSelected && !Combat::DraggingInfo() && Input::GetLeftMouseClickedAndSetFalse())
+		m_Clicked = true;
+}

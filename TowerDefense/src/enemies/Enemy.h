@@ -22,6 +22,8 @@ namespace TowerDefense
 			inline float GetMaxHealth() const { return m_MaxHealth; }
 			inline float GetDistanceTraveled() const { return m_DistanceTraveled; }
 
+			inline bool GetClicked() { return m_Clicked; };
+
 		protected:
 			int m_Damage;
 			static int POISONTICKRATE;
@@ -30,13 +32,13 @@ namespace TowerDefense
 			void Move();
 			void Destroy();
 			void FindNewGoal();
-
+			void CheckClicked();
 			void UpdateImage();
 			void UpdateDebuffs();
 
 			int m_CurrentTile, m_SlowTime, m_PoisonTime, m_LastPoisonTick;
 			float m_Health, m_MaxHealth, m_Speed, m_SlowPercent, m_PoisonAmount, m_GoalX, m_GoalY, m_DistanceTraveled;
-			bool m_ReachedEnd, m_Selected;
+			bool m_ReachedEnd, m_Selected, m_Clicked;
 
 			std::shared_ptr<Image> m_RegularImage, m_SelectedImage;
 

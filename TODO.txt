@@ -1,6 +1,8 @@
 Current:
 	Add info for enemies
 
+	Allow enemies and towers to be selected when paused
+
 	Add specifics to upgrades when right clicking on them to make it clear what they do
 
 	Start on random events - explore the caves!	

@@ -24,7 +24,7 @@ namespace TowerDefense
 		
 		static void GenerateFights();
 		
-		static inline void AddEntity(std::shared_ptr<TowerDefense::Entity> entity) { s_Adders->push_back(entity); }
+		static inline void AddEntity(std::shared_ptr<Entity> entity) { s_Adders->push_back(entity); }
 		
 		static inline void RemoveEntity(int entity) { s_Removers->emplace_back(entity); }
 		
@@ -54,6 +54,8 @@ namespace TowerDefense
 
 		void UpdateSelectedTower();
 
+		void UpdateSelectedEnemy();
+
 		void EndRound();
 
 		bool EnemiesDefeated();
@@ -66,15 +68,16 @@ namespace TowerDefense
 		int m_PlayerHealth, m_PlayerEnergy, m_CurrentFight;
 		bool m_Paused;
 		Phase m_TurnPhase;
-		std::unique_ptr<TowerDefense::Button> m_ViewDeck, m_StartButton, m_SpeedButton;
+		std::unique_ptr<Button> m_ViewDeck, m_StartButton, m_SpeedButton;
 		std::unique_ptr<Text> m_Health, m_Energy, m_Day;
-		std::shared_ptr<TowerDefense::Tower::Tower> m_SelectedTower;
+		std::shared_ptr<Tower::Tower> m_SelectedTower;
+		std::shared_ptr<Enemy::Enemy> m_SelectedEnemy;
 
-		static std::unique_ptr<TowerDefense::TowerInfo> s_TowerInfo;
+		static std::unique_ptr<TowerInfo> s_TowerInfo;
 
-		static std::shared_ptr<std::vector<std::shared_ptr<TowerDefense::Entity>>> s_Entities, s_Adders;
+		static std::shared_ptr<std::vector<std::shared_ptr<Entity>>> s_Entities, s_Adders;
 		static std::shared_ptr<std::vector<int>> s_Removers;
 
-		static std::unique_ptr<std::vector<std::shared_ptr<TowerDefense::Fight>>> s_Fights;
+		static std::unique_ptr<std::vector<std::shared_ptr<Fight>>> s_Fights;
 	};
 }

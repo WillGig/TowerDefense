@@ -89,6 +89,9 @@ void TowerDefense::Combat::Update()
 	if(!deckShow && !drawShow && !discardShow)
 		UpdateSelectedTower();
 
+	if (!deckShow && !drawShow && !discardShow)
+		UpdateSelectedEnemy();
+
 	UpdateEntities();
 
 	UpdateHealthandEnergy();
@@ -326,6 +329,40 @@ void TowerDefense::Combat::UpdateSelectedTower()
 		}
 	}
 }
+
+//Find if an enemy has been clicked, or deselected
+void TowerDefense::Combat::UpdateSelectedEnemy()
+{
+	if (m_SelectedEnemy)
+		m_SelectedEnemy->SetSelected(true);
+
+	if (Player::Get().GetHand()->DraggingCard())
+		return;
+
+	if (Input::GetLeftMouseClicked())
+	{
+		if (!m_SelectedEnemy || !m_SelectedEnemy->Contains(Input::GetMouseX(), Input::GetMouseY()))
+		{
+			m_SelectedEnemy.reset();
+		}
+	}
+
+	if (m_SelectedEnemy)
+		return;
+
+	for (unsigned int i = 0; i < s_Entities->size(); i++)
+	{
+		if (s_Entities->at(i)->GetEntityType() == Type::ENEMY)
+		{
+			auto enemy = std::dynamic_pointer_cast<Enemy::Enemy>(s_Entities->at(i));
+			if (enemy->GetClicked())
+			{
+				m_SelectedEnemy = enemy;
+			}
+		}
+	}
+}
+
 
 //Update Player Health and Energy Text
 void TowerDefense::Combat::UpdateHealthandEnergy()
