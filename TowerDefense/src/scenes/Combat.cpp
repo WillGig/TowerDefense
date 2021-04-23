@@ -109,6 +109,10 @@ void TowerDefense::Combat::OnSwitch()
 	m_SelectedTower.reset();
 	s_TowerInfo.reset();
 
+	Player::Get().GetDeck()->Show(false);
+	Player::Get().GetDrawPile()->Show(false);
+	Player::Get().GetDiscardPile()->Show(false);
+
 	ClearProjectiles();
 	ClearTowers();
 

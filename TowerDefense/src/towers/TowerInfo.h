@@ -16,10 +16,12 @@ namespace TowerDefense
 		inline bool Dragging() { return m_Dragging; }
 
 	private:
-		void SetTargetText();
+		void UpdateTargetText();
+		void UpdateStatsText();
 
 		bool m_Dragging;
-		float m_PreviousMouseX, m_PreviousMouseY;
+		float m_PreviousMouseX, m_PreviousMouseY, m_TowerDamage, m_TowerAttackSpeed, m_TowercritChance;
+		int m_TowerRange;
 
 		std::unique_ptr<Text> m_Name, m_Target, m_Stats;
 

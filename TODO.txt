@@ -1,7 +1,4 @@
 Current:
-	Add info for towers
-	- Need to adjust info for non-combat towers
-
 	Add info for enemies
 
 	Add specifics to upgrades when right clicking on them to make it clear what they do
