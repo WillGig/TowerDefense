@@ -132,7 +132,7 @@ void TowerDefense::Combat::OnSwitch()
 	Player::Get().GetDrawPile()->Show(false);
 	Player::Get().GetDiscardPile()->Show(false);
 
-	ClearProjectiles();
+	ClearProjectilesAndAnimations();
 	ClearTowers();
 
 	//Update Day Text
@@ -269,7 +269,7 @@ void TowerDefense::Combat::UpdateButtons()
 				s_Fights->at(m_CurrentFight)->NextWave();
 				m_TurnPhase = Phase::COMBAT;
 				m_StartButton->SetImages("pause", "pauseSelected");
-				ClearProjectiles();
+				ClearProjectilesAndAnimations();
 			}
 			else if (m_TurnPhase == Phase::COMBAT)
 			{
@@ -447,12 +447,12 @@ bool TowerDefense::Combat::EnemiesDefeated()
 	return true;
 }
 
-void TowerDefense::Combat::ClearProjectiles()
+void TowerDefense::Combat::ClearProjectilesAndAnimations()
 {
 	for (unsigned int i = 0; i < s_Entities->size(); i++)
 	{
 		std::shared_ptr<Entity> e = s_Entities->at(i);
-		if (e->GetEntityType() == Type::PROJECTILE)
+		if (e->GetEntityType() == Type::PROJECTILE || e->GetEntityType() == Type::ANIMATION)
 			RemoveEntity(e->GetID());
 	}
 }

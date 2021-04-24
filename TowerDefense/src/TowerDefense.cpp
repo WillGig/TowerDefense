@@ -277,7 +277,7 @@ void LoadTextures()
     Texture::LoadTexture("Paladin",                 towers.load(2, 2));
     Texture::LoadTexture("PaladinHighlighted",      towers.load(3, 2));
     Texture::LoadTexture("GIANT",                   towers.load(0, 3));
-    Texture::LoadTexture("GiantHighlighted",        towers.load(1, 3));
+    Texture::LoadTexture("GIANTHighlighted",        towers.load(1, 3));
     Texture::LoadTexture("Monk",                    towers.load(2, 3));
     Texture::LoadTexture("MonkHighlighted",         towers.load(3, 3));
 
@@ -292,8 +292,8 @@ void LoadTextures()
     Texture::LoadTexture("Boss RatSelected",     enemies.load(1, 1));
     Texture::LoadTexture("Goblin",              enemies.load(2, 1));
     Texture::LoadTexture("GoblinSelected",      enemies.load(3, 1));
-    Texture::LoadTexture("Orc",                 enemies.load(0, 2));
-    Texture::LoadTexture("OrcSelected",         enemies.load(1, 2));
+    Texture::LoadTexture("Orc ",                 enemies.load(0, 2));
+    Texture::LoadTexture("Orc Selected",         enemies.load(1, 2));
 
     std::cout << "...Cards" << std::endl;
 

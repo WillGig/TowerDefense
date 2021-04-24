@@ -124,7 +124,7 @@ std::shared_ptr<TowerDefense::Card> TowerDefense::Tower::Tower::GetRandomUpgrade
 	while (!card || ContainsCard(exclude, card)) {
 		int randomCard = (int)(Random::GetFloat() * 3.0f);
 		if (randomCard == 0)
-			card = std::make_shared<AttackSpeedUpgrade>(.15f);
+			card = std::make_shared<AttackSpeedUpgrade>(.20f);
 		else if (randomCard == 1)
 			card = std::make_shared <DamageUpgrade>(1.0f, 1.0f);
 		else if (randomCard == 2)

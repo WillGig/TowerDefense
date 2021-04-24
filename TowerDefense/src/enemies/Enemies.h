@@ -43,7 +43,7 @@ namespace TowerDefense
 		{
 		public:
 			Orc()
-				:Enemy(32, 32, 60.0f, 0.8f, "Orc")
+				:Enemy(32, 32, 60.0f, 0.8f, "Orc ")
 			{}
 		};
 	}
