@@ -11,4 +11,5 @@ namespace TowerDefense
 		virtual void Update() = 0;
 		virtual void OnSwitch() = 0;
 	};
+
 }

@@ -1,11 +1,12 @@
 #pragma once
 #include "Scene.h"
+#include "cave_scenes/CaveScene.h"
 #include "cards/Card.h"
 #include "cards/CardChoice.h"
 
 namespace TowerDefense
 {
-	enum class SubMenu { SMITHING, LIBRARY, TAVERN, REST, NONE };
+	enum class SubMenu { CAVES, SMITHING, LIBRARY, TAVERN, REST, NONE };
 
 	class Base : public Scene
 	{
@@ -14,11 +15,14 @@ namespace TowerDefense
 		void Render() override;
 		void Update() override;
 		void OnSwitch() override;
+
 	private:
 		void RenderSmithing();
 		void RenderLibrary();
 		void RenderTavern();
 		void RenderRest();
+
+		void UpdateCaves();
 		void UpdateSmithing();
 		void UpdateLibrary();
 		void UpdateTavern();
@@ -27,8 +31,8 @@ namespace TowerDefense
 		void UpdateActivities();
 		void UpdateActivityDescription();
 		void UpdateViewDeck();
-		void UpdateNextDay();
 
+		void UpdateNextDay();
 		void FindSelectedCard();
 
 		SubMenu m_SubMenu;
@@ -48,6 +52,8 @@ namespace TowerDefense
 		std::unique_ptr<TowerDefense::CardChoice> m_CardChoice, m_TavernChoice;
 
 		std::unique_ptr<TowerDefense::StaticImage> m_SmithingArrow;
+
+		std::shared_ptr<CaveScene> m_CaveScene;
 
 		//Background fade when showing selected upgrade in smithing menu
 		std::unique_ptr<Rectangle> m_Fade;

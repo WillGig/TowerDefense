@@ -48,6 +48,9 @@ void TowerDefense::Base::Render()
 
 	switch (m_SubMenu)
 	{
+	case SubMenu::CAVES:
+		m_CaveScene->Render();
+		break;
 	case SubMenu::SMITHING:
 		RenderSmithing();
 		break;
@@ -78,6 +81,9 @@ void TowerDefense::Base::Update()
 {
 	switch (m_SubMenu)
 	{
+	case SubMenu::CAVES:
+		UpdateCaves();
+		break;
 	case SubMenu::SMITHING:
 		UpdateSmithing();
 		break;
@@ -188,6 +194,16 @@ void TowerDefense::Base::RenderRest()
 	m_RestText->Render();
 	m_Buttons[7]->Render();
 	m_Buttons[8]->Render();
+}
+
+void TowerDefense::Base::UpdateCaves()
+{
+	m_CaveScene->Update();
+	if (m_CaveScene->Exit())
+	{
+		m_SubMenu = SubMenu::NONE;
+		m_ActivityDone = true;
+	}
 }
 
 void TowerDefense::Base::UpdateSmithing()
@@ -373,7 +389,8 @@ void TowerDefense::Base::UpdateActivities()
 	m_Buttons[0]->Update();
 	if (m_Buttons[0]->IsClicked())
 	{
-		m_ActivityDone = true;
+		m_SubMenu = SubMenu::CAVES;
+		m_CaveScene = CaveScene::GetRandomCaveEvent();
 		m_Buttons[0]->SetSelected(false);
 	}
 	m_Buttons[1]->Update();

@@ -1,6 +1,5 @@
 Current:
-	Add specifics to upgrades when right clicking on them to make it clear what they do
-
+	swap order of parameters for button and entity for consistency
 	Start on random events - explore the caves!	
 
 	Daily activities
@@ -27,6 +26,7 @@ Soon:
 	Gold price to buy fishing, smithing, library, tavern, etc. Default options sleeping and exploring?
 
 Long Term:
+	Add specifics to upgrades when right clicking on them to make it clear what they do
 	Make resolution adjustable
 	Change leveling for heros - add new types of attacks, etc.
 	Add combat info on precombat screen (at least name and picture)
