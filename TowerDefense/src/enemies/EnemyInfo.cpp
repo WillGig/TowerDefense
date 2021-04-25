@@ -4,7 +4,7 @@
 #include "scenes/Combat.h"
 
 TowerDefense::EnemyInfo::EnemyInfo(float x, float y, std::shared_ptr<Enemy::Enemy> e)
-	:Entity(115, 65, x, y, 0.0f, "EnemyInfo", Type::STATICIMAGE), m_Dragging(false),
+	:Entity(x, y, 115, 65, 0.0f, "EnemyInfo", Type::STATICIMAGE), m_Dragging(false),
 	m_PreviousMouseX(0.0f), m_PreviousMouseY(0.0f), m_EnemyHP(e->GetHealth()), m_EnemySpeed(e->GetSpeed()),
 	m_Name(std::make_unique<Text>(e->GetName(), x, y + 15.0f, 14.0f, 115.0f)), m_Enemy(e)
 {

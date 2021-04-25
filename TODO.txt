@@ -1,6 +1,10 @@
 Current:
-	swap order of parameters for button and entity for consistency
-	Start on random events - explore the caves!	
+	Start on random events
+	- Fountain of youth	Done
+	- Literally Satan	
+	- Cave Bat		
+	- Trolley Problem	
+	- Knights who say nah	
 
 	Daily activities
 		Explore Caves 	- Random event						- In progress

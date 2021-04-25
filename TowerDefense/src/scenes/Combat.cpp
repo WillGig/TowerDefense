@@ -20,9 +20,9 @@ std::unique_ptr<TowerDefense::EnemyInfo> TowerDefense::Combat::s_EnemyInfo;
 TowerDefense::Combat::Combat()
 	:m_PlayerHealth(Player::Get().GetHealth()), m_PlayerEnergy(Player::Get().GetEnergy()), m_CurrentFight(-1),
 	m_TurnPhase(Phase::START),
-	m_ViewDeck(std::make_unique<Button>(50, 43, 570.0f, 578.0f,		"viewDeckButton")),
-	m_StartButton(std::make_unique<Button>(96, 32, 76.0f, 201.0f,	"startButton")),
-	m_SpeedButton(std::make_unique<Button>(96, 32, 76.0f, 159.0f,	"speed1")),
+	m_ViewDeck(std::make_unique<Button>(570.0f, 578.0f, 50, 43, "viewDeckButton")),
+	m_StartButton(std::make_unique<Button>(76.0f, 201.0f, 96, 32, "startButton")),
+	m_SpeedButton(std::make_unique<Button>(76.0f, 159.0f, 96, 32, "speed1")),
 	m_Health(std::make_unique<Text>(std::string("Health: ") + std::to_string(Player::Get().GetHealth()), 650.0f, 575.0f, 10.0f, 0.0f)), 
 	m_Energy(std::make_unique<Text>(std::string("Energy: ") + std::to_string(Player::Get().GetEnergy()), 740.0f, 575.0f, 10.0f, 0.0f)),
 	m_Day(std::make_unique<Text>(std::string("Day: ") + std::to_string(GetDay()), 400.0f, 575.0f, 10.0f, 0.0f))

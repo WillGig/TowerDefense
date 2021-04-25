@@ -4,8 +4,8 @@
 
 TowerDefense::FountainOfYouth::FountainOfYouth()
 	:m_Image(std::make_unique<StaticImage>(230.0f, 350.0f, 300, 300, 0.0f, "FountainOfYouth")),
-	m_Button1(std::make_unique<Button>(600, 50, 400.0f, 150.0f, "eventButton")),
-	m_Button2(std::make_unique<Button>(600, 50, 400.0f, 100.0f, "eventButton")),
+	m_Button1(std::make_unique<Button>(400.0f, 150.0f, 600, 50, "eventButton")),
+	m_Button2(std::make_unique<Button>(400.0f, 100.0f, 600, 50, "eventButton")),
 	m_Text1(std::make_unique<Text>("Drink (Heal to Full HP)", 400.0f, 150.0f, 12.0f, 0.0f)),
 	m_Text2(std::make_unique<Text>("Bathe (Gain 10 max HP)", 400.0f, 100.0f, 12.0f, 0.0f))
 {

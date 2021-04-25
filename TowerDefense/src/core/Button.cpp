@@ -2,8 +2,8 @@
 #include "Button.h"
 #include "TowerDefense.h"
 
-TowerDefense::Button::Button(int width, int height, float x, float y, const std::string& image)
-	:Entity(width, height, x, y, 0.0f, image, Type::BUTTON), m_Selected(false), m_Clicked(false),
+TowerDefense::Button::Button(float x, float y, int width, int height, const std::string& image)
+	:Entity(x, y, width, height, 0.0f, image, Type::BUTTON), m_Selected(false), m_Clicked(false),
 	m_RegularImage(std::make_shared<Image>(image, x, y, width, height, 0.0f)), 
 	m_SelectedImage(std::make_shared<Image>(image + "Selected", x, y, width, height, 0.0f))
 {

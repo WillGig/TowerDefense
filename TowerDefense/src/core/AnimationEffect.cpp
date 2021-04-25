@@ -3,7 +3,7 @@
 #include "scenes/Combat.h"
 
 TowerDefense::AnimationEffect::AnimationEffect(float x, float y, int width, int height, const std::string& animation, int numFrames, int duration)
-	:Entity(width, height, x, y, 0.0f, animation, Type::ANIMATION), m_Frame(0), m_Duration(duration), m_LifeTime(0),
+	:Entity(x, y, width, height, 0.0f, animation, Type::ANIMATION), m_Frame(0), m_Duration(duration), m_LifeTime(0),
 	m_Animation(std::make_unique<Animation>(animation, x, y, width, height, 0.0f, numFrames))
 {
 }

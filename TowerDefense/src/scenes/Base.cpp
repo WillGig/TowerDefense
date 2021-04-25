@@ -16,16 +16,16 @@ TowerDefense::Base::Base()
 
 	m_Buttons =
 	{
-		std::make_unique<Button>(180, 50, 200.0f, 425.0f,	"exploreCavesButton"),
-		std::make_unique<Button>(180, 50, 400.0f, 425.0f,	"visitLibraryButton"),
-		std::make_unique<Button>(180, 50, 600.0f, 425.0f,	"goFishingButton"),
-		std::make_unique<Button>(180, 50, 200.0f, 355.0f,	"smithButton"),
-		std::make_unique<Button>(180, 50, 400.0f, 355.0f,	"goTavernButton"),
-		std::make_unique<Button>(180, 50, 600.0f, 355.0f,	"restButton"),
-		std::make_unique<Button>(180, 50, 600.0f, 175.0f,	"nextDayButton"),
-		std::make_unique<Button>(180, 50, 400.0f, 190.0f,	"confirmButton"),
-		std::make_unique<Button>(180, 50, 690.0f, 125.0f,	"cancelButton"),
-		std::make_unique<Button>(50, 43, 570.0f, 578.0f,	"viewDeckButton")
+		std::make_unique<Button>(200.0f, 425.0f, 180, 50, 	"exploreCavesButton"),
+		std::make_unique<Button>(400.0f, 425.0f, 180, 50, 	"visitLibraryButton"),
+		std::make_unique<Button>(600.0f, 425.0f, 180, 50, 	"goFishingButton"),
+		std::make_unique<Button>(200.0f, 355.0f, 180, 50, 	"smithButton"),
+		std::make_unique<Button>(400.0f, 355.0f, 180, 50, 	"goTavernButton"),
+		std::make_unique<Button>(600.0f, 355.0f, 180, 50, 	"restButton"),
+		std::make_unique<Button>(600.0f, 175.0f, 180, 50, 	"nextDayButton"),
+		std::make_unique<Button>(400.0f, 190.0f, 180, 50, 	"confirmButton"),
+		std::make_unique<Button>(690.0f, 125.0f, 180, 50, 	"cancelButton"),
+		std::make_unique<Button>(570.0f, 578.0f, 50, 43, 	"viewDeckButton")
 	};
 	m_Fade->SetColor(0.0f, 0.0f, 0.0f, 0.95f);
 	m_Health->SetColor(0.0f, 0.0f, 0.0f, 1.0f);

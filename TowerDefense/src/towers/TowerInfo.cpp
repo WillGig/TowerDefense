@@ -4,12 +4,12 @@
 #include "scenes/Combat.h"
 
 TowerDefense::TowerInfo::TowerInfo(float x, float y, std::shared_ptr<Tower::Tower> t)
-	:Entity(200, 155, x, y, 0.0f, "TowerInfo", Type::STATICIMAGE), m_Dragging(false),
+	:Entity(x, y, 200, 155, 0.0f, "TowerInfo", Type::STATICIMAGE), m_Dragging(false),
 	m_PreviousMouseX(0.0f), m_PreviousMouseY(0.0f), m_TowerDamage(t->GetDamage(t->GetDamageType())), 
 	m_TowerAttackSpeed(t->GetAttackTime()), m_TowerRange(t->GetRange()), m_TowercritChance(t->GetCritChance()), 
 	m_TowerDamageDealt(t->GetDamageDealt()), m_Name(std::make_unique<Text>(t->GetName() , x, y + 62.0f, 14.0f, 200.0f)),
-	m_TargetLeft(std::make_unique<Button>(10, 20, x - 65, y + 40, "ArrowButton")),
-	m_TargetRight(std::make_unique<Button>(10, 20, x + 65, y + 40, "ArrowButton")),
+	m_TargetLeft(std::make_unique<Button>(x - 65, y + 40, 10, 20, "ArrowButton")),
+	m_TargetRight(std::make_unique<Button>(x + 65, y + 40, 10, 20, "ArrowButton")),
 	m_Tower(t)
 {
 	m_TargetLeft->SetRotation(180.0f);

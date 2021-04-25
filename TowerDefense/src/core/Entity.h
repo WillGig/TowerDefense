@@ -7,7 +7,7 @@ namespace TowerDefense
 	class Entity
 	{
 	public:
-		Entity(int width, int height, float x, float y, float rotation, const std::string& image, Type type);
+		Entity(float x, float y, int width, int height, float rotation, const std::string& image, Type type);
 
 		virtual void Render();
 

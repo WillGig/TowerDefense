@@ -3,7 +3,7 @@
 #include "TowerDefense.h"
 
 TowerDefense::PreCombatScreen::PreCombatScreen()
-	:m_BeginCombat(std::make_unique<Button>(180, 50, 400.0f, 300.0f, "beginCombatButton")
+	:m_BeginCombat(std::make_unique<Button>(400.0f, 300.0f, 180, 50, "beginCombatButton")
 )
 {
 }

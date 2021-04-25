@@ -7,7 +7,7 @@ namespace TowerDefense
 	{
 	public:
 		StaticImage(float x, float y, int width, int height, float rotation, const std::string& image)
-			:Entity(width, height, x, y, rotation, image, Type::STATICIMAGE)
+			:Entity(x, y, width, height, rotation, image, Type::STATICIMAGE)
 		{}
 		void Update() override {}
 	};

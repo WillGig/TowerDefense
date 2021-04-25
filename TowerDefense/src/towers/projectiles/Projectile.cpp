@@ -4,7 +4,7 @@
 #include "scenes/Combat.h"
 
 TowerDefense::Projectile::Projectile(float x, float y, int width, int height, float speed, float rotation, float range, float damage, const std::string& image, unsigned int source)
-	:Entity(width, height, x, y, rotation, image, Type::PROJECTILE), m_TurnSpeed(0.0f), m_Damage(damage), m_Speed(speed), m_Range(range),
+	:Entity(x, y, width, height, rotation, image, Type::PROJECTILE), m_TurnSpeed(0.0f), m_Damage(damage), m_Speed(speed), m_Range(range),
 	m_DistanceTraveled(0.0f), m_TowerSource(source)
 {
 	

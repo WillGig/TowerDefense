@@ -3,7 +3,7 @@
 #include "TowerDefense.h"
 
 TowerDefense::CardPile::CardPile(float x, float y)
-	:Entity(66, 84, x, y, 0.0f, "deckFull", TowerDefense::Type::CARDPILE),
+	:Entity(x, y, 66, 84, 0.0f, "deckFull", TowerDefense::Type::CARDPILE),
 	m_Scroll(0), m_SelectedCard(-1), m_Showing(false), m_Ordered(true), 
 	m_Cards(std::make_unique<std::vector<std::shared_ptr<Card>>>()), m_RandomOrder(),
 	m_FullImage(std::make_shared<Image>("deckFull", x, y, 66, 84, 0.0f)),
