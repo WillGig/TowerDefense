@@ -27,24 +27,27 @@ TowerDefense::Base::Base()
 		std::make_unique<Button>(180, 50, 690.0f, 125.0f,	"cancelButton"),
 		std::make_unique<Button>(50, 43, 570.0f, 578.0f,	"viewDeckButton")
 	};
-	m_Fade->SetColor(0.0f, 0.0f, 0.0f, 0.9f);
+	m_Fade->SetColor(0.0f, 0.0f, 0.0f, 0.95f);
 	m_Health->SetColor(0.0f, 0.0f, 0.0f, 1.0f);
 	m_Day->SetColor(0.0f, 0.0f, 0.0f, 1.0f);
 }
 
 void TowerDefense::Base::Render()
 {
-	m_Buttons[0]->Render();
-	m_Buttons[1]->Render();
-	m_Buttons[2]->Render();
-	m_Buttons[3]->Render();
-	m_Buttons[4]->Render();
-	m_Buttons[5]->Render();
-	m_Buttons[6]->Render();
-	m_Buttons[9]->Render();
+	if (m_SubMenu != SubMenu::CAVES)
+	{
+		m_Buttons[0]->Render();
+		m_Buttons[1]->Render();
+		m_Buttons[2]->Render();
+		m_Buttons[3]->Render();
+		m_Buttons[4]->Render();
+		m_Buttons[5]->Render();
+		m_Buttons[6]->Render();
+		m_Buttons[9]->Render();
 
-	m_Health->Render();
-	m_Day->Render();
+		m_Health->Render();
+		m_Day->Render();
+	}
 
 	switch (m_SubMenu)
 	{
