@@ -6,7 +6,7 @@ namespace TowerDefense
 	class Button : public Entity
 	{
 	public:
-		Button(int width, int height, float x, float y, const std::string& image, const std::string& selectedImage);
+		Button(int width, int height, float x, float y, const std::string& image);
 		void Update() override;
 
 		inline bool IsSelected() const { return m_Selected;  }
@@ -14,7 +14,7 @@ namespace TowerDefense
 
 		inline bool IsClicked() const { return m_Clicked; }
 		
-		void SetImages(const std::string& image, const std::string& selectedImage);
+		void SetImages(const std::string& image);
 
 	private:
 		bool m_Selected, m_Clicked;

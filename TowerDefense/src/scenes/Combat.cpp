@@ -20,9 +20,9 @@ std::unique_ptr<TowerDefense::EnemyInfo> TowerDefense::Combat::s_EnemyInfo;
 TowerDefense::Combat::Combat()
 	:m_PlayerHealth(Player::Get().GetHealth()), m_PlayerEnergy(Player::Get().GetEnergy()), m_CurrentFight(-1),
 	m_TurnPhase(Phase::START),
-	m_ViewDeck(std::make_unique<Button>(50, 43, 570.0f, 578.0f,		"viewDeckButton",	"viewDeckButtonSelected")),
-	m_StartButton(std::make_unique<Button>(96, 32, 76.0f, 201.0f,	"startButton",		"startButtonSelected")),
-	m_SpeedButton(std::make_unique<Button>(96, 32, 76.0f, 159.0f,	"speed1",			"speed1Selected")),
+	m_ViewDeck(std::make_unique<Button>(50, 43, 570.0f, 578.0f,		"viewDeckButton")),
+	m_StartButton(std::make_unique<Button>(96, 32, 76.0f, 201.0f,	"startButton")),
+	m_SpeedButton(std::make_unique<Button>(96, 32, 76.0f, 159.0f,	"speed1")),
 	m_Health(std::make_unique<Text>(std::string("Health: ") + std::to_string(Player::Get().GetHealth()), 650.0f, 575.0f, 10.0f, 0.0f)), 
 	m_Energy(std::make_unique<Text>(std::string("Energy: ") + std::to_string(Player::Get().GetEnergy()), 740.0f, 575.0f, 10.0f, 0.0f)),
 	m_Day(std::make_unique<Text>(std::string("Day: ") + std::to_string(GetDay()), 400.0f, 575.0f, 10.0f, 0.0f))
@@ -122,7 +122,7 @@ void TowerDefense::Combat::OnSwitch()
 	Player::Get().GetHand()->ResetSelectedCard();
 	m_TurnPhase = Phase::START;
 
-	m_StartButton->SetImages("startButton", "startButtonSelected");
+	m_StartButton->SetImages("startButton");
 	m_SelectedTower.reset();
 	s_TowerInfo.reset();
 	m_SelectedEnemy.reset();
@@ -268,7 +268,7 @@ void TowerDefense::Combat::UpdateButtons()
 			{
 				s_Fights->at(m_CurrentFight)->NextWave();
 				m_TurnPhase = Phase::COMBAT;
-				m_StartButton->SetImages("pause", "pauseSelected");
+				m_StartButton->SetImages("pause");
 				ClearProjectilesAndAnimations();
 			}
 			else if (m_TurnPhase == Phase::COMBAT)
@@ -279,7 +279,7 @@ void TowerDefense::Combat::UpdateButtons()
 			{
 				m_TurnPhase = Phase::START;
 				Player::Get().DrawHand();
-				m_StartButton->SetImages("startButton", "startButtonSelected");
+				m_StartButton->SetImages("startButton");
 			}
 		}
 	}
@@ -290,15 +290,15 @@ void TowerDefense::Combat::UpdateButtons()
 	{
 		if (s_RoundSpeed == 1) {
 			s_RoundSpeed = 2;
-			m_SpeedButton->SetImages("speed2", "speed2Selected");
+			m_SpeedButton->SetImages("speed2");
 		}
 		else if (s_RoundSpeed == 2) {
 			s_RoundSpeed = 3;
-			m_SpeedButton->SetImages("speed3", "speed3Selected");
+			m_SpeedButton->SetImages("speed3");
 		}
 		else {
 			s_RoundSpeed = 1;
-			m_SpeedButton->SetImages("speed1", "speed1Selected");
+			m_SpeedButton->SetImages("speed1");
 		}
 	}
 }
@@ -429,7 +429,7 @@ void TowerDefense::Combat::EndRound()
 	for (unsigned int i = 0; i < s_Entities->size(); i++)
 		s_Entities->at(i)->EndRound();
 
-	m_StartButton->SetImages("endButton", "endButtonSelected");
+	m_StartButton->SetImages("endButton");
 
 	if(!s_Fights->at(m_CurrentFight)->HasMoreWaves())
 		SetScene(SceneType::POSTCOMBAT);

@@ -3,7 +3,7 @@
 #include "TowerDefense.h"
 
 TowerDefense::PostCombatScreen::PostCombatScreen()
-	:m_BackToCamp(std::make_unique<Button>(180, 50, 400.0f, 300.0f, "returnToCampButton", "returnToCampButtonSelected"))
+	:m_BackToCamp(std::make_unique<Button>(180, 50, 400.0f, 300.0f, "returnToCampButton"))
 {
 }
 

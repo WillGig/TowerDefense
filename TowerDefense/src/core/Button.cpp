@@ -2,10 +2,10 @@
 #include "Button.h"
 #include "TowerDefense.h"
 
-TowerDefense::Button::Button(int width, int height, float x, float y, const std::string& image, const std::string& selectedImage)
+TowerDefense::Button::Button(int width, int height, float x, float y, const std::string& image)
 	:Entity(width, height, x, y, 0.0f, image, Type::BUTTON), m_Selected(false), m_Clicked(false),
 	m_RegularImage(std::make_shared<Image>(image, x, y, width, height, 0.0f)), 
-	m_SelectedImage(std::make_shared<Image>(selectedImage, x, y, width, height, 0.0f))
+	m_SelectedImage(std::make_shared<Image>(image + "Selected", x, y, width, height, 0.0f))
 {
 }
 
@@ -37,8 +37,8 @@ void TowerDefense::Button::SetSelected(bool selected)
 		SetImage(m_RegularImage);
 }
 
-void TowerDefense::Button::SetImages(const std::string& image, const std::string& selectedImage)
+void TowerDefense::Button::SetImages(const std::string& image)
 {
 	m_RegularImage = std::make_shared<Image>(image, m_X, m_Y, m_Width, m_Height, 0.0f);
-	m_SelectedImage = std::make_shared<Image>(selectedImage, m_X, m_Y, m_Width, m_Height, 0.0f);
+	m_SelectedImage = std::make_shared<Image>(image + "Selected", m_X, m_Y, m_Width, m_Height, 0.0f);
 }

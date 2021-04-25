@@ -261,6 +261,10 @@ void LoadTextures()
     Texture::LoadTexture("speed3",              combatButtons.load(2, 2));
     Texture::LoadTexture("speed3Selected",      combatButtons.load(3, 2));
 
+    SpriteSheet eventButtons("res/textures/EventButtons.png", 600, 50);
+    Texture::LoadTexture("eventButton",         eventButtons.load(0, 0));
+    Texture::LoadTexture("eventButtonSelected", eventButtons.load(0, 1));
+
     std::cout << "...Towers" << std::endl;
 
     SpriteSheet towers("res/textures/Towers.png", 64, 64);

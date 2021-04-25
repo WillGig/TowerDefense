@@ -8,8 +8,8 @@ TowerDefense::TowerInfo::TowerInfo(float x, float y, std::shared_ptr<Tower::Towe
 	m_PreviousMouseX(0.0f), m_PreviousMouseY(0.0f), m_TowerDamage(t->GetDamage(t->GetDamageType())), 
 	m_TowerAttackSpeed(t->GetAttackTime()), m_TowerRange(t->GetRange()), m_TowercritChance(t->GetCritChance()), 
 	m_TowerDamageDealt(t->GetDamageDealt()), m_Name(std::make_unique<Text>(t->GetName() , x, y + 62.0f, 14.0f, 200.0f)),
-	m_TargetLeft(std::make_unique<Button>(10, 20, x - 65, y + 40, "ArrowButton", "ArrowButtonSelected")),
-	m_TargetRight(std::make_unique<Button>(10, 20, x + 65, y + 40, "ArrowButton", "ArrowButtonSelected")),
+	m_TargetLeft(std::make_unique<Button>(10, 20, x - 65, y + 40, "ArrowButton")),
+	m_TargetRight(std::make_unique<Button>(10, 20, x + 65, y + 40, "ArrowButton")),
 	m_Tower(t)
 {
 	m_TargetLeft->SetRotation(180.0f);

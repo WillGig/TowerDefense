@@ -17,6 +17,7 @@ namespace TowerDefense
 		void OnSwitch() override;
 
 	private:
+		void RenderCaves();
 		void RenderSmithing();
 		void RenderLibrary();
 		void RenderTavern();

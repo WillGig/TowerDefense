@@ -11,7 +11,7 @@ namespace TowerDefense
 
 		static std::shared_ptr<CaveScene> GetRandomCaveEvent();
 
-	private:
+	protected:
 		bool m_Exit = false;
 	};
 
@@ -24,7 +24,8 @@ namespace TowerDefense
 		void Update() override;
 	private:
 		std::unique_ptr<StaticImage> m_prompt;
-		std::unique_ptr<Button> m_Choice1, m_Choice2;
+		std::unique_ptr<Button> m_Button1, m_Button2;
+		std::unique_ptr<Text> m_Text1, m_Text2;
 	};
 
 	//Sets your deck on fire (add 3 flame cards) OR sets you on fire (-20 hp)

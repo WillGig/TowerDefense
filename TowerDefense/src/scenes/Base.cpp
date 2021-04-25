@@ -16,18 +16,18 @@ TowerDefense::Base::Base()
 
 	m_Buttons =
 	{
-		std::make_unique<Button>(180, 50, 200.0f, 425.0f,	"exploreCavesButton",	"exploreCavesButtonSelected"),
-		std::make_unique<Button>(180, 50, 400.0f, 425.0f,	"visitLibraryButton",	"visitLibraryButtonSelected"),
-		std::make_unique<Button>(180, 50, 600.0f, 425.0f,	"goFishingButton",		"goFishingButtonSelected"),
-		std::make_unique<Button>(180, 50, 200.0f, 355.0f,	"smithButton",			"smithButtonSelected"),
-		std::make_unique<Button>(180, 50, 400.0f, 355.0f,	"goTavernButton",		"goTavernButtonSelected"),
-		std::make_unique<Button>(180, 50, 600.0f, 355.0f,	"restButton",			"restButtonSelected"),
-		std::make_unique<Button>(180, 50, 600.0f, 175.0f,	"nextDayButton",		"nextDayButtonSelected"),
-		std::make_unique<Button>(180, 50, 400.0f, 190.0f,	"confirmButton",		"confirmButtonSelected"),
-		std::make_unique<Button>(180, 50, 690.0f, 125.0f,	"cancelButton",			"cancelButtonSelected"),
-		std::make_unique<Button>(50, 43, 570.0f, 578.0f,	"viewDeckButton",		"viewDeckButtonSelected")
+		std::make_unique<Button>(180, 50, 200.0f, 425.0f,	"exploreCavesButton"),
+		std::make_unique<Button>(180, 50, 400.0f, 425.0f,	"visitLibraryButton"),
+		std::make_unique<Button>(180, 50, 600.0f, 425.0f,	"goFishingButton"),
+		std::make_unique<Button>(180, 50, 200.0f, 355.0f,	"smithButton"),
+		std::make_unique<Button>(180, 50, 400.0f, 355.0f,	"goTavernButton"),
+		std::make_unique<Button>(180, 50, 600.0f, 355.0f,	"restButton"),
+		std::make_unique<Button>(180, 50, 600.0f, 175.0f,	"nextDayButton"),
+		std::make_unique<Button>(180, 50, 400.0f, 190.0f,	"confirmButton"),
+		std::make_unique<Button>(180, 50, 690.0f, 125.0f,	"cancelButton"),
+		std::make_unique<Button>(50, 43, 570.0f, 578.0f,	"viewDeckButton")
 	};
-	m_Fade->SetColor(0.0f, 0.0f, 0.0f, 0.95f);
+	m_Fade->SetColor(0.0f, 0.0f, 0.0f, 0.9f);
 	m_Health->SetColor(0.0f, 0.0f, 0.0f, 1.0f);
 	m_Day->SetColor(0.0f, 0.0f, 0.0f, 1.0f);
 }
@@ -49,7 +49,7 @@ void TowerDefense::Base::Render()
 	switch (m_SubMenu)
 	{
 	case SubMenu::CAVES:
-		m_CaveScene->Render();
+		RenderCaves();
 		break;
 	case SubMenu::SMITHING:
 		RenderSmithing();
@@ -125,15 +125,32 @@ void TowerDefense::Base::OnSwitch()
 	m_RestText->SetColor(1.0f, 1.0f, 1.0f, 1.0f);
 }
 
+void TowerDefense::Base::RenderCaves()
+{
+	m_Fade->Render();
+	m_CaveScene->Render();
+
+	m_Health->Render();
+	m_Day->Render();
+
+	auto deck = Player::Get().GetDeck();
+	if (deck->IsShowing())
+		deck->RenderCards();
+
+	if (!deck->GetSelectedCard())
+		m_Buttons[9]->Render();
+}
+
 void TowerDefense::Base::RenderSmithing()
 {
-	Player::Get().GetDeck()->RenderCards();
+	auto deck = Player::Get().GetDeck();
+	deck->RenderCards();
 
 	std::shared_ptr<HeroCard> heroCard = std::dynamic_pointer_cast<HeroCard>(m_SelectedCard);
 	if (m_SelectedCard && heroCard)
 	{
 		m_Fade->Render();
-		if (!Player::Get().GetDeck()->GetSelectedCard())
+		if (!deck->GetSelectedCard())
 			m_Buttons[8]->Render();
 		if (heroCard->GetUpgrades()->GetSelectedCard())
 			m_Buttons[7]->Render();
@@ -142,14 +159,14 @@ void TowerDefense::Base::RenderSmithing()
 	else if (m_SelectedCard && !m_SelectedCard->IsUpgraded())
 	{
 		m_Fade->Render();
-		if (!Player::Get().GetDeck()->GetSelectedCard())
+		if (!deck->GetSelectedCard())
 			m_Buttons[8]->Render();
 		m_SelectedCardImage->Render();
 		m_SelectedCard->RenderUpgrade(500, 300);
 		m_SmithingArrow->Render();
 		m_Buttons[7]->Render();
 	}
-	else if(!Player::Get().GetDeck()->GetSelectedCard())
+	else if(!deck->GetSelectedCard())
 	{
 		m_Buttons[8]->Render();
 	}
@@ -163,10 +180,12 @@ void TowerDefense::Base::RenderLibrary()
 	if (m_CardChoice->GetSelectedCard())
 		m_Buttons[7]->Render();
 	m_CardChoice->Render();
-	if (Player::Get().GetDeck()->IsShowing())
+
+	auto deck = Player::Get().GetDeck();
+	if (deck->IsShowing())
 	{
-		Player::Get().GetDeck()->RenderCards();
-		if(!Player::Get().GetDeck()->GetSelectedCard())
+		deck->RenderCards();
+		if(!deck->GetSelectedCard())
 			m_Buttons[9]->Render();
 	}
 }
@@ -179,10 +198,12 @@ void TowerDefense::Base::RenderTavern()
 	if (m_TavernChoice->GetSelectedCard())
 		m_Buttons[7]->Render();
 	m_TavernChoice->Render();
-	if (Player::Get().GetDeck()->IsShowing())
+
+	auto deck = Player::Get().GetDeck();
+	if (deck->IsShowing())
 	{
-		Player::Get().GetDeck()->RenderCards();
-		if (!Player::Get().GetDeck()->GetSelectedCard())
+		deck->RenderCards();
+		if (!deck->GetSelectedCard())
 			m_Buttons[9]->Render();
 	}
 }
@@ -198,16 +219,32 @@ void TowerDefense::Base::RenderRest()
 
 void TowerDefense::Base::UpdateCaves()
 {
-	m_CaveScene->Update();
+	auto deck = Player::Get().GetDeck();
+
+	if (!deck->GetSelectedCard())
+	{
+		m_Buttons[9]->Update();
+		if (m_Buttons[9]->IsClicked())
+			deck->Show(!deck->IsShowing());
+	}
+
+	if (deck->IsShowing())
+		deck->Update();
+	else
+		m_CaveScene->Update();
+
 	if (m_CaveScene->Exit())
 	{
 		m_SubMenu = SubMenu::NONE;
 		m_ActivityDone = true;
+		m_Health = std::make_unique<Text>(std::string("Health: ") + std::to_string(Player::Get().GetHealth()) + "/" + std::to_string(Player::Get().GetMaxHealth()), 700.0f, 575.0f, 10.0f, 0.0f);
+		m_Health->SetColor(1.0f, 1.0f, 1.0f, 1.0f);
 	}
 }
 
 void TowerDefense::Base::UpdateSmithing()
 {
+	auto deck = Player::Get().GetDeck();
 	std::shared_ptr<HeroCard> heroCard = std::dynamic_pointer_cast<HeroCard>(m_SelectedCard);
 	if (m_SelectedCard && heroCard)
 	{
@@ -220,12 +257,12 @@ void TowerDefense::Base::UpdateSmithing()
 			{
 				m_ActivityDone = true;
 				m_SubMenu = SubMenu::NONE;
-				Player::Get().GetDeck()->Show(false);
+				deck->Show(false);
 				heroCard->Upgrade();
 			}
 		}
 
-		if (!Player::Get().GetDeck()->GetSelectedCard() && !showingInfo)
+		if (!deck->GetSelectedCard() && !showingInfo)
 		{
 			m_Buttons[8]->Update();
 			if (m_Buttons[8]->IsClicked())
@@ -242,50 +279,50 @@ void TowerDefense::Base::UpdateSmithing()
 		{
 			m_ActivityDone = true;
 			m_SubMenu = SubMenu::NONE;
-			Player::Get().GetDeck()->Show(false);
+			deck->Show(false);
 			m_SelectedCard->Upgrade();
 		}
-		if (!Player::Get().GetDeck()->GetSelectedCard())
+		if (!deck->GetSelectedCard())
 		{
 			m_Buttons[8]->Update();
 			if (m_Buttons[8]->IsClicked())
 				m_SelectedCard.reset();
 		}
 	}
-	else if(!Player::Get().GetDeck()->GetSelectedCard())
+	else if(!deck->GetSelectedCard())
 	{
 		m_Buttons[8]->Update();
 		if (m_Buttons[8]->IsClicked())
 		{
 			m_SubMenu = SubMenu::NONE;
-			Player::Get().GetDeck()->Show(false);
+			deck->Show(false);
 		}
 	}
 	
 	if (!m_SelectedCard || m_SelectedCard->IsUpgraded())
 	{
-		if(!Player::Get().GetDeck()->GetSelectedCard())
+		if(!deck->GetSelectedCard())
 			FindSelectedCard();
 		if(!m_SelectedCard)
-			Player::Get().GetDeck()->Update();
+			deck->Update();
 	}
 	m_ActivityText = "";
 }
 
 void TowerDefense::Base::UpdateLibrary()
 {
-	Player& player = Player::Get();
+	auto deck = Player::Get().GetDeck();
 	bool showingInfo = m_CardChoice && m_CardChoice->ShowingInfo();
 
-	if (!player.GetDeck()->GetSelectedCard() && !showingInfo)
+	if (!deck->GetSelectedCard() && !showingInfo)
 	{
 		m_Buttons[9]->Update();
 		if (m_Buttons[9]->IsClicked())
-			player.GetDeck()->Show(!player.GetDeck()->IsShowing());
+			deck->Show(!deck->IsShowing());
 	}
 
-	if (player.GetDeck()->IsShowing())
-		player.GetDeck()->Update();
+	if (deck->IsShowing())
+		deck->Update();
 	else
 	{
 		if (m_CardChoice->GetSelectedCard() && !showingInfo)
@@ -293,7 +330,7 @@ void TowerDefense::Base::UpdateLibrary()
 			m_Buttons[7]->Update();
 			if (m_Buttons[7]->IsClicked())
 			{
-				player.GetDeck()->AddCard(m_CardChoice->GetSelectedCard());
+				deck->AddCard(m_CardChoice->GetSelectedCard());
 				m_SubMenu = SubMenu::NONE;
 				m_ActivityDone = true;
 				m_CardChoice.reset();
@@ -312,18 +349,18 @@ void TowerDefense::Base::UpdateLibrary()
 
 void TowerDefense::Base::UpdateTavern()
 {
-	Player& player = Player::Get();
+	auto deck = Player::Get().GetDeck();
 	bool showingInfo = m_TavernChoice && m_TavernChoice->ShowingInfo();
 
-	if (!player.GetDeck()->GetSelectedCard() && !showingInfo)
+	if (!deck->GetSelectedCard() && !showingInfo)
 	{
 		m_Buttons[9]->Update();
 		if (m_Buttons[9]->IsClicked())
-			player.GetDeck()->Show(!player.GetDeck()->IsShowing());
+			deck->Show(!deck->IsShowing());
 	}
 
-	if (player.GetDeck()->IsShowing())
-		player.GetDeck()->Update();
+	if (deck->IsShowing())
+		deck->Update();
 	else
 	{
 		if (m_TavernChoice->GetSelectedCard() && !showingInfo)
@@ -331,7 +368,7 @@ void TowerDefense::Base::UpdateTavern()
 			m_Buttons[7]->Update();
 			if (m_Buttons[7]->IsClicked())
 			{
-				player.GetDeck()->AddCard(m_TavernChoice->GetSelectedCard());
+				deck->AddCard(m_TavernChoice->GetSelectedCard());
 				m_SubMenu = SubMenu::NONE;
 				m_ActivityDone = true;
 				m_TavernChoice->RemoveSelectedCard();
@@ -369,14 +406,14 @@ void TowerDefense::Base::UpdateRest()
 
 void TowerDefense::Base::UpdateDeck()
 {
-	Player& player = Player::Get();
-	if (!player.GetDeck()->GetSelectedCard())
+	auto deck = Player::Get().GetDeck();
+	if (!deck->GetSelectedCard())
 	{
 		m_Buttons[9]->Update();
 		if (m_Buttons[9]->IsClicked())
-			player.GetDeck()->Show(!player.GetDeck()->IsShowing());
+			deck->Show(!deck->IsShowing());
 	}
-	player.GetDeck()->Update();
+	deck->Update();
 	m_ActivityText = "";
 }
 
@@ -385,7 +422,6 @@ void TowerDefense::Base::UpdateActivities()
 	if (m_ActivityDone)
 		return;
 
-	Player& player = Player::Get();
 	m_Buttons[0]->Update();
 	if (m_Buttons[0]->IsClicked())
 	{
@@ -411,7 +447,7 @@ void TowerDefense::Base::UpdateActivities()
 	if (m_Buttons[3]->IsClicked())
 	{
 		m_SubMenu = SubMenu::SMITHING;
-		player.GetDeck()->Show(true);
+		Player::Get().GetDeck()->Show(true);
 		m_SelectedCard.reset();
 		m_Buttons[3]->SetSelected(false);
 	}
@@ -465,12 +501,13 @@ void TowerDefense::Base::UpdateActivityDescription()
 
 void TowerDefense::Base::UpdateViewDeck()
 {
+	auto deck = Player::Get().GetDeck();
 	m_Buttons[9]->Update();
 	if (m_Buttons[9]->IsClicked())
 	{
-		Player::Get().GetDeck()->Show(!Player::Get().GetDeck()->IsShowing());
+		deck->Show(!deck->IsShowing());
 	}
-	Player::Get().GetDeck()->Update();
+	deck->Update();
 }
 
 void TowerDefense::Base::UpdateNextDay()
