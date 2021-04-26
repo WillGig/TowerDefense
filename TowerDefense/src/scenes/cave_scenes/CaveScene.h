@@ -50,7 +50,7 @@ namespace TowerDefense
 		void Update() override;
 	};
 
-	//Bus of puppies is going to run over a child. Divert to crash into 10 convicts instead, killing them and the children
+	//Bus of puppies is going to run over a baby. Divert to crash into 3 convicts instead, killing them and the puppies
 	//Third choice "But this has nothing to do with the game!" (-1 hp)
 	class TrolleyProblem : public CaveScene
 	{
@@ -58,6 +58,10 @@ namespace TowerDefense
 		TrolleyProblem();
 		void Render() override;
 		void Update() override;
+	private:
+		std::unique_ptr<StaticImage> m_Image;
+		std::unique_ptr<Button> m_Button1, m_Button2, m_Button3;
+		std::unique_ptr<Text> m_Text1, m_Text2, m_Text3, m_Prompt;
 	};
 
 	//Do something here

@@ -1,7 +1,7 @@
 Current:
 	Start on random events
 	- Fountain of youth	Done
-	- Literally Satan	
+	- Literally Satan	Done
 	- Cave Bat		
 	- Trolley Problem	
 	- Knights who say nah	
