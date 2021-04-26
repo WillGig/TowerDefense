@@ -1,13 +1,10 @@
 Current:
-	Start on random events
-	- Fountain of youth	Done
-	- Literally Satan	Done
-	- Cave Bat		
-	- Trolley Problem	
-	- Knights who say nah	
+	Fix bug where towers are more powerful at higher speeds
+
+	Start on artifacts (button next to view deck button to view artifacts)
 
 	Daily activities
-		Explore Caves 	- Random event						- In progress
+		Explore Caves 	- Random event						- Done
 		Visit Library 	- Choose a new card					- Done
 		Go Fishing	- Get a random relic/gold - minigame?			- 
 				- different fishing rods/tools?
@@ -17,6 +14,7 @@ Current:
 
 Soon:
 	Allow right clicking on smithing upgrades to show detailed versions of cards
+	Allow hovering over event options to show cards/artifacts obtained
 	design more enemies and possible combats for days 1-10
 	design auras and more cards
 	add more potential hero upgrades
@@ -94,3 +92,10 @@ Notes:
 	- Boss Rat	very slow but with 100s of hp
 	- Goblin	fast and tough
 	- Orc		slow and extra tough
+
+	random events
+	- Fountain of youth	Restore to full hp or +10 max hp
+	- Literally Satan	Sets your deck on fire (add 3 flame cards) OR sets YOU on fire (-30 hp)
+	- Cave Bat		Fight (-1 hp), Feed (-10hp, get bat's blessing)
+	- Trolley Problem	Truck of puppies + 3 criminals vs baby or -1hp if you don't want to choose
+	- Knights who say nah	

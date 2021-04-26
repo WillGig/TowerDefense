@@ -49,8 +49,7 @@ void TowerDefense::TrolleyProblem::Update()
 		m_Exit = true;
 	else if(m_Button3->IsClicked())
 	{ 
-		Player& player = Player::Get();
-		player.ChangeHealth(-1);
+		Player::Get().ChangeHealth(-1);
 		m_Exit = true;
 	}
 }
