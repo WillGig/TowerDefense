@@ -11,8 +11,8 @@
 float TowerDefense::Card::s_UncommonCardChance = .3f;
 float TowerDefense::Card::s_RareCardChance = .02f;
 
-TowerDefense::Card::Card(std::string name, int cost, const std::string& image, const std::string& upgradedImage)
-	:Entity(0.0f, 0.0f, 110, 140, 0.0f, image, Type::CARD), m_Name(name), m_HandPosition(-1), m_Cost(cost),
+TowerDefense::Card::Card(std::string name, CardType type, int cost, const std::string& image, const std::string& upgradedImage)
+	:Entity(0.0f, 0.0f, 110, 140, 0.0f, image, Type::CARD), m_Name(name), m_CardType(type), m_HandPosition(-1), m_Cost(cost),
 	m_Upgraded(false), m_OverBoard(false), m_Exhausts(false),
 	m_DetailedImage(std::make_unique<Image>(image, 400.0f, 300.0f, 220, 280, 0.0f)),
 	m_UpgradedImage(std::make_shared<Image>(upgradedImage, 0.0f, 0.0f, 110, 140, 0.0f)),

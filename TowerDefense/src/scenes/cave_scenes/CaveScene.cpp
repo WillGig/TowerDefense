@@ -3,7 +3,7 @@
 
 std::shared_ptr<TowerDefense::CaveScene> TowerDefense::CaveScene::GetRandomCaveEvent()
 {
-	int encounter = (int)(Random::GetFloat() * 0);
+	int encounter = 1;// (int)(Random::GetFloat() * 4);
 
 	if (encounter == 0)
 		return std::make_shared<FountainOfYouth>();

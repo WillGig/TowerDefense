@@ -331,6 +331,10 @@ void LoadTextures()
     Texture::LoadTexture("frostBall",               skillCards.load(2, 1));
     Texture::LoadTexture("frostBallUpgraded",       skillCards.load(3, 1));
 
+    SpriteSheet curses("res/textures/Curses.png", 440, 560);
+    Texture::LoadTexture("Flames",                  curses.load(0, 0));
+    Texture::LoadTexture("FlamesUpgraded",          curses.load(1, 0));
+
     SpriteSheet cardInfo("res/textures/InfoTiles.png", 440, 170);
     Texture::LoadTexture("SummonInfo",      cardInfo.load(0, 0));
     Texture::LoadTexture("UpgradedInfo",    cardInfo.load(1, 0));

@@ -5,7 +5,7 @@
 #include "core/Player.h"
 
 TowerDefense::TowerCard::TowerCard(const std::string& name, int cost, const std::string& image, const std::string& upgradedImage)
-	:Card(name, cost, image, upgradedImage)
+	:Card(name, CardType::TOWER, cost, image, upgradedImage)
 {
 }
 

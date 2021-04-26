@@ -3,10 +3,13 @@
 
 namespace TowerDefense
 {
+	enum class CardType { TOWER, SKILL, CURSE };
+
 	class Card : public TowerDefense::Entity
 	{
+
 	public:
-		Card(std::string name, int cost, const std::string& image, const std::string& upgradedImage);
+		Card(std::string name, CardType type, int cost, const std::string& image, const std::string& upgradedImage);
 
 		virtual bool Play() = 0;
 
@@ -43,6 +46,8 @@ namespace TowerDefense
 
 	private:
 		std::string m_Name;
+
+		CardType m_CardType;
 
 		//Index of card in hand 0 being the leftmost card
 		int m_HandPosition;

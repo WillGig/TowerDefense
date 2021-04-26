@@ -3,7 +3,7 @@
 #include "core/Player.h"
 
 TowerDefense::PotOfGreed::PotOfGreed()
-	:Card("Pot of Greed", 20, "potOfGreed", "potOfGreedUpgraded")
+	:Card("Pot of Greed", CardType::SKILL, 20, "potOfGreed", "potOfGreedUpgraded")
 {
 }
 

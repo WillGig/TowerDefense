@@ -9,7 +9,7 @@ namespace TowerDefense
 	{
 	public:
 		Upgrade(const std::string& name, const std::string& image)
-			:Card(name, 0, image, image)
+			:Card(name, CardType::SKILL, 0, image, image)
 		{
 		}
 		virtual void UpgradeHero(HeroCard& hero) = 0;

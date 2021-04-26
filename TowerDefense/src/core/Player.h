@@ -18,7 +18,7 @@ namespace TowerDefense
 		void ChangeHealth(int change);
 
 		inline int GetMaxHealth() const { return m_MaxHealth; }
-		inline void ChangeMaxHealth(int change) { m_MaxHealth += change; }
+		inline void ChangeMaxHealth(int change) { m_MaxHealth += change; if (m_Health > m_MaxHealth) m_Health = m_MaxHealth; }
 
 		void DrawHand();
 

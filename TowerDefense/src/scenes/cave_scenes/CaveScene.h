@@ -28,13 +28,17 @@ namespace TowerDefense
 		std::unique_ptr<Text> m_Text1, m_Text2, m_Prompt;
 	};
 
-	//Sets your deck on fire (add 3 flame cards) OR sets you on fire (-20 hp)
+	//Sets your deck on fire (add 3 flame cards) OR sets YOU on fire (-30 hp)
 	class LiterallySatan : public CaveScene
 	{
 	public:
 		LiterallySatan();
 		void Render() override;
 		void Update() override;
+	private:
+		std::unique_ptr<StaticImage> m_Image;
+		std::unique_ptr<Button> m_Button1, m_Button2;
+		std::unique_ptr<Text> m_Text1, m_Text2, m_Prompt;
 	};
 
 	//Fight (-1 hp), Feed (-10hp, get bat's blessing)
