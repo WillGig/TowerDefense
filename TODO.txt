@@ -1,6 +1,4 @@
 Current:
-	Fix bug where towers are more powerful at higher speeds
-
 	Start on artifacts (button next to view deck button to view artifacts)
 
 	Daily activities

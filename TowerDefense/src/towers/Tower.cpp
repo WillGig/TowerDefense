@@ -37,7 +37,7 @@ void TowerDefense::Tower::Tower::Update()
 	if (Combat::Paused())
 		return;
 
-	if (m_FireReady >= (m_FireTime / Combat::GetRoundSpeed()))
+	if (m_FireReady >= m_FireTime)
 		Attack();
 	else
 		m_FireReady += Combat::GetRoundSpeed();
