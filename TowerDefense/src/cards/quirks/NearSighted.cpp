@@ -1,18 +1,18 @@
 #include "pch.h"
-#include "NearSighted.h"
+#include "quirk.h"
 
-TowerDefense::Quirk::NearSighted::NearSighted()
+TowerDefense::Quirk::Nearsighted::Nearsighted()
 	:Quirk("Nearsighted")
 {
 
 }
 
-void TowerDefense::Quirk::NearSighted::Apply(TowerDefense::HeroCard& h)
+void TowerDefense::Quirk::Nearsighted::Apply(TowerDefense::HeroCard& h)
 {
 	h.GetTower()->SetRange((int)(h.GetTower()->GetRange() * .7f));
 }
 
-std::shared_ptr<TowerDefense::Quirk::Quirk> TowerDefense::Quirk::NearSighted::Clone()
+std::shared_ptr<TowerDefense::Quirk::Quirk> TowerDefense::Quirk::Nearsighted::Clone()
 {
-	return std::make_shared<NearSighted>();
+	return std::make_shared<Nearsighted>();
 }

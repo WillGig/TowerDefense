@@ -225,7 +225,7 @@
     <ClCompile Include="src\cards\quirks\Explorer.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\cards\quirks\NearSighted.cpp">
+    <ClCompile Include="src\cards\quirks\Nearsighted.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\cards\upgrades\Upgrades.cpp">
@@ -265,6 +265,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\cards\curses\Flames.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\cards\quirks\Farsighted.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -544,46 +547,10 @@
     <ClInclude Include="src\cards\HeroCard.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\cards\quirks\Human.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\cards\quirks\Dwarf.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\cards\quirks\HighElf.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\cards\quirks\WoodElf.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\cards\quirks\Orc.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\cards\quirks\Gnome.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\cards\quirks\Giant.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\cards\quirks\BattleReady.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\cards\quirks\Explorer.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\cards\quirks\NearSighted.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="src\cards\upgrades\Upgrade.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\cards\upgrades\Upgrades.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\cards\quirks\Veteran.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\cards\quirks\JustLucky.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\cards\InfoTile.h">

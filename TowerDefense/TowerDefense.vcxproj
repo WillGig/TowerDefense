@@ -172,6 +172,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="src\cards\curses\Flames.cpp" />
+    <ClCompile Include="src\cards\quirks\Farsighted.cpp" />
     <ClCompile Include="src\cards\quirks\JustLucky.cpp" />
     <ClCompile Include="src\cards\quirks\Veteran.cpp" />
     <ClCompile Include="src\core\Board.cpp" />
@@ -187,7 +188,7 @@
     <ClCompile Include="src\cards\quirks\Explorer.cpp" />
     <ClCompile Include="src\cards\quirks\Giant.cpp" />
     <ClCompile Include="src\cards\quirks\Gnome.cpp" />
-    <ClCompile Include="src\cards\quirks\NearSighted.cpp" />
+    <ClCompile Include="src\cards\quirks\Nearsighted.cpp" />
     <ClCompile Include="src\cards\quirks\Orc.cpp" />
     <ClCompile Include="src\cards\PotOfGreed.cpp" />
     <ClCompile Include="src\cards\quirks\Dwarf.cpp" />
@@ -297,8 +298,6 @@
   <ItemGroup>
     <ClInclude Include="src\cards\curses\Curses.h" />
     <ClInclude Include="src\cards\InfoTile.h" />
-    <ClInclude Include="src\cards\quirks\JustLucky.h" />
-    <ClInclude Include="src\cards\quirks\Veteran.h" />
     <ClInclude Include="src\core\Board.h" />
     <ClInclude Include="src\cards\Card.h" />
     <ClInclude Include="src\cards\CardChoice.h" />
@@ -309,17 +308,7 @@
     <ClInclude Include="src\cards\Hand.h" />
     <ClInclude Include="src\cards\HeroCard.h" />
     <ClInclude Include="src\cards\PotOfGreed.h" />
-    <ClInclude Include="src\cards\quirks\BattleReady.h" />
-    <ClInclude Include="src\cards\quirks\Dwarf.h" />
-    <ClInclude Include="src\cards\quirks\Explorer.h" />
-    <ClInclude Include="src\cards\quirks\Giant.h" />
-    <ClInclude Include="src\cards\quirks\Gnome.h" />
-    <ClInclude Include="src\cards\quirks\HighElf.h" />
-    <ClInclude Include="src\cards\quirks\Human.h" />
-    <ClInclude Include="src\cards\quirks\NearSighted.h" />
-    <ClInclude Include="src\cards\quirks\Orc.h" />
     <ClInclude Include="src\cards\quirks\Quirk.h" />
-    <ClInclude Include="src\cards\quirks\WoodElf.h" />
     <ClInclude Include="src\cards\TowerCard.h" />
     <ClInclude Include="src\cards\TowerCards.h" />
     <ClInclude Include="src\cards\upgrades\Upgrades.h" />

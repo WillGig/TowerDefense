@@ -1,5 +1,5 @@
 #include "pch.h"
-#include "Human.h"
+#include "quirk.h"
 
 TowerDefense::Quirk::Human::Human()
 	:Quirk("Human")

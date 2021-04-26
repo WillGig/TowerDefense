@@ -1,5 +1,5 @@
 #include "pch.h"
-#include "Orc.h"
+#include "quirk.h"
 
 TowerDefense::Quirk::Orc::Orc()
 	:Quirk("Orc")

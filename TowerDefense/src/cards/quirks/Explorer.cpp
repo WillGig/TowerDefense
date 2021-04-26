@@ -1,5 +1,5 @@
 #include "pch.h"
-#include "Explorer.h"
+#include "quirk.h"
 #include "core/Player.h"
 
 TowerDefense::Quirk::Explorer::Explorer()

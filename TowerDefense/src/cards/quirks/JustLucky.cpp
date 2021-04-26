@@ -1,5 +1,5 @@
 #include "pch.h"
-#include "JustLucky.h"
+#include "quirk.h"
 
 TowerDefense::Quirk::JustLucky::JustLucky()
 	:Quirk("Just Lucky")

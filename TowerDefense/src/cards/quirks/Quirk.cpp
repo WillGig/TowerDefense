@@ -1,17 +1,5 @@
 #include "pch.h"
 #include "Quirk.h"
-#include "Human.h"
-#include "Dwarf.h"
-#include "WoodElf.h"
-#include "HighElf.h"
-#include "Orc.h"
-#include "Gnome.h"
-#include "Giant.h"
-#include "BattleReady.h"
-#include "Explorer.h"
-#include "NearSighted.h"
-#include "Veteran.h"
-#include "JustLucky.h"
 
 TowerDefense::Quirk::Quirk::Quirk(const std::string& name)
 	:m_Name(name)
@@ -68,7 +56,7 @@ std::shared_ptr<TowerDefense::Quirk::Quirk> TowerDefense::Quirk::Quirk::GetRando
 	{
 		while (!q || Contains(exclude, q)) 
 		{
-			int quirkNumber = (int)(Random::GetFloat() * 4.0f);
+			int quirkNumber = (int)(Random::GetFloat() * 5.0f);
 			if (quirkNumber == 0)
 				q = std::make_shared<BattleReady>();
 			else if (quirkNumber == 1)
@@ -77,6 +65,8 @@ std::shared_ptr<TowerDefense::Quirk::Quirk> TowerDefense::Quirk::Quirk::GetRando
 				q = std::make_shared<Veteran>();
 			else if (quirkNumber == 3)
 				q = std::make_shared<JustLucky>();
+			else if (quirkNumber == 4)
+				q = std::make_shared<Farsighted>();
 		}
 	}
 	else {
@@ -84,7 +74,7 @@ std::shared_ptr<TowerDefense::Quirk::Quirk> TowerDefense::Quirk::Quirk::GetRando
 		{
 			int quirkNumber = (int)(Random::GetFloat() * 1.0f);
 			if (quirkNumber == 0)
-				q = std::make_shared<NearSighted>();
+				q = std::make_shared<Nearsighted>();
 		}
 	}
 

@@ -1,5 +1,5 @@
 #include "pch.h"
-#include "Gnome.h"
+#include "quirk.h"
 
 TowerDefense::Quirk::Gnome::Gnome()
 	:Quirk("Gnome")

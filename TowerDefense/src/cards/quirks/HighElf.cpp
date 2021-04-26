@@ -1,5 +1,5 @@
 #include "pch.h"
-#include "HighElf.h"
+#include "quirk.h"
 
 TowerDefense::Quirk::HighElf::HighElf()
 	:Quirk("High Elf")

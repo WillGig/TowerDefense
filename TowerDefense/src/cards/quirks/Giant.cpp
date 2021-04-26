@@ -1,5 +1,5 @@
 #include "pch.h"
-#include "Giant.h"
+#include "quirk.h"
 
 TowerDefense::Quirk::Giant::Giant()
 	:Quirk("Giant")

@@ -1,5 +1,13 @@
 Current:
 	Start on artifacts (button next to view deck button to view artifacts)
+		- blessing of the bat
+		- glasses 			- cures nearsightedness
+		- laser-sword 			- could be used to fix nearsightedness... maybe
+		- Spy Glass 			- scout fights in advance
+		- token of the mute		- start with 2 extra cards
+		- token of the armored		- heal a little at the end of fights
+		- token of the broken		- Add a lightening card to your hand at the start of a fight
+		- token of the vigilant		- Gain 5 energy every 2 skills you play
 
 	Daily activities
 		Explore Caves 	- Random event						- Done
@@ -9,18 +17,16 @@ Current:
 		Smith		- upgrade a card					- Done
 		Go to Tavern	- Choose from 3 recruits (refreshes every few days)	- Done
 		rest 		- heal by 20 percent of maxhp				- Done
+		praying 	- Remove a Card						- 
 
 Soon:
+	Change text renderer to include color in vertex data to allow coloring of specific letters/words
 	Allow right clicking on smithing upgrades to show detailed versions of cards
 	Allow hovering over event options to show cards/artifacts obtained
 	design more enemies and possible combats for days 1-10
 	design auras and more cards
 	add more potential hero upgrades
-		- range, damage, speed, more missiles, new spells, attacks stun/slow
-	Artifacts
-		- glasses (cures nearsightedness)
-		- laser-sword (could be used to fix nearsightedness... maybe)
-		- Spy Glass - scout fights in advance
+		- range, damage, speed, more missiles, new spells, attacks stun/slow	
 	Shop/merchants
 	can scout next battle for gold price (towers cost gold in battle? 1 currency or two?)
 	Gold price to buy fishing, smithing, library, tavern, etc. Default options sleeping and exploring?
@@ -34,7 +40,6 @@ Long Term:
 	Saving and Loading
 	Settings menu
 	In Game Menu
-	More Cards - Auras - cards like powers - need alter/concentrating tower?
 	indicators for buffs on towers
 	Damage Types - physical, magical, special - shields protect from physical, spellcasters grant mass spell protection
 	Placable building towers?
@@ -45,8 +50,6 @@ Long Term:
 	Better graphics for towers
 	change image for enemies depending on the direction they face
 	Selling Towers?
-	Allow targeting priority for towers - select enemy?
-	Artifact system - token of the speechless, token of the armored, token of the broken, token of the vigilant
 		
 
 Far away:
@@ -54,7 +57,6 @@ Far away:
 	Enemy walk animations
 	Animation for drawing and discarding cards
 	Add sound effects and music
-
 
 Notes:
 
@@ -78,7 +80,8 @@ Notes:
 	- Orc		+3 physical damage, -1 magic damage
 
 	quirks
-	- Near Sighted	reduced range				
+	- Near Sighted	reduced range
+	- Far Sighted	increased range
 	- Veteran	starts upgraded				
 	- Just lucky	can crit				
 	- Battleready	costs 10% less				
@@ -91,7 +94,7 @@ Notes:
 	- Goblin	fast and tough
 	- Orc		slow and extra tough
 
-	random events
+	Events
 	- Fountain of youth	Restore to full hp or +10 max hp
 	- Literally Satan	Sets your deck on fire (add 3 flame cards) OR sets YOU on fire (-30 hp)
 	- Cave Bat		Fight (-1 hp), Feed (-10hp, get bat's blessing)

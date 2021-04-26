@@ -1,5 +1,5 @@
 #include "pch.h"
-#include "BattleReady.h"
+#include "quirk.h"
 
 TowerDefense::Quirk::BattleReady::BattleReady()
 	:Quirk("Battle Ready")

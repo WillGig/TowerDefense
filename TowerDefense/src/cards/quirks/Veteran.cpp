@@ -1,5 +1,5 @@
 #include "pch.h"
-#include "Veteran.h"
+#include "quirk.h"
 
 TowerDefense::Quirk::Veteran::Veteran()
 	:Quirk("Veteran")

@@ -1,5 +1,5 @@
 #include "pch.h"
-#include "Dwarf.h"
+#include "quirk.h"
 
 TowerDefense::Quirk::Dwarf::Dwarf()
 	:Quirk("Dwarf")
