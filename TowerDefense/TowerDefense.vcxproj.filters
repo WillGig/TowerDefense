@@ -270,6 +270,21 @@
     <ClCompile Include="src\cards\quirks\Farsighted.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="src\scenes\base_scenes\Caves.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\scenes\base_scenes\Rest.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\scenes\base_scenes\Library.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\scenes\base_scenes\Smithing.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\scenes\base_scenes\Tavern.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="res\shaders\Texture.shader" />
@@ -569,6 +584,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\cards\curses\Curses.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\scenes\base_scenes\BaseScene.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

@@ -219,6 +219,11 @@
     <ClCompile Include="src\engine\Input.cpp" />
     <ClCompile Include="src\engine\Log.cpp" />
     <ClCompile Include="src\Main.cpp" />
+    <ClCompile Include="src\scenes\base_scenes\Caves.cpp" />
+    <ClCompile Include="src\scenes\base_scenes\Library.cpp" />
+    <ClCompile Include="src\scenes\base_scenes\Rest.cpp" />
+    <ClCompile Include="src\scenes\base_scenes\Smithing.cpp" />
+    <ClCompile Include="src\scenes\base_scenes\Tavern.cpp" />
     <ClCompile Include="src\scenes\cave_scenes\CaveBat.cpp" />
     <ClCompile Include="src\scenes\cave_scenes\CaveScene.cpp" />
     <ClCompile Include="src\scenes\cave_scenes\FountainOfYouth.cpp" />
@@ -334,6 +339,7 @@
     <ClInclude Include="src\engine\Image.h" />
     <ClInclude Include="src\engine\IndexBuffer.h" />
     <ClInclude Include="src\engine\Log.h" />
+    <ClInclude Include="src\scenes\base_scenes\BaseScene.h" />
     <ClInclude Include="src\scenes\cave_scenes\CaveScene.h" />
     <ClInclude Include="src\scenes\Combat.h" />
     <ClInclude Include="src\scenes\MainMenu.h" />

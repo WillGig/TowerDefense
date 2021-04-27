@@ -18,22 +18,15 @@ std::unique_ptr<TowerDefense::TowerInfo> TowerDefense::Combat::s_TowerInfo;
 std::unique_ptr<TowerDefense::EnemyInfo> TowerDefense::Combat::s_EnemyInfo;
 
 TowerDefense::Combat::Combat()
-	:m_PlayerHealth(Player::Get().GetHealth()), m_PlayerEnergy(Player::Get().GetEnergy()), m_CurrentFight(-1),
-	m_TurnPhase(Phase::START),
+	:m_CurrentFight(-1), m_TurnPhase(Phase::START),
 	m_ViewDeck(std::make_unique<Button>(570.0f, 578.0f, 50, 43, "viewDeckButton")),
 	m_StartButton(std::make_unique<Button>(76.0f, 201.0f, 96, 32, "startButton")),
-	m_SpeedButton(std::make_unique<Button>(76.0f, 159.0f, 96, 32, "speed1")),
-	m_Health(std::make_unique<Text>(std::string("Health: ") + std::to_string(Player::Get().GetHealth()), 650.0f, 575.0f, 10.0f, 0.0f)), 
-	m_Energy(std::make_unique<Text>(std::string("Energy: ") + std::to_string(Player::Get().GetEnergy()), 740.0f, 575.0f, 10.0f, 0.0f)),
-	m_Day(std::make_unique<Text>(std::string("Day: ") + std::to_string(GetDay()), 400.0f, 575.0f, 10.0f, 0.0f))
+	m_SpeedButton(std::make_unique<Button>(76.0f, 159.0f, 96, 32, "speed1"))
 {
 	//Set Draw and discard piles to be shown in random orders
 	Player::Get().GetDrawPile()->SetOrdered(false);
 	Player::Get().GetDiscardPile()->SetOrdered(false);
 	Player::Get().GetDeck()->SetOrdered(true);
-	m_Health->SetColor(0.0f, 0.0f, 0.0f, 1.0f);
-	m_Energy->SetColor(0.0f, 0.0f, 0.0f, 1.0f);
-	m_Day->SetColor(0.0f, 0.0f, 0.0f, 1.0f);
 }
 
 void TowerDefense::Combat::Render()
@@ -56,9 +49,9 @@ void TowerDefense::Combat::Render()
 	m_SpeedButton->Render();
 
 	//Stats at top of screen
-	m_Health->Render();
-	m_Energy->Render();
-	m_Day->Render();
+	Player::Get().RenderHealth();
+	Player::Get().RenderEnergy();
+	Player::Get().RenderDay();
 
 	//Render Tower Information
 	if (s_TowerInfo)
@@ -107,8 +100,6 @@ void TowerDefense::Combat::Update()
 		UpdateSelectedTower();
 
 	UpdateEntities();
-
-	UpdateHealthandEnergy();
 }
 
 void TowerDefense::Combat::OnSwitch()
@@ -132,11 +123,10 @@ void TowerDefense::Combat::OnSwitch()
 	Player::Get().GetDrawPile()->Show(false);
 	Player::Get().GetDiscardPile()->Show(false);
 
+	Player::Get().SetTextColor(0.0f, 0.0f, 0.0f, 1.0f);
+
 	ClearProjectilesAndAnimations();
 	ClearTowers();
-
-	//Update Day Text
-	m_Day = std::make_unique<Text>(std::string("Day: ") + std::to_string(GetDay()), 400.0f, 575.0f, 10.0f, 0.0f);
 
 	m_CurrentFight++;
 }
@@ -402,24 +392,6 @@ void TowerDefense::Combat::UpdateSelectedEnemy()
 				s_EnemyInfo = std::make_unique<EnemyInfo>(225.0f, 560.0f, m_SelectedEnemy);
 			}
 		}
-	}
-}
-
-
-//Update Player Health and Energy Text
-void TowerDefense::Combat::UpdateHealthandEnergy()
-{
-	Player& player = Player::Get();
-	if (m_PlayerHealth != player.GetHealth())
-	{
-		m_Health = std::make_unique<Text>(std::string("Health: ") + std::to_string(player.GetHealth()), 650.0f, 575.0f, 10.0f, 0.0f);
-		m_PlayerHealth = player.GetHealth();
-	}
-
-	if (m_PlayerEnergy != player.GetEnergy())
-	{
-		m_Energy = std::make_unique<Text>(std::string("Energy: ") + std::to_string(player.GetEnergy()), 740.0f, 575.0f, 10.0f, 0.0f);
-		m_PlayerEnergy = player.GetEnergy();
 	}
 }
 

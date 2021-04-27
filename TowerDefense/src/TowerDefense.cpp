@@ -205,6 +205,7 @@ int TowerDefense::GetDay()
 void TowerDefense::NextDay()
 {
     day++;
+    Player::Get().UpdateDayText();
 }
 
 void LoadTextures()
