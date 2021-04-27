@@ -1,6 +1,4 @@
 Current:
-	Add praying - remove a card from deck
-
 	Start on artifacts (button next to view deck button to view artifacts)
 		- blessing of the bat
 		- glasses 			- cures nearsightedness

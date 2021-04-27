@@ -5,9 +5,11 @@
 TowerDefense::Chapel::Chapel()
 	:BaseScene("prayButton", "Forgive your mistakes."),
 	m_Index(-1),
+	m_RemoveText(std::make_unique<Text>("Remove Card?", 400.0f, 140.0f, 12.0f, 0.0f)),
 	m_Confirm(std::make_unique<Button>(400.0f, 190.0f, 180, 50, "confirmButton")),
 	m_Cancel(std::make_unique<Button>(690.0f, 125.0f, 180, 50, "cancelButton"))
 {
+	m_RemoveText->SetColor(1.0f, 1.0f, 1.0f, 1.0f);
 }
 
 void TowerDefense::Chapel::Render()
@@ -22,6 +24,7 @@ void TowerDefense::Chapel::Render()
 			m_Cancel->Render();
 		m_SelectedCard->Render();
 		m_Confirm->Render();
+		m_RemoveText->Render();
 	}
 	else if (!deck->GetSelectedCard())
 	{

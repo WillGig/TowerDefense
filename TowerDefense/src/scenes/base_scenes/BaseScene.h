@@ -105,6 +105,7 @@ namespace TowerDefense
 		void FindSelectedCard();
 
 		int m_Index;
+		std::unique_ptr<Text> m_RemoveText;
 		std::shared_ptr<Card> m_SelectedCard;
 		std::unique_ptr<Button> m_Confirm, m_Cancel;
 	};
