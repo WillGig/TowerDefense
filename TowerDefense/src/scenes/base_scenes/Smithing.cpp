@@ -110,10 +110,9 @@ void TowerDefense::Smithing::Update()
 
 void TowerDefense::Smithing::OnSwitch()
 {
-	m_Exit = false;
+	BaseScene::OnSwitch();
 	Player::Get().GetDeck()->Show(true);
 	m_SelectedCard.reset();
-	m_Button->SetSelected(false);
 }
 
 void TowerDefense::Smithing::FindSelectedCard()

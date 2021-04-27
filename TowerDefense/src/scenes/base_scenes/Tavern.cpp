@@ -70,12 +70,11 @@ void TowerDefense::Tavern::Update()
 
 void TowerDefense::Tavern::OnSwitch()
 {
-	m_Exit = false;
+	BaseScene::OnSwitch();
 	if (!m_TavernChoice || GetDay() - m_TavernChoice->GetGenerationDay() > 3) {
 		auto cards = std::make_shared<std::vector<std::shared_ptr<Card>>>();
 		for (int i = 0; i < 3; i++)
 			cards->push_back(HeroCard::GenerateHero());
 		m_TavernChoice = std::make_unique<CardChoice>(cards, GetDay());
 	}
-	m_Button->SetSelected(false);
 }

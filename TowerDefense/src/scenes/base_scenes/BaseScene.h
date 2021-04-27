@@ -15,17 +15,19 @@ namespace TowerDefense
 		inline bool ButtonClicked() const { return m_Button->IsClicked(); }
 		inline bool ButtonSelected() const { return m_Button->IsSelected(); }
 		inline void SetButtonPosition(float x, float y) { m_Button->SetX(x); m_Button->SetY(y); }
-		inline std::string GetDescription() const { return m_Description; }
+		inline void RenderText() { m_Description->Render(); }
+		inline void OnSwitch() override { m_ActivityDone = false; m_Exit = false; m_Button->SetSelected(false); };
 	protected:
 		BaseScene(float x, float y, const std::string& button, const std::string& description)
-			:m_Exit(false), m_ActivityDone(false), m_Description(description),
+			:m_Exit(false), m_ActivityDone(false), m_Description(std::make_unique<Text>(description, 400.0f, 235.0f, 12.0f, 0.0f)),
 			m_Button(std::make_unique<Button>(x, y, 180, 50, button)),
 			m_Fade(std::make_unique<Rectangle>(400.0f, 300.0f, 800.0f, 600.0f))
 		{
+			m_Description->SetColor(1.0f, 1.0f, 1.0f, 1.0f);
 			m_Fade->SetColor(0.0f, 0.0f, 0.0f, 0.95f);
 		}
 		bool m_Exit, m_ActivityDone;
-		std::string m_Description;
+		std::unique_ptr<Text> m_Description;
 		std::unique_ptr<Button> m_Button;
 		std::unique_ptr<Rectangle> m_Fade;
 	};

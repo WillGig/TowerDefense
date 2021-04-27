@@ -71,8 +71,7 @@ void TowerDefense::Library::Update()
 
 void TowerDefense::Library::OnSwitch()
 {
-	m_Exit = false;
+	BaseScene::OnSwitch();
 	if (!m_CardChoice || m_CardChoice->GetGenerationDay() != GetDay())
 		m_CardChoice = std::make_unique<CardChoice>(3, GetDay());
-	m_Button->SetSelected(false);
 }

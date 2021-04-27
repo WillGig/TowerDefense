@@ -52,7 +52,6 @@ void TowerDefense::Caves::Update()
 
 void TowerDefense::Caves::OnSwitch()
 {
-	m_Exit = false;
+	BaseScene::OnSwitch();
 	m_CaveScene = CaveScene::GetRandomCaveEvent();
-	m_Button->SetSelected(false);
 }

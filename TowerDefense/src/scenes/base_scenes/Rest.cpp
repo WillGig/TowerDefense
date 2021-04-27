@@ -38,9 +38,7 @@ void TowerDefense::Rest::Update()
 
 void TowerDefense::Rest::OnSwitch()
 {
-	m_Exit = false;
-	m_Button->SetSelected(false);
+	BaseScene::OnSwitch();
 	m_RestText = std::make_unique<Text>("Rest to restore " + std::to_string(Player::Get().GetMaxHealth() / 5) + " health", 400.0f, 300.0f, 12.0f, 0.0f);
-	m_RestText->SetPosition(400.0f, 300.0f, 0);
 	m_RestText->SetColor(1.0f, 1.0f, 1.0f, 1.0f);
 }

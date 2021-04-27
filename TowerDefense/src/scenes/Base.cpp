@@ -7,8 +7,7 @@
 TowerDefense::Base::Base()
 	:m_CurrentMenu(-1), m_ActivityDone(false),
 	m_NextDay(std::make_unique<Button>(600.0f, 175.0f, 180, 50, "nextDayButton")),
-	m_BaseScenes(std::make_unique<std::vector<std::shared_ptr<BaseScene>>>()),
-	m_ActivityText(""), m_ActivityDescription(std::make_unique<Text>("", 400.0f, 235.0f, 12.0f, 0.0f))
+	m_BaseScenes(std::make_unique<std::vector<std::shared_ptr<BaseScene>>>())
 {
 
 	AddBaseScene(std::make_shared<Rest>(600.0f, 355.0f));
@@ -27,6 +26,8 @@ void TowerDefense::Base::Render()
 		for (unsigned int i = 0; i < m_BaseScenes->size(); i++)
 		{
 			m_BaseScenes->at(i)->RenderButton();
+			if (m_BaseScenes->at(i)->ButtonSelected())
+				m_BaseScenes->at(i)->RenderText();
 		}
 		m_NextDay->Render();
 		player.RenderDeckButton();
@@ -44,9 +45,6 @@ void TowerDefense::Base::Render()
 	{
 		m_BaseScenes->at(m_CurrentMenu)->Render();
 	}
-
-	if (m_ActivityText.size() > 0)
-		m_ActivityDescription->Render();
 }
 
 void TowerDefense::Base::Update()
@@ -58,7 +56,6 @@ void TowerDefense::Base::Update()
 		else
 		{
 			UpdateActivities();
-			UpdateActivityDescription();
 			UpdateViewDeck();
 			UpdateNextDay();
 		}
@@ -91,7 +88,6 @@ void TowerDefense::Base::UpdateDeck()
 			deck->Show(!deck->IsShowing());
 	}
 	deck->Update();
-	m_ActivityText = "";
 }
 
 void TowerDefense::Base::UpdateActivities()
@@ -99,7 +95,6 @@ void TowerDefense::Base::UpdateActivities()
 	if (m_ActivityDone)
 		return;
 
-	m_ActivityText = "";
 	for (unsigned int i = 0; i < m_BaseScenes->size(); i++)
 	{
 		m_BaseScenes->at(i)->UpdateButton();
@@ -107,25 +102,8 @@ void TowerDefense::Base::UpdateActivities()
 		{
 			m_CurrentMenu = i;
 			m_BaseScenes->at(i)->OnSwitch();
-			m_ActivityText = "";
 			return;
 		}
-
-		if (m_BaseScenes->at(i)->ButtonSelected())
-			m_ActivityText = m_BaseScenes->at(i)->GetDescription();
-	}
-}
-
-void TowerDefense::Base::UpdateActivityDescription()
-{
-	if (m_ActivityText.size() < 1)
-		return;
-
-	if (m_ActivityDescription->GetMessage() != m_ActivityText)
-	{
-		m_ActivityDescription = std::make_unique<Text>(m_ActivityText, 400.0f, 235.0f, 12.0f, 0.0f);
-		m_ActivityDescription->SetPosition(400.0f, 235.0f, 0);
-		m_ActivityDescription->SetColor(1.0f, 1.0f, 1.0f, 1.0f);
 	}
 }
 
