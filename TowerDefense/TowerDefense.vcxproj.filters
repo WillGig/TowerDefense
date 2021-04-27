@@ -365,6 +365,54 @@
     <Image Include="res\textures\InfoTiles.png">
       <Filter>Resource Files</Filter>
     </Image>
+    <Image Include="res\textures\ArrowButton.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\textures\ArrowButtonSelected.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\textures\Curses.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\textures\EnemyInfo.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\textures\EventButtons.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\textures\TowerInfo.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\textures\events\CaveBat.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\textures\events\FountainOfYouth.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\textures\events\LiterallySatan.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\textures\events\TrolleyProblem.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\textures\fonts\Arial.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\textures\fonts\ArialBold.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\textures\projectiles\arrow.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\textures\projectiles\giantRock.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\textures\projectiles\magicMissile.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\textures\projectiles\poisonBomb.png">
+      <Filter>Resource Files</Filter>
+    </Image>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\math\Mat4f.h">

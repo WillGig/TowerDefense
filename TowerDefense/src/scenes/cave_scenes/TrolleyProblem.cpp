@@ -3,7 +3,7 @@
 #include "core/Player.h"
 
 TowerDefense::TrolleyProblem::TrolleyProblem()
-	:m_Image(std::make_unique<StaticImage>(400.0f, 425.0f, 600, 300, 0.0f, "TrolleyProblem")),
+	:m_Image(std::make_unique<StaticImage>(400.0f, 425.0f, 600, 300, 0.0f, "events/TrolleyProblem")),
 	m_Button1(std::make_unique<Button>(400.0f, 175.0f, 600, 50, "eventButton")),
 	m_Button2(std::make_unique<Button>(400.0f, 125.0f, 600, 50, "eventButton")),
 	m_Button3(std::make_unique<Button>(400.0f, 75.0f, 600, 50, "eventButton")),

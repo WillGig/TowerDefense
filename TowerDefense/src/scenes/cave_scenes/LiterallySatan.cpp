@@ -4,7 +4,7 @@
 #include "cards/curses/Curses.h"
 
 TowerDefense::LiterallySatan::LiterallySatan()
-	:m_Image(std::make_unique<StaticImage>(200.0f, 350.0f, 300, 300, 0.0f, "LiterallySatan")),
+	:m_Image(std::make_unique<StaticImage>(200.0f, 350.0f, 300, 300, 0.0f, "events/LiterallySatan")),
 	m_Button1(std::make_unique<Button>(400.0f, 150.0f, 600, 50, "eventButton")),
 	m_Button2(std::make_unique<Button>(400.0f, 100.0f, 600, 50, "eventButton")),
 	m_Text1(std::make_unique<Text>("Burn them. (Add 3 burns to your deck.)", 400.0f, 150.0f, 12.0f, 0.0f)),
