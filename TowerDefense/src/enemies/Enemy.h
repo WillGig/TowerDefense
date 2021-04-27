@@ -44,7 +44,7 @@ namespace TowerDefense
 			void UpdateImage();
 			void UpdateDebuffs();
 
-			int m_CurrentTile, m_SlowTime, m_PoisonTime, m_LastPoisonTick;
+			int m_CurrentTile, m_SlowTime, m_PoisonTime, m_PoisonTick;
 			float m_Health, m_MaxHealth, m_Speed, m_SlowPercent, m_PoisonAmount, m_GoalX, m_GoalY, m_DistanceTraveled;
 			bool m_ReachedEnd, m_Selected, m_Clicked;
 
