@@ -1,13 +1,13 @@
 Current:
 	Start on artifacts (button next to view deck button to view artifacts)
-		- blessing of the bat
-		- glasses 			- cures nearsightedness
-		- laser-sword 			- could be used to fix nearsightedness... maybe
-		- Spy Glass 			- scout fights in advance
-		- token of the mute		- start with 2 extra cards
-		- token of the armored		- heal a little at the end of fights
-		- token of the broken		- Add a lightening card to your hand at the start of a fight
-		- token of the vigilant		- Gain 5 energy every 2 skills you play
+		- blessing of the bat										-
+		- glasses 			- cures nearsightedness						-
+		- laser-sword 			- could be used to fix nearsightedness... maybe			-
+		- Spy Glass 			- scout fights in advance					-
+		- token of the mute		- start with 2 extra cards					-In progress
+		- token of the armored		- heal a little at the end of fights				-
+		- token of the broken		- Add a lightening card to your hand at the start of a fight	-
+		- token of the vigilant		- Gain 5 energy every 2 skills you play				-
 
 	Daily activities
 		Explore Caves 	- Random event						- Done

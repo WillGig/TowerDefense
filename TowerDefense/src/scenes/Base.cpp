@@ -34,10 +34,10 @@ void TowerDefense::Base::Render()
 		player.RenderHealth();
 		player.RenderDay();
 
-		if (player.GetDeck()->IsShowing())
+		if (player.DeckShowing())
 		{
-			player.GetDeck()->RenderCards();
-			if (!player.GetDeck()->GetSelectedCard())
+			player.RenderDeck();
+			if (!player.GetSelectedDeckCard())
 				player.RenderDeckButton();
 		}
 	}
@@ -51,7 +51,7 @@ void TowerDefense::Base::Update()
 {
 	if (m_CurrentMenu == -1)
 	{
-		if (Player::Get().GetDeck()->IsShowing())
+		if (Player::Get().DeckShowing())
 			UpdateDeck();
 		else
 		{
@@ -80,14 +80,13 @@ void TowerDefense::Base::OnSwitch()
 void TowerDefense::Base::UpdateDeck()
 {
 	Player& player = Player::Get();
-	auto deck = player.GetDeck();
-	if (!deck->GetSelectedCard())
+	if (!player.GetSelectedDeckCard())
 	{
 		player.UpdateDeckButton();
 		if (player.DeckButtonClicked())
-			deck->Show(!deck->IsShowing());
+			player.ToggleDeckShow();
 	}
-	deck->Update();
+	player.UpdateDeck();
 }
 
 void TowerDefense::Base::UpdateActivities()
@@ -110,13 +109,12 @@ void TowerDefense::Base::UpdateActivities()
 void TowerDefense::Base::UpdateViewDeck()
 {
 	Player& player = Player::Get();
-	auto deck = player.GetDeck();
 	player.UpdateDeckButton();
 	if (player.DeckButtonClicked())
 	{
-		deck->Show(!deck->IsShowing());
+		player.ToggleDeckShow();
 	}
-	deck->Update();
+	player.UpdateDeck();
 }
 
 void TowerDefense::Base::UpdateNextDay()

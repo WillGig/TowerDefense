@@ -14,19 +14,19 @@ TowerDefense::Chapel::Chapel()
 
 void TowerDefense::Chapel::Render()
 {
-	auto deck = Player::Get().GetDeck();
-	deck->RenderCards();
+	Player& player = Player::Get();
+	player.RenderDeck();
 
 	if (m_SelectedCard)
 	{
 		m_Fade->Render();
-		if (!deck->GetSelectedCard())
+		if (player.GetSelectedDeckCard())
 			m_Cancel->Render();
 		m_SelectedCard->Render();
 		m_Confirm->Render();
 		m_RemoveText->Render();
 	}
-	else if (!deck->GetSelectedCard())
+	else if (player.GetSelectedDeckCard())
 	{
 		m_Cancel->Render();
 	}
@@ -34,7 +34,7 @@ void TowerDefense::Chapel::Render()
 
 void TowerDefense::Chapel::Update()
 {
-	auto deck = Player::Get().GetDeck();
+	Player& player = Player::Get();
 	if (m_SelectedCard)
 	{
 		m_Confirm->Update();
@@ -42,10 +42,10 @@ void TowerDefense::Chapel::Update()
 		{
 			m_ActivityDone = true;
 			m_Exit = true;
-			deck->Show(false);
-			deck->RemoveCard(m_Index);
+			player.ShowDeck(false);
+			player.RemoveFromDeck(m_Index);
 		}
-		if (!deck->GetSelectedCard())
+		if (!player.GetSelectedDeckCard())
 		{
 			m_Cancel->Update();
 			if (m_Cancel->IsClicked())
@@ -55,29 +55,29 @@ void TowerDefense::Chapel::Update()
 			}
 		}
 	}
-	else if (!deck->GetSelectedCard())
+	else if (!player.GetSelectedDeckCard())
 	{
 		m_Cancel->Update();
 		if (m_Cancel->IsClicked())
 		{
 			m_Exit = true;
-			deck->Show(false);
+			player.ShowDeck(false);
 		}
 	}
 
 	if (!m_SelectedCard)
 	{
-		if (!deck->GetSelectedCard())
+		if (!player.GetSelectedDeckCard())
 			FindSelectedCard();
 		if (!m_SelectedCard)
-			deck->Update();
+			player.UpdateDeck();
 	}
 }
 
 void TowerDefense::Chapel::OnSwitch()
 {
 	BaseScene::OnSwitch();
-	Player::Get().GetDeck()->Show(true);
+	Player::Get().ShowDeck(true);
 	m_SelectedCard.reset();
 	m_Index = -1;
 }
@@ -87,21 +87,13 @@ void TowerDefense::Chapel::FindSelectedCard()
 	if (!Input::GetLeftMouseClicked())
 		return;
 
-	auto deck = Player::Get().GetDeck();
-	auto card = deck->GetClickedCard();
+	auto card = Player::Get().GetClickedDeckCard();
 	if (card)
 	{
 		m_SelectedCard = card->Clone();
 		m_SelectedCard->SetX(400);
 		m_SelectedCard->SetY(300);
 
-		for (int i = 0; i < (int)deck->GetSize(); i++)
-		{
-			if (deck->GetCard(i) == card)
-			{
-				m_Index = i;
-				break;
-			}
-		}
+		m_Index = Player::Get().GetCardIndex(card);
 	}
 }

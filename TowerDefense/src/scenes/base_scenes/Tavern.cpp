@@ -13,37 +13,38 @@ TowerDefense::Tavern::Tavern()
 
 void TowerDefense::Tavern::Render()
 {
+	Player& player = Player::Get();
+
 	m_Fade->Render();
 	m_Cancel->Render();
-	Player::Get().RenderDeckButton();
+	player.RenderDeckButton();
 	if (m_TavernChoice->GetSelectedCard())
 		m_Confirm->Render();
 	m_TavernChoice->Render();
 
-	auto deck = Player::Get().GetDeck();
-	if (deck->IsShowing())
+
+	if (player.DeckShowing())
 	{
-		deck->RenderCards();
-		if (!deck->GetSelectedCard())
-			Player::Get().RenderDeckButton();
+		player.RenderDeck();
+		if (!player.GetSelectedDeckCard())
+			player.RenderDeckButton();
 	}
 }
 
 void TowerDefense::Tavern::Update()
 {
 	Player& player = Player::Get();
-	auto deck = player.GetDeck();
 	bool showingInfo = m_TavernChoice && m_TavernChoice->ShowingInfo();
 
-	if (!deck->GetSelectedCard() && !showingInfo)
+	if (!player.GetSelectedDeckCard() && !showingInfo)
 	{
 		player.UpdateDeckButton();
 		if (player.DeckButtonClicked())
-			deck->Show(!deck->IsShowing());
+			player.ToggleDeckShow();
 	}
 
-	if (deck->IsShowing())
-		deck->Update();
+	if (player.DeckShowing())
+		player.UpdateDeck();
 	else
 	{
 		if (m_TavernChoice->GetSelectedCard() && !showingInfo)
@@ -51,7 +52,7 @@ void TowerDefense::Tavern::Update()
 			m_Confirm->Update();
 			if (m_Confirm->IsClicked())
 			{
-				deck->AddCard(m_TavernChoice->GetSelectedCard());
+				player.AddToDeck(m_TavernChoice->GetSelectedCard());
 				m_ActivityDone = true;
 				m_Exit = true;
 				m_TavernChoice->RemoveSelectedCard();

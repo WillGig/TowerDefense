@@ -171,6 +171,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\artifacts\TokenOfTheMute.cpp" />
     <ClCompile Include="src\cards\curses\Flames.cpp" />
     <ClCompile Include="src\cards\quirks\Farsighted.cpp" />
     <ClCompile Include="src\cards\quirks\JustLucky.cpp" />
@@ -318,6 +319,7 @@
     <Image Include="res\textures\viewDeckButtonSelected.png" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\artifacts\Artifact.h" />
     <ClInclude Include="src\cards\curses\Curses.h" />
     <ClInclude Include="src\cards\InfoTile.h" />
     <ClInclude Include="src\core\Board.h" />

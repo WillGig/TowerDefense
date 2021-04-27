@@ -30,6 +30,7 @@ void TowerDefense::Hand::Render()
 
 void TowerDefense::Hand::Update()
 {
+	Player& player = Player::Get();
 	//Update Position of Selected Card and Check if Dropped
 	if (m_SelectedCard != -1)
 	{
@@ -43,14 +44,15 @@ void TowerDefense::Hand::Update()
 				m_Dragging = false;
 				if (Input::GetMouseY() > 600.0f * .35f)
 				{
-					if (Player::Get().GetEnergy() >= m_Cards->at(m_SelectedCard)->GetCost())
+					if (player.GetEnergy() >= m_Cards->at(m_SelectedCard)->GetCost())
 					{
 						if (m_Cards->at(m_SelectedCard)->Play())
 						{
-							Player::Get().ChangeEnergy(0 - m_Cards->at(m_SelectedCard)->GetCost());
+							player.ChangeEnergy(0 - m_Cards->at(m_SelectedCard)->GetCost());
 							std::shared_ptr<Card> c = Player::Get().GetHand()->RemoveCard(m_Cards->at(m_SelectedCard)->GetHandPosition());
+							player.ArtifactOnCardPlay(c);
 							if (!c->Exhausts())
-								Player::Get().GetDiscardPile()->AddCard(c);
+								player.GetDiscardPile()->AddCard(c);
 						}
 					}
 					else

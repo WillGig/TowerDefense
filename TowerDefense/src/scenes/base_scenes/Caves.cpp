@@ -17,28 +17,26 @@ void TowerDefense::Caves::Render()
 	player.RenderHealth();
 	player.RenderDay();
 
-	auto deck = player.GetDeck();
-	if (deck->IsShowing())
-		deck->RenderCards();
+	if (player.DeckShowing())
+		player.RenderDeck();
 
-	if (!deck->GetSelectedCard())
+	if (!player.GetSelectedDeckCard())
 		player.RenderDeckButton();
 }
 
 void TowerDefense::Caves::Update()
 {
 	Player& player = Player::Get();
-	auto deck = player.GetDeck();
 
-	if (!deck->GetSelectedCard())
+	if (!player.GetSelectedDeckCard())
 	{
 		player.UpdateDeckButton();
 		if (player.DeckButtonClicked())
-			deck->Show(!deck->IsShowing());
+			player.ToggleDeckShow();
 	}
 
-	if (deck->IsShowing())
-		deck->Update();
+	if (player.DeckShowing())
+		player.UpdateDeck();
 	else
 		m_CaveScene->Update();
 

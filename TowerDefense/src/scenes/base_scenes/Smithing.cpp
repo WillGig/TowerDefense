@@ -13,14 +13,14 @@ TowerDefense::Smithing::Smithing()
 
 void TowerDefense::Smithing::Render()
 {
-	auto deck = Player::Get().GetDeck();
-	deck->RenderCards();
+	Player& player = Player::Get();
+	player.RenderDeck();
 
 	std::shared_ptr<HeroCard> heroCard = std::dynamic_pointer_cast<HeroCard>(m_SelectedCard);
 	if (m_SelectedCard && heroCard)
 	{
 		m_Fade->Render();
-		if (!deck->GetSelectedCard())
+		if (!player.GetSelectedDeckCard())
 			m_Cancel->Render();
 		if (heroCard->GetUpgrades()->GetSelectedCard())
 			m_Confirm->Render();
@@ -29,14 +29,14 @@ void TowerDefense::Smithing::Render()
 	else if (m_SelectedCard && !m_SelectedCard->IsUpgraded())
 	{
 		m_Fade->Render();
-		if (!deck->GetSelectedCard())
+		if (!player.GetSelectedDeckCard())
 			m_Cancel->Render();
 		m_SelectedCardImage->Render();
 		m_SelectedCard->RenderUpgrade(500, 300);
 		m_SmithingArrow->Render();
 		m_Confirm->Render();
 	}
-	else if (!deck->GetSelectedCard())
+	else if (!player.GetSelectedDeckCard())
 	{
 		m_Cancel->Render();
 	}
@@ -44,7 +44,7 @@ void TowerDefense::Smithing::Render()
 
 void TowerDefense::Smithing::Update()
 {
-	auto deck = Player::Get().GetDeck();
+	Player& player = Player::Get();
 	std::shared_ptr<HeroCard> heroCard = std::dynamic_pointer_cast<HeroCard>(m_SelectedCard);
 	if (m_SelectedCard && heroCard)
 	{
@@ -57,12 +57,12 @@ void TowerDefense::Smithing::Update()
 			{
 				m_ActivityDone = true;
 				m_Exit = true;
-				deck->Show(false);
+				player.ShowDeck(false);
 				heroCard->Upgrade();
 			}
 		}
 
-		if (!deck->GetSelectedCard() && !showingInfo)
+		if (!player.GetSelectedDeckCard() && !showingInfo)
 		{
 			m_Cancel->Update();
 			if (m_Cancel->IsClicked())
@@ -79,39 +79,39 @@ void TowerDefense::Smithing::Update()
 		{
 			m_ActivityDone = true;
 			m_Exit = true;
-			deck->Show(false);
+			player.ShowDeck(false);
 			m_SelectedCard->Upgrade();
 		}
-		if (!deck->GetSelectedCard())
+		if (!player.GetSelectedDeckCard())
 		{
 			m_Cancel->Update();
 			if (m_Cancel->IsClicked())
 				m_SelectedCard.reset();
 		}
 	}
-	else if (!deck->GetSelectedCard())
+	else if (!player.GetSelectedDeckCard())
 	{
 		m_Cancel->Update();
 		if (m_Cancel->IsClicked())
 		{
 			m_Exit = true;
-			deck->Show(false);
+			player.ShowDeck(false);
 		}
 	}
 
 	if (!m_SelectedCard || m_SelectedCard->IsUpgraded())
 	{
-		if (!deck->GetSelectedCard())
+		if (!player.GetSelectedDeckCard())
 			FindSelectedCard();
 		if (!m_SelectedCard)
-			deck->Update();
+			player.UpdateDeck();
 	}
 }
 
 void TowerDefense::Smithing::OnSwitch()
 {
 	BaseScene::OnSwitch();
-	Player::Get().GetDeck()->Show(true);
+	Player::Get().ShowDeck(true);
 	m_SelectedCard.reset();
 }
 
@@ -120,7 +120,7 @@ void TowerDefense::Smithing::FindSelectedCard()
 	if (!Input::GetLeftMouseClicked())
 		return;
 
-	m_SelectedCard = Player::Get().GetDeck()->GetClickedCard();
+	m_SelectedCard = Player::Get().GetClickedDeckCard();
 	if (m_SelectedCard)
 	{
 		m_SelectedCardImage = m_SelectedCard->Clone();

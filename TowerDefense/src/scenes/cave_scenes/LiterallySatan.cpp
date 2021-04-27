@@ -44,7 +44,7 @@ void TowerDefense::LiterallySatan::Update()
 	if (m_Button1->IsClicked())
 	{
 		for(int i = 0; i < 3; i++)
-			Player::Get().GetDeck()->AddCard(std::make_shared<Flames>());
+			Player::Get().AddToDeck(std::make_shared<Flames>());
 		m_Exit = true;
 	}
 	else if (m_Button2->IsClicked())

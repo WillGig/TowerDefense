@@ -106,12 +106,16 @@ bool TowerDefense::Init()
 
     //Starter Deck
     std::cout << "Creating Starter Deck..." << std::endl;
+    Player& player = Player::Get();
     for (int i = 0; i < 8; i++)
-        Player::Get().GetDeck()->AddCard(std::make_shared<Focus>(false));
+        player.AddToDeck(std::make_shared<Focus>(false));
     for (int i = 0; i < 4; i++)
-        Player::Get().GetDeck()->AddCard(std::make_shared<ArcherCard>());
+        player.AddToDeck(std::make_shared<ArcherCard>());
     for (int i = 0; i < 2; i++)
-        Player::Get().GetDeck()->AddCard(std::make_shared<PotOfGreed>());
+        player.AddToDeck(std::make_shared<PotOfGreed>());
+
+    //Starter Artifacts
+    player.AddArtifact(std::make_shared<TokenOfTheMute>());
 
     return true;
 }

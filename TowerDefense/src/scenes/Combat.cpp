@@ -19,18 +19,15 @@ std::unique_ptr<TowerDefense::EnemyInfo> TowerDefense::Combat::s_EnemyInfo;
 
 TowerDefense::Combat::Combat()
 	:m_CurrentFight(-1), m_TurnPhase(Phase::START),
-	m_ViewDeck(std::make_unique<Button>(570.0f, 578.0f, 50, 43, "viewDeckButton")),
 	m_StartButton(std::make_unique<Button>(76.0f, 201.0f, 96, 32, "startButton")),
 	m_SpeedButton(std::make_unique<Button>(76.0f, 159.0f, 96, 32, "speed1"))
 {
-	//Set Draw and discard piles to be shown in random orders
-	Player::Get().GetDrawPile()->SetOrdered(false);
-	Player::Get().GetDiscardPile()->SetOrdered(false);
-	Player::Get().GetDeck()->SetOrdered(true);
 }
 
 void TowerDefense::Combat::Render()
 {
+	Player& player = Player::Get();
+
 	//Board
 	Board::Get().Render();
 
@@ -44,14 +41,14 @@ void TowerDefense::Combat::Render()
 		m_SelectedTower->GetRangeCircle()->Render();
 
 	//Buttons
-	m_ViewDeck->Render();
+	player.RenderDeckButton();
 	m_StartButton->Render();
 	m_SpeedButton->Render();
 
 	//Stats at top of screen
-	Player::Get().RenderHealth();
-	Player::Get().RenderEnergy();
-	Player::Get().RenderDay();
+	player.RenderHealth();
+	player.RenderEnergy();
+	player.RenderDay();
 
 	//Render Tower Information
 	if (s_TowerInfo)
@@ -73,10 +70,11 @@ void TowerDefense::Combat::Update()
 
 	UpdateWave();
 
-	bool deckShow = Player::Get().GetDeck()->IsShowing();
-	bool drawShow = Player::Get().GetDrawPile()->IsShowing();
-	bool discardShow = Player::Get().GetDiscardPile()->IsShowing();
-	bool cardDragging = Player::Get().GetHand()->DraggingCard();
+	Player& player = Player::Get();
+	bool deckShow = player.DeckShowing();
+	bool drawShow = player.GetDrawPile()->IsShowing();
+	bool discardShow = player.GetDiscardPile()->IsShowing();
+	bool cardDragging = player.GetHand()->DraggingCard();
 	bool draggingTowerInfo = DraggingInfo();
 	if (!cardDragging && !deckShow && !drawShow && !discardShow && !draggingTowerInfo)
 			UpdateButtons();
@@ -108,9 +106,10 @@ void TowerDefense::Combat::OnSwitch()
 	Renderer::Get().Clear(237.0f / 255.0f, 225.0f / 255.0f, 190.0f / 255.0f, 1.0f);
 
 	//Reset Combat
-	Player::Get().SetEnergy(100);
-	Player::Get().ResetCardPiles();
-	Player::Get().GetHand()->ResetSelectedCard();
+	Player& player = Player::Get();
+	player.SetEnergy(100);
+	player.ResetCardPiles();
+	player.GetHand()->ResetSelectedCard();
 	m_TurnPhase = Phase::START;
 
 	m_StartButton->SetImages("startButton");
@@ -119,14 +118,16 @@ void TowerDefense::Combat::OnSwitch()
 	m_SelectedEnemy.reset();
 	s_EnemyInfo.reset();
 
-	Player::Get().GetDeck()->Show(false);
-	Player::Get().GetDrawPile()->Show(false);
-	Player::Get().GetDiscardPile()->Show(false);
+	player.ShowDeck(false);
+	player.GetDrawPile()->Show(false);
+	player.GetDiscardPile()->Show(false);
 
-	Player::Get().SetTextColor(0.0f, 0.0f, 0.0f, 1.0f);
+	player.SetTextColor(0.0f, 0.0f, 0.0f, 1.0f);
 
 	ClearProjectilesAndAnimations();
 	ClearTowers();
+
+	player.ArtifactOnFightStart();
 
 	m_CurrentFight++;
 }
@@ -163,11 +164,11 @@ void TowerDefense::Combat::RenderCards()
 		player.GetDiscardPile()->Render();
 	}
 
-	if (player.GetDeck()->IsShowing())
+	if (player.DeckShowing())
 	{
-		player.GetDeck()->RenderCards();
-		if(!player.GetDeck()->GetSelectedCard())
-			m_ViewDeck->Render();
+		player.RenderDeck();
+		if (!player.GetSelectedDeckCard())
+			player.RenderDeckButton();
 	}
 }
 
@@ -203,7 +204,7 @@ void TowerDefense::Combat::UpdateEntities()
 void TowerDefense::Combat::UpdateCards()
 {
 	Player& player = Player::Get();
-	bool deckShow = player.GetDeck()->IsShowing();
+	bool deckShow = player.DeckShowing();
 	bool drawShow = player.GetDrawPile()->IsShowing();
 	bool discardShow = player.GetDiscardPile()->IsShowing();
 	bool cardSelected = player.GetHand()->GetSelectedCard() != -1;
@@ -211,13 +212,13 @@ void TowerDefense::Combat::UpdateCards()
 
 	if (!cardSelected && !drawShow && !discardShow && !draggingTowerInfo)
 	{
-		if (!player.GetDeck()->GetSelectedCard())
+		if (!player.GetSelectedDeckCard())
 		{
-			m_ViewDeck->Update();
-			if (m_ViewDeck->IsClicked())
-				player.GetDeck()->Show(!player.GetDeck()->IsShowing());
+			player.UpdateDeckButton();
+			if (player.DeckButtonClicked())
+				player.ToggleDeckShow();
 		}
-		player.GetDeck()->Update();
+		player.UpdateDeck();
 	}
 	if (!cardSelected && !deckShow && !discardShow && !draggingTowerInfo)
 		player.GetDrawPile()->Update();
@@ -260,6 +261,7 @@ void TowerDefense::Combat::UpdateButtons()
 				m_TurnPhase = Phase::COMBAT;
 				m_StartButton->SetImages("pause");
 				ClearProjectilesAndAnimations();
+				Player::Get().ArtifactOnRoundStart();
 			}
 			else if (m_TurnPhase == Phase::COMBAT)
 			{
@@ -403,8 +405,12 @@ void TowerDefense::Combat::EndRound()
 
 	m_StartButton->SetImages("endButton");
 
-	if(!s_Fights->at(m_CurrentFight)->HasMoreWaves())
+	if (!s_Fights->at(m_CurrentFight)->HasMoreWaves())
+	{
+		Player::Get().ArtifactOnFightEnd();
 		SetScene(SceneType::POSTCOMBAT);
+	}
+		
 }
 
 //Checks if there are any remaining enemies on the board

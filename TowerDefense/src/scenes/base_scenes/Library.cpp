@@ -20,11 +20,10 @@ void TowerDefense::Library::Render()
 		m_Confirm->Render();
 	m_CardChoice->Render();
 
-	auto deck = player.GetDeck();
-	if (deck->IsShowing())
+	if (player.DeckShowing())
 	{
-		deck->RenderCards();
-		if (!deck->GetSelectedCard())
+		player.RenderDeck();
+		if (!player.GetSelectedDeckCard())
 			player.RenderDeckButton();
 	}
 }
@@ -33,18 +32,17 @@ void TowerDefense::Library::Render()
 void TowerDefense::Library::Update()
 {
 	Player& player = Player::Get();
-	auto deck = player.GetDeck();
 	bool showingInfo = m_CardChoice && m_CardChoice->ShowingInfo();
 
-	if (!deck->GetSelectedCard() && !showingInfo)
+	if (!player.GetSelectedDeckCard() && !showingInfo)
 	{
 		player.UpdateDeckButton();
 		if (player.DeckButtonClicked())
-			deck->Show(!deck->IsShowing());
+			player.ToggleDeckShow();
 	}
 
-	if (deck->IsShowing())
-		deck->Update();
+	if (player.DeckShowing())
+		player.UpdateDeck();
 	else
 	{
 		if (m_CardChoice->GetSelectedCard() && !showingInfo)
@@ -52,7 +50,7 @@ void TowerDefense::Library::Update()
 			m_Confirm->Update();
 			if (m_Confirm->IsClicked())
 			{
-				deck->AddCard(m_CardChoice->GetSelectedCard());
+				player.AddToDeck(m_CardChoice->GetSelectedCard());
 				m_ActivityDone = true;
 				m_Exit = true;
 				m_CardChoice.reset();
