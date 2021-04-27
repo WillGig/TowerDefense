@@ -2,8 +2,8 @@
 #include "BaseScene.h"
 #include "core/Player.h"
 
-TowerDefense::Rest::Rest(float x, float y)
-	:BaseScene(x, y, "restButton", "Lick your wounds."),
+TowerDefense::Rest::Rest()
+	:BaseScene("restButton", "Lick your wounds."),
 	m_Confirm(std::make_unique<Button>(400.0f, 190.0f, 180, 50, "confirmButton")),
 	m_Cancel(std::make_unique<Button>(690.0f, 125.0f, 180, 50, "cancelButton")),
 	m_RestText(std::make_unique<Text>("", 400.0f, 300.0f, 12.0f, 0.0f))

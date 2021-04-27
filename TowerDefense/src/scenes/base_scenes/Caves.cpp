@@ -2,8 +2,8 @@
 #include "BaseScene.h"
 #include "core/Player.h"
 
-TowerDefense::Caves::Caves(float x, float y)
-	:BaseScene(x, y, "exploreCavesButton", "Explore the unknown!")
+TowerDefense::Caves::Caves()
+	:BaseScene("exploreCavesButton", "Explore the unknown!")
 {
 }
 

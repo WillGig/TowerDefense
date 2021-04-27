@@ -220,6 +220,7 @@
     <ClCompile Include="src\engine\Log.cpp" />
     <ClCompile Include="src\Main.cpp" />
     <ClCompile Include="src\scenes\base_scenes\Caves.cpp" />
+    <ClCompile Include="src\scenes\base_scenes\Chapel.cpp" />
     <ClCompile Include="src\scenes\base_scenes\Library.cpp" />
     <ClCompile Include="src\scenes\base_scenes\Rest.cpp" />
     <ClCompile Include="src\scenes\base_scenes\Smithing.cpp" />

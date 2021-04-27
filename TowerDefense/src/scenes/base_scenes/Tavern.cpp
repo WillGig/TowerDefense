@@ -4,8 +4,8 @@
 #include "TowerDefense.h"
 #include "cards/HeroCard.h"
 
-TowerDefense::Tavern::Tavern(float x, float y)
-	:BaseScene(x, y, "goTavernButton", "Meet new people!"),
+TowerDefense::Tavern::Tavern()
+	:BaseScene("goTavernButton", "Meet new people!"),
 	m_Confirm(std::make_unique<Button>(400.0f, 190.0f, 180, 50, "confirmButton")),
 	m_Cancel(std::make_unique<Button>(690.0f, 125.0f, 180, 50, "cancelButton"))
 {

@@ -247,6 +247,8 @@ void LoadTextures()
     Texture::LoadTexture("beginCombatButtonSelected",   baseButtons.load(3, 4));
     Texture::LoadTexture("returnToCampButton",          baseButtons.load(0, 5));
     Texture::LoadTexture("returnToCampButtonSelected",  baseButtons.load(1, 5));
+    Texture::LoadTexture("prayButton",                  baseButtons.load(2, 5));
+    Texture::LoadTexture("prayButtonSelected",          baseButtons.load(3, 5));
 
     SpriteSheet combatButtons("res/textures/CombatButtons.png", 384, 128);
     Texture::LoadTexture("startButton",         combatButtons.load(0, 0));

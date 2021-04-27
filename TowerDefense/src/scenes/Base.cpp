@@ -9,11 +9,12 @@ TowerDefense::Base::Base()
 	m_NextDay(std::make_unique<Button>(600.0f, 175.0f, 180, 50, "nextDayButton")),
 	m_BaseScenes(std::make_unique<std::vector<std::shared_ptr<BaseScene>>>())
 {
-	AddBaseScene(std::make_shared<Rest>(600.0f, 355.0f));
-	AddBaseScene(std::make_shared<Caves>(200.0f, 425.0f));
-	AddBaseScene(std::make_shared<Library>(400.0f, 425.0f));
-	AddBaseScene(std::make_shared<Smithing>(200.0f, 355.0f));
-	AddBaseScene(std::make_shared<Tavern>(400.0f, 355.0f));
+	AddBaseScene(std::make_shared<Rest>());
+	AddBaseScene(std::make_shared<Caves>());
+	AddBaseScene(std::make_shared<Library>());
+	AddBaseScene(std::make_shared<Smithing>());
+	AddBaseScene(std::make_shared<Tavern>());
+	AddBaseScene(std::make_shared<Chapel>());
 }
 
 void TowerDefense::Base::Render()

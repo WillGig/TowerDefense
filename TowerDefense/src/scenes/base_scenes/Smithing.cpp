@@ -3,8 +3,8 @@
 #include "core/Player.h"
 #include "cards/HeroCard.h"
 
-TowerDefense::Smithing::Smithing(float x, float y)
-	:BaseScene(x, y, "smithButton", "Upgrade!"),
+TowerDefense::Smithing::Smithing()
+	:BaseScene("smithButton", "Upgrade!"),
 	m_SmithingArrow(std::make_unique<StaticImage>(400.0f, 300.0f, 36, 36, 0.0f, "smithArrow")),
 	m_Confirm(std::make_unique<Button>(400.0f, 190.0f, 180, 50, "confirmButton")),
 	m_Cancel(std::make_unique<Button>(690.0f, 125.0f, 180, 50, "cancelButton"))

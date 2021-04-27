@@ -18,9 +18,9 @@ namespace TowerDefense
 		inline void RenderText() { m_Description->Render(); }
 		inline void OnSwitch() override { m_ActivityDone = false; m_Exit = false; m_Button->SetSelected(false); };
 	protected:
-		BaseScene(float x, float y, const std::string& button, const std::string& description)
+		BaseScene(const std::string& button, const std::string& description)
 			:m_Exit(false), m_ActivityDone(false), m_Description(std::make_unique<Text>(description, 400.0f, 235.0f, 12.0f, 0.0f)),
-			m_Button(std::make_unique<Button>(x, y, 180, 50, button)),
+			m_Button(std::make_unique<Button>(0.0f, 0.0f, 180, 50, button)),
 			m_Fade(std::make_unique<Rectangle>(400.0f, 300.0f, 800.0f, 600.0f))
 		{
 			m_Description->SetColor(1.0f, 1.0f, 1.0f, 1.0f);
@@ -35,7 +35,7 @@ namespace TowerDefense
 	class Caves : public BaseScene
 	{
 	public:
-		Caves(float x, float y);
+		Caves();
 		void Render() override;
 		void Update() override;
 		void OnSwitch() override;
@@ -46,7 +46,7 @@ namespace TowerDefense
 	class Rest : public BaseScene
 	{
 	public:
-		Rest(float x, float y);
+		Rest();
 		void Render() override;
 		void Update() override;
 		void OnSwitch() override;
@@ -58,7 +58,7 @@ namespace TowerDefense
 	class Library : public BaseScene
 	{
 	public:
-		Library(float x, float y);
+		Library();
 		void Render() override;
 		void Update() override;
 		void OnSwitch() override;
@@ -70,7 +70,7 @@ namespace TowerDefense
 	class Smithing : public BaseScene
 	{
 	public:
-		Smithing(float x, float y);
+		Smithing();
 		void Render() override;
 		void Update() override;
 		void OnSwitch() override;
@@ -85,12 +85,27 @@ namespace TowerDefense
 	class Tavern : public BaseScene
 	{
 	public:
-		Tavern(float x, float y);
+		Tavern();
 		void Render() override;
 		void Update() override;
 		void OnSwitch() override;
 	private:
 		std::unique_ptr<TowerDefense::CardChoice> m_TavernChoice;
+		std::unique_ptr<Button> m_Confirm, m_Cancel;
+	};
+
+	class Chapel : public BaseScene
+	{
+	public:
+		Chapel();
+		void Render() override;
+		void Update() override;
+		void OnSwitch() override;
+	private:
+		void FindSelectedCard();
+
+		int m_Index;
+		std::shared_ptr<Card> m_SelectedCard;
 		std::unique_ptr<Button> m_Confirm, m_Cancel;
 	};
 }
