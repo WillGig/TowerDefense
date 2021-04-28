@@ -3,7 +3,7 @@
 
 namespace TowerDefense
 {
-	class CardPile : public TowerDefense::Entity
+	class CardPile : public Entity
 	{
 	public:
 		CardPile(float x, float y);

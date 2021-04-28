@@ -7,11 +7,11 @@ TowerDefense::Player::Player()
     m_Deck(std::make_shared<CardPile>(-100.0f,0.0f)), 
     m_DrawPile(std::make_shared<CardPile>(49.0f, 50.0f)),
     m_DiscardPile(std::make_shared<CardPile>(748.0f, 50.0f)),
-    m_ViewDeck(std::make_unique<Button>(570.0f, 578.0f, 50, 43, "viewDeckButton")),
+    m_ViewDeck(std::make_unique<Button>(500.0f, 570.0f, 50, 50, "viewDeckButton")),
     m_HealthText(std::make_unique<Text>(std::string("HP: ") + std::to_string(m_Health) + "/" + std::to_string(m_MaxHealth), 645.0f, 575.0f, 10.0f, 0.0f)),
     m_EnergyText(std::make_unique<Text>(std::string("Energy: ") + std::to_string(m_Energy), 740.0f, 575.0f, 10.0f, 0.0f)),
     m_DayText(std::make_unique<Text>(std::string("Day: ") + std::to_string(GetDay()), 400.0f, 575.0f, 10.0f, 0.0f)),
-    m_Artifacts(std::make_unique<std::vector<std::shared_ptr<Artifact>>>())
+    m_Artifacts(std::make_unique<ArtifactPile>(570.0f, 570.0f))
 {
     m_HealthText->SetColor(1.0f, 1.0f, 1.0f, 1.0f);
     m_EnergyText->SetColor(1.0f, 1.0f, 1.0f, 1.0f);
@@ -125,38 +125,44 @@ int TowerDefense::Player::GetCardIndex(std::shared_ptr<Card> c)
     return -1;
 }
 
-void TowerDefense::Player::AddArtifact(std::shared_ptr<Artifact> a)
+
+void TowerDefense::Player::AddToArtifacts(std::shared_ptr<Artifact> a)
 {
-    m_Artifacts->push_back(a);
+    m_Artifacts->AddArtifact(a);
     a->OnAquire();
+}
+
+void TowerDefense::Player::RemoveFromArtifacts(int index)
+{
+    m_Artifacts->RemoveArtifact(index);
 }
 
 void TowerDefense::Player::ArtifactOnAddCard(std::shared_ptr<Card> c)
 {
-    for (unsigned int i = 0; i < m_Artifacts->size(); i++)
-        m_Artifacts->at(i)->OnAddCard(c);
+    for (int i = 0; i < m_Artifacts->GetSize(); i++)
+        m_Artifacts->GetArtifact(i)->OnAddCard(c);
 }
 
 void TowerDefense::Player::ArtifactOnRoundStart()
 {
-    for (unsigned int i = 0; i < m_Artifacts->size(); i++)
-        m_Artifacts->at(i)->OnRoundStart();
+    for (int i = 0; i < m_Artifacts->GetSize(); i++)
+        m_Artifacts->GetArtifact(i)->OnRoundStart();
 }
 
 void TowerDefense::Player::ArtifactOnCardPlay(std::shared_ptr<Card> c)
 {
-    for (unsigned int i = 0; i < m_Artifacts->size(); i++)
-        m_Artifacts->at(i)->OnCardPlay(c);
+    for (int i = 0; i < m_Artifacts->GetSize(); i++)
+        m_Artifacts->GetArtifact(i)->OnCardPlay(c);
 }
 
 void TowerDefense::Player::ArtifactOnFightStart()
 {
-    for (unsigned int i = 0; i < m_Artifacts->size(); i++)
-        m_Artifacts->at(i)->OnFightStart();
+    for (int i = 0; i < m_Artifacts->GetSize(); i++)
+        m_Artifacts->GetArtifact(i)->OnFightStart();
 }
 
 void TowerDefense::Player::ArtifactOnFightEnd()
 {
-    for (unsigned int i = 0; i < m_Artifacts->size(); i++)
-        m_Artifacts->at(i)->OnFightEnd();
+    for (int i = 0; i < m_Artifacts->GetSize(); i++)
+        m_Artifacts->GetArtifact(i)->OnFightEnd();
 }

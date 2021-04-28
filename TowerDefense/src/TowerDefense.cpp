@@ -115,7 +115,18 @@ bool TowerDefense::Init()
         player.AddToDeck(std::make_shared<PotOfGreed>());
 
     //Starter Artifacts
-    player.AddArtifact(std::make_shared<TokenOfTheMute>());
+    player.AddToArtifacts(std::make_shared<TokenOfTheMute>());
+    player.AddToArtifacts(std::make_shared<TokenOfTheMute>());
+    player.AddToArtifacts(std::make_shared<TokenOfTheMute>());
+    player.AddToArtifacts(std::make_shared<TokenOfTheMute>());
+    player.AddToArtifacts(std::make_shared<TokenOfTheMute>());
+    player.AddToArtifacts(std::make_shared<TokenOfTheMute>());
+    player.AddToArtifacts(std::make_shared<TokenOfTheMute>());
+    player.AddToArtifacts(std::make_shared<TokenOfTheMute>());
+    player.AddToArtifacts(std::make_shared<TokenOfTheMute>());
+    player.AddToArtifacts(std::make_shared<TokenOfTheMute>());
+    player.AddToArtifacts(std::make_shared<TokenOfTheMute>());
+    player.AddToArtifacts(std::make_shared<TokenOfTheMute>());
 
     return true;
 }
@@ -272,6 +283,12 @@ void LoadTextures()
     Texture::LoadTexture("eventButton",         eventButtons.load(0, 0));
     Texture::LoadTexture("eventButtonSelected", eventButtons.load(0, 1));
 
+    SpriteSheet PlayerButtons("res/textures/PlayerButtons.png", 50, 50);
+    Texture::LoadTexture("viewDeckButton",              PlayerButtons.load(0, 0));
+    Texture::LoadTexture("viewDeckButtonSelected",      PlayerButtons.load(1, 0));
+    Texture::LoadTexture("viewArtifactsButton",         PlayerButtons.load(0, 1));
+    Texture::LoadTexture("viewArtifactsButtonSelected", PlayerButtons.load(1, 1));
+
     std::cout << "...Towers" << std::endl;
 
     SpriteSheet towers("res/textures/Towers.png", 64, 64);
@@ -380,6 +397,11 @@ void LoadTextures()
     Texture::LoadTexture("rangeUpgrade", heroUpgrades.load(1, 0));
     Texture::LoadTexture("attackSpeedUpgrade", heroUpgrades.load(2, 0));
     Texture::LoadTexture("moremissiles", heroUpgrades.load(3, 0));
+
+    std::cout << "...Artifacts" << std::endl;
+
+    SpriteSheet artifacts("res/textures/Artifacts.png", 64, 64);
+    Texture::LoadTexture("TokenOfTheMute", artifacts.load(0, 0));
 
     std::cout << "...Animations" << std::endl;
 

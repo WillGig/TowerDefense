@@ -36,7 +36,6 @@ void TowerDefense::CardPile::Update()
 		}
 
 		//Update Card position based on scrolling
-		//Check for Selected Card
 		for (int i = 0; i < (int)m_Cards->size(); i++) {
 			if (m_Ordered) 
 			{
@@ -56,6 +55,7 @@ void TowerDefense::CardPile::Update()
 				m_SelectedCard = i;
 		}
 
+		//Check if clicked off of Selected Artifact
 		if (m_SelectedCard != -1 && Input::GetRightMouseClickedAndSetFalse() || Input::GetLeftMouseClickedAndSetFalse())
 			m_SelectedCard = -1;
 	}

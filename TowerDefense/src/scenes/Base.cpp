@@ -31,6 +31,7 @@ void TowerDefense::Base::Render()
 		}
 		m_NextDay->Render();
 		player.RenderDeckButton();
+		player.RenderArtifactsPile();
 		player.RenderHealth();
 		player.RenderDay();
 
@@ -39,6 +40,12 @@ void TowerDefense::Base::Render()
 			player.RenderDeck();
 			if (!player.GetSelectedDeckCard())
 				player.RenderDeckButton();
+		}
+		else if (player.ArtifactsShowing())
+		{
+			player.RenderArtifacts();
+			if (!player.GetSelectedArtifact())
+				player.RenderArtifactsPile();
 		}
 	}
 	else
@@ -51,8 +58,11 @@ void TowerDefense::Base::Update()
 {
 	if (m_CurrentMenu == -1)
 	{
-		if (Player::Get().DeckShowing())
+		Player& player = Player::Get();
+		if (player.DeckShowing())
 			UpdateDeck();
+		else if (player.ArtifactsShowing())
+			player.UpdateArtifactsPile();
 		else
 		{
 			UpdateActivities();
@@ -115,6 +125,8 @@ void TowerDefense::Base::UpdateViewDeck()
 		player.ToggleDeckShow();
 	}
 	player.UpdateDeck();
+
+	player.UpdateArtifactsPile();
 }
 
 void TowerDefense::Base::UpdateNextDay()
