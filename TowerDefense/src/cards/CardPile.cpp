@@ -25,13 +25,10 @@ void TowerDefense::CardPile::Update()
 			m_Scroll -= Input::GetMouseSCROLL() * 30;
 			if (m_Scroll < 0)
 				m_Scroll = 0;
-			else if (m_Scroll > ((int)m_Cards->size() / 5 - 1) * 165)
+			else if (m_Scroll > (((int)m_Cards->size()-1) / 5) * 165)
 			{
 				//Set maximum scroll
-				m_Scroll = (int)(((int)m_Cards->size() / 5 - 1) * 165);
-				//Disable scrolling with less than 5 cards
-				if (m_Cards->size() < 5)
-					m_Scroll = 0;
+				m_Scroll = (int)((((int)m_Cards->size()-1) / 5) * 165);
 			}
 		}
 
