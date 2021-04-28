@@ -106,6 +106,8 @@ void TowerDefense::Hand::AddCard(std::shared_ptr<Card> c)
 		m_Cards->push_back(c);
 		UpdateSpacing();
 	}
+	else
+		Player::Get().GetDiscardPile()->AddCard(c);
 }
 
 std::shared_ptr<TowerDefense::Card> TowerDefense::Hand::RemoveCard(int index)
