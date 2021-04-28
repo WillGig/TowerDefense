@@ -101,7 +101,7 @@ void TowerDefense::Hand::FindSelectedCard()
 
 void TowerDefense::Hand::AddCard(std::shared_ptr<Card> c)
 {
-	if (m_Cards->size() < m_MaxSize+1) {
+	if (m_Cards->size() < m_MaxSize) {
 		c->SetHandPosition(m_Cards->size());
 		m_Cards->push_back(c);
 		UpdateSpacing();
