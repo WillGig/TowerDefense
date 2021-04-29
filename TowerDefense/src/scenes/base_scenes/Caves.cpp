@@ -22,17 +22,17 @@ void TowerDefense::Caves::Render()
 	else if (player.ArtifactsShowing())
 		player.RenderArtifacts();
 
-	if (!player.GetSelectedDeckCard())
+	if (!player.GetSelectedDeckCard() && !player.ArtifactsShowing())
 		player.RenderDeckButton();
-	if(!player.GetSelectedArtifact())
-		player.RenderArtifacts();
+	if(!player.GetSelectedArtifact() && !player.DeckShowing())
+		player.RenderArtifactsPile();
 }
 
 void TowerDefense::Caves::Update()
 {
 	Player& player = Player::Get();
 
-	if (!player.GetSelectedDeckCard())
+	if (!player.GetSelectedDeckCard() && !player.ArtifactsShowing())
 	{
 		player.UpdateDeckButton();
 		if (player.DeckButtonClicked())

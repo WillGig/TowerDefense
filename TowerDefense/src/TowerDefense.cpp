@@ -116,17 +116,6 @@ bool TowerDefense::Init()
 
     //Starter Artifacts
     player.AddToArtifacts(std::make_shared<TokenOfTheMute>());
-    player.AddToArtifacts(std::make_shared<TokenOfTheMute>());
-    player.AddToArtifacts(std::make_shared<TokenOfTheMute>());
-    player.AddToArtifacts(std::make_shared<TokenOfTheMute>());
-    player.AddToArtifacts(std::make_shared<TokenOfTheMute>());
-    player.AddToArtifacts(std::make_shared<TokenOfTheMute>());
-    player.AddToArtifacts(std::make_shared<TokenOfTheMute>());
-    player.AddToArtifacts(std::make_shared<TokenOfTheMute>());
-    player.AddToArtifacts(std::make_shared<TokenOfTheMute>());
-    player.AddToArtifacts(std::make_shared<TokenOfTheMute>());
-    player.AddToArtifacts(std::make_shared<TokenOfTheMute>());
-    player.AddToArtifacts(std::make_shared<TokenOfTheMute>());
 
     return true;
 }
@@ -283,7 +272,7 @@ void LoadTextures()
     Texture::LoadTexture("eventButton",         eventButtons.load(0, 0));
     Texture::LoadTexture("eventButtonSelected", eventButtons.load(0, 1));
 
-    SpriteSheet PlayerButtons("res/textures/PlayerButtons.png", 50, 50);
+    SpriteSheet PlayerButtons("res/textures/PlayerButtons.png", 300, 300);
     Texture::LoadTexture("viewDeckButton",              PlayerButtons.load(0, 0));
     Texture::LoadTexture("viewDeckButtonSelected",      PlayerButtons.load(1, 0));
     Texture::LoadTexture("viewArtifactsButton",         PlayerButtons.load(0, 1));

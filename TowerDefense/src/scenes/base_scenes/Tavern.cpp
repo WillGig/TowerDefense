@@ -31,7 +31,11 @@ void TowerDefense::Tavern::Render()
 			player.RenderDeckButton();
 	}
 	else if (player.ArtifactsShowing())
+	{
 		player.RenderArtifacts();
+		if (!player.GetSelectedArtifact())
+			player.RenderArtifactsPile();
+	}
 }
 
 void TowerDefense::Tavern::Update()

@@ -28,7 +28,11 @@ void TowerDefense::Library::Render()
 			player.RenderDeckButton();
 	}
 	else if (player.ArtifactsShowing())
+	{
 		player.RenderArtifacts();
+		if (!player.GetSelectedArtifact())
+			player.RenderArtifactsPile();
+	}
 }
 
 
@@ -37,7 +41,7 @@ void TowerDefense::Library::Update()
 	Player& player = Player::Get();
 	bool showingInfo = m_CardChoice && m_CardChoice->ShowingInfo();
 
-	if (!player.GetSelectedDeckCard() && !showingInfo)
+	if (!player.GetSelectedDeckCard() && !showingInfo && !player.ArtifactsShowing())
 	{
 		player.UpdateDeckButton();
 		if (player.DeckButtonClicked())

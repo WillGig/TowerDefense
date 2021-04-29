@@ -283,6 +283,7 @@
     <Image Include="res\textures\ArialBold.png" />
     <Image Include="res\textures\ArrowButton.png" />
     <Image Include="res\textures\ArrowButtonSelected.png" />
+    <Image Include="res\textures\Artifacts.png" />
     <Image Include="res\textures\BaseButtons.png" />
     <Image Include="res\textures\CombatButtons.png" />
     <Image Include="res\textures\Curses.png" />
@@ -299,6 +300,7 @@
     <Image Include="res\textures\HeroUpgrades.png" />
     <Image Include="res\textures\InfoTiles.png" />
     <Image Include="res\textures\MainMenuButtons.png" />
+    <Image Include="res\textures\PlayerButtons.png" />
     <Image Include="res\textures\projectiles\arrow.png" />
     <Image Include="res\textures\projectiles\giantRock.png" />
     <Image Include="res\textures\projectiles\magicMissile.png" />
@@ -316,8 +318,6 @@
     <Image Include="res\textures\TowerCards.png" />
     <Image Include="res\textures\TowerInfo.png" />
     <Image Include="res\textures\Towers.png" />
-    <Image Include="res\textures\viewDeckButton.png" />
-    <Image Include="res\textures\viewDeckButtonSelected.png" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\artifacts\Artifact.h" />

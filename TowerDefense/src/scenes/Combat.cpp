@@ -42,6 +42,7 @@ void TowerDefense::Combat::Render()
 
 	//Buttons
 	player.RenderDeckButton();
+	player.RenderArtifactsPile();
 	m_StartButton->Render();
 	m_SpeedButton->Render();
 
@@ -74,12 +75,13 @@ void TowerDefense::Combat::Update()
 	bool deckShow = player.DeckShowing();
 	bool drawShow = player.GetDrawPile()->IsShowing();
 	bool discardShow = player.GetDiscardPile()->IsShowing();
+	bool artifactsShow = player.ArtifactsShowing();
 	bool cardDragging = player.GetHand()->DraggingCard();
 	bool draggingTowerInfo = DraggingInfo();
 	if (!cardDragging && !deckShow && !drawShow && !discardShow && !draggingTowerInfo)
 			UpdateButtons();
 
-	if (!deckShow && !drawShow && !discardShow)
+	if (!deckShow && !drawShow && !discardShow && !artifactsShow)
 	{
 		if (s_EnemyInfo)
 			s_EnemyInfo->Update();
@@ -91,10 +93,10 @@ void TowerDefense::Combat::Update()
 			m_SelectedTower->SetHighlighted();
 	}
 
-	if (!deckShow && !drawShow && !discardShow)
+	if (!deckShow && !drawShow && !discardShow && !artifactsShow)
 		UpdateSelectedEnemy();
 
-	if(!deckShow && !drawShow && !discardShow)
+	if(!deckShow && !drawShow && !discardShow && !artifactsShow)
 		UpdateSelectedTower();
 
 	UpdateEntities();
@@ -170,6 +172,13 @@ void TowerDefense::Combat::RenderCards()
 		if (!player.GetSelectedDeckCard())
 			player.RenderDeckButton();
 	}
+
+	if (player.ArtifactsShowing())
+	{
+		player.RenderArtifacts();
+		if (!player.GetSelectedArtifact())
+			player.RenderArtifactsPile();
+	}
 }
 
 //Update All Towers, Projectiles, and Enemies
@@ -207,10 +216,11 @@ void TowerDefense::Combat::UpdateCards()
 	bool deckShow = player.DeckShowing();
 	bool drawShow = player.GetDrawPile()->IsShowing();
 	bool discardShow = player.GetDiscardPile()->IsShowing();
+	bool artifactsShow = player.ArtifactsShowing();
 	bool cardSelected = player.GetHand()->GetSelectedCard() != -1;
 	bool draggingTowerInfo = DraggingInfo();
 
-	if (!cardSelected && !drawShow && !discardShow && !draggingTowerInfo)
+	if (!cardSelected && !drawShow && !discardShow && !artifactsShow && !draggingTowerInfo)
 	{
 		if (!player.GetSelectedDeckCard())
 		{
@@ -220,11 +230,13 @@ void TowerDefense::Combat::UpdateCards()
 		}
 		player.UpdateDeck();
 	}
-	if (!cardSelected && !deckShow && !discardShow && !draggingTowerInfo)
+	if (!cardSelected && !deckShow && !drawShow && !discardShow && !draggingTowerInfo)
+		player.UpdateArtifactsPile();
+	if (!cardSelected && !deckShow && !discardShow && !artifactsShow && !draggingTowerInfo)
 		player.GetDrawPile()->Update();
-	if (!cardSelected && !deckShow && !drawShow && !draggingTowerInfo)
+	if (!cardSelected && !deckShow && !drawShow && !artifactsShow && !draggingTowerInfo)
 		player.GetDiscardPile()->Update();
-	if (!s_Paused && !deckShow && !drawShow && !discardShow && !draggingTowerInfo)
+	if (!s_Paused && !deckShow && !drawShow && !artifactsShow && !discardShow && !draggingTowerInfo)
 		player.GetHand()->Update();
 }
 
