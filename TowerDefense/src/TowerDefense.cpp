@@ -116,6 +116,7 @@ bool TowerDefense::Init()
 
     //Starter Artifacts
     player.AddToArtifacts(std::make_shared<TokenOfTheMute>());
+    player.AddToArtifacts(std::make_shared<TokenOfTheArmored>());
 
     return true;
 }
@@ -391,6 +392,7 @@ void LoadTextures()
 
     SpriteSheet artifacts("res/textures/Artifacts.png", 64, 64);
     Texture::LoadTexture("TokenOfTheMute", artifacts.load(0, 0));
+    Texture::LoadTexture("TokenOfTheArmored", artifacts.load(1, 0));
 
     std::cout << "...Animations" << std::endl;
 

@@ -30,4 +30,11 @@ namespace TowerDefense
 		TokenOfTheMute();
 		void OnFightStart() override;
 	};
+
+	class TokenOfTheArmored : public Artifact
+	{
+	public:
+		TokenOfTheArmored();
+		void OnFightEnd() override;
+	};
 }

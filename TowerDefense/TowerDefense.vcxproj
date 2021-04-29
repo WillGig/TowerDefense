@@ -172,6 +172,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="src\artifacts\ArtifactPile.cpp" />
+    <ClCompile Include="src\artifacts\TokenOfTheArmored.cpp" />
     <ClCompile Include="src\artifacts\TokenOfTheMute.cpp" />
     <ClCompile Include="src\cards\curses\Flames.cpp" />
     <ClCompile Include="src\cards\quirks\Farsighted.cpp" />

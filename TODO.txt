@@ -3,7 +3,7 @@ Current:
 		- blessing of the bat										-
 		- glasses 			- cures nearsightedness						-
 		- laser-sword 			- could be used to fix nearsightedness... maybe			-
-		- Spy Glass 			- scout fights in advance					-
+		- Spy Glass 			- scout fights in advance					- Done
 		- token of the mute		- start with 2 extra cards					- Done
 		- token of the armored		- heal a little at the end of fights				-
 		- token of the broken		- Add a lightening card to your hand at the start of a fight	-

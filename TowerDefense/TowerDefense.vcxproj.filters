@@ -294,6 +294,9 @@
     <ClCompile Include="src\artifacts\ArtifactPile.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="src\artifacts\TokenOfTheArmored.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="res\shaders\Texture.shader" />
