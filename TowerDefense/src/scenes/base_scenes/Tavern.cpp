@@ -18,6 +18,7 @@ void TowerDefense::Tavern::Render()
 	m_Fade->Render();
 	m_Cancel->Render();
 	player.RenderDeckButton();
+	player.RenderArtifactsPile();
 	if (m_TavernChoice->GetSelectedCard())
 		m_Confirm->Render();
 	m_TavernChoice->Render();
@@ -29,6 +30,8 @@ void TowerDefense::Tavern::Render()
 		if (!player.GetSelectedDeckCard())
 			player.RenderDeckButton();
 	}
+	else if (player.ArtifactsShowing())
+		player.RenderArtifacts();
 }
 
 void TowerDefense::Tavern::Update()
@@ -47,25 +50,29 @@ void TowerDefense::Tavern::Update()
 		player.UpdateDeck();
 	else
 	{
-		if (m_TavernChoice->GetSelectedCard() && !showingInfo)
+		player.UpdateArtifactsPile();
+		if (!player.ArtifactsShowing())
 		{
-			m_Confirm->Update();
-			if (m_Confirm->IsClicked())
+			if (m_TavernChoice->GetSelectedCard() && !showingInfo)
 			{
-				player.AddToDeck(m_TavernChoice->GetSelectedCard());
-				m_ActivityDone = true;
-				m_Exit = true;
-				m_TavernChoice->RemoveSelectedCard();
+				m_Confirm->Update();
+				if (m_Confirm->IsClicked())
+				{
+					player.AddToDeck(m_TavernChoice->GetSelectedCard());
+					m_ActivityDone = true;
+					m_Exit = true;
+					m_TavernChoice->RemoveSelectedCard();
+				}
 			}
+			if (!showingInfo)
+			{
+				m_Cancel->Update();
+				if (m_Cancel->IsClicked())
+					m_Exit = true;
+			}
+			if (m_TavernChoice)
+				m_TavernChoice->Update();
 		}
-		if (!showingInfo)
-		{
-			m_Cancel->Update();
-			if (m_Cancel->IsClicked())
-				m_Exit = true;
-		}
-		if (m_TavernChoice)
-			m_TavernChoice->Update();
 	}
 }
 

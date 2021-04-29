@@ -15,6 +15,7 @@ void TowerDefense::Library::Render()
 	Player& player = Player::Get();
 	m_Fade->Render();
 	player.RenderDeckButton();
+	player.RenderArtifactsPile();
 	m_Cancel->Render();
 	if (m_CardChoice->GetSelectedCard())
 		m_Confirm->Render();
@@ -26,6 +27,8 @@ void TowerDefense::Library::Render()
 		if (!player.GetSelectedDeckCard())
 			player.RenderDeckButton();
 	}
+	else if (player.ArtifactsShowing())
+		player.RenderArtifacts();
 }
 
 
@@ -45,25 +48,29 @@ void TowerDefense::Library::Update()
 		player.UpdateDeck();
 	else
 	{
-		if (m_CardChoice->GetSelectedCard() && !showingInfo)
+		player.UpdateArtifactsPile();
+		if (!player.ArtifactsShowing())
 		{
-			m_Confirm->Update();
-			if (m_Confirm->IsClicked())
+			if (m_CardChoice->GetSelectedCard() && !showingInfo)
 			{
-				player.AddToDeck(m_CardChoice->GetSelectedCard());
-				m_ActivityDone = true;
-				m_Exit = true;
-				m_CardChoice.reset();
+				m_Confirm->Update();
+				if (m_Confirm->IsClicked())
+				{
+					player.AddToDeck(m_CardChoice->GetSelectedCard());
+					m_ActivityDone = true;
+					m_Exit = true;
+					m_CardChoice.reset();
+				}
 			}
+			if (!showingInfo)
+			{
+				m_Cancel->Update();
+				if (m_Cancel->IsClicked())
+					m_Exit = true;
+			}
+			if (m_CardChoice)
+				m_CardChoice->Update();
 		}
-		if (!showingInfo)
-		{
-			m_Cancel->Update();
-			if (m_Cancel->IsClicked())
-				m_Exit = true;
-		}
-		if (m_CardChoice)
-			m_CardChoice->Update();
 	}
 }
 

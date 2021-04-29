@@ -20,16 +20,13 @@ void TowerDefense::Chapel::Render()
 	if (m_SelectedCard)
 	{
 		m_Fade->Render();
-		if (player.GetSelectedDeckCard())
-			m_Cancel->Render();
 		m_SelectedCard->Render();
 		m_Confirm->Render();
 		m_RemoveText->Render();
 	}
-	else if (player.GetSelectedDeckCard())
-	{
+
+	if(!player.GetSelectedDeckCard())
 		m_Cancel->Render();
-	}
 }
 
 void TowerDefense::Chapel::Update()

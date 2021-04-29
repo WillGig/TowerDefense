@@ -17,7 +17,6 @@ namespace TowerDefense
 
 	private:
 		void UpdateDeck();
-		void UpdateArtifacts();
 		void UpdateActivities();
 		void UpdateViewDeck();
 		void UpdateNextDay();

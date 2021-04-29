@@ -19,9 +19,13 @@ void TowerDefense::Caves::Render()
 
 	if (player.DeckShowing())
 		player.RenderDeck();
+	else if (player.ArtifactsShowing())
+		player.RenderArtifacts();
 
 	if (!player.GetSelectedDeckCard())
 		player.RenderDeckButton();
+	if(!player.GetSelectedArtifact())
+		player.RenderArtifacts();
 }
 
 void TowerDefense::Caves::Update()
@@ -38,7 +42,11 @@ void TowerDefense::Caves::Update()
 	if (player.DeckShowing())
 		player.UpdateDeck();
 	else
-		m_CaveScene->Update();
+	{
+		player.UpdateArtifactsPile();
+		if (!player.ArtifactsShowing())
+			m_CaveScene->Update();
+	}
 
 	if (m_CaveScene->Exit())
 	{

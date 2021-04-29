@@ -20,8 +20,6 @@ void TowerDefense::Smithing::Render()
 	if (m_SelectedCard && heroCard)
 	{
 		m_Fade->Render();
-		if (!player.GetSelectedDeckCard())
-			m_Cancel->Render();
 		if (heroCard->GetUpgrades()->GetSelectedCard())
 			m_Confirm->Render();
 		heroCard->GetUpgrades()->Render();
@@ -29,17 +27,14 @@ void TowerDefense::Smithing::Render()
 	else if (m_SelectedCard && !m_SelectedCard->IsUpgraded())
 	{
 		m_Fade->Render();
-		if (!player.GetSelectedDeckCard())
-			m_Cancel->Render();
 		m_SelectedCardImage->Render();
 		m_SelectedCard->RenderUpgrade(500, 300);
 		m_SmithingArrow->Render();
 		m_Confirm->Render();
 	}
-	else if (!player.GetSelectedDeckCard())
-	{
+	
+	if (!player.GetSelectedDeckCard())
 		m_Cancel->Render();
-	}
 }
 
 void TowerDefense::Smithing::Update()
