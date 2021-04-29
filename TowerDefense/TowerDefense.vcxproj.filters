@@ -425,6 +425,9 @@
     <Image Include="res\textures\PlayerButtons.png">
       <Filter>Resource Files</Filter>
     </Image>
+    <Image Include="res\textures\ArtifactInfo.png">
+      <Filter>Resource Files</Filter>
+    </Image>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\math\Mat4f.h">

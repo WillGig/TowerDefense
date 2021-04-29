@@ -284,6 +284,7 @@
     <Image Include="res\textures\ArialBold.png" />
     <Image Include="res\textures\ArrowButton.png" />
     <Image Include="res\textures\ArrowButtonSelected.png" />
+    <Image Include="res\textures\ArtifactInfo.png" />
     <Image Include="res\textures\Artifacts.png" />
     <Image Include="res\textures\BaseButtons.png" />
     <Image Include="res\textures\CombatButtons.png" />

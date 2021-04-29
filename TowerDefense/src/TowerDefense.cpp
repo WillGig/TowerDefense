@@ -391,8 +391,12 @@ void LoadTextures()
     std::cout << "...Artifacts" << std::endl;
 
     SpriteSheet artifacts("res/textures/Artifacts.png", 64, 64);
-    Texture::LoadTexture("TokenOfTheMute", artifacts.load(0, 0));
-    Texture::LoadTexture("TokenOfTheArmored", artifacts.load(1, 0));
+    Texture::LoadTexture("TokenOfTheMute",      artifacts.load(0, 0));
+    Texture::LoadTexture("TokenOfTheArmored",   artifacts.load(1, 0));
+
+    SpriteSheet artifactInfo("res/textures/ArtifactInfo.png", 440, 170);
+    Texture::LoadTexture("TokenOfTheMuteInfo",      artifactInfo.load(0, 0));
+    Texture::LoadTexture("TokenOfTheArmoredInfo",   artifactInfo.load(1, 0));
 
     std::cout << "...Animations" << std::endl;
 
