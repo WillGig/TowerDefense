@@ -8,11 +8,12 @@ namespace TowerDefense
 	{
 	public:
 		Artifact(const std::string name)
-			:Entity(0.0f, 0.0f, 32, 32, 0.0f, name, Type::ARTIFACT), m_Name(name)
+			:Entity(0.0f, 0.0f, 32, 32, 0.0f, name, Type::ARTIFACT), m_Name(name),
+			m_DetailedImage(std::make_unique<Image>(name, 400.0f, 300.0f, 128, 128, 0.0f))
 		{
 		}
 		inline void Update() override {};
-		inline void RenderArtifactDetails() {}; //TODO render render artifact info tiles
+		inline void RenderArtifactDetails() { m_DetailedImage->Render(); };
 		inline virtual void OnAquire() {};
 		inline virtual void OnAddCard(std::shared_ptr<Card> c) {};
 		inline virtual void OnRoundStart() {};
@@ -22,6 +23,7 @@ namespace TowerDefense
 
 	private:
 		std::string m_Name;
+		std::unique_ptr<Image> m_DetailedImage;
 	};
 
 	class TokenOfTheMute : public Artifact

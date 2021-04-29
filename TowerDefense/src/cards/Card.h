@@ -57,6 +57,8 @@ namespace TowerDefense
 
 		//List of keywords that are shown when rendering the card info
 		std::unique_ptr<std::vector<std::shared_ptr<InfoTile>>> m_InfoCards;
+		std::shared_ptr<Image> m_UpgradedImage;
+		std::unique_ptr<Image> m_DetailedImage;
 
 	protected:
 		void AddInfoCard(std::shared_ptr<InfoTile> cardInfo);
@@ -66,7 +68,5 @@ namespace TowerDefense
 		//Whether or not the card enters the discard pile after being played
 		//Cards that exhaust DO NOT enter the discard pile. False by default for non-hero cards
 		bool m_Exhausts;
-		std::shared_ptr<Image> m_UpgradedImage;
-		std::unique_ptr<Image> m_DetailedImage;
 	};
 }

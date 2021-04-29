@@ -1,4 +1,6 @@
 Current:
+	Add descriptions and quotes to artifacts
+
 	Start on artifacts (button next to view deck button to view artifacts)
 		- blessing of the bat										-
 		- glasses 			- cures nearsightedness						-
