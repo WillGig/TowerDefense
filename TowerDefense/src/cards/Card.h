@@ -37,6 +37,8 @@ namespace TowerDefense
 
 		inline void SetOverBoard(bool overboard) { m_OverBoard = overboard; }
 
+		inline CardType GetCardType() { return m_CardType; }
+
 		static std::shared_ptr<Card> GetCommonCard();
 		static std::shared_ptr<Card> GetUncommonCard();
 		static std::shared_ptr<Card> GetRareCard();

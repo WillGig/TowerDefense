@@ -22,7 +22,7 @@ void TowerDefense::FireBall::Render()
 
 void TowerDefense::FireBall::Update()
 {
-	if (TowerDefense::Board::Get().Contains(m_X, m_Y))
+	if (Board::Get().Contains(m_X, m_Y))
 	{
 		m_OverBoard = true;
 

@@ -297,6 +297,15 @@
     <ClCompile Include="src\artifacts\TokenOfTheArmored.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="src\artifacts\TokenOfTheBroken.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\artifacts\TokenOfTheVigilant.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\cards\Lightning.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="res\shaders\Texture.shader" />
@@ -656,6 +665,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\artifacts\ArtifactPile.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\cards\Lightning.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

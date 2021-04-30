@@ -57,7 +57,7 @@ void TowerDefense::Hand::Update()
 					}
 					else
 						m_Cards->at(m_SelectedCard)->SetOverBoard(false);
-				}		
+				}
 			}
 		}
 		else

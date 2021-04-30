@@ -40,4 +40,20 @@ namespace TowerDefense
 		TokenOfTheArmored();
 		void OnFightEnd() override;
 	};
+
+	class TokenOfTheBroken : public Artifact
+	{
+	public:
+		TokenOfTheBroken();
+		void OnFightStart() override;
+	};
+
+	class TokenOfTheVigilant : public Artifact
+	{
+	public:
+		TokenOfTheVigilant();
+		void OnCardPlay(std::shared_ptr<Card> c) override;
+	private:
+		int m_Counter;
+	};
 }

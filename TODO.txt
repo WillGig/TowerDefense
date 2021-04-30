@@ -9,7 +9,7 @@ Current:
 		- token of the mute		- start with 2 extra cards					- Done
 		- token of the armored		- heal a little at the end of fights				-
 		- token of the broken		- Add a lightening card to your hand at the start of a fight	-
-		- token of the vigilant		- Gain 5 energy every 2 skills you play				-
+		- token of the vigilant		- Gain 10 energy every 2 skills you play				-
 
 	Daily activities
 		Explore Caves 	- Random event						- Done

@@ -117,6 +117,8 @@ bool TowerDefense::Init()
     //Starter Artifacts
     player.AddToArtifacts(std::make_shared<TokenOfTheMute>());
     player.AddToArtifacts(std::make_shared<TokenOfTheArmored>());
+    player.AddToArtifacts(std::make_shared<TokenOfTheBroken>());
+    player.AddToArtifacts(std::make_shared<TokenOfTheVigilant>());
 
     return true;
 }
@@ -344,6 +346,8 @@ void LoadTextures()
     Texture::LoadTexture("fireBallUpgraded",        skillCards.load(1, 1));
     Texture::LoadTexture("frostBall",               skillCards.load(2, 1));
     Texture::LoadTexture("frostBallUpgraded",       skillCards.load(3, 1));
+    Texture::LoadTexture("lightning",               skillCards.load(4, 1));
+    Texture::LoadTexture("lightningUpgraded",       skillCards.load(5, 1));
 
     SpriteSheet curses("res/textures/Curses.png", 440, 560);
     Texture::LoadTexture("Flames",                  curses.load(0, 0));
@@ -391,12 +395,16 @@ void LoadTextures()
     std::cout << "...Artifacts" << std::endl;
 
     SpriteSheet artifacts("res/textures/Artifacts.png", 64, 64);
-    Texture::LoadTexture("TokenOfTheMute",      artifacts.load(0, 0));
-    Texture::LoadTexture("TokenOfTheArmored",   artifacts.load(1, 0));
+    Texture::LoadTexture("TokenOfTheMute",          artifacts.load(0, 0));
+    Texture::LoadTexture("TokenOfTheArmored",       artifacts.load(1, 0));
+    Texture::LoadTexture("TokenOfTheBroken",        artifacts.load(2, 0));
+    Texture::LoadTexture("TokenOfTheVigilant",      artifacts.load(3, 0));
 
     SpriteSheet artifactInfo("res/textures/ArtifactInfo.png", 440, 170);
     Texture::LoadTexture("TokenOfTheMuteInfo",      artifactInfo.load(0, 0));
     Texture::LoadTexture("TokenOfTheArmoredInfo",   artifactInfo.load(1, 0));
+    Texture::LoadTexture("TokenOfTheBrokenInfo",    artifactInfo.load(2, 0));
+    Texture::LoadTexture("TokenOfTheVigilantInfo",  artifactInfo.load(3, 0));
 
     std::cout << "...Animations" << std::endl;
 
