@@ -8,14 +8,14 @@ namespace TowerDefense
 	public:
 		InfoTile(const std::string& image)
 		{
-			m_Image = std::make_unique<StaticImage>(0.0f, 0.0f, 220, 85, 0.0f, image);
+			m_Image = std::make_unique<Image>(image, 0.0f, 0.0f, 220, 85, 0.0f);
 		}
 
 		inline void Render() { m_Image->Render(); }
 
-		inline void SetPosition(float x, float y) { m_Image->SetX(x); m_Image->SetY(y); }
+		inline void SetPosition(float x, float y) { m_Image->SetPosition(x, y, 0.0f); }
 
 	private:
-		std::unique_ptr<StaticImage> m_Image;
+		std::unique_ptr<Image> m_Image;
 	};
 }

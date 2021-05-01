@@ -26,7 +26,7 @@ namespace TowerDefense
 		std::shared_ptr<std::vector<std::shared_ptr<Card>>> m_Cards;
 
 		//Outline around selected Card
-		std::unique_ptr<StaticImage> m_Outline;
+		std::unique_ptr<Image> m_Outline;
 
 		//Fade background when rendering card info
 		std::unique_ptr<Rectangle> m_Fade;
