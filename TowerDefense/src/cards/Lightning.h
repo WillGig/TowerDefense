@@ -18,6 +18,8 @@ namespace TowerDefense
 	private:
 		std::shared_ptr<Enemy::Enemy> GetClosestEnemy();
 
+		std::unique_ptr<Image> m_LightningImage;
+
 		float m_Damage, m_Range;
 	};
 }

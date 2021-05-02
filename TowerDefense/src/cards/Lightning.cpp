@@ -5,6 +5,7 @@
 
 TowerDefense::Lightning::Lightning()
 	:Card("Lightning", CardType::SKILL, 20, "lightning", "lightningUpgraded"),
+	m_LightningImage(std::make_unique<Image>("lightningImage", m_X, m_Y, 100, 100, 0.0f)),
 	m_Damage(10.0f), m_Range(50.0f)
 {
 
@@ -14,6 +15,8 @@ void TowerDefense::Lightning::Render()
 {
 	if (!m_OverBoard)
 		Entity::Render();
+	else
+		m_LightningImage->Render();
 }
 
 void TowerDefense::Lightning::Update()
@@ -21,6 +24,7 @@ void TowerDefense::Lightning::Update()
 	if (Board::Get().Contains(m_X, m_Y))
 	{
 		m_OverBoard = true;
+		m_LightningImage->SetPosition(m_X, m_Y, 0.0f);
 
 		//Highlight all enemies in range
 		std::shared_ptr<Enemy::Enemy> e = GetClosestEnemy();
@@ -45,8 +49,8 @@ bool TowerDefense::Lightning::Play()
 		m_OverBoard = false;
 
 		std::shared_ptr<Enemy::Enemy> e = GetClosestEnemy();
-		
-		if (e->GetDistance(m_X, m_Y) < m_Range)
+
+		if (e && e->GetDistance(m_X, m_Y) < m_Range)
 		{
 			//TODO: Lightning stuff
 			return true;
