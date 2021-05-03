@@ -17,6 +17,7 @@ void TowerDefense::Lightning::Render()
 		Entity::Render();
 	else
 	{
+		//render ball of lightning
 		if ((Time::Get().GetTime()) % 4 == 0)
 		{
 			float rot = Random::GetFloat() * PI;
@@ -60,8 +61,20 @@ bool TowerDefense::Lightning::Play()
 
 		if (e && e->GetDistance(m_X, m_Y) < m_Range)
 		{
-			//TODO: Lightning stuff
-			Combat::AddEntity(std::make_shared<LightningBolt>(Vec2(200.0f, 300.0f), Vec2(600.0f, 300.0f)));
+			auto targets = GetTargets(e);
+
+			Vec2 prevTarget(e->GetX(), e->GetY());
+			Vec2 currentTarget;
+
+			e->TakeDamage(m_Damage, GetID());
+			for (unsigned int i = 1; i < targets.size(); i++)
+			{
+				targets[i]->TakeDamage(m_Damage, GetID());
+				currentTarget = Vec2(targets[i]->GetX(), targets[i]->GetY());
+				//draw lightning connecting all targets
+				Combat::AddEntity(std::make_shared<LightningBolt>(prevTarget, currentTarget));
+				prevTarget = currentTarget;
+			}
 			return true;
 		}
 	}
@@ -96,4 +109,48 @@ std::shared_ptr<TowerDefense::Enemy::Enemy> TowerDefense::Lightning::GetClosestE
 	}
 
 	return closestEnemy;
+}
+
+//Find all targets from lightning chaining between enemies in range of each other
+std::vector<std::shared_ptr<TowerDefense::Enemy::Enemy>> TowerDefense::Lightning::GetTargets(std::shared_ptr<Enemy::Enemy> e)
+{
+	std::vector<std::shared_ptr<TowerDefense::Enemy::Enemy>> targets;
+
+	targets.push_back(e);
+	
+	auto currentEnemy = e;
+	while (auto enemy = GetEnemyInRange(currentEnemy, targets, 300.0f))
+	{
+		targets.push_back(enemy);
+		currentEnemy = enemy;
+	}
+
+	return targets;
+}
+
+//Find the first enemy in range of the current target that is not already in the list
+std::shared_ptr<TowerDefense::Enemy::Enemy> TowerDefense::Lightning::GetEnemyInRange(std::shared_ptr<Enemy::Enemy> currentEnemy, std::vector<std::shared_ptr<Enemy::Enemy>> exclude, float range)
+{
+	auto entities = Combat::GetEntities();
+	for (unsigned int i = 0; i < entities->size(); i++) {
+		std::shared_ptr<Entity> e = entities->at(i);
+		if (e->GetEntityType() == Type::ENEMY && e->GetID() != currentEnemy->GetID() && !Contains(exclude, e->GetID()))
+		{
+			float distance = e->GetDistance(m_X, m_Y);
+			if (distance < range)
+				return std::dynamic_pointer_cast<Enemy::Enemy>(e);
+		}
+	}
+
+	return nullptr;
+}
+
+bool TowerDefense::Lightning::Contains(std::vector<std::shared_ptr<Enemy::Enemy>> list, unsigned int ID)
+{
+	for (unsigned int i = 0; i < list.size(); i++)
+	{
+		if (list[i]->GetID() == ID)
+			return true;
+	}
+	return false;
 }
