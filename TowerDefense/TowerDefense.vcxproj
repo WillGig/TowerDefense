@@ -213,6 +213,7 @@
     <ClCompile Include="src\engine\Animation.cpp" />
     <ClCompile Include="src\core\AnimationEffect.cpp" />
     <ClCompile Include="src\engine\Circle.cpp" />
+    <ClCompile Include="src\engine\Line.cpp" />
     <ClCompile Include="src\engine\Rectangle.cpp" />
     <ClCompile Include="src\engine\SpriteSheet.cpp" />
     <ClCompile Include="src\math\Random.cpp" />
@@ -276,6 +277,7 @@
     <ClCompile Include="src\engine\VertexBuffer.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="res\shaders\Line.shader" />
     <None Include="res\shaders\Texture.shader" />
     <None Include="res\shaders\Circle.shader" />
     <None Include="res\shaders\Rectangle.shader" />
@@ -354,6 +356,7 @@
     <ClInclude Include="src\engine\Animation.h" />
     <ClInclude Include="src\core\AnimationEffect.h" />
     <ClInclude Include="src\engine\Circle.h" />
+    <ClInclude Include="src\engine\Line.h" />
     <ClInclude Include="src\engine\Rectangle.h" />
     <ClInclude Include="src\engine\SpriteSheet.h" />
     <ClInclude Include="src\math\Random.h" />

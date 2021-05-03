@@ -1,6 +1,5 @@
 #include "pch.h"
 #include "Circle.h"
-#include "TowerDefense.h"
 
 Circle::Circle(float x, float y, float radius)
 	: m_Radius(radius), m_Thickness(3.0f), m_Color(1.0f, 1.0f, 1.0f, 1.0f), 

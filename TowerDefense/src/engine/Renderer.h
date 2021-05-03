@@ -21,6 +21,9 @@ public:
     //Draws vertex and index data using shader
     void Draw(const VertexArray& va, const IndexBuffer& ib, const Shader& shader) const;
 
+    //Draw line with vertex data using shader
+    void Draw(const VertexArray& va, const Shader& shader) const;
+
 private:
     Renderer();
 

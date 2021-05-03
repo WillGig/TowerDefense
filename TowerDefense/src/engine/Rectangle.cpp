@@ -1,6 +1,5 @@
 #include "pch.h"
 #include "Rectangle.h"
-#include "TowerDefense.h"
 
 Rectangle::Rectangle(float x, float y, float width, float height)
 	: m_Color(1.0f, 1.0f, 1.0f, 1.0f),

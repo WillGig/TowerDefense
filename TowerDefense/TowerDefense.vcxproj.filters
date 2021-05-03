@@ -306,12 +306,16 @@
     <ClCompile Include="src\cards\Lightning.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="src\engine\Line.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="res\shaders\Texture.shader" />
     <None Include="res\shaders\Text.shader" />
     <None Include="res\shaders\Circle.shader" />
     <None Include="res\shaders\Rectangle.shader" />
+    <None Include="res\shaders\Line.shader" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="res\textures\CardBackgrounds.png">
@@ -668,6 +672,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\cards\Lightning.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\engine\Line.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
