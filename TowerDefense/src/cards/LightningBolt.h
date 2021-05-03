@@ -5,13 +5,13 @@ namespace TowerDefense
 	class LightningBolt : public Entity
 	{
 	public:
-		LightningBolt(float startX, float startY, float endX, float endY);
+		LightningBolt(Vec2 start, Vec2 end);
 		void Render() override;
 		void Update() override;
 
 	private:
-		std::vector<Line> GenerateBolt(float startX, float startY, float endX, float endY);
+		std::vector<Vec2> GenerateBolt(Vec2 start, Vec2 end);
 
-		std::unique_ptr<std::vector<Line>> m_Bolt;
+		std::unique_ptr<Line> m_Bolt;
 	};
 }

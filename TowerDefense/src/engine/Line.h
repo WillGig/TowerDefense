@@ -3,7 +3,8 @@
 class Line
 {
 public:
-	Line(float startX, float startY, float endX, float endY);
+	Line(Vec2 start, Vec2 end);
+	Line(std::vector<Vec2> points);
 	void Render();
 	inline void SetThickness(float thickness) { m_Thickness = thickness; }
 	inline Vec4 GetColor() const { return m_Color; };
@@ -14,6 +15,8 @@ private:
 	std::shared_ptr<Shader> m_Shader;
 
 	float m_Thickness;
+
+	int m_Indices;
 
 	//Color using floats from 0.0f to 1.0f in rgba format
 	Vec4 m_Color;

@@ -6,7 +6,6 @@
 
 TowerDefense::Lightning::Lightning()
 	:Card("Lightning", CardType::SKILL, 20, "lightning", "lightningUpgraded"),
-	m_LightningImage(std::make_unique<Image>("lightningImage", m_X, m_Y, 100, 100, 0.0f)),
 	m_Damage(10.0f), m_Range(50.0f)
 {
 
@@ -17,17 +16,23 @@ void TowerDefense::Lightning::Render()
 	if (!m_OverBoard)
 		Entity::Render();
 	else
-		m_LightningImage->Render();
+	{
+		if ((Time::Get().GetTime()) % 4 == 0)
+		{
+			float rot = Random::GetFloat() * PI;
+			float rad = Random::GetFloat() * 20.0f + 20.0f;
+			float x = rad * cos(rot);
+			float y = rad * sin(rot);
+			Combat::AddEntity(std::make_shared<LightningBolt>(Vec2(m_X - x, m_Y - y), Vec2(m_X + x, m_Y + y)));
+		}
+	}
 }
 
 void TowerDefense::Lightning::Update()
 {
-	if(Time::Get().GetTime() % 60 == 0)
-		Combat::AddEntity(std::make_shared<LightningBolt>(200.0f, 300.0f, 600.0f, 300.0f));
 	if (Board::Get().Contains(m_X, m_Y))
 	{
 		m_OverBoard = true;
-		m_LightningImage->SetPosition(m_X, m_Y, 0.0f);
 
 		//Highlight all enemies in range
 		std::shared_ptr<Enemy::Enemy> e = GetClosestEnemy();
@@ -56,7 +61,7 @@ bool TowerDefense::Lightning::Play()
 		if (e && e->GetDistance(m_X, m_Y) < m_Range)
 		{
 			//TODO: Lightning stuff
-			Combat::AddEntity(std::make_shared<LightningBolt>(200.0f, 300.0f, 600.0f, 300.0f));
+			Combat::AddEntity(std::make_shared<LightningBolt>(Vec2(200.0f, 300.0f), Vec2(600.0f, 300.0f)));
 			return true;
 		}
 	}

@@ -2,39 +2,33 @@
 #include "LightningBolt.h"
 #include "scenes/Combat.h"
 
-TowerDefense::LightningBolt::LightningBolt(float startX, float startY, float endX, float endY)
-	:Entity((startX + endX) / 2.0f, (startY + endY) / 2.0f, (int)abs(startX-endX), (int)abs(startY-endY), 0.0f, "", Type::ANIMATION),
-	m_Bolt(std::make_unique<std::vector<Line>>(GenerateBolt(startX, startY, endX, endY)))
+TowerDefense::LightningBolt::LightningBolt(Vec2 start, Vec2 end)
+	:Entity((start.x + end.x) / 2.0f, (start.y + end.y) / 2.0f, (int)abs(start.x-end.x), (int)abs(start.y-end.y), 0.0f, "", Type::ANIMATION),
+	m_Bolt(std::make_unique<Line>(GenerateBolt(start, end)))
 {
 }
 
 void TowerDefense::LightningBolt::Render()
 {
-	for (int i = 0; i < (int)m_Bolt->size(); i++)
-		m_Bolt->at(i).Render();
+	m_Bolt->Render();
 }
 
 void TowerDefense::LightningBolt::Update()
 {
-	Vec4 c = m_Bolt->at(0).GetColor();
-	for (int i = 0; i < (int)m_Bolt->size(); i++)
-	{
-		m_Bolt->at(i).SetColor(c.w, c.x, c.y, c.z * .98f);
-	}
+	Vec4 c = m_Bolt->GetColor();
+    m_Bolt->SetColor(c.w, c.x, c.y, c.z - .05f);
 
 	if (c.z < .1f)
 		Combat::RemoveEntity(GetID());
 }
 
-std::vector<Line> TowerDefense::LightningBolt::GenerateBolt(float startX, float startY, float endX, float endY)
+std::vector<Vec2> TowerDefense::LightningBolt::GenerateBolt(Vec2 start, Vec2 end)
 {
-    float length = sqrt(pow(startX - endX, 2.0f) + pow(startY - endY, 2.0f));
+    float length = sqrt(pow(start.x - end.x, 2.0f) + pow(start.y - end.y, 2.0f));
 
-    std::vector<Line> results;
-    float tangentX = endX - startX;
-    float tangentY = endY - startY;
-    float normalX = tangentY / length;
-    float normalY = -tangentX / length;
+    std::vector<Vec2> results;
+    Vec2 tangent = end - start;
+    Vec2 normal(tangent.y / length, -tangent.x / length);
    
 
     std::vector<float> positions;
@@ -48,8 +42,7 @@ std::vector<Line> TowerDefense::LightningBolt::GenerateBolt(float startX, float 
     const float Sway = 80;
     const float Jaggedness = 1 / Sway;
 
-    float prevX = startX;
-    float prevY = startY;
+    Vec2 prev =  start;
     float prevDisplacement = 0;
     for (int i = 1; i < (int)positions.size(); i++)
     {
@@ -65,16 +58,17 @@ std::vector<Line> TowerDefense::LightningBolt::GenerateBolt(float startX, float 
         displacement -= (displacement - prevDisplacement) * (1 - scale);
         displacement *= envelope;
 
-        float pointX = startX + pos * tangentX + displacement * normalX;
-        float pointY = startY + pos * tangentY + displacement * normalY;
-
-        results.push_back(Line(prevX, prevY, pointX, pointY));
-        prevX = pointX;
-        prevY = pointY;
+        Vec2 point = start + tangent*pos + normal * displacement;
+        //results.push_back(Line(prev, point));
+        results.push_back(prev);
+        results.push_back(point);
+        prev = point;
         prevDisplacement = displacement;
     }
 
-    results.push_back(Line(prevX, prevY, endX, endY));
+    //results.push_back(Line(prev, end));
+    results.push_back(prev);
+    results.push_back(end);
 
     return results;
 }

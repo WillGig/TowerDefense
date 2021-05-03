@@ -1,6 +1,5 @@
 Current:
 	Make lighning chain to up to 3 random enemies in range and deal damage
-	Change lightning to batch render for efficiency
 	Add descriptions and quotes to artifacts
 
 	Start on artifacts (button next to view deck button to view artifacts)
