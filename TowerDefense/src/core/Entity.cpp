@@ -4,8 +4,10 @@
 unsigned int TowerDefense::Entity::s_ID = 0;
 
 TowerDefense::Entity::Entity(float x, float y, int width, int height, float rotation, const std::string& image, Type type)
-	:m_ID(s_ID), m_EntityType(type), m_Width(width), m_Height(height), m_X(x), m_Y(y), m_Rotation(rotation), m_Image(std::make_shared<Image>(image, x, y, width, height, rotation))
+	:m_ID(s_ID), m_EntityType(type), m_Width(width), m_Height(height), m_X(x), m_Y(y), m_Rotation(rotation)
 {
+	if(image != "")
+		m_Image = std::make_shared<Image>(image, x, y, width, height, rotation);
 	s_ID++;
 }
 
