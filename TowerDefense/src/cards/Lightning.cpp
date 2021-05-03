@@ -2,6 +2,7 @@
 #include "Lightning.h"
 #include "scenes/Combat.h"
 #include "core/Board.h"
+#include "LightningBolt.h"
 
 TowerDefense::Lightning::Lightning()
 	:Card("Lightning", CardType::SKILL, 20, "lightning", "lightningUpgraded"),
@@ -21,6 +22,8 @@ void TowerDefense::Lightning::Render()
 
 void TowerDefense::Lightning::Update()
 {
+	if(Time::Get().GetTime() % 60 == 0)
+		Combat::AddEntity(std::make_shared<LightningBolt>(200.0f, 300.0f, 600.0f, 300.0f));
 	if (Board::Get().Contains(m_X, m_Y))
 	{
 		m_OverBoard = true;
@@ -53,6 +56,7 @@ bool TowerDefense::Lightning::Play()
 		if (e && e->GetDistance(m_X, m_Y) < m_Range)
 		{
 			//TODO: Lightning stuff
+			Combat::AddEntity(std::make_shared<LightningBolt>(200.0f, 300.0f, 600.0f, 300.0f));
 			return true;
 		}
 	}

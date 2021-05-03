@@ -1,19 +1,16 @@
 #include "pch.h"
 #include "Line.h"
 
-Line::Line(float x, float y, float length, float rotation)
-	: m_Length(length), m_Thickness(3.0f), m_Color(1.0f, 1.0f, 1.0f, 1.0f),
-	m_Position(x, y, 0)
+Line::Line(float startX, float startY, float endX, float endY)
+	: m_Thickness(3.0f), m_Color(1.0f, 1.0f, 1.0f, 1.0f)
 {
 	float positions[] = {
-			-length / 2, -0.0f,
-			 length / 2, -0.0f,
-			 length / 2,  0.0f,
-			-length / 2,  0.0f,
+		startX,	startY,
+		endX,	endY
 	};
 
 	m_VAO = std::make_unique<VertexArray>();
-	m_VertexBuffer = std::make_unique<VertexBuffer>(positions, 4 * 2 * sizeof(float), false);
+	m_VertexBuffer = std::make_unique<VertexBuffer>(positions, 2 * 2 * sizeof(float), false);
 	VertexBufferLayout layout;
 	layout.Push<float>(2);
 
@@ -25,7 +22,7 @@ Line::Line(float x, float y, float length, float rotation)
 
 void Line::Render()
 {
-	Mat4f mvp = Renderer::Get().GetProjectionMatrix() * Mat4f::Translate(m_Position) * Mat4f::Rotate(m_Rotation);
+	Mat4f mvp = Renderer::Get().GetProjectionMatrix();
 	m_Shader->Bind();
 	m_Shader->SetUniformMat4f("u_MVP", mvp);
 	GLCall(glLineWidth(m_Thickness));

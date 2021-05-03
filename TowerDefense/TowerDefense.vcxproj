@@ -178,6 +178,7 @@
     <ClCompile Include="src\artifacts\TokenOfTheVigilant.cpp" />
     <ClCompile Include="src\cards\curses\Flames.cpp" />
     <ClCompile Include="src\cards\Lightning.cpp" />
+    <ClCompile Include="src\cards\LightningBolt.cpp" />
     <ClCompile Include="src\cards\quirks\Farsighted.cpp" />
     <ClCompile Include="src\cards\quirks\JustLucky.cpp" />
     <ClCompile Include="src\cards\quirks\Veteran.cpp" />
@@ -332,6 +333,7 @@
     <ClInclude Include="src\cards\curses\Curses.h" />
     <ClInclude Include="src\cards\InfoTile.h" />
     <ClInclude Include="src\cards\Lightning.h" />
+    <ClInclude Include="src\cards\LightningBolt.h" />
     <ClInclude Include="src\core\Board.h" />
     <ClInclude Include="src\cards\Card.h" />
     <ClInclude Include="src\cards\CardChoice.h" />
