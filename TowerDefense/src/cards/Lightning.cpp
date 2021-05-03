@@ -6,7 +6,7 @@
 
 TowerDefense::Lightning::Lightning()
 	:Card("Lightning", CardType::SKILL, 20, "lightning", "lightningUpgraded"),
-	m_Damage(10.0f), m_Range(50.0f)
+	m_Damage(5.0f), m_Range(50.0f)
 {
 
 }
