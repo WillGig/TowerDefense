@@ -15,6 +15,7 @@ void TowerDefense::Rest::Render()
 	Player& player = Player::Get();
 	m_Fade->Render();
 	player.RenderHealth();
+	player.RenderGold();
 	m_RestText->Render();
 	m_Confirm->Render();
 	m_Cancel->Render();

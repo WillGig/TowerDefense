@@ -16,9 +16,12 @@ namespace TowerDefense
 		inline void SetEnergy(int energy) { m_Energy = energy; }
 		void ChangeEnergy(int change);
 
+		inline int GetGold() const { return m_Gold; }
+		inline void SetGold(int gold) { m_Gold = gold; }
+		void ChangeGold(int change);
+
 		inline int GetHealth() const { return m_Health; }
 		void ChangeHealth(int change);
-
 		inline int GetMaxHealth() const { return m_MaxHealth; }
 		void ChangeMaxHealth(int change);
 
@@ -32,6 +35,7 @@ namespace TowerDefense
 
 		inline void RenderHealth() { m_HealthText->Render(); }
 		inline void RenderEnergy() { m_EnergyText->Render(); }
+		inline void RenderGold() { m_GoldText->Render(); }
 		inline void RenderDay() { m_DayText->Render(); }
 
 		void UpdateDayText();
@@ -79,12 +83,12 @@ namespace TowerDefense
 	private:
 		Player();
 
-		int m_Health, m_MaxHealth, m_Energy;
+		int m_Health, m_MaxHealth, m_Energy, m_Gold;
 		Vec4 m_TextColor;
 		std::shared_ptr<Hand> m_Hand;
 		std::shared_ptr<CardPile> m_Deck, m_DrawPile, m_DiscardPile;
 		std::unique_ptr<Button> m_ViewDeck;
-		std::unique_ptr<Text> m_HealthText, m_EnergyText, m_DayText;
+		std::unique_ptr<Text> m_HealthText, m_EnergyText, m_GoldText, m_DayText;
 		std::unique_ptr<ArtifactPile> m_Artifacts;
 	};
 }

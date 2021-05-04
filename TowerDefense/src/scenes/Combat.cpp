@@ -49,6 +49,7 @@ void TowerDefense::Combat::Render()
 	//Stats at top of screen
 	player.RenderHealth();
 	player.RenderEnergy();
+	player.RenderGold();
 	player.RenderDay();
 
 	//Render Tower Information

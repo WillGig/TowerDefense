@@ -3,18 +3,20 @@
 #include "cards/Focus.h"
 
 TowerDefense::Player::Player()
-    :m_Health(100), m_MaxHealth(100), m_Energy(100), m_Hand(std::make_shared<Hand>(10)),
+    :m_Health(100), m_MaxHealth(100), m_Energy(100), m_Gold(1000), m_Hand(std::make_shared<Hand>(10)),
     m_Deck(std::make_shared<CardPile>(-100.0f,0.0f)), 
     m_DrawPile(std::make_shared<CardPile>(49.0f, 50.0f)),
     m_DiscardPile(std::make_shared<CardPile>(748.0f, 50.0f)),
     m_ViewDeck(std::make_unique<Button>(500.0f, 570.0f, 50, 50, "viewDeckButton")),
     m_HealthText(std::make_unique<Text>(std::string("HP: ") + std::to_string(m_Health) + "/" + std::to_string(m_MaxHealth), 645.0f, 575.0f, 10.0f, 0.0f)),
     m_EnergyText(std::make_unique<Text>(std::string("Energy: ") + std::to_string(m_Energy), 740.0f, 575.0f, 10.0f, 0.0f)),
+    m_GoldText(std::make_unique<Text>(std::string("Gold: ") + std::to_string(m_Gold), 150.0f, 575.0f, 10.0f, 0.0f)),
     m_DayText(std::make_unique<Text>(std::string("Day: ") + std::to_string(GetDay()), 400.0f, 575.0f, 10.0f, 0.0f)),
     m_Artifacts(std::make_unique<ArtifactPile>(570.0f, 570.0f))
 {
     m_HealthText->SetColor(1.0f, 1.0f, 1.0f, 1.0f);
     m_EnergyText->SetColor(1.0f, 1.0f, 1.0f, 1.0f);
+    m_GoldText->SetColor(1.0f, 1.0f, 1.0f, 1.0f);
     m_DayText->SetColor(1.0f, 1.0f, 1.0f, 1.0f);
     m_TextColor = Vec4(1.0f, 1.0f, 1.0f, 1.0f);
 
@@ -35,6 +37,13 @@ void TowerDefense::Player::ChangeEnergy(int change)
     m_Energy += change;
     m_EnergyText = std::make_unique<Text>(std::string("Energy: ") + std::to_string(m_Energy), 740.0f, 575.0f, 10.0f, 0.0f);
     m_EnergyText->SetColor(m_TextColor.w, m_TextColor.x, m_TextColor.y, m_TextColor.z);
+}
+
+void TowerDefense::Player::ChangeGold(int change)
+{
+    m_Gold += change;
+    m_GoldText = std::make_unique<Text>(std::string("Gold: ") + std::to_string(m_Gold), 150.0f, 575.0f, 10.0f, 0.0f);
+    m_GoldText->SetColor(m_TextColor.w, m_TextColor.x, m_TextColor.y, m_TextColor.z);
 }
 
 void TowerDefense::Player::ChangeHealth(int change)
@@ -65,6 +74,7 @@ void TowerDefense::Player::SetTextColor(float r, float g, float b, float a)
 {
     m_HealthText->SetColor(r, g, b, a);
     m_EnergyText->SetColor(r, g, b, a);
+    m_GoldText->SetColor(r, g, b, a);
     m_DayText->SetColor(r, g, b, a);
     m_TextColor = Vec4(r, g, b, a);
 }
@@ -98,6 +108,7 @@ void TowerDefense::Player::CleanUp()
     m_ViewDeck.reset();
     m_HealthText.reset();
     m_EnergyText.reset();
+    m_GoldText.reset();
     m_DayText.reset();
     m_Artifacts.reset();
 }
