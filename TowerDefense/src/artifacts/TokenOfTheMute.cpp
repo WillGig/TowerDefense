@@ -3,7 +3,7 @@
 #include "core/Player.h"
 
 TowerDefense::TokenOfTheMute::TokenOfTheMute()
-	:Artifact("TokenOfTheMute")
+	:Artifact("Token Of The Mute")
 {
 }
 

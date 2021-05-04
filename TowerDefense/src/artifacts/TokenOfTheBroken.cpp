@@ -4,7 +4,7 @@
 #include "cards/Lightning.h"
 
 TowerDefense::TokenOfTheBroken::TokenOfTheBroken()
-	:Artifact("TokenOfTheBroken")
+	:Artifact("Token Of The Broken")
 {
 }
 

@@ -3,7 +3,7 @@
 #include "core/Player.h"
 
 TowerDefense::TokenOfTheVigilant::TokenOfTheVigilant()
-	:Artifact("TokenOfTheVigilant"), m_Counter(0)
+	:Artifact("Token Of The Vigilant"), m_Counter(0)
 {
 }
 

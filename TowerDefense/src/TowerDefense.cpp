@@ -394,17 +394,17 @@ void LoadTextures()
 
     std::cout << "...Artifacts" << std::endl;
 
-    SpriteSheet artifacts("res/textures/Artifacts.png", 64, 64);
-    Texture::LoadTexture("TokenOfTheMute",          artifacts.load(0, 0));
-    Texture::LoadTexture("TokenOfTheArmored",       artifacts.load(1, 0));
-    Texture::LoadTexture("TokenOfTheBroken",        artifacts.load(2, 0));
-    Texture::LoadTexture("TokenOfTheVigilant",      artifacts.load(3, 0));
+    SpriteSheet artifacts("res/textures/Artifacts.png", 256, 256);
+    Texture::LoadTexture("Token Of The Mute",          artifacts.load(0, 0));
+    Texture::LoadTexture("Token Of The Armored",       artifacts.load(1, 0));
+    Texture::LoadTexture("Token Of The Broken",        artifacts.load(2, 0));
+    Texture::LoadTexture("Token Of The Vigilant",      artifacts.load(3, 0));
 
     SpriteSheet artifactInfo("res/textures/ArtifactInfo.png", 440, 170);
-    Texture::LoadTexture("TokenOfTheMuteInfo",      artifactInfo.load(0, 0));
-    Texture::LoadTexture("TokenOfTheArmoredInfo",   artifactInfo.load(1, 0));
-    Texture::LoadTexture("TokenOfTheBrokenInfo",    artifactInfo.load(2, 0));
-    Texture::LoadTexture("TokenOfTheVigilantInfo",  artifactInfo.load(3, 0));
+    Texture::LoadTexture("Token Of The MuteInfo",      artifactInfo.load(0, 0));
+    Texture::LoadTexture("Token Of The ArmoredInfo",   artifactInfo.load(1, 0));
+    Texture::LoadTexture("Token Of The BrokenInfo",    artifactInfo.load(2, 0));
+    Texture::LoadTexture("Token Of The VigilantInfo",  artifactInfo.load(3, 0));
 
     std::cout << "...Animations" << std::endl;
 

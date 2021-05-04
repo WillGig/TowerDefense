@@ -3,7 +3,7 @@
 #include "core/Player.h"
 
 TowerDefense::TokenOfTheArmored::TokenOfTheArmored()
-	:Artifact("TokenOfTheArmored")
+	:Artifact("Token Of The Armored")
 {
 }
 
