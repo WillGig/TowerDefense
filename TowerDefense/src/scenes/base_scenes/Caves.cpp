@@ -11,7 +11,6 @@ void TowerDefense::Caves::Render()
 {
 	Player& player = Player::Get();
 
-	m_Fade->Render();
 	m_CaveScene->Render();
 
 	player.RenderHealth();

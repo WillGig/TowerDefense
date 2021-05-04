@@ -15,7 +15,6 @@ void TowerDefense::Tavern::Render()
 {
 	Player& player = Player::Get();
 
-	m_Fade->Render();
 	m_Cancel->Render();
 	player.RenderDeckButton();
 	player.RenderArtifactsPile();

@@ -109,4 +109,15 @@ namespace TowerDefense
 		std::shared_ptr<Card> m_SelectedCard;
 		std::unique_ptr<Button> m_Confirm, m_Cancel;
 	};
+
+	class Build : public BaseScene
+	{
+	public:
+		Build();
+		void Render() override;
+		void Update() override;
+		void OnSwitch() override;
+	private:
+		std::unique_ptr<Button> m_Confirm, m_Cancel;
+	};
 }

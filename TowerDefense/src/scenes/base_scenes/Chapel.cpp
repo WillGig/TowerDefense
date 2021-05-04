@@ -19,7 +19,6 @@ void TowerDefense::Chapel::Render()
 
 	if (m_SelectedCard)
 	{
-		m_Fade->Render();
 		m_SelectedCard->Render();
 		m_Confirm->Render();
 		m_RemoveText->Render();

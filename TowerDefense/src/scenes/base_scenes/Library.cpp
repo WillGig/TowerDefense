@@ -13,7 +13,6 @@ TowerDefense::Library::Library()
 void TowerDefense::Library::Render()
 {
 	Player& player = Player::Get();
-	m_Fade->Render();
 	player.RenderDeckButton();
 	player.RenderArtifactsPile();
 	m_Cancel->Render();

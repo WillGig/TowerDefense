@@ -1,5 +1,8 @@
 Current:
-	
+	add build option to menu (can build smithy, chapel, library, tavern)
+	change Health, Energy, and Gold to images
+	Show player stats/info in base menus
+
 	Daily activities
 		Explore Caves 	- Random event						- Done
 		Visit Library 	- Choose a new card					- Done

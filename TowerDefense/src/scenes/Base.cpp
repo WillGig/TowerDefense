@@ -11,6 +11,7 @@ TowerDefense::Base::Base()
 {
 	AddBaseScene(std::make_shared<Rest>());
 	AddBaseScene(std::make_shared<Caves>());
+	AddBaseScene(std::make_shared<Build>());
 	AddBaseScene(std::make_shared<Library>());
 	AddBaseScene(std::make_shared<Smithing>());
 	AddBaseScene(std::make_shared<Tavern>());
