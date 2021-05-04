@@ -31,6 +31,7 @@ TowerDefense::HeroCard::HeroCard(const std::string& name, const std::string& tex
 			AddInfoCard(std::make_shared<InfoTile>(m_Quirks->at(i)->GetName()));
 		}
 	}
+	AddInfoCard(std::make_shared<InfoTile>("exhaustInfo"));
 
 	m_CostText = std::make_unique<Text>(std::to_string(m_Cost), 0.0f, 0.0f, 12.0f, (float)m_Width);
 	m_DetailedCostText = std::make_unique<Text>(std::to_string(m_Cost), 320.0f, 412.0f, 24.0f, (float)m_Width);

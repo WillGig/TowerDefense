@@ -369,6 +369,7 @@ void LoadTextures()
     Texture::LoadTexture("Just Lucky",      cardInfo.load(0, 3));
     Texture::LoadTexture("Farsighted",      cardInfo.load(1, 3));
     Texture::LoadTexture("Nearsighted",     cardInfo.load(2, 3));
+    Texture::LoadTexture("exhaustInfo",     cardInfo.load(3, 3));
 
     SpriteSheet heroImages("res/textures/HeroImages.png", 440, 560);
     Texture::LoadTexture("humanMale",       heroImages.load(0, 0));

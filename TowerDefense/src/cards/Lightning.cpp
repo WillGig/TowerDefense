@@ -8,7 +8,8 @@ TowerDefense::Lightning::Lightning()
 	:Card("Lightning", CardType::SKILL, 20, "lightning", "lightningUpgraded"),
 	m_Damage(5.0f), m_Range(50.0f)
 {
-
+	m_Exhausts = true;
+	AddInfoCard(std::make_shared<InfoTile>("exhaustInfo"));
 }
 
 void TowerDefense::Lightning::Render()
@@ -49,7 +50,7 @@ void TowerDefense::Lightning::Update()
 void TowerDefense::Lightning::Upgrade()
 {
 	Card::Upgrade();
-	m_Damage = 15.0f;
+	m_Damage = 10.0f;
 }
 
 bool TowerDefense::Lightning::Play()

@@ -6,6 +6,8 @@ TowerDefense::Focus::Focus(bool exhausts)
 	:Card("Focus", CardType::SKILL, 0, exhausts ? "focusExhausts" : "focus", exhausts ? "focusExhaustsUpgraded" : "focusUpgraded")
 {
 	m_Exhausts = exhausts;
+	if(exhausts)
+		AddInfoCard(std::make_shared<InfoTile>("exhaustInfo"));
 }
 
 bool TowerDefense::Focus::Play()
