@@ -283,6 +283,11 @@ void LoadTextures()
     Texture::LoadTexture("viewArtifactsButton",         PlayerButtons.load(0, 1));
     Texture::LoadTexture("viewArtifactsButtonSelected", PlayerButtons.load(1, 1));
 
+    SpriteSheet StatIcons("res/textures/Stats.png", 64, 64);
+    Texture::LoadTexture("healthIcon",      StatIcons.load(0, 0));
+    Texture::LoadTexture("goldIcon",      StatIcons.load(1, 0));
+    Texture::LoadTexture("energyIcon",        StatIcons.load(2, 0));
+
     std::cout << "...Towers" << std::endl;
 
     SpriteSheet towers("res/textures/Towers.png", 64, 64);

@@ -33,9 +33,9 @@ namespace TowerDefense
 		inline void RenderArtifactsPile() { m_Artifacts->Render(); }
 		inline void UpdateArtifactsPile() { m_Artifacts->Update(); }
 
-		inline void RenderHealth() { m_HealthText->Render(); }
-		inline void RenderEnergy() { m_EnergyText->Render(); }
-		inline void RenderGold() { m_GoldText->Render(); }
+		inline void RenderHealth() { m_HealthIcon->Render(); m_HealthText->Render(); }
+		inline void RenderEnergy() { m_EnergyIcon->Render(); m_EnergyText->Render(); }
+		inline void RenderGold() { m_GoldIcon->Render(); m_GoldText->Render(); }
 		inline void RenderDay() { m_DayText->Render(); }
 
 		void UpdateDayText();
@@ -89,6 +89,7 @@ namespace TowerDefense
 		std::shared_ptr<CardPile> m_Deck, m_DrawPile, m_DiscardPile;
 		std::unique_ptr<Button> m_ViewDeck;
 		std::unique_ptr<Text> m_HealthText, m_EnergyText, m_GoldText, m_DayText;
+		std::unique_ptr<Image> m_HealthIcon, m_EnergyIcon, m_GoldIcon;
 		std::unique_ptr<ArtifactPile> m_Artifacts;
 	};
 }

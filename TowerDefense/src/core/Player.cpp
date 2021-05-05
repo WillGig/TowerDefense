@@ -8,10 +8,13 @@ TowerDefense::Player::Player()
     m_DrawPile(std::make_shared<CardPile>(49.0f, 50.0f)),
     m_DiscardPile(std::make_shared<CardPile>(748.0f, 50.0f)),
     m_ViewDeck(std::make_unique<Button>(500.0f, 570.0f, 50, 50, "viewDeckButton")),
-    m_HealthText(std::make_unique<Text>(std::string("HP: ") + std::to_string(m_Health) + "/" + std::to_string(m_MaxHealth), 645.0f, 575.0f, 10.0f, 0.0f)),
-    m_EnergyText(std::make_unique<Text>(std::string("Energy: ") + std::to_string(m_Energy), 740.0f, 575.0f, 10.0f, 0.0f)),
-    m_GoldText(std::make_unique<Text>(std::string("Gold: ") + std::to_string(m_Gold), 150.0f, 575.0f, 10.0f, 0.0f)),
+    m_HealthText(std::make_unique<Text>(std::to_string(m_Health) + "/" + std::to_string(m_MaxHealth), 660.0f, 575.0f, 10.0f, 0.0f)),
+    m_EnergyText(std::make_unique<Text>(std::to_string(m_Energy), 740.0f, 575.0f, 10.0f, 0.0f)),
+    m_GoldText(std::make_unique<Text>(std::to_string(m_Gold), 150.0f, 575.0f, 10.0f, 0.0f)),
     m_DayText(std::make_unique<Text>(std::string("Day: ") + std::to_string(GetDay()), 400.0f, 575.0f, 10.0f, 0.0f)),
+    m_HealthIcon(std::make_unique<Image>("healthIcon", 620.0f, 572.0f, 20, 20, 0.0f)),
+    m_EnergyIcon(std::make_unique<Image>("energyIcon", 710.0f, 572.0f, 20, 20, 0.0f)),
+    m_GoldIcon(std::make_unique<Image>("goldIcon", 110.0f, 572.0f, 20, 20, 0.0f)),
     m_Artifacts(std::make_unique<ArtifactPile>(570.0f, 570.0f))
 {
     m_HealthText->SetColor(1.0f, 1.0f, 1.0f, 1.0f);
@@ -35,14 +38,14 @@ TowerDefense::Player& TowerDefense::Player::Get()
 void TowerDefense::Player::ChangeEnergy(int change)
 {
     m_Energy += change;
-    m_EnergyText = std::make_unique<Text>(std::string("Energy: ") + std::to_string(m_Energy), 740.0f, 575.0f, 10.0f, 0.0f);
+    m_EnergyText = std::make_unique<Text>(std::to_string(m_Energy), 740.0f, 575.0f, 10.0f, 0.0f);
     m_EnergyText->SetColor(m_TextColor.w, m_TextColor.x, m_TextColor.y, m_TextColor.z);
 }
 
 void TowerDefense::Player::ChangeGold(int change)
 {
     m_Gold += change;
-    m_GoldText = std::make_unique<Text>(std::string("Gold: ") + std::to_string(m_Gold), 150.0f, 575.0f, 10.0f, 0.0f);
+    m_GoldText = std::make_unique<Text>(std::to_string(m_Gold), 150.0f, 575.0f, 10.0f, 0.0f);
     m_GoldText->SetColor(m_TextColor.w, m_TextColor.x, m_TextColor.y, m_TextColor.z);
 }
 
@@ -51,7 +54,7 @@ void TowerDefense::Player::ChangeHealth(int change)
     m_Health += change;
     if (m_Health > m_MaxHealth)
         m_Health = m_MaxHealth;
-    m_HealthText = std::make_unique<Text>(std::string("HP: ") + std::to_string(m_Health) + "/" + std::to_string(m_MaxHealth), 645.0f, 575.0f, 10.0f, 0.0f);
+    m_HealthText = std::make_unique<Text>(std::to_string(m_Health) + "/" + std::to_string(m_MaxHealth), 660.0f, 575.0f, 10.0f, 0.0f);
     m_HealthText->SetColor(m_TextColor.w, m_TextColor.x, m_TextColor.y, m_TextColor.z);
 }
 
@@ -60,7 +63,7 @@ void TowerDefense::Player::ChangeMaxHealth(int change)
     m_MaxHealth += change; 
     if (m_Health > m_MaxHealth) 
         m_Health = m_MaxHealth;
-    m_HealthText = std::make_unique<Text>(std::string("HP: ") + std::to_string(m_Health) + "/" + std::to_string(m_MaxHealth), 645.0f, 575.0f, 10.0f, 0.0f);
+    m_HealthText = std::make_unique<Text>(std::to_string(m_Health) + "/" + std::to_string(m_MaxHealth), 660.0f, 575.0f, 10.0f, 0.0f);
     m_HealthText->SetColor(m_TextColor.w, m_TextColor.x, m_TextColor.y, m_TextColor.z);
 }
 
@@ -111,6 +114,9 @@ void TowerDefense::Player::CleanUp()
     m_GoldText.reset();
     m_DayText.reset();
     m_Artifacts.reset();
+    m_HealthIcon.reset();
+    m_EnergyIcon.reset();
+    m_GoldIcon.reset();
 }
 
 void TowerDefense::Player::AddToDeck(std::shared_ptr<Card> c)
