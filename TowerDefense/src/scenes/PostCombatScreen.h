@@ -1,5 +1,6 @@
 #pragma once
 #include "Scene.h"
+#include "CombatReward.h"
 
 namespace TowerDefense
 {
@@ -11,6 +12,10 @@ namespace TowerDefense
 		void Update() override;
 		void OnSwitch() override;
 	private:
-		std::unique_ptr<TowerDefense::Button> m_BackToCamp;
+		void AddReward(std::shared_ptr<CombatReward> reward);
+		void RemoveReward(int reward);
+
+		std::unique_ptr<Button> m_BackToCamp;
+		std::unique_ptr<std::vector<std::shared_ptr<CombatReward>>> m_Rewards;
 	};
 }

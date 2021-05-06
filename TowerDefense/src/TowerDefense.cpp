@@ -216,6 +216,7 @@ void TowerDefense::NextDay()
     Player::Get().UpdateDayText();
 }
 
+//Load in all textures from spritesheets into texture cache
 void LoadTextures()
 {
     std::cout << "Loading..." << std::endl;
@@ -290,16 +291,20 @@ void LoadTextures()
     Texture::LoadTexture("eventButton",         eventButtons.load(0, 0));
     Texture::LoadTexture("eventButtonSelected", eventButtons.load(0, 1));
 
-    SpriteSheet PlayerButtons("res/textures/PlayerButtons.png", 300, 300);
-    Texture::LoadTexture("viewDeckButton",              PlayerButtons.load(0, 0));
-    Texture::LoadTexture("viewDeckButtonSelected",      PlayerButtons.load(1, 0));
-    Texture::LoadTexture("viewArtifactsButton",         PlayerButtons.load(0, 1));
-    Texture::LoadTexture("viewArtifactsButtonSelected", PlayerButtons.load(1, 1));
+    SpriteSheet combatRewardButton("res/textures/CombatRewardButton.png", 180, 50);
+    Texture::LoadTexture("CombatReward",            combatRewardButton.load(0, 0));
+    Texture::LoadTexture("CombatRewardSelected",    combatRewardButton.load(1, 0));
 
-    SpriteSheet StatIcons("res/textures/Stats.png", 64, 64);
-    Texture::LoadTexture("healthIcon",      StatIcons.load(0, 0));
-    Texture::LoadTexture("goldIcon",      StatIcons.load(1, 0));
-    Texture::LoadTexture("energyIcon",        StatIcons.load(2, 0));
+    SpriteSheet playerButtons("res/textures/PlayerButtons.png", 300, 300);
+    Texture::LoadTexture("viewDeckButton",              playerButtons.load(0, 0));
+    Texture::LoadTexture("viewDeckButtonSelected",      playerButtons.load(1, 0));
+    Texture::LoadTexture("viewArtifactsButton",         playerButtons.load(0, 1));
+    Texture::LoadTexture("viewArtifactsButtonSelected", playerButtons.load(1, 1));
+
+    SpriteSheet statIcons("res/textures/Stats.png", 64, 64);
+    Texture::LoadTexture("healthIcon",      statIcons.load(0, 0));
+    Texture::LoadTexture("goldIcon",        statIcons.load(1, 0));
+    Texture::LoadTexture("energyIcon",      statIcons.load(2, 0));
 
     std::cout << "...Towers" << std::endl;
 

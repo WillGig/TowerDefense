@@ -242,6 +242,7 @@
     <ClCompile Include="src\scenes\cave_scenes\LiterallySatan.cpp" />
     <ClCompile Include="src\scenes\cave_scenes\TrolleyProblem.cpp" />
     <ClCompile Include="src\scenes\Combat.cpp" />
+    <ClCompile Include="src\scenes\CombatReward.cpp" />
     <ClCompile Include="src\scenes\MainMenu.cpp" />
     <ClCompile Include="src\math\Mat4f.cpp" />
     <ClCompile Include="src\engine\Renderer.cpp" />
@@ -377,6 +378,7 @@
     <ClInclude Include="src\scenes\base_scenes\BuildButton.h" />
     <ClInclude Include="src\scenes\cave_scenes\CaveScene.h" />
     <ClInclude Include="src\scenes\Combat.h" />
+    <ClInclude Include="src\scenes\CombatReward.h" />
     <ClInclude Include="src\scenes\MainMenu.h" />
     <ClInclude Include="src\math\Mat4f.h" />
     <ClInclude Include="src\math\Vector.h" />

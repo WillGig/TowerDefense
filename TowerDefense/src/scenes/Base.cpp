@@ -81,7 +81,6 @@ void TowerDefense::Base::Update()
 void TowerDefense::Base::OnSwitch()
 {
 	m_ActivityDone = false;
-	Player::Get().SetTextColor(1.0f, 1.0f, 1.0f, 1.0f);
 }
 
 void TowerDefense::Base::CleanUp()
