@@ -1,7 +1,4 @@
 Current:
-	Show player stats/info in base menus
-	Add deck and artifacts to rest menu
-
 	Daily activities
 		Explore Caves 	- Random event						- Done
 		Visit Library 	- Choose a new card					- Done

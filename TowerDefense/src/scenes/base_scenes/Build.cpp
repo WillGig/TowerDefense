@@ -63,6 +63,7 @@ void TowerDefense::Build::Update()
 						player.ChangeGold(-m_Buttons->at(i)->GetCost());
 						Base::AddBaseScene(m_Buttons->at(i)->GetScene());
 						m_Exit = true;
+						m_ActivityDone = true;
 					}
 				}
 			}
