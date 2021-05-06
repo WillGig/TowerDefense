@@ -3,7 +3,7 @@
 #include "cards/Focus.h"
 
 TowerDefense::Player::Player()
-    :m_Health(100), m_MaxHealth(100), m_Energy(100), m_Gold(1000), m_Hand(std::make_shared<Hand>(10)),
+    :m_Health(100), m_MaxHealth(100), m_Energy(100), m_Gold(10000), m_Hand(std::make_shared<Hand>(10)),
     m_Deck(std::make_shared<CardPile>(-100.0f,0.0f)), 
     m_DrawPile(std::make_shared<CardPile>(49.0f, 50.0f)),
     m_DiscardPile(std::make_shared<CardPile>(748.0f, 50.0f)),
@@ -65,6 +65,17 @@ void TowerDefense::Player::ChangeMaxHealth(int change)
         m_Health = m_MaxHealth;
     m_HealthText = std::make_unique<Text>(std::to_string(m_Health) + "/" + std::to_string(m_MaxHealth), 660.0f, 575.0f, 10.0f, 0.0f);
     m_HealthText->SetColor(m_TextColor.w, m_TextColor.x, m_TextColor.y, m_TextColor.z);
+}
+
+void TowerDefense::Player::RenderStats()
+{
+    m_HealthIcon->Render(); 
+    m_HealthText->Render();
+    m_EnergyIcon->Render(); 
+    m_EnergyText->Render();
+    m_GoldIcon->Render(); 
+    m_GoldText->Render();
+    m_DayText->Render();
 }
 
 void TowerDefense::Player::UpdateDayText()

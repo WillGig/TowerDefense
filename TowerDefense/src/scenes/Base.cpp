@@ -30,9 +30,7 @@ void TowerDefense::Base::Render()
 		m_NextDay->Render();
 		player.RenderDeckButton();
 		player.RenderArtifactsPile();
-		player.RenderHealth();
-		player.RenderGold();
-		player.RenderDay();
+		player.RenderStats();
 
 		if (player.DeckShowing())
 		{

@@ -15,6 +15,7 @@ void TowerDefense::Build::Render()
 	Player& player = Player::Get();
 	player.RenderDeckButton();
 	player.RenderArtifactsPile();
+	player.RenderStats();
 	m_Cancel->Render();
 
 	for (unsigned int i = 0; i < m_Buttons->size(); i++)
@@ -80,7 +81,7 @@ void TowerDefense::Build::OnSwitch()
 	if(!Base::ContainsScene("Library"))
 		AddBuildButton(std::make_shared<BuildButton>("buildLibrary", 500, std::make_shared<Library>()));
 	//if (!Base::ContainsScene("Fishing"))
-	//	AddBuildButton(BuildButton("buildFishery", 500, nullptr));
+	//	AddBuildButton(BuildButton("buildFishery", 500, std::make_shared<Fishing>()));
 	if (!Base::ContainsScene("Chapel"))
 		AddBuildButton(std::make_shared<BuildButton>("buildChapel", 1000, std::make_shared<Chapel>()));
 	if (!Base::ContainsScene("Smithing"))

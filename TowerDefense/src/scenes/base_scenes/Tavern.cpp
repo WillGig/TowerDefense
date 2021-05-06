@@ -18,6 +18,7 @@ void TowerDefense::Tavern::Render()
 	m_Cancel->Render();
 	player.RenderDeckButton();
 	player.RenderArtifactsPile();
+	player.RenderStats();
 	if (m_TavernChoice->GetSelectedCard())
 		m_Confirm->Render();
 	m_TavernChoice->Render();

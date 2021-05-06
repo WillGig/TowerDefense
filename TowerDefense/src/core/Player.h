@@ -33,10 +33,7 @@ namespace TowerDefense
 		inline void RenderArtifactsPile() { m_Artifacts->Render(); }
 		inline void UpdateArtifactsPile() { m_Artifacts->Update(); }
 
-		inline void RenderHealth() { m_HealthIcon->Render(); m_HealthText->Render(); }
-		inline void RenderEnergy() { m_EnergyIcon->Render(); m_EnergyText->Render(); }
-		inline void RenderGold() { m_GoldIcon->Render(); m_GoldText->Render(); }
-		inline void RenderDay() { m_DayText->Render(); }
+		void RenderStats();
 
 		void UpdateDayText();
 

@@ -15,6 +15,7 @@ void TowerDefense::Library::Render()
 	Player& player = Player::Get();
 	player.RenderDeckButton();
 	player.RenderArtifactsPile();
+	player.RenderStats();
 	m_Cancel->Render();
 	if (m_CardChoice->GetSelectedCard())
 		m_Confirm->Render();

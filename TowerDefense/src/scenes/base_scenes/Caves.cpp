@@ -13,9 +13,7 @@ void TowerDefense::Caves::Render()
 
 	m_CaveScene->Render();
 
-	player.RenderHealth();
-	player.RenderGold();
-	player.RenderDay();
+	player.RenderStats();
 
 	if (player.DeckShowing())
 		player.RenderDeck();

@@ -46,11 +46,7 @@ void TowerDefense::Combat::Render()
 	m_StartButton->Render();
 	m_SpeedButton->Render();
 
-	//Stats at top of screen
-	player.RenderHealth();
-	player.RenderEnergy();
-	player.RenderGold();
-	player.RenderDay();
+	player.RenderStats();
 
 	//Render Tower Information
 	if (s_TowerInfo)

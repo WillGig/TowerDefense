@@ -13,8 +13,7 @@ TowerDefense::Rest::Rest()
 void TowerDefense::Rest::Render()
 {
 	Player& player = Player::Get();
-	player.RenderHealth();
-	player.RenderGold();
+	player.RenderStats();
 	m_RestText->Render();
 	m_Confirm->Render();
 	m_Cancel->Render();
