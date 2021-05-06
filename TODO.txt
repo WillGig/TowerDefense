@@ -1,4 +1,6 @@
 Current:
+	Add post combat info and rewards
+
 	Daily activities
 		Explore Caves 	- Random event						- Done
 		Visit Library 	- Choose a new card					- Done
@@ -19,14 +21,12 @@ Soon:
 		- range, damage, speed, more missiles, new spells, attacks stun/slow	
 	Shop/merchants
 	can scout next battle for gold price (towers cost gold in battle? 1 currency or two?)
-	Gold price to buy fishing, smithing, library, tavern, etc. Default options sleeping and exploring?
 
 Long Term:
 	Add specifics to upgrades when right clicking on them to make it clear what they do
 	Make resolution adjustable
 	Change leveling for heros - add new types of attacks, etc.
 	Add combat info on precombat screen (at least name and picture)
-	Add post combat info and rewards
 	Saving and Loading
 	Settings menu
 	In Game Menu
