@@ -3,7 +3,7 @@
 #include "cards/Focus.h"
 
 TowerDefense::Player::Player()
-    :m_Health(100), m_MaxHealth(100), m_Energy(100), m_Gold(1000), m_Hand(std::make_shared<Hand>(10)),
+    :m_Health(100), m_MaxHealth(100), m_Energy(100), m_Gold(0), m_Hand(std::make_shared<Hand>(10)),
     m_Deck(std::make_shared<CardPile>(-100.0f,0.0f)), 
     m_DrawPile(std::make_shared<CardPile>(49.0f, 50.0f)),
     m_DiscardPile(std::make_shared<CardPile>(748.0f, 50.0f)),
