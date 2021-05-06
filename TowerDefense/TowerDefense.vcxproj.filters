@@ -315,6 +315,9 @@
     <ClCompile Include="src\scenes\base_scenes\Build.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="src\scenes\base_scenes\BuildButton.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="res\shaders\Texture.shader" />
@@ -684,6 +687,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\cards\LightningBolt.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\scenes\base_scenes\BuildButton.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

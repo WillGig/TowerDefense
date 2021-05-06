@@ -177,6 +177,7 @@ void TowerDefense::CleanUp()
 {
     Player::Get().CleanUp();
     Board::Get().CleanUp();
+    Base::CleanUp();
     Combat::CleanUp();
     Texture::FreeTextures();
     Shader::DeleteShaders();
@@ -258,6 +259,18 @@ void LoadTextures()
     Texture::LoadTexture("prayButtonSelected",          baseButtons.load(3, 5));
     Texture::LoadTexture("buildButton",                 baseButtons.load(0, 6));
     Texture::LoadTexture("buildButtonSelected",         baseButtons.load(1, 6));
+
+    SpriteSheet buildButtons("res/textures/BuildButtons.png", 375, 65);
+    Texture::LoadTexture("buildLibrary",            buildButtons.load(0, 0));
+    Texture::LoadTexture("buildFishery",            buildButtons.load(0, 1));
+    Texture::LoadTexture("buildChapel",             buildButtons.load(0, 2));
+    Texture::LoadTexture("buildSmithy",             buildButtons.load(0, 3));
+    Texture::LoadTexture("buildTavern",             buildButtons.load(0, 4));
+    Texture::LoadTexture("buildLibrarySelected",    buildButtons.load(1, 0));
+    Texture::LoadTexture("buildFisherySelected",    buildButtons.load(1, 1));
+    Texture::LoadTexture("buildChapelSelected",     buildButtons.load(1, 2));
+    Texture::LoadTexture("buildSmithySelected",     buildButtons.load(1, 3));
+    Texture::LoadTexture("buildTavernSelected",     buildButtons.load(1, 4));
 
     SpriteSheet combatButtons("res/textures/CombatButtons.png", 384, 128);
     Texture::LoadTexture("startButton",         combatButtons.load(0, 0));

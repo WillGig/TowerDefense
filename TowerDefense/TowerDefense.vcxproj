@@ -228,6 +228,7 @@
     <ClCompile Include="src\engine\Log.cpp" />
     <ClCompile Include="src\Main.cpp" />
     <ClCompile Include="src\scenes\base_scenes\Build.cpp" />
+    <ClCompile Include="src\scenes\base_scenes\BuildButton.cpp" />
     <ClCompile Include="src\scenes\base_scenes\Caves.cpp" />
     <ClCompile Include="src\scenes\base_scenes\Chapel.cpp" />
     <ClCompile Include="src\scenes\base_scenes\Library.cpp" />
@@ -373,6 +374,7 @@
     <ClInclude Include="src\engine\IndexBuffer.h" />
     <ClInclude Include="src\engine\Log.h" />
     <ClInclude Include="src\scenes\base_scenes\BaseScene.h" />
+    <ClInclude Include="src\scenes\base_scenes\BuildButton.h" />
     <ClInclude Include="src\scenes\cave_scenes\CaveScene.h" />
     <ClInclude Include="src\scenes\Combat.h" />
     <ClInclude Include="src\scenes\MainMenu.h" />

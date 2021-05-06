@@ -2,9 +2,12 @@
 #include "scenes/Scene.h"
 #include "scenes/cave_scenes/CaveScene.h"
 #include "cards/CardChoice.h"
+#include "BuildButton.h"
 
 namespace TowerDefense
 {
+	class BuildButton;
+
 	class BaseScene : public Scene
 	{
 	public:
@@ -17,6 +20,7 @@ namespace TowerDefense
 		inline void SetButtonPosition(float x, float y) { m_Button->SetX(x); m_Button->SetY(y); }
 		inline void RenderText() { m_Description->Render(); }
 		inline void OnSwitch() override { m_ActivityDone = false; m_Exit = false; m_Button->SetSelected(false); };
+		virtual std::string GetName() = 0;
 	protected:
 		BaseScene(const std::string& button, const std::string& description)
 			:m_Exit(false), m_ActivityDone(false), m_Description(std::make_unique<Text>(description, 400.0f, 235.0f, 12.0f, 0.0f)),
@@ -39,6 +43,7 @@ namespace TowerDefense
 		void Render() override;
 		void Update() override;
 		void OnSwitch() override;
+		inline std::string GetName() override { return "Caves"; }
 	private:
 		std::shared_ptr<CaveScene> m_CaveScene;
 	};
@@ -50,6 +55,7 @@ namespace TowerDefense
 		void Render() override;
 		void Update() override;
 		void OnSwitch() override;
+		inline std::string GetName() override { return "Rest"; }
 	private:
 		std::unique_ptr<Text> m_RestText;
 		std::unique_ptr<Button> m_Confirm, m_Cancel;
@@ -62,6 +68,7 @@ namespace TowerDefense
 		void Render() override;
 		void Update() override;
 		void OnSwitch() override;
+		inline std::string GetName() override { return "Library"; }
 	private:
 		std::unique_ptr<TowerDefense::CardChoice> m_CardChoice;
 		std::unique_ptr<Button> m_Confirm, m_Cancel;
@@ -74,6 +81,7 @@ namespace TowerDefense
 		void Render() override;
 		void Update() override;
 		void OnSwitch() override;
+		inline std::string GetName() override { return "Smithing"; }
 	private:
 		void FindSelectedCard();
 
@@ -89,6 +97,7 @@ namespace TowerDefense
 		void Render() override;
 		void Update() override;
 		void OnSwitch() override;
+		inline std::string GetName() override { return "Tavern"; }
 	private:
 		std::unique_ptr<TowerDefense::CardChoice> m_TavernChoice;
 		std::unique_ptr<Button> m_Confirm, m_Cancel;
@@ -101,6 +110,7 @@ namespace TowerDefense
 		void Render() override;
 		void Update() override;
 		void OnSwitch() override;
+		inline std::string GetName() override { return "Chapel"; }
 	private:
 		void FindSelectedCard();
 
@@ -117,7 +127,11 @@ namespace TowerDefense
 		void Render() override;
 		void Update() override;
 		void OnSwitch() override;
+		inline std::string GetName() override { return "Build"; }
 	private:
-		std::unique_ptr<Button> m_Confirm, m_Cancel;
+		void AddBuildButton(std::shared_ptr<BuildButton> button);
+
+		std::unique_ptr<Button> m_Cancel;
+		std::unique_ptr<std::vector<std::shared_ptr<BuildButton>>> m_Buttons;
 	};
 }

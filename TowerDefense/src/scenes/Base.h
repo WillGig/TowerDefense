@@ -14,6 +14,11 @@ namespace TowerDefense
 		void Render() override;
 		void Update() override;
 		void OnSwitch() override;
+		static void CleanUp();
+
+		static void AddBaseScene(std::shared_ptr<BaseScene> scene);
+
+		static bool ContainsScene(const std::string& name);
 
 	private:
 		void UpdateDeck();
@@ -21,14 +26,12 @@ namespace TowerDefense
 		void UpdateViewDeck();
 		void UpdateNextDay();
 
-		void AddBaseScene(std::shared_ptr<BaseScene> scene);
-
 		int m_CurrentMenu;
 
 		bool m_ActivityDone;
 
-		std::unique_ptr<std::vector<std::shared_ptr<BaseScene>>> m_BaseScenes;
-
 		std::unique_ptr<Button> m_NextDay;
+
+		static std::unique_ptr<std::vector<std::shared_ptr<BaseScene>>> s_BaseScenes;
 	};
 }
