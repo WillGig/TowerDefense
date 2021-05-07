@@ -4,7 +4,7 @@
 #include "core/Player.h"
 
 TowerDefense::PostCombatScreen::PostCombatScreen()
-	:m_BackToCamp(std::make_unique<Button>(400.0f, 100.0f, 180, 50, "returnToCampButton")),
+	:m_FocusedReward(-1), m_BackToCamp(std::make_unique<Button>(400.0f, 100.0f, 180, 50, "returnToCampButton")),
 	m_Rewards(std::make_unique<std::vector<std::shared_ptr<CombatReward>>>())
 {
 }
@@ -17,8 +17,14 @@ void TowerDefense::PostCombatScreen::Render()
 	player.RenderStats();
 
 	for (unsigned int i = 0; i < m_Rewards->size(); i++)
-		m_Rewards->at(i)->Render();
+	{
+		if(i != m_FocusedReward)
+			m_Rewards->at(i)->Render();
+	}
 	m_BackToCamp->Render();
+
+	if (m_FocusedReward != -1)
+		m_Rewards->at(m_FocusedReward)->Render();
 
 	if (player.DeckShowing())
 	{
@@ -36,8 +42,20 @@ void TowerDefense::PostCombatScreen::Render()
 
 void TowerDefense::PostCombatScreen::Update()
 {
+	m_FocusedReward = -1;
+	for (unsigned int i = 0; i < m_Rewards->size(); i++)
+	{
+		if (m_Rewards->at(i)->RequiresFocus())
+		{
+			m_FocusedReward = i;
+			break;
+		}
+	}
+
+	bool showingRewardInfo = m_FocusedReward != -1 && m_Rewards->at(m_FocusedReward)->ShowingInfo();
+
 	Player& player = Player::Get();
-	if (!player.ArtifactsShowing())
+	if (!player.ArtifactsShowing() && !showingRewardInfo)
 	{
 		player.UpdateDeckButton();
 		if (player.DeckButtonClicked())
@@ -48,23 +66,29 @@ void TowerDefense::PostCombatScreen::Update()
 		player.UpdateDeck();
 	else
 	{
-		player.UpdateArtifactsPile();
+		if(!showingRewardInfo)
+			player.UpdateArtifactsPile();
 		if (!player.ArtifactsShowing())
 		{
-			int takenReward = -1;
-			for (unsigned int i = 0; i < m_Rewards->size(); i++)
+			if (m_FocusedReward == -1)
 			{
-				m_Rewards->at(i)->Update();
-				if (m_Rewards->at(i)->RewardTaken())
-					takenReward = i;
+				int takenReward = -1;
+				for (unsigned int i = 0; i < m_Rewards->size(); i++)
+				{
+					m_Rewards->at(i)->Update();
+					if (m_Rewards->at(i)->RewardTaken())
+						takenReward = i;
+				}
+
+				if (takenReward != -1)
+					RemoveReward(takenReward);
+
+				m_BackToCamp->Update();
+				if (m_BackToCamp->IsClicked())
+					TowerDefense::SetScene(SceneType::BASE);
 			}
-
-			if (takenReward != -1)
-				RemoveReward(takenReward);
-
-			m_BackToCamp->Update();
-			if (m_BackToCamp->IsClicked())
-				TowerDefense::SetScene(SceneType::BASE);
+			else
+				m_Rewards->at(m_FocusedReward)->Update();
 		}
 	}
 }
@@ -77,6 +101,7 @@ void TowerDefense::PostCombatScreen::OnSwitch()
 	AddReward(std::make_shared<GoldReward>((int)(Random::GetFloat() * 200.0f)));
 	AddReward(std::make_shared<GoldReward>((int)(Random::GetFloat() * 200.0f)));
 	AddReward(std::make_shared<GoldReward>((int)(Random::GetFloat() * 200.0f)));
+	AddReward(std::make_shared<CardReward>(3));
 }
 
 void TowerDefense::PostCombatScreen::AddReward(std::shared_ptr<CombatReward> reward)

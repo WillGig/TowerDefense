@@ -1,5 +1,5 @@
 Current:
-	Add post combat info and rewards
+	make rewards depend on the combat
 	Create functions for rendering and updating player deck and artifacts
 
 	Daily activities

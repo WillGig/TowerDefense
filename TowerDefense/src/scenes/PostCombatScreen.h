@@ -15,6 +15,7 @@ namespace TowerDefense
 		void AddReward(std::shared_ptr<CombatReward> reward);
 		void RemoveReward(int reward);
 
+		int m_FocusedReward;
 		std::unique_ptr<Button> m_BackToCamp;
 		std::unique_ptr<std::vector<std::shared_ptr<CombatReward>>> m_Rewards;
 	};
