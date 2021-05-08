@@ -37,10 +37,14 @@ void TowerDefense::Tower::Tower::Update()
 	if (Combat::Paused())
 		return;
 
-	if (m_FireReady >= m_FireTime)
-		Attack();
-	else
-		m_FireReady += Combat::GetRoundSpeed();
+	for (int i = 0; i < Combat::GetRoundSpeed(); i++)
+	{
+		if (m_FireReady >= m_FireTime)
+			Attack();
+		else
+			m_FireReady ++;
+	}
+	
 
 	UpdateBuffs();
 }
@@ -62,10 +66,8 @@ void TowerDefense::Tower::Tower::Attack()
 	if (target) {
 		SetRotation(FindDirection(target->GetX(), target->GetY()));
 		Fire(target);
-		m_FireReady -= (int)m_FireTime;
+		m_FireReady = 0;
 	}
-	else
-		m_FireReady = (int)m_FireTime;
 }
 
 void TowerDefense::Tower::Tower::UpdateBuffs()
