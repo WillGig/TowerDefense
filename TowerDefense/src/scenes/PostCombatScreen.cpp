@@ -164,13 +164,13 @@ void TowerDefense::PostCombatScreen::OnSwitch()
 		damageDealt += " ";
 	damageDealt += artifactDamage;
 
-	m_DamageDealt = std::make_unique<Text>(damageDealt, 650.0f, 430.0f, 12.0f, 0.0f);
+	m_DamageDealt = std::make_unique<Text>(damageDealt, 655.0f, 430.0f, 12.0f, 0.0f);
 	m_DamageDealt->SetColor(1.0f, 1.0f, 1.0f, 1.0f);
 
-	m_DefeatedStats = std::make_unique<Text>(defEnemies, 180.0f, 480.0f - (defeatedHeight * 10.0f), 12.0f, 0.0f);
+	m_DefeatedStats = std::make_unique<Text>(defEnemies, 155.0f, 480.0f - (defeatedHeight * 10.0f), 12.0f, 0.0f);
 	m_DefeatedStats->SetColor(1.0f, 1.0f, 1.0f, 1.0f);
 
-	m_EscapedStats = std::make_unique<Text>(escEnemies, 180.0f, 300.0f - (escapedHeight * 10.0f), 12.0f, 0.0f);
+	m_EscapedStats = std::make_unique<Text>(escEnemies, 155.0f, 300.0f - (escapedHeight * 10.0f), 12.0f, 0.0f);
 	m_EscapedStats->SetColor(1.0f, 1.0f, 1.0f, 1.0f);
 
 	//Combat Gold
