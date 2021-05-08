@@ -14,7 +14,7 @@ TowerDefense::HeroCard::HeroCard(const std::string& name, const std::string& tex
 	m_NameText(std::make_unique<Text>(name, 0.0f, 0.0f, 10.0f, (float)m_Width)),
 	m_BodyText(std::make_unique<Text>(text, 0.0f, 0.0f, 6.0f, (float)m_Width)),
 	m_DetailedNameText(std::make_unique<Text>(name, 400.0f, 417.0f, 20.0f, (float)m_Width*2)),
-	m_DetailedBodyText(std::make_unique<Text>(text, 400.0f, 270.0f, 12.0f, (float)m_Width*2))
+	m_DetailedBodyText(std::make_unique<Text>(text, 400.0f, 215.0f, 12.0f, (float)m_Width*2))
 {
 	m_Exhausts = true;
 
@@ -116,16 +116,16 @@ void TowerDefense::HeroCard::UpdateTextPosition()
 {
 	float rot = m_Rotation * PI / 180.0f;
 
-	float xOff = 63.0f * -sin(rot);
-	float yOff = 63.0f * cos(rot);
+	float xOff = 59.0f * -sin(rot);
+	float yOff = 59.0f * cos(rot);
 	m_NameText->SetPosition(m_X + xOff, m_Y + yOff, 0.0f);
 
-	xOff = 63 * -sin(rot) - 40 * cos(rot);
-	yOff = 63 * cos(rot) - 40 * sin(rot);
+	xOff = 57 * -sin(rot) - 40 * cos(rot);
+	yOff = 57 * cos(rot) - 40 * sin(rot);
 	m_CostText->SetPosition(m_X + xOff, m_Y + yOff, 0.0f);
 
 	xOff = -15.0f * -sin(rot);
-	yOff = -15.0f * cos(rot);
+	yOff = -43.0f * cos(rot);
 	m_BodyText->SetPosition(m_X + xOff, m_Y + yOff, 0.0f);
 }
 

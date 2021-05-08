@@ -52,14 +52,14 @@ void TowerDefense::EnemyInfo::SetX(float x)
 {
 	Entity::SetX(x);
 	m_Name->SetPosition(m_X, m_Y + 15.0f, 0.0f);
-	m_Stats->SetPosition(m_X, m_Y, 0.0f);
+	m_Stats->SetPosition(m_X, m_Y - 10, 0.0f);
 }
 
 void TowerDefense::EnemyInfo::SetY(float y)
 {
 	Entity::SetY(y);
 	m_Name->SetPosition(m_X, m_Y + 15.0f, 0.0f);
-	m_Stats->SetPosition(m_X, m_Y, 0.0f);
+	m_Stats->SetPosition(m_X, m_Y - 10, 0.0f);
 }
 
 void TowerDefense::EnemyInfo::UpdateStatsText()
@@ -88,5 +88,5 @@ void TowerDefense::EnemyInfo::UpdateStatsText()
 	ss << std::fixed << std::setprecision(1) << (m_EnemySpeed * 32.0f);
 	stats += ss.str();
 
-	m_Stats = std::make_unique<Text>(stats, m_X, m_Y, 8.0f, 200.0f);
+	m_Stats = std::make_unique<Text>(stats, m_X, m_Y - 10, 8.0f, 200.0f);
 }

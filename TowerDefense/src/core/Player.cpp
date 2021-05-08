@@ -12,10 +12,10 @@ TowerDefense::Player::Player()
     m_EnergyText(std::make_unique<Text>(std::to_string(m_Energy), 740.0f, 575.0f, 10.0f, 0.0f)),
     m_GoldText(std::make_unique<Text>(std::to_string(m_Gold), 150.0f, 575.0f, 10.0f, 0.0f)),
     m_DayText(std::make_unique<Text>(std::string("Day: ") + std::to_string(GetDay()), 400.0f, 575.0f, 10.0f, 0.0f)),
-    m_HealthIcon(std::make_unique<Image>("healthIcon", 620.0f, 572.0f, 20, 20, 0.0f)),
-    m_EnergyIcon(std::make_unique<Image>("energyIcon", 710.0f, 572.0f, 20, 20, 0.0f)),
-    m_GoldIcon(std::make_unique<Image>("goldIcon", 110.0f, 572.0f, 20, 20, 0.0f)),
-    m_Artifacts(std::make_unique<ArtifactPile>(570.0f, 570.0f))
+    m_HealthIcon(std::make_unique<Image>("healthIcon", 620.0f, 575.0f, 20, 20, 0.0f)),
+    m_EnergyIcon(std::make_unique<Image>("energyIcon", 710.0f, 575.0f, 20, 20, 0.0f)),
+    m_GoldIcon(std::make_unique<Image>("goldIcon", 110.0f, 575.0f, 20, 20, 0.0f)),
+    m_Artifacts(std::make_shared<ArtifactPile>(570.0f, 570.0f))
 {
     m_HealthText->SetColor(1.0f, 1.0f, 1.0f, 1.0f);
     m_EnergyText->SetColor(1.0f, 1.0f, 1.0f, 1.0f);

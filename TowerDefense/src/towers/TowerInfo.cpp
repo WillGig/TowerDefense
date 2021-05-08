@@ -78,7 +78,7 @@ void TowerDefense::TowerInfo::SetX(float x)
 	Entity::SetX(x);
 	m_Name->SetPosition(m_X, m_Y + 62.0f, 0.0f);
 	m_Target->SetPosition(m_X, m_Y + 42.0f, 0.0f);
-	m_Stats->SetPosition(m_X, m_Y + 24.0f, 0.0f);
+	m_Stats->SetPosition(m_X, m_Y - 20.0f, 0.0f);
 	m_TargetLeft->SetX(x - 65);
 	m_TargetRight->SetX(x + 65);
 }
@@ -88,7 +88,7 @@ void TowerDefense::TowerInfo::SetY(float y)
 	Entity::SetY(y);
 	m_Name->SetPosition(m_X, m_Y + 62.0f, 0.0f);
 	m_Target->SetPosition(m_X, m_Y + 42.0f, 0.0f);
-	m_Stats->SetPosition(m_X, m_Y + 24.0f, 0.0f);
+	m_Stats->SetPosition(m_X, m_Y - 20.0f, 0.0f);
 	m_TargetLeft->SetY(y + 40);
 	m_TargetRight->SetY(y + 40);
 }
@@ -152,5 +152,5 @@ void TowerDefense::TowerInfo::UpdateStatsText()
 		stats += " ";
 	stats += ss.str();
 
-	m_Stats = std::make_unique<Text>(stats, m_X, m_Y + 24.0f, 10.0f, 200.0f);
+	m_Stats = std::make_unique<Text>(stats, m_X, m_Y - 20.0f, 10.0f, 200.0f);
 }

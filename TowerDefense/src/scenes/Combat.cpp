@@ -7,6 +7,7 @@
 #include "towers/Archer.h"
 
 int TowerDefense::Combat::s_RoundSpeed = 1;
+int TowerDefense::Combat::s_CurrentFight = -1;
 bool TowerDefense::Combat::s_Paused = false;
 
 std::shared_ptr<std::vector<std::shared_ptr<TowerDefense::Entity>>> TowerDefense::Combat::s_Entities = std::make_shared<std::vector<std::shared_ptr<TowerDefense::Entity>>>();
@@ -18,7 +19,7 @@ std::unique_ptr<TowerDefense::TowerInfo> TowerDefense::Combat::s_TowerInfo;
 std::unique_ptr<TowerDefense::EnemyInfo> TowerDefense::Combat::s_EnemyInfo;
 
 TowerDefense::Combat::Combat()
-	:m_CurrentFight(-1), m_TurnPhase(Phase::START),
+	:m_TurnPhase(Phase::START),
 	m_StartButton(std::make_unique<Button>(76.0f, 201.0f, 96, 32, "startButton")),
 	m_SpeedButton(std::make_unique<Button>(76.0f, 159.0f, 96, 32, "speed1"))
 {
@@ -128,7 +129,7 @@ void TowerDefense::Combat::OnSwitch()
 
 	player.ArtifactOnFightStart();
 
-	m_CurrentFight++;
+	s_CurrentFight++;
 }
 
 //Called at end of program to clean up memory
@@ -240,7 +241,7 @@ void TowerDefense::Combat::UpdateCards()
 void TowerDefense::Combat::UpdateWave()
 {
 	//Check if wave is over and End Round
-	auto wave = s_Fights->at(m_CurrentFight)->GetWave();
+	auto wave = s_Fights->at(s_CurrentFight)->GetWave();
 	if (m_TurnPhase == Phase::COMBAT && (!wave || !wave->HasMoreEnemies()) && EnemiesDefeated())
 	{
 		m_TurnPhase = Phase::END;
@@ -249,7 +250,7 @@ void TowerDefense::Combat::UpdateWave()
 
 	//Add new Enemies from wave
 	if (m_TurnPhase == Phase::COMBAT && wave->HasMoreEnemies() && !s_Paused) {
-		std::shared_ptr<Enemy::Enemy> e = s_Fights->at(m_CurrentFight)->GetWave()->GetNextEnemy();
+		std::shared_ptr<Enemy::Enemy> e = s_Fights->at(s_CurrentFight)->GetWave()->GetNextEnemy();
 		if (e)
 			AddEntity(e);
 	}
@@ -259,14 +260,14 @@ void TowerDefense::Combat::UpdateWave()
 void TowerDefense::Combat::UpdateButtons()
 {
 	//Start Button
-	if (s_Fights->at(m_CurrentFight)->HasMoreWaves() || m_TurnPhase != Phase::START)
+	if (s_Fights->at(s_CurrentFight)->HasMoreWaves() || m_TurnPhase != Phase::START)
 	{
 		m_StartButton->Update();
 		if (m_StartButton->IsClicked())
 		{
 			if (m_TurnPhase == Phase::START)
 			{
-				s_Fights->at(m_CurrentFight)->NextWave();
+				s_Fights->at(s_CurrentFight)->NextWave();
 				m_TurnPhase = Phase::COMBAT;
 				m_StartButton->SetImages("pause");
 				ClearProjectilesAndAnimations();
@@ -414,7 +415,7 @@ void TowerDefense::Combat::EndRound()
 
 	m_StartButton->SetImages("endButton");
 
-	if (!s_Fights->at(m_CurrentFight)->HasMoreWaves())
+	if (!s_Fights->at(s_CurrentFight)->HasMoreWaves())
 	{
 		Player::Get().ArtifactOnFightEnd();
 		SetScene(SceneType::POSTCOMBAT);
@@ -463,6 +464,21 @@ std::shared_ptr<TowerDefense::Entity> TowerDefense::Combat::GetEntity(unsigned i
 		if (e->GetID() == ID)
 			return e;
 	}
+
+	auto hand = Player::Get().GetHand();
+	for (int i = 0; i < hand->GetSize(); i++)
+	{
+		if (hand->GetCard(i)->GetID() == ID)
+			return hand->GetCard(i);
+	}
+
+	auto artifacts = Player::Get().GetArtifacts();
+	for (int i = 0; i < artifacts->GetSize(); i++)
+	{
+		if (artifacts->GetArtifact(i)->GetID() == ID)
+			return artifacts->GetArtifact(i);
+	}
+
 	return nullptr;
 }
 

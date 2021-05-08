@@ -19,7 +19,7 @@ Text::Text(std::string msg, float x, float y, float size, float maxWidth)
 
 	//Offset of current character
 	int xOffSet = 0; 
-	int yOffSet = (int)(size / 2);
+	int yOffSet = height/2;
 
 	if(msg.length() > 0)
 		xOffSet += (int)GetWidth(msg[0])/2;

@@ -32,6 +32,8 @@ namespace TowerDefense
 		static std::shared_ptr<Entity> GetEntity(unsigned int ID);
 
 		static inline std::shared_ptr<std::vector<std::shared_ptr<Entity>>> GetEntities() { return s_Entities; }
+
+		static inline std::shared_ptr<Fight> GetCurrentFight() { return s_Fights->at(s_CurrentFight); }
 		
 		static inline int GetRoundSpeed() { return s_RoundSpeed; }
 		
@@ -72,7 +74,7 @@ namespace TowerDefense
 		static int s_RoundSpeed;
 		static bool s_Paused;
 
-		int m_CurrentFight;
+		static int s_CurrentFight;
 		Phase m_TurnPhase;
 		std::unique_ptr<Button> m_StartButton, m_SpeedButton;
 		std::shared_ptr<Tower::Tower> m_SelectedTower;

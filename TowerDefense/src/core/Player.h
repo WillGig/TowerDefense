@@ -32,6 +32,7 @@ namespace TowerDefense
 
 		inline void RenderArtifactsPile() { m_Artifacts->Render(); }
 		inline void UpdateArtifactsPile() { m_Artifacts->Update(); }
+		inline std::shared_ptr<ArtifactPile> GetArtifacts() { return m_Artifacts; }
 
 		void RenderStats();
 
@@ -87,6 +88,6 @@ namespace TowerDefense
 		std::unique_ptr<Button> m_ViewDeck;
 		std::unique_ptr<Text> m_HealthText, m_EnergyText, m_GoldText, m_DayText;
 		std::unique_ptr<Image> m_HealthIcon, m_EnergyIcon, m_GoldIcon;
-		std::unique_ptr<ArtifactPile> m_Artifacts;
+		std::shared_ptr<ArtifactPile> m_Artifacts;
 	};
 }

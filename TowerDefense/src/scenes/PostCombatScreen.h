@@ -18,5 +18,6 @@ namespace TowerDefense
 		int m_FocusedReward;
 		std::unique_ptr<Button> m_BackToCamp;
 		std::unique_ptr<std::vector<std::shared_ptr<CombatReward>>> m_Rewards;
+		std::unique_ptr<Text> m_DefeatedStats, m_EscapedStats, m_DamageDealt;
 	};
 }

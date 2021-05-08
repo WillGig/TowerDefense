@@ -42,6 +42,7 @@ void TowerDefense::Enemy::Enemy::Update()
 	//Check if enemy reached the end and Remove
 	if (m_ReachedEnd) {
 		TowerDefense::Player::Get().ChangeHealth(-m_Damage);
+		Combat::GetCurrentFight()->AddEscapedEnemy(*this);
 		Destroy();
 	}
 
@@ -170,12 +171,16 @@ void TowerDefense::Enemy::Enemy::TakeDamage(float damage, unsigned int sourceID)
 			auto tower = std::dynamic_pointer_cast<Tower::Tower>(source);
 			tower->AddDamageDelt(damage);
 		}
+		Combat::GetCurrentFight()->AddDamage(damage, source);
 	}
 		
 	m_Health -= damage;
 	m_HealthBar->SetFill(m_Health / m_MaxHealth);
 	if (m_Health <= 0)
+	{
+		Combat::GetCurrentFight()->AddDefeatedEnemy(*this);
 		Destroy();
+	}
 }
 
 void TowerDefense::Enemy::Enemy::Slow(float slowPercent, int slowTime)
