@@ -71,13 +71,13 @@ void TowerDefense::Enemy::Enemy::UpdateImage()
 void TowerDefense::Enemy::Enemy::Move()
 {
 	//Check if within 1 step of goal
-	bool reachedX = abs(m_GoalX - m_X) < m_Speed * (1.0 - m_SlowPercent) * Combat::GetRoundSpeed();
-	bool reachedY = abs(m_GoalY - m_Y) < m_Speed * (1.0 - m_SlowPercent) * Combat::GetRoundSpeed();
+	bool reachedX = abs(m_GoalX - m_X) < m_Speed * (1.0f - m_SlowPercent) * Combat::GetRoundSpeed();
+	bool reachedY = abs(m_GoalY - m_Y) < m_Speed * (1.0f - m_SlowPercent) * Combat::GetRoundSpeed();
 
 	if (reachedX && reachedY)
 	{
 		//Calculate extra movement towards new goal
-		float extraMovement = abs(m_X - m_GoalX) + abs(m_Y - m_GoalY);
+		float extraMovement = m_Speed * (1.0f - m_SlowPercent) * Combat::GetRoundSpeed() - abs(m_X - m_GoalX) - abs(m_Y - m_GoalY);
 		SetX(m_GoalX);
 		SetY(m_GoalY);
 		FindNewGoal();

@@ -62,8 +62,10 @@ void TowerDefense::Tower::Tower::Attack()
 	if (target) {
 		SetRotation(FindDirection(target->GetX(), target->GetY()));
 		Fire(target);
-		m_FireReady = 0;
+		m_FireReady -= (int)m_FireTime;
 	}
+	else
+		m_FireReady = (int)m_FireTime;
 }
 
 void TowerDefense::Tower::Tower::UpdateBuffs()
