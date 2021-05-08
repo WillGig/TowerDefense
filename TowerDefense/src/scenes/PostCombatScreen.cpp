@@ -6,16 +6,18 @@
 
 TowerDefense::PostCombatScreen::PostCombatScreen()
 	:m_FocusedReward(-1), m_BackToCamp(std::make_unique<Button>(400.0f, 100.0f, 180, 50, "returnToCampButton")),
-	m_Rewards(std::make_unique<std::vector<std::shared_ptr<CombatReward>>>())
+	m_Rewards(std::make_unique<std::vector<std::shared_ptr<CombatReward>>>()),
+	m_VictoryText(std::make_unique<Text>("VICTORY", 400.0f, 510.0f, 36.0f, 0.0f))
 {
+	m_VictoryText->SetColor(1.0f, 1.0f, 1.0f, 1.0f);
 }
 
 void TowerDefense::PostCombatScreen::Render()
 {
 	Player& player = Player::Get();
 	player.RenderStats();
-	player.RenderDeckAndArtifacts();
 
+	m_VictoryText->Render();
 	m_DefeatedStats->Render();
 	m_EscapedStats->Render();
 	m_DamageDealt->Render();
@@ -29,6 +31,9 @@ void TowerDefense::PostCombatScreen::Render()
 
 	if (m_FocusedReward != -1)
 		m_Rewards->at(m_FocusedReward)->Render();
+
+	if(m_FocusedReward == -1 || !m_Rewards->at(m_FocusedReward)->ShowingInfo())
+		player.RenderDeckAndArtifacts();
 }
 
 void TowerDefense::PostCombatScreen::Update()
@@ -139,13 +144,13 @@ void TowerDefense::PostCombatScreen::OnSwitch()
 		damageDealt += " ";
 	damageDealt += artifactDamage;
 
-	m_DamageDealt = std::make_unique<Text>(damageDealt, 655.0f, 430.0f, 12.0f, 0.0f);
+	m_DamageDealt = std::make_unique<Text>(damageDealt, 655.0f, 380.0f, 12.0f, 0.0f);
 	m_DamageDealt->SetColor(1.0f, 1.0f, 1.0f, 1.0f);
 
-	m_DefeatedStats = std::make_unique<Text>(defEnemies, 155.0f, 480.0f - (defeatedHeight * 10.0f), 12.0f, 0.0f);
+	m_DefeatedStats = std::make_unique<Text>(defEnemies, 155.0f, 430.0f - (defeatedHeight * 10.0f), 12.0f, 0.0f);
 	m_DefeatedStats->SetColor(1.0f, 1.0f, 1.0f, 1.0f);
 
-	m_EscapedStats = std::make_unique<Text>(escEnemies, 155.0f, 300.0f - (escapedHeight * 10.0f), 12.0f, 0.0f);
+	m_EscapedStats = std::make_unique<Text>(escEnemies, 155.0f, 250.0f - (escapedHeight * 10.0f), 12.0f, 0.0f);
 	m_EscapedStats->SetColor(1.0f, 1.0f, 1.0f, 1.0f);
 
 	//Combat Gold
@@ -161,7 +166,7 @@ void TowerDefense::PostCombatScreen::OnSwitch()
 
 void TowerDefense::PostCombatScreen::AddReward(std::shared_ptr<CombatReward> reward)
 {
-	reward->SetPosition(400.0f, 450.0f - m_Rewards->size() * 50);
+	reward->SetPosition(400.0f, 400.0f - m_Rewards->size() * 50);
 	m_Rewards->push_back(reward);
 }
 
@@ -171,5 +176,5 @@ void TowerDefense::PostCombatScreen::RemoveReward(int reward)
 
 	//Shift rewards that come afterwards up
 	for (unsigned int i = reward; i < m_Rewards->size(); i++)
-		m_Rewards->at(i)->SetPosition(400.0f, 450.0f - i * 50);
+		m_Rewards->at(i)->SetPosition(400.0f, 400.0f - i * 50);
 }
