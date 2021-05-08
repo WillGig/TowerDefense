@@ -42,12 +42,10 @@ void TowerDefense::Combat::Render()
 		m_SelectedTower->GetRangeCircle()->Render();
 
 	//Buttons
-	player.RenderDeckButton();
-	player.RenderArtifactsPile();
+	player.RenderStats();
+	player.RenderDeckAndArtifacts();
 	m_StartButton->Render();
 	m_SpeedButton->Render();
-
-	player.RenderStats();
 
 	//Render Tower Information
 	if (s_TowerInfo)
@@ -163,20 +161,6 @@ void TowerDefense::Combat::RenderCards()
 		player.GetDiscardPile()->RenderCards();
 		player.GetDiscardPile()->Render();
 	}
-
-	if (player.DeckShowing())
-	{
-		player.RenderDeck();
-		if (!player.GetSelectedDeckCard())
-			player.RenderDeckButton();
-	}
-
-	if (player.ArtifactsShowing())
-	{
-		player.RenderArtifacts();
-		if (!player.GetSelectedArtifact())
-			player.RenderArtifactsPile();
-	}
 }
 
 //Update All Towers, Projectiles, and Enemies
@@ -216,25 +200,15 @@ void TowerDefense::Combat::UpdateCards()
 	bool discardShow = player.GetDiscardPile()->IsShowing();
 	bool artifactsShow = player.ArtifactsShowing();
 	bool cardSelected = player.GetHand()->GetSelectedCard() != -1;
-	bool draggingTowerInfo = DraggingInfo();
+	bool draggingInfo = DraggingInfo();
 
-	if (!cardSelected && !drawShow && !discardShow && !artifactsShow && !draggingTowerInfo)
-	{
-		if (!player.GetSelectedDeckCard())
-		{
-			player.UpdateDeckButton();
-			if (player.DeckButtonClicked())
-				player.ToggleDeckShow();
-		}
-		player.UpdateDeck();
-	}
-	if (!cardSelected && !deckShow && !drawShow && !discardShow && !draggingTowerInfo)
-		player.UpdateArtifactsPile();
-	if (!cardSelected && !deckShow && !discardShow && !artifactsShow && !draggingTowerInfo)
+	if (!cardSelected && !drawShow && !discardShow && !draggingInfo)
+		player.UpdateDeckAndArtifacts();
+	if (!cardSelected && !deckShow && !discardShow && !artifactsShow && !draggingInfo)
 		player.GetDrawPile()->Update();
-	if (!cardSelected && !deckShow && !drawShow && !artifactsShow && !draggingTowerInfo)
+	if (!cardSelected && !deckShow && !drawShow && !artifactsShow && !draggingInfo)
 		player.GetDiscardPile()->Update();
-	if (!s_Paused && !deckShow && !drawShow && !artifactsShow && !discardShow && !draggingTowerInfo)
+	if (!s_Paused && !deckShow && !drawShow && !artifactsShow && !discardShow && !draggingInfo)
 		player.GetHand()->Update();
 }
 

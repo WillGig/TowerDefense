@@ -13,56 +13,31 @@ TowerDefense::Rest::Rest()
 void TowerDefense::Rest::Render()
 {
 	Player& player = Player::Get();
-	player.RenderDeckButton();
-	player.RenderArtifactsPile();
 	player.RenderStats();
+	player.RenderDeckAndArtifacts();
 	m_RestText->Render();
 	m_Confirm->Render();
 	m_Cancel->Render();
-
-	if (player.DeckShowing())
-	{
-		player.RenderDeck();
-		if (!player.GetSelectedDeckCard())
-			player.RenderDeckButton();
-	}
-	else if (player.ArtifactsShowing())
-	{
-		player.RenderArtifacts();
-		if (!player.GetSelectedArtifact())
-			player.RenderArtifactsPile();
-	}
 }
 
 void TowerDefense::Rest::Update()
 {
 	Player& player = Player::Get();
-	if (!player.ArtifactsShowing())
-	{
-		player.UpdateDeckButton();
-		if (player.DeckButtonClicked())
-			player.ToggleDeckShow();
-	}
+	player.UpdateDeckAndArtifacts();
 
-	if (player.DeckShowing())
-		player.UpdateDeck();
-	else
+	if (!player.DeckShowing() && !player.ArtifactsShowing())
 	{
-		player.UpdateArtifactsPile();
-		if (!player.ArtifactsShowing())
+		m_Confirm->Update();
+		if (m_Confirm->IsClicked())
 		{
-			m_Confirm->Update();
-			if (m_Confirm->IsClicked())
-			{
-				player.ChangeHealth(player.GetMaxHealth() / 5);
-				m_ActivityDone = true;
-				m_Exit = true;
-			}
-
-			m_Cancel->Update();
-			if (m_Cancel->IsClicked())
-				m_Exit = true;
+			player.ChangeHealth(player.GetMaxHealth() / 5);
+			m_ActivityDone = true;
+			m_Exit = true;
 		}
+
+		m_Cancel->Update();
+		if (m_Cancel->IsClicked())
+			m_Exit = true;
 	}
 }
 

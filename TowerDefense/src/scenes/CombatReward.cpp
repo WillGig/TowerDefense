@@ -71,9 +71,8 @@ void TowerDefense::CardReward::Render()
 	{
 		m_Fade->Render();
 		Player& player = Player::Get();
-		player.RenderDeckButton();
-		player.RenderArtifactsPile();
 		player.RenderStats();
+		player.RenderDeckAndArtifacts();
 		m_Cancel->Render();
 		if (m_CardChoice->GetSelectedCard())
 			m_Confirm->Render();

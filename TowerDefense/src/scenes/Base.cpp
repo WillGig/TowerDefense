@@ -28,22 +28,8 @@ void TowerDefense::Base::Render()
 				s_BaseScenes->at(i)->RenderText();
 		}
 		m_NextDay->Render();
-		player.RenderDeckButton();
-		player.RenderArtifactsPile();
 		player.RenderStats();
-
-		if (player.DeckShowing())
-		{
-			player.RenderDeck();
-			if (!player.GetSelectedDeckCard())
-				player.RenderDeckButton();
-		}
-		else if (player.ArtifactsShowing())
-		{
-			player.RenderArtifacts();
-			if (!player.GetSelectedArtifact())
-				player.RenderArtifactsPile();
-		}
+		player.RenderDeckAndArtifacts();
 	}
 	else
 	{
@@ -56,14 +42,11 @@ void TowerDefense::Base::Update()
 	if (m_CurrentMenu == -1)
 	{
 		Player& player = Player::Get();
-		if (player.DeckShowing())
-			UpdateDeck();
-		else if (player.ArtifactsShowing())
-			player.UpdateArtifactsPile();
-		else
+		player.UpdateDeckAndArtifacts();
+
+		if (!player.DeckShowing() && !player.ArtifactsShowing())
 		{
 			UpdateActivities();
-			UpdateViewDeck();
 			UpdateNextDay();
 		}
 	}
@@ -88,18 +71,6 @@ void TowerDefense::Base::CleanUp()
 	s_BaseScenes.reset();
 }
 
-void TowerDefense::Base::UpdateDeck()
-{
-	Player& player = Player::Get();
-	if (!player.GetSelectedDeckCard())
-	{
-		player.UpdateDeckButton();
-		if (player.DeckButtonClicked())
-			player.ToggleDeckShow();
-	}
-	player.UpdateDeck();
-}
-
 void TowerDefense::Base::UpdateActivities()
 {
 	if (m_ActivityDone)
@@ -115,19 +86,6 @@ void TowerDefense::Base::UpdateActivities()
 			return;
 		}
 	}
-}
-
-void TowerDefense::Base::UpdateViewDeck()
-{
-	Player& player = Player::Get();
-	player.UpdateDeckButton();
-	if (player.DeckButtonClicked())
-	{
-		player.ToggleDeckShow();
-	}
-	player.UpdateDeck();
-
-	player.UpdateArtifactsPile();
 }
 
 void TowerDefense::Base::UpdateNextDay()

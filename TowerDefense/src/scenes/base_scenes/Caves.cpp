@@ -14,43 +14,21 @@ void TowerDefense::Caves::Render()
 	m_CaveScene->Render();
 
 	player.RenderStats();
-
-	if (player.DeckShowing())
-		player.RenderDeck();
-	else if (player.ArtifactsShowing())
-		player.RenderArtifacts();
-
-	if (!player.GetSelectedDeckCard() && !player.ArtifactsShowing())
-		player.RenderDeckButton();
-	if(!player.GetSelectedArtifact() && !player.DeckShowing())
-		player.RenderArtifactsPile();
+	player.RenderDeckAndArtifacts();
 }
 
 void TowerDefense::Caves::Update()
 {
 	Player& player = Player::Get();
-
-	if (!player.GetSelectedDeckCard() && !player.ArtifactsShowing())
-	{
-		player.UpdateDeckButton();
-		if (player.DeckButtonClicked())
-			player.ToggleDeckShow();
-	}
-
-	if (player.DeckShowing())
-		player.UpdateDeck();
-	else
-	{
-		player.UpdateArtifactsPile();
-		if (!player.ArtifactsShowing())
-			m_CaveScene->Update();
-	}
+	player.UpdateDeckAndArtifacts();
+	
+	if (!player.DeckShowing() && !player.ArtifactsShowing())
+		m_CaveScene->Update();
 
 	if (m_CaveScene->Exit())
 	{
 		m_ActivityDone = true;
 		m_Exit = true;
-		//Update player health?
 	}
 }
 

@@ -78,6 +78,40 @@ void TowerDefense::Player::RenderStats()
     m_DayText->Render();
 }
 
+void TowerDefense::Player::RenderDeckAndArtifacts()
+{
+    m_ViewDeck->Render();
+    m_Artifacts->Render();
+
+    if (DeckShowing())
+    {
+        m_Deck->RenderCards();
+        if (!GetSelectedDeckCard())
+            m_ViewDeck->Render();
+    }
+    else if (ArtifactsShowing())
+    {
+        m_Artifacts->RenderArtifacts();
+        if (!GetSelectedArtifact())
+            m_Artifacts->Render();
+    }
+}
+
+void TowerDefense::Player::UpdateDeckAndArtifacts()
+{
+    if (!GetSelectedDeckCard() && !ArtifactsShowing())
+    {
+        m_ViewDeck->Update();
+        if (m_ViewDeck->IsClicked())
+            m_Deck->Show(!m_Deck->IsShowing());
+    }
+
+    if (DeckShowing())
+        m_Deck->Update();
+    else
+        m_Artifacts->Update();
+}
+
 void TowerDefense::Player::UpdateDayText()
 {
     m_DayText = std::make_unique<Text>(std::string("Day: ") + std::to_string(GetDay()), 400.0f, 575.0f, 10.0f, 0.0f);

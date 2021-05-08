@@ -13,9 +13,8 @@ TowerDefense::PostCombatScreen::PostCombatScreen()
 void TowerDefense::PostCombatScreen::Render()
 {
 	Player& player = Player::Get();
-	player.RenderDeckButton();
-	player.RenderArtifactsPile();
 	player.RenderStats();
+	player.RenderDeckAndArtifacts();
 
 	m_DefeatedStats->Render();
 	m_EscapedStats->Render();
@@ -30,19 +29,6 @@ void TowerDefense::PostCombatScreen::Render()
 
 	if (m_FocusedReward != -1)
 		m_Rewards->at(m_FocusedReward)->Render();
-
-	if (player.DeckShowing())
-	{
-		player.RenderDeck();
-		if (!player.GetSelectedDeckCard())
-			player.RenderDeckButton();
-	}
-	else if (player.ArtifactsShowing())
-	{
-		player.RenderArtifacts();
-		if (!player.GetSelectedArtifact())
-			player.RenderArtifactsPile();
-	}
 }
 
 void TowerDefense::PostCombatScreen::Update()
@@ -60,41 +46,30 @@ void TowerDefense::PostCombatScreen::Update()
 	bool showingRewardInfo = m_FocusedReward != -1 && m_Rewards->at(m_FocusedReward)->ShowingInfo();
 
 	Player& player = Player::Get();
-	if (!player.ArtifactsShowing() && !showingRewardInfo)
-	{
-		player.UpdateDeckButton();
-		if (player.DeckButtonClicked())
-			player.ToggleDeckShow();
-	}
+	if (!showingRewardInfo)
+		player.UpdateDeckAndArtifacts();
 
-	if (player.DeckShowing())
-		player.UpdateDeck();
-	else
+	if (!player.DeckShowing() && !player.ArtifactsShowing())
 	{
-		if(!showingRewardInfo)
-			player.UpdateArtifactsPile();
-		if (!player.ArtifactsShowing())
+		if (m_FocusedReward == -1)
 		{
-			if (m_FocusedReward == -1)
+			int takenReward = -1;
+			for (unsigned int i = 0; i < m_Rewards->size(); i++)
 			{
-				int takenReward = -1;
-				for (unsigned int i = 0; i < m_Rewards->size(); i++)
-				{
-					m_Rewards->at(i)->Update();
-					if (m_Rewards->at(i)->RewardTaken())
-						takenReward = i;
-				}
-
-				if (takenReward != -1)
-					RemoveReward(takenReward);
-
-				m_BackToCamp->Update();
-				if (m_BackToCamp->IsClicked())
-					TowerDefense::SetScene(SceneType::BASE);
+				m_Rewards->at(i)->Update();
+				if (m_Rewards->at(i)->RewardTaken())
+					takenReward = i;
 			}
-			else
-				m_Rewards->at(m_FocusedReward)->Update();
+
+			if (takenReward != -1)
+				RemoveReward(takenReward);
+
+			m_BackToCamp->Update();
+			if (m_BackToCamp->IsClicked())
+				TowerDefense::SetScene(SceneType::BASE);
 		}
+		else
+			m_Rewards->at(m_FocusedReward)->Update();
 	}
 }
 

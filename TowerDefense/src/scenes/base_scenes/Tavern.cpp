@@ -16,26 +16,11 @@ void TowerDefense::Tavern::Render()
 	Player& player = Player::Get();
 
 	m_Cancel->Render();
-	player.RenderDeckButton();
-	player.RenderArtifactsPile();
 	player.RenderStats();
+	player.RenderDeckAndArtifacts();
 	if (m_TavernChoice->GetSelectedCard())
 		m_Confirm->Render();
 	m_TavernChoice->Render();
-
-
-	if (player.DeckShowing())
-	{
-		player.RenderDeck();
-		if (!player.GetSelectedDeckCard())
-			player.RenderDeckButton();
-	}
-	else if (player.ArtifactsShowing())
-	{
-		player.RenderArtifacts();
-		if (!player.GetSelectedArtifact())
-			player.RenderArtifactsPile();
-	}
 }
 
 void TowerDefense::Tavern::Update()
@@ -43,40 +28,30 @@ void TowerDefense::Tavern::Update()
 	Player& player = Player::Get();
 	bool showingInfo = m_TavernChoice && m_TavernChoice->ShowingInfo();
 
-	if (!player.GetSelectedDeckCard() && !showingInfo)
-	{
-		player.UpdateDeckButton();
-		if (player.DeckButtonClicked())
-			player.ToggleDeckShow();
-	}
+	if (!showingInfo)
+		player.UpdateDeckAndArtifacts();
 
-	if (player.DeckShowing())
-		player.UpdateDeck();
-	else
+	if (!player.DeckShowing() && !player.ArtifactsShowing())
 	{
-		player.UpdateArtifactsPile();
-		if (!player.ArtifactsShowing())
+		if (m_TavernChoice->GetSelectedCard() && !showingInfo)
 		{
-			if (m_TavernChoice->GetSelectedCard() && !showingInfo)
+			m_Confirm->Update();
+			if (m_Confirm->IsClicked())
 			{
-				m_Confirm->Update();
-				if (m_Confirm->IsClicked())
-				{
-					player.AddToDeck(m_TavernChoice->GetSelectedCard());
-					m_ActivityDone = true;
-					m_Exit = true;
-					m_TavernChoice->RemoveSelectedCard();
-				}
+				player.AddToDeck(m_TavernChoice->GetSelectedCard());
+				m_ActivityDone = true;
+				m_Exit = true;
+				m_TavernChoice->RemoveSelectedCard();
 			}
-			if (!showingInfo)
-			{
-				m_Cancel->Update();
-				if (m_Cancel->IsClicked())
-					m_Exit = true;
-			}
-			if (m_TavernChoice)
-				m_TavernChoice->Update();
 		}
+		if (!showingInfo)
+		{
+			m_Cancel->Update();
+			if (m_Cancel->IsClicked())
+				m_Exit = true;
+		}
+		if (m_TavernChoice)
+			m_TavernChoice->Update();
 	}
 }
 

@@ -13,65 +13,40 @@ TowerDefense::Build::Build()
 void TowerDefense::Build::Render()
 {
 	Player& player = Player::Get();
-	player.RenderDeckButton();
-	player.RenderArtifactsPile();
 	player.RenderStats();
+	player.RenderDeckAndArtifacts();
 	m_Cancel->Render();
 
 	for (unsigned int i = 0; i < m_Buttons->size(); i++)
 		m_Buttons->at(i)->Render();
-
-	if (player.DeckShowing())
-	{
-		player.RenderDeck();
-		if (!player.GetSelectedDeckCard())
-			player.RenderDeckButton();
-	}
-	else if (player.ArtifactsShowing())
-	{
-		player.RenderArtifacts();
-		if (!player.GetSelectedArtifact())
-			player.RenderArtifactsPile();
-	}
 }
 
 void TowerDefense::Build::Update()
 {
 	Player& player = Player::Get();
 
-	if (!player.GetSelectedDeckCard() && !player.ArtifactsShowing())
-	{
-		player.UpdateDeckButton();
-		if (player.DeckButtonClicked())
-			player.ToggleDeckShow();
-	}
+	player.UpdateDeckAndArtifacts();
 
-	if (player.DeckShowing())
-		player.UpdateDeck();
-	else
+	if(!player.DeckShowing() && !player.ArtifactsShowing())
 	{
-		player.UpdateArtifactsPile();
-		if (!player.ArtifactsShowing())
+		for (unsigned int i = 0; i < m_Buttons->size(); i++)
 		{
-			for (unsigned int i = 0; i < m_Buttons->size(); i++)
+			m_Buttons->at(i)->Update();
+			if (m_Buttons->at(i)->Clicked())
 			{
-				m_Buttons->at(i)->Update();
-				if (m_Buttons->at(i)->Clicked())
+				if (player.GetGold() >= m_Buttons->at(i)->GetCost())
 				{
-					if (player.GetGold() >= m_Buttons->at(i)->GetCost())
-					{
-						player.ChangeGold(-m_Buttons->at(i)->GetCost());
-						Base::AddBaseScene(m_Buttons->at(i)->GetScene());
-						m_Exit = true;
-						m_ActivityDone = true;
-					}
+					player.ChangeGold(-m_Buttons->at(i)->GetCost());
+					Base::AddBaseScene(m_Buttons->at(i)->GetScene());
+					m_Exit = true;
+					m_ActivityDone = true;
 				}
 			}
-
-			m_Cancel->Update();
-			if (m_Cancel->IsClicked())
-				m_Exit = true;
 		}
+
+		m_Cancel->Update();
+		if (m_Cancel->IsClicked())
+			m_Exit = true;
 	}
 }
 

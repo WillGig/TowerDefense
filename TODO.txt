@@ -1,8 +1,4 @@
 Current:
-	Create functions for rendering and updating player deck and artifacts
-
-	Examine towers attacking slower at lower speeds
-
 	Daily activities
 		Explore Caves 	- Random event						- Done
 		Visit Library 	- Choose a new card					- Done

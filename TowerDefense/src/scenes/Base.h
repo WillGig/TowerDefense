@@ -21,9 +21,7 @@ namespace TowerDefense
 		static bool ContainsScene(const std::string& name);
 
 	private:
-		void UpdateDeck();
 		void UpdateActivities();
-		void UpdateViewDeck();
 		void UpdateNextDay();
 
 		int m_CurrentMenu;

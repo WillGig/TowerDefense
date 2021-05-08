@@ -44,7 +44,6 @@ void TowerDefense::Tower::Tower::Update()
 		else
 			m_FireReady ++;
 	}
-	
 
 	UpdateBuffs();
 }

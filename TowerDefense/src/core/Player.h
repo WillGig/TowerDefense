@@ -25,13 +25,6 @@ namespace TowerDefense
 		inline int GetMaxHealth() const { return m_MaxHealth; }
 		void ChangeMaxHealth(int change);
 
-		//Button to view player deck
-		inline void RenderDeckButton() { m_ViewDeck->Render(); }
-		inline void UpdateDeckButton() { m_ViewDeck->Update(); }
-		inline bool DeckButtonClicked() { return m_ViewDeck->IsClicked(); }
-
-		inline void RenderArtifactsPile() { m_Artifacts->Render(); }
-		inline void UpdateArtifactsPile() { m_Artifacts->Update(); }
 		inline std::shared_ptr<ArtifactPile> GetArtifacts() { return m_Artifacts; }
 
 		void RenderStats();
@@ -52,7 +45,6 @@ namespace TowerDefense
 		inline void RenderDeck() { m_Deck->RenderCards(); }
 		inline void UpdateDeck() { m_Deck->Update(); }
 		inline void ShowDeck(bool show) { m_Deck->Show(show); }
-		inline void ToggleDeckShow() { m_Deck->Show(!m_Deck->IsShowing()); }
 		inline bool DeckShowing() { return m_Deck->IsShowing(); }
 		inline std::shared_ptr<Card> GetSelectedDeckCard() { return m_Deck->GetSelectedCard(); }
 		inline std::shared_ptr<Card> GetClickedDeckCard() { return m_Deck->GetClickedCard(); }
@@ -61,11 +53,14 @@ namespace TowerDefense
 		void RemoveFromDeck(int index);
 
 		//Player Artifact Controls
-		inline void RenderArtifacts() { m_Artifacts->RenderArtifacts(); };
 		inline bool ArtifactsShowing() { return m_Artifacts->IsShowing(); };
 		inline std::shared_ptr<Artifact> GetSelectedArtifact() { return m_Artifacts->GetSelectedArtifact(); };
 		void AddToArtifacts(std::shared_ptr<Artifact> a);
 		void RemoveFromArtifacts(int index);
+
+		//Prefered method of Rendering and updating deck and artifact buttons and piles in most menus
+		void RenderDeckAndArtifacts();
+		void UpdateDeckAndArtifacts();
 
 		//Functions to check all artifacts for triggers on respective events
 		void ArtifactOnAddCard(std::shared_ptr<Card> c);
