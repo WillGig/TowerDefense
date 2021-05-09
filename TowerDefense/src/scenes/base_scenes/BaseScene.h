@@ -12,6 +12,7 @@ namespace TowerDefense
 	{
 	public:
 		inline bool ActivityDone() const { return m_ActivityDone; }
+		inline void SetActivityDone(bool done) { m_ActivityDone = done; }
 		inline bool Exit() const { return m_Exit; }
 		inline void RenderButton() { m_Button->Render(); }
 		inline void UpdateButton() { m_Button->Update(); }

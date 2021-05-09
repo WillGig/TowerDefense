@@ -7,9 +7,11 @@
 std::unique_ptr<std::vector<std::shared_ptr<TowerDefense::BaseScene>>> TowerDefense::Base::s_BaseScenes = std::make_unique<std::vector<std::shared_ptr<BaseScene>>>();
 
 TowerDefense::Base::Base()
-	:m_CurrentMenu(-1), m_ActivityDone(false),
-	m_NextDay(std::make_unique<Button>(600.0f, 175.0f, 180, 50, "nextDayButton"))
+	:m_CurrentMenu(-1),
+	m_NextDay(std::make_unique<Button>(600.0f, 175.0f, 180, 50, "nextDayButton")),
+	m_WaitText(std::make_unique<Text>("Available Again Tomorrow!", 400.0f, 235.0f, 12.0f, 0.0f))
 {
+	m_WaitText->SetColor(1.0f, 1.0f, 1.0f, 1.0f);
 	AddBaseScene(std::make_shared<Rest>());
 	AddBaseScene(std::make_shared<Caves>());
 	AddBaseScene(std::make_shared<Build>());
@@ -25,16 +27,19 @@ void TowerDefense::Base::Render()
 		{
 			s_BaseScenes->at(i)->RenderButton();
 			if (s_BaseScenes->at(i)->ButtonSelected())
-				s_BaseScenes->at(i)->RenderText();
+			{
+				if (s_BaseScenes->at(i)->ActivityDone())
+					m_WaitText->Render();
+				else
+					s_BaseScenes->at(i)->RenderText();
+			}
 		}
 		m_NextDay->Render();
 		player.RenderStats();
 		player.RenderDeckAndArtifacts();
 	}
 	else
-	{
 		s_BaseScenes->at(m_CurrentMenu)->Render();
-	}
 }
 
 void TowerDefense::Base::Update()
@@ -54,16 +59,14 @@ void TowerDefense::Base::Update()
 	{
 		s_BaseScenes->at(m_CurrentMenu)->Update();
 		if (s_BaseScenes->at(m_CurrentMenu)->Exit())
-		{
-			m_ActivityDone = s_BaseScenes->at(m_CurrentMenu)->ActivityDone();
 			m_CurrentMenu = -1;
-		}
 	}
 }
 
 void TowerDefense::Base::OnSwitch()
 {
-	m_ActivityDone = false;
+	for (unsigned int i = 0; i < s_BaseScenes->size(); i++)
+		s_BaseScenes->at(i)->SetActivityDone(false);
 }
 
 void TowerDefense::Base::CleanUp()
@@ -73,13 +76,10 @@ void TowerDefense::Base::CleanUp()
 
 void TowerDefense::Base::UpdateActivities()
 {
-	if (m_ActivityDone)
-		return;
-
 	for (unsigned int i = 0; i < s_BaseScenes->size(); i++)
 	{
 		s_BaseScenes->at(i)->UpdateButton();
-		if (s_BaseScenes->at(i)->ButtonClicked())
+		if (s_BaseScenes->at(i)->ButtonClicked() && !s_BaseScenes->at(i)->ActivityDone())
 		{
 			m_CurrentMenu = i;
 			s_BaseScenes->at(i)->OnSwitch();

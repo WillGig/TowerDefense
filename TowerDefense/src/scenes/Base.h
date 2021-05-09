@@ -26,9 +26,9 @@ namespace TowerDefense
 
 		int m_CurrentMenu;
 
-		bool m_ActivityDone;
-
 		std::unique_ptr<Button> m_NextDay;
+
+		std::unique_ptr<Text> m_WaitText;
 
 		static std::unique_ptr<std::vector<std::shared_ptr<BaseScene>>> s_BaseScenes;
 	};

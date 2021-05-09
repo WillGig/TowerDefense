@@ -1,5 +1,4 @@
 Current:
-	Change daily activities to no limit per day (each once per day)
 	Change sleeping to be purchased event that heals a small amount each day
 	Change caves to 2 options - explore or mine (random event) - mine (c	onsistent amount of gold)
 	Add more enemies - insects and oozes
