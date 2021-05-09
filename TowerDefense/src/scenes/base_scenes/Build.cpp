@@ -14,11 +14,12 @@ void TowerDefense::Build::Render()
 {
 	Player& player = Player::Get();
 	player.RenderStats();
-	player.RenderDeckAndArtifacts();
 	m_Cancel->Render();
 
 	for (unsigned int i = 0; i < m_Buttons->size(); i++)
 		m_Buttons->at(i)->Render();
+
+	player.RenderDeckAndArtifacts();
 }
 
 void TowerDefense::Build::Update()

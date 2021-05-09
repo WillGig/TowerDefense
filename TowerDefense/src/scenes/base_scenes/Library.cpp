@@ -14,13 +14,13 @@ void TowerDefense::Library::Render()
 {
 	Player& player = Player::Get();
 	player.RenderStats();
-	player.RenderDeckAndArtifacts();
 	m_Cancel->Render();
 	if (m_CardChoice->GetSelectedCard())
 		m_Confirm->Render();
 	m_CardChoice->Render();
+	if (!m_CardChoice->ShowingInfo())
+		player.RenderDeckAndArtifacts();
 }
-
 
 void TowerDefense::Library::Update()
 {

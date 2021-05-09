@@ -17,10 +17,11 @@ void TowerDefense::Tavern::Render()
 
 	m_Cancel->Render();
 	player.RenderStats();
-	player.RenderDeckAndArtifacts();
 	if (m_TavernChoice->GetSelectedCard())
 		m_Confirm->Render();
 	m_TavernChoice->Render();
+	if(!m_TavernChoice->ShowingInfo())
+		player.RenderDeckAndArtifacts();
 }
 
 void TowerDefense::Tavern::Update()

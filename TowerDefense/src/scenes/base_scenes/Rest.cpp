@@ -14,10 +14,10 @@ void TowerDefense::Rest::Render()
 {
 	Player& player = Player::Get();
 	player.RenderStats();
-	player.RenderDeckAndArtifacts();
 	m_RestText->Render();
 	m_Confirm->Render();
 	m_Cancel->Render();
+	player.RenderDeckAndArtifacts();
 }
 
 void TowerDefense::Rest::Update()
