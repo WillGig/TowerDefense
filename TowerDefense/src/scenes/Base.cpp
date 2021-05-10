@@ -12,7 +12,6 @@ TowerDefense::Base::Base()
 	m_WaitText(std::make_unique<Text>("Available Again Tomorrow!", 400.0f, 235.0f, 12.0f, 0.0f))
 {
 	m_WaitText->SetColor(1.0f, 1.0f, 1.0f, 1.0f);
-	AddBaseScene(std::make_shared<Rest>());
 	AddBaseScene(std::make_shared<Caves>());
 	AddBaseScene(std::make_shared<Build>());
 }

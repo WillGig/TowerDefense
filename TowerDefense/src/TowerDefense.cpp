@@ -262,16 +262,18 @@ void LoadTextures()
     Texture::LoadTexture("buildButtonSelected",         baseButtons.load(1, 6));
 
     SpriteSheet buildButtons("res/textures/BuildButtons.png", 375, 65);
-    Texture::LoadTexture("buildLibrary",            buildButtons.load(0, 0));
-    Texture::LoadTexture("buildFishery",            buildButtons.load(0, 1));
-    Texture::LoadTexture("buildChapel",             buildButtons.load(0, 2));
-    Texture::LoadTexture("buildSmithy",             buildButtons.load(0, 3));
-    Texture::LoadTexture("buildTavern",             buildButtons.load(0, 4));
-    Texture::LoadTexture("buildLibrarySelected",    buildButtons.load(1, 0));
-    Texture::LoadTexture("buildFisherySelected",    buildButtons.load(1, 1));
-    Texture::LoadTexture("buildChapelSelected",     buildButtons.load(1, 2));
-    Texture::LoadTexture("buildSmithySelected",     buildButtons.load(1, 3));
-    Texture::LoadTexture("buildTavernSelected",     buildButtons.load(1, 4));
+    Texture::LoadTexture("buildBed",                buildButtons.load(0, 0));
+    Texture::LoadTexture("buildLibrary",            buildButtons.load(0, 1));
+    Texture::LoadTexture("buildFishery",            buildButtons.load(0, 2));
+    Texture::LoadTexture("buildChapel",             buildButtons.load(0, 3));
+    Texture::LoadTexture("buildSmithy",             buildButtons.load(0, 4));
+    Texture::LoadTexture("buildTavern",             buildButtons.load(0, 5));
+    Texture::LoadTexture("buildBedSelected",        buildButtons.load(1, 0));
+    Texture::LoadTexture("buildLibrarySelected",    buildButtons.load(1, 1));
+    Texture::LoadTexture("buildFisherySelected",    buildButtons.load(1, 2));
+    Texture::LoadTexture("buildChapelSelected",     buildButtons.load(1, 3));
+    Texture::LoadTexture("buildSmithySelected",     buildButtons.load(1, 4));
+    Texture::LoadTexture("buildTavernSelected",     buildButtons.load(1, 5));
 
     SpriteSheet combatButtons("res/textures/CombatButtons.png", 384, 128);
     Texture::LoadTexture("startButton",         combatButtons.load(0, 0));
@@ -331,14 +333,16 @@ void LoadTextures()
     SpriteSheet enemies("res/textures/Enemies.png", 64, 64);
     Texture::LoadTexture("Rat",                 enemies.load(0, 0));
     Texture::LoadTexture("RatSelected",         enemies.load(1, 0));
-    Texture::LoadTexture("Giant Rat",            enemies.load(2, 0));
-    Texture::LoadTexture("Giant RatSelected",    enemies.load(3, 0));
-    Texture::LoadTexture("Boss Rat",             enemies.load(0, 1));
-    Texture::LoadTexture("Boss RatSelected",     enemies.load(1, 1));
+    Texture::LoadTexture("Giant Rat",           enemies.load(2, 0));
+    Texture::LoadTexture("Giant RatSelected",   enemies.load(3, 0));
+    Texture::LoadTexture("Boss Rat",            enemies.load(0, 1));
+    Texture::LoadTexture("Boss RatSelected",    enemies.load(1, 1));
     Texture::LoadTexture("Goblin",              enemies.load(2, 1));
     Texture::LoadTexture("GoblinSelected",      enemies.load(3, 1));
-    Texture::LoadTexture("Orc ",                 enemies.load(0, 2));
-    Texture::LoadTexture("Orc Selected",         enemies.load(1, 2));
+    Texture::LoadTexture("Orc ",                enemies.load(0, 2));
+    Texture::LoadTexture("Orc Selected",        enemies.load(1, 2));
+    Texture::LoadTexture("Beetle",              enemies.load(2, 2));
+    Texture::LoadTexture("BeetleSelected",      enemies.load(3, 2));
 
     std::cout << "...Cards" << std::endl;
 

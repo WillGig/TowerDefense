@@ -55,6 +55,8 @@ void TowerDefense::Build::OnSwitch()
 {
 	BaseScene::OnSwitch();
 	m_Buttons->clear();
+	if (!Base::ContainsScene("Rest"))
+		AddBuildButton(std::make_shared<BuildButton>("buildBed", 100, std::make_shared<Rest>()));
 	if(!Base::ContainsScene("Library"))
 		AddBuildButton(std::make_shared<BuildButton>("buildLibrary", 500, std::make_shared<Library>()));
 	//if (!Base::ContainsScene("Fishing"))
