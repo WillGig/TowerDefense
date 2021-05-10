@@ -335,14 +335,16 @@ void LoadTextures()
     Texture::LoadTexture("RatSelected",         enemies.load(1, 0));
     Texture::LoadTexture("Giant Rat",           enemies.load(2, 0));
     Texture::LoadTexture("Giant RatSelected",   enemies.load(3, 0));
-    Texture::LoadTexture("Boss Rat",            enemies.load(0, 1));
-    Texture::LoadTexture("Boss RatSelected",    enemies.load(1, 1));
-    Texture::LoadTexture("Goblin",              enemies.load(2, 1));
-    Texture::LoadTexture("GoblinSelected",      enemies.load(3, 1));
-    Texture::LoadTexture("Orc ",                enemies.load(0, 2));
-    Texture::LoadTexture("Orc Selected",        enemies.load(1, 2));
-    Texture::LoadTexture("Beetle",              enemies.load(2, 2));
-    Texture::LoadTexture("BeetleSelected",      enemies.load(3, 2));
+    Texture::LoadTexture("Boss Rat",            enemies.load(4, 0));
+    Texture::LoadTexture("Boss RatSelected",    enemies.load(5, 0));
+    Texture::LoadTexture("Goblin",              enemies.load(6, 0));
+    Texture::LoadTexture("GoblinSelected",      enemies.load(7, 0));
+    Texture::LoadTexture("Orc ",                enemies.load(0, 1));
+    Texture::LoadTexture("Orc Selected",        enemies.load(1, 1));
+    Texture::LoadTexture("Beetle",              enemies.load(2, 1));
+    Texture::LoadTexture("BeetleSelected",      enemies.load(3, 1));
+    Texture::LoadTexture("Slime",               enemies.load(4, 1));
+    Texture::LoadTexture("SlimeSelected",       enemies.load(5, 1));
 
     std::cout << "...Cards" << std::endl;
 

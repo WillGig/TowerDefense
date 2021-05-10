@@ -1,6 +1,5 @@
 Current:
 	Change caves to 2 options - explore or mine (random event) - mine (consistent amount of gold)
-	Add more enemies - oozes
 
 	Daily activities
 		Explore Caves 	- Random event						- Done

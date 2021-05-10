@@ -473,8 +473,8 @@ void TowerDefense::Combat::GenerateFights()
 	pool1.push_back(std::make_shared<Fight>(waves));
 
 	waves = std::make_shared<std::vector<std::shared_ptr<Wave>>>();
-	const int enemies3[] = { 0, 0, 0, 200, 0, 200, 0, 200 };
-	waves->push_back(std::make_shared<Wave>(enemies3, 8));
+	const int enemies3[] = { 6, 0, 6, 250, 6, 250 };
+	waves->push_back(std::make_shared<Wave>(enemies3, 6));
 	pool1.push_back(std::make_shared<Fight>(waves));
 
 	//day 4-6 fights
@@ -562,7 +562,7 @@ void TowerDefense::Combat::GenerateFights()
 
 
 	//determine combats from random pool
-	int fight = 1;// (int)(Random::GetFloat()* pool1.size());
+	int fight = 2;// (int)(Random::GetFloat()* pool1.size());
 	s_Fights->push_back(pool1[fight]);
 	pool1.erase(pool1.begin() + fight);
 

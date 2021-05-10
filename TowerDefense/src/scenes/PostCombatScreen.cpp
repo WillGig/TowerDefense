@@ -104,6 +104,8 @@ void TowerDefense::PostCombatScreen::OnSwitch()
 			enemyGold += 20 * i->second;
 		else if (i->first == "Beetle")
 			enemyGold += 2 * i->second;
+		else if (i->first == "Slime")
+			enemyGold += 8 * i->second;
 
 		defEnemies += i->first;
 		

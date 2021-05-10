@@ -54,5 +54,13 @@ namespace TowerDefense
 				:Enemy(32, 32, 4.0f, 2.0f, "Beetle")
 			{}
 		};
+
+		class Slime : public Enemy
+		{
+		public:
+			Slime()
+				:Enemy(32, 32, 13.0f, 0.7f, "Slime")
+			{}
+		};
 	}
 }

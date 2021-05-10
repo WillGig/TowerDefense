@@ -30,6 +30,9 @@ TowerDefense::Wave::Wave(const int enemies[], int size)
 		case 5:
 			m_Enemies->push_back(std::make_shared<Enemy::Beetle>());
 			break;
+		case 6:
+			m_Enemies->push_back(std::make_shared<Enemy::Slime>());
+			break;
 		}
 	}
 }
