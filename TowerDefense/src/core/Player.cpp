@@ -35,11 +35,25 @@ TowerDefense::Player& TowerDefense::Player::Get()
     return instance;
 }
 
+void TowerDefense::Player::SetEnergy(int energy)
+{
+    m_Energy = energy;
+    m_EnergyText = std::make_unique<Text>(std::to_string(m_Energy), 740.0f, 575.0f, 10.0f, 0.0f);
+    m_EnergyText->SetColor(m_TextColor.w, m_TextColor.x, m_TextColor.y, m_TextColor.z);
+}
+
 void TowerDefense::Player::ChangeEnergy(int change)
 {
     m_Energy += change;
     m_EnergyText = std::make_unique<Text>(std::to_string(m_Energy), 740.0f, 575.0f, 10.0f, 0.0f);
     m_EnergyText->SetColor(m_TextColor.w, m_TextColor.x, m_TextColor.y, m_TextColor.z);
+}
+
+void TowerDefense::Player::SetGold(int gold)
+{
+    m_Gold = gold;
+    m_GoldText = std::make_unique<Text>(std::to_string(m_Gold), 150.0f, 575.0f, 10.0f, 0.0f);
+    m_GoldText->SetColor(m_TextColor.w, m_TextColor.x, m_TextColor.y, m_TextColor.z);
 }
 
 void TowerDefense::Player::ChangeGold(int change)
