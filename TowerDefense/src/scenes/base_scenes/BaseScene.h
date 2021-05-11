@@ -136,6 +136,7 @@ namespace TowerDefense
 		inline std::string GetName() override { return "Build"; }
 	private:
 		void AddBuildButton(std::shared_ptr<BuildButton> button);
+		bool HasResources(std::shared_ptr<BuildButton> b);
 
 		std::unique_ptr<Button> m_Cancel;
 		std::unique_ptr<std::vector<std::shared_ptr<BuildButton>>> m_Buttons;
