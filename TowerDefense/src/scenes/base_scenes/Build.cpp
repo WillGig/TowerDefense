@@ -35,9 +35,9 @@ void TowerDefense::Build::Update()
 			m_Buttons->at(i)->Update();
 			if (m_Buttons->at(i)->Clicked())
 			{
-				if (player.GetGold() >= m_Buttons->at(i)->GetCost())
+				if (player.GetResource(Resource::GOLD) >= m_Buttons->at(i)->GetCost())
 				{
-					player.ChangeGold(-m_Buttons->at(i)->GetCost());
+					player.ChangeResource(-m_Buttons->at(i)->GetCost(), Resource::GOLD);
 					Base::AddBaseScene(m_Buttons->at(i)->GetScene());
 					m_Exit = true;
 					m_ActivityDone = true;

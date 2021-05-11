@@ -57,3 +57,16 @@ struct Vec4
 		:w(w), x(x), y(y), z(z)
 	{}
 };
+
+struct Vec4i
+{
+	int w, x, y, z;
+
+	Vec4i()
+		:w(0), x(0), y(0), z(0)
+	{}
+
+	Vec4i(int w, int x, int y, int z)
+		:w(w), x(x), y(y), z(z)
+	{}
+};

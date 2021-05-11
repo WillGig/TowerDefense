@@ -307,6 +307,9 @@ void LoadTextures()
     Texture::LoadTexture("healthIcon",      statIcons.load(0, 0));
     Texture::LoadTexture("goldIcon",        statIcons.load(1, 0));
     Texture::LoadTexture("energyIcon",      statIcons.load(2, 0));
+    Texture::LoadTexture("woodIcon",        statIcons.load(3, 0));
+    Texture::LoadTexture("stoneIcon",       statIcons.load(4, 0));
+    Texture::LoadTexture("wheatIcon",       statIcons.load(5, 0));
 
     std::cout << "...Towers" << std::endl;
 

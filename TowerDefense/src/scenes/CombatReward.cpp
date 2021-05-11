@@ -44,7 +44,7 @@ void TowerDefense::GoldReward::Render()
 
 void TowerDefense::GoldReward::OnClicked()
 {
-	Player::Get().ChangeGold(m_GoldAmount);
+	Player::Get().ChangeResource(m_GoldAmount, Resource::GOLD);
 	m_RewardTaken = true;
 }
 

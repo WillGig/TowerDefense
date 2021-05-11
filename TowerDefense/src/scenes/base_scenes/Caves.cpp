@@ -50,7 +50,7 @@ void TowerDefense::Caves::Update()
 		if (m_Mine->IsClicked())
 		{
 			m_CurrentActivity = Activity::MINE;
-			m_GoldMined = (int)(Random::GetFloat() * 100);
+			m_GoldMined = 25 + (int)(Random::GetFloat() * 50);
 			m_MiningText = std::make_unique<Text>("You manage to mine " + std::to_string(m_GoldMined) + " Gold", 400.0f, 300.0f, 12.0f, 0.0f);
 			m_MiningText->SetColor(1.0f, 1.0f, 1.0f, 1.0f);
 		}
@@ -74,7 +74,7 @@ void TowerDefense::Caves::Update()
 		m_BackToCamp->Update();
 		if (m_BackToCamp->IsClicked())
 		{
-			Player::Get().ChangeGold(m_GoldMined);
+			Player::Get().ChangeResource(m_GoldMined, Resource::GOLD);
 			m_Exit = true;
 			m_ActivityDone = true;
 		}

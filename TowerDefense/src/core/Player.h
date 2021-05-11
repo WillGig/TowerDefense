@@ -6,6 +6,8 @@
 
 namespace TowerDefense 
 {
+	enum class Resource { WOOD, STONE, WHEAT, GOLD };
+
 	class Player
 	{
 	public:
@@ -16,9 +18,9 @@ namespace TowerDefense
 		void SetEnergy(int energy);
 		void ChangeEnergy(int change);
 
-		inline int GetGold() const { return m_Gold; }
-		void SetGold(int gold);
-		void ChangeGold(int change);
+		int GetResource(Resource res) const;
+		void SetResource(int total, Resource res);
+		void ChangeResource(int change, Resource res);
 
 		inline int GetHealth() const { return m_Health; }
 		void ChangeHealth(int change);
@@ -76,13 +78,15 @@ namespace TowerDefense
 	private:
 		Player();
 
-		int m_Health, m_MaxHealth, m_Energy, m_Gold;
+		int m_Health, m_MaxHealth, m_Energy;
+		//Wood, Stone, Wheat, Gold
+		Vec4i m_Resources;
 		Vec4 m_TextColor;
 		std::shared_ptr<Hand> m_Hand;
 		std::shared_ptr<CardPile> m_Deck, m_DrawPile, m_DiscardPile;
 		std::unique_ptr<Button> m_ViewDeck;
-		std::unique_ptr<Text> m_HealthText, m_EnergyText, m_GoldText, m_DayText;
-		std::unique_ptr<Image> m_HealthIcon, m_EnergyIcon, m_GoldIcon;
+		std::unique_ptr<Text> m_HealthText, m_EnergyText, m_DayText, m_WoodText, m_StoneText, m_WheatText, m_GoldText;
+		std::unique_ptr<Image> m_HealthIcon, m_EnergyIcon, m_WoodIcon, m_StoneIcon, m_WheatIcon, m_GoldIcon;
 		std::shared_ptr<ArtifactPile> m_Artifacts;
 	};
 }
