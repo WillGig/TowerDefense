@@ -13,11 +13,11 @@ namespace TowerDefense
 		static Player& Get();
 
 		inline int GetEnergy() const { return m_Energy; }
-		inline void SetEnergy(int energy) { m_Energy = energy; }
+		void SetEnergy(int energy);
 		void ChangeEnergy(int change);
 
 		inline int GetGold() const { return m_Gold; }
-		inline void SetGold(int gold) { m_Gold = gold; }
+		void SetGold(int gold);
 		void ChangeGold(int change);
 
 		inline int GetHealth() const { return m_Health; }

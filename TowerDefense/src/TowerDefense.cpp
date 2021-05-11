@@ -114,12 +114,6 @@ bool TowerDefense::Init()
     for (int i = 0; i < 2; i++)
         player.AddToDeck(std::make_shared<PotOfGreed>());
 
-    //Starter Artifacts
-    player.AddToArtifacts(std::make_shared<TokenOfTheMute>());
-    player.AddToArtifacts(std::make_shared<TokenOfTheArmored>());
-    player.AddToArtifacts(std::make_shared<TokenOfTheBroken>());
-    player.AddToArtifacts(std::make_shared<TokenOfTheVigilant>());
-
     return true;
 }
 
@@ -260,6 +254,12 @@ void LoadTextures()
     Texture::LoadTexture("prayButtonSelected",          baseButtons.load(3, 5));
     Texture::LoadTexture("buildButton",                 baseButtons.load(0, 6));
     Texture::LoadTexture("buildButtonSelected",         baseButtons.load(1, 6));
+    Texture::LoadTexture("exploreButton",               baseButtons.load(2, 6));
+    Texture::LoadTexture("exploreButtonSelected",       baseButtons.load(3, 6));
+    Texture::LoadTexture("mineButton",                  baseButtons.load(0, 7));
+    Texture::LoadTexture("mineButtonSelected",          baseButtons.load(1, 7));
+    Texture::LoadTexture("okButton",                    baseButtons.load(2, 7));
+    Texture::LoadTexture("okButtonSelected",            baseButtons.load(3, 7));
 
     SpriteSheet buildButtons("res/textures/BuildButtons.png", 375, 65);
     Texture::LoadTexture("buildBed",                buildButtons.load(0, 0));

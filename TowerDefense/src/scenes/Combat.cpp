@@ -560,9 +560,8 @@ void TowerDefense::Combat::GenerateFights()
 	waves->push_back(std::make_shared<Wave>(enemies31, 2));
 	pool4.push_back(std::make_shared<Fight>(waves));
 
-
 	//determine combats from random pool
-	int fight = 2;// (int)(Random::GetFloat()* pool1.size());
+	int fight = (int)(Random::GetFloat()* pool1.size());
 	s_Fights->push_back(pool1[fight]);
 	pool1.erase(pool1.begin() + fight);
 

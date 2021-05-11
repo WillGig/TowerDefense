@@ -20,7 +20,7 @@ namespace TowerDefense
 		inline bool ButtonSelected() const { return m_Button->IsSelected(); }
 		inline void SetButtonPosition(float x, float y) { m_Button->SetX(x); m_Button->SetY(y); }
 		inline void RenderText() { m_Description->Render(); }
-		inline void OnSwitch() override { m_ActivityDone = false; m_Exit = false; m_Button->SetSelected(false); };
+		inline void OnSwitch() override { m_Exit = false; m_Button->SetSelected(false); };
 		virtual std::string GetName() = 0;
 	protected:
 		BaseScene(const std::string& button, const std::string& description)
@@ -46,6 +46,11 @@ namespace TowerDefense
 		void OnSwitch() override;
 		inline std::string GetName() override { return "Caves"; }
 	private:
+		enum class Activity {MENU, EXPLORE, MINE};
+		int m_GoldMined;
+		Activity m_CurrentActivity;
+		std::unique_ptr<Button> m_Explore, m_Mine, m_BackToCamp;
+		std::unique_ptr<Text> m_MiningText;
 		std::shared_ptr<CaveScene> m_CaveScene;
 	};
 

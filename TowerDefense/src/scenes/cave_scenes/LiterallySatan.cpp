@@ -22,7 +22,7 @@ TowerDefense::LiterallySatan::LiterallySatan()
 		"Burn.... burn... something must burn.\n"
 		"He looks greedily at your cards.";
 
-	m_Prompt = std::make_unique<Text>(text, 560.0f, 450.0f, 16.0f, 0.0f);
+	m_Prompt = std::make_unique<Text>(text, 560.0f, 400.0f, 16.0f, 0.0f);
 	m_Prompt->SetColor(1.0f, 1.0f, 1.0f, 1.0f);
 }
 

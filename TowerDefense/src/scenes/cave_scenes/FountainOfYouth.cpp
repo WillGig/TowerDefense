@@ -19,7 +19,7 @@ TowerDefense::FountainOfYouth::FountainOfYouth()
 		"The Fountain exudes life\n"
 		"and smells of mint.\n";
 
-	m_Prompt = std::make_unique<Text>(text, 550.0f, 450.0f, 18.0f, 0.0f);
+	m_Prompt = std::make_unique<Text>(text, 550.0f, 350.0f, 18.0f, 0.0f);
 	m_Prompt->SetColor(1.0f, 1.0f, 1.0f, 1.0f);
 }
 

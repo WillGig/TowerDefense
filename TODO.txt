@@ -1,6 +1,4 @@
 Current:
-	Change caves to 2 options - explore or mine (random event) - mine (consistent amount of gold)
-
 	Daily activities
 		Explore Caves 	- Random event						- Done
 		Visit Library 	- Choose a new card					- Done

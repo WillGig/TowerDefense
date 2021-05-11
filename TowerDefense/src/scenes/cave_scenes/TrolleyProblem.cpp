@@ -21,7 +21,7 @@ TowerDefense::TrolleyProblem::TrolleyProblem()
 		"front of you, there is a lever that will switch the track. On the other track are\n"
 		"3 criminals in a cage. You know that hitting them would also kill the puppies.\n";
 
-	m_Prompt = std::make_unique<Text>(text, 400.0f, 300.0f, 12.0f, 0.0f);
+	m_Prompt = std::make_unique<Text>(text, 400.0f, 250.0f, 12.0f, 0.0f);
 	m_Prompt->SetColor(1.0f, 1.0f, 1.0f, 1.0f);
 }
 
