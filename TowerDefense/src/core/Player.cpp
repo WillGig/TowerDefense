@@ -54,6 +54,8 @@ void TowerDefense::Player::SetEnergy(int energy)
 void TowerDefense::Player::ChangeEnergy(int change)
 {
     m_Energy += change;
+    if (m_Energy > 9999)
+        m_Energy = 9999;
     m_EnergyText = std::make_unique<Text>(std::to_string(m_Energy), 740.0f, 575.0f, 10.0f, 0.0f);
     m_EnergyText->SetColor(m_TextColor.w, m_TextColor.x, m_TextColor.y, m_TextColor.z);
 }
