@@ -158,11 +158,13 @@ void TowerDefense::PostCombatScreen::OnSwitch()
 	m_EscapedStats->SetColor(1.0f, 1.0f, 1.0f, 1.0f);
 
 	//Combat Gold
-	AddReward(std::make_shared<GoldReward>((int)(Random::GetFloat() * 200.0f)));
+	AddReward(std::make_shared<ResourceReward>((int)(Random::GetFloat() * 50.0f), Resource::WOOD));
+	AddReward(std::make_shared<ResourceReward>((int)(Random::GetFloat() * 50.0f), Resource::STONE));
+	AddReward(std::make_shared<ResourceReward>((int)(Random::GetFloat() * 50.0f), Resource::WHEAT));
 
 	//Enemy Reward Gold
 	if(enemyGold > 0)
-		AddReward(std::make_shared<GoldReward>(enemyGold));
+		AddReward(std::make_shared<ResourceReward>(enemyGold, Resource::GOLD));
 
 	//Combat Card
 	AddReward(std::make_shared<CardReward>(3));

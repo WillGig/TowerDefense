@@ -30,28 +30,35 @@ void TowerDefense::CombatReward::SetPosition(float x, float y)
 	m_Text->SetPosition(x, y, 0.0f);
 }
 
-TowerDefense::GoldReward::GoldReward(int amount)
-	:CombatReward(std::to_string(amount)), m_GoldAmount(amount),
-	m_CoinImage(std::make_unique<Image>("goldIcon", 0.0f, 0.0f, 24, 24, 0.0f))
+TowerDefense::ResourceReward::ResourceReward(int amount, Resource type)
+	:CombatReward(std::to_string(amount)), m_Amount(amount), m_Type(type)
 {
+	if(type == Resource::WOOD)
+		m_Image = std::make_unique<Image>("woodIcon", 0.0f, 0.0f, 24, 24, 0.0f);
+	else if (type == Resource::STONE)
+		m_Image = std::make_unique<Image>("stoneIcon", 0.0f, 0.0f, 24, 24, 0.0f);
+	else if (type == Resource::WHEAT)
+		m_Image = std::make_unique<Image>("wheatIcon", 0.0f, 0.0f, 24, 24, 0.0f);
+	else if (type == Resource::GOLD)
+		m_Image = std::make_unique<Image>("goldIcon", 0.0f, 0.0f, 24, 24, 0.0f);
 }
 
-void TowerDefense::GoldReward::Render()
+void TowerDefense::ResourceReward::Render()
 {
 	CombatReward::Render();
-	m_CoinImage->Render();
+	m_Image->Render();
 }
 
-void TowerDefense::GoldReward::OnClicked()
+void TowerDefense::ResourceReward::OnClicked()
 {
-	Player::Get().ChangeResource(m_GoldAmount, Resource::GOLD);
+	Player::Get().ChangeResource(m_Amount, m_Type);
 	m_RewardTaken = true;
 }
 
-void TowerDefense::GoldReward::SetPosition(float x, float y)
+void TowerDefense::ResourceReward::SetPosition(float x, float y)
 {
 	CombatReward::SetPosition(x, y);
-	m_CoinImage->SetPosition(x + 30, y - 2.0f, 0.0f);
+	m_Image->SetPosition(x + 30, y - 2.0f, 0.0f);
 }
 
 TowerDefense::CardReward::CardReward(int numChoices)

@@ -3,6 +3,8 @@
 
 namespace TowerDefense
 {
+	enum class Resource;
+
 	class CombatReward : public Button
 	{
 	public:
@@ -24,18 +26,19 @@ namespace TowerDefense
 		std::unique_ptr<Text> m_Text;
 	};
 
-	class GoldReward : public CombatReward
+	class ResourceReward : public CombatReward
 	{
 	public:
-		GoldReward(int amount);
+		ResourceReward(int amount, Resource type);
 		void Render() override;
 		void SetPosition(float x, float y) override;
 
 	private:
 		void OnClicked() override;
 
-		int m_GoldAmount;
-		std::unique_ptr<Image> m_CoinImage;
+		int m_Amount;
+		Resource m_Type;
+		std::unique_ptr<Image> m_Image;
 	};
 
 	class CardReward : public CombatReward
