@@ -14,6 +14,7 @@
 #include "cards/FrostBall.h"
 #include "cards/HeroCard.h"
 #include "cards/TowerCards.h"
+#include "cards/Double.h"
 
 void Update();
 void Render();
@@ -384,6 +385,8 @@ void LoadTextures()
     Texture::LoadTexture("frostBallUpgraded",       skillCards.load(3, 1));
     Texture::LoadTexture("lightning",               skillCards.load(4, 1));
     Texture::LoadTexture("lightningUpgraded",       skillCards.load(5, 1));
+    Texture::LoadTexture("double",                  skillCards.load(0, 2));
+    Texture::LoadTexture("doubleUpgraded",          skillCards.load(1, 2));
 
     SpriteSheet curses("res/textures/Curses.png", 440, 560);
     Texture::LoadTexture("Flames",                  curses.load(0, 0));

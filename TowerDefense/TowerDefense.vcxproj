@@ -177,6 +177,7 @@
     <ClCompile Include="src\artifacts\TokenOfTheMute.cpp" />
     <ClCompile Include="src\artifacts\TokenOfTheVigilant.cpp" />
     <ClCompile Include="src\cards\curses\Flames.cpp" />
+    <ClCompile Include="src\cards\Double.cpp" />
     <ClCompile Include="src\cards\Lightning.cpp" />
     <ClCompile Include="src\cards\LightningBolt.cpp" />
     <ClCompile Include="src\cards\quirks\Farsighted.cpp" />
@@ -334,6 +335,7 @@
     <ClInclude Include="src\artifacts\Artifact.h" />
     <ClInclude Include="src\artifacts\ArtifactPile.h" />
     <ClInclude Include="src\cards\curses\Curses.h" />
+    <ClInclude Include="src\cards\Double.h" />
     <ClInclude Include="src\cards\InfoTile.h" />
     <ClInclude Include="src\cards\Lightning.h" />
     <ClInclude Include="src\cards\LightningBolt.h" />

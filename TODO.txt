@@ -1,7 +1,8 @@
 Current:
+	design auras and more cards
+
 	design more enemies and possible combats for days 1-10
 	Add days 11-20
-	design auras and more cards
 
 Soon:
 	Change stations to only allow use every x days

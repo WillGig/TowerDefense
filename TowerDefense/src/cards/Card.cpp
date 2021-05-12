@@ -7,6 +7,8 @@
 #include "cards/FrostBall.h"
 #include "cards/PotOfGreed.h"
 #include "cards/TowerCards.h"
+#include "Double.h"
+#include "Lightning.h"
 
 float TowerDefense::Card::s_UncommonCardChance = .3f;
 float TowerDefense::Card::s_RareCardChance = .02f;
@@ -68,7 +70,7 @@ std::shared_ptr<TowerDefense::Card> TowerDefense::Card::GetCommonCard()
 
 std::shared_ptr<TowerDefense::Card> TowerDefense::Card::GetUncommonCard()
 {
-	int randomCard = (int)(Random::GetFloat() * 8);
+	int randomCard = (int)(Random::GetFloat() * 10);
 
 	if (randomCard == 0)
 		return std::make_shared<FireBall>();
@@ -84,9 +86,12 @@ std::shared_ptr<TowerDefense::Card> TowerDefense::Card::GetUncommonCard()
 		return std::make_shared<MonkCard>();
 	else if (randomCard == 6)
 		return std::make_shared<PaladinCard>();
+	else if(randomCard == 7)
+		return std::make_shared<Lightning>();
+	else if (randomCard == 8)
+		return std::make_shared<Double>();
 	else
 		return std::make_shared<WizardCard>();
-
 }
 
 std::shared_ptr<TowerDefense::Card> TowerDefense::Card::GetRareCard()
