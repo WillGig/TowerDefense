@@ -1,6 +1,4 @@
 Current:
-	Change base reward for combats to non-gold resources
-	Change caves to gather resources - chop wood, mine stone, farm wheat, or explore (random amounts or event)
 	Add note to tavern saying "New recruits expected in x days"
 
 	design more enemies and possible combats for days 1-10

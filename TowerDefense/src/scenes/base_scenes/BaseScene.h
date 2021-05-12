@@ -46,11 +46,12 @@ namespace TowerDefense
 		void OnSwitch() override;
 		inline std::string GetName() override { return "Caves"; }
 	private:
-		enum class Activity {MENU, EXPLORE, MINE};
-		int m_GoldMined;
+		enum class Activity {MENU, CHOP, MINE, FARM, EXPLORE};
+		Vec4i m_AmountGathered;
+		bool m_RandomEvent;
 		Activity m_CurrentActivity;
-		std::unique_ptr<Button> m_Explore, m_Mine, m_BackToCamp;
-		std::unique_ptr<Text> m_MiningText;
+		std::unique_ptr<Button> m_Chop, m_Mine, m_Farm, m_Explore, m_BackToCamp;
+		std::unique_ptr<Text> m_Text;
 		std::shared_ptr<CaveScene> m_CaveScene;
 	};
 

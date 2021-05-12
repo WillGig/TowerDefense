@@ -236,8 +236,8 @@ void LoadTextures()
     Texture::LoadTexture("nextDayButtonSelected",       baseButtons.load(1, 1));
     Texture::LoadTexture("restButton",                  baseButtons.load(2, 1));
     Texture::LoadTexture("restButtonSelected",          baseButtons.load(3, 1));
-    Texture::LoadTexture("exploreCavesButton",          baseButtons.load(0, 2));
-    Texture::LoadTexture("exploreCavesButtonSelected",  baseButtons.load(1, 2));
+    Texture::LoadTexture("getResourcesButton",          baseButtons.load(0, 2));
+    Texture::LoadTexture("getResourcesButtonSelected",  baseButtons.load(1, 2));
     Texture::LoadTexture("goFishingButton",             baseButtons.load(2, 2));
     Texture::LoadTexture("goFishingButtonSelected",     baseButtons.load(3, 2));
     Texture::LoadTexture("visitLibraryButton",          baseButtons.load(0, 3));
@@ -258,8 +258,10 @@ void LoadTextures()
     Texture::LoadTexture("exploreButtonSelected",       baseButtons.load(3, 6));
     Texture::LoadTexture("mineButton",                  baseButtons.load(0, 7));
     Texture::LoadTexture("mineButtonSelected",          baseButtons.load(1, 7));
-    Texture::LoadTexture("okButton",                    baseButtons.load(2, 7));
-    Texture::LoadTexture("okButtonSelected",            baseButtons.load(3, 7));
+    Texture::LoadTexture("chopWoodButton",              baseButtons.load(2, 7));
+    Texture::LoadTexture("chopWoodButtonSelected",      baseButtons.load(3, 7));
+    Texture::LoadTexture("farmButton",                  baseButtons.load(0, 8));
+    Texture::LoadTexture("farmButtonSelected",          baseButtons.load(1, 8));
 
     SpriteSheet buildButtons("res/textures/BuildButtons.png", 375, 65);
     Texture::LoadTexture("buildBed",                buildButtons.load(0, 0));
