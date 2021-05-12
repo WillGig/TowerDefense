@@ -57,7 +57,10 @@ void TowerDefense::TowerInfo::Update()
 	}
 	else if (m_TargetLeft->IsClicked())
 	{
-		m_Tower->SetTargetType((Tower::TargetType)(((int)m_Tower->GetTargetType() - 1)%5));
+		if((int)m_Tower->GetTargetType() == 0)
+			m_Tower->SetTargetType((Tower::TargetType)(4));
+		else
+			m_Tower->SetTargetType((Tower::TargetType)(((int)m_Tower->GetTargetType() - 1)%5));
 		UpdateTargetText();
 	}
 	else if (m_TargetRight->IsClicked())
