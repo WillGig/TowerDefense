@@ -19,7 +19,9 @@ void TowerDefense::PostCombatScreen::Render()
 
 	m_VictoryText->Render();
 	m_DefeatedStats->Render();
+	m_DefeatedNumbers->Render();
 	m_EscapedStats->Render();
+	m_EscapedNumbers->Render();
 	m_DamageDealt->Render();
 
 	for (unsigned int i = 0; i < m_Rewards->size(); i++)
@@ -90,6 +92,7 @@ void TowerDefense::PostCombatScreen::OnSwitch()
 	int enemyGold = 0;
 	int defeatedHeight = 3;
 	std::string defEnemies = "Enemies Defeated:\n\n";
+	std::string defNums = "\n\n";
 	for (auto i = defeatedEnemies.begin(); i != defeatedEnemies.end(); i++)
 	{
 		if (i->first == "Rat")
@@ -107,26 +110,21 @@ void TowerDefense::PostCombatScreen::OnSwitch()
 		else if (i->first == "Slime")
 			enemyGold += 8 * i->second;
 
-		defEnemies += i->first;
-		
-		for (int j = 0; j < 21 - (int)i->first.size(); j++)
-			defEnemies += " ";
+		defEnemies += i->first + "\n";
 
-		defEnemies += std::to_string(i->second) + "\n";
+		defNums += std::to_string(i->second) + "\n";
 		defeatedHeight++;
 	}
 
 	auto escapedEnemies = fight->m_EscapedEnemies;
 	std::string escEnemies = "Enemies Escaped:\n\n";
+	std::string escNums = "\n\n";
 	int escapedHeight = 3;
 	for (auto i = escapedEnemies.begin(); i != escapedEnemies.end(); i++)
 	{
-		escEnemies += i->first;
+		escEnemies += i->first + "\n";
 
-		for (int j = 0; j < 21 - (int)i->first.size(); j++)
-			escEnemies += " ";
-
-		escEnemies += std::to_string(i->second) + "\n";
+		escNums += std::to_string(i->second) + "\n";
 		escapedHeight++;
 	}
 
@@ -154,8 +152,14 @@ void TowerDefense::PostCombatScreen::OnSwitch()
 	m_DefeatedStats = std::make_unique<Text>(defEnemies, 155.0f, 430.0f - (defeatedHeight * 10.0f), 12.0f, 0.0f);
 	m_DefeatedStats->SetColor(1.0f, 1.0f, 1.0f, 1.0f);
 
+	m_DefeatedNumbers = std::make_unique<Text>(defNums, 215.0f, 430.0f - (defeatedHeight * 10.0f), 12.0f, 0.0f);
+	m_DefeatedNumbers->SetColor(1.0f, 1.0f, 1.0f, 1.0f);
+
 	m_EscapedStats = std::make_unique<Text>(escEnemies, 155.0f, 250.0f - (escapedHeight * 10.0f), 12.0f, 0.0f);
 	m_EscapedStats->SetColor(1.0f, 1.0f, 1.0f, 1.0f);
+
+	m_EscapedNumbers = std::make_unique<Text>(escNums, 215.0f, 250.0f - (escapedHeight * 10.0f), 12.0f, 0.0f);
+	m_EscapedNumbers->SetColor(1.0f, 1.0f, 1.0f, 1.0f);
 
 	//Combat Gold
 	AddReward(std::make_shared<ResourceReward>((int)(Random::GetFloat() * 50.0f), Resource::WOOD));

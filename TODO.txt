@@ -1,5 +1,5 @@
 Current:
-	Fix recap screen text lining up
+	Fix bug where you left targeting arrow doesn't wrap around
 
 	design more enemies and possible combats for days 1-10
 	Add days 11-20

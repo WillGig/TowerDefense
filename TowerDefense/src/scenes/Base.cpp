@@ -14,7 +14,6 @@ TowerDefense::Base::Base()
 	m_WaitText->SetColor(1.0f, 1.0f, 1.0f, 1.0f);
 	AddBaseScene(std::make_shared<Caves>());
 	AddBaseScene(std::make_shared<Build>());
-	AddBaseScene(std::make_shared<Chapel>());
 }
 
 void TowerDefense::Base::Render()
