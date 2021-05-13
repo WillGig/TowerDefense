@@ -8,11 +8,10 @@
 #include "scenes/Combat.h"
 #include "core/player.h"
 #include "core/Board.h"
-#include "cards/Focus.h"
-#include "cards/PotOfGreed.h"
 #include "cards/HeroCard.h"
 #include "cards/TowerCards.h"
 #include "core/TextureLoader.h"
+#include "cards/SkillCards.h"
 
 void Update();
 void Render();

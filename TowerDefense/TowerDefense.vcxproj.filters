@@ -548,9 +548,6 @@
     <ClInclude Include="src\core\Player.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\cards\Focus.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="src\core\Board.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -620,16 +617,7 @@
     <ClInclude Include="src\towers\Monk.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\cards\PotOfGreed.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\cards\FireBall.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="src\engine\Circle.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\cards\FrostBall.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\engine\Rectangle.h">
@@ -689,9 +677,6 @@
     <ClInclude Include="src\artifacts\ArtifactPile.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\cards\Lightning.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="src\engine\Line.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -704,10 +689,10 @@
     <ClInclude Include="src\scenes\CombatReward.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\cards\Double.h">
+    <ClInclude Include="src\core\TextureLoader.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\core\TextureLoader.h">
+    <ClInclude Include="src\cards\SkillCards.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

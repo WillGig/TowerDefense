@@ -1,5 +1,5 @@
 #include "pch.h"
-#include "Lightning.h"
+#include "SkillCards.h"
 #include "scenes/Combat.h"
 #include "core/Board.h"
 #include "LightningBolt.h"

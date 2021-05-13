@@ -1,5 +1,5 @@
 #include "pch.h"
-#include "Focus.h"
+#include "SkillCards.h"
 #include "core/Player.h"
 
 TowerDefense::Focus::Focus(bool exhausts)

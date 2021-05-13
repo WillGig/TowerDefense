@@ -1,5 +1,5 @@
 #include "pch.h"
-#include "PotOfGreed.h"
+#include "SkillCards.h"
 #include "core/Player.h"
 
 TowerDefense::PotOfGreed::PotOfGreed()
