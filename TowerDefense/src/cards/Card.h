@@ -17,6 +17,8 @@ namespace TowerDefense
 
 		void RenderUpgrade(float x, float y);
 
+		void RenderOutline();
+
 		virtual void RenderCardDetails();
 
 		virtual void Upgrade();
@@ -60,7 +62,8 @@ namespace TowerDefense
 		//List of keywords that are shown when rendering the card info
 		std::unique_ptr<std::vector<std::shared_ptr<InfoTile>>> m_InfoCards;
 		std::shared_ptr<Image> m_UpgradedImage;
-		std::unique_ptr<Image> m_DetailedImage;
+		std::unique_ptr<Image> m_DetailedImage, m_Outline;
+
 
 	protected:
 		void AddInfoCard(std::shared_ptr<InfoTile> cardInfo);

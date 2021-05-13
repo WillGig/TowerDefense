@@ -72,7 +72,7 @@ void TowerDefense::Combat::Update()
 	bool drawShow = player.GetDrawPile()->IsShowing();
 	bool discardShow = player.GetDiscardPile()->IsShowing();
 	bool artifactsShow = player.ArtifactsShowing();
-	bool cardDragging = player.GetHand()->DraggingCard();
+	bool cardDragging = player.GetHand()->DraggingCard() || player.GetHand()->SelectingCards();
 	bool draggingTowerInfo = DraggingInfo();
 	if (!cardDragging && !deckShow && !drawShow && !discardShow && !draggingTowerInfo)
 			UpdateButtons();
@@ -199,7 +199,7 @@ void TowerDefense::Combat::UpdateCards()
 	bool drawShow = player.GetDrawPile()->IsShowing();
 	bool discardShow = player.GetDiscardPile()->IsShowing();
 	bool artifactsShow = player.ArtifactsShowing();
-	bool cardSelected = player.GetHand()->GetSelectedCard() != -1;
+	bool cardSelected = player.GetHand()->GetSelectedCard() != -1 || player.GetHand()->SelectingCards();
 	bool draggingInfo = DraggingInfo();
 
 	if (!cardSelected && !drawShow && !discardShow && !draggingInfo)

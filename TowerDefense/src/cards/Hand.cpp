@@ -4,8 +4,10 @@
 #include "core/Player.h"
 
 TowerDefense::Hand::Hand(unsigned int maxSize)
-	:m_MaxSize(maxSize), m_CardSpacing(0), m_SelectedCard(-1), m_Dragging(false), m_ShowingInfo(false), 
+	:m_MaxSize(maxSize), m_CardSpacing(0), m_SelectedCard(-1), m_CardsToDiscard(0), 
+	m_CardsToExhaust(0), m_Dragging(false), m_ShowingInfo(false), 
 	m_Cards(std::make_unique<std::vector<std::shared_ptr<Card>>>()),
+	m_SelectedCards(std::make_unique<std::vector<int>>()),
 	m_Fade(std::make_unique<Rectangle>(400.0f, 300.0f, 800.0f, 600.0f))
 {
 	m_Fade->SetColor(0.0f, 0.0f, 0.0f, 0.9f);
@@ -13,13 +15,30 @@ TowerDefense::Hand::Hand(unsigned int maxSize)
 
 void TowerDefense::Hand::Render()
 {
-	for (unsigned int i = 0; i < m_Cards->size(); i++)
-		if(i != m_SelectedCard)
-			m_Cards->at(i)->Render();
+	if (m_CardsToDiscard != 0 || m_CardsToExhaust != 0)
+	{
+		m_Fade->Render();
+		m_SelectionText->Render();
+	}
 
+	for (unsigned int i = 0; i < m_Cards->size(); i++)
+	{
+		if (i != m_SelectedCard)
+		{
+			m_Cards->at(i)->Render();
+			if(CardSelected(i) != -1)
+				m_Cards->at(i)->RenderOutline();
+		}
+	}
+	
 	//Render selected card afterwards to ensure it is on top of other cards
 	if (m_SelectedCard != -1)
+	{
 		m_Cards->at(m_SelectedCard)->Render();
+		if (CardSelected(m_SelectedCard) != -1)
+			m_Cards->at(m_SelectedCard)->RenderOutline();
+	}
+		
 
 	if (m_ShowingInfo)
 	{
@@ -77,6 +96,21 @@ void TowerDefense::Hand::Update()
 	if (!m_Dragging && !m_ShowingInfo)
 		FindSelectedCard();
 
+	if ((m_CardsToDiscard != 0 && m_CardsToDiscard == m_SelectedCards->size()) || (m_CardsToExhaust != 0 && m_CardsToExhaust == m_SelectedCards->size()))
+	{
+		std::sort(m_SelectedCards->begin(), m_SelectedCards->end());
+		for (int i = m_SelectedCards->size() - 1; i > -1; i--)
+		{
+			if(m_CardsToDiscard != 0)
+				Player::Get().GetDiscardPile()->AddCard(m_Cards->at(m_SelectedCards->at(i)));
+			RemoveCard(m_SelectedCards->at(i));
+		}
+
+		m_CardsToDiscard = 0;
+		m_CardsToExhaust = 0;
+		m_SelectedCards->clear();
+	}
+
 	if (m_ShowingInfo && (Input::GetRightMouseClickedAndSetFalse() || Input::GetLeftMouseClickedAndSetFalse()))
 	{
 		m_ShowingInfo = false;
@@ -92,7 +126,17 @@ void TowerDefense::Hand::FindSelectedCard()
 			m_SelectedCard = i;
 			m_Cards->at(i)->SetRotation(0);
 			if (Input::GetLeftMouseClicked()) {
-				m_Dragging = true;
+				if(m_CardsToDiscard == 0 && m_CardsToExhaust == 0)
+					m_Dragging = true;
+				else
+				{
+					Input::GetLeftMouseClickedAndSetFalse();
+					int index = CardSelected(i);
+					if (index == -1)
+						m_SelectedCards->push_back(i);
+					else
+						m_SelectedCards->erase(m_SelectedCards->begin() + index);
+				}
 			}
 			break;
 		}
@@ -181,4 +225,32 @@ void TowerDefense::Hand::DiscardHand()
 		Player::Get().GetDiscardPile()->AddCard(m_Cards->at(0));
 		RemoveCard(0);
 	}
+}
+
+void TowerDefense::Hand::DiscardCards(int numDiscard) 
+{ 
+	m_CardsToDiscard = numDiscard; 
+	if ((int)m_Cards->size() < m_CardsToDiscard)
+		m_CardsToDiscard = m_Cards->size();
+	m_SelectionText = std::make_unique<Text>("Select " + std::to_string(m_CardsToDiscard) + " Cards to Discard", 400.0f, 300.0f, 16.0f, 0.0f);
+	m_SelectionText->SetColor(1.0f, 1.0f, 1.0f, 1.0f);
+};
+
+void TowerDefense::Hand::ExhaustCards(int numExhaust)
+{
+	m_CardsToExhaust = numExhaust;
+	if ((int)m_Cards->size() < m_CardsToExhaust)
+		m_CardsToExhaust = m_Cards->size();
+	m_SelectionText = std::make_unique<Text>("Select " + std::to_string(m_CardsToExhaust) + " Cards to Exhaust", 400.0f, 300.0f, 16.0f, 0.0f);
+	m_SelectionText->SetColor(1.0f, 1.0f, 1.0f, 1.0f);
+};
+
+int TowerDefense::Hand::CardSelected(int card)
+{
+	for (unsigned int j = 0; j < m_SelectedCards->size(); j++)
+	{
+		if (m_SelectedCards->at(j) == card)
+			return j;
+	}
+	return -1;
 }
