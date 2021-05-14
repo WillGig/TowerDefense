@@ -1,6 +1,5 @@
 Current:
 	Add more auras
-	Add aura info when hovering over them
 	Add special aura keyword
 
 	design more enemies and possible combats for days 1-10

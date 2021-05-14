@@ -7,13 +7,11 @@ namespace TowerDefense
 	class Aura : public Entity
 	{
 	public:
-		Aura(const std::string name)
-			:Entity(0.0f, 0.0f, 32, 32, 0.0f, name, Type::AURA), m_Name(name)
-		{
-
-		}
-
-		inline virtual void Update() override {};
+		Aura(const std::string name, const std::string info);
+		void Render() override;
+		virtual void Update() override;
+		void SetX(float x) override;
+		void SetY(float y) override;
 		inline virtual void OnAquire() {};
 		inline virtual void OnCardPlay(std::shared_ptr<Card> c) {};
 		inline virtual void OnEnemyHit(std::shared_ptr<Enemy::Enemy> e, std::shared_ptr<Entity> source) {};
@@ -21,6 +19,9 @@ namespace TowerDefense
 
 	private:
 		std::string m_Name;
+		bool m_Selected;
+		std::unique_ptr<Image> m_InfoImage;
+		std::unique_ptr<Text> m_InfoText;
 	};
 
 	class LifeSteal : public Aura
