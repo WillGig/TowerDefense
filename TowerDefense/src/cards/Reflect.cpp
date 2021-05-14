@@ -7,7 +7,7 @@ TowerDefense::Reflect::Reflect()
 {
 }
 
-bool TowerDefense::Reflect::Play()
+void TowerDefense::Reflect::Play()
 {
 	auto hand = Player::Get().GetHand();
 	for (int i = 0; i < 3; i++)
@@ -16,7 +16,6 @@ bool TowerDefense::Reflect::Play()
 		hand->DrawCard();
 	
 	hand->DiscardCards(1);
-	return true;
 }
 
 std::shared_ptr<TowerDefense::Card> TowerDefense::Reflect::Clone()

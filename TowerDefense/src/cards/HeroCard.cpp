@@ -78,16 +78,17 @@ void TowerDefense::HeroCard::Upgrade()
 	m_Upgrades = m_Tower->GetUpgrades();
 }
 
-bool TowerDefense::HeroCard::Play()
+bool TowerDefense::HeroCard::CanPlay()
 {
-	if (Board::Get().ValidPlace() && m_OverBoard) {
-		for (unsigned int i = 0; i < m_Quirks->size(); i++) {
-			m_Quirks->at(i)->OnPlay();
-		}
-		TowerCard::Play();
-		return true;
+	return Board::Get().ValidPlace() && m_OverBoard;
+}
+
+void TowerDefense::HeroCard::Play()
+{
+	for (unsigned int i = 0; i < m_Quirks->size(); i++) {
+		m_Quirks->at(i)->OnPlay();
 	}
-	return false;
+	TowerCard::Play();
 }
 
 void TowerDefense::HeroCard::SetX(float x)

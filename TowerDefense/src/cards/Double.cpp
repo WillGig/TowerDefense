@@ -7,10 +7,9 @@ TowerDefense::Double::Double()
 {
 }
 
-bool TowerDefense::Double::Play()
+void TowerDefense::Double::Play()
 {
-	TowerDefense::Player::Get().ChangeEnergy(TowerDefense::Player::Get().GetEnergy() - m_Cost);
-	return true;
+	TowerDefense::Player::Get().ChangeEnergy(TowerDefense::Player::Get().GetEnergy());
 }
 
 void TowerDefense::Double::Upgrade()

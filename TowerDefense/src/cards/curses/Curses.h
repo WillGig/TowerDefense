@@ -7,7 +7,7 @@ namespace TowerDefense
 	{
 	public:
 		Flames();
-		bool Play() override;
+		void Play() override;
 		std::shared_ptr<Card> Clone() override;
 	};
 }

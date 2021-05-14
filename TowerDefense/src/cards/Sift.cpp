@@ -7,7 +7,7 @@ TowerDefense::Sift::Sift()
 {
 }
 
-bool TowerDefense::Sift::Play()
+void TowerDefense::Sift::Play()
 {
 	auto hand = Player::Get().GetHand();
 	for(int i = 0; i < 4; i++)
@@ -16,7 +16,6 @@ bool TowerDefense::Sift::Play()
 		hand->DiscardCards(2);
 	else
 		hand->DiscardCards(3);
-	return true;
 }
 
 std::shared_ptr<TowerDefense::Card> TowerDefense::Sift::Clone()

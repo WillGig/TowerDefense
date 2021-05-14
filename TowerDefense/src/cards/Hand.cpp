@@ -66,11 +66,12 @@ void TowerDefense::Hand::Update()
 					if (player.GetEnergy() >= m_Cards->at(m_SelectedCard)->GetCost())
 					{
 						auto card = m_Cards->at(m_SelectedCard);
-						if (card->Play())
+						if (card->CanPlay())
 						{
 							player.ChangeEnergy(0 - card->GetCost());
-							if((int)m_Cards->size() > m_SelectedCard && m_SelectedCard != -1 && m_Cards->at(m_SelectedCard) == card)
-								RemoveCard(m_Cards->at(m_SelectedCard)->GetHandPosition());
+							//if((int)m_Cards->size() > m_SelectedCard && m_SelectedCard != -1 && m_Cards->at(m_SelectedCard) == card)
+							RemoveCard(m_Cards->at(m_SelectedCard)->GetHandPosition());
+							card->Play();
 							player.ArtifactOnCardPlay(card);
 							if (!card->Exhausts())
 								player.GetDiscardPile()->AddCard(card);

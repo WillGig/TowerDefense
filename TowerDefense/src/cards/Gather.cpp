@@ -7,13 +7,13 @@ TowerDefense::Gather::Gather()
 {
 }
 
-bool TowerDefense::Gather::Play()
+void TowerDefense::Gather::Play()
 {
 	Player& player = Player::Get();
 	int changeAmount = m_Upgraded ? 50 : 40;
 	int handSize = player.GetHand()->GetSize();
 
-	if (handSize > 3)
+	if (handSize > 2)
 	{
 		player.ChangeEnergy(changeAmount * 3);
 		player.GetHand()->DiscardCards(3);
@@ -23,7 +23,6 @@ bool TowerDefense::Gather::Play()
 		player.ChangeEnergy(changeAmount * handSize);
 		player.GetHand()->DiscardCards(handSize - 1);
 	}
-	return true;
 }
 
 std::shared_ptr<TowerDefense::Card> TowerDefense::Gather::Clone()

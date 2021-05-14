@@ -7,7 +7,7 @@ TowerDefense::MassStun::MassStun()
 {
 }
 
-bool TowerDefense::MassStun::Play()
+void TowerDefense::MassStun::Play()
 {
 	int stunDuration = m_Upgraded ? 300 : 180;
 
@@ -17,8 +17,6 @@ bool TowerDefense::MassStun::Play()
 		if (e->GetEntityType() == Type::ENEMY)
 			std::dynamic_pointer_cast<Enemy::Enemy>(e)->Stun(stunDuration);
 	}
-
-	return true;
 }
 
 std::shared_ptr<TowerDefense::Card> TowerDefense::MassStun::Clone()

@@ -7,7 +7,7 @@ namespace TowerDefense
 	class Focus : public Card {
 	public:
 		Focus(bool exhausts);
-		bool Play() override;
+		void Play() override;
 		std::shared_ptr<Card> Clone() override;
 	};
 
@@ -15,14 +15,14 @@ namespace TowerDefense
 	{
 	public:
 		PotOfGreed();
-		bool Play() override;
+		void Play() override;
 		std::shared_ptr<Card> Clone() override;
 	};
 
 	class Double : public Card {
 	public:
 		Double();
-		bool Play() override;
+		void Play() override;
 		void Upgrade() override;
 		std::shared_ptr<Card> Clone() override;
 	};
@@ -34,7 +34,8 @@ namespace TowerDefense
 		void Render() override;
 		void Update() override;
 		void Upgrade() override;
-		bool Play() override;
+		bool CanPlay() override;
+		void Play() override;
 		std::shared_ptr<Card> Clone() override;
 
 	private:
@@ -50,7 +51,8 @@ namespace TowerDefense
 		void Render() override;
 		void Update() override;
 		void Upgrade() override;
-		bool Play() override;
+		bool CanPlay() override;
+		void Play() override;
 		std::shared_ptr<Card> Clone() override;
 
 	private:
@@ -67,7 +69,8 @@ namespace TowerDefense
 		void Render() override;
 		void Update() override;
 		void Upgrade() override;
-		bool Play() override;
+		bool CanPlay() override;
+		void Play() override;
 		std::shared_ptr<Card> Clone() override;
 
 	private:
@@ -84,7 +87,8 @@ namespace TowerDefense
 		void Render() override;
 		void Update() override;
 		void Upgrade() override;
-		bool Play() override;
+		bool CanPlay() override;
+		void Play() override;
 		std::shared_ptr<Card> Clone() override;
 
 	private:
@@ -100,7 +104,7 @@ namespace TowerDefense
 	{
 	public:
 		Sift();
-		bool Play() override;
+		 void Play() override;
 		std::shared_ptr<Card> Clone() override;
 	};
 
@@ -108,7 +112,7 @@ namespace TowerDefense
 	{
 	public:
 		Reflect();
-		bool Play() override;
+		void Play() override;
 		std::shared_ptr<Card> Clone() override;
 	};
 
@@ -116,7 +120,7 @@ namespace TowerDefense
 	{
 	public:
 		Skim();
-		bool Play() override;
+		void Play() override;
 		std::shared_ptr<Card> Clone() override;
 	};
 
@@ -124,7 +128,7 @@ namespace TowerDefense
 	{
 	public:
 		Refresh();
-		bool Play() override;
+		void Play() override;
 		std::shared_ptr<Card> Clone() override;
 	};
 
@@ -132,7 +136,7 @@ namespace TowerDefense
 	{
 	public:
 		Center();
-		bool Play() override;
+		void Play() override;
 		std::shared_ptr<Card> Clone() override;
 	};
 
@@ -140,7 +144,7 @@ namespace TowerDefense
 	{
 	public:
 		Gather();
-		bool Play() override;
+		void Play() override;
 		std::shared_ptr<Card> Clone() override;
 	};
 
@@ -148,7 +152,7 @@ namespace TowerDefense
 	{
 	public:
 		Concentrate();
-		bool Play() override;
+		void Play() override;
 		std::shared_ptr<Card> Clone() override;
 	};
 
@@ -156,7 +160,7 @@ namespace TowerDefense
 	{
 	public:
 		Recharge();
-		bool Play() override;
+		void Play() override;
 		std::shared_ptr<Card> Clone() override;
 	};
 
@@ -164,7 +168,7 @@ namespace TowerDefense
 	{
 	public:
 		Attain();
-		bool Play() override;
+		void Play() override;
 		std::shared_ptr<Card> Clone() override;
 	};
 
@@ -173,7 +177,7 @@ namespace TowerDefense
 	public:
 		Ren();
 		void Upgrade() override;
-		bool Play() override;
+		void Play() override;
 		std::shared_ptr<Card> Clone() override;
 	};
 
@@ -181,7 +185,7 @@ namespace TowerDefense
 	{
 	public:
 		Surge();
-		bool Play() override;
+		void Play() override;
 		std::shared_ptr<Card> Clone() override;
 	};
 
@@ -189,7 +193,7 @@ namespace TowerDefense
 	{
 	public:
 		MassStun();
-		bool Play() override;
+		void Play() override;
 		std::shared_ptr<Card> Clone() override;
 	};
 }

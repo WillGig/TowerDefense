@@ -1,7 +1,7 @@
 #include "pch.h"
 #include "Artifact.h"
 #include "core/Player.h"
-#include "cards/Lightning.h"
+#include "cards/SkillCards.h"
 
 TowerDefense::TokenOfTheBroken::TokenOfTheBroken()
 	:Artifact("Token Of The Broken")

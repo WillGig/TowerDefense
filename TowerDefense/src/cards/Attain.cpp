@@ -7,15 +7,13 @@ TowerDefense::Attain::Attain()
 {
 }
 
-bool TowerDefense::Attain::Play()
+void TowerDefense::Attain::Play()
 {
 	auto hand = Player::Get().GetHand();
 	for(int i = 0; i < 3; i++)
 		hand->DrawCard();
 	if (m_Upgraded)
 		hand->DrawCard();
-
-	return true;
 }
 
 std::shared_ptr<TowerDefense::Card> TowerDefense::Attain::Clone()

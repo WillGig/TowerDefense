@@ -10,7 +10,8 @@ namespace TowerDefense
 		TowerCard(const std::string& name, int cost, const std::string& image, const std::string& upgradedImage);
 		void Render() override;
 		void Update() override;
-		bool Play() override;
+		bool CanPlay() override;
+		void Play() override;
 		void Upgrade() override;
 
 	protected:

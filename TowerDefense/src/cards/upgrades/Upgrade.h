@@ -13,7 +13,7 @@ namespace TowerDefense
 		{
 		}
 		virtual void UpgradeHero(HeroCard& hero) = 0;
-		inline bool Play() override { return true; };
+		inline void Play() override {};
 		inline std::shared_ptr<Card> Clone() { return nullptr; }
 	};
 }

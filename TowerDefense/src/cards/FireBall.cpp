@@ -53,27 +53,28 @@ void TowerDefense::FireBall::Upgrade()
 	m_Damage = 15.0f;
 }
 
-bool TowerDefense::FireBall::Play()
+bool TowerDefense::FireBall::CanPlay()
 {
-	if (m_OverBoard) {
-		m_OverBoard = false;
+	return m_OverBoard;
+}
 
-		//Damage all enemies in range
-		auto entities = Combat::GetEntities();
-		for (unsigned int i = 0; i < entities->size(); i++) {
-			std::shared_ptr<Entity> e = entities->at(i);
-			if (e->GetEntityType() == Type::ENEMY)
+void TowerDefense::FireBall::Play()
+{
+	m_OverBoard = false;
+
+	//Damage all enemies in range
+	auto entities = Combat::GetEntities();
+	for (unsigned int i = 0; i < entities->size(); i++) {
+		std::shared_ptr<Entity> e = entities->at(i);
+		if (e->GetEntityType() == Type::ENEMY)
+		{
+			if (e->GetDistance(m_X, m_Y) < m_Radius)
 			{
-				if (e->GetDistance(m_X, m_Y) < m_Radius)
-				{
-					std::dynamic_pointer_cast<Enemy::Enemy>(e)->TakeDamage(m_Damage, GetID());
-				}
+				std::dynamic_pointer_cast<Enemy::Enemy>(e)->TakeDamage(m_Damage, GetID());
 			}
 		}
-		Combat::AddEntity(std::make_shared<AnimationEffect>(m_X, m_Y, 100, 100, "fireExplosion", 7, 30));
-		return true;
 	}
-	return false;
+	Combat::AddEntity(std::make_shared<AnimationEffect>(m_X, m_Y, 100, 100, "fireExplosion", 7, 30));
 }
 
 std::shared_ptr<TowerDefense::Card> TowerDefense::FireBall::Clone()

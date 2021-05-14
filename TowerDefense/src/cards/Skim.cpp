@@ -7,7 +7,7 @@ TowerDefense::Skim::Skim()
 {
 }
 
-bool TowerDefense::Skim::Play()
+void TowerDefense::Skim::Play()
 {
 	auto hand = Player::Get().GetHand();
 	for (int i = 0; i < 3; i++)
@@ -16,7 +16,6 @@ bool TowerDefense::Skim::Play()
 		hand->DiscardCards(2);
 	else
 		hand->DiscardCards(3);
-	return true;
 }
 
 std::shared_ptr<TowerDefense::Card> TowerDefense::Skim::Clone()

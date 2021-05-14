@@ -54,27 +54,28 @@ void TowerDefense::PoisonBall::Upgrade()
 	m_PoisonTime = 300;
 }
 
-bool TowerDefense::PoisonBall::Play()
+bool TowerDefense::PoisonBall::CanPlay()
 {
-	if (m_OverBoard) {
-		m_OverBoard = false;
+	return m_OverBoard;
+}
 
-		//Slow all enemies in range
-		auto entities = Combat::GetEntities();
-		for (unsigned int i = 0; i < entities->size(); i++) {
-			std::shared_ptr<Entity> e = entities->at(i);
-			if (e->GetEntityType() == Type::ENEMY)
+void TowerDefense::PoisonBall::Play()
+{
+	m_OverBoard = false;
+
+	//Slow all enemies in range
+	auto entities = Combat::GetEntities();
+	for (unsigned int i = 0; i < entities->size(); i++) {
+		std::shared_ptr<Entity> e = entities->at(i);
+		if (e->GetEntityType() == Type::ENEMY)
+		{
+			if (e->GetDistance(m_X, m_Y) < m_Radius)
 			{
-				if (e->GetDistance(m_X, m_Y) < m_Radius)
-				{
-					std::dynamic_pointer_cast<Enemy::Enemy>(e)->Poison(m_PoisonAmount, m_PoisonTime, GetID());
-				}
+				std::dynamic_pointer_cast<Enemy::Enemy>(e)->Poison(m_PoisonAmount, m_PoisonTime, GetID());
 			}
 		}
-		Combat::AddEntity(std::make_shared<AnimationEffect>(m_X, m_Y, 100, 100, "acidExplosion", 7, 30));
-		return true;
 	}
-	return false;
+	Combat::AddEntity(std::make_shared<AnimationEffect>(m_X, m_Y, 100, 100, "acidExplosion", 7, 30));
 }
 
 std::shared_ptr<TowerDefense::Card> TowerDefense::PoisonBall::Clone()

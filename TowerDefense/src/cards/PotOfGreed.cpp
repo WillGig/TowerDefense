@@ -7,13 +7,12 @@ TowerDefense::PotOfGreed::PotOfGreed()
 {
 }
 
-bool TowerDefense::PotOfGreed::Play()
+void TowerDefense::PotOfGreed::Play()
 {
 	Player::Get().GetHand()->DrawCard();
 	Player::Get().GetHand()->DrawCard();
 	if (m_Upgraded)
 		Player::Get().GetHand()->DrawCard();
-	return true;
 }
 
 std::shared_ptr<TowerDefense::Card> TowerDefense::PotOfGreed::Clone()

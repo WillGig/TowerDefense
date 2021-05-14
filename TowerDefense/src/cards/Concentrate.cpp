@@ -7,14 +7,12 @@ TowerDefense::Concentrate::Concentrate()
 {
 }
 
-bool TowerDefense::Concentrate::Play()
+void TowerDefense::Concentrate::Play()
 {
 	Player& player = Player::Get();
 	player.ChangeEnergy(70);
 	if (m_Upgraded)
 		player.ChangeEnergy(30);
-
-	return true;
 }
 
 std::shared_ptr<TowerDefense::Card> TowerDefense::Concentrate::Clone()

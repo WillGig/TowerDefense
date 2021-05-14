@@ -63,31 +63,33 @@ void TowerDefense::TowerCard::Update()
 
 }
 
-bool TowerDefense::TowerCard::Play()
+bool TowerDefense::TowerCard::CanPlay()
 {
-	Board& board = Board::Get();
-
-	if (m_OverBoard && board.ValidPlace()) {
-		//Add tower to board
-		m_HeldTower->SetX(board.GetSelectedTile()->GetX());
-		m_HeldTower->SetY(board.GetSelectedTile()->GetY());
-		Combat::AddEntity(m_HeldTower);
-
-		//Set occupied tiles
-		std::shared_ptr<StaticImage> s = board.GetSelectedTile();
-		auto tiles = board.GetTiles();
-		for (unsigned int i = 0; i < tiles->size(); i++) {
-			std::shared_ptr<Tile> t = tiles->at(i);
-			if (s->Contains(t->GetX(), t->GetY())) {
-				t->SetContainedObject(m_HeldTower);
-			}
-		}
-		m_OverBoard = false;
-		m_HeldTower.reset();
+	if (m_OverBoard && Board::Get().ValidPlace())
 		return true;
-	}
 	m_OverBoard = false;
 	return false;
+}
+
+void TowerDefense::TowerCard::Play()
+{
+	Board& board = Board::Get();
+	//Add tower to board
+	m_HeldTower->SetX(board.GetSelectedTile()->GetX());
+	m_HeldTower->SetY(board.GetSelectedTile()->GetY());
+	Combat::AddEntity(m_HeldTower);
+
+	//Set occupied tiles
+	std::shared_ptr<StaticImage> s = board.GetSelectedTile();
+	auto tiles = board.GetTiles();
+	for (unsigned int i = 0; i < tiles->size(); i++) {
+		std::shared_ptr<Tile> t = tiles->at(i);
+		if (s->Contains(t->GetX(), t->GetY())) {
+			t->SetContainedObject(m_HeldTower);
+		}
+	}
+	m_OverBoard = false;
+	m_HeldTower.reset();
 }
 
 void TowerDefense::TowerCard::Upgrade()

@@ -19,7 +19,8 @@ namespace TowerDefense
 		void Render() override;
 		void RenderCardDetails() override;
 		void Upgrade() override;
-		bool Play() override;
+		bool CanPlay() override;
+		void Play() override;
 		std::shared_ptr<Card> Clone() override;
 
 		inline int GetLevel() const { return m_Level; }

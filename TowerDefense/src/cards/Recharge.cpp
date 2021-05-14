@@ -7,15 +7,13 @@ TowerDefense::Recharge::Recharge()
 {
 }
 
-bool TowerDefense::Recharge::Play()
+void TowerDefense::Recharge::Play()
 {
 	Player& player = Player::Get();
 	player.ChangeEnergy(30);
 	player.GetHand()->DrawCard();
 	if (m_Upgraded)
 		player.GetHand()->DrawCard();
-
-	return true;
 }
 
 std::shared_ptr<TowerDefense::Card> TowerDefense::Recharge::Clone()

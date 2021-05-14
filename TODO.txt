@@ -1,5 +1,4 @@
 Current:
-	Fix refresh bugs
 	Add auras
 
 	design more enemies and possible combats for days 1-10

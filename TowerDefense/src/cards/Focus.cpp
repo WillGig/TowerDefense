@@ -10,13 +10,12 @@ TowerDefense::Focus::Focus(bool exhausts)
 		AddInfoCard(std::make_shared<InfoTile>("exhaustInfo"));
 }
 
-bool TowerDefense::Focus::Play()
+void TowerDefense::Focus::Play()
 {
 	if (m_Upgraded)
 		TowerDefense::Player::Get().ChangeEnergy(30);
 	else
 		TowerDefense::Player::Get().ChangeEnergy(20);
-	return true;
 }
 
 std::shared_ptr<TowerDefense::Card> TowerDefense::Focus::Clone()

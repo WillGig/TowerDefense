@@ -7,7 +7,7 @@ TowerDefense::Surge::Surge()
 {
 }
 
-bool TowerDefense::Surge::Play()
+void TowerDefense::Surge::Play()
 {
 	Player& player = Player::Get();
 	player.ChangeEnergy(50);
@@ -15,8 +15,6 @@ bool TowerDefense::Surge::Play()
 	player.GetHand()->DrawCard();
 	if (m_Upgraded)
 		player.ChangeEnergy(20);
-
-	return true;
 }
 
 std::shared_ptr<TowerDefense::Card> TowerDefense::Surge::Clone()

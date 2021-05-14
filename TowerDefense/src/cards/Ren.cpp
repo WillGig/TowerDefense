@@ -13,10 +13,9 @@ void TowerDefense::Ren::Upgrade()
 	m_Cost = 80;
 }
 
-bool TowerDefense::Ren::Play()
+void TowerDefense::Ren::Play()
 {
 	Player::Get().ChangeEnergy(200);
-	return true;
 }
 
 std::shared_ptr<TowerDefense::Card> TowerDefense::Ren::Clone()

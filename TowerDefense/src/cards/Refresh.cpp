@@ -7,7 +7,7 @@ TowerDefense::Refresh::Refresh()
 {
 }
 
-bool TowerDefense::Refresh::Play()
+void TowerDefense::Refresh::Play()
 {
 	auto hand = Player::Get().GetHand();
 	hand->DiscardHand();
@@ -15,7 +15,6 @@ bool TowerDefense::Refresh::Play()
 		hand->DrawCard();
 	if (m_Upgraded)
 		hand->DrawCard();
-	return true;
 }
 
 std::shared_ptr<TowerDefense::Card> TowerDefense::Refresh::Clone()

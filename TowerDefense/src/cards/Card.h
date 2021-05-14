@@ -11,7 +11,9 @@ namespace TowerDefense
 	public:
 		Card(std::string name, CardType type, int cost, const std::string& image, const std::string& upgradedImage);
 
-		virtual bool Play() = 0;
+		inline virtual bool CanPlay() { return true; };
+
+		virtual void Play() = 0;
 
 		void Update() override;
 

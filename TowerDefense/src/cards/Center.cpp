@@ -7,12 +7,11 @@ TowerDefense::Center::Center()
 {
 }
 
-bool TowerDefense::Center::Play()
+void TowerDefense::Center::Play()
 {
 	Player::Get().ChangeEnergy(50);
 	if (m_Upgraded)
 		Player::Get().ChangeEnergy(20);
-	return true;
 }
 
 std::shared_ptr<TowerDefense::Card> TowerDefense::Center::Clone()

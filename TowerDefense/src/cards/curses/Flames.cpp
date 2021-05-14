@@ -7,13 +7,12 @@ TowerDefense::Flames::Flames()
 {
 }
 
-bool TowerDefense::Flames::Play()
+void TowerDefense::Flames::Play()
 {
 	Player::Get().ChangeHealth(-1);
 	Player::Get().GetHand()->DrawCard();
 	if(m_Upgraded)
 		Player::Get().GetHand()->DrawCard();
-	return true;
 }
 
 std::shared_ptr<TowerDefense::Card> TowerDefense::Flames::Clone()
