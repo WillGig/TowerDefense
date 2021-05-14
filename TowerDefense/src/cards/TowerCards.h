@@ -106,7 +106,7 @@ namespace TowerDefense
 	{
 	public:
 		MonkCard()
-			:TowerCard("Monk", 100, "monkCard", "monkCardUpgraded")
+			:TowerCard("Monk", 50, "monkCard", "monkCardUpgraded")
 		{
 			AddInfoCard(std::make_shared<InfoTile>("SummonInfo"));
 		}

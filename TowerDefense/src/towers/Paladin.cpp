@@ -4,9 +4,9 @@
 #include "projectiles/Projectiles.h"
 
 TowerDefense::Tower::Paladin::Paladin()
-	:Tower(0.0f, 0.0f, 32, 32, 120.0f, 50, TowerType::DAMAGE, "Paladin")
+	:Tower(0.0f, 0.0f, 32, 32, 120.0f, 75, TowerType::DAMAGE, "Paladin")
 {
-	m_MagicDamage = 2.0f;
+	m_MagicDamage = 3.0f;
 	m_DamageType = DamageType::MAGIC;
 }
 
