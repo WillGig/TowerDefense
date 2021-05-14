@@ -7,6 +7,7 @@
 #include "enemies/Fight.h"
 #include "towers/TowerInfo.h"
 #include "enemies/EnemyInfo.h"
+#include "Auras/Aura.h"
 
 namespace TowerDefense
 {
@@ -33,6 +34,11 @@ namespace TowerDefense
 
 		static inline std::shared_ptr<std::vector<std::shared_ptr<Entity>>> GetEntities() { return s_Entities; }
 
+		static void AddAura(std::shared_ptr<Aura> a);
+		static void OnCardPlayAuras(std::shared_ptr<Card> c);
+		static void OnEnemyHit(unsigned int id, std::shared_ptr<Entity>  source);
+		static void OnEnemyDeath(unsigned int id);
+
 		static inline std::shared_ptr<Fight> GetCurrentFight() { return s_Fights->at(s_CurrentFight); }
 		
 		static inline int GetRoundSpeed() { return s_RoundSpeed; }
@@ -52,6 +58,8 @@ namespace TowerDefense
 		void RenderCards();
 
 		void UpdateEntities();
+
+		void UpdateAuras();
 
 		void UpdateCards();
 
@@ -85,6 +93,8 @@ namespace TowerDefense
 
 		static std::shared_ptr<std::vector<std::shared_ptr<Entity>>> s_Entities, s_Adders;
 		static std::shared_ptr<std::vector<int>> s_Removers;
+
+		static std::unique_ptr<std::vector<std::shared_ptr<Aura>>> s_Auras;
 
 		static std::unique_ptr<std::vector<std::shared_ptr<Fight>>> s_Fights;
 	};

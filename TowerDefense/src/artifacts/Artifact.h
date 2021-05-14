@@ -1,5 +1,4 @@
 #pragma once
-#include "core/Entity.h"
 #include "cards/Card.h"
 
 namespace TowerDefense

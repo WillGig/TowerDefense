@@ -2,7 +2,7 @@
 
 namespace TowerDefense
 {
-	enum class Type {STATICIMAGE, ANIMATION, BUTTON, CARD, CARDPILE, ENEMY, TOWER, PROJECTILE, ARTIFACT};
+	enum class Type { STATICIMAGE, ANIMATION, BUTTON, CARD, CARDPILE, ENEMY, TOWER, PROJECTILE, ARTIFACT, AURA };
 
 	class Entity
 	{
@@ -44,11 +44,11 @@ namespace TowerDefense
 		unsigned int m_ID;
 
 		Type m_EntityType;
-		
+
 		int m_Width, m_Height;
-		
+
 		float m_X, m_Y, m_Rotation;
-		
+
 		std::shared_ptr<Image> m_Image;
 
 	private:

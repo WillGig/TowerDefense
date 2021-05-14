@@ -21,7 +21,7 @@ void TowerDefense::Gather::Play()
 	else
 	{
 		player.ChangeEnergy(changeAmount * handSize);
-		player.GetHand()->DiscardCards(handSize - 1);
+		player.GetHand()->DiscardCards(handSize);
 	}
 }
 

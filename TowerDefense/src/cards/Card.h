@@ -3,7 +3,7 @@
 
 namespace TowerDefense
 {
-	enum class CardType { TOWER, SKILL, CURSE };
+	enum class CardType { TOWER, SKILL, AURA, CURSE };
 
 	class Card : public TowerDefense::Entity
 	{

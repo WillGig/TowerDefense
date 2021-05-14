@@ -12,6 +12,7 @@
 #include "cards/TowerCards.h"
 #include "core/TextureLoader.h"
 #include "cards/SkillCards.h"
+#include "cards/AuraCards.h"
 
 void Update();
 void Render();
@@ -110,6 +111,7 @@ bool TowerDefense::Init()
         player.AddToDeck(std::make_shared<ArcherCard>());
     for (int i = 0; i < 2; i++)
         player.AddToDeck(std::make_shared<PotOfGreed>());
+    player.AddToDeck(std::make_shared<LifeAura>());
 
     return true;
 }

@@ -13,6 +13,7 @@ bool TowerDefense::Combat::s_Paused = false;
 std::shared_ptr<std::vector<std::shared_ptr<TowerDefense::Entity>>> TowerDefense::Combat::s_Entities = std::make_shared<std::vector<std::shared_ptr<TowerDefense::Entity>>>();
 std::shared_ptr<std::vector<std::shared_ptr<TowerDefense::Entity>>> TowerDefense::Combat::s_Adders = std::make_shared<std::vector<std::shared_ptr<TowerDefense::Entity>>>();
 std::shared_ptr<std::vector<int>> TowerDefense::Combat::s_Removers = std::make_shared<std::vector<int>>();
+std::unique_ptr<std::vector<std::shared_ptr<TowerDefense::Aura>>> TowerDefense::Combat::s_Auras = std::make_unique <std::vector<std::shared_ptr<TowerDefense::Aura>>>();
 std::unique_ptr<std::vector<std::shared_ptr<TowerDefense::Fight>>> TowerDefense::Combat::s_Fights = std::make_unique<std::vector<std::shared_ptr<TowerDefense::Fight>>>();
 
 std::unique_ptr<TowerDefense::TowerInfo> TowerDefense::Combat::s_TowerInfo;
@@ -46,6 +47,9 @@ void TowerDefense::Combat::Render()
 	player.RenderDeckAndArtifacts();
 	m_StartButton->Render();
 	m_SpeedButton->Render();
+
+	for (unsigned int i = 0; i < s_Auras->size(); i++)
+		s_Auras->at(i)->Render();
 
 	//Render Tower Information
 	if (s_TowerInfo)
@@ -96,6 +100,8 @@ void TowerDefense::Combat::Update()
 		UpdateSelectedTower();
 
 	UpdateEntities();
+
+	UpdateAuras();
 }
 
 void TowerDefense::Combat::OnSwitch()
@@ -124,6 +130,7 @@ void TowerDefense::Combat::OnSwitch()
 
 	ClearProjectilesAndAnimations();
 	ClearTowers();
+	s_Auras->clear();
 
 	player.ArtifactOnFightStart();
 
@@ -140,6 +147,7 @@ void TowerDefense::Combat::CleanUp()
 	s_Fights.reset();
 	s_TowerInfo.reset();
 	s_EnemyInfo.reset();
+	s_Auras.reset();
 }
 
 //Draw Hand, Deck, Draw Pile, and Discard Pile
@@ -189,6 +197,12 @@ void TowerDefense::Combat::UpdateEntities()
 		}
 	}
 	s_Removers->clear();
+}
+
+void TowerDefense::Combat::UpdateAuras()
+{
+	for (unsigned int i = 0; i < s_Auras->size(); i++)
+		s_Auras->at(i)->Update();
 }
 
 //Updates Hand, Draw pile, Discard pile, and View Deck button
@@ -454,6 +468,34 @@ std::shared_ptr<TowerDefense::Entity> TowerDefense::Combat::GetEntity(unsigned i
 	}
 
 	return nullptr;
+}
+
+void TowerDefense::Combat::AddAura(std::shared_ptr<Aura> a)
+{
+	a->OnAquire();
+	a->SetX(150.0f + s_Auras->size() * 50);
+	a->SetY(200.0f);
+	s_Auras->push_back(a);
+}
+
+void TowerDefense::Combat::OnCardPlayAuras(std::shared_ptr<Card> c)
+{
+	for (unsigned int i = 0; i < s_Auras->size(); i++)
+		s_Auras->at(i)->OnCardPlay(c);
+}
+
+void TowerDefense::Combat::OnEnemyHit(unsigned int id, std::shared_ptr<Entity> source)
+{
+	auto e = std::dynamic_pointer_cast<Enemy::Enemy>(GetEntity(id));
+	for (unsigned int i = 0; i < s_Auras->size(); i++)
+		s_Auras->at(i)->OnEnemyHit(e, source);
+}
+
+void TowerDefense::Combat::OnEnemyDeath(unsigned int id)
+{
+	auto e = std::dynamic_pointer_cast<Enemy::Enemy>(GetEntity(id));
+	for (unsigned int i = 0; i < s_Auras->size(); i++)
+		s_Auras->at(i)->OnEnemyDeath(e);
 }
 
 //Create pools of difficulty for different fights and randomly select fights from the appropriate pools to fill up the s_Fights vector for the run

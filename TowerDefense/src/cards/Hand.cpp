@@ -2,6 +2,7 @@
 #include "Hand.h"
 #include "TowerDefense.h"
 #include "core/Player.h"
+#include "scenes/Combat.h"
 
 TowerDefense::Hand::Hand(unsigned int maxSize)
 	:m_MaxSize(maxSize), m_CardSpacing(0), m_SelectedCard(-1), m_CardsToDiscard(0), 
@@ -72,6 +73,7 @@ void TowerDefense::Hand::Update()
 							RemoveCard(m_Cards->at(m_SelectedCard)->GetHandPosition());
 							card->Play();
 							player.ArtifactOnCardPlay(card);
+							Combat::OnCardPlayAuras(card);
 							if (!card->Exhausts())
 								player.GetDiscardPile()->AddCard(card);
 						}

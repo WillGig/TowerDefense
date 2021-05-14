@@ -104,6 +104,9 @@ void TowerDefense::LoadTextures()
     Texture::LoadTexture("stoneIcon",   statIcons.load(4, 0));
     Texture::LoadTexture("wheatIcon",   statIcons.load(5, 0));
 
+    SpriteSheet auras("res/textures/auras.png", 64, 64);
+    Texture::LoadTexture("lifeSteal",   auras.load(0, 0));
+
     std::cout << "...Towers" << std::endl;
 
     SpriteSheet towers("res/textures/Towers.png", 64, 64);
@@ -203,6 +206,10 @@ void TowerDefense::LoadTextures()
     Texture::LoadTexture("surgeUpgraded",           skillCards.load(1, 3));
     Texture::LoadTexture("massStun",                skillCards.load(2, 3));
     Texture::LoadTexture("massStunUpgraded",        skillCards.load(3, 3));
+
+    SpriteSheet auraCards("res/textures/AuraCards.png", 440, 560);
+    Texture::LoadTexture("lifeAura",            auraCards.load(0, 0));
+    Texture::LoadTexture("lifeAuraUpgraded",    auraCards.load(1, 0));
 
     SpriteSheet curses("res/textures/Curses.png", 440, 560);
     Texture::LoadTexture("Flames",          curses.load(0, 0));

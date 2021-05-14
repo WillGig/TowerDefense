@@ -366,6 +366,12 @@
     <ClCompile Include="src\cards\MassStun.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="src\Auras\LifeSteal.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\cards\LifeAura.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="res\shaders\Texture.shader" />
@@ -732,6 +738,12 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\cards\SkillCards.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Auras\Aura.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\cards\AuraCards.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

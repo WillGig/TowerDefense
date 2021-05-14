@@ -181,6 +181,7 @@ void TowerDefense::Enemy::Enemy::TakeDamage(float damage, unsigned int sourceID)
 			auto tower = std::dynamic_pointer_cast<Tower::Tower>(source);
 			tower->AddDamageDelt(damage);
 		}
+		Combat::OnEnemyHit(GetID(), source);
 		Combat::GetCurrentFight()->AddDamage(damage, source);
 	}
 		
@@ -189,6 +190,7 @@ void TowerDefense::Enemy::Enemy::TakeDamage(float damage, unsigned int sourceID)
 	if (m_Health <= 0)
 	{
 		Combat::GetCurrentFight()->AddDefeatedEnemy(*this);
+		Combat::OnEnemyDeath(GetID());
 		Destroy();
 	}
 }

@@ -176,7 +176,9 @@
     <ClCompile Include="src\artifacts\TokenOfTheBroken.cpp" />
     <ClCompile Include="src\artifacts\TokenOfTheMute.cpp" />
     <ClCompile Include="src\artifacts\TokenOfTheVigilant.cpp" />
+    <ClCompile Include="src\Auras\LifeSteal.cpp" />
     <ClCompile Include="src\cards\Attain.cpp" />
+    <ClCompile Include="src\cards\LifeAura.cpp" />
     <ClCompile Include="src\cards\Center.cpp" />
     <ClCompile Include="src\cards\Concentrate.cpp" />
     <ClCompile Include="src\cards\curses\Flames.cpp" />
@@ -348,6 +350,8 @@
   <ItemGroup>
     <ClInclude Include="src\artifacts\Artifact.h" />
     <ClInclude Include="src\artifacts\ArtifactPile.h" />
+    <ClInclude Include="src\Auras\Aura.h" />
+    <ClInclude Include="src\cards\AuraCards.h" />
     <ClInclude Include="src\cards\curses\Curses.h" />
     <ClInclude Include="src\cards\InfoTile.h" />
     <ClInclude Include="src\cards\LightningBolt.h" />
