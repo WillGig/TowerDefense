@@ -60,6 +60,23 @@ namespace TowerDefense
 		std::unique_ptr<Circle> m_Circle;
 	};
 
+	class PoisonBall : public Card
+	{
+	public:
+		PoisonBall();
+		void Render() override;
+		void Update() override;
+		void Upgrade() override;
+		bool Play() override;
+		std::shared_ptr<Card> Clone() override;
+
+	private:
+		float m_PoisonAmount, m_Radius;
+		int m_PoisonTime;
+
+		std::unique_ptr<Circle> m_Circle;
+	};
+
 	class Lightning : public Card
 	{
 	public:
@@ -77,5 +94,102 @@ namespace TowerDefense
 		bool Contains(std::vector<std::shared_ptr<Enemy::Enemy>> list, unsigned int ID);
 
 		float m_Damage, m_Range;
+	};
+
+	class Sift : public Card
+	{
+	public:
+		Sift();
+		bool Play() override;
+		std::shared_ptr<Card> Clone() override;
+	};
+
+	class Reflect : public Card
+	{
+	public:
+		Reflect();
+		bool Play() override;
+		std::shared_ptr<Card> Clone() override;
+	};
+
+	class Skim : public Card
+	{
+	public:
+		Skim();
+		bool Play() override;
+		std::shared_ptr<Card> Clone() override;
+	};
+
+	class Refresh : public Card
+	{
+	public:
+		Refresh();
+		bool Play() override;
+		std::shared_ptr<Card> Clone() override;
+	};
+
+	class Center : public Card
+	{
+	public:
+		Center();
+		bool Play() override;
+		std::shared_ptr<Card> Clone() override;
+	};
+
+	class Gather : public Card
+	{
+	public:
+		Gather();
+		bool Play() override;
+		std::shared_ptr<Card> Clone() override;
+	};
+
+	class Concentrate : public Card
+	{
+	public:
+		Concentrate();
+		bool Play() override;
+		std::shared_ptr<Card> Clone() override;
+	};
+
+	class Recharge : public Card
+	{
+	public:
+		Recharge();
+		bool Play() override;
+		std::shared_ptr<Card> Clone() override;
+	};
+
+	class Attain : public Card
+	{
+	public:
+		Attain();
+		bool Play() override;
+		std::shared_ptr<Card> Clone() override;
+	};
+
+	class Ren : public Card
+	{
+	public:
+		Ren();
+		void Upgrade() override;
+		bool Play() override;
+		std::shared_ptr<Card> Clone() override;
+	};
+
+	class Surge : public Card
+	{
+	public:
+		Surge();
+		bool Play() override;
+		std::shared_ptr<Card> Clone() override;
+	};
+
+	class MassStun : public Card
+	{
+	public:
+		MassStun();
+		bool Play() override;
+		std::shared_ptr<Card> Clone() override;
 	};
 }

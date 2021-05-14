@@ -98,8 +98,7 @@ void TowerDefense::Smithing::Update()
 	{
 		if (!player.GetSelectedDeckCard())
 			FindSelectedCard();
-		if (!m_SelectedCard)
-			player.UpdateDeck();
+		player.UpdateDeck();
 	}
 }
 

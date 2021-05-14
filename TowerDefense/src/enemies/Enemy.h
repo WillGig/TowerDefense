@@ -20,6 +20,7 @@ namespace TowerDefense
 			//Time measured in game updates (60 per second)
 			void Slow(float slowPercent, int slowTime);
 			void Poison(float poisonDamage, int poisonTime, unsigned int source);
+			inline void Stun(int stunTime) { if(stunTime > m_StunTime) m_StunTime = stunTime; };
 			inline virtual void SetX(float x) override { m_X = x; m_Image->SetPosition(m_X, m_Y, 0.0f); m_HealthBar->SetPosition(m_X, m_Y + m_Height / 2); }
 			inline virtual void SetY(float y) override { m_Y = y; m_Image->SetPosition(m_X, m_Y, 0.0f); m_HealthBar->SetPosition(m_X, m_Y + m_Height / 2); }
 			inline void SetSelected(bool selected) { m_Selected = selected; }
@@ -44,7 +45,7 @@ namespace TowerDefense
 			void UpdateImage();
 			void UpdateDebuffs();
 
-			int m_CurrentTile, m_SlowTime, m_PoisonTime, m_PoisonTick;
+			int m_CurrentTile, m_SlowTime, m_PoisonTime, m_PoisonTick, m_StunTime;
 			float m_Health, m_MaxHealth, m_Speed, m_SlowPercent, m_PoisonAmount, m_GoalX, m_GoalY, m_DistanceTraveled;
 			bool m_ReachedEnd, m_Selected, m_Clicked;
 

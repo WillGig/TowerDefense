@@ -1,6 +1,5 @@
 #include "pch.h"
 #include "Player.h"
-#include "cards/Focus.h"
 
 TowerDefense::Player::Player()
     :m_Health(100), m_MaxHealth(100), m_Energy(100), m_Resources(0, 0, 0, 0), m_Hand(std::make_shared<Hand>(10)),

@@ -2,13 +2,8 @@
 #include "Card.h"
 #include "TowerDefense.h"
 #include "core/Player.h"
-#include "cards/Focus.h"
-#include "cards/FireBall.h"
-#include "cards/FrostBall.h"
-#include "cards/PotOfGreed.h"
+#include "SkillCards.h"
 #include "cards/TowerCards.h"
-#include "Double.h"
-#include "Lightning.h"
 
 float TowerDefense::Card::s_UncommonCardChance = .3f;
 float TowerDefense::Card::s_RareCardChance = .02f;
@@ -66,43 +61,66 @@ void TowerDefense::Card::AddInfoCard(std::shared_ptr<InfoTile> cardInfo)
 
 std::shared_ptr<TowerDefense::Card> TowerDefense::Card::GetCommonCard()
 {
-	int randomCard = (int)(Random::GetFloat()*3);
+	int randomCard = (int)(Random::GetFloat()*14);
 
-	if (randomCard == 0) 
-		return std::make_shared<Focus>(false);
+	if (randomCard == 0)
+		return std::make_shared<Double>();
 	else if (randomCard == 1) 
-		return std::make_shared<ArcherCard>();
+		return std::make_shared<FireBall>();
+	else if (randomCard == 2)
+		return std::make_shared<FrostBall>();
+	else if (randomCard == 3)
+		return std::make_shared<PoisonBall>();
+	else if (randomCard == 4)
+		return std::make_shared<Lightning>();
+	else if (randomCard == 5)
+		return std::make_shared<Sift>();
+	else if (randomCard == 6)
+		return std::make_shared<Reflect>();
+	else if (randomCard == 7)
+		return std::make_shared<Skim>();
+	else if (randomCard == 8)
+		return std::make_shared<Refresh>();
+	else if (randomCard == 9)
+		return std::make_shared<Center>();
+	else if (randomCard == 10)
+		return std::make_shared<WizardCard>();
+	else if (randomCard == 11)
+		return std::make_shared<AlchemistCard>();
+	else if (randomCard == 12)
+		return std::make_shared<BardCard>();
 	else
-		return std::make_shared<PotOfGreed>();
+		return std::make_shared<MonkCard>();
 }
 
 std::shared_ptr<TowerDefense::Card> TowerDefense::Card::GetUncommonCard()
 {
-	int randomCard = (int)(Random::GetFloat() * 10);
+	int randomCard = (int)(Random::GetFloat() * 7);
 
 	if (randomCard == 0)
-		return std::make_shared<FireBall>();
+		return std::make_shared<Gather>();
 	else if (randomCard == 1)
-		return std::make_shared<FrostBall>();
+		return std::make_shared<Concentrate>();
 	else if (randomCard == 2)
-		return std::make_shared<BardCard>();
+		return std::make_shared<Recharge>();
 	else if (randomCard == 3)
-		return std::make_shared<ClericCard>();
+		return std::make_shared<Attain>();
 	else if (randomCard == 4)
 		return std::make_shared<GiantCard>();
 	else if (randomCard == 5)
-		return std::make_shared<MonkCard>();
-	else if (randomCard == 6)
-		return std::make_shared<PaladinCard>();
-	else if(randomCard == 7)
-		return std::make_shared<Lightning>();
-	else if (randomCard == 8)
-		return std::make_shared<Double>();
+		return std::make_shared<ClericCard>();
 	else
-		return std::make_shared<WizardCard>();
+		return std::make_shared<PaladinCard>();
 }
 
 std::shared_ptr<TowerDefense::Card> TowerDefense::Card::GetRareCard()
 {
-	return std::make_shared<GiantCard>();
+	int randomCard = (int)(Random::GetFloat() * 3);
+
+	if (randomCard == 0)
+		return std::make_shared<Ren>();
+	else if (randomCard == 1)
+		return std::make_shared<Surge>();
+	else
+		return std::make_shared<MassStun>();
 }

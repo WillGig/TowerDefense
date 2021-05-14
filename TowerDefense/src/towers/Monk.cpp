@@ -2,7 +2,7 @@
 #include "Monk.h"
 #include "scenes/Combat.h"
 #include "projectiles/Projectiles.h"
-#include "cards/Focus.h"
+#include "cards/SkillCards.h"
 #include "core/Player.h"
 
 TowerDefense::Tower::Monk::Monk(bool upgraded)

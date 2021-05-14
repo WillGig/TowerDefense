@@ -1,9 +1,11 @@
 Current:
-	design auras and more cards
-	Heros as rare cards?
+	Fix refresh bugs
+	Add auras
 
 	design more enemies and possible combats for days 1-10
 	Add days 11-20
+	Make enemies deal more damage? Damage amount above health bar?
+	Make enemy health bars show how much damage poison will do?
 
 Soon:
 	Change stations to only allow use every x days
