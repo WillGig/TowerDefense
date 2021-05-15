@@ -13,9 +13,9 @@ TowerDefense::StunningStrikes::StunningStrikes()
 void TowerDefense::StunningStrikes::Play()
 {
 	if (m_Upgraded)
-		Combat::AddAura(std::make_shared<StunAttacks>(6, "0.1"));
+		Combat::AddAura(std::make_shared<StunAttacks>(6, "0.2"));
 	else
-		Combat::AddAura(std::make_shared<StunAttacks>(12, "0.2"));
+		Combat::AddAura(std::make_shared<StunAttacks>(12, "0.1"));
 }
 
 std::shared_ptr<TowerDefense::Card> TowerDefense::StunningStrikes::Clone()

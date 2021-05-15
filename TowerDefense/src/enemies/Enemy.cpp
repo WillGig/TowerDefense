@@ -173,6 +173,9 @@ void TowerDefense::Enemy::Enemy::FindNewGoal()
 
 void TowerDefense::Enemy::Enemy::TakeDamage(float damage, unsigned int sourceID, Tower::DamageType type)
 {
+	if (m_Health <= 0)
+		return;
+
 	auto source = Combat::GetEntity(sourceID);
 	if (source)
 	{
