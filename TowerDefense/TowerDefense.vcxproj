@@ -178,11 +178,13 @@
     <ClCompile Include="src\artifacts\TokenOfTheVigilant.cpp" />
     <ClCompile Include="src\Auras\Aura.cpp" />
     <ClCompile Include="src\Auras\ConstantDamage.cpp" />
+    <ClCompile Include="src\Auras\DeathExplosions.cpp" />
     <ClCompile Include="src\Auras\LifeSteal.cpp" />
     <ClCompile Include="src\Auras\PoisonWeapons.cpp" />
     <ClCompile Include="src\Auras\StunAttacks.cpp" />
     <ClCompile Include="src\cards\Attain.cpp" />
     <ClCompile Include="src\cards\Envenom.cpp" />
+    <ClCompile Include="src\cards\ExplosiveStrikes.cpp" />
     <ClCompile Include="src\cards\LifeAura.cpp" />
     <ClCompile Include="src\cards\Center.cpp" />
     <ClCompile Include="src\cards\Concentrate.cpp" />

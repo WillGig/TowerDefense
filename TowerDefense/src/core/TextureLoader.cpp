@@ -109,6 +109,7 @@ void TowerDefense::LoadTextures()
     Texture::LoadTexture("poisonWeapons",   auras.load(1, 0));
     Texture::LoadTexture("stunAttacks",     auras.load(2, 0));
     Texture::LoadTexture("constantDamage",  auras.load(3, 0));
+    Texture::LoadTexture("deathExplosions", auras.load(0, 1));
 
     std::cout << "...Towers" << std::endl;
 
@@ -211,14 +212,16 @@ void TowerDefense::LoadTextures()
     Texture::LoadTexture("massStunUpgraded",        skillCards.load(3, 3));
 
     SpriteSheet auraCards("res/textures/AuraCards.png", 440, 560);
-    Texture::LoadTexture("lifeAura",                auraCards.load(0, 0));
-    Texture::LoadTexture("lifeAuraUpgraded",        auraCards.load(1, 0));
-    Texture::LoadTexture("envenom",                 auraCards.load(2, 0));
-    Texture::LoadTexture("envenomUpgraded",         auraCards.load(3, 0));
-    Texture::LoadTexture("stunningStrikes",         auraCards.load(4, 0));
-    Texture::LoadTexture("stunningStrikesUpgraded", auraCards.load(5, 0));
-    Texture::LoadTexture("theFloorIsLava",          auraCards.load(6, 0));
-    Texture::LoadTexture("theFloorIsLavaUpgraded",  auraCards.load(7, 0));
+    Texture::LoadTexture("lifeAura",                    auraCards.load(0, 0));
+    Texture::LoadTexture("lifeAuraUpgraded",            auraCards.load(1, 0));
+    Texture::LoadTexture("envenom",                     auraCards.load(2, 0));
+    Texture::LoadTexture("envenomUpgraded",             auraCards.load(3, 0));
+    Texture::LoadTexture("stunningStrikes",             auraCards.load(4, 0));
+    Texture::LoadTexture("stunningStrikesUpgraded",     auraCards.load(5, 0));
+    Texture::LoadTexture("theFloorIsLava",              auraCards.load(6, 0));
+    Texture::LoadTexture("theFloorIsLavaUpgraded",      auraCards.load(7, 0));
+    Texture::LoadTexture("explosiveStrikes",            auraCards.load(0, 1));
+    Texture::LoadTexture("explosiveStrikesUpgraded",    auraCards.load(1, 1));
 
     SpriteSheet curses("res/textures/Curses.png", 440, 560);
     Texture::LoadTexture("Flames",          curses.load(0, 0));

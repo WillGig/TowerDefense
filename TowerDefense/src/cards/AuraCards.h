@@ -34,4 +34,12 @@ namespace TowerDefense
 		void Play() override;
 		std::shared_ptr<Card> Clone() override;
 	};
+
+	class ExplosiveStrikes : public Card
+	{
+	public:
+		ExplosiveStrikes();
+		void Play() override;
+		std::shared_ptr<Card> Clone() override;
+	};
 }

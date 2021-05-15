@@ -65,4 +65,14 @@ namespace TowerDefense
 		float m_Damage;
 		int m_Time, m_NextDamage;
 	};
+
+	class DeathExplosions : public Aura
+	{
+	public:
+		DeathExplosions(int damage);
+		void OnEnemyDeath(std::shared_ptr<Enemy::Enemy> e);
+
+	private:
+		int m_Damage, m_Radius;
+	};
 }
