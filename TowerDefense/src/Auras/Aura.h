@@ -70,9 +70,23 @@ namespace TowerDefense
 	{
 	public:
 		DeathExplosions(int damage);
-		void OnEnemyDeath(std::shared_ptr<Enemy::Enemy> e);
+		void OnEnemyDeath(std::shared_ptr<Enemy::Enemy> e) override;
 
 	private:
 		int m_Damage, m_Radius;
+	};
+
+	class Storm : public Aura
+	{
+	public:
+		Storm(int damage);
+		void OnCardPlay(std::shared_ptr<Card> c) override;
+
+	private:
+		std::vector<std::shared_ptr<TowerDefense::Enemy::Enemy>> GetTargets();
+		std::shared_ptr<TowerDefense::Enemy::Enemy> GetEnemyInRange(std::shared_ptr<Enemy::Enemy> currentEnemy, std::vector<std::shared_ptr<Enemy::Enemy>> exclude, float range);
+		bool Contains(std::vector<std::shared_ptr<Enemy::Enemy>> list, unsigned int ID);
+
+		int m_Damage;
 	};
 }

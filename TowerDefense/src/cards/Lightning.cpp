@@ -68,22 +68,19 @@ void TowerDefense::Lightning::Play()
 {
 	std::shared_ptr<Enemy::Enemy> e = GetClosestEnemy();
 
-	if (e && e->GetDistance(m_X, m_Y) < m_Range)
+	auto targets = GetTargets(e);
+
+	Vec2 prevTarget(e->GetX(), e->GetY());
+	Vec2 currentTarget;
+
+	e->TakeDamage(m_Damage, GetID());
+	for (unsigned int i = 1; i < targets.size(); i++)
 	{
-		auto targets = GetTargets(e);
-
-		Vec2 prevTarget(e->GetX(), e->GetY());
-		Vec2 currentTarget;
-
-		e->TakeDamage(m_Damage, GetID());
-		for (unsigned int i = 1; i < targets.size(); i++)
-		{
-			targets[i]->TakeDamage(m_Damage, GetID());
-			currentTarget = Vec2(targets[i]->GetX(), targets[i]->GetY());
-			//draw lightning connecting all targets
-			Combat::AddEntity(std::make_shared<LightningBolt>(prevTarget, currentTarget));
-			prevTarget = currentTarget;
-		}
+		targets[i]->TakeDamage(m_Damage, GetID());
+		currentTarget = Vec2(targets[i]->GetX(), targets[i]->GetY());
+		//draw lightning connecting all targets
+		Combat::AddEntity(std::make_shared<LightningBolt>(prevTarget, currentTarget));
+		prevTarget = currentTarget;
 	}
 }
 
