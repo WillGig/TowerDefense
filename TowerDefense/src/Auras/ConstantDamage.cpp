@@ -22,7 +22,7 @@ void TowerDefense::ConstantDamage::Update()
 				auto e = entities->at(i);
 				if (e->GetEntityType() == Type::ENEMY)
 				{
-					std::dynamic_pointer_cast<Enemy::Enemy>(e)->TakeDamage(m_Damage, GetID());
+					std::dynamic_pointer_cast<Enemy::Enemy>(e)->TakeDamage(m_Damage, GetID(), Tower::DamageType::MAGIC);
 					m_NextDamage = m_Time;
 				}
 			}

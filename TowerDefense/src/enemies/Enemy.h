@@ -5,6 +5,7 @@ namespace TowerDefense
 {
 	namespace Tower
 	{
+		enum class DamageType;
 		class Tower;
 	}
 
@@ -16,7 +17,7 @@ namespace TowerDefense
 			Enemy(int width, int height, float health, float speed, const std::string& name);
 			void Update() override;
 			void Render() override;
-			void TakeDamage(float damage, unsigned int source);
+			void TakeDamage(float damage, unsigned int source, Tower::DamageType type);
 			//Time measured in game updates (60 per second)
 			void Slow(float slowPercent, int slowTime);
 			void Poison(float poisonDamage, int poisonTime, unsigned int source);

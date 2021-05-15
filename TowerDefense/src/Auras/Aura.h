@@ -14,7 +14,7 @@ namespace TowerDefense
 		void SetY(float y) override;
 		inline virtual void OnAquire() {};
 		inline virtual void OnCardPlay(std::shared_ptr<Card> c) {};
-		inline virtual void OnEnemyHit(std::shared_ptr<Enemy::Enemy> e, std::shared_ptr<Entity> source) {};
+		inline virtual void OnEnemyHit(std::shared_ptr<Enemy::Enemy> e, std::shared_ptr<Entity> source, Tower::DamageType type) {};
 		inline virtual void OnEnemyDeath(std::shared_ptr<Enemy::Enemy> e) {};
 
 	private:
@@ -38,7 +38,7 @@ namespace TowerDefense
 	{
 	public:
 		PoisonWeapons(float poisonDamage, int poisonDuration, const std::string dmg);
-		void OnEnemyHit(std::shared_ptr<Enemy::Enemy> e, std::shared_ptr<Entity> source) override;
+		void OnEnemyHit(std::shared_ptr<Enemy::Enemy> e, std::shared_ptr<Entity> source, Tower::DamageType type) override;
 
 	private:
 		float m_PoisonDamage;
@@ -49,7 +49,7 @@ namespace TowerDefense
 	{
 	public:
 		StunAttacks(int stunDuration, const std::string duration);
-		void OnEnemyHit(std::shared_ptr<Enemy::Enemy> e, std::shared_ptr<Entity> source) override;
+		void OnEnemyHit(std::shared_ptr<Enemy::Enemy> e, std::shared_ptr<Entity> source, Tower::DamageType type) override;
 
 	private:
 		int m_StunDuration;
@@ -88,5 +88,16 @@ namespace TowerDefense
 		bool Contains(std::vector<std::shared_ptr<Enemy::Enemy>> list, unsigned int ID);
 
 		int m_Damage;
+	};
+
+	class EnhancePoison : public Aura
+	{
+	public:
+		//Damage string should be double extra damage, since poison ticks twice per second
+		EnhancePoison(float extraDamage, const std::string damage);
+		void OnEnemyHit(std::shared_ptr<Enemy::Enemy> e, std::shared_ptr<Entity> source, Tower::DamageType type) override;
+
+	private:
+		float m_ExtraDamage;
 	};
 }

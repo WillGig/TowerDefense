@@ -20,7 +20,7 @@ void TowerDefense::DeathExplosions::OnEnemyDeath(std::shared_ptr<Enemy::Enemy> e
 		{
 			if (enemy->GetDistance(e->GetX(), e->GetY()) < m_Radius)
 			{
-				std::dynamic_pointer_cast<Enemy::Enemy>(enemy)->TakeDamage((float)m_Damage, GetID());
+				std::dynamic_pointer_cast<Enemy::Enemy>(enemy)->TakeDamage((float)m_Damage, GetID(), Tower::DamageType::MAGIC);
 			}
 		}
 	}

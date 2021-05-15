@@ -10,7 +10,7 @@ namespace TowerDefense
 	{
 		enum class TowerType { DAMAGE, SUPPORT };
 		enum class TargetType { FIRST, LAST, CLOSE, STRONG, WEAK };
-		enum class DamageType { PHYSICAL, MAGIC };
+		enum class DamageType { PHYSICAL, MAGIC, POISON, TRUE};
 
 		class Tower : public Entity
 		{

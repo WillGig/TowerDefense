@@ -4,7 +4,7 @@
 #include "cards/LightningBolt.h"
 
 TowerDefense::Storm::Storm(int damage)
-	:Aura("storm", "Playing cards strikes enemies\nwith lightning dealing\n" + std::to_string(damage) + " damage"),
+	:Aura("storm", "Playing cards strikes\nenemies with lightning\ndealing " + std::to_string(damage) + " damage"),
 	m_Damage(damage)
 {
 }
@@ -22,10 +22,10 @@ void TowerDefense::Storm::OnCardPlay(std::shared_ptr<Card> c)
 	Vec2 prevTarget(targets[0]->GetX(), targets[0]->GetY());
 	Vec2 currentTarget;
 
-	targets[0]->TakeDamage((float)m_Damage, GetID());
+	targets[0]->TakeDamage((float)m_Damage, GetID(), Tower::DamageType::MAGIC);
 	for (unsigned int i = 1; i < targets.size(); i++)
 	{
-		targets[i]->TakeDamage((float)m_Damage, GetID());
+		targets[i]->TakeDamage((float)m_Damage, GetID(), Tower::DamageType::MAGIC);
 		currentTarget = Vec2(targets[i]->GetX(), targets[i]->GetY());
 		//draw lightning connecting all targets
 		Combat::AddEntity(std::make_shared<LightningBolt>(prevTarget, currentTarget));

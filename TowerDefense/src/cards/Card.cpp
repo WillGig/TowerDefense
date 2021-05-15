@@ -3,6 +3,7 @@
 #include "TowerDefense.h"
 #include "core/Player.h"
 #include "SkillCards.h"
+#include "AuraCards.h"
 #include "cards/TowerCards.h"
 
 float TowerDefense::Card::s_UncommonCardChance = .3f;
@@ -95,7 +96,7 @@ std::shared_ptr<TowerDefense::Card> TowerDefense::Card::GetCommonCard()
 
 std::shared_ptr<TowerDefense::Card> TowerDefense::Card::GetUncommonCard()
 {
-	int randomCard = (int)(Random::GetFloat() * 7);
+	int randomCard = (int)(Random::GetFloat() * 12);
 
 	if (randomCard == 0)
 		return std::make_shared<Gather>();
@@ -106,8 +107,18 @@ std::shared_ptr<TowerDefense::Card> TowerDefense::Card::GetUncommonCard()
 	else if (randomCard == 3)
 		return std::make_shared<Attain>();
 	else if (randomCard == 4)
-		return std::make_shared<GiantCard>();
+		return std::make_shared<StrongPoisons>();
 	else if (randomCard == 5)
+		return std::make_shared<Envenom>();
+	else if (randomCard == 6)
+		return std::make_shared<LifeAura>();
+	else if (randomCard == 7)
+		return std::make_shared<StunningStrikes>();
+	else if (randomCard == 8)
+		return std::make_shared<TheFloorIsLava>();
+	else if (randomCard == 9)
+		return std::make_shared<GiantCard>();
+	else if (randomCard == 10)
 		return std::make_shared<ClericCard>();
 	else
 		return std::make_shared<PaladinCard>();
@@ -115,12 +126,16 @@ std::shared_ptr<TowerDefense::Card> TowerDefense::Card::GetUncommonCard()
 
 std::shared_ptr<TowerDefense::Card> TowerDefense::Card::GetRareCard()
 {
-	int randomCard = (int)(Random::GetFloat() * 3);
+	int randomCard = (int)(Random::GetFloat() * 5);
 
 	if (randomCard == 0)
 		return std::make_shared<Ren>();
 	else if (randomCard == 1)
 		return std::make_shared<Surge>();
-	else
+	else if(randomCard == 2)
 		return std::make_shared<MassStun>();
+	else if (randomCard == 3)
+		return std::make_shared<ExplosiveStrikes>();
+	else
+		return std::make_shared<LightningStorm>();
 }

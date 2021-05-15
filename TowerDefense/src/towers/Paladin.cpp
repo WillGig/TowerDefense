@@ -26,7 +26,7 @@ void TowerDefense::Tower::Paladin::Fire(std::shared_ptr<TowerDefense::Entity> ta
 		Combat::AddEntity(std::make_shared<AnimationEffect>(m_X, m_Y, 32, 32, "critAnimation", 7, 30));
 	}
 	std::shared_ptr<Enemy::Enemy> e = std::dynamic_pointer_cast<Enemy::Enemy>(target);
-	e->TakeDamage(e->GetMaxHealth() * damage * .01f + damage, GetID());
+	e->TakeDamage(e->GetMaxHealth() * damage * .01f + damage, GetID(), DamageType::MAGIC);
 	Combat::AddEntity(std::make_shared<AnimationEffect>(e->GetX(), e->GetY(), 100, 100, "smiteAnimation", 7, 30));
 }
 

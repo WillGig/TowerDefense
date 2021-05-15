@@ -179,6 +179,7 @@
     <ClCompile Include="src\Auras\Aura.cpp" />
     <ClCompile Include="src\Auras\ConstantDamage.cpp" />
     <ClCompile Include="src\Auras\DeathExplosions.cpp" />
+    <ClCompile Include="src\Auras\EnhancePoison.cpp" />
     <ClCompile Include="src\Auras\LifeSteal.cpp" />
     <ClCompile Include="src\Auras\PoisonWeapons.cpp" />
     <ClCompile Include="src\Auras\Storm.cpp" />
@@ -205,6 +206,7 @@
     <ClCompile Include="src\cards\Ren.cpp" />
     <ClCompile Include="src\cards\Sift.cpp" />
     <ClCompile Include="src\cards\Skim.cpp" />
+    <ClCompile Include="src\cards\StrongPoisons.cpp" />
     <ClCompile Include="src\cards\StunningStrikes.cpp" />
     <ClCompile Include="src\cards\Surge.cpp" />
     <ClCompile Include="src\cards\TheFloorIsLava.cpp" />

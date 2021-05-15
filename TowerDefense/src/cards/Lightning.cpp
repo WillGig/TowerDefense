@@ -73,10 +73,10 @@ void TowerDefense::Lightning::Play()
 	Vec2 prevTarget(e->GetX(), e->GetY());
 	Vec2 currentTarget;
 
-	e->TakeDamage(m_Damage, GetID());
+	e->TakeDamage(m_Damage, GetID(), Tower::DamageType::MAGIC);
 	for (unsigned int i = 1; i < targets.size(); i++)
 	{
-		targets[i]->TakeDamage(m_Damage, GetID());
+		targets[i]->TakeDamage(m_Damage, GetID(), Tower::DamageType::MAGIC);
 		currentTarget = Vec2(targets[i]->GetX(), targets[i]->GetY());
 		//draw lightning connecting all targets
 		Combat::AddEntity(std::make_shared<LightningBolt>(prevTarget, currentTarget));

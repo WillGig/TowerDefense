@@ -70,7 +70,7 @@ void TowerDefense::FireBall::Play()
 		{
 			if (e->GetDistance(m_X, m_Y) < m_Radius)
 			{
-				std::dynamic_pointer_cast<Enemy::Enemy>(e)->TakeDamage(m_Damage, GetID());
+				std::dynamic_pointer_cast<Enemy::Enemy>(e)->TakeDamage(m_Damage, GetID(), Tower::DamageType::MAGIC);
 			}
 		}
 	}

@@ -109,7 +109,7 @@ void TowerDefense::Enemy::Enemy::UpdateDebuffs()
 	if (m_PoisonTime > 0) {
 		m_PoisonTime -= Combat::GetRoundSpeed();
 		if (m_PoisonTick >= POISONTICKRATE) {
-			TakeDamage(m_PoisonAmount * Combat::GetRoundSpeed(), m_PoisonSource);
+			TakeDamage(m_PoisonAmount * Combat::GetRoundSpeed(), m_PoisonSource, Tower::DamageType::POISON);
 			m_PoisonTick = 0;
 		}
 		else
@@ -171,7 +171,7 @@ void TowerDefense::Enemy::Enemy::FindNewGoal()
 	m_CurrentTile += 2;
 }
 
-void TowerDefense::Enemy::Enemy::TakeDamage(float damage, unsigned int sourceID)
+void TowerDefense::Enemy::Enemy::TakeDamage(float damage, unsigned int sourceID, Tower::DamageType type)
 {
 	auto source = Combat::GetEntity(sourceID);
 	if (source)
@@ -181,7 +181,7 @@ void TowerDefense::Enemy::Enemy::TakeDamage(float damage, unsigned int sourceID)
 			auto tower = std::dynamic_pointer_cast<Tower::Tower>(source);
 			tower->AddDamageDelt(damage);
 		}
-		Combat::OnEnemyHit(GetID(), source);
+		Combat::OnEnemyHit(GetID(), source, type);
 		Combat::GetCurrentFight()->AddDamage(damage, source);
 	}
 		

@@ -484,11 +484,11 @@ void TowerDefense::Combat::OnCardPlayAuras(std::shared_ptr<Card> c)
 		s_Auras->at(i)->OnCardPlay(c);
 }
 
-void TowerDefense::Combat::OnEnemyHit(unsigned int id, std::shared_ptr<Entity> source)
+void TowerDefense::Combat::OnEnemyHit(unsigned int id, std::shared_ptr<Entity> source, Tower::DamageType type)
 {
 	auto e = std::dynamic_pointer_cast<Enemy::Enemy>(GetEntity(id));
 	for (unsigned int i = 0; i < s_Auras->size(); i++)
-		s_Auras->at(i)->OnEnemyHit(e, source);
+		s_Auras->at(i)->OnEnemyHit(e, source, type);
 }
 
 void TowerDefense::Combat::OnEnemyDeath(unsigned int id)

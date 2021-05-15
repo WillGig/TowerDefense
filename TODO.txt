@@ -1,5 +1,6 @@
 Current:
 	Add more auras
+	Add auras to damage recap at end of combat
 
 	design more enemies and possible combats for days 1-10
 	Add days 11-20

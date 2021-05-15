@@ -8,7 +8,7 @@ TowerDefense::PoisonWeapons::PoisonWeapons(float poisonDamage, int poisonDuratio
 {
 }
 
-void TowerDefense::PoisonWeapons::OnEnemyHit(std::shared_ptr<Enemy::Enemy> e, std::shared_ptr<Entity> source)
+void TowerDefense::PoisonWeapons::OnEnemyHit(std::shared_ptr<Enemy::Enemy> e, std::shared_ptr<Entity> source, Tower::DamageType type)
 {
 	if (source->GetEntityType() == Type::TOWER)
 	{

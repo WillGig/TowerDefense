@@ -111,6 +111,7 @@ void TowerDefense::LoadTextures()
     Texture::LoadTexture("constantDamage",  auras.load(3, 0));
     Texture::LoadTexture("deathExplosions", auras.load(0, 1));
     Texture::LoadTexture("storm",           auras.load(1, 1));
+    Texture::LoadTexture("enhancePoison",  auras.load(2, 1));
 
     std::cout << "...Towers" << std::endl;
 
@@ -221,10 +222,12 @@ void TowerDefense::LoadTextures()
     Texture::LoadTexture("stunningStrikesUpgraded",     auraCards.load(5, 0));
     Texture::LoadTexture("theFloorIsLava",              auraCards.load(6, 0));
     Texture::LoadTexture("theFloorIsLavaUpgraded",      auraCards.load(7, 0));
-    Texture::LoadTexture("explosiveStrikes",            auraCards.load(0, 1));
-    Texture::LoadTexture("explosiveStrikesUpgraded",    auraCards.load(1, 1));
-    Texture::LoadTexture("lightningStorm",              auraCards.load(2, 1));
-    Texture::LoadTexture("lightningStormUpgraded",      auraCards.load(3, 1));
+    Texture::LoadTexture("strongPoisons",               auraCards.load(0, 1));
+    Texture::LoadTexture("strongPoisonsUpgraded",       auraCards.load(1, 1));
+    Texture::LoadTexture("explosiveStrikes",            auraCards.load(2, 1));
+    Texture::LoadTexture("explosiveStrikesUpgraded",    auraCards.load(3, 1));
+    Texture::LoadTexture("lightningStorm",              auraCards.load(4, 1));
+    Texture::LoadTexture("lightningStormUpgraded",      auraCards.load(5, 1));
 
     SpriteSheet curses("res/textures/Curses.png", 440, 560);
     Texture::LoadTexture("Flames",          curses.load(0, 0));

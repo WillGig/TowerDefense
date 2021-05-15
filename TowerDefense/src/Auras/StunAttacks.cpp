@@ -8,7 +8,7 @@ TowerDefense::StunAttacks::StunAttacks(int stunDuration, const std::string durat
 {
 }
 
-void TowerDefense::StunAttacks::OnEnemyHit(std::shared_ptr<Enemy::Enemy> e, std::shared_ptr<Entity> source)
+void TowerDefense::StunAttacks::OnEnemyHit(std::shared_ptr<Enemy::Enemy> e, std::shared_ptr<Entity> source, Tower::DamageType type)
 {
 	if (source->GetEntityType() == Type::TOWER)
 		e->Stun(m_StunDuration);

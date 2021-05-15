@@ -50,4 +50,12 @@ namespace TowerDefense
 		void Play() override;
 		std::shared_ptr<Card> Clone() override;
 	};
+
+	class StrongPoisons : public Card
+	{
+	public:
+		StrongPoisons();
+		void Play() override;
+		std::shared_ptr<Card> Clone() override;
+	};
 }

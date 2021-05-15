@@ -36,7 +36,7 @@ namespace TowerDefense
 
 		static void AddAura(std::shared_ptr<Aura> a);
 		static void OnCardPlayAuras(std::shared_ptr<Card> c);
-		static void OnEnemyHit(unsigned int id, std::shared_ptr<Entity>  source);
+		static void OnEnemyHit(unsigned int id, std::shared_ptr<Entity>  source, Tower::DamageType type);
 		static void OnEnemyDeath(unsigned int id);
 
 		static inline std::shared_ptr<Fight> GetCurrentFight() { return s_Fights->at(s_CurrentFight); }
