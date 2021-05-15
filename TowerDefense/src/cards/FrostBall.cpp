@@ -11,6 +11,7 @@ TowerDefense::FrostBall::FrostBall()
 	m_Circle(std::make_unique<Circle>(0.0f, 0.0f, m_Radius))
 {
 	m_Circle->SetColor(0.0f, 0.0f, 1.0f, 1.0f);
+	AddInfoCard(std::make_shared<InfoTile>("slowInfo"));
 }
 
 void TowerDefense::FrostBall::Render()

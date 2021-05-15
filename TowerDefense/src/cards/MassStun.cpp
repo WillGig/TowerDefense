@@ -5,6 +5,7 @@
 TowerDefense::MassStun::MassStun()
 	:Card("Mass Stun", CardType::SKILL, 30, "massStun", "massStunUpgraded")
 {
+	AddInfoCard(std::make_shared<InfoTile>("stunInfo"));
 }
 
 void TowerDefense::MassStun::Play()

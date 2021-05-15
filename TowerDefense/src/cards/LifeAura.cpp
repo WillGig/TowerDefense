@@ -6,7 +6,7 @@ TowerDefense::LifeAura::LifeAura()
 	:Card("Life Aura", CardType::AURA, 50, "lifeAura", "lifeAuraUpgraded")
 {
 	m_Exhausts = true;
-	AddInfoCard(std::make_shared<InfoTile>("exhaustInfo"));
+	AddInfoCard(std::make_shared<InfoTile>("auraInfo"));
 }
 
 void TowerDefense::LifeAura::Play()
