@@ -130,23 +130,28 @@ void TowerDefense::PostCombatScreen::OnSwitch()
 
 	std::string towerDamage = std::to_string(fight->GetTowerDamage());
 	std::string skillDamage = std::to_string(fight->GetSkillDamage());
+	std::string auraDamage = std::to_string(fight->GetAuraDamage());
 	std::string artifactDamage = std::to_string(fight->GetArtifactDamage());
 
 	std::string damageDealt = "Damage Dealt:\n\nTowers:";
-	
+
 	for (int i = 0; i < 11 - (int)towerDamage.size(); i++)
 		damageDealt += " ";
 	damageDealt += towerDamage + "\nSkills:";
 
 	for (int i = 0; i < 14 - (int)skillDamage.size(); i++)
 		damageDealt += " ";
-	damageDealt += skillDamage + "\nArtifacts:";
+	damageDealt += skillDamage + "\nAuras:";
+
+	for (int i = 0; i < 14 - (int)auraDamage.size(); i++)
+		damageDealt += " ";
+	damageDealt += auraDamage + "\nArtifacts:";
 
 	for (int i = 0; i < 9 - (int)artifactDamage.size(); i++)
 		damageDealt += " ";
 	damageDealt += artifactDamage;
 
-	m_DamageDealt = std::make_unique<Text>(damageDealt, 655.0f, 380.0f, 12.0f, 0.0f);
+	m_DamageDealt = std::make_unique<Text>(damageDealt, 655.0f, 370.0f, 12.0f, 0.0f);
 	m_DamageDealt->SetColor(1.0f, 1.0f, 1.0f, 1.0f);
 
 	m_DefeatedStats = std::make_unique<Text>(defEnemies, 155.0f, 430.0f - (defeatedHeight * 10.0f), 12.0f, 0.0f);

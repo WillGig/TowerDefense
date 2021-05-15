@@ -15,12 +15,14 @@ namespace TowerDefense
 		void AddDefeatedEnemy(const Enemy::Enemy& e);
 		void AddEscapedEnemy(const Enemy::Enemy& e);
 		void AddDamage(float amount, std::shared_ptr<Entity> source);
-		inline int GetTowerDamage() const { return m_TowerDamage; };
-		inline int GetSkillDamage() const { return m_SkillDamage; };
-		inline int GetArtifactDamage() const { return m_ArtifactDamage; };
+		inline int GetTowerDamage() const { return (int)m_TowerDamage; }
+		inline int GetSkillDamage() const { return (int)m_SkillDamage; }
+		inline int GetAuraDamage() const { return (int)m_AuraDamage; }
+		inline int GetArtifactDamage() const { return (int)m_ArtifactDamage; }
 
 	private:
-		int m_CurrentWave, m_TowerDamage, m_SkillDamage, m_ArtifactDamage;
+		int m_CurrentWave;
+		float m_TowerDamage, m_SkillDamage, m_AuraDamage, m_ArtifactDamage;
 		std::shared_ptr<std::vector<std::shared_ptr<Wave>>> m_Waves;
 	};
 }

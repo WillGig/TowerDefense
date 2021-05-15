@@ -467,6 +467,12 @@ std::shared_ptr<TowerDefense::Entity> TowerDefense::Combat::GetEntity(unsigned i
 			return artifacts->GetArtifact(i);
 	}
 
+	for (unsigned int i = 0; i < s_Auras->size(); i++)
+	{
+		if (s_Auras->at(i)->GetID() == ID)
+			return s_Auras->at(i);
+	}
+
 	return nullptr;
 }
 

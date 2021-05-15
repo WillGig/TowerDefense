@@ -3,7 +3,7 @@
 #include "scenes/Combat.h"
 
 TowerDefense::Fight::Fight(std::shared_ptr<std::vector<std::shared_ptr<Wave>>> waves)
-	:m_CurrentWave(-1), m_Waves(waves), m_TowerDamage(0), m_SkillDamage(0), m_ArtifactDamage(0),
+	:m_CurrentWave(-1), m_Waves(waves), m_TowerDamage(0), m_SkillDamage(0), m_AuraDamage(0), m_ArtifactDamage(0),
 	m_DefeatedEnemies(std::unordered_map<std::string, int>()), 
 	m_EscapedEnemies(std::unordered_map<std::string, int>())
 {
@@ -38,9 +38,11 @@ void TowerDefense::Fight::AddDamage(float amount, std::shared_ptr<Entity> source
 	Type s = source->GetEntityType();
 	
 	if (s == Type::TOWER)
-		m_TowerDamage += (int)amount;
+		m_TowerDamage += amount;
 	else if (s == Type::CARD)
-		m_SkillDamage += (int)amount;
+		m_SkillDamage += amount;
+	else if (s == Type::AURA)
+		m_AuraDamage += amount;
 	else if (s == Type::ARTIFACT)
-		m_ArtifactDamage += (int)amount;
+		m_ArtifactDamage += amount;
 }
