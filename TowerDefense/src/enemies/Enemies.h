@@ -62,5 +62,37 @@ namespace TowerDefense
 				:Enemy(32, 32, 13.0f, 0.7f, "Slime")
 			{}
 		};
+
+		class Spider : public Enemy
+		{
+		public:
+			Spider()
+				:Enemy(32, 32, 25.0f, 1.0f, "Spider")
+			{}
+		};
+
+		class ToughBeetle : public Enemy
+		{
+		public:
+			ToughBeetle()
+				:Enemy(32, 32, 80.0f, 0.5f, "Tough Beetle")
+			{}
+		};
+
+		class Ooze : public Enemy
+		{
+		public:
+			Ooze()
+				:Enemy(32, 32, 40.0f, 0.7f, "Ooze")
+			{}
+		};
+
+		class MegaOoze : public Enemy
+		{
+		public:
+			MegaOoze()
+				:Enemy(64, 64, 400.0f, 0.4f, "Mega Ooze")
+			{}
+		};
 	}
 }

@@ -537,28 +537,28 @@ void TowerDefense::Combat::GenerateFights()
 	pool2.push_back(std::make_shared<Fight>(waves));
 
 	waves = std::make_shared<std::vector<std::shared_ptr<Wave>>>();
-	const int enemies7[] = { 0, 0, 0, 100, 0, 100, 0, 100, 0, 100 };
-	const int enemies8[] = { 0, 0, 0, 50, 0, 50, 0, 50, 0, 50, 0, 50, 0, 50 };
-	const int enemies9[] = { 0, 0, 0, 50, 0, 50, 1, 150 };
-	waves->push_back(std::make_shared<Wave>(enemies7, 10));
-	waves->push_back(std::make_shared<Wave>(enemies8, 14));
-	waves->push_back(std::make_shared<Wave>(enemies9, 8));
+	const int enemies7[] = { 6, 0, 6, 150, 6, 150, 6, 150, 6, 150, 6, 150, 6, 150 };
+	const int enemies8[] = { 6, 0, 6, 100, 6, 100, 6, 100, 6, 100, 6, 100, 6, 100, 6, 100, 6, 100 };
+	const int enemies9[] = { 6, 0, 6, 100, 6, 100, 9, 200, 9, 50 };
+	waves->push_back(std::make_shared<Wave>(enemies7, 14));
+	waves->push_back(std::make_shared<Wave>(enemies8, 18));
+	waves->push_back(std::make_shared<Wave>(enemies9, 10));
 	pool2.push_back(std::make_shared<Fight>(waves));
 
 	waves = std::make_shared<std::vector<std::shared_ptr<Wave>>>();
-	const int enemies10[] = { 0, 0, 0, 100, 0, 100, 0, 100, 0, 100 };
-	const int enemies11[] = { 0, 0, 0, 50, 0, 50, 0, 50, 0, 50, 0, 50, 0, 50 };
-	const int enemies12[] = { 0, 0, 0, 50, 0, 50, 1, 150 };
+	const int enemies10[] = { 5, 0, 5, 50, 5, 50, 5, 50, 5, 50 };
+	const int enemies11[] = { 5, 0, 5, 20, 5, 20, 5, 20, 5, 20, 5, 20, 5, 20 };
+	const int enemies12[] = { 5, 0, 5, 10, 5, 10, 5, 10, 5, 10, 5, 10, 5, 10, 5, 10, 5, 10, 5, 10, 7, 150, 7, 30 , 7, 30 };
 	waves->push_back(std::make_shared<Wave>(enemies10, 10));
 	waves->push_back(std::make_shared<Wave>(enemies11, 14));
-	waves->push_back(std::make_shared<Wave>(enemies12, 8));
+	waves->push_back(std::make_shared<Wave>(enemies12, 26));
 	pool2.push_back(std::make_shared<Fight>(waves));
 
 	//day 7-9 fights
 	std::vector<std::shared_ptr<Fight>> pool3;
 	waves = std::make_shared<std::vector<std::shared_ptr<Wave>>>();
-	const int enemies13[] = { 2, 0, 2, 100, 2, 100, 2, 100, 2, 100 };
-	const int enemies14[] = { 2, 0, 2, 50, 2, 50, 2, 50, 2, 50 };
+	const int enemies13[] = { 2, 0, 2, 200, 2, 200, 2, 200, 2, 200 };
+	const int enemies14[] = { 2, 0, 2, 100, 2, 100, 2, 100, 2, 100 };
 	const int enemies15[] = { 2, 0, 2, 50, 2, 50, 3, 150, 3, 150 };
 	waves->push_back(std::make_shared<Wave>(enemies13, 10));
 	waves->push_back(std::make_shared<Wave>(enemies14, 10));
@@ -566,21 +566,21 @@ void TowerDefense::Combat::GenerateFights()
 	pool3.push_back(std::make_shared<Fight>(waves));
 
 	waves = std::make_shared<std::vector<std::shared_ptr<Wave>>>();
-	const int enemies16[] = { 2, 0, 2, 100, 2, 100, 2, 100, 2, 100 };
-	const int enemies17[] = { 2, 0, 2, 50, 2, 50, 2, 50, 2, 50 };
-	const int enemies18[] = { 2, 0, 2, 50, 2, 50, 3, 150, 3, 150 };
-	waves->push_back(std::make_shared<Wave>(enemies16, 10));
-	waves->push_back(std::make_shared<Wave>(enemies17, 10));
-	waves->push_back(std::make_shared<Wave>(enemies18, 10));
+	const int enemies16[] = { 6, 0, 6, 50, 6, 50, 6, 50, 6, 50, 6, 50, 6, 50 , 9, 50 , 9, 50 };
+	const int enemies17[] = { 6, 0, 6, 50, 6, 50, 6, 50, 6, 50, 9, 50, 9, 50 , 9, 50 , 9, 50 };
+	const int enemies18[] = { 10, 0 };
+	waves->push_back(std::make_shared<Wave>(enemies16, 18));
+	waves->push_back(std::make_shared<Wave>(enemies17, 18));
+	waves->push_back(std::make_shared<Wave>(enemies18, 2));
 	pool3.push_back(std::make_shared<Fight>(waves));
 
 	waves = std::make_shared<std::vector<std::shared_ptr<Wave>>>();
-	const int enemies19[] = { 2, 0, 2, 100, 2, 100, 2, 100, 2, 100 };
-	const int enemies20[] = { 2, 0, 2, 50, 2, 50, 2, 50, 2, 50 };
-	const int enemies21[] = { 2, 0, 2, 50, 2, 50, 3, 150, 3, 150 };
-	waves->push_back(std::make_shared<Wave>(enemies19, 10));
-	waves->push_back(std::make_shared<Wave>(enemies20, 10));
-	waves->push_back(std::make_shared<Wave>(enemies21, 10));
+	const int enemies19[] = { 7, 0, 7, 50, 7, 50, 7, 50, 7, 50, 7, 50, 7, 50, 7, 50, 7, 50, 7, 50 };
+	const int enemies20[] = { 7, 0, 7, 50, 7, 50, 7, 50, 7, 50, 7, 50, 7, 50, 7, 50, 7, 50, 7, 50 };
+	const int enemies21[] = { 7, 0, 7, 20, 7, 20, 7, 20, 7, 20, 8, 150, 8, 150, 8, 150, 8, 150, 8, 150 };
+	waves->push_back(std::make_shared<Wave>(enemies19, 20));
+	waves->push_back(std::make_shared<Wave>(enemies20, 20));
+	waves->push_back(std::make_shared<Wave>(enemies21, 20));
 	pool3.push_back(std::make_shared<Fight>(waves));
 
 	//day 10 fights
