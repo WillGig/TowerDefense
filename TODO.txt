@@ -4,7 +4,6 @@ Current:
 	Make enemy health bars show how much damage poison will do?
 
 Soon:
-	Remove stunning strike + poison interaction by adding damage types?
 	Change stations to only allow use every x days
 	Add note to tavern saying "New recruits expected in x days"
 	Jousting	-more gold than mining, but lose some health	- 
