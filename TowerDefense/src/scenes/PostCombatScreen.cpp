@@ -117,6 +117,8 @@ void TowerDefense::PostCombatScreen::OnSwitch()
 			enemyGold += 8 * i->second;
 		else if (i->first == "Mega Ooze")
 			enemyGold += 50 * i->second;
+		else if (i->first == "Double Ooze")
+			enemyGold += 10 * i->second;
 
 		defEnemies += i->first + "\n";
 

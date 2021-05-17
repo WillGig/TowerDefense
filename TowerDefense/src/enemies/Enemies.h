@@ -67,7 +67,7 @@ namespace TowerDefense
 		{
 		public:
 			Spider()
-				:Enemy(32, 32, 25.0f, 1.0f, "Spider")
+				:Enemy(32, 32, 20.0f, 1.0f, "Spider")
 			{}
 		};
 
@@ -93,6 +93,17 @@ namespace TowerDefense
 			MegaOoze()
 				:Enemy(64, 64, 400.0f, 0.4f, "Mega Ooze")
 			{}
+		};
+
+		class DoubleOoze : public Enemy
+		{
+		public:
+			DoubleOoze()
+				:Enemy(40, 40, 10.0f, 0.5f, "Double Ooze")
+			{}
+
+		protected:
+			void Destroy() override;
 		};
 	}
 }

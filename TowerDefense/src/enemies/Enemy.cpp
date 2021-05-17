@@ -18,7 +18,7 @@ TowerDefense::Enemy::Enemy::Enemy(int width, int height, float health, float spe
 	m_SelectedImage(std::make_shared<Image>(name + "Selected", 0.0f, 0.0f, width, height, 0.0f)),
 	m_HealthBar(std::make_unique<HealthBar>(m_X, m_Y + height/2, 20.0f, 4.0f))
 {
-	TowerDefense::Board& board = TowerDefense::Board::Get();
+	Board& board = Board::Get();
 	int tileX = board.GetPath()->at(0);
 	int tileY = board.GetPath()->at(1);
 	SetX(board.GetTiles()->at(tileX + tileY * board.GetWidth())->GetX());
@@ -223,4 +223,21 @@ void TowerDefense::Enemy::Enemy::CheckClicked()
 
 	if (Contains(Input::GetMouseX(), Input::GetMouseY()) && !cardSelected && !Combat::DraggingInfo() && Input::GetLeftMouseClickedAndSetFalse())
 		m_Clicked = true;
+}
+
+void TowerDefense::Enemy::Enemy::SetDistanceTravelled(float distanceTravelled)
+{
+	Board& board = Board::Get();
+	m_DistanceTraveled = 0;
+	m_CurrentTile = 0;
+	
+	int tileX = board.GetPath()->at(0);
+	int tileY = board.GetPath()->at(1);
+	SetX(board.GetTiles()->at(tileX + tileY * board.GetWidth())->GetX());
+	SetY(board.GetTiles()->at(tileX + tileY * board.GetWidth())->GetY());
+	FindNewGoal();
+
+	while (m_DistanceTraveled < distanceTravelled)
+		Move();
+
 }
