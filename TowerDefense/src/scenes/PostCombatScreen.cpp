@@ -176,10 +176,10 @@ void TowerDefense::PostCombatScreen::OnSwitch()
 	m_EscapedNumbers = std::make_unique<Text>(escNums, 215.0f, 250.0f - (escapedHeight * 10.0f), 12.0f, 0.0f);
 	m_EscapedNumbers->SetColor(1.0f, 1.0f, 1.0f, 1.0f);
 
-	//Combat Gold
-	AddReward(std::make_shared<ResourceReward>((int)(Random::GetFloat() * 50.0f), Resource::WOOD));
-	AddReward(std::make_shared<ResourceReward>((int)(Random::GetFloat() * 50.0f), Resource::STONE));
-	AddReward(std::make_shared<ResourceReward>((int)(Random::GetFloat() * 50.0f), Resource::WHEAT));
+	//Combat Resources
+	AddReward(std::make_shared<ResourceReward>((int)(5 + Random::GetFloat() * 45.0f), Resource::WOOD));
+	AddReward(std::make_shared<ResourceReward>((int)(5 + Random::GetFloat() * 45.0f), Resource::STONE));
+	AddReward(std::make_shared<ResourceReward>((int)(5 + Random::GetFloat() * 45.0f), Resource::WHEAT));
 
 	//Enemy Reward Gold
 	if(enemyGold > 0)
