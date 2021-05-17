@@ -37,20 +37,23 @@ void TowerDefense::Combat::Render()
 	for (unsigned int i = 0; i < s_Entities->size(); i++)
 		s_Entities->at(i)->Render();
 		
-
 	//Range Indicator
 	if (m_SelectedTower)
 		m_SelectedTower->GetRangeCircle()->Render();
 
 	//Buttons
-	player.RenderStats();
-	player.RenderDeckAndArtifacts();
 	m_StartButton->Render();
 	m_SpeedButton->Render();
 
 	for (unsigned int i = 0; i < s_Auras->size(); i++)
 		s_Auras->at(i)->Render();
 
+	if (!player.DeckShowing() && !player.ArtifactsShowing())
+	{
+		player.RenderStats();
+		player.RenderDeckAndArtifacts();
+	}
+		
 	//Render Tower Information
 	if (s_TowerInfo)
 		s_TowerInfo->Render();
@@ -61,6 +64,12 @@ void TowerDefense::Combat::Render()
 
 	//Drawpile, Discardpile, Hand
 	RenderCards();
+
+	if (player.DeckShowing() || player.ArtifactsShowing())
+	{
+		player.RenderStats();
+		player.RenderDeckAndArtifacts();
+	}
 }
 
 void TowerDefense::Combat::Update()

@@ -1,5 +1,4 @@
 Current:
-	Fix deck viewing during combat
 	Add days 11-20
 	Make enemies deal more damage? Damage amount above health bar?
 	Make enemy health bars show how much damage poison will do?
