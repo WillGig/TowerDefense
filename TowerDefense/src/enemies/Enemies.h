@@ -99,11 +99,25 @@ namespace TowerDefense
 		{
 		public:
 			DoubleOoze()
-				:Enemy(40, 40, 10.0f, 0.5f, "Double Ooze")
+				:Enemy(48, 48, 10.0f, 0.5f, "Double Ooze")
 			{}
 
-		protected:
+		private:
 			void Destroy() override;
+		};
+
+		class JumpingOoze : public Enemy
+		{
+		public:
+			JumpingOoze()
+				:Enemy(32, 32, 20.0f, 0.5f, "Jumping Ooze"), m_JumpTime(60), m_TimeBetweenJumps(120), m_JumpCoolDown(0),
+				m_JumpFrame(0)
+			{}
+
+		private:
+			void Move() override;
+
+			int m_JumpTime, m_TimeBetweenJumps, m_JumpCoolDown, m_JumpFrame;
 		};
 	}
 }

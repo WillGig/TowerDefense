@@ -240,6 +240,7 @@
     <ClCompile Include="src\enemies\EnemyInfo.cpp" />
     <ClCompile Include="src\enemies\Fight.cpp" />
     <ClCompile Include="src\enemies\HealthBar.cpp" />
+    <ClCompile Include="src\enemies\JumpingOoze.cpp" />
     <ClCompile Include="src\enemies\Wave.cpp" />
     <ClCompile Include="src\engine\Animation.cpp" />
     <ClCompile Include="src\core\AnimationEffect.cpp" />

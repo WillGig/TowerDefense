@@ -520,8 +520,8 @@ void TowerDefense::Combat::GenerateFights()
 	//day 1-3 fights
 	std::vector<std::shared_ptr<Fight>> pool1;
 	auto waves = std::make_shared<std::vector<std::shared_ptr<Wave>>>();
-	const int enemies1[] = { 0, 0, 0, 200, 0, 200, 0, 200 };
-	waves->push_back(std::make_shared<Wave>(enemies1, 8));
+	const int enemies1[] = { 12, 0, 0, 200, 0, 200, 0, 200 };
+	waves->push_back(std::make_shared<Wave>(enemies1, 2));
 	pool1.push_back(std::make_shared<Fight>(waves));
 
 	waves = std::make_shared<std::vector<std::shared_ptr<Wave>>>();

@@ -37,21 +37,21 @@ namespace TowerDefense
 			void SetDistanceTravelled(float distance);
 
 		protected:
+			virtual void Move();
 			virtual void Destroy();
 
 			int m_Damage;
 			static int POISONTICKRATE;
-			float m_DistanceTraveled;
+			float m_DistanceTraveled, m_GoalX, m_GoalY;
 
 		private:
-			void Move();
 			void FindNewGoal();
 			void CheckClicked();
 			void UpdateImage();
 			void UpdateDebuffs();
 
 			int m_CurrentTile, m_SlowTime, m_PoisonTime, m_PoisonTick, m_StunTime;
-			float m_Health, m_MaxHealth, m_Speed, m_SlowPercent, m_PoisonAmount, m_GoalX, m_GoalY;
+			float m_Health, m_MaxHealth, m_Speed, m_SlowPercent, m_PoisonAmount;
 			bool m_ReachedEnd, m_Selected, m_Clicked;
 
 			unsigned int m_PoisonSource;

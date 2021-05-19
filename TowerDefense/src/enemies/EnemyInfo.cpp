@@ -8,6 +8,8 @@ TowerDefense::EnemyInfo::EnemyInfo(float x, float y, std::shared_ptr<Enemy::Enem
 	m_PreviousMouseX(0.0f), m_PreviousMouseY(0.0f), m_EnemyHP(e->GetHealth()), m_EnemySpeed(e->GetSpeed()),
 	m_Name(std::make_unique<Text>(e->GetName(), x, y + 15.0f, 14.0f, 115.0f)), m_Enemy(e)
 {
+	if (e->GetName().size() > 8)
+		m_Name = std::make_unique<Text>(e->GetName(), x, y + 15.0f, 10.0f, 115.0f);
 	UpdateStatsText();
 }
 
