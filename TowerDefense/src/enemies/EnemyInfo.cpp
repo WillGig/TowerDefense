@@ -72,7 +72,7 @@ void TowerDefense::EnemyInfo::UpdateStatsText()
 	m_EnemyArmor = m_Enemy->GetArmor();
 	m_EnemyMagicResistance = m_Enemy->GetMagicResistance();
 
-	std::string stats = "HP:                     ";
+	std::string stats = "HP:                    ";
 
 	if (m_EnemyHP < 10)
 		stats += " ";
@@ -85,7 +85,7 @@ void TowerDefense::EnemyInfo::UpdateStatsText()
 	ss << std::fixed << std::setprecision(1) << m_EnemyHP;
 	stats += ss.str();
 
-	stats += "\nSpeed:                  ";
+	stats += "\nSpeed:                 ";
 	if (m_EnemySpeed*32.0f < 10)
 		stats += " ";
 
@@ -93,7 +93,7 @@ void TowerDefense::EnemyInfo::UpdateStatsText()
 	ss << std::fixed << std::setprecision(1) << (m_EnemySpeed * 32.0f);
 	stats += ss.str();
 
-	stats += "\nArmor:                  ";
+	stats += "\nArmor:                 ";
 	if (m_EnemySpeed * 32.0f < 10)
 		stats += " ";
 
@@ -101,7 +101,7 @@ void TowerDefense::EnemyInfo::UpdateStatsText()
 	ss << std::fixed << std::setprecision(1) << m_EnemyArmor;
 	stats += ss.str();
 
-	stats += "\nMagic Resistance:  ";
+	stats += "\nMagic Resistance: ";
 	if (m_EnemySpeed * 32.0f < 10)
 		stats += " ";
 

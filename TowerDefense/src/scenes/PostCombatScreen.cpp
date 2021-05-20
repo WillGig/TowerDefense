@@ -121,6 +121,8 @@ void TowerDefense::PostCombatScreen::OnSwitch()
 			enemyGold += 10 * i->second;
 		else if (i->first == "Jumping Ooze")
 			enemyGold += 15 * i->second;
+		else if (i->first == "Shield Rat")
+			enemyGold += 20 * i->second;
 
 		defEnemies += i->first + "\n";
 

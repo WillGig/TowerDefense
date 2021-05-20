@@ -157,6 +157,7 @@ namespace TowerDefense
 
 		private:
 			void TakeDamage(float damage, unsigned int source, Tower::DamageType type) override;
+			void DropShield();
 		};
 	}
 }

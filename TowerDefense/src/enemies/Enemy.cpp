@@ -178,18 +178,6 @@ void TowerDefense::Enemy::Enemy::TakeDamage(float damage, unsigned int sourceID,
 	if (m_Health <= 0)
 		return;
 
-	auto source = Combat::GetEntity(sourceID);
-	if (source)
-	{
-		if (source->GetEntityType() == Type::TOWER)
-		{
-			auto tower = std::dynamic_pointer_cast<Tower::Tower>(source);
-			tower->AddDamageDelt(damage);
-		}
-		Combat::OnEnemyHit(GetID(), source, type);
-		Combat::GetCurrentFight()->AddDamage(damage, source);
-	}
-		
 	float effectiveDamage = damage;
 
 	if (type == Tower::DamageType::PHYSICAL)
@@ -197,6 +185,18 @@ void TowerDefense::Enemy::Enemy::TakeDamage(float damage, unsigned int sourceID,
 	else if (type == Tower::DamageType::MAGIC || type == Tower::DamageType::POISON)
 		effectiveDamage *= (100.0f / (100.0f + m_MagicResistance));
 
+	auto source = Combat::GetEntity(sourceID);
+	if (source)
+	{
+		if (source->GetEntityType() == Type::TOWER)
+		{
+			auto tower = std::dynamic_pointer_cast<Tower::Tower>(source);
+			tower->AddDamageDelt(effectiveDamage);
+		}
+		Combat::OnEnemyHit(GetID(), source, type);
+		Combat::GetCurrentFight()->AddDamage(effectiveDamage, source);
+	}
+		
 	ChangeHealth(-effectiveDamage);
 }
 

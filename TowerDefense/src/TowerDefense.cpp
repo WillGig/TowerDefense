@@ -111,7 +111,6 @@ bool TowerDefense::Init()
         player.AddToDeck(std::make_shared<ArcherCard>());
     for (int i = 0; i < 2; i++)
         player.AddToDeck(std::make_shared<PotOfGreed>());
-
     return true;
 }
 

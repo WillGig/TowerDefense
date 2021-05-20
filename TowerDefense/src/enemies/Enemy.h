@@ -49,6 +49,8 @@ namespace TowerDefense
 			float m_Health, m_Armor, m_MagicResistance, m_DistanceTraveled, m_GoalX, m_GoalY;
 			bool m_ReachedEnd;
 
+			std::shared_ptr<Image> m_RegularImage, m_SelectedImage;
+
 		private:
 			void CheckClicked();
 			void UpdateImage();
@@ -61,8 +63,6 @@ namespace TowerDefense
 			unsigned int m_PoisonSource;
 
 			std::string m_Name;
-
-			std::shared_ptr<Image> m_RegularImage, m_SelectedImage;
 
 			std::unique_ptr<HealthBar> m_HealthBar;
 		};
