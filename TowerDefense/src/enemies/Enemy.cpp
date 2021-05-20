@@ -10,10 +10,11 @@
 int TowerDefense::Enemy::Enemy::POISONTICKRATE = 30;
 
 TowerDefense::Enemy::Enemy::Enemy(int width, int height, float health, float speed, const std::string& name)
-	:Entity(0.0f, 0.0f, width, height, 0.0f, name, Type::ENEMY), m_Damage(1), m_CurrentTile(0),
-	m_SlowTime(0), m_PoisonTime(0), m_PoisonTick(0), m_StunTime(0), m_Health(health), m_MaxHealth(health), m_Speed(speed), 
-	m_SlowPercent(0.0f), m_PoisonAmount(0.0f), m_GoalX(), m_GoalY(), m_DistanceTraveled(0.0f), m_ReachedEnd(false), 
-	m_Selected(false), m_Clicked(false), m_Name(name),
+	:Entity(0.0f, 0.0f, width, height, 0.0f, name, Type::ENEMY), m_Damage(1), m_CurrentTile(-2),
+	m_SlowTime(0), m_PoisonTime(0), m_PoisonTick(0), m_StunTime(0), m_Health(health), m_Armor(0.0f), 
+	m_MagicResistance(0.0f), m_MaxHealth(health), m_Speed(speed), m_SlowPercent(0.0f), 
+	m_PoisonAmount(0.0f), m_GoalX(), m_GoalY(), m_DistanceTraveled(0.0f), 
+	m_ReachedEnd(false), m_Selected(false), m_Clicked(false), m_Name(name),
 	m_RegularImage(std::make_shared<Image>(name, 0.0f, 0.0f, width, height, 0.0f)), 
 	m_SelectedImage(std::make_shared<Image>(name + "Selected", 0.0f, 0.0f, width, height, 0.0f)),
 	m_HealthBar(std::make_unique<HealthBar>(m_X, m_Y + height/2, 20.0f, 4.0f))
@@ -23,7 +24,7 @@ TowerDefense::Enemy::Enemy::Enemy(int width, int height, float health, float spe
 	int tileY = board.GetPath()->at(1);
 	SetX(board.GetTiles()->at(tileX + tileY * board.GetWidth())->GetX());
 	SetY(board.GetTiles()->at(tileX + tileY * board.GetWidth())->GetY());
-	FindNewGoal();
+	FindNewGoal(m_X, m_Y);
 }
 
 void TowerDefense::Enemy::Enemy::Update()
@@ -35,8 +36,11 @@ void TowerDefense::Enemy::Enemy::Update()
 	if (Combat::Paused())
 		return;
 
-	if(m_StunTime == 0)
-		Move();
+	if (m_StunTime == 0)
+	{
+		for(int i = 0; i < Combat::GetRoundSpeed(); i++)
+			Move();
+	}
 
 	UpdateDebuffs();
 
@@ -72,25 +76,25 @@ void TowerDefense::Enemy::Enemy::UpdateImage()
 void TowerDefense::Enemy::Enemy::Move()
 {
 	//Check if within 1 step of goal
-	bool reachedX = abs(m_GoalX - m_X) < m_Speed * (1.0f - m_SlowPercent) * Combat::GetRoundSpeed();
-	bool reachedY = abs(m_GoalY - m_Y) < m_Speed * (1.0f - m_SlowPercent) * Combat::GetRoundSpeed();
+	bool reachedX = abs(m_GoalX - m_X) < m_Speed * (1.0f - m_SlowPercent);
+	bool reachedY = abs(m_GoalY - m_Y) < m_Speed * (1.0f - m_SlowPercent);
 
 	if (reachedX && reachedY)
 	{
 		//Calculate extra movement towards new goal
-		float extraMovement = m_Speed * (1.0f - m_SlowPercent) * Combat::GetRoundSpeed() - abs(m_X - m_GoalX) - abs(m_Y - m_GoalY);
+		float extraMovement = m_Speed * (1.0f - m_SlowPercent) - abs(m_X - m_GoalX) - abs(m_Y - m_GoalY);
 		SetX(m_GoalX);
 		SetY(m_GoalY);
-		FindNewGoal();
+		FindNewGoal(m_X, m_Y);
 		SetX(m_X + extraMovement * (float)sin(m_Rotation * PI / 180.0f));
 		SetY(m_Y - extraMovement * (float)cos(m_Rotation * PI / 180.0f));
 	}
 	else
 	{
 		//Move normally towards goal
-		SetX(m_X + m_Speed * (1.0f - m_SlowPercent) * Combat::GetRoundSpeed() * (float)sin(m_Rotation * PI / 180.0f));
-		SetY(m_Y - m_Speed * (1.0f - m_SlowPercent) * Combat::GetRoundSpeed() * (float)cos(m_Rotation * PI / 180.0f));
-		m_DistanceTraveled += m_Speed * (1.0f - m_SlowPercent) * Combat::GetRoundSpeed();
+		SetX(m_X + m_Speed * (1.0f - m_SlowPercent) * (float)sin(m_Rotation * PI / 180.0f));
+		SetY(m_Y - m_Speed * (1.0f - m_SlowPercent) * (float)cos(m_Rotation * PI / 180.0f));
+		m_DistanceTraveled += m_Speed * (1.0f - m_SlowPercent) ;
 	}
 }
 
@@ -140,10 +144,10 @@ void TowerDefense::Enemy::Enemy::Destroy()
 	Combat::RemoveEntity(m_ID);
 }
 
-void TowerDefense::Enemy::Enemy::FindNewGoal()
+void TowerDefense::Enemy::Enemy::FindNewGoal(float x, float y)
 {
-	TowerDefense::Board& board = TowerDefense::Board::Get();
-
+	m_CurrentTile += 2;
+	Board& board = Board::Get();
 	auto tiles = board.GetTiles();
 	auto path = board.GetPath();
 
@@ -155,20 +159,18 @@ void TowerDefense::Enemy::Enemy::FindNewGoal()
 	m_GoalX = tiles->at(path->at(m_CurrentTile) + path->at(m_CurrentTile + 1) * board.GetWidth())->GetX();
 	m_GoalY = tiles->at(path->at(m_CurrentTile) + path->at(m_CurrentTile + 1) * board.GetWidth())->GetY();
 
-	if (m_GoalX > m_X) {
+	if (m_GoalX > x) {
 		SetRotation(90.0f);
 	}
-	else if (m_GoalX < m_X) {
+	else if (m_GoalX < x) {
 		SetRotation(270.0f);
 	}
-	else if (m_GoalY < m_Y) {
+	else if (m_GoalY < y) {
 		SetRotation(0.0f);
 	}
-	else if (m_GoalY > m_Y) {
+	else if (m_GoalY > y) {
 		SetRotation(180.0f);
 	}
-
-	m_CurrentTile += 2;
 }
 
 void TowerDefense::Enemy::Enemy::TakeDamage(float damage, unsigned int sourceID, Tower::DamageType type)
@@ -188,7 +190,19 @@ void TowerDefense::Enemy::Enemy::TakeDamage(float damage, unsigned int sourceID,
 		Combat::GetCurrentFight()->AddDamage(damage, source);
 	}
 		
-	m_Health -= damage;
+	float effectiveDamage = damage;
+
+	if (type == Tower::DamageType::PHYSICAL)
+		effectiveDamage *= (100.0f / (100.0f + m_Armor));
+	else if (type == Tower::DamageType::MAGIC || type == Tower::DamageType::POISON)
+		effectiveDamage *= (100.0f / (100.0f + m_MagicResistance));
+
+	ChangeHealth(-effectiveDamage);
+}
+
+void TowerDefense::Enemy::Enemy::ChangeHealth(float change)
+{
+	m_Health += change;
 	m_HealthBar->SetFill(m_Health / m_MaxHealth);
 	if (m_Health <= 0)
 	{
@@ -235,7 +249,7 @@ void TowerDefense::Enemy::Enemy::SetDistanceTravelled(float distanceTravelled)
 	int tileY = board.GetPath()->at(1);
 	SetX(board.GetTiles()->at(tileX + tileY * board.GetWidth())->GetX());
 	SetY(board.GetTiles()->at(tileX + tileY * board.GetWidth())->GetY());
-	FindNewGoal();
+	FindNewGoal(m_X, m_Y);
 
 	while (m_DistanceTraveled < distanceTravelled)
 		Move();

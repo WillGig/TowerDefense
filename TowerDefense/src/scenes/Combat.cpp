@@ -398,7 +398,7 @@ void TowerDefense::Combat::UpdateSelectedEnemy()
 			if (enemy->GetClicked())
 			{
 				m_SelectedEnemy = enemy;
-				s_EnemyInfo = std::make_unique<EnemyInfo>(225.0f, 560.0f, m_SelectedEnemy);
+				s_EnemyInfo = std::make_unique<EnemyInfo>(225.0f, 500.0f, m_SelectedEnemy);
 			}
 		}
 	}
@@ -520,18 +520,18 @@ void TowerDefense::Combat::GenerateFights()
 	//day 1-3 fights
 	std::vector<std::shared_ptr<Fight>> pool1;
 	auto waves = std::make_shared<std::vector<std::shared_ptr<Wave>>>();
-	const int enemies1[] = { 12, 0, 0, 200, 0, 200, 0, 200 };
+	const int enemies1[] = { 13, 0, 0, 200, 0, 200, 0, 200 };
 	waves->push_back(std::make_shared<Wave>(enemies1, 2));
 	pool1.push_back(std::make_shared<Fight>(waves));
 
 	waves = std::make_shared<std::vector<std::shared_ptr<Wave>>>();
-	const int enemies2[] = { 5, 0, 5, 100, 5, 100, 5, 100 , 5, 100, 5, 100, 5, 100, 5, 100};
-	waves->push_back(std::make_shared<Wave>(enemies2, 16));
+	const int enemies2[] = { 13, 0, 5, 100, 5, 100, 5, 100 , 5, 100, 5, 100, 5, 100, 5, 100};
+	waves->push_back(std::make_shared<Wave>(enemies2, 2));
 	pool1.push_back(std::make_shared<Fight>(waves));
 
 	waves = std::make_shared<std::vector<std::shared_ptr<Wave>>>();
-	const int enemies3[] = { 6, 0, 6, 250, 6, 250 };
-	waves->push_back(std::make_shared<Wave>(enemies3, 6));
+	const int enemies3[] = { 13, 0, 6, 250, 6, 250 };
+	waves->push_back(std::make_shared<Wave>(enemies3, 2));
 	pool1.push_back(std::make_shared<Fight>(waves));
 
 	//day 4-6 fights

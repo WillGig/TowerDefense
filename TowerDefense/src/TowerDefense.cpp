@@ -146,7 +146,7 @@ void TowerDefense::Run()
         if (timer == 60)
         {
             timer -= 60;
-           std::cout << frames << " FPS" << std::endl;
+            std::cout << frames << " FPS" << std::endl;
             frames = 0;
         }
 

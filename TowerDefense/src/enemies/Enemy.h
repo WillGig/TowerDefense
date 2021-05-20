@@ -17,7 +17,8 @@ namespace TowerDefense
 			Enemy(int width, int height, float health, float speed, const std::string& name);
 			void Update() override;
 			void Render() override;
-			void TakeDamage(float damage, unsigned int source, Tower::DamageType type);
+			virtual void TakeDamage(float damage, unsigned int source, Tower::DamageType type);
+			void ChangeHealth(float change);
 			//Time measured in game updates (60 per second)
 			void Slow(float slowPercent, int slowTime);
 			void Poison(float poisonDamage, int poisonTime, unsigned int source);
@@ -27,6 +28,8 @@ namespace TowerDefense
 			inline void SetSelected(bool selected) { m_Selected = selected; }
 			inline float GetHealth() const { return m_Health; }
 			inline float GetMaxHealth() const { return m_MaxHealth; }
+			inline float GetArmor() const { return m_Armor; }
+			inline float GetMagicResistance() const { return m_MagicResistance; }
 			inline float GetDistanceTraveled() const { return m_DistanceTraveled; }
 			inline float GetSpeed() const { return m_Speed; }
 
@@ -38,21 +41,22 @@ namespace TowerDefense
 
 		protected:
 			virtual void Move();
+			void FindNewGoal(float x, float y);
 			virtual void Destroy();
 
-			int m_Damage;
+			int m_CurrentTile, m_Damage;
 			static int POISONTICKRATE;
-			float m_DistanceTraveled, m_GoalX, m_GoalY;
+			float m_Health, m_Armor, m_MagicResistance, m_DistanceTraveled, m_GoalX, m_GoalY;
+			bool m_ReachedEnd;
 
 		private:
-			void FindNewGoal();
 			void CheckClicked();
 			void UpdateImage();
 			void UpdateDebuffs();
 
-			int m_CurrentTile, m_SlowTime, m_PoisonTime, m_PoisonTick, m_StunTime;
-			float m_Health, m_MaxHealth, m_Speed, m_SlowPercent, m_PoisonAmount;
-			bool m_ReachedEnd, m_Selected, m_Clicked;
+			int m_SlowTime, m_PoisonTime, m_PoisonTick, m_StunTime;
+			float m_MaxHealth, m_Speed, m_SlowPercent, m_PoisonAmount;
+			bool m_Selected, m_Clicked;
 
 			unsigned int m_PoisonSource;
 

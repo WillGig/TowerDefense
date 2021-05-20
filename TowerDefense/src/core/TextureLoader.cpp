@@ -162,6 +162,8 @@ void TowerDefense::LoadTextures()
     Texture::LoadTexture("Double OozeSelected",     enemies.load(5, 2));
     Texture::LoadTexture("Jumping Ooze",            enemies.load(6, 2));
     Texture::LoadTexture("Jumping OozeSelected",    enemies.load(7, 2));
+    Texture::LoadTexture("Doubler",                 enemies.load(0, 3));
+    Texture::LoadTexture("DoublerSelected",         enemies.load(1, 3));
 
     std::cout << "...Cards" << std::endl;
 

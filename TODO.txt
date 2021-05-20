@@ -1,4 +1,14 @@
 Current:
+	Create more interesting enemies:
+	- Double ooze on death - splits in 2 on death						Done	
+	- Jumping ooze - every few seconds jumps, moving faster (and going over walls?)		Done
+	- Multiplying ooze - gains health over time. splits at 40				Done
+	- Shield Rat - Starts with shield (high armor) removed after some amount of damage	
+	- Mage Rat - protective aura that gives lots of anti-magic				
+	- Healer Rat - aura that heals nearby enemies every few seconds				
+	- Blink Bugs - insects that disapear or become untargetable temporarily			
+	- Runner Beetles - beetles dash every few seconds					
+
 	Add days 11-20
 	Make enemies deal more damage? Damage amount above health bar?
 	Make enemy health bars show how much damage poison will do?
