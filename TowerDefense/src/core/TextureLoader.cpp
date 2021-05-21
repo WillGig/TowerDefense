@@ -168,6 +168,10 @@ void TowerDefense::LoadTextures()
     Texture::LoadTexture("Shield RatSelected",      enemies.load(3, 3));
     Texture::LoadTexture("ShieldlessRat",           enemies.load(4, 3));
     Texture::LoadTexture("ShieldlessRatSelected",   enemies.load(5, 3));
+    Texture::LoadTexture("Shaman Rat",              enemies.load(6, 3));
+    Texture::LoadTexture("Shaman RatSelected",      enemies.load(7, 3));
+    Texture::LoadTexture("Healer Rat",              enemies.load(6, 3));
+    Texture::LoadTexture("Healer RatSelected",      enemies.load(7, 3));
 
     std::cout << "...Cards" << std::endl;
 
@@ -317,4 +321,6 @@ void TowerDefense::LoadTextures()
     Texture::LoadTexture("acidExplosion",       animationEffects.load(0, 2));
     Texture::LoadTexture("smiteAnimation",      animationEffects.load(0, 3));
     Texture::LoadTexture("critAnimation",       animationEffects.load(0, 4));
+    Texture::LoadTexture("shamanAura",          animationEffects.load(0, 5));
+    Texture::LoadTexture("healingAura",         animationEffects.load(0, 6));
 }

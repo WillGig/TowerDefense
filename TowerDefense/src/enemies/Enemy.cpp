@@ -203,6 +203,9 @@ void TowerDefense::Enemy::Enemy::TakeDamage(float damage, unsigned int sourceID,
 void TowerDefense::Enemy::Enemy::ChangeHealth(float change)
 {
 	m_Health += change;
+	if (m_Health > m_MaxHealth)
+		m_Health = m_MaxHealth;
+
 	m_HealthBar->SetFill(m_Health / m_MaxHealth);
 	if (m_Health <= 0)
 	{

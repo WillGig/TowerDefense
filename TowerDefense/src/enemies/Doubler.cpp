@@ -27,6 +27,6 @@ void TowerDefense::Enemy::Doubler::Split()
 {
 	ChangeHealth(-20);
 	auto newOoze = std::make_shared<Doubler>();
-	newOoze->SetDistanceTravelled(m_DistanceTraveled - 20);
+	newOoze->SetDistanceTravelled(m_DistanceTraveled - 30);
 	Combat::AddEntity(newOoze);
 }

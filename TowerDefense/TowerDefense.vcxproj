@@ -239,9 +239,11 @@
     <ClCompile Include="src\enemies\Enemy.cpp" />
     <ClCompile Include="src\enemies\EnemyInfo.cpp" />
     <ClCompile Include="src\enemies\Fight.cpp" />
+    <ClCompile Include="src\enemies\HealerRat.cpp" />
     <ClCompile Include="src\enemies\HealthBar.cpp" />
     <ClCompile Include="src\enemies\JumpingOoze.cpp" />
     <ClCompile Include="src\enemies\Doubler.cpp" />
+    <ClCompile Include="src\enemies\ShamanRat.cpp" />
     <ClCompile Include="src\enemies\ShieldRat.cpp" />
     <ClCompile Include="src\enemies\Wave.cpp" />
     <ClCompile Include="src\engine\Animation.cpp" />

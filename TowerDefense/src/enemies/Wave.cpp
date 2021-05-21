@@ -57,6 +57,12 @@ TowerDefense::Wave::Wave(const int enemies[], int size)
 		case 14:
 			m_Enemies->push_back(std::make_shared<Enemy::ShieldRat>());
 			break;
+		case 15:
+			m_Enemies->push_back(std::make_shared<Enemy::ShamanRat>());
+			break;
+		case 16:
+			m_Enemies->push_back(std::make_shared<Enemy::HealerRat>());
+			break;
 		}
 	}
 }

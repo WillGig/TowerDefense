@@ -137,7 +137,9 @@ namespace TowerDefense
 		public:
 			Doubler()
 				:Enemy(32, 32, 20.0f, 0.3f, "Doubler"), m_GrowTime(40), m_Time(0)
-			{}
+			{
+				m_MaxHealth = 40;
+			}
 
 		private:
 			void Update() override;
@@ -158,6 +160,30 @@ namespace TowerDefense
 		private:
 			void TakeDamage(float damage, unsigned int source, Tower::DamageType type) override;
 			void DropShield();
+		};
+
+		class ShamanRat : public Enemy
+		{
+		public:
+			ShamanRat()
+				:Enemy(32, 32, 20.0f, 0.5f, "Shaman Rat"), m_CastTime(180), m_Cast(0)
+			{}
+		private:
+			void Update() override;
+			void Cast();
+			int m_CastTime, m_Cast;
+		};
+
+		class HealerRat : public Enemy
+		{
+		public:
+			HealerRat()
+				:Enemy(32, 32, 20.0f, 0.5f, "Healer Rat"), m_CastTime(120), m_Cast(0)
+			{}
+		private:
+			void Update() override;
+			void Cast();
+			int m_CastTime, m_Cast;
 		};
 	}
 }

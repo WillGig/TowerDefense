@@ -28,7 +28,9 @@ namespace TowerDefense
 			inline void SetSelected(bool selected) { m_Selected = selected; }
 			inline float GetHealth() const { return m_Health; }
 			inline float GetMaxHealth() const { return m_MaxHealth; }
+			inline void SetArmor(float armor) { m_Armor = armor; }
 			inline float GetArmor() const { return m_Armor; }
+			inline void SetMagicResistance(float magicResistance) { m_MagicResistance = magicResistance; }
 			inline float GetMagicResistance() const { return m_MagicResistance; }
 			inline float GetDistanceTraveled() const { return m_DistanceTraveled; }
 			inline float GetSpeed() const { return m_Speed; }
@@ -46,7 +48,7 @@ namespace TowerDefense
 
 			int m_CurrentTile, m_Damage;
 			static int POISONTICKRATE;
-			float m_Health, m_Armor, m_MagicResistance, m_DistanceTraveled, m_GoalX, m_GoalY;
+			float m_Health, m_MaxHealth, m_Armor, m_MagicResistance, m_DistanceTraveled, m_GoalX, m_GoalY;
 			bool m_ReachedEnd;
 
 			std::shared_ptr<Image> m_RegularImage, m_SelectedImage;
@@ -57,7 +59,7 @@ namespace TowerDefense
 			void UpdateDebuffs();
 
 			int m_SlowTime, m_PoisonTime, m_PoisonTick, m_StunTime;
-			float m_MaxHealth, m_Speed, m_SlowPercent, m_PoisonAmount;
+			float m_Speed, m_SlowPercent, m_PoisonAmount;
 			bool m_Selected, m_Clicked;
 
 			unsigned int m_PoisonSource;
