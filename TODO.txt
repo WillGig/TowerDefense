@@ -1,19 +1,15 @@
 Current:
-	Create more interesting enemies:
-	- Double ooze on death - splits in 2 on death						Done	
-	- Jumping ooze - every few seconds jumps, moving faster (and going over walls?)		Done
-	- Doublers - gains health over time. splits at 40					Done
-	- Shield Rat - Starts with shield (high armor) removed after some amount of damage	Done
-	- Mage Rat - casts spell every 3 seconds to give bonus armor and magic resistance	Done				
-	- Healer Rat - aura that heals nearby enemies every few seconds				Done
-	- Blink Bugs - insects that becomes invisible temporarily				Done
-	- Runner Beetles - beetles dash every few seconds					Done
-
 	Add days 11-20
+
 	Make enemies deal more damage? Damage amount above health bar?
+
 	Make enemy health bars show how much damage poison will do?
+	
+	Fix post combat damage dealt number lineup
+	Fix tower and enemy info number lineup
 
 Soon:
+	New Trait: Sharp-Eyes - can see invisible enemies
 	Change stations to only allow use every x days
 	Add note to tavern saying "New recruits expected in x days"
 	Jousting	-more gold than mining, but lose some health	- 
@@ -23,9 +19,10 @@ Soon:
 	add more potential hero upgrades
 		- range, damage, speed, more missiles, new spells, attacks stun/slow	
 	Shop/merchants
-	can scout next battle for gold price (towers cost gold in battle? 1 currency or two?)
+	can scout next battle for gold price
 
 Long Term:
+	Bestiary with known enemies and descriptions
 	Add specifics to upgrades when right clicking on them to make it clear what they do
 	Make resolution adjustable
 	Change leveling for heros - add new types of attacks, etc.
@@ -34,16 +31,12 @@ Long Term:
 	Settings menu
 	In Game Menu
 	indicators for buffs on towers
-	Damage Types - physical, magical, special - shields protect from physical, spellcasters grant mass spell protection
-	Placable building towers?
 	More Towers - Disabling slowing/freezing towers
 		Druid 		- 
 		Melee Towers that fight enemies???
 		Fewer towers with branching class upgrades? Learn new spells?
 	Better graphics for towers
 	change image for enemies depending on the direction they face
-	Selling Towers?
-		
 
 Far away:
 	idle and cast animations for towers
@@ -81,11 +74,25 @@ Notes:
 	- Explorer	draws a card when played	
 
 	Enemies
-	- Rat		fast but weak
-	- Giant Rat	slower and sturdier
-	- Boss Rat	very slow but with 100s of hp
-	- Goblin	fast and tough
-	- Orc		slow and extra tough
+	- Rat		Fast but weak
+	- Giant Rat	Slower and sturdier
+	- Boss Rat	Very slow but with 100s of hp
+	- Goblin	Fast and tough
+	- Orc		Slow and extra tough
+	- Beetle	Extra weak and extra fast
+	- Slime		Medium speed, medium health
+	- Spider	Not as fast as a beetle, but much touger
+	- Tough Beetle	Slow but heavily armored
+	- Ooze		Just as fast and over twice as tough
+	- Mega Ooze	Slower than a normal ooze, but with tons of hp
+	- Double Ooze	Splits into two Slimes when killed
+	- Jumping Ooze	Jumps every few seconds
+	- Doubler	Gains health slowly and divides when at double hp
+	- Shield Rat	Strong shield that drops when taking heavy damage
+	- Shaman Rat	Casts spell that increases armor and mr of nearby enemies
+	- Healer Rat	Heals nearby enemies
+	- Blink Bug	Turns invisible every few seconds
+	- Runner Beetle	Dashes forward every few seconds
 
 	Artifacts
 	- blessing of the bat										-
