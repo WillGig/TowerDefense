@@ -235,6 +235,7 @@
     <ClCompile Include="src\cards\quirks\WoodElf.cpp" />
     <ClCompile Include="src\cards\upgrades\Upgrades.cpp" />
     <ClCompile Include="src\core\TextureLoader.cpp" />
+    <ClCompile Include="src\enemies\BlinkBug.cpp" />
     <ClCompile Include="src\enemies\DoubleOoze.cpp" />
     <ClCompile Include="src\enemies\Enemy.cpp" />
     <ClCompile Include="src\enemies\EnemyInfo.cpp" />
@@ -243,6 +244,7 @@
     <ClCompile Include="src\enemies\HealthBar.cpp" />
     <ClCompile Include="src\enemies\JumpingOoze.cpp" />
     <ClCompile Include="src\enemies\Doubler.cpp" />
+    <ClCompile Include="src\enemies\RunnerBeetle.cpp" />
     <ClCompile Include="src\enemies\ShamanRat.cpp" />
     <ClCompile Include="src\enemies\ShieldRat.cpp" />
     <ClCompile Include="src\enemies\Wave.cpp" />
@@ -317,6 +319,7 @@
     <ClCompile Include="src\engine\VertexBuffer.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="res\shaders\Invisible.shader" />
     <None Include="res\shaders\Line.shader" />
     <None Include="res\shaders\Texture.shader" />
     <None Include="res\shaders\Circle.shader" />

@@ -14,7 +14,7 @@ namespace TowerDefense
 		class Enemy : public Entity
 		{
 		public:
-			Enemy(int width, int height, float health, float speed, const std::string& name);
+			Enemy(int width, int height, float health, float speed, int goldValue, const std::string& name);
 			void Update() override;
 			void Render() override;
 			virtual void TakeDamage(float damage, unsigned int source, Tower::DamageType type);
@@ -34,6 +34,9 @@ namespace TowerDefense
 			inline float GetMagicResistance() const { return m_MagicResistance; }
 			inline float GetDistanceTraveled() const { return m_DistanceTraveled; }
 			inline float GetSpeed() const { return m_Speed; }
+			inline int GetGoldValue() const { return m_GoldValue; }
+
+			inline bool Visible() const { return m_Visible; }
 
 			inline std::string GetName() const { return m_Name; }
 
@@ -49,7 +52,7 @@ namespace TowerDefense
 			int m_CurrentTile, m_Damage;
 			static int POISONTICKRATE;
 			float m_Health, m_MaxHealth, m_Armor, m_MagicResistance, m_DistanceTraveled, m_GoalX, m_GoalY;
-			bool m_ReachedEnd;
+			bool m_Visible, m_ReachedEnd;
 
 			std::shared_ptr<Image> m_RegularImage, m_SelectedImage;
 
@@ -58,7 +61,7 @@ namespace TowerDefense
 			void UpdateImage();
 			void UpdateDebuffs();
 
-			int m_SlowTime, m_PoisonTime, m_PoisonTick, m_StunTime;
+			int m_GoldValue, m_SlowTime, m_PoisonTime, m_PoisonTick, m_StunTime;
 			float m_Speed, m_SlowPercent, m_PoisonAmount;
 			bool m_Selected, m_Clicked;
 

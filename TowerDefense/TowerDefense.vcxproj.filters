@@ -429,6 +429,12 @@
     <ClCompile Include="src\enemies\HealerRat.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="src\enemies\BlinkBug.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\enemies\RunnerBeetle.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="res\shaders\Texture.shader" />
@@ -436,6 +442,7 @@
     <None Include="res\shaders\Circle.shader" />
     <None Include="res\shaders\Rectangle.shader" />
     <None Include="res\shaders\Line.shader" />
+    <None Include="res\shaders\Invisible.shader" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="res\textures\CardBackgrounds.png">

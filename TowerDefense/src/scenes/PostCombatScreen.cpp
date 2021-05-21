@@ -95,42 +95,9 @@ void TowerDefense::PostCombatScreen::OnSwitch()
 	std::string defNums = "\n\n";
 	for (auto i = defeatedEnemies.begin(); i != defeatedEnemies.end(); i++)
 	{
-		if (i->first == "Rat")
-			enemyGold += 5 * i->second;
-		else if (i->first == "Giant Rat")
-			enemyGold += 10 * i->second;
-		else if (i->first == "Boss Rat")
-			enemyGold += 100 * i->second;
-		else if (i->first == "Goblin")
-			enemyGold += 10 * i->second;
-		else if (i->first == "Orc")
-			enemyGold += 20 * i->second;
-		else if (i->first == "Beetle")
-			enemyGold += 2 * i->second;
-		else if (i->first == "Slime")
-			enemyGold += 8 * i->second;
-		else if (i->first == "Spider")
-			enemyGold += 10 * i->second;
-		else if (i->first == "Tough Beetle")
-			enemyGold += 20 * i->second;
-		else if (i->first == "Ooze")
-			enemyGold += 8 * i->second;
-		else if (i->first == "Mega Ooze")
-			enemyGold += 50 * i->second;
-		else if (i->first == "Double Ooze")
-			enemyGold += 10 * i->second;
-		else if (i->first == "Jumping Ooze")
-			enemyGold += 15 * i->second;
-		else if (i->first == "Shield Rat")
-			enemyGold += 20 * i->second;
-		else if (i->first == "Shaman Rat")
-			enemyGold += 10 * i->second;
-		else if (i->first == "Healer Rat")
-			enemyGold += 10 * i->second;
-
+		enemyGold += i->second.second * i->second.first;
 		defEnemies += i->first + "\n";
-
-		defNums += std::to_string(i->second) + "\n";
+		defNums += std::to_string(i->second.first) + "\n";
 		defeatedHeight++;
 	}
 
@@ -142,7 +109,7 @@ void TowerDefense::PostCombatScreen::OnSwitch()
 	{
 		escEnemies += i->first + "\n";
 
-		escNums += std::to_string(i->second) + "\n";
+		escNums += std::to_string(i->second.first) + "\n";
 		escapedHeight++;
 	}
 

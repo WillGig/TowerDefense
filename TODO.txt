@@ -6,8 +6,8 @@ Current:
 	- Shield Rat - Starts with shield (high armor) removed after some amount of damage	Done
 	- Mage Rat - casts spell every 3 seconds to give bonus armor and magic resistance	Done				
 	- Healer Rat - aura that heals nearby enemies every few seconds				Done
-	- Blink Bugs - insects that disapear or become untargetable temporarily			
-	- Runner Beetles - beetles dash every few seconds					
+	- Blink Bugs - insects that becomes invisible temporarily				Done
+	- Runner Beetles - beetles dash every few seconds					Done
 
 	Add days 11-20
 	Make enemies deal more damage? Damage amount above health bar?

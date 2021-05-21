@@ -9,12 +9,12 @@
 
 int TowerDefense::Enemy::Enemy::POISONTICKRATE = 30;
 
-TowerDefense::Enemy::Enemy::Enemy(int width, int height, float health, float speed, const std::string& name)
+TowerDefense::Enemy::Enemy::Enemy(int width, int height, float health, float speed, int goldValue, const std::string& name)
 	:Entity(0.0f, 0.0f, width, height, 0.0f, name, Type::ENEMY), m_Damage(1), m_CurrentTile(-2),
 	m_SlowTime(0), m_PoisonTime(0), m_PoisonTick(0), m_StunTime(0), m_Health(health), m_Armor(0.0f), 
-	m_MagicResistance(0.0f), m_MaxHealth(health), m_Speed(speed), m_SlowPercent(0.0f), 
+	m_MagicResistance(0.0f), m_MaxHealth(health), m_Speed(speed), m_GoldValue(goldValue), m_SlowPercent(0.0f), 
 	m_PoisonAmount(0.0f), m_GoalX(), m_GoalY(), m_DistanceTraveled(0.0f), 
-	m_ReachedEnd(false), m_Selected(false), m_Clicked(false), m_Name(name),
+	m_Visible(true), m_ReachedEnd(false), m_Selected(false), m_Clicked(false), m_Name(name),
 	m_RegularImage(std::make_shared<Image>(name, 0.0f, 0.0f, width, height, 0.0f)), 
 	m_SelectedImage(std::make_shared<Image>(name + "Selected", 0.0f, 0.0f, width, height, 0.0f)),
 	m_HealthBar(std::make_unique<HealthBar>(m_X, m_Y + height/2, 20.0f, 4.0f))
@@ -55,7 +55,10 @@ void TowerDefense::Enemy::Enemy::Update()
 
 void TowerDefense::Enemy::Enemy::Render()
 {
-	Entity::Render();
+	if (m_Visible)
+		m_Image->Render();
+	else
+		m_Image->RenderInvisible();
 	m_HealthBar->Render();
 }
 

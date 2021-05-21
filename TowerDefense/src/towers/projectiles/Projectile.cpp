@@ -108,11 +108,14 @@ std::shared_ptr<TowerDefense::Enemy::Enemy> TowerDefense::Projectile::FindTarget
 
 	auto entities = Combat::GetEntities();
 	for (unsigned int i = 0; i < entities->size(); i++) {
-		std::shared_ptr<TowerDefense::Entity> e = entities->at(i);
+		auto e = entities->at(i);
 
 		if (e->GetEntityType() == Type::ENEMY)
 		{
-			std::shared_ptr<TowerDefense::Enemy::Enemy> enemy = std::dynamic_pointer_cast<TowerDefense::Enemy::Enemy>(e);
+			auto enemy = std::dynamic_pointer_cast<TowerDefense::Enemy::Enemy>(e);
+
+			if (!enemy->Visible())
+				continue;
 
 			//Prioritizes closest enemy
 			if (!target || GetDistance(enemy->GetX(), enemy->GetY()) < GetDistance(target->GetX(), target->GetY()))

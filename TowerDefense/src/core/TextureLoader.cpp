@@ -172,6 +172,10 @@ void TowerDefense::LoadTextures()
     Texture::LoadTexture("Shaman RatSelected",      enemies.load(7, 3));
     Texture::LoadTexture("Healer Rat",              enemies.load(6, 3));
     Texture::LoadTexture("Healer RatSelected",      enemies.load(7, 3));
+    Texture::LoadTexture("Blink Bug",               enemies.load(0, 4));
+    Texture::LoadTexture("Blink BugSelected",       enemies.load(1, 4));
+    Texture::LoadTexture("Runner Beetle",           enemies.load(2, 4));
+    Texture::LoadTexture("Runner BeetleSelected",   enemies.load(3, 4));
 
     std::cout << "...Cards" << std::endl;
 

@@ -9,7 +9,7 @@ namespace TowerDefense
 		{
 		public:
 			Rat()
-				:Enemy(32, 32, 10.0f, 1.0f, "Rat")
+				:Enemy(32, 32, 10.0f, 1.0f, 5, "Rat")
 			{}
 		};
 
@@ -17,7 +17,7 @@ namespace TowerDefense
 		{
 		public:
 			GiantRat()
-				:Enemy(32, 32, 50.0f, 0.75f, "Giant Rat")
+				:Enemy(32, 32, 50.0f, 0.75f, 10, "Giant Rat")
 			{}
 		};
 
@@ -25,7 +25,7 @@ namespace TowerDefense
 		{
 		public:
 			BossRat()
-				:Enemy(64, 64, 500.0f, 0.3f, "Boss Rat")
+				:Enemy(64, 64, 500.0f, 0.3f, 100, "Boss Rat")
 			{
 				m_Armor = 200;
 				m_MagicResistance = 200;
@@ -37,7 +37,7 @@ namespace TowerDefense
 		{
 		public:
 			Goblin()
-				:Enemy(32, 32, 25.0f, 1.0f, "Goblin")
+				:Enemy(32, 32, 25.0f, 1.0f, 10, "Goblin")
 			{
 				m_Armor = 20;
 				m_MagicResistance = 20;
@@ -48,7 +48,7 @@ namespace TowerDefense
 		{
 		public:
 			Orc()
-				:Enemy(32, 32, 50.0f, 0.8f, "Orc ")
+				:Enemy(32, 32, 50.0f, 0.8f, 20, "Orc ")
 			{
 				m_Armor = 50;
 				m_MagicResistance = 50;
@@ -59,7 +59,7 @@ namespace TowerDefense
 		{
 		public:
 			Beetle()
-				:Enemy(32, 32, 4.0f, 2.0f, "Beetle")
+				:Enemy(32, 32, 4.0f, 2.0f, 2, "Beetle")
 			{}
 		};
 
@@ -67,7 +67,7 @@ namespace TowerDefense
 		{
 		public:
 			Slime()
-				:Enemy(32, 32, 13.0f, 0.7f, "Slime")
+				:Enemy(32, 32, 13.0f, 0.7f, 8, "Slime")
 			{}
 		};
 
@@ -75,7 +75,7 @@ namespace TowerDefense
 		{
 		public:
 			Spider()
-				:Enemy(32, 32, 20.0f, 1.0f, "Spider")
+				:Enemy(32, 32, 20.0f, 1.0f, 10, "Spider")
 			{}
 		};
 
@@ -83,7 +83,7 @@ namespace TowerDefense
 		{
 		public:
 			ToughBeetle()
-				:Enemy(32, 32, 40.0f, 0.5f, "Tough Beetle")
+				:Enemy(32, 32, 40.0f, 0.5f, 20, "Tough Beetle")
 			{
 				m_Armor = 100;
 			}
@@ -93,7 +93,7 @@ namespace TowerDefense
 		{
 		public:
 			Ooze()
-				:Enemy(32, 32, 40.0f, 0.7f, "Ooze")
+				:Enemy(32, 32, 40.0f, 0.7f, 8, "Ooze")
 			{}
 		};
 
@@ -101,7 +101,7 @@ namespace TowerDefense
 		{
 		public:
 			MegaOoze()
-				:Enemy(64, 64, 400.0f, 0.4f, "Mega Ooze")
+				:Enemy(64, 64, 400.0f, 0.4f, 50, "Mega Ooze")
 			{}
 		};
 
@@ -109,7 +109,7 @@ namespace TowerDefense
 		{
 		public:
 			DoubleOoze()
-				:Enemy(48, 48, 10.0f, 0.5f, "Double Ooze")
+				:Enemy(48, 48, 10.0f, 0.5f, 10, "Double Ooze")
 			{}
 
 		private:
@@ -120,7 +120,7 @@ namespace TowerDefense
 		{
 		public:
 			JumpingOoze()
-				:Enemy(32, 32, 20.0f, 0.5f, "Jumping Ooze"), m_JumpTime(40), m_TimeBetweenJumps(180), m_JumpCoolDown(m_TimeBetweenJumps),
+				:Enemy(32, 32, 20.0f, 0.5f, 15, "Jumping Ooze"), m_JumpTime(40), m_TimeBetweenJumps(180), m_JumpCoolDown(m_TimeBetweenJumps),
 				m_JumpFrame(m_JumpTime+1), m_JumpDistance(80), m_JumpGoal()
 			{}
 
@@ -136,7 +136,7 @@ namespace TowerDefense
 		{
 		public:
 			Doubler()
-				:Enemy(32, 32, 20.0f, 0.3f, "Doubler"), m_GrowTime(40), m_Time(0)
+				:Enemy(32, 32, 20.0f, 0.3f, 0, "Doubler"), m_GrowTime(40), m_Time(0)
 			{
 				m_MaxHealth = 40;
 			}
@@ -152,7 +152,7 @@ namespace TowerDefense
 		{
 		public:
 			ShieldRat()
-				:Enemy(32, 32, 40.0f, 0.5f, "Shield Rat")
+				:Enemy(32, 32, 40.0f, 0.5f, 20, "Shield Rat")
 			{
 				m_Armor = 100;
 			}
@@ -166,7 +166,7 @@ namespace TowerDefense
 		{
 		public:
 			ShamanRat()
-				:Enemy(32, 32, 20.0f, 0.5f, "Shaman Rat"), m_CastTime(180), m_Cast(0)
+				:Enemy(32, 32, 20.0f, 0.5f, 10, "Shaman Rat"), m_CastTime(180), m_Cast(0)
 			{}
 		private:
 			void Update() override;
@@ -178,12 +178,36 @@ namespace TowerDefense
 		{
 		public:
 			HealerRat()
-				:Enemy(32, 32, 20.0f, 0.5f, "Healer Rat"), m_CastTime(120), m_Cast(0)
+				:Enemy(32, 32, 20.0f, 0.5f, 10, "Healer Rat"), m_CastTime(120), m_Cast(0)
 			{}
 		private:
 			void Update() override;
 			void Cast();
 			int m_CastTime, m_Cast;
+		};
+
+		class BlinkBug : public Enemy
+		{
+		public:
+			BlinkBug()
+				:Enemy(32, 32, 20.0f, 0.7f, 10, "Blink Bug"), m_CastTime(120), m_Cast(0), m_InvisibleTime(120)
+			{}
+		private:
+			void Update() override;
+			int m_CastTime, m_Cast, m_InvisibleTime;
+		};
+
+		class RunnerBeetle : public Enemy
+		{
+		public:
+			RunnerBeetle()
+				:Enemy(32, 32, 30.0f, 0.4f, 10, "Runner Beetle"), m_CastTime(180), m_Cast(0), m_RunTime(60), m_Run(0)
+			{
+				m_Armor = 30;
+			}
+		private:
+			void Move() override;
+			int m_CastTime, m_Cast, m_RunTime, m_Run;
 		};
 	}
 }

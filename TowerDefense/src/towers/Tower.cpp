@@ -180,12 +180,17 @@ std::shared_ptr<TowerDefense::Entity>  TowerDefense::Tower::Tower::FindTarget()
 	std::shared_ptr<Tower> targetTower;
 	auto entities = Combat::GetEntities();
 	for (unsigned int i = 0; i < entities->size(); i++) {
-		std::shared_ptr<TowerDefense::Entity> e = entities->at(i);
+		auto e = entities->at(i);
 		if (GetDistance(e->GetX(), e->GetY()) > m_Range)
 			continue;
 
 		if (m_TowerType == TowerType::DAMAGE) {
-			if (std::shared_ptr<Enemy::Enemy> enemy = std::dynamic_pointer_cast<Enemy::Enemy>(e)) {
+			if (e->GetEntityType() == Type::ENEMY) {
+				auto enemy = std::dynamic_pointer_cast<Enemy::Enemy>(e);
+
+				if (!enemy->Visible())
+					continue;
+
 				if (!targetEnemy)
 					targetEnemy = enemy;
 				else if (m_TargetType == TargetType::FIRST && enemy->GetDistanceTraveled() > targetEnemy->GetDistanceTraveled())
