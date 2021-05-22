@@ -1,5 +1,11 @@
 Current:
-	Add days 11-20
+	Add day 20
+	Add more boss fight options for day 10 (add insect boss, make mega ooze divide?)
+
+	Tune down 7-9 bugs
+	Tune down 7-9 slimes?
+	Tune down first boss (or add better damage scaling?)
+	Add tenacity to large slimes. Increase with stuns
 
 	Make enemies deal more damage? Damage amount above health bar?
 
@@ -7,6 +13,8 @@ Current:
 	
 	Fix post combat damage dealt number lineup
 	Fix tower and enemy info number lineup
+	Make blessing of the bat - echolocation? see invisibility?
+	Fix visual bug where the pick a card reward doesn't disappear immediately
 
 Soon:
 	New Trait: Sharp-Eyes - can see invisible enemies
@@ -21,7 +29,10 @@ Soon:
 	Shop/merchants
 	can scout next battle for gold price
 
-Long Term:
+Long Term:	
+	Add more groups of enemies to fight pools
+		- Add more orcs/goblins and move to their own category of enemies with spearate fight pools
+		- Add ghosts/spectors as a fight group
 	Bestiary with known enemies and descriptions
 	Add specifics to upgrades when right clicking on them to make it clear what they do
 	Make resolution adjustable
@@ -73,26 +84,49 @@ Notes:
 	- Battleready	costs 10% less				
 	- Explorer	draws a card when played	
 
+	Combats 
+	Broken into pools by day:
+	- 1-3
+	- 4-6
+	- 7-9
+	- 10
+	- 11-13
+	- 14-16
+	- 17-19
+	- 20
+
+	Each day will pick a random fight that you have not encountered 
+	from the corresponding pool. Each Category of enemies will have 1 fight per pool.
+
+	Current categoies:
+	- Bugs		- Weak and fast/evasive or slow with lots of armor and resistances
+	- Oozes		- High health, but low resistances, have abilities related to duplicating, dividing, and healing
+	- Rats		- Medium health, medium resistances, more complex units like spell casters
+
+
 	Enemies
 	- Rat		Fast but weak
 	- Giant Rat	Slower and sturdier
 	- Boss Rat	Very slow but with 100s of hp
-	- Goblin	Fast and tough
-	- Orc		Slow and extra tough
+	- Shield Rat	Strong shield that drops when taking heavy damage
+	- Shaman Rat	Casts spell that increases armor and mr of nearby enemies
+	- Healer Rat	Heals nearby enemies
+
 	- Beetle	Extra weak and extra fast
-	- Slime		Medium speed, medium health
 	- Spider	Not as fast as a beetle, but much touger
 	- Tough Beetle	Slow but heavily armored
+	- Blink Bug	Turns invisible every few seconds
+	- Runner Beetle	Dashes forward every few seconds
+
+	- Slime		Medium speed, medium health
 	- Ooze		Just as fast and over twice as tough
 	- Mega Ooze	Slower than a normal ooze, but with tons of hp
 	- Double Ooze	Splits into two Slimes when killed
 	- Jumping Ooze	Jumps every few seconds
 	- Doubler	Gains health slowly and divides when at double hp
-	- Shield Rat	Strong shield that drops when taking heavy damage
-	- Shaman Rat	Casts spell that increases armor and mr of nearby enemies
-	- Healer Rat	Heals nearby enemies
-	- Blink Bug	Turns invisible every few seconds
-	- Runner Beetle	Dashes forward every few seconds
+
+	- Goblin	Fast and tough
+	- Orc		Slow and extra tough
 
 	Artifacts
 	- blessing of the bat										-
