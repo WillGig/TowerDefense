@@ -13,9 +13,9 @@ TowerDefense::StrongPoisons::StrongPoisons()
 void TowerDefense::StrongPoisons::Play()
 {
 	if(m_Upgraded)
-		Combat::AddAura(std::make_shared<EnhancePoison>(0.5f, "1"));
-	else
 		Combat::AddAura(std::make_shared<EnhancePoison>(1.0f, "2"));
+	else
+		Combat::AddAura(std::make_shared<EnhancePoison>(0.5f, "1"));
 }
 
 std::shared_ptr<TowerDefense::Card> TowerDefense::StrongPoisons::Clone()

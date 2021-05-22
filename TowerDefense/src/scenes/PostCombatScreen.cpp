@@ -26,7 +26,7 @@ void TowerDefense::PostCombatScreen::Render()
 
 	for (unsigned int i = 0; i < m_Rewards->size(); i++)
 	{
-		if(i != m_FocusedReward)
+		if(i != m_FocusedReward && !m_Rewards->at(i)->RewardTaken())
 			m_Rewards->at(i)->Render();
 	}
 	m_BackToCamp->Render();
