@@ -9,7 +9,7 @@ namespace TowerDefense
 		{
 		public:
 			Rat()
-				:Enemy(32, 32, 10.0f, 1.0f, 5, "Rat")
+				:Enemy(32, 32, 10.0f, 1.0f, 5, "Rat", 1)
 			{}
 		};
 
@@ -17,7 +17,7 @@ namespace TowerDefense
 		{
 		public:
 			GiantRat()
-				:Enemy(32, 32, 50.0f, 0.75f, 10, "Giant Rat")
+				:Enemy(32, 32, 50.0f, 0.75f, 10, "Giant Rat", 3)
 			{}
 		};
 
@@ -25,11 +25,10 @@ namespace TowerDefense
 		{
 		public:
 			BossRat()
-				:Enemy(64, 64, 500.0f, 0.3f, 100, "Boss Rat")
+				:Enemy(64, 64, 500.0f, 0.3f, 100, "Boss Rat", 20)
 			{
 				m_Armor = 200;
 				m_MagicResistance = 200;
-				m_Damage = 20;
 			}
 		};
 
@@ -37,7 +36,7 @@ namespace TowerDefense
 		{
 		public:
 			Goblin()
-				:Enemy(32, 32, 25.0f, 1.0f, 10, "Goblin")
+				:Enemy(32, 32, 25.0f, 1.0f, 10, "Goblin", 3)
 			{
 				m_Armor = 20;
 				m_MagicResistance = 20;
@@ -48,7 +47,7 @@ namespace TowerDefense
 		{
 		public:
 			Orc()
-				:Enemy(32, 32, 50.0f, 0.8f, 20, "Orc ")
+				:Enemy(32, 32, 50.0f, 0.8f, 20, "Orc ", 5)
 			{
 				m_Armor = 50;
 				m_MagicResistance = 50;
@@ -59,7 +58,7 @@ namespace TowerDefense
 		{
 		public:
 			Beetle()
-				:Enemy(32, 32, 4.0f, 2.0f, 2, "Beetle")
+				:Enemy(32, 32, 4.0f, 2.0f, 2, "Beetle", 1)
 			{}
 		};
 
@@ -67,7 +66,7 @@ namespace TowerDefense
 		{
 		public:
 			Slime()
-				:Enemy(32, 32, 13.0f, 0.7f, 8, "Slime")
+				:Enemy(32, 32, 13.0f, 0.7f, 8, "Slime", 1)
 			{}
 		};
 
@@ -75,7 +74,7 @@ namespace TowerDefense
 		{
 		public:
 			Spider()
-				:Enemy(32, 32, 20.0f, 1.0f, 10, "Spider")
+				:Enemy(32, 32, 20.0f, 1.0f, 10, "Spider", 2)
 			{}
 		};
 
@@ -83,7 +82,7 @@ namespace TowerDefense
 		{
 		public:
 			ToughBeetle()
-				:Enemy(32, 32, 40.0f, 0.5f, 20, "Tough Beetle")
+				:Enemy(32, 32, 40.0f, 0.5f, 20, "Tough Beetle", 3)
 			{
 				m_Armor = 100;
 			}
@@ -93,7 +92,7 @@ namespace TowerDefense
 		{
 		public:
 			Ooze()
-				:Enemy(32, 32, 40.0f, 0.7f, 8, "Ooze")
+				:Enemy(32, 32, 40.0f, 0.7f, 8, "Ooze", 3)
 			{}
 		};
 
@@ -101,7 +100,7 @@ namespace TowerDefense
 		{
 		public:
 			MegaOoze()
-				:Enemy(64, 64, 400.0f, 0.4f, 50, "Mega Ooze")
+				:Enemy(64, 64, 400.0f, 0.4f, 50, "Mega Ooze", 10)
 			{}
 		};
 
@@ -109,7 +108,7 @@ namespace TowerDefense
 		{
 		public:
 			DoubleOoze()
-				:Enemy(48, 48, 10.0f, 0.5f, 10, "Double Ooze")
+				:Enemy(48, 48, 10.0f, 0.5f, 10, "Double Ooze", 3)
 			{}
 
 		private:
@@ -120,7 +119,7 @@ namespace TowerDefense
 		{
 		public:
 			JumpingOoze()
-				:Enemy(32, 32, 20.0f, 0.5f, 15, "Jumping Ooze"), m_JumpTime(40), m_TimeBetweenJumps(180), m_JumpCoolDown(m_TimeBetweenJumps),
+				:Enemy(32, 32, 20.0f, 0.5f, 15, "Jumping Ooze", 1), m_JumpTime(40), m_TimeBetweenJumps(180), m_JumpCoolDown(m_TimeBetweenJumps),
 				m_JumpFrame(m_JumpTime+1), m_JumpDistance(80), m_JumpGoal()
 			{}
 
@@ -136,7 +135,7 @@ namespace TowerDefense
 		{
 		public:
 			Doubler()
-				:Enemy(32, 32, 30.0f, 0.3f, 0, "Doubler"), m_GrowTime(30), m_Time(0)
+				:Enemy(32, 32, 30.0f, 0.3f, 0, "Doubler", 2), m_GrowTime(30), m_Time(0)
 			{
 				m_MaxHealth = 50;
 			}
@@ -152,7 +151,7 @@ namespace TowerDefense
 		{
 		public:
 			ShieldRat()
-				:Enemy(32, 32, 40.0f, 0.5f, 20, "Shield Rat")
+				:Enemy(32, 32, 40.0f, 0.5f, 20, "Shield Rat", 3)
 			{
 				m_Armor = 100;
 			}
@@ -166,7 +165,7 @@ namespace TowerDefense
 		{
 		public:
 			ShamanRat()
-				:Enemy(32, 32, 40.0f, 0.5f, 10, "Shaman Rat"), m_CastTime(180), m_Cast(0)
+				:Enemy(32, 32, 40.0f, 0.5f, 10, "Shaman Rat", 2), m_CastTime(180), m_Cast(0)
 			{}
 		private:
 			void Update() override;
@@ -178,7 +177,7 @@ namespace TowerDefense
 		{
 		public:
 			HealerRat()
-				:Enemy(32, 32, 40.0f, 0.5f, 10, "Healer Rat"), m_CastTime(120), m_Cast(0)
+				:Enemy(32, 32, 40.0f, 0.5f, 10, "Healer Rat", 2), m_CastTime(120), m_Cast(0)
 			{}
 		private:
 			void Update() override;
@@ -190,7 +189,7 @@ namespace TowerDefense
 		{
 		public:
 			BlinkBug()
-				:Enemy(32, 32, 20.0f, 0.7f, 10, "Blink Bug"), m_CastTime(60), m_Cast(0), m_InvisibleTime(60)
+				:Enemy(32, 32, 20.0f, 0.7f, 10, "Blink Bug", 1), m_CastTime(60), m_Cast(0), m_InvisibleTime(60)
 			{}
 		private:
 			void Update() override;
@@ -201,7 +200,7 @@ namespace TowerDefense
 		{
 		public:
 			RunnerBeetle()
-				:Enemy(32, 32, 50.0f, 0.4f, 10, "Runner Beetle"), m_CastTime(180), m_Cast(0), m_RunTime(60), m_Run(0)
+				:Enemy(32, 32, 50.0f, 0.4f, 10, "Runner Beetle", 2), m_CastTime(180), m_Cast(0), m_RunTime(60), m_Run(0)
 			{
 				m_Armor = 30;
 			}

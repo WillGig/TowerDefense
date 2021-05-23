@@ -9,16 +9,20 @@
 
 int TowerDefense::Enemy::Enemy::POISONTICKRATE = 30;
 
-TowerDefense::Enemy::Enemy::Enemy(int width, int height, float health, float speed, int goldValue, const std::string& name)
-	:Entity(0.0f, 0.0f, width, height, 0.0f, name, Type::ENEMY), m_Damage(1), m_CurrentTile(-2),
+TowerDefense::Enemy::Enemy::Enemy(int width, int height, float health, float speed, int goldValue, const std::string& name, int damage)
+	:Entity(0.0f, 0.0f, width, height, 0.0f, name, Type::ENEMY), m_Damage(damage), m_CurrentTile(-2),
 	m_SlowTime(0), m_PoisonTime(0), m_PoisonTick(0), m_StunTime(0), m_Health(health), m_Armor(0.0f), 
 	m_MagicResistance(0.0f), m_MaxHealth(health), m_Speed(speed), m_GoldValue(goldValue), m_SlowPercent(0.0f), 
 	m_PoisonAmount(0.0f), m_StunResist(0.0f), m_GoalX(), m_GoalY(), m_DistanceTraveled(0.0f), 
 	m_Visible(true), m_ReachedEnd(false), m_Selected(false), m_Clicked(false), m_Name(name),
 	m_RegularImage(std::make_shared<Image>(name, 0.0f, 0.0f, width, height, 0.0f)), 
 	m_SelectedImage(std::make_shared<Image>(name + "Selected", 0.0f, 0.0f, width, height, 0.0f)),
-	m_HealthBar(std::make_unique<HealthBar>(m_X, m_Y + height/2, 20.0f, 4.0f))
+	m_HealthBar(std::make_unique<HealthBar>(m_X, m_Y + height/2, 20.0f, 4.0f)),
+	m_DamageIcon(std::make_unique<Image>("DamageIcon", m_X + 5, m_Y + m_Height / 2 + 10, 16, 16, 0.0f)),
+	m_DamageText(std::make_unique<Text>(std::to_string(m_Damage), m_X - 5, m_Y + m_Height / 2 + 10, 10.0f, 0.0f))
 {
+	m_DamageText->SetColor(1.0f, 1.0f, 1.0f, 1.0f);
+	m_DamageText->SetDropShadow(1.0f);
 	Board& board = Board::Get();
 	int tileX = board.GetPath()->at(0);
 	int tileY = board.GetPath()->at(1);
@@ -60,6 +64,8 @@ void TowerDefense::Enemy::Enemy::Render()
 	else
 		m_Image->RenderInvisible();
 	m_HealthBar->Render();
+	m_DamageIcon->Render();
+	m_DamageText->Render();
 }
 
 //Set Image to selected or unselected
@@ -244,6 +250,24 @@ void TowerDefense::Enemy::Enemy::Stun(int stunTime)
 		m_StunResist += 1.0f;
 	}
 };
+
+void TowerDefense::Enemy::Enemy::SetX(float x) 
+{
+	m_X = x; 
+	m_Image->SetPosition(m_X, m_Y, 0.0f); 
+	m_HealthBar->SetPosition(m_X, m_Y + m_Height / 2);
+	m_DamageIcon->SetPosition(m_X + 5, m_Y + m_Height / 2 + 10, 0.0f);
+	m_DamageText->SetPosition(m_X - 5, m_Y + m_Height / 2 + 10, 0.0f);
+}
+void TowerDefense::Enemy::Enemy::SetY(float y) 
+{ 
+	m_Y = y; 
+	m_Image->SetPosition(m_X, m_Y, 0.0f); 
+	m_HealthBar->SetPosition(m_X, m_Y + m_Height / 2);
+	m_DamageIcon->SetPosition(m_X + 5, m_Y + m_Height / 2 + 10, 0.0f);
+	m_DamageText->SetPosition(m_X - 5, m_Y + m_Height / 2 + 10, 0.0f);
+}
+
 
 void TowerDefense::Enemy::Enemy::CheckClicked()
 {

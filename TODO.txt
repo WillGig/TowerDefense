@@ -6,8 +6,6 @@ Current:
 	tune down 7-9 slimes
 	Nerf wave 1 rats day 13
 
-	Make enemies deal more damage? Damage amount above health bar?
-
 	Make enemy health bars show how much damage poison will do?
 	
 	Fix post combat damage dealt number lineup

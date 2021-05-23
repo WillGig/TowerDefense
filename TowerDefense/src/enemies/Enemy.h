@@ -14,7 +14,7 @@ namespace TowerDefense
 		class Enemy : public Entity
 		{
 		public:
-			Enemy(int width, int height, float health, float speed, int goldValue, const std::string& name);
+			Enemy(int width, int height, float health, float speed, int goldValue, const std::string& name, int damage);
 			void Update() override;
 			void Render() override;
 			virtual void TakeDamage(float damage, unsigned int source, Tower::DamageType type);
@@ -23,8 +23,8 @@ namespace TowerDefense
 			void Slow(float slowPercent, int slowTime);
 			void Poison(float poisonDamage, int poisonTime, unsigned int source);
 			void Stun(int stunTime);
-			inline virtual void SetX(float x) override { m_X = x; m_Image->SetPosition(m_X, m_Y, 0.0f); m_HealthBar->SetPosition(m_X, m_Y + m_Height / 2); }
-			inline virtual void SetY(float y) override { m_Y = y; m_Image->SetPosition(m_X, m_Y, 0.0f); m_HealthBar->SetPosition(m_X, m_Y + m_Height / 2); }
+			virtual void SetX(float x) override;
+			virtual void SetY(float y) override;
 			inline void SetSelected(bool selected) { m_Selected = selected; }
 			inline float GetHealth() const { return m_Health; }
 			inline float GetMaxHealth() const { return m_MaxHealth; }
@@ -70,6 +70,9 @@ namespace TowerDefense
 			std::string m_Name;
 
 			std::unique_ptr<HealthBar> m_HealthBar;
+
+			std::unique_ptr<Image> m_DamageIcon;
+			std::unique_ptr<Text> m_DamageText;
 		};
 	}
 }
