@@ -7,7 +7,7 @@ TowerDefense::Tower::Giant::Giant()
 	:Tower(0.0f, 0.0f, 64, 64, 300.0f, 100, TowerType::DAMAGE, "GIANT")
 {
 	m_Spread = .1f;
-	m_PhysicalDamage = 30.0f;
+	m_PhysicalDamage = 50.0f;
 	m_DamageType = DamageType::PHYSICAL;
 }
 

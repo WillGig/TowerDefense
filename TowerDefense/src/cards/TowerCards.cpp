@@ -28,7 +28,7 @@ std::shared_ptr<TowerDefense::Card> TowerDefense::ArcherCard::Clone()
 std::shared_ptr<TowerDefense::Tower::Tower> TowerDefense::WizardCard::GetTower()
 {
 	if (m_Upgraded)
-		return std::make_shared<Tower::Wizard>(60.0f, 150, 1.0f, 5);
+		return std::make_shared<Tower::Wizard>(50.0f, 150, 1.0f, 5);
 	else
 		return std::make_shared<Tower::Wizard>();
 }
@@ -44,7 +44,7 @@ std::shared_ptr<TowerDefense::Card> TowerDefense::WizardCard::Clone()
 std::shared_ptr<TowerDefense::Tower::Tower> TowerDefense::GiantCard::GetTower()
 {
 	if (m_Upgraded)
-		return std::make_shared<Tower::Giant>(300.0f, 100, 30.0f);
+		return std::make_shared<Tower::Giant>(300.0f, 100, 70.0f);
 	else
 		return std::make_shared<Tower::Giant>();
 }
@@ -108,7 +108,7 @@ std::shared_ptr<TowerDefense::Card> TowerDefense::ClericCard::Clone()
 std::shared_ptr<TowerDefense::Tower::Tower> TowerDefense::PaladinCard::GetTower()
 {
 	if (m_Upgraded)
-		return std::make_shared<Tower::Paladin>(80.0f, 75, 5.0f);
+		return std::make_shared<Tower::Paladin>(60.0f, 80, 5.0f);
 	else
 		return std::make_shared<Tower::Paladin>();
 }
