@@ -2,6 +2,10 @@ Current:
 	Add day 20
 	Add more boss fight options for day 10 (add insect boss, make mega ooze divide?)
 
+	buff day 4-6 bugs wave 1
+	tune down 7-9 slimes
+	Nerf wave 1 rats day 13
+
 	Make enemies deal more damage? Damage amount above health bar?
 
 	Make enemy health bars show how much damage poison will do?
@@ -12,6 +16,7 @@ Current:
 	Fix visual bug where the pick a card reward doesn't disappear immediately
 
 Soon:
+	Add ranger - archer-like tower with more range and on par with wizard (change heros from archers to rangers?)
 	New Trait: Sharp-Eyes - can see invisible enemies
 	New Artifact: blessing of the bat - click to reveal all invisible enemies?
 	New Artifact: Crystal ball - pay for scouting with blood instead

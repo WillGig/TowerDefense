@@ -108,7 +108,7 @@ std::shared_ptr<TowerDefense::Card> TowerDefense::ClericCard::Clone()
 std::shared_ptr<TowerDefense::Tower::Tower> TowerDefense::PaladinCard::GetTower()
 {
 	if (m_Upgraded)
-		return std::make_shared<Tower::Paladin>(60.0f, 80, 5.0f);
+		return std::make_shared<Tower::Paladin>(60.0f, 80, 8.0f);
 	else
 		return std::make_shared<Tower::Paladin>();
 }
