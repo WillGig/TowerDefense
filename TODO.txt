@@ -1,8 +1,6 @@
 Current:
 	Add day 20
 	Add more boss fight options for day 10 (add insect boss, make mega ooze divide?)
-	
-	Add tenacity to large slimes. Increase with stuns
 
 	Make enemies deal more damage? Damage amount above health bar?
 
