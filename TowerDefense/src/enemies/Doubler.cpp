@@ -19,13 +19,13 @@ void TowerDefense::Enemy::Doubler::Update()
 			m_Time++;
 	}
 
-	if (m_Health == 40)
+	if (m_Health == m_MaxHealth)
 		Split();
 }
 
 void TowerDefense::Enemy::Doubler::Split()
 {
-	ChangeHealth(-20);
+	ChangeHealth(-m_MaxHealth/2);
 	auto newOoze = std::make_shared<Doubler>();
 	newOoze->SetDistanceTravelled(m_DistanceTraveled - 30);
 	Combat::AddEntity(newOoze);

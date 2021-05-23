@@ -32,7 +32,7 @@ namespace TowerDefense
 
 		inline int GetSize() const { return m_Cards->size(); }
 
-		inline void ResetSelectedCard() { m_SelectedCard = -1; m_Dragging = false; }
+		inline void ResetSelectedCard() { m_SelectedCard = -1; m_Dragging = false; m_ShowingInfo = false; }
 
 		inline int GetSelectedCard() const { return m_SelectedCard; }
 

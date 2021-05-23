@@ -5,6 +5,10 @@
 void TowerDefense::Enemy::DoubleOoze::Destroy()
 {
 	Enemy::Destroy();
+
+	if (m_Health > 0)
+		return;
+
 	std::shared_ptr<Slime> frontOoze = std::make_shared<Slime>();
 	std::shared_ptr<Slime> backOoze = std::make_shared<Slime>();
 

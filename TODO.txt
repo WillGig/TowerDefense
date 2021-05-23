@@ -18,6 +18,8 @@ Current:
 
 Soon:
 	New Trait: Sharp-Eyes - can see invisible enemies
+	New Artifact: blessing of the bat - click to reveal all invisible enemies?
+	New Artifact: Crystal ball - pay for scouting with blood instead
 	Change stations to only allow use every x days
 	Add note to tavern saying "New recruits expected in x days"
 	Jousting	-more gold than mining, but lose some health	- 
