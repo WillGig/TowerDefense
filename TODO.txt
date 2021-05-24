@@ -1,10 +1,12 @@
 Current:
 	Add day 20
-	Add more boss fight options for day 10 (add insect boss, make mega ooze divide?)
+	Add more boss fight options for day 10 (add insect boss, 2 mega slimes)
 
 	buff day 4-6 bugs wave 1
 	tune down 7-9 slimes
 	Nerf wave 1 rats day 13
+
+	Buff lightning, fireball, poisonball
 
 	Add ranger - archer-like tower with more range and on par with wizard (change heros from archers to rangers?)
 
@@ -31,6 +33,7 @@ Soon:
 	can scout next battle for gold price
 
 Long Term:	
+	Make Base buttons change when they are used
 	Add more groups of enemies to fight pools
 		- Add more orcs/goblins and move to their own category of enemies with spearate fight pools
 		- Add ghosts/spectors as a fight group
