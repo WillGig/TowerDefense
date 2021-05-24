@@ -6,13 +6,9 @@ Current:
 	tune down 7-9 slimes
 	Nerf wave 1 rats day 13
 
-	Mega-ooze splits into two double oozes and nerf health
-
 	Add ranger - archer-like tower with more range and on par with wizard (change heros from archers to rangers?)
 
 	Make enemy health bars show how much damage poison will do?
-	
-	Add defeat screen
 
 	Fix post combat damage dealt number lineup
 	Fix tower and enemy info number lineup

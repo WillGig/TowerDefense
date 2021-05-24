@@ -100,15 +100,17 @@ namespace TowerDefense
 		{
 		public:
 			MegaOoze()
-				:Enemy(64, 64, 400.0f, 0.4f, 50, "Mega Ooze", 10)
+				:Enemy(64, 64, 200.0f, 0.4f, 50, "Mega Ooze", 10)
 			{}
+		private:
+			void Destroy() override;
 		};
 
 		class DoubleOoze : public Enemy
 		{
 		public:
 			DoubleOoze()
-				:Enemy(48, 48, 10.0f, 0.5f, 10, "Double Ooze", 3)
+				:Enemy(48, 48, 30.0f, 0.5f, 10, "Double Ooze", 3)
 			{}
 
 		private:

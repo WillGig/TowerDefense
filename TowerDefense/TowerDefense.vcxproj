@@ -244,6 +244,7 @@
     <ClCompile Include="src\enemies\HealthBar.cpp" />
     <ClCompile Include="src\enemies\JumpingOoze.cpp" />
     <ClCompile Include="src\enemies\Doubler.cpp" />
+    <ClCompile Include="src\enemies\MegaOoze.cpp" />
     <ClCompile Include="src\enemies\RunnerBeetle.cpp" />
     <ClCompile Include="src\enemies\ShamanRat.cpp" />
     <ClCompile Include="src\enemies\ShieldRat.cpp" />
