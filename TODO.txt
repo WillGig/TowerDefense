@@ -10,7 +10,7 @@ Current:
 
 	Add ranger - archer-like tower with more range and on par with wizard (change heros from archers to rangers?)
 
-	Fix tower and enemy info number lineup
+	Fix tower info number lineup
 	Make blessing of the bat - echolocation? see invisibility?
 	Fix visual bug where the pick a card reward doesn't disappear immediately
 
