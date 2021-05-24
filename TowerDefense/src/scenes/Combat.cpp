@@ -137,7 +137,7 @@ void TowerDefense::Combat::OnSwitch()
 
 	player.SetTextColor(0.0f, 0.0f, 0.0f, 1.0f);
 
-	ClearProjectilesAndAnimations();
+	ClearProjectilesAndAnimationsAndEnemies();
 	ClearTowers();
 	s_Auras->clear();
 
@@ -267,7 +267,7 @@ void TowerDefense::Combat::UpdateButtons()
 				s_Fights->at(s_CurrentFight)->NextWave();
 				m_TurnPhase = Phase::COMBAT;
 				m_StartButton->SetImages("pause");
-				ClearProjectilesAndAnimations();
+				ClearProjectilesAndAnimationsAndEnemies();
 				Player::Get().ArtifactOnRoundStart();
 			}
 			else if (m_TurnPhase == Phase::COMBAT)
@@ -417,7 +417,6 @@ void TowerDefense::Combat::EndRound()
 		Player::Get().ArtifactOnFightEnd();
 		SetScene(SceneType::POSTCOMBAT);
 	}
-		
 }
 
 //Checks if there are any remaining enemies on the board
@@ -432,12 +431,13 @@ bool TowerDefense::Combat::EnemiesDefeated()
 	return true;
 }
 
-void TowerDefense::Combat::ClearProjectilesAndAnimations()
+void TowerDefense::Combat::ClearProjectilesAndAnimationsAndEnemies()
 {
 	for (unsigned int i = 0; i < s_Entities->size(); i++)
 	{
 		std::shared_ptr<Entity> e = s_Entities->at(i);
-		if (e->GetEntityType() == Type::PROJECTILE || e->GetEntityType() == Type::ANIMATION)
+		auto type = e->GetEntityType();
+		if (type == Type::PROJECTILE || type == Type::ANIMATION || type == Type::ENEMY)
 			RemoveEntity(e->GetID());
 	}
 }
@@ -517,6 +517,9 @@ void TowerDefense::Combat::OnEnemyDeath(unsigned int id)
 //Should be called once at the beginning of a run to generate the set of combats
 void TowerDefense::Combat::GenerateFights()
 {
+	s_CurrentFight = -1;
+	s_Fights = std::make_unique<std::vector<std::shared_ptr<TowerDefense::Fight>>>();
+
 	//day 1-3 fights
 	std::vector<std::shared_ptr<Fight>> pool1;
 	//Rats

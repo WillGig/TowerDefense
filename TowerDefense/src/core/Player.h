@@ -14,6 +14,8 @@ namespace TowerDefense
 		Player(const Player&) = delete;
 		static Player& Get();
 
+		void Reset();
+
 		inline int GetEnergy() const { return m_Energy; }
 		void SetEnergy(int energy);
 		void ChangeEnergy(int change);
@@ -23,8 +25,10 @@ namespace TowerDefense
 		void ChangeResource(int change, Resource res);
 
 		inline int GetHealth() const { return m_Health; }
+		void SetHealth(int health);
 		void ChangeHealth(int change);
 		inline int GetMaxHealth() const { return m_MaxHealth; }
+		void SetMaxHealth(int health);
 		void ChangeMaxHealth(int change);
 
 		inline std::shared_ptr<ArtifactPile> GetArtifacts() { return m_Artifacts; }

@@ -8,11 +8,7 @@
 #include "scenes/Combat.h"
 #include "core/player.h"
 #include "core/Board.h"
-#include "cards/HeroCard.h"
-#include "cards/TowerCards.h"
 #include "core/TextureLoader.h"
-#include "cards/SkillCards.h"
-#include "cards/AuraCards.h"
 
 void Update();
 void Render();
@@ -99,18 +95,6 @@ bool TowerDefense::Init()
     const int path[] = { 0, 9, 0, 8, 0, 7, 1, 7, 2, 7, 3, 7, 4, 7, 4, 6, 4, 5, 5, 5, 6, 5, 7, 5, 8, 5, 9, 5, 10, 5, 11, 5, 12, 5, 13, 5, 13, 4, 13, 3, 13, 2, 14, 2, 15, 2, 16, 2, 17, 2, 18, 2, 18, 1, 18, 0, 19, 0 };
     Board::Get().SetPath(path, sizeof(path));
 
-    std::cout << "Generating Fights..." << std::endl;
-    Combat::GenerateFights();
-
-    //Starter Deck
-    std::cout << "Creating Starter Deck..." << std::endl;
-    Player& player = Player::Get();
-    for (int i = 0; i < 8; i++)
-        player.AddToDeck(std::make_shared<Focus>(false));
-    for (int i = 0; i < 4; i++)
-        player.AddToDeck(std::make_shared<ArcherCard>());
-    for (int i = 0; i < 2; i++)
-        player.AddToDeck(std::make_shared<PotOfGreed>());
     return true;
 }
 
@@ -204,5 +188,11 @@ int TowerDefense::GetDay()
 void TowerDefense::NextDay()
 {
     day++;
+    Player::Get().UpdateDayText();
+}
+
+void TowerDefense::ResetDay()
+{
+    day = 0;
     Player::Get().UpdateDayText();
 }

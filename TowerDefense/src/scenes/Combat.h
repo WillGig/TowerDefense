@@ -75,7 +75,7 @@ namespace TowerDefense
 
 		bool EnemiesDefeated();
 
-		void ClearProjectilesAndAnimations();
+		void ClearProjectilesAndAnimationsAndEnemies();
 
 		void ClearTowers();
 

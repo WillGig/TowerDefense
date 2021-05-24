@@ -5,7 +5,9 @@
 #include "scenes/Combat.h"
 
 TowerDefense::PostCombatScreen::PostCombatScreen()
-	:m_FocusedReward(-1), m_BackToCamp(std::make_unique<Button>(400.0f, 100.0f, 180, 50, "returnToCampButton")),
+	:m_FocusedReward(-1), m_Defeated(false),
+	m_BackToCamp(std::make_unique<Button>(400.0f, 100.0f, 180, 50, "returnToCampButton")),
+	m_BackToMenu(std::make_unique<Button>(400.0f, 100.0f, 180, 50, "backToMenuButton")),
 	m_Rewards(std::make_unique<std::vector<std::shared_ptr<CombatReward>>>()),
 	m_VictoryText(std::make_unique<Text>("VICTORY", 400.0f, 510.0f, 36.0f, 0.0f))
 {
@@ -29,7 +31,11 @@ void TowerDefense::PostCombatScreen::Render()
 		if(i != m_FocusedReward && !m_Rewards->at(i)->RewardTaken())
 			m_Rewards->at(i)->Render();
 	}
-	m_BackToCamp->Render();
+
+	if (m_Defeated)
+		m_BackToMenu->Render();
+	else
+		m_BackToCamp->Render();
 
 	if (m_FocusedReward != -1)
 		m_Rewards->at(m_FocusedReward)->Render();
@@ -71,9 +77,19 @@ void TowerDefense::PostCombatScreen::Update()
 			if (takenReward != -1)
 				RemoveReward(takenReward);
 
-			m_BackToCamp->Update();
-			if (m_BackToCamp->IsClicked())
-				TowerDefense::SetScene(SceneType::BASE);
+			if (m_Defeated)
+			{
+				m_BackToMenu->Update();
+				if (m_BackToMenu->IsClicked())
+					TowerDefense::SetScene(SceneType::MAINMENU);
+			}
+			else
+			{
+				m_BackToCamp->Update();
+				if (m_BackToCamp->IsClicked())
+					TowerDefense::SetScene(SceneType::BASE);
+			}
+			
 		}
 		else
 			m_Rewards->at(m_FocusedReward)->Update();
@@ -85,6 +101,19 @@ void TowerDefense::PostCombatScreen::OnSwitch()
 	Renderer::Get().Clear(0.0f, 0.0f, 0.0f, 1.0f);
 	Player::Get().SetTextColor(1.0f, 1.0f, 1.0f, 1.0f);
 	m_Rewards->clear();
+
+	if (TowerDefense::Player::Get().GetHealth() == 0)
+	{
+		m_Defeated = true;
+		m_VictoryText = std::make_unique<Text>("DEFEAT", 400.0f, 510.0f, 36.0f, 0.0f);
+		m_VictoryText->SetColor(1.0f, 1.0f, 1.0f, 1.0f);
+	}
+	else if(m_Defeated)
+	{
+		m_Defeated = false;
+		m_VictoryText = std::make_unique<Text>("VICTORY", 400.0f, 510.0f, 36.0f, 0.0f);
+		m_VictoryText->SetColor(1.0f, 1.0f, 1.0f, 1.0f);
+	}
 
 	auto fight = Combat::GetCurrentFight();
 
@@ -150,6 +179,9 @@ void TowerDefense::PostCombatScreen::OnSwitch()
 
 	m_EscapedNumbers = std::make_unique<Text>(escNums, 215.0f, 250.0f - (escapedHeight * 10.0f), 12.0f, 0.0f);
 	m_EscapedNumbers->SetColor(1.0f, 1.0f, 1.0f, 1.0f);
+
+	if (m_Defeated)
+		return;
 
 	//Combat Resources
 	AddReward(std::make_shared<ResourceReward>((int)(5 + Random::GetFloat() * 45.0f), Resource::WOOD));

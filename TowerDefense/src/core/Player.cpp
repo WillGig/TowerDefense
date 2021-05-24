@@ -1,5 +1,9 @@
 #include "pch.h"
 #include "Player.h"
+#include "scenes/Scene.h"
+#include "cards/SkillCards.h"
+#include "cards/AuraCards.h"
+#include "cards/TowerCards.h"
 
 TowerDefense::Player::Player()
     :m_Health(100), m_MaxHealth(100), m_Energy(100), m_Resources(0, 0, 0, 0), m_Hand(std::make_shared<Hand>(10)),
@@ -41,6 +45,30 @@ TowerDefense::Player& TowerDefense::Player::Get()
 {
     static Player instance;
     return instance;
+}
+
+void TowerDefense::Player::Reset()
+{
+    SetHealth(100);
+    SetMaxHealth(100);
+    SetEnergy(100);
+    SetResource(0, Resource::WOOD);
+    SetResource(0, Resource::STONE);
+    SetResource(0, Resource::WHEAT);
+    SetResource(0, Resource::GOLD);
+    m_Hand = std::make_shared<Hand>(10);
+    m_Deck = std::make_shared<CardPile>(-100.0f, 0.0f);
+    m_DrawPile = std::make_shared<CardPile>(49.0f, 50.0f);
+    m_DiscardPile = std::make_shared<CardPile>(748.0f, 50.0f);
+    m_Artifacts = std::make_shared<ArtifactPile>(570.0f, 570.0f);
+
+    //Starter Deck
+    for (int i = 0; i < 8; i++)
+        AddToDeck(std::make_shared<Focus>(false));
+    for (int i = 0; i < 4; i++)
+        AddToDeck(std::make_shared<ArcherCard>());
+    for (int i = 0; i < 2; i++)
+        AddToDeck(std::make_shared<PotOfGreed>());
 }
 
 void TowerDefense::Player::SetEnergy(int energy)
@@ -129,11 +157,30 @@ void TowerDefense::Player::ChangeResource(int change, Resource res)
     }
 }
 
+void TowerDefense::Player::SetHealth(int health)
+{
+    m_Health = health;
+    m_HealthText = std::make_unique<Text>(std::to_string(m_Health) + "/" + std::to_string(m_MaxHealth), 660.0f, 575.0f, 10.0f, 0.0f);
+    m_HealthText->SetColor(m_TextColor.w, m_TextColor.x, m_TextColor.y, m_TextColor.z);
+}
+
 void TowerDefense::Player::ChangeHealth(int change)
 {
     m_Health += change;
+    if (m_Health < 1)
+    {
+        m_Health = 0;
+        TowerDefense::SetScene(SceneType::POSTCOMBAT);
+    }
     if (m_Health > m_MaxHealth)
         m_Health = m_MaxHealth;
+    m_HealthText = std::make_unique<Text>(std::to_string(m_Health) + "/" + std::to_string(m_MaxHealth), 660.0f, 575.0f, 10.0f, 0.0f);
+    m_HealthText->SetColor(m_TextColor.w, m_TextColor.x, m_TextColor.y, m_TextColor.z);
+}
+
+void TowerDefense::Player::SetMaxHealth(int health)
+{
+    m_MaxHealth = health;
     m_HealthText = std::make_unique<Text>(std::to_string(m_Health) + "/" + std::to_string(m_MaxHealth), 660.0f, 575.0f, 10.0f, 0.0f);
     m_HealthText->SetColor(m_TextColor.w, m_TextColor.x, m_TextColor.y, m_TextColor.z);
 }

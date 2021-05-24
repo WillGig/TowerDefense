@@ -50,8 +50,8 @@ void TowerDefense::Enemy::Enemy::Update()
 
 	//Check if enemy reached the end and Remove
 	if (m_ReachedEnd) {
-		TowerDefense::Player::Get().ChangeHealth(-m_Damage);
 		Combat::GetCurrentFight()->AddEscapedEnemy(*this);
+		TowerDefense::Player::Get().ChangeHealth(-m_Damage);
 		Destroy();
 	}
 

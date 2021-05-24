@@ -68,6 +68,13 @@ void TowerDefense::Base::OnSwitch()
 		s_BaseScenes->at(i)->SetActivityDone(false);
 }
 
+void TowerDefense::Base::Reset()
+{
+	s_BaseScenes = std::make_unique<std::vector<std::shared_ptr<BaseScene>>>();
+	AddBaseScene(std::make_shared<Caves>());
+	AddBaseScene(std::make_shared<Build>());
+}
+
 void TowerDefense::Base::CleanUp()
 {
 	s_BaseScenes.reset();

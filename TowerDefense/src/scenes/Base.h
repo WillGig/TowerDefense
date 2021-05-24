@@ -14,6 +14,7 @@ namespace TowerDefense
 		void Render() override;
 		void Update() override;
 		void OnSwitch() override;
+		static void Reset();
 		static void CleanUp();
 
 		static void AddBaseScene(std::shared_ptr<BaseScene> scene);

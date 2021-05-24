@@ -53,6 +53,8 @@ void TowerDefense::LoadTextures()
     Texture::LoadTexture("chopWoodButtonSelected",      baseButtons.load(3, 7));
     Texture::LoadTexture("farmButton",                  baseButtons.load(0, 8));
     Texture::LoadTexture("farmButtonSelected",          baseButtons.load(1, 8));
+    Texture::LoadTexture("backToMenuButton",            baseButtons.load(2, 8));
+    Texture::LoadTexture("backToMenuButtonSelected",    baseButtons.load(3, 8));
 
     SpriteSheet buildButtons("res/textures/BuildButtons.png", 375, 65);
     Texture::LoadTexture("buildBed",                buildButtons.load(0, 0));
