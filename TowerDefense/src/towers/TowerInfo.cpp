@@ -7,7 +7,9 @@ TowerDefense::TowerInfo::TowerInfo(float x, float y, std::shared_ptr<Tower::Towe
 	:Entity(x, y, 200, 155, 0.0f, "TowerInfo", Type::STATICIMAGE), m_Dragging(false),
 	m_PreviousMouseX(0.0f), m_PreviousMouseY(0.0f), m_TowerDamage(t->GetDamage(t->GetDamageType())), 
 	m_TowerAttackSpeed(t->GetAttackTime()), m_TowerRange(t->GetRange()), m_TowercritChance(t->GetCritChance()), 
-	m_TowerDamageDealt(t->GetDamageDealt()), m_Name(std::make_unique<Text>(t->GetName() , x, y + 62.0f, 14.0f, 200.0f)),
+	m_TowerDamageDealt(t->GetDamageDealt()), 
+	m_Name(std::make_unique<Text>(t->GetName() , x, y + 62.0f, 14.0f, 200.0f)),
+	m_Stats(std::make_unique<Text>("Damage Type:\nDamage:\nRange:\nAttack Speed:\nCrit Change:\nTotalDamage:", m_X - 40.0f, m_Y - 20.0f, 10.0f, 200.0f)),
 	m_TargetLeft(std::make_unique<Button>(x - 65, y + 40, 10, 20, "ArrowButton")),
 	m_TargetRight(std::make_unique<Button>(x + 65, y + 40, 10, 20, "ArrowButton")),
 	m_Tower(t)
@@ -25,6 +27,7 @@ void TowerDefense::TowerInfo::Render()
 	m_Name->Render();
 	m_Target->Render();
 	m_Stats->Render();
+	m_StatsNumbers->Render();
 	m_TargetLeft->Render();
 	m_TargetRight->Render();
 }
@@ -81,7 +84,8 @@ void TowerDefense::TowerInfo::SetX(float x)
 	Entity::SetX(x);
 	m_Name->SetPosition(m_X, m_Y + 62.0f, 0.0f);
 	m_Target->SetPosition(m_X, m_Y + 42.0f, 0.0f);
-	m_Stats->SetPosition(m_X, m_Y - 20.0f, 0.0f);
+	m_Stats->SetPosition(m_X - 40.0f, m_Y - 20.0f, 0.0f);
+	m_StatsNumbers->SetPosition(m_X + 70.0f, m_Y - 20.0f, 0.0f);
 	m_TargetLeft->SetX(x - 65);
 	m_TargetRight->SetX(x + 65);
 }
@@ -91,7 +95,8 @@ void TowerDefense::TowerInfo::SetY(float y)
 	Entity::SetY(y);
 	m_Name->SetPosition(m_X, m_Y + 62.0f, 0.0f);
 	m_Target->SetPosition(m_X, m_Y + 42.0f, 0.0f);
-	m_Stats->SetPosition(m_X, m_Y - 20.0f, 0.0f);
+	m_Stats->SetPosition(m_X - 40.0f, m_Y - 20.0f, 0.0f);
+	m_StatsNumbers->SetPosition(m_X + 70.0f, m_Y - 20.0f, 0.0f);
 	m_TargetLeft->SetY(y + 40);
 	m_TargetRight->SetY(y + 40);
 }
@@ -121,39 +126,30 @@ void TowerDefense::TowerInfo::UpdateStatsText()
 	m_TowercritChance = m_Tower->GetCritChance();
 	m_TowerDamageDealt = m_Tower->GetDamageDealt();
 
-	std::string stats = "Damage Type: ";
+	std::string stats = "";
 	if (m_Tower->GetDamageType() == Tower::DamageType::PHYSICAL)
-		stats += "      PHYS";
+		stats += "PHYS";
 	else if (m_Tower->GetDamageType() == Tower::DamageType::MAGIC)
-		stats += "      MAGIC";
+		stats += "MAGIC";
 
 	std::stringstream ss;
 	ss << std::fixed << std::setprecision(1) << m_TowerDamage;
-	stats += "\nDamage:                  " + ss.str();
+	stats += "\n" + ss.str();
 
-	stats += "\nRange:                 ";
-	if (m_TowerRange < 100)
-		stats += " ";
+	stats += "\n";
 	stats += std::to_string(m_TowerRange) + ".0";
 
 	ss.str("");
 	ss << std::fixed << std::setprecision(1) << (m_TowerAttackSpeed / 60.0f);
-	stats += "\nAttack Speed:          " + ss.str() + "s";
+	stats += "\n" + ss.str() + "s";
 
 	ss.str("");
 	ss << std::fixed << std::setprecision(1) << (m_TowercritChance * 100.0f);
-	stats += "\nCrit Chance:            " + ss.str() + "%";
+	stats += "\n" + ss.str() + "%";
 
 	ss.str("");
 	ss << std::fixed << std::setprecision(1) << (m_TowerDamageDealt);
-	stats += "\nTotal Damage:       ";
-	if (m_TowerDamageDealt < 10)
-		stats += " ";
-	if (m_TowerDamageDealt < 100)
-		stats += " ";
-	if (m_TowerDamageDealt < 1000)	
-		stats += " ";
-	stats += ss.str();
+	stats += "\n" + ss.str();
 
-	m_Stats = std::make_unique<Text>(stats, m_X, m_Y - 20.0f, 10.0f, 200.0f);
+	m_StatsNumbers = std::make_unique<Text>(stats, m_X + 70.0f, m_Y - 20.0f, 10.0f, 200.0f);
 }
