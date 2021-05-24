@@ -9,9 +9,11 @@ TowerDefense::PostCombatScreen::PostCombatScreen()
 	m_BackToCamp(std::make_unique<Button>(400.0f, 100.0f, 180, 50, "returnToCampButton")),
 	m_BackToMenu(std::make_unique<Button>(400.0f, 100.0f, 180, 50, "backToMenuButton")),
 	m_Rewards(std::make_unique<std::vector<std::shared_ptr<CombatReward>>>()),
-	m_VictoryText(std::make_unique<Text>("VICTORY", 400.0f, 510.0f, 36.0f, 0.0f))
+	m_VictoryText(std::make_unique<Text>("VICTORY", 400.0f, 510.0f, 36.0f, 0.0f)),
+	m_DamageDealt(std::make_unique<Text>("Damage Dealt:\n\nTowers:\nSkills\nAuras\nArtifacts", 610.0f, 370.0f, 12.0f, 0.0f))
 {
 	m_VictoryText->SetColor(1.0f, 1.0f, 1.0f, 1.0f);
+	m_DamageDealt->SetColor(1.0f, 1.0f, 1.0f, 1.0f);
 }
 
 void TowerDefense::PostCombatScreen::Render()
@@ -25,6 +27,7 @@ void TowerDefense::PostCombatScreen::Render()
 	m_EscapedStats->Render();
 	m_EscapedNumbers->Render();
 	m_DamageDealt->Render();
+	m_DamageNumbers->Render();
 
 	for (unsigned int i = 0; i < m_Rewards->size(); i++)
 	{
@@ -142,31 +145,11 @@ void TowerDefense::PostCombatScreen::OnSwitch()
 		escapedHeight++;
 	}
 
-	std::string towerDamage = std::to_string(fight->GetTowerDamage());
-	std::string skillDamage = std::to_string(fight->GetSkillDamage());
-	std::string auraDamage = std::to_string(fight->GetAuraDamage());
-	std::string artifactDamage = std::to_string(fight->GetArtifactDamage());
+	std::string damageNumbers = "\n\n" + std::to_string(fight->GetTowerDamage()) + "\n" + std::to_string(fight->GetSkillDamage())
+		+ "\n" + std::to_string(fight->GetAuraDamage()) + "\n" + std::to_string(fight->GetArtifactDamage());
 
-	std::string damageDealt = "Damage Dealt:\n\nTowers:";
-
-	for (int i = 0; i < 11 - (int)towerDamage.size(); i++)
-		damageDealt += " ";
-	damageDealt += towerDamage + "\nSkills:";
-
-	for (int i = 0; i < 14 - (int)skillDamage.size(); i++)
-		damageDealt += " ";
-	damageDealt += skillDamage + "\nAuras:";
-
-	for (int i = 0; i < 14 - (int)auraDamage.size(); i++)
-		damageDealt += " ";
-	damageDealt += auraDamage + "\nArtifacts:";
-
-	for (int i = 0; i < 9 - (int)artifactDamage.size(); i++)
-		damageDealt += " ";
-	damageDealt += artifactDamage;
-
-	m_DamageDealt = std::make_unique<Text>(damageDealt, 655.0f, 370.0f, 12.0f, 0.0f);
-	m_DamageDealt->SetColor(1.0f, 1.0f, 1.0f, 1.0f);
+	m_DamageNumbers = std::make_unique<Text>(damageNumbers, 710.0f, 370.0f, 12.0f, 0.0f);
+	m_DamageNumbers->SetColor(1.0f, 1.0f, 1.0f, 1.0f);
 
 	m_DefeatedStats = std::make_unique<Text>(defEnemies, 155.0f, 430.0f - (defeatedHeight * 10.0f), 12.0f, 0.0f);
 	m_DefeatedStats->SetColor(1.0f, 1.0f, 1.0f, 1.0f);
