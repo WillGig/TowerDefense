@@ -3,7 +3,7 @@
 
 Rectangle::Rectangle(float x, float y, float width, float height)
 	: m_Color(1.0f, 1.0f, 1.0f, 1.0f),
-	m_Position(x, y, 0.0f)
+	m_Position(x, y, 0.0f), m_Width(width), m_Height(height)
 {
 	float positions[] = {
 			-width/2, -height/2,

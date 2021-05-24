@@ -131,7 +131,6 @@ void TowerDefense::Enemy::Enemy::UpdateDebuffs()
 		if (m_PoisonTime < 1) {
 			m_PoisonAmount = 0.0;
 			m_PoisonTime = 0;
-			m_HealthBar->SetColor(1.0f, 0.0f, 0.0f, 1.0f);
 			m_PoisonSource = 0;
 			m_PoisonTick = 0;
 		}
@@ -215,7 +214,9 @@ void TowerDefense::Enemy::Enemy::ChangeHealth(float change)
 	if (m_Health > m_MaxHealth)
 		m_Health = m_MaxHealth;
 
-	m_HealthBar->SetFill(m_Health / m_MaxHealth);
+	float totalPoisonDamage = m_PoisonAmount * (m_PoisonTime/POISONTICKRATE) * (100.0f / (100.0f + m_MagicResistance));
+	m_HealthBar->SetFill(m_Health / m_MaxHealth, totalPoisonDamage/m_Health);
+	m_HealthBar->SetPosition(m_X - (10.0f - m_HealthBar->GetBarWidth()/2), m_Y + m_Height / 2);
 	if (m_Health <= 0)
 	{
 		Combat::GetCurrentFight()->AddDefeatedEnemy(*this);
@@ -238,7 +239,8 @@ void TowerDefense::Enemy::Enemy::Poison(float poisonDamage, int poisonTime, unsi
 		m_PoisonTime = poisonTime;
 	if (m_PoisonAmount < poisonDamage)
 		m_PoisonAmount = poisonDamage;
-	m_HealthBar->SetColor(0.0f, 1.0f, 0.0f, 1.0f);
+	float totalPoisonDamage = m_PoisonAmount * (m_PoisonTime / POISONTICKRATE) * (100.0f / (100.0f + m_MagicResistance));
+	m_HealthBar->SetFill(m_Health / m_MaxHealth, totalPoisonDamage / m_Health);
 	m_PoisonSource = source;
 }
 
@@ -255,7 +257,7 @@ void TowerDefense::Enemy::Enemy::SetX(float x)
 {
 	m_X = x; 
 	m_Image->SetPosition(m_X, m_Y, 0.0f); 
-	m_HealthBar->SetPosition(m_X, m_Y + m_Height / 2);
+	m_HealthBar->SetPosition(m_X - (10.0f - m_HealthBar->GetBarWidth() / 2), m_Y + m_Height / 2);
 	m_DamageIcon->SetPosition(m_X + 5, m_Y + m_Height / 2 + 10, 0.0f);
 	m_DamageText->SetPosition(m_X - 5, m_Y + m_Height / 2 + 10, 0.0f);
 }
@@ -263,7 +265,7 @@ void TowerDefense::Enemy::Enemy::SetY(float y)
 { 
 	m_Y = y; 
 	m_Image->SetPosition(m_X, m_Y, 0.0f); 
-	m_HealthBar->SetPosition(m_X, m_Y + m_Height / 2);
+	m_HealthBar->SetPosition(m_X - (10.0f - m_HealthBar->GetBarWidth() / 2), m_Y + m_Height / 2);
 	m_DamageIcon->SetPosition(m_X + 5, m_Y + m_Height / 2 + 10, 0.0f);
 	m_DamageText->SetPosition(m_X - 5, m_Y + m_Height / 2 + 10, 0.0f);
 }
