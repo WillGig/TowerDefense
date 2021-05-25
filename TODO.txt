@@ -1,12 +1,8 @@
 Current:
-	Add more boss fight options for day 10 (add insect boss, 2 mega slimes)
-
 	Add ranger - archer-like tower with more range and on par with wizard (change heros from archers to rangers?)
 
-	Combat adjustment notes:
-
-
 Soon:
+	Add day 20 bosses and non-rat combats
 	Add more things to build/buy - resource acceleration needed
 	New Trait: Sharp-Eyes - can see invisible enemies
 	New Artifact: Crystal ball - pay for scouting with blood instead
@@ -109,13 +105,14 @@ Notes:
 	- Beetle	Extra weak and extra fast
 	- Spider	Not as fast as a beetle, but much touger
 	- Tough Beetle	Slow but heavily armored
+	- Tank Beetle	Tons of hp, alternates between high armor and high mr
 	- Blink Bug	Turns invisible every few seconds
 	- Runner Beetle	Dashes forward every few seconds
 
 	- Slime		Medium speed, medium health
 	- Ooze		Just as fast and over twice as tough
-	- Mega Ooze	Slower than a normal ooze, but with tons of hp
 	- Double Ooze	Splits into two Slimes when killed
+	- Mega Ooze	Slower than a normal ooze, but with tons of hp splits into two double oozes
 	- Jumping Ooze	Jumps every few seconds
 	- Doubler	Gains health slowly and divides when at double hp
 

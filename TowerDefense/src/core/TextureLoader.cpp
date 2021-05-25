@@ -178,6 +178,8 @@ void TowerDefense::LoadTextures()
     Texture::LoadTexture("Blink BugSelected",       enemies.load(1, 4));
     Texture::LoadTexture("Runner Beetle",           enemies.load(2, 4));
     Texture::LoadTexture("Runner BeetleSelected",   enemies.load(3, 4));
+    Texture::LoadTexture("Tank Beetle",             enemies.load(4, 4));
+    Texture::LoadTexture("Tank BeetleSelected",     enemies.load(5, 4));
 
     std::cout << "...Cards" << std::endl;
 

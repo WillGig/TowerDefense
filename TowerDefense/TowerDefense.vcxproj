@@ -249,6 +249,7 @@
     <ClCompile Include="src\enemies\RunnerBeetle.cpp" />
     <ClCompile Include="src\enemies\ShamanRat.cpp" />
     <ClCompile Include="src\enemies\ShieldRat.cpp" />
+    <ClCompile Include="src\enemies\TankBeetle.cpp" />
     <ClCompile Include="src\enemies\Wave.cpp" />
     <ClCompile Include="src\engine\Animation.cpp" />
     <ClCompile Include="src\core\AnimationEffect.cpp" />

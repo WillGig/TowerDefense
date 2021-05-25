@@ -27,8 +27,8 @@ namespace TowerDefense
 			BossRat()
 				:Enemy(64, 64, 250.0f, 0.3f, 100, "Boss Rat", 20)
 			{
-				m_Armor = 200;
-				m_MagicResistance = 200;
+				m_Armor = 100;
+				m_MagicResistance = 100;
 			}
 		};
 
@@ -58,7 +58,7 @@ namespace TowerDefense
 		{
 		public:
 			Beetle()
-				:Enemy(32, 32, 3.0f, 2.0f, 2, "Beetle", 1)
+				:Enemy(32, 32, 2.0f, 2.0f, 2, "Beetle", 1)
 			{}
 		};
 
@@ -209,6 +209,19 @@ namespace TowerDefense
 		private:
 			void Move() override;
 			int m_CastTime, m_Cast, m_RunTime, m_Run;
+		};
+
+		class TankBeetle : public Enemy
+		{
+		public:
+			TankBeetle()
+				:Enemy(64, 64, 300.0f, 0.25f, 100, "Tank Beetle", 20), m_SwitchTime(120), m_Switch(0)
+			{
+				m_Armor = 200;
+			}
+		private:
+			void Update() override;
+			int m_SwitchTime, m_Switch;
 		};
 	}
 }
