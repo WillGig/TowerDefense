@@ -32,6 +32,20 @@ namespace TowerDefense
 		std::shared_ptr<Tower::Tower> GetTower() override;
 	};
 
+	class RangerCard : public TowerCard
+	{
+	public:
+		RangerCard()
+			:TowerCard("Ranger", 100, "rangerCard", "rangerCardUpgraded")
+		{
+			AddInfoCard(std::make_shared<InfoTile>("SummonInfo"));
+		}
+		std::shared_ptr<Card> Clone() override;
+
+	protected:
+		std::shared_ptr<Tower::Tower> GetTower() override;
+	};
+
 	class GiantCard : public TowerCard
 	{
 	public:

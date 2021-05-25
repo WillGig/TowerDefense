@@ -2,22 +2,30 @@ Current:
 	Add ranger - archer-like tower with more range and on par with wizard (change heros from archers to rangers?)
 
 Soon:
+	Make support heros scale with bonus stats
 	Add day 20 bosses and non-rat combats
 	Add more things to build/buy - resource acceleration needed
 	New Trait: Sharp-Eyes - can see invisible enemies
-	New Artifact: Crystal ball - pay for scouting with blood instead
 	Change stations to only allow use every x days
 	Add note to tavern saying "New recruits expected in x days"
-	Jousting	-more gold than mining, but lose some health	- 
+	Jousting	- Trade health for gold. Comes from event.
 	Change text renderer to include color in vertex data to allow coloring of specific letters/words
 	Allow right clicking on smithing upgrades to show detailed versions of cards
 	Allow hovering over event options to show cards/artifacts obtained
 	add more potential hero upgrades
 		- range, damage, speed, more missiles, new spells, attacks stun/slow	
 	Shop/merchants
+	Add combat info on precombat screen (at least name and picture)
 	can scout next battle for gold price
+	New Artifact: Crystal ball - pay for scouting with blood instead
 
-Long Term:	
+Long Term:
+	Card that creates a wall in the path, stopping enemies temporarily
+	Non-tower deck? Cards with special effects if you don't have any towers
+		- Draw 2 cards. If you have no towers, draw 4 instead.
+		- Aura- if you have no towers, deal 10 damage per second to the strongest enemy
+		- frost wave - if you have no towers, stun all enemies for x seconds
+	Enemies that add curses to your draw pile
 	Tower that summons other towers (Conjurer?) upgrades to summon different types
 	Make Base buttons change when they are used
 	Add more groups of enemies to fight pools
@@ -27,7 +35,6 @@ Long Term:
 	Add specifics to upgrades when right clicking on them to make it clear what they do
 	Make resolution adjustable
 	Change leveling for heros - add new types of attacks, etc.
-	Add combat info on precombat screen (at least name and picture)
 	Saving and Loading
 	Settings menu
 	In Game Menu

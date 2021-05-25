@@ -122,6 +122,8 @@ void TowerDefense::LoadTextures()
     Texture::LoadTexture("ArcherHighlighted",       towers.load(1, 0));
     Texture::LoadTexture("Wizard",                  towers.load(2, 0));
     Texture::LoadTexture("WizardHighlighted",       towers.load(3, 0));
+    Texture::LoadTexture("Ranger",                  towers.load(4, 0));
+    Texture::LoadTexture("RangerHighlighted",       towers.load(5, 0));
     Texture::LoadTexture("Alchemist",               towers.load(0, 1));
     Texture::LoadTexture("AlchemistHighlighted",    towers.load(1, 1));
     Texture::LoadTexture("Bard",                    towers.load(2, 1));
@@ -200,6 +202,8 @@ void TowerDefense::LoadTextures()
     Texture::LoadTexture("giantCardUpgraded",       towerCards.load(1, 2));
     Texture::LoadTexture("monkCard",                towerCards.load(2, 2));
     Texture::LoadTexture("monkCardUpgraded",        towerCards.load(3, 2));
+    Texture::LoadTexture("rangerCard",              towerCards.load(4, 2));
+    Texture::LoadTexture("rangerCardUpgraded",      towerCards.load(5, 2));
 
     SpriteSheet skillCards("res/textures/SkillCards.png", 440, 560);
     Texture::LoadTexture("focus",                   skillCards.load(0, 0));

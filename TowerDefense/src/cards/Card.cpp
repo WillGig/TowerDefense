@@ -62,11 +62,11 @@ void TowerDefense::Card::AddInfoCard(std::shared_ptr<InfoTile> cardInfo)
 
 std::shared_ptr<TowerDefense::Card> TowerDefense::Card::GetCommonCard()
 {
-	int randomCard = (int)(Random::GetFloat()*14);
+	int randomCard = (int)(Random::GetFloat()*15);
 
 	if (randomCard == 0)
 		return std::make_shared<Double>();
-	else if (randomCard == 1) 
+	else if (randomCard == 1)
 		return std::make_shared<FireBall>();
 	else if (randomCard == 2)
 		return std::make_shared<FrostBall>();
@@ -90,6 +90,8 @@ std::shared_ptr<TowerDefense::Card> TowerDefense::Card::GetCommonCard()
 		return std::make_shared<AlchemistCard>();
 	else if (randomCard == 12)
 		return std::make_shared<BardCard>();
+	else if (randomCard == 13)
+		return std::make_shared<RangerCard>();
 	else
 		return std::make_shared<MonkCard>();
 }

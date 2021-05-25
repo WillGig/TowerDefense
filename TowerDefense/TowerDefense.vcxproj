@@ -311,6 +311,7 @@
     <ClCompile Include="src\towers\Paladin.cpp" />
     <ClCompile Include="src\towers\projectiles\Projectile.cpp" />
     <ClCompile Include="src\towers\projectiles\Projectiles.cpp" />
+    <ClCompile Include="src\towers\Ranger.cpp" />
     <ClCompile Include="src\towers\Tower.cpp" />
     <ClCompile Include="src\towers\TowerInfo.cpp" />
     <ClCompile Include="src\towers\Wizard.cpp" />
@@ -453,6 +454,7 @@
     <ClInclude Include="src\towers\Paladin.h" />
     <ClInclude Include="src\towers\projectiles\Projectile.h" />
     <ClInclude Include="src\towers\projectiles\Projectiles.h" />
+    <ClInclude Include="src\towers\Ranger.h" />
     <ClInclude Include="src\towers\Tower.h" />
     <ClInclude Include="src\towers\TowerInfo.h" />
     <ClInclude Include="src\towers\Wizard.h" />
