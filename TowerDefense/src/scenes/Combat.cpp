@@ -726,6 +726,32 @@ void TowerDefense::Combat::GenerateFights()
 	waves->push_back(std::make_shared<Wave>(enemies58, 14));
 	pool7.push_back(std::make_shared<Fight>(waves));
 
+	//Day 20
+	std::vector<std::shared_ptr<Fight>> pool8;
+	//Rats
+	waves = std::make_shared<std::vector<std::shared_ptr<Wave>>>();
+	const int enemies59[] = { 0, 0, 0, 30, 0, 30, 0, 30, 1, 150, 1, 150, 1, 150, 1, 150 };
+	const int enemies60[] = { 1, 0, 1, 100, 1, 100, 1, 100, 1, 100, 14, 150, 14, 150, 14, 150 };
+	const int enemies61[] = { 0, 0, 0, 20, 0, 20, 0, 20, 0, 20, 0, 20, 0, 20, 0, 20, 0, 20, 0, 20, 0, 20, 0, 20, 0, 20, 0, 20, 0, 20, 0, 20, 0, 20, 0, 20, 0, 20, 0, 20 };
+	const int enemies62[] = { 1, 0, 1, 50, 1, 50, 1, 50, 1, 50, 1, 50, 1, 50, 1, 50 };
+	const int enemies63[] = { 14, 0, 14, 100, 14, 100, 14, 100, 15, 100, 15, 100, 15, 100 };
+	const int enemies64[] = { 14, 0, 14, 100, 16, 100, 16, 100, 14, 100, 14, 100, 15, 100, 15, 100, 14, 100, 14, 100 };
+	const int enemies65[] = { 4, 0, 4, 300 };
+	const int enemies66[] = { 14, 0, 14, 100, 14, 100, 4, 100, 16, 50, 16, 50, 15, 50, 15, 50 };
+	const int enemies67[] = { 4, 0, 4, 100, 15, 50, 15, 50, 15, 50, 16, 50, 16, 50, 16, 50 };
+	const int enemies68[] = { 4, 0, 4, 100, 4, 100, 4, 100, 4, 100 };
+	waves->push_back(std::make_shared<Wave>(enemies59, 16));
+	waves->push_back(std::make_shared<Wave>(enemies60, 16));
+	waves->push_back(std::make_shared<Wave>(enemies61, 40));
+	waves->push_back(std::make_shared<Wave>(enemies62, 16));
+	waves->push_back(std::make_shared<Wave>(enemies63, 14));
+	waves->push_back(std::make_shared<Wave>(enemies64, 20));
+	waves->push_back(std::make_shared<Wave>(enemies65, 4));
+	waves->push_back(std::make_shared<Wave>(enemies66, 16));
+	waves->push_back(std::make_shared<Wave>(enemies67, 16));
+	waves->push_back(std::make_shared<Wave>(enemies68, 10));
+	pool8.push_back(std::make_shared<Fight>(waves));
+
 	//determine combats from random pool
 	int fight = (int)(Random::GetFloat()* pool1.size());
 	s_Fights->push_back(pool1[fight]);
@@ -802,4 +828,8 @@ void TowerDefense::Combat::GenerateFights()
 	fight = (int)(Random::GetFloat() * pool7.size());
 	s_Fights->push_back(pool7[fight]);
 	pool7.erase(pool7.begin() + fight);
+
+	fight = (int)(Random::GetFloat() * pool8.size());
+	s_Fights->push_back(pool8[fight]);
+	pool8.erase(pool8.begin() + fight);
 }

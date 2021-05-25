@@ -167,7 +167,7 @@ namespace TowerDefense
 		{
 		public:
 			ShamanRat()
-				:Enemy(32, 32, 40.0f, 0.5f, 10, "Shaman Rat", 2), m_CastTime(180), m_Cast(0)
+				:Enemy(32, 32, 40.0f, 0.5f, 10, "Shaman Rat", 2), m_CastTime(60), m_Cast(0)
 			{}
 		private:
 			void Update() override;
@@ -179,7 +179,7 @@ namespace TowerDefense
 		{
 		public:
 			HealerRat()
-				:Enemy(32, 32, 40.0f, 0.5f, 10, "Healer Rat", 2), m_CastTime(120), m_Cast(0)
+				:Enemy(32, 32, 40.0f, 0.5f, 10, "Healer Rat", 2), m_CastTime(60), m_Cast(0)
 			{}
 		private:
 			void Update() override;

@@ -1,21 +1,28 @@
 Current:
-	Add day 20
 	Add more boss fight options for day 10 (add insect boss, 2 mega slimes)
+	Make 14-16 different from 17-19
 
-	buff day 4-6 bugs wave 1
-	tune down 7-9 slimes
-	Nerf wave 1 rats day 13
+	Make blessing of the bat - all towers can see invisible enemies
 
-	Buff lightning, fireball, poisonball
+	Not needed after hp nerf?
+	Buff lightning, fireball, poisonball, the floor is lava
 
 	Add ranger - archer-like tower with more range and on par with wizard (change heros from archers to rangers?)
+	Nerf attack speed and enemy health by half so rangers can attack fast.
+	Nerf poison damage to compensate?
 
-	Make blessing of the bat - echolocation? see invisibility?
-	Fix visual bug where the pick a card reward doesn't disappear immediately
+	Combat adjustment notes:
+
+		- buff day 4-6 bugs wave 1
+		- tune down 7-9 slimes
+		- Nerf wave 1 rats day 13
+		- Nerf wave 2 oozes day 14
+		- Buff cast speed of healers and shamans
+
 
 Soon:
+	Add more things to build/buy - resource acceleration needed
 	New Trait: Sharp-Eyes - can see invisible enemies
-	New Artifact: blessing of the bat - click to reveal all invisible enemies?
 	New Artifact: Crystal ball - pay for scouting with blood instead
 	Change stations to only allow use every x days
 	Add note to tavern saying "New recruits expected in x days"
