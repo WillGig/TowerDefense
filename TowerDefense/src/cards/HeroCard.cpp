@@ -2,7 +2,7 @@
 #include "HeroCard.h"
 #include "core/Player.h"
 #include "core/Board.h"
-#include "towers/Archer.h"
+#include "towers/Ranger.h"
 #include "towers/Wizard.h"
 #include "towers/Bard.h"
 #include "towers/Cleric.h"
@@ -164,9 +164,9 @@ std::shared_ptr<TowerDefense::HeroCard> TowerDefense::HeroCard::GenerateHero()
 	int towerClass = (int)(Random::GetFloat() * 5);
 
 	if (towerClass == 0) {
-		heroTower = std::make_shared<Tower::Archer>();
-		heroClass = "Archer";
-		cost = 50;
+		heroTower = std::make_shared<Tower::Ranger>();
+		heroClass = "Ranger";
+		cost = 100;
 	}
 	else if (towerClass == 1) {
 		heroTower = std::make_shared<Tower::Wizard>();
