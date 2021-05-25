@@ -1,12 +1,7 @@
 Current:
 	Add more boss fight options for day 10 (add insect boss, 2 mega slimes)
 
-	Not needed after hp nerf?
-	Buff lightning, fireball, poisonball, the floor is lava
-
 	Add ranger - archer-like tower with more range and on par with wizard (change heros from archers to rangers?)
-	Nerf attack speed and enemy health by half so rangers can attack fast.
-	Nerf poison damage to compensate?
 
 	Combat adjustment notes:
 

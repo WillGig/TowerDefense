@@ -4,7 +4,7 @@
 #include "projectiles/Projectiles.h"
 
 TowerDefense::Tower::Alchemist::Alchemist()
-	:Tower(0.0f, 0.0f, 32, 32, 120.0f, 100, TowerType::DAMAGE, "Alchemist")
+	:Tower(0.0f, 0.0f, 32, 32, 240.0f, 100, TowerType::DAMAGE, "Alchemist")
 {
 	m_MagicDamage = 1.0f;
 	m_DamageType = DamageType::MAGIC;
@@ -19,7 +19,7 @@ TowerDefense::Tower::Alchemist::Alchemist(float fireTime, int range, float damag
 
 void TowerDefense::Tower::Alchemist::Fire(std::shared_ptr<TowerDefense::Entity> target)
 {
-	float damage = m_MagicDamage;
+	float damage = m_MagicDamage/2.0f;
 	if (Random::GetFloat() < m_CritChance)
 	{
 		damage *= m_CritMultiplier;

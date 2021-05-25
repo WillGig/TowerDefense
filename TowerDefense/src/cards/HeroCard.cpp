@@ -176,12 +176,12 @@ std::shared_ptr<TowerDefense::HeroCard> TowerDefense::HeroCard::GenerateHero()
 	else if (towerClass == 2) {
 		heroTower = std::make_shared<Tower::Bard>();
 		heroClass = "Bard";
-		cost = 100;
+		cost = 50;
 	}
 	else if (towerClass == 3) {
 		heroTower = std::make_shared<Tower::Cleric>();
 		heroClass = "Cleric";
-		cost = 100;
+		cost = 50;
 	}
 	else if (towerClass == 4) {
 		heroTower = std::make_shared<Tower::Paladin>();
