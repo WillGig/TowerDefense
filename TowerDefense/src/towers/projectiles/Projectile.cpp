@@ -115,7 +115,11 @@ std::shared_ptr<TowerDefense::Enemy::Enemy> TowerDefense::Projectile::FindTarget
 			auto enemy = std::dynamic_pointer_cast<TowerDefense::Enemy::Enemy>(e);
 
 			if (!enemy->Visible())
-				continue;
+			{
+				auto tower = std::dynamic_pointer_cast<Tower::Tower>(Combat::GetEntity(m_TowerSource));
+				if(!tower->CanSeeInvisibility())
+					continue;
+			}
 
 			//Prioritizes closest enemy
 			if (!target || GetDistance(enemy->GetX(), enemy->GetY()) < GetDistance(target->GetX(), target->GetY()))

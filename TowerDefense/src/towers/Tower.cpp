@@ -11,7 +11,7 @@
 TowerDefense::Tower::Tower::Tower(float x, float y, int width, int height, float fireTime, int range, TowerType type, const std::string& name)
 	:Entity(x, y, width, height, 0.0f, name, Type::TOWER),
 	m_DamageType(), m_PhysicalDamage(0.0f), m_MagicDamage(0.0f), 
-	m_Spread(0.0f), m_CritChance(0.0f), m_CritMultiplier(2.0f),
+	m_Spread(0.0f), m_CritChance(0.0f), m_CritMultiplier(2.0f), m_SeeInvisibility(false),
 	m_FireTime(fireTime), m_TotalDamageDealt(0), m_FireReady(1000), m_Range(range), m_Highlighted(false), m_Clicked(false), 
 	m_TowerType(type), m_Name(name), m_TargetType(TargetType::FIRST), 
 	m_RegularImage(std::make_shared<Image>(name, x, y, width, height, 0.0f)),
@@ -188,7 +188,7 @@ std::shared_ptr<TowerDefense::Entity>  TowerDefense::Tower::Tower::FindTarget()
 			if (e->GetEntityType() == Type::ENEMY) {
 				auto enemy = std::dynamic_pointer_cast<Enemy::Enemy>(e);
 
-				if (!enemy->Visible())
+				if (!enemy->Visible() && !m_SeeInvisibility)
 					continue;
 
 				if (!targetEnemy)

@@ -312,12 +312,14 @@ void TowerDefense::LoadTextures()
     Texture::LoadTexture("Token Of The Armored",    artifacts.load(1, 0));
     Texture::LoadTexture("Token Of The Broken",     artifacts.load(2, 0));
     Texture::LoadTexture("Token Of The Vigilant",   artifacts.load(3, 0));
+    Texture::LoadTexture("Blessing of the Bat",     artifacts.load(4, 0));
 
     SpriteSheet artifactInfo("res/textures/ArtifactInfo.png", 440, 170);
     Texture::LoadTexture("Token Of The MuteInfo",       artifactInfo.load(0, 0));
     Texture::LoadTexture("Token Of The ArmoredInfo",    artifactInfo.load(1, 0));
     Texture::LoadTexture("Token Of The BrokenInfo",     artifactInfo.load(2, 0));
     Texture::LoadTexture("Token Of The VigilantInfo",   artifactInfo.load(3, 0));
+    Texture::LoadTexture("Blessing of the BatInfo",     artifactInfo.load(0, 1));
 
     std::cout << "...Animations" << std::endl;
 

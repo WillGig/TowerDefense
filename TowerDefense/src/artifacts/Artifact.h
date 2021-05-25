@@ -58,4 +58,11 @@ namespace TowerDefense
 	private:
 		int m_Counter;
 	};
+
+	class BlessingOfTheBat : public Artifact
+	{
+	public:
+		BlessingOfTheBat();
+		void OnCardPlay(std::shared_ptr<Card> c) override;
+	};
 }

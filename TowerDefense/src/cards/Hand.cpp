@@ -71,9 +71,9 @@ void TowerDefense::Hand::Update()
 						{
 							player.ChangeEnergy(0 - card->GetCost());
 							RemoveCard(m_Cards->at(m_SelectedCard)->GetHandPosition());
-							card->Play();
 							player.ArtifactOnCardPlay(card);
 							Combat::OnCardPlayAuras(card);
+							card->Play();
 							if (!card->Exhausts())
 								player.GetDiscardPile()->AddCard(card);
 						}

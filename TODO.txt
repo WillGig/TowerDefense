@@ -1,8 +1,5 @@
 Current:
 	Add more boss fight options for day 10 (add insect boss, 2 mega slimes)
-	Make 14-16 different from 17-19
-
-	Make blessing of the bat - all towers can see invisible enemies
 
 	Not needed after hp nerf?
 	Buff lightning, fireball, poisonball, the floor is lava
@@ -12,12 +9,6 @@ Current:
 	Nerf poison damage to compensate?
 
 	Combat adjustment notes:
-
-		- buff day 4-6 bugs wave 1
-		- tune down 7-9 slimes
-		- Nerf wave 1 rats day 13
-		- Nerf wave 2 oozes day 14
-		- Buff cast speed of healers and shamans
 
 
 Soon:
@@ -36,6 +27,7 @@ Soon:
 	can scout next battle for gold price
 
 Long Term:	
+	Tower that summons other towers (Conjurer?) upgrades to summon different types
 	Make Base buttons change when they are used
 	Add more groups of enemies to fight pools
 		- Add more orcs/goblins and move to their own category of enemies with spearate fight pools
