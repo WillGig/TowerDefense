@@ -1,10 +1,14 @@
 Current:
-	Add ranger - archer-like tower with more range and on par with wizard (change heros from archers to rangers?)
+	Add more things to build/buy - resource acceleration needed
+	Add combat info on precombat screen (at least name and picture)
+	Shop/merchants
+
+	Make clicking monks not show stats when they are ready
 
 Soon:
+	Remove cleric and bard buff stacking
 	Make support heros scale with bonus stats
 	Add day 20 bosses and non-rat combats
-	Add more things to build/buy - resource acceleration needed
 	New Trait: Sharp-Eyes - can see invisible enemies
 	Change stations to only allow use every x days
 	Add note to tavern saying "New recruits expected in x days"
@@ -14,12 +18,12 @@ Soon:
 	Allow hovering over event options to show cards/artifacts obtained
 	add more potential hero upgrades
 		- range, damage, speed, more missiles, new spells, attacks stun/slow	
-	Shop/merchants
-	Add combat info on precombat screen (at least name and picture)
 	can scout next battle for gold price
 	New Artifact: Crystal ball - pay for scouting with blood instead
 
 Long Term:
+	No duplicate cards in card selections?
+	Add more maps/paths
 	Card that creates a wall in the path, stopping enemies temporarily
 	Non-tower deck? Cards with special effects if you don't have any towers
 		- Draw 2 cards. If you have no towers, draw 4 instead.

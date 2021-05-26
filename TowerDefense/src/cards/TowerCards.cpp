@@ -45,7 +45,7 @@ std::shared_ptr<TowerDefense::Card> TowerDefense::WizardCard::Clone()
 std::shared_ptr<TowerDefense::Tower::Tower> TowerDefense::RangerCard::GetTower()
 {
 	if (m_Upgraded)
-		return std::make_shared<Tower::Ranger>(20.0f, 150, 2.0f);
+		return std::make_shared<Tower::Ranger>(30.0f, 150, 2.0f);
 	else
 		return std::make_shared<Tower::Ranger>();
 }

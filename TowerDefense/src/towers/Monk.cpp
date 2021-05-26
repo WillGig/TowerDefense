@@ -33,7 +33,8 @@ void TowerDefense::Tower::Monk::Clicked()
 		Player::Get().GetHand()->AddCard(focusCard);
 		m_Focused = false;
 	}
-	Tower::Clicked();
+	else
+		Tower::Clicked();
 }
 
 void TowerDefense::Tower::Monk::Fire(std::shared_ptr<TowerDefense::Entity> target)

@@ -30,6 +30,7 @@ void TowerDefense::TowerCard::Update()
 		m_OverBoard = true;
 		if (m_HeldTower)
 		{
+			board.SetSelectedTileSize(m_HeldTower->GetWidth(), m_HeldTower->GetHeight());
 			m_HeldTower->SetX(board.GetSelectedTile()->GetX());
 			m_HeldTower->SetY(board.GetSelectedTile()->GetY());
 
@@ -41,9 +42,9 @@ void TowerDefense::TowerCard::Update()
 		else
 		{
 			m_HeldTower = GetTower();
+			board.SetSelectedTileSize(m_HeldTower->GetWidth(), m_HeldTower->GetHeight());
 			m_HeldTower->SetX(board.GetSelectedTile()->GetX());
 			m_HeldTower->SetY(board.GetSelectedTile()->GetY());
-			board.SetSelectedTileSize(m_HeldTower->GetWidth(), m_HeldTower->GetHeight());
 		}
 	}
 	else

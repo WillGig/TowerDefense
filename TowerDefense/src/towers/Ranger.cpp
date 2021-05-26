@@ -4,7 +4,7 @@
 #include "projectiles/Projectiles.h"
 
 TowerDefense::Tower::Ranger::Ranger()
-	:Tower(0.0f, 0.0f, 32, 32, 20.0f, 150, TowerType::DAMAGE, "Ranger")
+	:Tower(0.0f, 0.0f, 32, 32, 30.0f, 150, TowerType::DAMAGE, "Ranger")
 {
 	m_Spread = .1f;
 	m_PhysicalDamage = 1.0f;
