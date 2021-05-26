@@ -3,8 +3,6 @@ Current:
 	Add combat info on precombat screen (at least name and picture)
 	Shop/merchants
 
-	Make clicking monks not show stats when they are ready
-
 Soon:
 	Remove cleric and bard buff stacking
 	Make support heros scale with bonus stats
