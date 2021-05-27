@@ -3,10 +3,14 @@
 #include "scenes/cave_scenes/CaveScene.h"
 #include "cards/CardChoice.h"
 #include "BuildButton.h"
+#include "CardSlot.h"
+#include "ArtifactSlot.h"
 
 namespace TowerDefense
 {
 	class BuildButton;
+
+	class Artifact;
 
 	class BaseScene : public Scene
 	{
@@ -141,5 +145,24 @@ namespace TowerDefense
 
 		std::unique_ptr<Button> m_Cancel;
 		std::unique_ptr<std::vector<std::shared_ptr<BuildButton>>> m_Buttons;
+	};
+
+	class Trader : public BaseScene
+	{
+	public:
+		Trader();
+		void Render() override;
+		void Update() override;
+		void OnSwitch() override;
+		inline std::string GetName() override { return "Trader"; }
+	private:
+		void FindInfo();
+
+		int m_LastRefresh, m_InfoCard, m_InfoArtifact, m_SpinEnd;
+		std::array<std::unique_ptr<CardSlot>, 6> m_Cards;
+		std::array<std::unique_ptr<ArtifactSlot>, 3> m_Artifacts;
+		std::unique_ptr<Button> m_Wood, m_Stone, m_Wheat, m_Spin, m_BackToCamp;
+		std::unique_ptr<Text> m_WoodText, m_StoneText, m_WheatText, m_SpinText;
+		std::unique_ptr<Image> m_WoodGoldIcon, m_StoneGoldIcon, m_WheatGoldIcon, m_SpinGoldIcon, m_SpinWheel, m_SpinPicker;
 	};
 }

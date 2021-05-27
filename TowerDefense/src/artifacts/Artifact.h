@@ -23,6 +23,8 @@ namespace TowerDefense
 		inline virtual void OnFightStart() {};
 		inline virtual void OnFightEnd() {};
 
+		static std::shared_ptr<Artifact> GetRandomArtifact();
+
 	private:
 		std::string m_Name;
 		std::unique_ptr<Text> m_NameText;

@@ -39,7 +39,7 @@ namespace TowerDefense
 		static void OnEnemyHit(unsigned int id, std::shared_ptr<Entity>  source, Tower::DamageType type);
 		static void OnEnemyDeath(unsigned int id);
 
-		static inline std::shared_ptr<Fight> GetCurrentFight() { return s_Fights->at(s_CurrentFight); }
+		static inline std::shared_ptr<Fight> GetCurrentFight() { if (s_CurrentFight < 0) return nullptr; return s_Fights->at(s_CurrentFight); }
 		
 		static inline int GetRoundSpeed() { return s_RoundSpeed; }
 		

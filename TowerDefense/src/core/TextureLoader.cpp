@@ -55,20 +55,24 @@ void TowerDefense::LoadTextures()
     Texture::LoadTexture("farmButtonSelected",          baseButtons.load(1, 8));
     Texture::LoadTexture("backToMenuButton",            baseButtons.load(2, 8));
     Texture::LoadTexture("backToMenuButtonSelected",    baseButtons.load(3, 8));
+    Texture::LoadTexture("tradeButton",                 baseButtons.load(0, 9));
+    Texture::LoadTexture("tradeButtonSelected",         baseButtons.load(1, 9));
 
     SpriteSheet buildButtons("res/textures/BuildButtons.png", 375, 65);
     Texture::LoadTexture("buildBed",                buildButtons.load(0, 0));
     Texture::LoadTexture("buildLibrary",            buildButtons.load(0, 1));
-    Texture::LoadTexture("buildFishery",            buildButtons.load(0, 2));
-    Texture::LoadTexture("buildChapel",             buildButtons.load(0, 3));
-    Texture::LoadTexture("buildSmithy",             buildButtons.load(0, 4));
-    Texture::LoadTexture("buildTavern",             buildButtons.load(0, 5));
+    Texture::LoadTexture("buildTrader",             buildButtons.load(0, 2));
+    Texture::LoadTexture("buildFishery",            buildButtons.load(0, 3));
+    Texture::LoadTexture("buildChapel",             buildButtons.load(0, 4));
+    Texture::LoadTexture("buildSmithy",             buildButtons.load(0, 5));
+    Texture::LoadTexture("buildTavern",             buildButtons.load(0, 6));
     Texture::LoadTexture("buildBedSelected",        buildButtons.load(1, 0));
     Texture::LoadTexture("buildLibrarySelected",    buildButtons.load(1, 1));
-    Texture::LoadTexture("buildFisherySelected",    buildButtons.load(1, 2));
-    Texture::LoadTexture("buildChapelSelected",     buildButtons.load(1, 3));
-    Texture::LoadTexture("buildSmithySelected",     buildButtons.load(1, 4));
-    Texture::LoadTexture("buildTavernSelected",     buildButtons.load(1, 5));
+    Texture::LoadTexture("buildTraderSelected",     buildButtons.load(1, 2));
+    Texture::LoadTexture("buildFisherySelected",    buildButtons.load(1, 3));
+    Texture::LoadTexture("buildChapelSelected",     buildButtons.load(1, 4));
+    Texture::LoadTexture("buildSmithySelected",     buildButtons.load(1, 5));
+    Texture::LoadTexture("buildTavernSelected",     buildButtons.load(1, 6));
 
     SpriteSheet combatButtons("res/textures/CombatButtons.png", 384, 128);
     Texture::LoadTexture("startButton",         combatButtons.load(0, 0));
@@ -97,6 +101,16 @@ void TowerDefense::LoadTextures()
     Texture::LoadTexture("viewDeckButtonSelected",      playerButtons.load(1, 0));
     Texture::LoadTexture("viewArtifactsButton",         playerButtons.load(0, 1));
     Texture::LoadTexture("viewArtifactsButtonSelected", playerButtons.load(1, 1));
+
+    SpriteSheet tradeButtons("res/textures/TradeButtons.png", 200, 80);
+    Texture::LoadTexture("buyWoodButton",           tradeButtons.load(0, 0));
+    Texture::LoadTexture("buyStoneButton",          tradeButtons.load(0, 1));
+    Texture::LoadTexture("buyWheatButton",          tradeButtons.load(0, 2));
+    Texture::LoadTexture("spinButton",              tradeButtons.load(0, 3));
+    Texture::LoadTexture("buyWoodButtonSelected",   tradeButtons.load(1, 0));
+    Texture::LoadTexture("buyStoneButtonSelected",  tradeButtons.load(1, 1));
+    Texture::LoadTexture("buyWheatButtonSelected",  tradeButtons.load(1, 2));
+    Texture::LoadTexture("spinButtonSelected",      tradeButtons.load(1, 3));
 
     SpriteSheet statIcons("res/textures/Stats.png", 64, 64);
     Texture::LoadTexture("healthIcon",  statIcons.load(0, 0));

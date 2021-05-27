@@ -447,6 +447,18 @@
     <ClCompile Include="src\towers\Ranger.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="src\scenes\base_scenes\Trader.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\scenes\base_scenes\CardSlot.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\scenes\base_scenes\ArtifactSlot.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\artifacts\Artifact.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="res\shaders\Texture.shader" />
@@ -844,6 +856,12 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\towers\Ranger.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\scenes\base_scenes\CardSlot.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\scenes\base_scenes\ArtifactSlot.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

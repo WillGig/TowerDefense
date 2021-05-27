@@ -120,6 +120,18 @@ void TowerDefense::PostCombatScreen::OnSwitch()
 
 	auto fight = Combat::GetCurrentFight();
 
+	if (!fight)
+	{
+		m_DamageNumbers = std::make_unique<Text>("", 710.0f, 370.0f, 12.0f, 0.0f);
+		m_DefeatedStats = std::make_unique<Text>("Enemies Defeated:", 155.0f, 430.0f - (10.0f), 12.0f, 0.0f);
+		m_DefeatedStats->SetColor(1.0f, 1.0f, 1.0f, 1.0f);
+		m_DefeatedNumbers = std::make_unique<Text>("", 215.0f, 430.0f - (10.0f), 12.0f, 0.0f);
+		m_EscapedStats = std::make_unique<Text>("Enemies Escaped:", 155.0f, 250.0f - (10.0f), 12.0f, 0.0f);
+		m_EscapedStats->SetColor(1.0f, 1.0f, 1.0f, 1.0f);
+		m_EscapedNumbers = std::make_unique<Text>("", 215.0f, 250.0f - (10.0f), 12.0f, 0.0f);
+		return;
+	}
+		
 	auto defeatedEnemies = fight->m_DefeatedEnemies;
 	int enemyGold = 0;
 	int defeatedHeight = 3;

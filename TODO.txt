@@ -1,7 +1,7 @@
 Current:
 	Add more things to build/buy - resource acceleration needed
 	Add combat info on precombat screen (at least name and picture)
-	Shop/merchants
+	
 
 Soon:
 	Remove cleric and bard buff stacking
