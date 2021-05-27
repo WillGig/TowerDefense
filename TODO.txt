@@ -1,7 +1,9 @@
 Current:
-	Add more things to build/buy - resource acceleration needed
-	Add combat info on precombat screen (at least name and picture)
 	
+	Add combat info on precombat screen (at least name and picture)
+
+	Add more things to build/buy - resource acceleration needed
+
 
 Soon:
 	Remove cleric and bard buff stacking
@@ -20,7 +22,7 @@ Soon:
 	New Artifact: Crystal ball - pay for scouting with blood instead
 
 Long Term:
-	No duplicate cards in card selections?
+	No duplicate cards in card selections\shops?
 	Add more maps/paths
 	Card that creates a wall in the path, stopping enemies temporarily
 	Non-tower deck? Cards with special effects if you don't have any towers

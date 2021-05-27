@@ -2,18 +2,21 @@
 #include "Random.h"
 
 TowerDefense::Random::Random()
+{}
+
+TowerDefense::Random& TowerDefense::Random::Get()
+{
+	static Random instance;
+	return instance;
+}
+
+void TowerDefense::Random::NewSeed()
 {
 	std::random_device rd;
 	m_Seed = rd();
 	std::cout << "Seed: " << m_Seed << std::endl;
 	m_Generator = std::mt19937(m_Seed);
 	m_Distribution = std::uniform_real_distribution<float>(0.0f, 1.0f);
-}
-
-TowerDefense::Random& TowerDefense::Random::Get()
-{
-	static Random instance;
-	return instance;
 }
 
 void TowerDefense::Random::SetSeed(unsigned int seed)

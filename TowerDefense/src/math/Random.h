@@ -7,6 +7,9 @@ namespace TowerDefense
 	public:
 		Random(const Random&) = delete;
 
+		//Generates a new seed
+		void NewSeed();
+
 		//Sets generator to specified seed so that runs can be reproduced
 		void SetSeed(unsigned int seed);
 
