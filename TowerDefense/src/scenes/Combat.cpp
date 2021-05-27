@@ -123,6 +123,7 @@ void TowerDefense::Combat::OnSwitch()
 	player.SetEnergy(100);
 	player.ResetCardPiles();
 	player.GetHand()->ResetSelectedCard();
+	player.GetHand()->ResetDiscardCard();
 	m_TurnPhase = Phase::START;
 
 	m_StartButton->SetImages("startButton");
