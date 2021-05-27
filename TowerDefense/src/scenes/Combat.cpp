@@ -666,15 +666,15 @@ void TowerDefense::Combat::GenerateFights()
 	const int enemies49[] = { 8, 0, 8, 100, 8, 100, 5, 10, 5, 10, 5, 10, 5, 10, 5, 10, 8, 100, 8, 100, 8, 100, 5, 10, 5, 10, 5, 10, 5, 10, 5, 10, 8, 100, 8, 100, 8, 100 };
 	const int enemies50[] = { 8, 0, 8, 100, 7, 20, 7, 20, 7, 20, 8, 100, 8, 100, 7, 20, 7, 20, 7, 20, 8, 100, 8, 100 };
 	const int enemies51[] = { 19, 0 };
-	waves->push_back(std::make_shared<Wave>(enemies42, 10));
-	waves->push_back(std::make_shared<Wave>(enemies43, 20));
-	waves->push_back(std::make_shared<Wave>(enemies44, 8));
-	waves->push_back(std::make_shared<Wave>(enemies45, 20));
-	waves->push_back(std::make_shared<Wave>(enemies46, 20));
+	waves->push_back(std::make_shared<Wave>(enemies42, 14));
+	waves->push_back(std::make_shared<Wave>(enemies43, 18));
+	waves->push_back(std::make_shared<Wave>(enemies44, 34));
+	waves->push_back(std::make_shared<Wave>(enemies45, 12));
+	waves->push_back(std::make_shared<Wave>(enemies46, 38));
 	waves->push_back(std::make_shared<Wave>(enemies47, 10));
-	waves->push_back(std::make_shared<Wave>(enemies48, 20));
-	waves->push_back(std::make_shared<Wave>(enemies49, 24));
-	waves->push_back(std::make_shared<Wave>(enemies50, 20));
+	waves->push_back(std::make_shared<Wave>(enemies48, 14));
+	waves->push_back(std::make_shared<Wave>(enemies49, 38));
+	waves->push_back(std::make_shared<Wave>(enemies50, 24));
 	waves->push_back(std::make_shared<Wave>(enemies51, 2));
 	pool4.push_back(std::make_shared<Fight>(waves));
 
