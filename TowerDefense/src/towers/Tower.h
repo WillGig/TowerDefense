@@ -91,6 +91,7 @@ namespace TowerDefense
 			void UpdateImage();
 			void Attack();
 			void UpdateBuffs();
+			
 
 			//Attack period in Game Updates (60 per second)
 			float m_FireTime, m_TotalDamageDealt;

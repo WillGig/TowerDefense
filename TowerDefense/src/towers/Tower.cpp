@@ -245,12 +245,22 @@ void TowerDefense::Tower::Tower::ClearBuffs()
 		m_Buffs->at(i)->Remove(*this);
 }
 
-//Used to ensure that the same tower cannot stack buffs on one target
+//Used to ensure that the same tower or towers of the same type cannot stack buffs on one target
 bool TowerDefense::Tower::Tower::IsBuffedBy(Tower& t)
 {
 	for (unsigned int i = 0; i < m_Buffs->size(); i++)
 	{
 		if (m_Buffs->at(i)->GetSource() == t.GetID())
+			return true;
+		if (std::dynamic_pointer_cast<Tower>(Combat::GetEntity(m_Buffs->at(i)->GetSource()))->GetName() == t.GetName())
+			return true;
+	}
+	
+	for (unsigned int i = 0; i < m_AddBuffs->size(); i++)
+	{
+		if (m_AddBuffs->at(i)->GetSource() == t.GetID())
+			return true;
+		if (std::dynamic_pointer_cast<Tower>(Combat::GetEntity(m_AddBuffs->at(i)->GetSource()))->GetName() == t.GetName())
 			return true;
 	}
 	return false;
