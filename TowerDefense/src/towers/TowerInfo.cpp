@@ -9,7 +9,7 @@ TowerDefense::TowerInfo::TowerInfo(float x, float y, std::shared_ptr<Tower::Towe
 	m_TowerAttackSpeed(t->GetAttackTime()), m_TowerRange(t->GetRange()), m_TowercritChance(t->GetCritChance()), 
 	m_TowerDamageDealt(t->GetDamageDealt()), 
 	m_Name(std::make_unique<Text>(t->GetName() , x, y + 62.0f, 14.0f, 200.0f)),
-	m_Stats(std::make_unique<Text>("Damage Type:\nDamage:\nRange:\nAttack Speed:\nCrit Change:\nTotalDamage:", m_X - 40.0f, m_Y - 20.0f, 10.0f, 200.0f)),
+	m_Stats(std::make_unique<Text>("Damage Type:\nDamage:\nRange:\nAttack Speed:\nCrit Change:\nTotal Damage:", m_X - 40.0f, m_Y - 20.0f, 10.0f, 200.0f)),
 	m_TargetLeft(std::make_unique<Button>(x - 65, y + 40, 10, 20, "ArrowButton")),
 	m_TargetRight(std::make_unique<Button>(x + 65, y + 40, 10, 20, "ArrowButton")),
 	m_Tower(t)
