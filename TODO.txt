@@ -2,6 +2,9 @@ Current:
 	Add more things to build/buy - resource acceleration needed
 	
 Soon:	
+	Event - frog - choose 50% princess, 50% frog or some amount of gold gauranteed
+	Arrtifact that sends the first enemy to get through back to the beginning
+	Add details to defeat screen: days survived, damage dealt, amount healed, enemies defeated, score, etc.
 	Right click on enemies precombat for details
 	Sideboard mechanic/relic?
 	Make support heros scale with bonus stats
