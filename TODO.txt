@@ -2,11 +2,12 @@ Current:
 	
 	Add combat info on precombat screen (at least name and picture)
 
+	Remove cleric and bard buff stacking
+
 	Add more things to build/buy - resource acceleration needed
 
-
 Soon:
-	Remove cleric and bard buff stacking
+	Sideboard mechanic/relic?
 	Make support heros scale with bonus stats
 	Add day 20 bosses and non-rat combats
 	New Trait: Sharp-Eyes - can see invisible enemies

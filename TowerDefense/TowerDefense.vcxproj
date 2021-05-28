@@ -240,6 +240,7 @@
     <ClCompile Include="src\enemies\BlinkBug.cpp" />
     <ClCompile Include="src\enemies\DoubleOoze.cpp" />
     <ClCompile Include="src\enemies\Enemy.cpp" />
+    <ClCompile Include="src\enemies\EnemyIcon.cpp" />
     <ClCompile Include="src\enemies\EnemyInfo.cpp" />
     <ClCompile Include="src\enemies\Fight.cpp" />
     <ClCompile Include="src\enemies\HealerRat.cpp" />
@@ -407,6 +408,7 @@
     <ClInclude Include="src\core\TextureLoader.h" />
     <ClInclude Include="src\enemies\Enemies.h" />
     <ClInclude Include="src\enemies\Enemy.h" />
+    <ClInclude Include="src\enemies\EnemyIcon.h" />
     <ClInclude Include="src\enemies\EnemyInfo.h" />
     <ClInclude Include="src\enemies\Fight.h" />
     <ClInclude Include="src\enemies\HealthBar.h" />

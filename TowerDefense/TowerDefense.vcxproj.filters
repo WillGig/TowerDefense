@@ -459,6 +459,9 @@
     <ClCompile Include="src\artifacts\Artifact.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="src\enemies\EnemyIcon.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="res\shaders\Texture.shader" />
@@ -862,6 +865,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\scenes\base_scenes\ArtifactSlot.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\enemies\EnemyIcon.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

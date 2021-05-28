@@ -12,6 +12,8 @@ namespace TowerDefense
 		Wave(const int enemies[], int size);
 		std::shared_ptr<Enemy::Enemy> GetNextEnemy();
 		inline bool HasMoreEnemies() const { return m_NextEnemy < m_Size; }
+		inline std::shared_ptr<Enemy::Enemy> Getenemy(int index) { return m_Enemies->at(index); }
+		inline int NumberOfEnemies() { return m_Enemies->size(); }
 
 	private:
 		int m_NextEnemy, m_Size;
