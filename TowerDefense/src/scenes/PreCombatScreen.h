@@ -16,6 +16,8 @@ namespace TowerDefense
 
 		std::unique_ptr<TowerDefense::Button> m_BeginCombat;
 
+		std::unique_ptr<Text> m_IncomingText;
+
 		std::vector<std::unique_ptr<EnemyIcon>> m_Enemies;
 	};
 }

@@ -5,12 +5,15 @@
 #include "Combat.h"
 
 TowerDefense::PreCombatScreen::PreCombatScreen()
-	:m_BeginCombat(std::make_unique<Button>(400.0f, 100.0f, 180, 50, "beginCombatButton"))
+	:m_BeginCombat(std::make_unique<Button>(400.0f, 100.0f, 180, 50, "beginCombatButton")),
+	m_IncomingText(std::make_unique<Text>("Enemies Incoming!", 400.0f, 450.0f, 36.0f, 0.0f))
 {
+	m_IncomingText->SetColor(1.0f, 1.0f, 1.0f, 1.0f);
 }
 
 void TowerDefense::PreCombatScreen::Render()
 {
+	m_IncomingText->Render();
 	m_BeginCombat->Render();
 	
 	Player& player = Player::Get();
