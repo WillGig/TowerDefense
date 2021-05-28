@@ -3,7 +3,8 @@
 #include "core/Player.h"
 
 TowerDefense::Trader::Trader()
-	:BaseScene("tradeButton", "Let's make a deal."), m_LastRefresh(GetDay()), m_InfoCard(-1), m_InfoArtifact(), m_SpinEnd(0),
+	:BaseScene("tradeButton", "Let's make a deal.", 5), 
+	m_InfoCard(-1), m_InfoArtifact(), m_SpinEnd(0),
 	m_Wood(std::make_unique<Button>(95.0f, 280.0f, 100, 40, "buyWoodButton")), 
 	m_Stone(std::make_unique<Button>(95.0f, 215.0f, 100, 40, "buyStoneButton")),
 	m_Wheat(std::make_unique<Button>(95.0f, 150.0f, 100, 40, "buyWheatButton")),
@@ -170,7 +171,10 @@ void TowerDefense::Trader::Update()
 
 			m_BackToCamp->Update();
 			if (m_BackToCamp->IsClicked() && rot == m_SpinEnd)
+			{
 				m_Exit = true;
+				m_ActivityReady = m_ActivityCoolDown;
+			}		
 		}
 	}
 }
@@ -179,21 +183,16 @@ void TowerDefense::Trader::OnSwitch()
 {
 	BaseScene::OnSwitch();
 
-	if (GetDay() - m_LastRefresh > 4)
-	{
-		m_Cards[0] = std::make_unique<CardSlot>(80.0f, 450.0f, Card::GetCommonCard(), (int)(Random::GetFloat() * 100.0f + 50));
-		m_Cards[1] = std::make_unique<CardSlot>(208.0f, 450.0f, Card::GetCommonCard(), (int)(Random::GetFloat() * 100.0f + 50));
-		m_Cards[2] = std::make_unique<CardSlot>(336.0f, 450.0f, Card::GetCommonCard(), (int)(Random::GetFloat() * 100.0f + 50));
-		m_Cards[3] = std::make_unique<CardSlot>(464.0f, 450.0f, Card::GetUncommonCard(), (int)(Random::GetFloat() * 100.0f + 100));
-		m_Cards[4] = std::make_unique<CardSlot>(592.0f, 450.0f, Card::GetUncommonCard(), (int)(Random::GetFloat() * 100.0f + 100));
-		m_Cards[5] = std::make_unique<CardSlot>(720.0f, 450.0f, Card::GetRareCard(), (int)(Random::GetFloat() * 100.0f + 150));
+	m_Cards[0] = std::make_unique<CardSlot>(80.0f, 450.0f, Card::GetCommonCard(), (int)(Random::GetFloat() * 100.0f + 50));
+	m_Cards[1] = std::make_unique<CardSlot>(208.0f, 450.0f, Card::GetCommonCard(), (int)(Random::GetFloat() * 100.0f + 50));
+	m_Cards[2] = std::make_unique<CardSlot>(336.0f, 450.0f, Card::GetCommonCard(), (int)(Random::GetFloat() * 100.0f + 50));
+	m_Cards[3] = std::make_unique<CardSlot>(464.0f, 450.0f, Card::GetUncommonCard(), (int)(Random::GetFloat() * 100.0f + 100));
+	m_Cards[4] = std::make_unique<CardSlot>(592.0f, 450.0f, Card::GetUncommonCard(), (int)(Random::GetFloat() * 100.0f + 100));
+	m_Cards[5] = std::make_unique<CardSlot>(720.0f, 450.0f, Card::GetRareCard(), (int)(Random::GetFloat() * 100.0f + 150));
 
-		m_Artifacts[0] = std::make_unique<ArtifactSlot>(520.0f, 280.0f, Artifact::GetRandomArtifact(), (int)(Random::GetFloat() * 250.0f + 200));
-		m_Artifacts[1] = std::make_unique<ArtifactSlot>(620.0f, 280.0f, Artifact::GetRandomArtifact(), (int)(Random::GetFloat() * 250.0f + 200));
-		m_Artifacts[2] = std::make_unique<ArtifactSlot>(720.0f, 280.0f, Artifact::GetRandomArtifact(), (int)(Random::GetFloat() * 250.0f + 200));
-		
-		m_LastRefresh = GetDay();
-	}
+	m_Artifacts[0] = std::make_unique<ArtifactSlot>(520.0f, 280.0f, Artifact::GetRandomArtifact(), (int)(Random::GetFloat() * 250.0f + 200));
+	m_Artifacts[1] = std::make_unique<ArtifactSlot>(620.0f, 280.0f, Artifact::GetRandomArtifact(), (int)(Random::GetFloat() * 250.0f + 200));
+	m_Artifacts[2] = std::make_unique<ArtifactSlot>(720.0f, 280.0f, Artifact::GetRandomArtifact(), (int)(Random::GetFloat() * 250.0f + 200));
 }
 
 void TowerDefense::Trader::FindInfo()

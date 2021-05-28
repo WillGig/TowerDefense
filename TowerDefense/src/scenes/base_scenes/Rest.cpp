@@ -3,7 +3,7 @@
 #include "core/Player.h"
 
 TowerDefense::Rest::Rest()
-	:BaseScene("restButton", "Lick your wounds."),
+	:BaseScene("restButton", "Lick your wounds.", 1),
 	m_Confirm(std::make_unique<Button>(400.0f, 190.0f, 180, 50, "confirmButton")),
 	m_Cancel(std::make_unique<Button>(690.0f, 125.0f, 180, 50, "cancelButton")),
 	m_RestText(std::make_unique<Text>("", 400.0f, 300.0f, 12.0f, 0.0f))
@@ -31,7 +31,7 @@ void TowerDefense::Rest::Update()
 		if (m_Confirm->IsClicked())
 		{
 			player.ChangeHealth(5);
-			m_ActivityDone = true;
+			m_ActivityReady = m_ActivityCoolDown;
 			m_Exit = true;
 		}
 

@@ -15,8 +15,8 @@ namespace TowerDefense
 	class BaseScene : public Scene
 	{
 	public:
-		inline bool ActivityDone() const { return m_ActivityDone; }
-		inline void SetActivityDone(bool done) { m_ActivityDone = done; }
+		//inline bool ActivityDone() const { return m_ActivityDone; }
+		//inline void SetActivityDone(bool done) { m_ActivityDone = done; }
 		inline bool Exit() const { return m_Exit; }
 		inline void RenderButton() { m_Button->Render(); }
 		inline void UpdateButton() { m_Button->Update(); }
@@ -26,16 +26,21 @@ namespace TowerDefense
 		inline void RenderText() { m_Description->Render(); }
 		inline void OnSwitch() override { m_Exit = false; m_Button->SetSelected(false); };
 		virtual std::string GetName() = 0;
+		inline int GetActivityReady() const { return m_ActivityReady; }
+		inline void SetActivityReady(int ready) { m_ActivityReady = ready; }
+
 	protected:
-		BaseScene(const std::string& button, const std::string& description)
-			:m_Exit(false), m_ActivityDone(false), m_Description(std::make_unique<Text>(description, 400.0f, 235.0f, 12.0f, 0.0f)),
+		BaseScene(const std::string& button, const std::string& description, int coolDown)
+			:m_Exit(false), m_ActivityCoolDown(coolDown), m_ActivityReady(0), 
+			m_Description(std::make_unique<Text>(description, 400.0f, 235.0f, 12.0f, 0.0f)),
 			m_Button(std::make_unique<Button>(0.0f, 0.0f, 180, 50, button)),
 			m_Fade(std::make_unique<Rectangle>(400.0f, 300.0f, 800.0f, 600.0f))
 		{
 			m_Description->SetColor(1.0f, 1.0f, 1.0f, 1.0f);
 			m_Fade->SetColor(0.0f, 0.0f, 0.0f, 0.95f);
 		}
-		bool m_Exit, m_ActivityDone;
+		int m_ActivityCoolDown, m_ActivityReady;
+		bool m_Exit;
 		std::unique_ptr<Text> m_Description;
 		std::unique_ptr<Button> m_Button;
 		std::unique_ptr<Rectangle> m_Fade;
@@ -158,7 +163,7 @@ namespace TowerDefense
 	private:
 		void FindInfo();
 
-		int m_LastRefresh, m_InfoCard, m_InfoArtifact, m_SpinEnd;
+		int m_InfoCard, m_InfoArtifact, m_SpinEnd;
 		std::array<std::unique_ptr<CardSlot>, 6> m_Cards;
 		std::array<std::unique_ptr<ArtifactSlot>, 3> m_Artifacts;
 		std::unique_ptr<Button> m_Wood, m_Stone, m_Wheat, m_Spin, m_BackToCamp;

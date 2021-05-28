@@ -3,7 +3,7 @@
 #include "core/Player.h"
 
 TowerDefense::Caves::Caves()
-	:BaseScene("getResourcesButton", "Hard Work Pays Off."), 
+	:BaseScene("getResourcesButton", "Hard Work Pays Off.", 1), 
 	m_AmountGathered(), m_RandomEvent(false), m_CurrentActivity(Activity::MENU),
 	m_Chop(std::make_unique<Button>(200.0f, 425.0f, 180, 50, "chopWoodButton")),
 	m_Mine(std::make_unique<Button>(400.0f, 425.0f, 180, 50, "mineButton")),
@@ -130,7 +130,7 @@ void TowerDefense::Caves::Update()
 			else if (m_CurrentActivity == Activity::FARM)
 				Player::Get().ChangeResource(m_AmountGathered.y, Resource::WHEAT);
 			m_Exit = true;
-			m_ActivityDone = true;
+			m_ActivityReady = m_ActivityCoolDown;
 		}
 	}
 	else if (m_CurrentActivity == Activity::EXPLORE)
@@ -142,7 +142,7 @@ void TowerDefense::Caves::Update()
 			if (m_CaveScene->Exit())
 			{
 				m_Exit = true;
-				m_ActivityDone = true;
+				m_ActivityReady = m_ActivityCoolDown;
 			}
 		}
 		else
@@ -155,7 +155,7 @@ void TowerDefense::Caves::Update()
 				Player::Get().ChangeResource(m_AmountGathered.y, Resource::WHEAT);
 				Player::Get().ChangeResource(m_AmountGathered.z, Resource::GOLD);
 				m_Exit = true;
-				m_ActivityDone = true;
+				m_ActivityReady = m_ActivityCoolDown;
 			}
 		}
 	}

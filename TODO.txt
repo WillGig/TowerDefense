@@ -1,9 +1,4 @@
 Current:
-	
-	Add combat info on precombat screen (at least name and picture)
-
-	Change stations to only allow use every x days	
-
 	Add more things to build/buy - resource acceleration needed
 	
 Soon:	

@@ -4,7 +4,7 @@
 #include "cards/HeroCard.h"
 
 TowerDefense::Smithing::Smithing()
-	:BaseScene("smithButton", "Upgrade!"),
+	:BaseScene("smithButton", "Upgrade!", 3),
 	m_SmithingArrow(std::make_unique<StaticImage>(400.0f, 300.0f, 36, 36, 0.0f, "smithArrow")),
 	m_Confirm(std::make_unique<Button>(400.0f, 190.0f, 180, 50, "confirmButton")),
 	m_Cancel(std::make_unique<Button>(690.0f, 125.0f, 180, 50, "cancelButton"))
@@ -50,7 +50,7 @@ void TowerDefense::Smithing::Update()
 			m_Confirm->Update();
 			if (m_Confirm->IsClicked())
 			{
-				m_ActivityDone = true;
+				m_ActivityReady = m_ActivityCoolDown;
 				m_Exit = true;
 				player.ShowDeck(false);
 				heroCard->Upgrade();
@@ -72,7 +72,7 @@ void TowerDefense::Smithing::Update()
 		m_Confirm->Update();
 		if (m_Confirm->IsClicked())
 		{
-			m_ActivityDone = true;
+			m_ActivityReady = m_ActivityCoolDown;
 			m_Exit = true;
 			player.ShowDeck(false);
 			m_SelectedCard->Upgrade();
