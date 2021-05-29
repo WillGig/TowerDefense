@@ -59,18 +59,23 @@ void TowerDefense::Build::OnSwitch()
 	m_Buttons->clear();
 	if (!Base::ContainsScene("Rest"))
 		AddBuildButton(std::make_shared<BuildButton>("buildBed", Vec4i(100, 0, 0, 0), std::make_shared<Rest>()));
-	if(!Base::ContainsScene("Library"))
-		AddBuildButton(std::make_shared<BuildButton>("buildLibrary", Vec4i(400, 100, 0, 0), std::make_shared<Library>()));
-	if (!Base::ContainsScene("Trader"))
-		AddBuildButton(std::make_shared<BuildButton>("buildTrader", Vec4i(100, 100, 300, 0), std::make_shared<Trader>()));
-	//if (!Base::ContainsScene("Fishing"))
-	//	AddBuildButton(BuildButton("buildFishery", 500, std::make_shared<Fishing>()));
-	if (!Base::ContainsScene("Chapel"))
-		AddBuildButton(std::make_shared<BuildButton>("buildChapel", Vec4i(400, 400, 200, 0), std::make_shared<Chapel>()));
-	if (!Base::ContainsScene("Smithing"))
-		AddBuildButton(std::make_shared<BuildButton>("buildSmithy", Vec4i(100, 800, 100, 0), std::make_shared<Smithing>()));
-	if (!Base::ContainsScene("Tavern"))
-		AddBuildButton(std::make_shared<BuildButton>("buildTavern", Vec4i(500, 500, 1000, 0), std::make_shared<Tavern>()));
+	if (!Base::ContainsScene("ManageWorkers"))
+		AddBuildButton(std::make_shared<BuildButton>("buildHouse", Vec4i(100, 100, 0, 0), std::make_shared<ManageWorkers>()));
+	else
+	{
+		if (!Base::ContainsScene("Library"))
+			AddBuildButton(std::make_shared<BuildButton>("buildLibrary", Vec4i(400, 100, 0, 0), std::make_shared<Library>()));
+		if (!Base::ContainsScene("Trader"))
+			AddBuildButton(std::make_shared<BuildButton>("buildTrader", Vec4i(100, 100, 300, 0), std::make_shared<Trader>()));
+		//if (!Base::ContainsScene("Fishing"))
+		//	AddBuildButton(BuildButton("buildFishery", 500, std::make_shared<Fishing>()));
+		if (!Base::ContainsScene("Chapel"))
+			AddBuildButton(std::make_shared<BuildButton>("buildChapel", Vec4i(400, 400, 200, 0), std::make_shared<Chapel>()));
+		if (!Base::ContainsScene("Smithing"))
+			AddBuildButton(std::make_shared<BuildButton>("buildSmithy", Vec4i(100, 800, 100, 0), std::make_shared<Smithing>()));
+		if (!Base::ContainsScene("Tavern"))
+			AddBuildButton(std::make_shared<BuildButton>("buildTavern", Vec4i(500, 500, 1000, 0), std::make_shared<Tavern>()));
+	}
 }
 
 void TowerDefense::Build::AddBuildButton(std::shared_ptr<BuildButton> button)

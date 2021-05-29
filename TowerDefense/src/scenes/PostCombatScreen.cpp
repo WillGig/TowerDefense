@@ -178,10 +178,14 @@ void TowerDefense::PostCombatScreen::OnSwitch()
 	if (m_Defeated)
 		return;
 
-	//Combat Resources
-	AddReward(std::make_shared<ResourceReward>((int)(5 + Random::GetFloat() * 45.0f), Resource::WOOD));
-	AddReward(std::make_shared<ResourceReward>((int)(5 + Random::GetFloat() * 45.0f), Resource::STONE));
-	AddReward(std::make_shared<ResourceReward>((int)(5 + Random::GetFloat() * 45.0f), Resource::WHEAT));
+	//Resources from Workers
+	Player& player = Player::Get();
+	if(player.GetWorkers(Resource::WOOD) > 0)
+		AddReward(std::make_shared<ResourceReward>(player.GetWorkers(Resource::WOOD) * 10, Resource::WOOD));
+	if (player.GetWorkers(Resource::STONE) > 0)
+		AddReward(std::make_shared<ResourceReward>(player.GetWorkers(Resource::STONE) * 10, Resource::STONE));
+	if (player.GetWorkers(Resource::WHEAT) > 0)
+		AddReward(std::make_shared<ResourceReward>(player.GetWorkers(Resource::WHEAT) * 10, Resource::WHEAT));
 
 	//Enemy Reward Gold
 	if(enemyGold > 0)

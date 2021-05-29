@@ -24,6 +24,16 @@ namespace TowerDefense
 		void SetResource(int total, Resource res);
 		void ChangeResource(int change, Resource res);
 
+		inline int GetPopulation() const { return m_Population; }
+		inline int GetAvailablePopulation() const { return m_Population - m_LumberJacks - m_Miners - m_Farmers; }
+		inline void SetPopulation(int pop) { m_Population = pop; }
+		inline int GetMaxPopulation() const { return m_MaxPopulation; }
+		inline void SetMaxPopulation(int pop) { m_MaxPopulation = pop; }
+
+		int GetWorkers(Resource res) const;
+		void AddWorker(Resource res);
+		void RemoveWorker(Resource res);
+
 		inline int GetHealth() const { return m_Health; }
 		void SetHealth(int health);
 		void ChangeHealth(int change);
@@ -83,6 +93,7 @@ namespace TowerDefense
 		Player();
 
 		int m_Health, m_MaxHealth, m_Energy;
+		int m_Population, m_MaxPopulation, m_LumberJacks, m_Miners, m_Farmers;
 		//Wood, Stone, Wheat, Gold
 		Vec4i m_Resources;
 		Vec4 m_TextColor;

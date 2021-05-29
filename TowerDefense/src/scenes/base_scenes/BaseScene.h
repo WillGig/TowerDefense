@@ -15,8 +15,6 @@ namespace TowerDefense
 	class BaseScene : public Scene
 	{
 	public:
-		//inline bool ActivityDone() const { return m_ActivityDone; }
-		//inline void SetActivityDone(bool done) { m_ActivityDone = done; }
 		inline bool Exit() const { return m_Exit; }
 		inline void RenderButton() { m_Button->Render(); }
 		inline void UpdateButton() { m_Button->Update(); }
@@ -169,5 +167,22 @@ namespace TowerDefense
 		std::unique_ptr<Button> m_Wood, m_Stone, m_Wheat, m_Spin, m_BackToCamp;
 		std::unique_ptr<Text> m_WoodText, m_StoneText, m_WheatText, m_SpinText;
 		std::unique_ptr<Image> m_WoodGoldIcon, m_StoneGoldIcon, m_WheatGoldIcon, m_SpinGoldIcon, m_SpinWheel, m_SpinPicker;
+	};
+
+	class ManageWorkers : public BaseScene
+	{
+	public:
+		ManageWorkers();
+		void Render() override;
+		void Update() override;
+		void OnSwitch() override;
+		inline std::string GetName() override { return "ManageWorkers"; }
+
+	private:
+		std::unique_ptr<Button> m_BackToCamp, m_WoodPlus, m_WoodMinus, m_StonePlus, m_StoneMinus, 
+			m_WheatPlus, m_WheatMinus, m_BuildHouse, m_HireWorker;
+		std::unique_ptr<Text> m_TotalText, m_AvailableText, m_LumberjacksText, m_MinersText, m_FarmersText, 
+			m_BuildCost, m_WorkerCost, m_TotalPopText, m_AvailablePopText, m_NumLumberJacks, m_NumMiners, m_NumFarmers;
+		std::unique_ptr<Image> m_WorkerImage, m_WorkerAvailableImage, m_WoodImage, m_StoneImage, m_WheatImage;
 	};
 }

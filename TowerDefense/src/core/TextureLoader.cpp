@@ -57,22 +57,30 @@ void TowerDefense::LoadTextures()
     Texture::LoadTexture("backToMenuButtonSelected",    baseButtons.load(3, 8));
     Texture::LoadTexture("tradeButton",                 baseButtons.load(0, 9));
     Texture::LoadTexture("tradeButtonSelected",         baseButtons.load(1, 9));
+    Texture::LoadTexture("manageWorkersButton",         baseButtons.load(2, 9));
+    Texture::LoadTexture("manageWorkersButtonSelected", baseButtons.load(3, 9));
+    Texture::LoadTexture("buildHouseButton",            baseButtons.load(0, 10));
+    Texture::LoadTexture("buildHouseButtonSelected",    baseButtons.load(1, 10));
+    Texture::LoadTexture("hireWorkerButton",            baseButtons.load(2, 10));
+    Texture::LoadTexture("hireWorkerButtonSelected",    baseButtons.load(3, 10));
 
     SpriteSheet buildButtons("res/textures/BuildButtons.png", 375, 65);
     Texture::LoadTexture("buildBed",                buildButtons.load(0, 0));
-    Texture::LoadTexture("buildLibrary",            buildButtons.load(0, 1));
-    Texture::LoadTexture("buildTrader",             buildButtons.load(0, 2));
-    Texture::LoadTexture("buildFishery",            buildButtons.load(0, 3));
-    Texture::LoadTexture("buildChapel",             buildButtons.load(0, 4));
-    Texture::LoadTexture("buildSmithy",             buildButtons.load(0, 5));
-    Texture::LoadTexture("buildTavern",             buildButtons.load(0, 6));
+    Texture::LoadTexture("buildHouse",              buildButtons.load(0, 1));
+    Texture::LoadTexture("buildLibrary",            buildButtons.load(0, 2));
+    Texture::LoadTexture("buildTrader",             buildButtons.load(0, 3));
+    Texture::LoadTexture("buildFishery",            buildButtons.load(0, 4));
+    Texture::LoadTexture("buildChapel",             buildButtons.load(0, 5));
+    Texture::LoadTexture("buildSmithy",             buildButtons.load(0, 6));
+    Texture::LoadTexture("buildTavern",             buildButtons.load(0, 7));
     Texture::LoadTexture("buildBedSelected",        buildButtons.load(1, 0));
-    Texture::LoadTexture("buildLibrarySelected",    buildButtons.load(1, 1));
-    Texture::LoadTexture("buildTraderSelected",     buildButtons.load(1, 2));
-    Texture::LoadTexture("buildFisherySelected",    buildButtons.load(1, 3));
-    Texture::LoadTexture("buildChapelSelected",     buildButtons.load(1, 4));
-    Texture::LoadTexture("buildSmithySelected",     buildButtons.load(1, 5));
-    Texture::LoadTexture("buildTavernSelected",     buildButtons.load(1, 6));
+    Texture::LoadTexture("buildHouseSelected",      buildButtons.load(1, 1));
+    Texture::LoadTexture("buildLibrarySelected",    buildButtons.load(1, 2));
+    Texture::LoadTexture("buildTraderSelected",     buildButtons.load(1, 3));
+    Texture::LoadTexture("buildFisherySelected",    buildButtons.load(1, 4));
+    Texture::LoadTexture("buildChapelSelected",     buildButtons.load(1, 5));
+    Texture::LoadTexture("buildSmithySelected",     buildButtons.load(1, 6));
+    Texture::LoadTexture("buildTavernSelected",     buildButtons.load(1, 7));
 
     SpriteSheet combatButtons("res/textures/CombatButtons.png", 384, 128);
     Texture::LoadTexture("startButton",         combatButtons.load(0, 0));
@@ -119,6 +127,7 @@ void TowerDefense::LoadTextures()
     Texture::LoadTexture("woodIcon",    statIcons.load(3, 0));
     Texture::LoadTexture("stoneIcon",   statIcons.load(4, 0));
     Texture::LoadTexture("wheatIcon",   statIcons.load(5, 0));
+    Texture::LoadTexture("workerIcon",  statIcons.load(6, 0));
 
     SpriteSheet auras("res/textures/auras.png", 64, 64);
     Texture::LoadTexture("lifeSteal",       auras.load(0, 0));
@@ -128,6 +137,12 @@ void TowerDefense::LoadTextures()
     Texture::LoadTexture("deathExplosions", auras.load(0, 1));
     Texture::LoadTexture("storm",           auras.load(1, 1));
     Texture::LoadTexture("enhancePoison",  auras.load(2, 1));
+
+    SpriteSheet plusMinus("res/textures/PlusMinus.png", 64, 64);
+    Texture::LoadTexture("plus",            plusMinus.load(0, 0));
+    Texture::LoadTexture("plusSelected",    plusMinus.load(1, 0));
+    Texture::LoadTexture("minus",           plusMinus.load(0, 1));
+    Texture::LoadTexture("minusSelected",   plusMinus.load(1, 1));
 
     std::cout << "...Towers" << std::endl;
 

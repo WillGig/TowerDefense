@@ -6,7 +6,9 @@
 #include "cards/TowerCards.h"
 
 TowerDefense::Player::Player()
-    :m_Health(100), m_MaxHealth(100), m_Energy(100), m_Resources(0, 0, 0, 0), m_Hand(std::make_shared<Hand>(10)),
+    :m_Health(100), m_MaxHealth(100), m_Energy(100), 
+    m_Population(0), m_MaxPopulation(0), m_LumberJacks(0), m_Miners(0), m_Farmers(0),
+    m_Resources(0, 0, 0, 0), m_Hand(std::make_shared<Hand>(10)),
     m_Deck(std::make_shared<CardPile>(-100.0f,0.0f)), 
     m_DrawPile(std::make_shared<CardPile>(49.0f, 50.0f)),
     m_DiscardPile(std::make_shared<CardPile>(748.0f, 50.0f)),
@@ -56,6 +58,11 @@ void TowerDefense::Player::Reset()
     SetResource(0, Resource::STONE);
     SetResource(0, Resource::WHEAT);
     SetResource(0, Resource::GOLD);
+    m_Population = 0;
+    m_MaxPopulation = 10;
+    m_LumberJacks = 0;
+    m_Miners = 0; 
+    m_Farmers = 0;
     m_Hand = std::make_shared<Hand>(10);
     m_Deck = std::make_shared<CardPile>(-100.0f, 0.0f);
     m_DrawPile = std::make_shared<CardPile>(49.0f, 50.0f);
@@ -155,6 +162,37 @@ void TowerDefense::Player::ChangeResource(int change, Resource res)
         m_GoldText = std::make_unique<Text>(std::to_string(m_Resources.z), 275.0f, 575.0f, 10.0f, 0.0f);
         m_GoldText->SetColor(1.0f, 1.0f, 1.0f, 1.0f);
     }
+}
+
+int TowerDefense::Player::GetWorkers(Resource res) const
+{
+    if (res == Resource::WOOD)
+        return m_LumberJacks;
+    else if (res == Resource::STONE)
+        return m_Miners;
+    else if (res == Resource::WHEAT)
+        return m_Farmers;
+    return 0;
+}
+
+void TowerDefense::Player::AddWorker(Resource res)
+{
+    if (res == Resource::WOOD)
+       m_LumberJacks++;
+    else if (res == Resource::STONE)
+        m_Miners++;
+    else if (res == Resource::WHEAT)
+        m_Farmers++;
+}
+
+void TowerDefense::Player::RemoveWorker(Resource res)
+{
+    if (res == Resource::WOOD)
+        m_LumberJacks--;
+    else if (res == Resource::STONE)
+        m_Miners--;
+    else if (res == Resource::WHEAT)
+        m_Farmers--;
 }
 
 void TowerDefense::Player::SetHealth(int health)
