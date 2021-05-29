@@ -4,7 +4,7 @@
 #include "scenes/Base.h"
 
 TowerDefense::Build::Build()
-	:BaseScene("buildButton", "Create something new.", 1),
+	:BaseScene("buildButton", "Create something new.", 0),
 	m_Cancel(std::make_unique<Button>(690.0f, 125.0f, 180, 50, "cancelButton")),
 	m_Buttons(std::make_unique<std::vector<std::shared_ptr<BuildButton>>>())
 {
@@ -42,7 +42,6 @@ void TowerDefense::Build::Update()
 					player.ChangeResource(-m_Buttons->at(i)->GetCost().y, Resource::WHEAT);
 					Base::AddBaseScene(m_Buttons->at(i)->GetScene());
 					m_Exit = true;
-					m_ActivityReady = m_ActivityCoolDown;
 				}
 			}
 		}

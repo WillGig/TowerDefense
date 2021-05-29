@@ -1,7 +1,9 @@
 Current:
-	
+	Look into giant placement bug
+
 	
 Soon:	
+	Make it clear where income is coming from
 	Relics - Axe, PickAxe, Sythe - gain +50 of respective resource when gathering
 	Event - frog - choose 50% princess, 50% frog or some amount of gold gauranteed
 	Arrtifact that sends the first enemy to get through back to the beginning
@@ -21,6 +23,7 @@ Soon:
 	New Artifact: Crystal ball - pay for scouting with blood instead
 
 Long Term:
+	Add other professions? merchants, bring back gold for resources, bankers give interest based on total resources
 	No duplicate cards in card selections\shops?
 	Add more maps/paths
 	Card that creates a wall in the path, stopping enemies temporarily
