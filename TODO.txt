@@ -1,5 +1,4 @@
 Current:
-	Look into giant placement bug
 
 	
 Soon:	

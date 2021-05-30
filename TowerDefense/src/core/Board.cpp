@@ -153,10 +153,10 @@ bool TowerDefense::Board::ValidPlace()
     if (!m_CurrentTile)
         return false;
 
-    if (m_SelectedTile->GetX() < m_X || m_SelectedTile->GetX() + m_SelectedTile->GetWidth() > m_X + m_Width * TILESIZE)
+    if (m_SelectedTile->GetX() - m_SelectedTile->GetWidth()/2 < m_X - TILESIZE/2 || m_SelectedTile->GetX() + m_SelectedTile->GetWidth()/2 > m_X + m_Width * TILESIZE)
         return false;
-
-    if (m_SelectedTile->GetY() < m_Y || m_SelectedTile->GetY() + m_SelectedTile->GetHeight() > m_Y + m_Height * TILESIZE)
+        
+    if (m_SelectedTile->GetY() - m_SelectedTile->GetHeight()/2 < m_Y - TILESIZE/2 || m_SelectedTile->GetY() + m_SelectedTile->GetHeight()/2 > m_Y + m_Height * TILESIZE)
         return false;
 
     int sX = (int)m_SelectedTile->GetX();
