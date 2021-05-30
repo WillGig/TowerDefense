@@ -24,6 +24,9 @@ namespace TowerDefense
 		void SetResource(int total, Resource res);
 		void ChangeResource(int change, Resource res);
 
+		int GetResourceGatherRate(Resource res) const;
+		void SetResourceGatherRate(int rate, Resource res);
+
 		inline int GetPopulation() const { return m_Population; }
 		inline int GetAvailablePopulation() const { return m_Population - m_LumberJacks - m_Miners - m_Farmers; }
 		inline void SetPopulation(int pop) { m_Population = pop; }
@@ -95,7 +98,7 @@ namespace TowerDefense
 		int m_Health, m_MaxHealth, m_Energy;
 		int m_Population, m_MaxPopulation, m_LumberJacks, m_Miners, m_Farmers;
 		//Wood, Stone, Wheat, Gold
-		Vec4i m_Resources;
+		Vec4i m_Resources, m_ResourceGatherSpeed;
 		Vec4 m_TextColor;
 		std::shared_ptr<Hand> m_Hand;
 		std::shared_ptr<CardPile> m_Deck, m_DrawPile, m_DiscardPile;

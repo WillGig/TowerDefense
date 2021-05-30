@@ -58,10 +58,11 @@ void TowerDefense::Player::Reset()
     SetResource(0, Resource::STONE);
     SetResource(0, Resource::WHEAT);
     SetResource(0, Resource::GOLD);
+    m_ResourceGatherSpeed = Vec4i(100, 100, 100, 0);
     m_Population = 0;
     m_MaxPopulation = 10;
     m_LumberJacks = 0;
-    m_Miners = 0; 
+    m_Miners = 0;
     m_Farmers = 0;
     m_Hand = std::make_shared<Hand>(10);
     m_Deck = std::make_shared<CardPile>(-100.0f, 0.0f);
@@ -162,6 +163,27 @@ void TowerDefense::Player::ChangeResource(int change, Resource res)
         m_GoldText = std::make_unique<Text>(std::to_string(m_Resources.z), 275.0f, 575.0f, 10.0f, 0.0f);
         m_GoldText->SetColor(1.0f, 1.0f, 1.0f, 1.0f);
     }
+}
+
+int TowerDefense::Player::GetResourceGatherRate(Resource res) const
+{
+    if (res == Resource::WOOD)
+        return m_ResourceGatherSpeed.w;
+    else if (res == Resource::STONE)
+        return m_ResourceGatherSpeed.x;
+    else if (res == Resource::WHEAT)
+        return m_ResourceGatherSpeed.y;
+    return 0;
+}
+
+void TowerDefense::Player::SetResourceGatherRate(int rate, Resource res)
+{
+    if (res == Resource::WOOD)
+        m_ResourceGatherSpeed.w = rate;
+    else if (res == Resource::STONE)
+        m_ResourceGatherSpeed.x = rate;
+    else if (res == Resource::WHEAT)
+        m_ResourceGatherSpeed.y = rate;
 }
 
 int TowerDefense::Player::GetWorkers(Resource res) const

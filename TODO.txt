@@ -1,9 +1,7 @@
 Current:
-
 	
 Soon:	
 	Make it clear where income is coming from
-	Relics - Axe, PickAxe, Sythe - gain +50 of respective resource when gathering
 	Event - frog - choose 50% princess, 50% frog or some amount of gold gauranteed
 	Arrtifact that sends the first enemy to get through back to the beginning
 	Add details to defeat screen: days survived, damage dealt, amount healed, enemies defeated, score, etc.

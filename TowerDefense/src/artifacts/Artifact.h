@@ -67,4 +67,25 @@ namespace TowerDefense
 		BlessingOfTheBat();
 		void OnCardPlay(std::shared_ptr<Card> c) override;
 	};
+
+	class LuckyAxe : public Artifact
+	{
+	public:
+		LuckyAxe();	
+		void OnAquire() override;
+	};
+
+	class LuckyPickaxe : public Artifact
+	{
+	public:
+		LuckyPickaxe();
+		void OnAquire() override;
+	};
+
+	class LuckySythe : public Artifact
+	{
+	public:
+		LuckySythe();
+		void OnAquire() override;
+	};
 }

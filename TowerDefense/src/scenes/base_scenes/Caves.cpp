@@ -56,7 +56,7 @@ void TowerDefense::Caves::Update()
 		if (m_Chop->IsClicked())
 		{
 			m_CurrentActivity = Activity::CHOP;
-			m_AmountGathered = Vec4i(100, 0, 0, 0);
+			m_AmountGathered = Vec4i(player.GetResourceGatherRate(Resource::WOOD), 0, 0, 0);
 			m_Text = std::make_unique<Text>("You manage to chop " + std::to_string(m_AmountGathered.w) + " wood", 400.0f, 300.0f, 12.0f, 0.0f);
 			m_Text->SetColor(1.0f, 1.0f, 1.0f, 1.0f);
 		}
@@ -65,7 +65,7 @@ void TowerDefense::Caves::Update()
 		if (m_Mine->IsClicked())
 		{
 			m_CurrentActivity = Activity::MINE;
-			m_AmountGathered = Vec4i(0, 100, 0, 0);
+			m_AmountGathered = Vec4i(0, player.GetResourceGatherRate(Resource::STONE), 0, 0);
 			m_Text = std::make_unique<Text>("You manage to mine " + std::to_string(m_AmountGathered.x) + " stone", 400.0f, 300.0f, 12.0f, 0.0f);
 			m_Text->SetColor(1.0f, 1.0f, 1.0f, 1.0f);
 		}
@@ -74,7 +74,7 @@ void TowerDefense::Caves::Update()
 		if (m_Farm->IsClicked())
 		{
 			m_CurrentActivity = Activity::FARM;
-			m_AmountGathered = Vec4i(0, 0, 100, 0);
+			m_AmountGathered = Vec4i(0, 0, player.GetResourceGatherRate(Resource::WHEAT), 0);
 			m_Text = std::make_unique<Text>("You manage to farm " + std::to_string(m_AmountGathered.y) + " wheat", 400.0f, 300.0f, 12.0f, 0.0f);
 			m_Text->SetColor(1.0f, 1.0f, 1.0f, 1.0f);
 		}
