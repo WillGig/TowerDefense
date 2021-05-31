@@ -8,7 +8,6 @@ Current:
 	- Extra Slot 		- +1 sideboard
 	- Spyglass 		- scout for free, but the combat after next?
 	- Crystal Ball 		- scount for blood instead
-	- House expander	- houses give +12 population instead of 10
 	- glasses 		- cures nearsightedness					
 	- laser-sword 		- could be used to fix nearsightedness... maybe	
 	
@@ -157,6 +156,9 @@ Notes:
 	- Doll House 			+10 max population
 	- Toy Dolls 			+1 worker per house you have
 	- Hand of Midas 		convert all of your other resources to gold, then double your gold
+	- House Expansion Kit		houses give +12 population instead of 10
+	- Thermos			start fights with 50 extra energy
+	- Cooler			your energy carries over between fights
 
 	Events
 	- Fountain of youth	Restore to full hp or +10 max hp

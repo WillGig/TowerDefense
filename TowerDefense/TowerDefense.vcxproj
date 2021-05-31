@@ -175,11 +175,14 @@
     <ClCompile Include="src\artifacts\ArtifactPile.cpp" />
     <ClCompile Include="src\artifacts\BlessingOfTheBat.cpp" />
     <ClCompile Include="src\artifacts\Boulder.cpp" />
+    <ClCompile Include="src\artifacts\Cooler.cpp" />
     <ClCompile Include="src\artifacts\DollHouse.cpp" />
     <ClCompile Include="src\artifacts\FruitCake.cpp" />
     <ClCompile Include="src\artifacts\HandOfMidas.cpp" />
+    <ClCompile Include="src\artifacts\HouseExpansionKit.cpp" />
     <ClCompile Include="src\artifacts\LuckyTools.cpp" />
     <ClCompile Include="src\artifacts\MagicBeans.cpp" />
+    <ClCompile Include="src\artifacts\Thermos.cpp" />
     <ClCompile Include="src\artifacts\TokenOfTheArmored.cpp" />
     <ClCompile Include="src\artifacts\TokenOfTheBroken.cpp" />
     <ClCompile Include="src\artifacts\TokenOfTheMute.cpp" />

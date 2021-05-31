@@ -21,6 +21,8 @@ void TowerDefense::CombatReward::Update()
 	Button::Update();
 	if (IsClicked())
 		OnClicked();
+	else if (Contains(Input::GetMouseX(), Input::GetMouseY()) && Input::GetRightMouseClickedAndSetFalse())
+		OnRightClicked();
 }
 
 void TowerDefense::CombatReward::SetPosition(float x, float y)
@@ -116,12 +118,54 @@ void TowerDefense::CardReward::Update()
 
 }
 
-void TowerDefense::CardReward::SetPosition(float x, float y)
+void TowerDefense::CardReward::OnClicked()
 {
-	CombatReward::SetPosition(x, y);
+	m_RequiresFocus = true;
 }
 
-void TowerDefense::CardReward::OnClicked()
+TowerDefense::ArtifactReward::ArtifactReward()
+	:CombatReward(""), m_Artifact(Artifact::GetRandomArtifact()),
+	m_Image(std::make_unique<Image>(m_Artifact->GetName() , 0.0f, 0.0f, 32, 32, 0.0f)),
+	m_Fade(std::make_unique<Rectangle>(400.0f, 300.0f, 800.0f, 600.0f))
+{
+	m_Fade->SetColor(0.0f, 0.0f, 0.0f, 0.9f);
+}
+
+void TowerDefense::ArtifactReward::Render()
+{
+	CombatReward::Render();
+	m_Image->Render();
+	if (m_RequiresFocus)
+	{
+		m_Fade->Render();
+		m_Artifact->RenderArtifactDetails();
+	}
+}
+
+void TowerDefense::ArtifactReward::Update()
+{
+	if (m_RequiresFocus)
+	{
+		if (Input::GetLeftMouseClickedAndSetFalse() || Input::GetRightMouseClickedAndSetFalse())
+			m_RequiresFocus = false;
+	}
+	else
+		CombatReward::Update();
+}
+
+void TowerDefense::ArtifactReward::SetPosition(float x, float y)
+{
+	CombatReward::SetPosition(x, y);
+	m_Image->SetPosition(x, y, 0.0f);
+}
+
+void TowerDefense::ArtifactReward::OnClicked()
+{
+	Player::Get().AddToArtifacts(m_Artifact);
+	m_RewardTaken = true;
+}
+
+void TowerDefense::ArtifactReward::OnRightClicked()
 {
 	m_RequiresFocus = true;
 }

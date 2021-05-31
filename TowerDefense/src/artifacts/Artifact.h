@@ -24,12 +24,17 @@ namespace TowerDefense
 		inline virtual void OnFightEnd() {};
 		inline virtual void OnAddHouse() {};
 
+		inline const std::string& GetName() const { return m_Name; };
+
 		static std::shared_ptr<Artifact> GetRandomArtifact();
+		static void CleanUp();
 
 	private:
 		std::string m_Name;
 		std::unique_ptr<Text> m_NameText;
 		std::unique_ptr<Image> m_DetailedImage, m_InfoImage;
+
+		static std::unique_ptr<std::vector<std::shared_ptr<Artifact>>> s_Artifacts;
 	};
 
 	class TokenOfTheMute : public Artifact
@@ -133,5 +138,30 @@ namespace TowerDefense
 	public:
 		HandOfMidas();
 		void OnAquire() override;
+	};
+
+	class HouseExpansionKit : public Artifact
+	{
+	public:
+		HouseExpansionKit();
+		void OnAquire() override;
+		void OnAddHouse() override;
+	};
+
+	class Thermos : public Artifact
+	{
+	public:
+		Thermos();
+		void OnFightStart() override;
+	};
+
+	class Cooler : public Artifact
+	{
+	public:
+		Cooler();
+		void OnFightStart() override;
+		void OnFightEnd() override;
+	private:
+		int m_EndEnergy;
 	};
 }

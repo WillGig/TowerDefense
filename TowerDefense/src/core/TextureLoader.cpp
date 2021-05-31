@@ -357,6 +357,9 @@ void TowerDefense::LoadTextures()
     Texture::LoadTexture("Doll House",              artifacts.load(1, 1));
     Texture::LoadTexture("Toy Dolls",               artifacts.load(2, 1));
     Texture::LoadTexture("Hand of Midas",           artifacts.load(3, 1));
+    Texture::LoadTexture("House Expansion Kit",     artifacts.load(4, 1));
+    Texture::LoadTexture("Thermos",                 artifacts.load(5, 1));
+    Texture::LoadTexture("Cooler",                  artifacts.load(6, 1));
 
     SpriteSheet artifactInfo("res/textures/ArtifactInfo.png", 440, 170);
     Texture::LoadTexture("Token Of The MuteInfo",       artifactInfo.load(0, 0));
@@ -373,6 +376,9 @@ void TowerDefense::LoadTextures()
     Texture::LoadTexture("Doll HouseInfo",              artifactInfo.load(3, 2));
     Texture::LoadTexture("Toy DollsInfo",               artifactInfo.load(0, 3));
     Texture::LoadTexture("Hand of MidasInfo",           artifactInfo.load(1, 3));
+    Texture::LoadTexture("House Expansion KitInfo",     artifactInfo.load(2, 3));
+    Texture::LoadTexture("ThermosInfo",                 artifactInfo.load(3, 3));
+    Texture::LoadTexture("CoolerInfo",                  artifactInfo.load(0, 4));
 
     std::cout << "...Animations" << std::endl;
 
