@@ -10,6 +10,7 @@ Current:
 	- Crystal Ball 		- scount for blood instead
 	- glasses 		- cures nearsightedness					
 	- laser-sword 		- could be used to fix nearsightedness... maybe	
+	- something		- all poisons deal 1 extra damage
 	
 	Allow hovering over event options to show cards/artifacts obtained
 
