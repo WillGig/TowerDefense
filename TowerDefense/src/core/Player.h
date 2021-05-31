@@ -37,6 +37,9 @@ namespace TowerDefense
 		void AddWorker(Resource res);
 		void RemoveWorker(Resource res);
 
+		inline int GetNumHouses() const { return m_NumberOfHouses; }
+		inline void AddHouse() { m_NumberOfHouses++; m_MaxPopulation += 10; Player::Get().ArtifactOnAddHouse(); }
+
 		inline int GetHealth() const { return m_Health; }
 		void SetHealth(int health);
 		void ChangeHealth(int change);
@@ -87,6 +90,7 @@ namespace TowerDefense
 		void ArtifactOnCardPlay(std::shared_ptr<Card> c);
 		void ArtifactOnFightStart();
 		void ArtifactOnFightEnd();
+		void ArtifactOnAddHouse();
 
 		//Called at end of program to clean up memory
 		//Necessary to unbind static and singleton GLFW textures before calling glfwTerminate
@@ -96,7 +100,7 @@ namespace TowerDefense
 		Player();
 
 		int m_Health, m_MaxHealth, m_Energy;
-		int m_Population, m_MaxPopulation, m_LumberJacks, m_Miners, m_Farmers;
+		int m_Population, m_MaxPopulation, m_NumberOfHouses, m_LumberJacks, m_Miners, m_Farmers;
 		//Wood, Stone, Wheat, Gold
 		Vec4i m_Resources, m_ResourceGatherSpeed;
 		Vec4 m_TextColor;

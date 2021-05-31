@@ -7,7 +7,7 @@
 
 TowerDefense::Player::Player()
     :m_Health(100), m_MaxHealth(100), m_Energy(100), 
-    m_Population(0), m_MaxPopulation(0), m_LumberJacks(0), m_Miners(0), m_Farmers(0),
+    m_Population(0), m_MaxPopulation(0), m_NumberOfHouses(1), m_LumberJacks(0), m_Miners(0), m_Farmers(0),
     m_Resources(0, 0, 0, 0), m_Hand(std::make_shared<Hand>(10)),
     m_Deck(std::make_shared<CardPile>(-100.0f,0.0f)), 
     m_DrawPile(std::make_shared<CardPile>(49.0f, 50.0f)),
@@ -61,6 +61,7 @@ void TowerDefense::Player::Reset()
     m_ResourceGatherSpeed = Vec4i(100, 100, 100, 0);
     m_Population = 0;
     m_MaxPopulation = 10;
+    m_NumberOfHouses = 1;
     m_LumberJacks = 0;
     m_Miners = 0;
     m_Farmers = 0;
@@ -429,4 +430,10 @@ void TowerDefense::Player::ArtifactOnFightEnd()
 {
     for (int i = 0; i < m_Artifacts->GetSize(); i++)
         m_Artifacts->GetArtifact(i)->OnFightEnd();
+}
+
+void TowerDefense::Player::ArtifactOnAddHouse()
+{
+    for (int i = 0; i < m_Artifacts->GetSize(); i++)
+        m_Artifacts->GetArtifact(i)->OnAddHouse();
 }

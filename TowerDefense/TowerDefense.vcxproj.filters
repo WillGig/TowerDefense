@@ -468,6 +468,24 @@
     <ClCompile Include="src\artifacts\LuckyTools.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="src\artifacts\Boulder.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\artifacts\MagicBeans.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\artifacts\FruitCake.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\artifacts\DollHouse.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\artifacts\ToyDolls.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\artifacts\HandOfMidas.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="res\shaders\Texture.shader" />

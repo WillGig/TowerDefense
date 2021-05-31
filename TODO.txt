@@ -1,18 +1,16 @@
 Current:
 	can scout next battle for gold price
 
+	show number of houses in worker management menu
+
 	Add more Artifacts:
-	- Miniature Worm Hole - sends the first enemy to get through back to the beginning
-	- Extra Slot - +1 sideboard
-	- Spyglass - scout for free, but the combat after next?
-	- Crystal Ball - scount for blood instead
-	- Doll House - +10 max population
-	- Toy Dolls - +1 worker per house you have
-	- Boulder - +300 stone
-	- Magic Beans - +300 wood
-	- Fruitcake - +300 food
-	- Hand of Midas - convert all of your other resources to gold, then double your gold
-	- 
+	- Miniature Worm Hole 	- sends the first enemy to get through back to the beginning
+	- Extra Slot 		- +1 sideboard
+	- Spyglass 		- scout for free, but the combat after next?
+	- Crystal Ball 		- scount for blood instead
+	- House expander	- houses give +12 population instead of 10
+	- glasses 		- cures nearsightedness					
+	- laser-sword 		- could be used to fix nearsightedness... maybe	
 	
 	Allow hovering over event options to show cards/artifacts obtained
 
@@ -22,6 +20,8 @@ Current:
 	- Events that give you the option to add specific heros to your deck
 	
 Soon:	
+	Add Fishing		- Get a random relic/gold - minigame?			- 
+				- different fishing rods/tools?
 	Card that creates a wall in the path, stopping enemies temporarily
 	Non-tower deck? Cards with special effects if you don't have any towers
 		- Draw 2 cards. If you have no towers, draw 4 instead.
@@ -143,14 +143,20 @@ Notes:
 	- Orc		Slow and extra tough
 
 	Artifacts
-	- blessing of the bat										-
-	- glasses 			cures nearsightedness						-
-	- laser-sword 			could be used to fix nearsightedness... maybe			-
-	- Spy Glass 			scout fights in advance						- 
-	- token of the mute		start with 2 extra cards					- Done
-	- token of the armored		heal a little at the end of fights				- Done
-	- token of the broken		Add a lightening card to your hand at the start of a fight	- Done
-	- token of the vigilant		Gain 10 energy every 2 skills you play				- Done
+	- blessing of the bat		All towers can see invisible enemies												- 
+	- token of the mute		start with 2 extra cards				
+	- token of the armored		heal a little at the end of fights				
+	- token of the broken		Add a lightening card to your hand at the start of a fight	
+	- token of the vigilant		Gain 10 energy every 2 skills you play			
+	- Lucky Axe			Gain 50 extra wood when chopping wood
+	- Lucky Pickaxe			Gain 50 extra stone when mining
+	- Lucky Sythe			Gain 50 extra wheat when farming
+	- Boulder 			+300 stone
+	- Magic Beans 			+300 wood
+	- Fruitcake 			+300 food
+	- Doll House 			+10 max population
+	- Toy Dolls 			+1 worker per house you have
+	- Hand of Midas 		convert all of your other resources to gold, then double your gold
 
 	Events
 	- Fountain of youth	Restore to full hp or +10 max hp
@@ -160,11 +166,9 @@ Notes:
 	- Knights who say nah	
 
 	Daily activities
-		Explore Caves 	- Random event						- Done
-		Visit Library 	- Choose a new card					- Done
-		Go Fishing	- Get a random relic/gold - minigame?			- 
-				- different fishing rods/tools?
-		Smith		- upgrade a card					- Done
-		Go to Tavern	- Choose from 3 recruits (refreshes every few days)	- Done
-		rest 		- heal by 5						- Done
-		praying 	- Remove a Card						- Done
+		Explore Caves 	- Random event						
+		Visit Library 	- Choose a new card					
+		Smith		- upgrade a card					
+		Go to Tavern	- Choose from 3 recruits (refreshes every few days)	
+		rest 		- heal by 5						
+		praying 	- Remove a Card						

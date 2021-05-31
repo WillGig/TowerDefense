@@ -146,7 +146,7 @@ void TowerDefense::ManageWorkers::Update()
 		{
 			player.ChangeResource(-100, Resource::WOOD);
 			player.ChangeResource(-100, Resource::STONE);
-			player.SetMaxPopulation(player.GetMaxPopulation()+10);
+			player.AddHouse();
 			m_TotalPopText = std::make_unique<Text>(std::to_string(player.GetPopulation()) + "/" + std::to_string(player.GetMaxPopulation()), 420.0f, 500.0f, 12.0f, 0.0f);
 			m_TotalPopText->SetColor(1.0f, 1.0f, 1.0f, 1.0f);
 		}

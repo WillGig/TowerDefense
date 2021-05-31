@@ -351,6 +351,12 @@ void TowerDefense::LoadTextures()
     Texture::LoadTexture("Lucky Axe",               artifacts.load(5, 0));
     Texture::LoadTexture("Lucky Pickaxe",           artifacts.load(6, 0));
     Texture::LoadTexture("Lucky Sythe",             artifacts.load(7, 0));
+    Texture::LoadTexture("Boulder",                 artifacts.load(8, 0));
+    Texture::LoadTexture("Magic Beans",             artifacts.load(9, 0));
+    Texture::LoadTexture("Fruit Cake",              artifacts.load(0, 1));
+    Texture::LoadTexture("Doll House",              artifacts.load(1, 1));
+    Texture::LoadTexture("Toy Dolls",               artifacts.load(2, 1));
+    Texture::LoadTexture("Hand of Midas",           artifacts.load(3, 1));
 
     SpriteSheet artifactInfo("res/textures/ArtifactInfo.png", 440, 170);
     Texture::LoadTexture("Token Of The MuteInfo",       artifactInfo.load(0, 0));
@@ -361,6 +367,12 @@ void TowerDefense::LoadTextures()
     Texture::LoadTexture("Lucky AxeInfo",               artifactInfo.load(1, 1));
     Texture::LoadTexture("Lucky PickaxeInfo",           artifactInfo.load(2, 1));
     Texture::LoadTexture("Lucky SytheInfo",             artifactInfo.load(3, 1));
+    Texture::LoadTexture("BoulderInfo",                 artifactInfo.load(0, 2));
+    Texture::LoadTexture("Magic BeansInfo",             artifactInfo.load(1, 2));
+    Texture::LoadTexture("Fruit CakeInfo",              artifactInfo.load(2, 2));
+    Texture::LoadTexture("Doll HouseInfo",              artifactInfo.load(3, 2));
+    Texture::LoadTexture("Toy DollsInfo",               artifactInfo.load(0, 3));
+    Texture::LoadTexture("Hand of MidasInfo",           artifactInfo.load(1, 3));
 
     std::cout << "...Animations" << std::endl;
 

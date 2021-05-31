@@ -22,6 +22,7 @@ namespace TowerDefense
 		inline virtual void OnCardPlay(std::shared_ptr<Card> c) {};
 		inline virtual void OnFightStart() {};
 		inline virtual void OnFightEnd() {};
+		inline virtual void OnAddHouse() {};
 
 		static std::shared_ptr<Artifact> GetRandomArtifact();
 
@@ -86,6 +87,51 @@ namespace TowerDefense
 	{
 	public:
 		LuckySythe();
+		void OnAquire() override;
+	};
+
+	class Boulder : public Artifact
+	{
+	public:
+		Boulder();
+		void OnAquire() override;
+	};
+
+	class MagicBeans : public Artifact
+	{
+	public:
+		MagicBeans();
+		void OnAquire() override;
+	};
+
+	class FruitCake : public Artifact
+	{
+	public:
+		FruitCake();
+		void OnAquire() override;
+	};
+
+	class DollHouse : public Artifact
+	{
+	public:
+		DollHouse();
+		void OnAquire() override;
+	};
+
+	class ToyDolls : public Artifact
+	{
+	public:
+		ToyDolls();
+		void OnAquire() override;
+		void OnAddHouse() override;
+	private:
+		int m_NumberAdded;
+	};
+
+	class HandOfMidas : public Artifact
+	{
+	public:
+		HandOfMidas();
 		void OnAquire() override;
 	};
 }
