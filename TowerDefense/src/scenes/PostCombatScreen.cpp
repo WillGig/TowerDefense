@@ -195,7 +195,7 @@ void TowerDefense::PostCombatScreen::OnSwitch()
 	AddReward(std::make_shared<CardReward>(3));
 
 	//Combat Artifact
-	if(GetDay() % 10 == 0 || Random::GetFloat() > 0.1f)
+	if(GetDay() % 10 == 0 || Random::GetFloat() < 0.1f)
 		AddReward(std::make_shared<ArtifactReward>());
 }
 
