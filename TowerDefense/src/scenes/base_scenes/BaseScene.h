@@ -179,10 +179,11 @@ namespace TowerDefense
 		inline std::string GetName() override { return "ManageWorkers"; }
 
 	private:
-		std::unique_ptr<Button> m_BackToCamp, m_WoodPlus, m_WoodMinus, m_StonePlus, m_StoneMinus, 
-			m_WheatPlus, m_WheatMinus, m_BuildHouse, m_HireWorker;
-		std::unique_ptr<Text> m_TotalText, m_AvailableText, m_LumberjacksText, m_MinersText, m_FarmersText, 
+		std::unique_ptr<Button> m_BackToCamp, m_WoodPlus, m_WoodAddAll, m_WoodMinus, m_WoodMinusAll, 
+			m_StonePlus, m_StoneMinus, m_StoneAddAll, m_StoneMinusAll, m_WheatPlus, m_WheatMinus, m_WheatAddAll,
+			m_WheatMinusAll, m_BuildHouse, m_HireWorker;
+		std::unique_ptr<Text> m_HouseText, m_TotalText, m_AvailableText, m_LumberjacksText, m_MinersText, m_FarmersText, 
 			m_BuildCost, m_WorkerCost, m_TotalPopText, m_AvailablePopText, m_NumLumberJacks, m_NumMiners, m_NumFarmers;
-		std::unique_ptr<Image> m_WorkerImage, m_WorkerAvailableImage, m_WoodImage, m_StoneImage, m_WheatImage;
+		std::unique_ptr<Image> m_HouseImage, m_WorkerImage, m_WorkerAvailableImage, m_WoodImage, m_StoneImage, m_WheatImage;
 	};
 }
