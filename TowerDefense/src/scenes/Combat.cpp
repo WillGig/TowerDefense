@@ -470,6 +470,9 @@ std::shared_ptr<TowerDefense::Entity> TowerDefense::Combat::GetEntity(unsigned i
 			return hand->GetCard(i);
 	}
 
+	if (hand->GetCurrentPlayingCard()->GetID() == ID)
+		return hand->GetCurrentPlayingCard();
+
 	auto artifacts = Player::Get().GetArtifacts();
 	for (int i = 0; i < artifacts->GetSize(); i++)
 	{

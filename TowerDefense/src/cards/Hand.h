@@ -41,6 +41,8 @@ namespace TowerDefense
 
 		inline bool ShowingCardInfo() const { return m_ShowingInfo; }
 
+		inline std::shared_ptr<Card> GetCurrentPlayingCard() { return m_CurrentPlayingCard; }
+
 	private:
 		//Finds the current card being hovered over or clicked
 		void FindSelectedCard();
@@ -49,6 +51,8 @@ namespace TowerDefense
 		//Returns the index of the selected card in the vector of selected cards
 		//Returns -1 if the card is not selected
 		int CardSelected(int card);
+
+		std::shared_ptr<Card> m_CurrentPlayingCard;
 
 		//m_CardSpacing represents how far apart each card is and gets smaller the more cards are in the hand
 		unsigned int m_MaxSize, m_CardSpacing;

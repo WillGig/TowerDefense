@@ -23,6 +23,8 @@ std::shared_ptr<TowerDefense::Artifact> TowerDefense::Artifact::GetRandomArtifac
 		s_Artifacts->push_back(std::make_shared<HouseExpansionKit>());
 		s_Artifacts->push_back(std::make_shared<Thermos>());
 		s_Artifacts->push_back(std::make_shared<Cooler>());
+		s_Artifacts->push_back(std::make_shared<MiniatureWormHole>());
+		s_Artifacts->push_back(std::make_shared<SpecialToxins>());
 	}
 
 	int randomArtifact = (int)(Random::GetFloat() * s_Artifacts->size());

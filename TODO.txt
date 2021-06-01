@@ -3,6 +3,8 @@ Current:
 
 	show number of houses in worker management menu
 
+	Add chance of random event each day before combat
+
 	Add details to defeat screen: days survived, damage dealt, amount healed, enemies defeated, score, etc.
 
 	Add more Artifacts:
@@ -23,6 +25,7 @@ Current:
 		- beggar turns to cleric?
 	
 Soon:	
+	Add alchemy lab, wizard tower, etc. to upgrade certain types of cards
 	Add Fishing		- Get a random relic/gold - minigame?			- 
 				- different fishing rods/tools?
 	Card that creates a wall in the path, stopping enemies temporarily
