@@ -43,7 +43,7 @@ void TowerDefense::CardChoice::Update()
 				m_SelectedCard = i;
 				m_Outline->SetPosition(m_Cards->at(i)->GetX(), m_Cards->at(i)->GetY(), 0.0f);
 			}
-			else if (Input::GetRightMouseClickedAndSetFalse())
+			else if (m_InfoCard == -1 && Input::GetRightMouseClickedAndSetFalse())
 			{
 				m_InfoCard = i;
 			}
