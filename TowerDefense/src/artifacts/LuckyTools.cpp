@@ -26,5 +26,5 @@ TowerDefense::LuckySythe::LuckySythe()
 
 void TowerDefense::LuckySythe::OnAquire()
 {
-	Player::Get().SetResourceGatherRate(Player::Get().GetResourceGatherRate(Resource::STONE) + 50, Resource::STONE);
+	Player::Get().SetResourceGatherRate(Player::Get().GetResourceGatherRate(Resource::WHEAT) + 50, Resource::WHEAT);
 }
