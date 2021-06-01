@@ -6,13 +6,16 @@ void TowerDefense::Enemy::ShamanRat::Update()
 {
 	Enemy::Update();
 
-	if (m_Cast == m_CastTime)
+	for (int i = 0; i < Combat::GetRoundSpeed(); i++)
 	{
-		Cast();
-		m_Cast = 0;
+		if (m_Cast == m_CastTime)
+		{
+			Cast();
+			m_Cast = 0;
+		}
+		else
+			m_Cast++;
 	}
-	else
-		m_Cast++;
 }
 
 void TowerDefense::Enemy::ShamanRat::Cast()

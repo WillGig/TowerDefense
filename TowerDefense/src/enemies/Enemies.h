@@ -167,7 +167,7 @@ namespace TowerDefense
 		{
 		public:
 			ShamanRat()
-				:Enemy(32, 32, 20.0f, 0.5f, 10, "Shaman Rat", 2), m_CastTime(60), m_Cast(0)
+				:Enemy(32, 32, 20.0f, 0.5f, 10, "Shaman Rat", 2), m_CastTime(180), m_Cast(0)
 			{}
 		private:
 			void Update() override;
@@ -179,7 +179,7 @@ namespace TowerDefense
 		{
 		public:
 			HealerRat()
-				:Enemy(32, 32, 20.0f, 0.5f, 10, "Healer Rat", 2), m_CastTime(60), m_Cast(0)
+				:Enemy(32, 32, 20.0f, 0.5f, 10, "Healer Rat", 2), m_CastTime(180), m_Cast(0)
 			{}
 		private:
 			void Update() override;
@@ -191,7 +191,7 @@ namespace TowerDefense
 		{
 		public:
 			BlinkBug()
-				:Enemy(32, 32, 10.0f, 0.7f, 10, "Blink Bug", 1), m_CastTime(60), m_Cast(0), m_InvisibleTime(60)
+				:Enemy(32, 32, 10.0f, 0.7f, 10, "Blink Bug", 1), m_CastTime(180), m_Cast(0), m_InvisibleTime(180)
 			{}
 		private:
 			void Update() override;
@@ -215,7 +215,7 @@ namespace TowerDefense
 		{
 		public:
 			TankBeetle()
-				:Enemy(64, 64, 300.0f, 0.25f, 100, "Tank Beetle", 20), m_SwitchTime(120), m_Switch(0)
+				:Enemy(64, 64, 300.0f, 0.25f, 100, "Tank Beetle", 20), m_SwitchTime(240), m_Switch(0)
 			{
 				m_Armor = 200;
 			}

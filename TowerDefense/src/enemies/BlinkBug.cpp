@@ -1,28 +1,32 @@
 #include "pch.h"
 #include "Enemies.h"
+#include "scenes/Combat.h"
 
 void TowerDefense::Enemy::BlinkBug::Update()
 {
 	Enemy::Update();
 
-	if (m_Visible)
+	for (int i = 0; i < Combat::GetRoundSpeed(); i++)
 	{
-		if (m_Cast == m_CastTime)
+		if (m_Visible)
 		{
-			m_Visible = false;
-			m_Cast = 0;
+			if (m_Cast == m_CastTime)
+			{
+				m_Visible = false;
+				m_Cast = 0;
+			}
+			else
+				m_Cast++;
 		}
 		else
-			m_Cast++;
-	}
-	else
-	{
-		if (m_Cast == m_InvisibleTime)
 		{
-			m_Visible = true;
-			m_Cast = 0;
+			if (m_Cast == m_InvisibleTime)
+			{
+				m_Visible = true;
+				m_Cast = 0;
+			}
+			else
+				m_Cast++;
 		}
-		else
-			m_Cast++;
 	}
 }
