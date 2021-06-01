@@ -437,3 +437,9 @@ void TowerDefense::Player::ArtifactOnAddHouse()
     for (int i = 0; i < m_Artifacts->GetSize(); i++)
         m_Artifacts->GetArtifact(i)->OnAddHouse();
 }
+
+void TowerDefense::Player::ArtifactOnEnemyReachedEnd(std::shared_ptr<Enemy::Enemy> e)
+{
+    for(int i = 0; i < m_Artifacts->GetSize(); i++)
+        m_Artifacts->GetArtifact(i)->OnEnemyReachedEnd(e);
+}

@@ -3,6 +3,8 @@ Current:
 
 	show number of houses in worker management menu
 
+	Add details to defeat screen: days survived, damage dealt, amount healed, enemies defeated, score, etc.
+
 	Add more Artifacts:
 	- Miniature Worm Hole 	- sends the first enemy to get through back to the beginning
 	- Extra Slot 		- +1 sideboard
@@ -10,7 +12,7 @@ Current:
 	- Crystal Ball 		- scount for blood instead
 	- glasses 		- cures nearsightedness					
 	- laser-sword 		- could be used to fix nearsightedness... maybe	
-	- something		- all poisons deal 1 extra damage
+	- Special Toxins	- all poisons deal 1 extra damage
 	
 	Allow hovering over event options to show cards/artifacts obtained
 
@@ -18,6 +20,9 @@ Current:
 	- frog - choose 50% princess, 50% frog or some amount of gold gauranteed
 	- Jousting - Trade health for gold. Comes from event.
 	- Events that give you the option to add specific heros to your deck
+		- Wandering sage
+		- wandering minstrel
+		- beggar turns to cleric?
 	
 Soon:	
 	Add Fishing		- Get a random relic/gold - minigame?			- 
@@ -29,7 +34,6 @@ Soon:
 		- frost wave - if you have no towers, stun all enemies for x seconds	
 	Add other professions? merchants, bring back gold for resources, bankers give interest based on total resources
 	Make it clear where income is coming from
-	Add details to defeat screen: days survived, damage dealt, amount healed, enemies defeated, score, etc.
 	Right click on enemies precombat for details
 	Add day 20 bosses and non-rat combats
 	New Trait: Sharp-Eyes - can see invisible enemies

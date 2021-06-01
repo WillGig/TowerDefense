@@ -50,9 +50,15 @@ void TowerDefense::Enemy::Enemy::Update()
 
 	//Check if enemy reached the end and Remove
 	if (m_ReachedEnd) {
-		Combat::GetCurrentFight()->AddEscapedEnemy(*this);
-		TowerDefense::Player::Get().ChangeHealth(-m_Damage);
-		Destroy();
+
+		Player::Get().ArtifactOnEnemyReachedEnd(std::dynamic_pointer_cast<Enemy>(Combat::GetEntity(GetID())));
+
+		if (m_ReachedEnd)
+		{
+			Combat::GetCurrentFight()->AddEscapedEnemy(*this);
+			TowerDefense::Player::Get().ChangeHealth(-m_Damage);
+			Destroy();
+		}
 	}
 
 }
@@ -285,6 +291,7 @@ void TowerDefense::Enemy::Enemy::SetDistanceTravelled(float distanceTravelled)
 	Board& board = Board::Get();
 	m_DistanceTraveled = 0;
 	m_CurrentTile = 0;
+	m_ReachedEnd = false;
 	
 	int tileX = board.GetPath()->at(0);
 	int tileY = board.GetPath()->at(1);

@@ -91,6 +91,7 @@ namespace TowerDefense
 		void ArtifactOnFightStart();
 		void ArtifactOnFightEnd();
 		void ArtifactOnAddHouse();
+		void ArtifactOnEnemyReachedEnd(std::shared_ptr<Enemy::Enemy> e);
 
 		//Called at end of program to clean up memory
 		//Necessary to unbind static and singleton GLFW textures before calling glfwTerminate

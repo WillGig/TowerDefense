@@ -182,6 +182,7 @@
     <ClCompile Include="src\artifacts\HouseExpansionKit.cpp" />
     <ClCompile Include="src\artifacts\LuckyTools.cpp" />
     <ClCompile Include="src\artifacts\MagicBeans.cpp" />
+    <ClCompile Include="src\artifacts\MiniatureWormHole.cpp" />
     <ClCompile Include="src\artifacts\Thermos.cpp" />
     <ClCompile Include="src\artifacts\TokenOfTheArmored.cpp" />
     <ClCompile Include="src\artifacts\TokenOfTheBroken.cpp" />

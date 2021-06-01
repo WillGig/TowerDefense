@@ -3,6 +3,8 @@
 
 namespace TowerDefense
 {
+	namespace Enemy { class Enemy; }
+
 	class Artifact : public Entity
 	{
 	public:
@@ -14,17 +16,18 @@ namespace TowerDefense
 		{
 			m_NameText->SetColor(1.0f, 1.0f, 1.0f, 1.0f);
 		}
-		inline void Update() override {};
-		inline void RenderArtifactDetails() { m_DetailedImage->Render(); m_InfoImage->Render(); m_NameText->Render(); };
-		inline virtual void OnAquire() {};
-		inline virtual void OnAddCard(std::shared_ptr<Card> c) {};
-		inline virtual void OnRoundStart() {};
-		inline virtual void OnCardPlay(std::shared_ptr<Card> c) {};
-		inline virtual void OnFightStart() {};
-		inline virtual void OnFightEnd() {};
-		inline virtual void OnAddHouse() {};
+		inline void Update() override {}
+		inline void RenderArtifactDetails() { m_DetailedImage->Render(); m_InfoImage->Render(); m_NameText->Render(); }
+		inline virtual void OnAquire() {}
+		inline virtual void OnAddCard(std::shared_ptr<Card> c) {}
+		inline virtual void OnRoundStart() {}
+		inline virtual void OnCardPlay(std::shared_ptr<Card> c) {}
+		inline virtual void OnFightStart() {}
+		inline virtual void OnFightEnd() {}
+		inline virtual void OnAddHouse() {}
+		inline virtual void OnEnemyReachedEnd(std::shared_ptr<Enemy::Enemy> e) {}
 
-		inline const std::string& GetName() const { return m_Name; };
+		inline const std::string& GetName() const { return m_Name; }
 
 		static std::shared_ptr<Artifact> GetRandomArtifact();
 		static void CleanUp();
@@ -163,5 +166,16 @@ namespace TowerDefense
 		void OnFightEnd() override;
 	private:
 		int m_EndEnergy;
+	};
+
+	class MiniatureWormHole : public Artifact
+	{
+	public:
+		MiniatureWormHole();
+		void OnFightStart() override;
+		void OnEnemyReachedEnd(std::shared_ptr<Enemy::Enemy> e) override;
+
+	private:
+		bool m_Ready;
 	};
 }
