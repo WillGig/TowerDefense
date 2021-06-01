@@ -5,6 +5,8 @@ namespace TowerDefense
 {
 	namespace Enemy { class Enemy; }
 
+	namespace Tower { class Tower; enum class DamageType; }
+
 	class Artifact : public Entity
 	{
 	public:
@@ -25,6 +27,7 @@ namespace TowerDefense
 		inline virtual void OnFightStart() {}
 		inline virtual void OnFightEnd() {}
 		inline virtual void OnAddHouse() {}
+		inline virtual void OnEnemyHit(std::shared_ptr<Enemy::Enemy> e, std::shared_ptr<Entity> source, Tower::DamageType type) {}
 		inline virtual void OnEnemyReachedEnd(std::shared_ptr<Enemy::Enemy> e) {}
 
 		inline const std::string& GetName() const { return m_Name; }
@@ -177,5 +180,12 @@ namespace TowerDefense
 
 	private:
 		bool m_Ready;
+	};
+
+	class SpecialToxins : public Artifact
+	{
+	public:
+		SpecialToxins();
+		void OnEnemyHit(std::shared_ptr<Enemy::Enemy> e, std::shared_ptr<Entity> source, Tower::DamageType type) override;
 	};
 }

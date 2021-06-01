@@ -208,6 +208,7 @@ void TowerDefense::Enemy::Enemy::TakeDamage(float damage, unsigned int sourceID,
 			tower->AddDamageDelt(effectiveDamage);
 		}
 		Combat::OnEnemyHit(GetID(), source, type);
+		Player::Get().ArtifactOnEnemyHit(std::dynamic_pointer_cast<Enemy>(Combat::GetEntity(GetID())), source, type);
 		Combat::GetCurrentFight()->AddDamage(effectiveDamage, source);
 	}
 		
