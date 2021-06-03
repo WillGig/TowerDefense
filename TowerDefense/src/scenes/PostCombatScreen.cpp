@@ -36,7 +36,11 @@ void TowerDefense::PostCombatScreen::Render()
 	}
 
 	if (m_Defeated)
+	{
+		m_GameOverStats->Render();
+		m_GameOverNumbers->Render();
 		m_BackToMenu->Render();
+	}
 	else
 		m_BackToCamp->Render();
 
@@ -101,11 +105,12 @@ void TowerDefense::PostCombatScreen::Update()
 
 void TowerDefense::PostCombatScreen::OnSwitch()
 {
+	Player& player = Player::Get();
 	Renderer::Get().Clear(0.0f, 0.0f, 0.0f, 1.0f);
-	Player::Get().SetTextColor(1.0f, 1.0f, 1.0f, 1.0f);
+	player.SetTextColor(1.0f, 1.0f, 1.0f, 1.0f);
 	m_Rewards->clear();
 
-	if (TowerDefense::Player::Get().GetHealth() == 0)
+	if (player.GetHealth() == 0)
 	{
 		m_Defeated = true;
 		m_VictoryText = std::make_unique<Text>("DEFEAT", 400.0f, 510.0f, 36.0f, 0.0f);
@@ -143,6 +148,7 @@ void TowerDefense::PostCombatScreen::OnSwitch()
 		defEnemies += i->first + "\n";
 		defNums += std::to_string(i->second.first) + "\n";
 		defeatedHeight++;
+		player.SetEnemiesDefeated(player.GetEnemiesDefeated() + i->second.first);
 	}
 
 	auto escapedEnemies = fight->m_EscapedEnemies;
@@ -160,6 +166,8 @@ void TowerDefense::PostCombatScreen::OnSwitch()
 	std::string damageNumbers = "\n\n" + std::to_string(fight->GetTowerDamage()) + "\n" + std::to_string(fight->GetSkillDamage())
 		+ "\n" + std::to_string(fight->GetAuraDamage()) + "\n" + std::to_string(fight->GetArtifactDamage());
 
+	player.SetDamageDealt(player.GetDamageDealt() + fight->GetTowerDamage() + fight->GetSkillDamage() + fight->GetArtifactDamage() + fight->GetAuraDamage());
+
 	m_DamageNumbers = std::make_unique<Text>(damageNumbers, 710.0f, 370.0f, 12.0f, 0.0f);
 	m_DamageNumbers->SetColor(1.0f, 1.0f, 1.0f, 1.0f);
 
@@ -176,10 +184,19 @@ void TowerDefense::PostCombatScreen::OnSwitch()
 	m_EscapedNumbers->SetColor(1.0f, 1.0f, 1.0f, 1.0f);
 
 	if (m_Defeated)
+	{
+		m_GameOverStats = std::make_unique<Text>("Days Survived\n\nDamage Dealt\n\nAmount Healed\n\nEnemies Defeated\n\nScore", 360.0f, 340.0f, 12.0f, 0.0f);
+		m_GameOverStats->SetColor(1.0f, 1.0f, 1.0f, 1.0f);
+		m_GameOverNumbers = std::make_unique<Text>(std::to_string(GetDay()-1) + "\n\n"
+			+ std::to_string(player.GetDamageDealt()) + "\n\n"
+			+ std::to_string(player.GetAmountHealed()) + "\n\n"
+			+ std::to_string(player.GetEnemiesDefeated()) + "\n\n"
+			+ std::to_string(player.GetScore()), 500.0f, 340.0f, 12.0f, 0.0f);
+		m_GameOverNumbers->SetColor(1.0f, 1.0f, 1.0f, 1.0f);
 		return;
+	}
 
 	//Resources from Workers
-	Player& player = Player::Get();
 	if(player.GetWorkers(Resource::WOOD) > 0)
 		AddReward(std::make_shared<ResourceReward>(player.GetWorkers(Resource::WOOD) * 10, Resource::WOOD));
 	if (player.GetWorkers(Resource::STONE) > 0)

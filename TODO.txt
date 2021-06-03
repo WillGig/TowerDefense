@@ -7,8 +7,6 @@ Current:
 	- glasses 		- cures nearsightedness					
 	- laser-sword 		- could be used to fix nearsightedness... maybe	
 	
-	Add details to defeat screen: days survived, damage dealt, amount healed, enemies defeated, score, etc.
-
 	Add chance of random event each day before combat
 
 	Allow hovering over event options to show cards/artifacts obtained

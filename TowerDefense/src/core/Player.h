@@ -49,6 +49,18 @@ namespace TowerDefense
 		void SetMaxHealth(int health);
 		void ChangeMaxHealth(int change);
 
+		inline int GetDamageDealt() const { return m_DamageDealt; }
+		inline void SetDamageDealt(int damage) { m_DamageDealt = damage; }
+
+		inline int GetAmountHealed() const { return m_AmountHealed; }
+		inline void SetAmountHealed(int amount) { m_AmountHealed = amount; }
+
+		inline int GetEnemiesDefeated() const { return m_EnemiesDefeated; }
+		inline void SetEnemiesDefeated(int enemies) { m_EnemiesDefeated = enemies; }
+
+		inline int GetScore() const { return m_Score; }
+		inline void SetScore(int score) { m_Score = score; }
+
 		inline std::shared_ptr<ArtifactPile> GetArtifacts() { return m_Artifacts; }
 
 		void RenderStats();
@@ -108,6 +120,7 @@ namespace TowerDefense
 
 		int m_Health, m_MaxHealth, m_Energy;
 		int m_Population, m_MaxPopulation, m_NumberOfHouses, m_LumberJacks, m_Miners, m_Farmers;
+		int m_DamageDealt, m_AmountHealed, m_EnemiesDefeated, m_Score;
 		//Wood, Stone, Wheat, Gold
 		Vec4i m_Resources, m_ResourceGatherSpeed;
 		Vec4 m_TextColor;

@@ -9,6 +9,7 @@
 TowerDefense::Player::Player()
     :m_Health(100), m_MaxHealth(100), m_Energy(100), 
     m_Population(0), m_MaxPopulation(0), m_NumberOfHouses(1), m_LumberJacks(0), m_Miners(0), m_Farmers(0),
+    m_DamageDealt(0), m_AmountHealed(0), m_EnemiesDefeated(0), m_Score(0),
     m_Resources(0, 0, 0, 0), m_Hand(std::make_shared<Hand>(10)),
     m_Deck(std::make_shared<CardPile>(-100.0f,0.0f)), 
     m_DrawPile(std::make_shared<CardPile>(49.0f, 50.0f)),
@@ -55,6 +56,10 @@ void TowerDefense::Player::Reset()
     SetHealth(100);
     SetMaxHealth(100);
     SetEnergy(100);
+    m_DamageDealt = 0;
+    m_AmountHealed = 0;
+    m_EnemiesDefeated = 0;
+    m_Score = 0;
     SetResource(0, Resource::WOOD);
     SetResource(0, Resource::STONE);
     SetResource(0, Resource::WHEAT);
@@ -229,6 +234,7 @@ void TowerDefense::Player::SetHealth(int health)
 
 void TowerDefense::Player::ChangeHealth(int change)
 {
+    int previousHealth = m_Health;
     m_Health += change;
     if (m_Health < 1)
     {
@@ -237,6 +243,10 @@ void TowerDefense::Player::ChangeHealth(int change)
     }
     if (m_Health > m_MaxHealth)
         m_Health = m_MaxHealth;
+
+    if (m_Health > previousHealth)
+        m_AmountHealed += m_Health - previousHealth;
+
     m_HealthText = std::make_unique<Text>(std::to_string(m_Health) + "/" + std::to_string(m_MaxHealth), 660.0f, 575.0f, 10.0f, 0.0f);
     m_HealthText->SetColor(m_TextColor.w, m_TextColor.x, m_TextColor.y, m_TextColor.z);
 }
