@@ -3,6 +3,7 @@
 #include "scenes/Scene.h"
 #include "scenes/MainMenu.h"
 #include "scenes/Base.h"
+#include "scenes/Event.h"
 #include "scenes/PreCombatScreen.h"
 #include "scenes/PostCombatScreen.h"
 #include "scenes/Combat.h"
@@ -14,7 +15,7 @@ void Update();
 void Render();
 
 GLFWwindow* window;
-std::array<std::unique_ptr<TowerDefense::Scene>, 5> scenes;
+std::array<std::unique_ptr<TowerDefense::Scene>, 6> scenes;
 
 int currentScene, day;
 bool running;
@@ -84,6 +85,7 @@ bool TowerDefense::Init()
     scenes = {
         std::make_unique<MainMenu>(),
         std::make_unique<Base>(),
+        std::make_unique<Event>(),
         std::make_unique<PreCombatScreen>(),
         std::make_unique<Combat>(),
         std::make_unique<PostCombatScreen>()

@@ -7,8 +7,6 @@ Current:
 	- glasses 		- cures nearsightedness					
 	- laser-sword 		- could be used to fix nearsightedness... maybe	
 	
-	Add chance of random event each day before combat
-
 	Allow hovering over event options to show cards/artifacts obtained
 
 	Add more events:
@@ -20,6 +18,7 @@ Current:
 		- beggar turns to cleric?
 	
 Soon:	
+	Add ways to increase score
 	Add alchemy lab, wizard tower, etc. to upgrade certain types of cards
 	Add Fishing		- Get a random relic/gold - minigame?			- 
 				- different fishing rods/tools?

@@ -59,7 +59,9 @@ void TowerDefense::LoadTextures()
     Texture::LoadTexture("tradeButtonSelected",         baseButtons.load(1, 9));
     Texture::LoadTexture("manageWorkersButton",         baseButtons.load(2, 9));
     Texture::LoadTexture("manageWorkersButtonSelected", baseButtons.load(3, 9));
-
+    Texture::LoadTexture("continueButton",              baseButtons.load(0, 10));
+    Texture::LoadTexture("continueButtonSelected",      baseButtons.load(1, 10));
+        
     SpriteSheet buildHireButtons("res/textures/BuildHireButtons.png", 128, 50);
     Texture::LoadTexture("buildHouseButton",            buildHireButtons.load(0, 0));
     Texture::LoadTexture("buildHouseButtonSelected",    buildHireButtons.load(1, 0));

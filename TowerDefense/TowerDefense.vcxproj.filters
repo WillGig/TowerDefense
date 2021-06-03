@@ -507,6 +507,9 @@
     <ClCompile Include="src\artifacts\ExtraSlot.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="src\scenes\Event.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="res\shaders\Texture.shader" />
@@ -916,6 +919,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\cards\SideboardSlot.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\scenes\Event.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
