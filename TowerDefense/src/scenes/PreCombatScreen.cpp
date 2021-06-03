@@ -3,9 +3,10 @@
 #include "TowerDefense.h"
 #include "core/Player.h"
 #include "Combat.h"
+#include "cards/SideboardSlot.h"
 
 TowerDefense::PreCombatScreen::PreCombatScreen()
-	:m_BeginCombat(std::make_unique<Button>(400.0f, 100.0f, 180, 50, "beginCombatButton")),
+	:m_CurrentCardSlot(-1), m_BeginCombat(std::make_unique<Button>(400.0f, 100.0f, 180, 50, "beginCombatButton")),
 	m_IncomingText(std::make_unique<Text>("Enemies Incoming!", 400.0f, 450.0f, 36.0f, 0.0f))
 {
 	m_IncomingText->SetColor(1.0f, 1.0f, 1.0f, 1.0f);
@@ -13,29 +14,60 @@ TowerDefense::PreCombatScreen::PreCombatScreen()
 
 void TowerDefense::PreCombatScreen::Render()
 {
-	m_IncomingText->Render();
-	m_BeginCombat->Render();
-	
 	Player& player = Player::Get();
-	player.RenderStats();
+	auto sideboardSlots = player.GetSideBoardSlots();
 
-	for (unsigned int i = 0; i < m_Enemies.size(); i++)
-		m_Enemies[i]->Render();
+	if (m_CurrentCardSlot != -1)
+	{
+		sideboardSlots->at(m_CurrentCardSlot)->Render();
+	}
+	else
+	{
+		m_IncomingText->Render();
+		m_BeginCombat->Render();
 
-	player.RenderDeckAndArtifacts();
+		player.RenderStats();
+
+		for (unsigned int i = 0; i < m_Enemies.size(); i++)
+			m_Enemies[i]->Render();
+
+
+		for (unsigned int i = 0; i < sideboardSlots->size(); i++)
+			sideboardSlots->at(i)->Render();
+
+		player.RenderDeckAndArtifacts();
+	}
 }
 
 void TowerDefense::PreCombatScreen::Update()
 {
 	Player& player = Player::Get();
-	player.UpdateDeckAndArtifacts();
+	auto sideboardSlots = player.GetSideBoardSlots();
 
-	if (!player.DeckShowing() && !player.ArtifactsShowing())
+	if (m_CurrentCardSlot != -1)
 	{
-		m_BeginCombat->Update();
+		sideboardSlots->at(m_CurrentCardSlot)->Update();
+		if (!sideboardSlots->at(m_CurrentCardSlot)->SelectingCard())
+			m_CurrentCardSlot = -1;
+	}
+	else
+	{
+		player.UpdateDeckAndArtifacts();
 
-		if (m_BeginCombat->IsClicked())
-			TowerDefense::SetScene(SceneType::COMBAT);
+		if (!player.DeckShowing() && !player.ArtifactsShowing())
+		{
+
+			for (unsigned int i = 0; i < sideboardSlots->size(); i++)
+			{
+				sideboardSlots->at(i)->Update();
+				if (sideboardSlots->at(i)->SelectingCard())
+					m_CurrentCardSlot = i;
+			}
+
+			m_BeginCombat->Update();
+			if (m_BeginCombat->IsClicked())
+				TowerDefense::SetScene(SceneType::COMBAT);
+		}
 	}
 }
 
@@ -57,7 +89,11 @@ void TowerDefense::PreCombatScreen::OnSwitch()
 	}
 
 	for (unsigned int i = 0; i < m_Enemies.size(); i++)
-		m_Enemies[i]->SetPosition(400.0f + (i - (m_Enemies.size() - 1) / 2.0f) * 100.0f, 300.0f);
+		m_Enemies[i]->SetPosition(400.0f + (i - (m_Enemies.size() - 1) / 2.0f) * 100.0f, 350.0f);
+
+	auto sideboardSlots = Player::Get().GetSideBoardSlots();
+	for (unsigned int i = 0; i < sideboardSlots->size(); i++)
+		sideboardSlots->at(i)->Clear();
 }
 
 bool TowerDefense::PreCombatScreen::ContainsEnemy(const std::string& name) const

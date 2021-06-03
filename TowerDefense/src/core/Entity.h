@@ -39,6 +39,8 @@ namespace TowerDefense
 
 		void SetImage(std::shared_ptr<Image> image);
 
+		inline std::string GetImageName() const { return m_Image->GetFile(); }
+
 	protected:
 		//Unique ID assigned to each entity at creation
 		unsigned int m_ID;

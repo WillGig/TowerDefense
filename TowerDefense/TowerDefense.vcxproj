@@ -218,6 +218,7 @@
     <ClCompile Include="src\cards\Reflect.cpp" />
     <ClCompile Include="src\cards\Refresh.cpp" />
     <ClCompile Include="src\cards\Ren.cpp" />
+    <ClCompile Include="src\cards\SideboardSlot.cpp" />
     <ClCompile Include="src\cards\Sift.cpp" />
     <ClCompile Include="src\cards\Skim.cpp" />
     <ClCompile Include="src\cards\StrongPoisons.cpp" />
@@ -406,6 +407,7 @@
     <ClInclude Include="src\cards\curses\Curses.h" />
     <ClInclude Include="src\cards\InfoTile.h" />
     <ClInclude Include="src\cards\LightningBolt.h" />
+    <ClInclude Include="src\cards\SideboardSlot.h" />
     <ClInclude Include="src\cards\SkillCards.h" />
     <ClInclude Include="src\core\Board.h" />
     <ClInclude Include="src\cards\Card.h" />

@@ -4,6 +4,7 @@
 #include "cards/SkillCards.h"
 #include "cards/AuraCards.h"
 #include "cards/TowerCards.h"
+#include "cards/SideboardSlot.h"
 
 TowerDefense::Player::Player()
     :m_Health(100), m_MaxHealth(100), m_Energy(100), 
@@ -70,6 +71,7 @@ void TowerDefense::Player::Reset()
     m_DrawPile = std::make_shared<CardPile>(49.0f, 50.0f);
     m_DiscardPile = std::make_shared<CardPile>(748.0f, 50.0f);
     m_Artifacts = std::make_shared<ArtifactPile>(570.0f, 570.0f);
+    m_SideBoardSlots = std::make_shared<std::vector<std::unique_ptr<SideboardSlot>>>();
 
     //Starter Deck
     for (int i = 0; i < 8; i++)
@@ -337,7 +339,18 @@ void TowerDefense::Player::ResetCardPiles()
 {
     m_Hand->DiscardHand();
     m_DiscardPile->Clear();
-    m_Deck->Copy(m_DrawPile);
+
+    //Exclude any cards in sideboard slots
+    if (m_SideBoardSlots->size() > 0)
+    {
+        std::shared_ptr<std::vector<unsigned int>> exclude = std::make_shared<std::vector<unsigned int>>();
+        for (unsigned int i = 0; i < m_SideBoardSlots->size(); i++)
+            exclude->push_back(m_SideBoardSlots->at(i)->GetCard());
+        m_Deck->CopyWithExclusions(m_DrawPile, exclude);
+    }
+    else
+        m_Deck->Copy(m_DrawPile);
+
     m_DrawPile->Shuffle();
     DrawHand();
 }
@@ -365,6 +378,7 @@ void TowerDefense::Player::CleanUp()
     m_StoneIcon.reset();
     m_WheatIcon.reset();
     m_GoldIcon.reset();
+    m_SideBoardSlots->clear();
 }
 
 void TowerDefense::Player::AddToDeck(std::shared_ptr<Card> c)
@@ -448,4 +462,12 @@ void TowerDefense::Player::ArtifactOnEnemyReachedEnd(std::shared_ptr<Enemy::Enem
 {
     for(int i = 0; i < m_Artifacts->GetSize(); i++)
         m_Artifacts->GetArtifact(i)->OnEnemyReachedEnd(e);
+}
+
+void TowerDefense::Player::AddSideBoardSlot()
+{
+    m_SideBoardSlots->push_back(std::make_unique<SideboardSlot>());
+    m_SideBoardSlots->at(m_SideBoardSlots->size()-1)->SetY(190.0f);
+    for (unsigned int i = 0; i < m_SideBoardSlots->size(); i++)
+        m_SideBoardSlots->at(i)->SetX(400.0f + (i - (m_SideBoardSlots->size() - 1) / 2.0f) * 100.0f);
 }

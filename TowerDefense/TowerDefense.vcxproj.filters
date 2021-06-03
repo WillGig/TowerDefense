@@ -501,6 +501,9 @@
     <ClCompile Include="src\artifacts\SpecialToxins.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="src\cards\SideboardSlot.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="res\shaders\Texture.shader" />
@@ -907,6 +910,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\enemies\EnemyIcon.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\cards\SideboardSlot.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

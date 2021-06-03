@@ -1,12 +1,6 @@
 Current:
 	can scout next battle for gold price
-
-	show number of houses in worker management menu
-
-	Add chance of random event each day before combat
-
-	Add details to defeat screen: days survived, damage dealt, amount healed, enemies defeated, score, etc.
-
+	
 	Add more Artifacts:
 	- Extra Slot 		- +1 sideboard
 	- Spyglass 		- scout for free, but the combat after next?
@@ -14,6 +8,10 @@ Current:
 	- glasses 		- cures nearsightedness					
 	- laser-sword 		- could be used to fix nearsightedness... maybe	
 	
+	Add details to defeat screen: days survived, damage dealt, amount healed, enemies defeated, score, etc.
+
+	Add chance of random event each day before combat
+
 	Allow hovering over event options to show cards/artifacts obtained
 
 	Add more events:

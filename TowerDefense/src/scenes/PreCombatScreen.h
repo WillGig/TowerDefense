@@ -14,6 +14,8 @@ namespace TowerDefense
 	private:
 		bool ContainsEnemy(const std::string& name) const;
 
+		int m_CurrentCardSlot;
+
 		std::unique_ptr<TowerDefense::Button> m_BeginCombat;
 
 		std::unique_ptr<Text> m_IncomingText;

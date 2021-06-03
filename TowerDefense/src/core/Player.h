@@ -8,6 +8,8 @@ namespace TowerDefense
 {
 	enum class Resource { WOOD, STONE, WHEAT, GOLD };
 
+	class SideboardSlot;
+
 	class Player
 	{
 	public:
@@ -94,6 +96,9 @@ namespace TowerDefense
 		void ArtifactOnEnemyHit(std::shared_ptr<Enemy::Enemy> e, std::shared_ptr<Entity> source, Tower::DamageType type);
 		void ArtifactOnEnemyReachedEnd(std::shared_ptr<Enemy::Enemy> e);
 
+		inline std::shared_ptr<std::vector<std::unique_ptr<SideboardSlot>>> GetSideBoardSlots() const { return m_SideBoardSlots; }
+		void AddSideBoardSlot();
+
 		//Called at end of program to clean up memory
 		//Necessary to unbind static and singleton GLFW textures before calling glfwTerminate
 		void CleanUp();
@@ -112,5 +117,6 @@ namespace TowerDefense
 		std::unique_ptr<Text> m_HealthText, m_EnergyText, m_DayText, m_WoodText, m_StoneText, m_WheatText, m_GoldText;
 		std::unique_ptr<Image> m_HealthIcon, m_EnergyIcon, m_WoodIcon, m_StoneIcon, m_WheatIcon, m_GoldIcon;
 		std::shared_ptr<ArtifactPile> m_Artifacts;
+		std::shared_ptr<std::vector<std::unique_ptr<SideboardSlot>>> m_SideBoardSlots;
 	};
 }
