@@ -1,8 +1,9 @@
 Current:
+	Fix bug with the same artifact appearing multiple times
+
 	can scout next battle for gold price
 	
 	Add more Artifacts:
-	- Extra Slot 		- +1 sideboard
 	- Spyglass 		- scout for free, but the combat after next?
 	- Crystal Ball 		- scount for blood instead
 	- glasses 		- cures nearsightedness					
@@ -165,6 +166,7 @@ Notes:
 	- Cooler			your energy carries over between fights
 	- Miniature Worm Hole 		sends the first enemy to get through back to the beginning
 	- Special Toxins		all poisons deal 1 extra damage
+	- Extra Slot 			+1 sideboard
 
 	Events
 	- Fountain of youth	Restore to full hp or +10 max hp

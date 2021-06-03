@@ -188,4 +188,11 @@ namespace TowerDefense
 		SpecialToxins();
 		void OnEnemyHit(std::shared_ptr<Enemy::Enemy> e, std::shared_ptr<Entity> source, Tower::DamageType type) override;
 	};
+
+	class ExtraSlot : public Artifact
+	{
+	public:
+		ExtraSlot();
+		void OnAquire() override;
+	};
 }

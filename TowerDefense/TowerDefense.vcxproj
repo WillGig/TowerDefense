@@ -177,6 +177,7 @@
     <ClCompile Include="src\artifacts\Boulder.cpp" />
     <ClCompile Include="src\artifacts\Cooler.cpp" />
     <ClCompile Include="src\artifacts\DollHouse.cpp" />
+    <ClCompile Include="src\artifacts\ExtraSlot.cpp" />
     <ClCompile Include="src\artifacts\FruitCake.cpp" />
     <ClCompile Include="src\artifacts\HandOfMidas.cpp" />
     <ClCompile Include="src\artifacts\HouseExpansionKit.cpp" />

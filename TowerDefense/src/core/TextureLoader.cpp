@@ -371,6 +371,7 @@ void TowerDefense::LoadTextures()
     Texture::LoadTexture("Cooler",                  artifacts.load(6, 1));
     Texture::LoadTexture("Miniature Worm Hole",     artifacts.load(7, 1));
     Texture::LoadTexture("Special Toxins",          artifacts.load(8, 1));
+    Texture::LoadTexture("Extra Slot",              artifacts.load(9, 1));
 
     SpriteSheet artifactInfo("res/textures/ArtifactInfo.png", 440, 170);
     Texture::LoadTexture("Token Of The MuteInfo",       artifactInfo.load(0, 0));
@@ -392,6 +393,7 @@ void TowerDefense::LoadTextures()
     Texture::LoadTexture("CoolerInfo",                  artifactInfo.load(0, 4));
     Texture::LoadTexture("Miniature Worm HoleInfo",     artifactInfo.load(1, 4));
     Texture::LoadTexture("Special ToxinsInfo",          artifactInfo.load(2, 4));
+    Texture::LoadTexture("Extra SlotInfo",              artifactInfo.load(3, 4));
 
     std::cout << "...Animations" << std::endl;
 
