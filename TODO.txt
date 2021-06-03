@@ -1,6 +1,4 @@
 Current:
-	Fix bug with the same artifact appearing multiple times
-
 	can scout next battle for gold price
 	
 	Add more Artifacts:
