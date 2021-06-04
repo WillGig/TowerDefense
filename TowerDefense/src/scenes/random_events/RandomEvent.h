@@ -76,4 +76,12 @@ namespace TowerDefense
 		void Render() override;
 		void Update() override;
 	};
+
+	class Frog : public RandomEvent
+	{
+	public:
+		Frog();
+		void Render() override;
+		void Update() override;
+	};
 }

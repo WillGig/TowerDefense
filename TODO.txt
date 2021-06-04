@@ -1,4 +1,6 @@
 Current:
+	Examine text being off center (Event)
+	
 	can scout next battle for gold price
 	
 	Add more Artifacts:

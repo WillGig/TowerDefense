@@ -4,7 +4,7 @@
 
 TowerDefense::GatherResources::GatherResources()
 	:BaseScene("getResourcesButton", "Hard Work Pays Off.", 1), 
-	m_AmountGathered(), m_RandomEvent(false), m_CurrentActivity(Activity::MENU),
+	m_AmountGathered(), m_CurrentActivity(Activity::MENU),
 	m_Chop(std::make_unique<Button>(200.0f, 425.0f, 180, 50, "chopWoodButton")),
 	m_Mine(std::make_unique<Button>(400.0f, 425.0f, 180, 50, "mineButton")),
 	m_Farm(std::make_unique<Button>(600.0f, 425.0f, 180, 50, "farmButton")),
@@ -32,13 +32,8 @@ void TowerDefense::GatherResources::Render()
 	}
 	else if (m_CurrentActivity == Activity::EXPLORE)
 	{
-		if(m_RandomEvent)
-			m_EventScene->Render();
-		else
-		{
-			m_Text->Render();
-			m_BackToCamp->Render();
-		}
+		m_Text->Render();
+		m_BackToCamp->Render();
 	}
 
 	player.RenderStats();
@@ -83,35 +78,24 @@ void TowerDefense::GatherResources::Update()
 		if (m_Explore->IsClicked())
 		{
 			m_CurrentActivity = Activity::EXPLORE;
-			m_RandomEvent = Random::GetFloat() > .7f;
-			if(m_RandomEvent)
-				m_EventScene = RandomEvent::GetRandomCaveEvent();
-			else
-			{
-				m_AmountGathered = Vec4i();
+			m_AmountGathered = Vec4i();
 
-				if (Random::GetFloat() > .5f)
-					m_AmountGathered.w = 25 + (int)(Random::GetFloat() * 50);
-				if (Random::GetFloat() > .5f)
-					m_AmountGathered.x = 25 + (int)(Random::GetFloat() * 50);
-				if (Random::GetFloat() > .5f)
-					m_AmountGathered.y = 25 + (int)(Random::GetFloat() * 50);
-				if (Random::GetFloat() > .5f)
-					m_AmountGathered.z = 25 + (int)(Random::GetFloat() * 50);
+			m_AmountGathered.w = (int)(Random::GetFloat() * 150);
+			m_AmountGathered.x = (int)(Random::GetFloat() * (150 - m_AmountGathered.w));
+			m_AmountGathered.y = 150 - m_AmountGathered.w - m_AmountGathered.x;
 
-				std::string text = "You manage to find the follow resources:\n\n";
-				if (m_AmountGathered.w != 0)
-					text += std::to_string(m_AmountGathered.w) + " wood\n";
-				if (m_AmountGathered.x != 0)
-					text += std::to_string(m_AmountGathered.x) + " stone\n";
-				if (m_AmountGathered.y != 0)
-					text += std::to_string(m_AmountGathered.y) + " wheat\n";
-				if (m_AmountGathered.z != 0)
-					text += std::to_string(m_AmountGathered.z) + " gold\n";
+			std::string text = "You manage to find the follow resources:\n\n";
+			if (m_AmountGathered.w != 0)
+				text += std::to_string(m_AmountGathered.w) + " wood\n";
+			if (m_AmountGathered.x != 0)
+				text += std::to_string(m_AmountGathered.x) + " stone\n";
+			if (m_AmountGathered.y != 0)
+				text += std::to_string(m_AmountGathered.y) + " wheat\n";
+			if (m_AmountGathered.z != 0)
+				text += std::to_string(m_AmountGathered.z) + " gold\n";
 
-				m_Text = std::make_unique<Text>(text, 400.0f, 350.0f, 12.0f, 0.0f);
-				m_Text->SetColor(1.0f, 1.0f, 1.0f, 1.0f);
-			}
+			m_Text = std::make_unique<Text>(text, 400.0f, 350.0f, 12.0f, 0.0f);
+			m_Text->SetColor(1.0f, 1.0f, 1.0f, 1.0f);
 		}
 
 		m_BackToCamp->Update();
@@ -135,28 +119,15 @@ void TowerDefense::GatherResources::Update()
 	}
 	else if (m_CurrentActivity == Activity::EXPLORE)
 	{
-		if (m_RandomEvent)
+		m_BackToCamp->Update();
+		if (m_BackToCamp->IsClicked())
 		{
-			if (!player.DeckShowing() && !player.ArtifactsShowing())
-				m_EventScene->Update();
-			if (m_EventScene->Exit())
-			{
-				m_Exit = true;
-				m_ActivityReady = m_ActivityCoolDown;
-			}
-		}
-		else
-		{
-			m_BackToCamp->Update();
-			if (m_BackToCamp->IsClicked())
-			{
-				Player::Get().ChangeResource(m_AmountGathered.w, Resource::WOOD);
-				Player::Get().ChangeResource(m_AmountGathered.x, Resource::STONE);
-				Player::Get().ChangeResource(m_AmountGathered.y, Resource::WHEAT);
-				Player::Get().ChangeResource(m_AmountGathered.z, Resource::GOLD);
-				m_Exit = true;
-				m_ActivityReady = m_ActivityCoolDown;
-			}
+			Player::Get().ChangeResource(m_AmountGathered.w, Resource::WOOD);
+			Player::Get().ChangeResource(m_AmountGathered.x, Resource::STONE);
+			Player::Get().ChangeResource(m_AmountGathered.y, Resource::WHEAT);
+			Player::Get().ChangeResource(m_AmountGathered.z, Resource::GOLD);
+			m_Exit = true;
+			m_ActivityReady = m_ActivityCoolDown;
 		}
 	}
 }

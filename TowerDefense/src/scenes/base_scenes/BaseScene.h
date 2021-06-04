@@ -55,11 +55,9 @@ namespace TowerDefense
 	private:
 		enum class Activity {MENU, CHOP, MINE, FARM, EXPLORE};
 		Vec4i m_AmountGathered;
-		bool m_RandomEvent;
 		Activity m_CurrentActivity;
 		std::unique_ptr<Button> m_Chop, m_Mine, m_Farm, m_Explore, m_BackToCamp;
 		std::unique_ptr<Text> m_Text;
-		std::shared_ptr<RandomEvent> m_EventScene;
 	};
 
 	class Rest : public BaseScene
