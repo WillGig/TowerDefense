@@ -3,20 +3,20 @@
 
 namespace TowerDefense
 {
-	class CaveScene : public Scene
+	class RandomEvent : public Scene
 	{
 	public:
 		inline void OnSwitch() override {};
 		inline bool Exit() { return m_Exit; }
 
-		static std::shared_ptr<CaveScene> GetRandomCaveEvent();
+		static std::shared_ptr<RandomEvent> GetRandomCaveEvent();
 
 	protected:
 		bool m_Exit = false;
 	};
 
 	//Restore to full hp or +10 max hp
-	class FountainOfYouth : public CaveScene
+	class FountainOfYouth : public RandomEvent
 	{
 	public:
 		FountainOfYouth();
@@ -29,7 +29,7 @@ namespace TowerDefense
 	};
 
 	//Sets your deck on fire (add 3 flame cards) OR sets YOU on fire (-30 hp)
-	class LiterallySatan : public CaveScene
+	class LiterallySatan : public RandomEvent
 	{
 	public:
 		LiterallySatan();
@@ -42,7 +42,7 @@ namespace TowerDefense
 	};
 
 	//Fight (-1 hp), Feed (-10hp, get bat's blessing)
-	class CaveBat : public CaveScene
+	class CaveBat : public RandomEvent
 	{
 	public:
 		CaveBat();
@@ -56,7 +56,7 @@ namespace TowerDefense
 
 	//Truck of puppies is going to run over a baby. Divert to crash into 3 convicts instead, killing them and the puppies
 	//Third choice "But this has nothing to do with the game!" (-1 hp)
-	class TrolleyProblem : public CaveScene
+	class TrolleyProblem : public RandomEvent
 	{
 	public:
 		TrolleyProblem();
@@ -69,7 +69,7 @@ namespace TowerDefense
 	};
 
 	//Do something here
-	class KnightsWhoSayNah : public CaveScene
+	class KnightsWhoSayNah : public RandomEvent
 	{
 	public:
 		KnightsWhoSayNah();

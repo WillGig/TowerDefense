@@ -246,22 +246,22 @@
     <ClCompile Include="src\enemies\EnemyInfo.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\scenes\cave_scenes\CaveScene.cpp">
+    <ClCompile Include="src\scenes\random_events\RandomEvent.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\scenes\cave_scenes\FountainOfYouth.cpp">
+    <ClCompile Include="src\scenes\random_events\FountainOfYouth.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\scenes\cave_scenes\LiterallySatan.cpp">
+    <ClCompile Include="src\scenes\random_events\LiterallySatan.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\scenes\cave_scenes\CaveBat.cpp">
+    <ClCompile Include="src\scenes\random_events\CaveBat.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\scenes\cave_scenes\TrolleyProblem.cpp">
+    <ClCompile Include="src\scenes\random_events\TrolleyProblem.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\scenes\cave_scenes\KnightsWhoSayNah.cpp">
+    <ClCompile Include="src\scenes\random_events\KnightsWhoSayNah.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\cards\curses\Flames.cpp">
@@ -270,7 +270,7 @@
     <ClCompile Include="src\cards\quirks\Farsighted.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\scenes\base_scenes\Caves.cpp">
+    <ClCompile Include="src\scenes\base_scenes\GatherResources.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\scenes\base_scenes\Rest.cpp">
@@ -867,7 +867,7 @@
     <ClInclude Include="src\enemies\EnemyInfo.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\scenes\cave_scenes\CaveScene.h">
+    <ClInclude Include="src\scenes\random_events\RandomEvent.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\cards\curses\Curses.h">

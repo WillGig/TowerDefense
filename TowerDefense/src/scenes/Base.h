@@ -1,6 +1,6 @@
 #pragma once
 #include "Scene.h"
-#include "cave_scenes/CaveScene.h"
+#include "random_events/RandomEvent.h"
 #include "cards/Card.h"
 #include "cards/CardChoice.h"
 #include "base_scenes/BaseScene.h"

@@ -21,7 +21,7 @@ void TowerDefense::Event::Render()
 	}
 	else if (m_Phase == EventPhase::EVENT)
 	{
-		m_CaveScene->Render();
+		m_RandomEvent->Render();
 	}
 }
 
@@ -35,8 +35,8 @@ void TowerDefense::Event::Update()
 	}
 	else if (m_Phase == EventPhase::EVENT)
 	{
-		m_CaveScene->Update();
-		if (m_CaveScene->Exit())
+		m_RandomEvent->Update();
+		if (m_RandomEvent->Exit())
 			SetScene(SceneType::PRECOMBAT);
 	}
 }
@@ -44,5 +44,5 @@ void TowerDefense::Event::Update()
 void TowerDefense::Event::OnSwitch()
 {
 	m_Phase = EventPhase::START;
-	m_CaveScene = CaveScene::GetRandomCaveEvent();
+	m_RandomEvent = RandomEvent::GetRandomCaveEvent();
 }

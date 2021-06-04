@@ -1,7 +1,7 @@
 #include "pch.h"
-#include "CaveScene.h"
+#include "RandomEvent.h"
 
-std::shared_ptr<TowerDefense::CaveScene> TowerDefense::CaveScene::GetRandomCaveEvent()
+std::shared_ptr<TowerDefense::RandomEvent> TowerDefense::RandomEvent::GetRandomCaveEvent()
 {
 	int encounter = (int)(Random::GetFloat() * 4);
 

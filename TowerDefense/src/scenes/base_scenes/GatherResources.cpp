@@ -2,7 +2,7 @@
 #include "BaseScene.h"
 #include "core/Player.h"
 
-TowerDefense::Caves::Caves()
+TowerDefense::GatherResources::GatherResources()
 	:BaseScene("getResourcesButton", "Hard Work Pays Off.", 1), 
 	m_AmountGathered(), m_RandomEvent(false), m_CurrentActivity(Activity::MENU),
 	m_Chop(std::make_unique<Button>(200.0f, 425.0f, 180, 50, "chopWoodButton")),
@@ -13,7 +13,7 @@ TowerDefense::Caves::Caves()
 {
 }
 
-void TowerDefense::Caves::Render()
+void TowerDefense::GatherResources::Render()
 {
 	Player& player = Player::Get();
 
@@ -33,7 +33,7 @@ void TowerDefense::Caves::Render()
 	else if (m_CurrentActivity == Activity::EXPLORE)
 	{
 		if(m_RandomEvent)
-			m_CaveScene->Render();
+			m_EventScene->Render();
 		else
 		{
 			m_Text->Render();
@@ -45,7 +45,7 @@ void TowerDefense::Caves::Render()
 	player.RenderDeckAndArtifacts();
 }
 
-void TowerDefense::Caves::Update()
+void TowerDefense::GatherResources::Update()
 {
 	Player& player = Player::Get();
 	player.UpdateDeckAndArtifacts();
@@ -85,7 +85,7 @@ void TowerDefense::Caves::Update()
 			m_CurrentActivity = Activity::EXPLORE;
 			m_RandomEvent = Random::GetFloat() > .7f;
 			if(m_RandomEvent)
-				m_CaveScene = CaveScene::GetRandomCaveEvent();
+				m_EventScene = RandomEvent::GetRandomCaveEvent();
 			else
 			{
 				m_AmountGathered = Vec4i();
@@ -138,8 +138,8 @@ void TowerDefense::Caves::Update()
 		if (m_RandomEvent)
 		{
 			if (!player.DeckShowing() && !player.ArtifactsShowing())
-				m_CaveScene->Update();
-			if (m_CaveScene->Exit())
+				m_EventScene->Update();
+			if (m_EventScene->Exit())
 			{
 				m_Exit = true;
 				m_ActivityReady = m_ActivityCoolDown;
@@ -161,7 +161,7 @@ void TowerDefense::Caves::Update()
 	}
 }
 
-void TowerDefense::Caves::OnSwitch()
+void TowerDefense::GatherResources::OnSwitch()
 {
 	BaseScene::OnSwitch();
 	m_CurrentActivity = Activity::MENU;

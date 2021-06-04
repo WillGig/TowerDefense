@@ -1,6 +1,6 @@
 #pragma once
 #include "scenes/Scene.h"
-#include "scenes/cave_scenes/CaveScene.h"
+#include "scenes/random_events/RandomEvent.h"
 #include "cards/CardChoice.h"
 #include "BuildButton.h"
 #include "CardSlot.h"
@@ -44,14 +44,14 @@ namespace TowerDefense
 		std::unique_ptr<Rectangle> m_Fade;
 	};
 
-	class Caves : public BaseScene
+	class GatherResources : public BaseScene
 	{
 	public:
-		Caves();
+		GatherResources();
 		void Render() override;
 		void Update() override;
 		void OnSwitch() override;
-		inline std::string GetName() override { return "Caves"; }
+		inline std::string GetName() override { return "Gather Resources"; }
 	private:
 		enum class Activity {MENU, CHOP, MINE, FARM, EXPLORE};
 		Vec4i m_AmountGathered;
@@ -59,7 +59,7 @@ namespace TowerDefense
 		Activity m_CurrentActivity;
 		std::unique_ptr<Button> m_Chop, m_Mine, m_Farm, m_Explore, m_BackToCamp;
 		std::unique_ptr<Text> m_Text;
-		std::shared_ptr<CaveScene> m_CaveScene;
+		std::shared_ptr<RandomEvent> m_EventScene;
 	};
 
 	class Rest : public BaseScene

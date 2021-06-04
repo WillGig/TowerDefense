@@ -1,6 +1,6 @@
 #pragma once
 #include "Scene.h"
-#include "cave_scenes/CaveScene.h"
+#include "random_events/RandomEvent.h"
 
 namespace TowerDefense
 {
@@ -22,6 +22,6 @@ namespace TowerDefense
 
 		std::unique_ptr<Button> m_Continue;
 
-		std::shared_ptr<CaveScene> m_CaveScene;
+		std::shared_ptr<RandomEvent> m_RandomEvent;
 	};
 }
