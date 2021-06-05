@@ -8,7 +8,11 @@ Current:
 	- Crystal Ball 		- scount for blood instead
 	- glasses 		- cures nearsightedness					
 	- laser-sword 		- could be used to fix nearsightedness... maybe	
-	
+	- Explorers hat		- Gain 50 extra resources when exploring
+	- something		- Get an event every day
+	- something		- Can skip events
+	- Map to Eldorado	- Explore x times to turn into gold
+
 	Allow hovering over event options to show cards/artifacts obtained
 
 	Add more events:

@@ -80,9 +80,33 @@ void TowerDefense::GatherResources::Update()
 			m_CurrentActivity = Activity::EXPLORE;
 			m_AmountGathered = Vec4i();
 
-			m_AmountGathered.w = (int)(Random::GetFloat() * 150);
-			m_AmountGathered.x = (int)(Random::GetFloat() * (150 - m_AmountGathered.w));
-			m_AmountGathered.y = 150 - m_AmountGathered.w - m_AmountGathered.x;
+			//Find random distribution of resources
+			float wood = Random::GetFloat();
+			float stone = Random::GetFloat();
+			float wheat = Random::GetFloat();
+			m_AmountGathered.w = (int)round(wood / (wood + stone + wheat) * 150.0f);
+			m_AmountGathered.x = (int)round(stone / (wood + stone + wheat) * 150.0f);
+			m_AmountGathered.y = (int)round(wheat / (wood + stone + wheat) * 150.0f);
+
+			//Ensure that exactly 150 resources are gathered
+			if (m_AmountGathered.w + m_AmountGathered.x + m_AmountGathered.y > 150.0f)
+			{
+				if (m_AmountGathered.w > m_AmountGathered.x && m_AmountGathered.w > m_AmountGathered.y)
+					m_AmountGathered.w--;
+				else if (m_AmountGathered.x > m_AmountGathered.w && m_AmountGathered.x > m_AmountGathered.y)
+					m_AmountGathered.x--;
+				else
+					m_AmountGathered.y--;
+			}
+			else if (m_AmountGathered.w + m_AmountGathered.x + m_AmountGathered.y < 150.0f)
+			{
+				if (m_AmountGathered.w > m_AmountGathered.x && m_AmountGathered.w > m_AmountGathered.y)
+					m_AmountGathered.w++;
+				else if (m_AmountGathered.x > m_AmountGathered.w && m_AmountGathered.x > m_AmountGathered.y)
+					m_AmountGathered.x++;
+				else
+					m_AmountGathered.y++;
+			}
 
 			std::string text = "You manage to find the follow resources:\n\n";
 			if (m_AmountGathered.w != 0)
@@ -91,8 +115,6 @@ void TowerDefense::GatherResources::Update()
 				text += std::to_string(m_AmountGathered.x) + " stone\n";
 			if (m_AmountGathered.y != 0)
 				text += std::to_string(m_AmountGathered.y) + " wheat\n";
-			if (m_AmountGathered.z != 0)
-				text += std::to_string(m_AmountGathered.z) + " gold\n";
 
 			m_Text = std::make_unique<Text>(text, 400.0f, 350.0f, 12.0f, 0.0f);
 			m_Text->SetColor(1.0f, 1.0f, 1.0f, 1.0f);
