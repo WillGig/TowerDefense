@@ -12,17 +12,21 @@ Current:
 	- something		- Get an event every day
 	- something		- Can skip events
 	- Map to Eldorado	- Explore x times to turn into gold
+	- Shrubbery 		- Does something
 
 	Allow hovering over event options to show cards/artifacts obtained
 
 	Add more events:
-	- frog - choose 50% princess, 50% frog or some amount of gold gauranteed
-	- Jousting - Trade health for gold. Comes from event.
+	- The Black Knight - Challenge to duel or decline challenge - Win (Gain jousting option in base), lose (-20 hp)
 	- Events that give you the option to add specific heros to your deck
 		- Wandering sage
 		- wandering minstrel
 		- beggar turns to cleric?
+	- Treasure - random relic and some gold		
+	- Knights who say nah - Give in to their demands (-200 gold), They say Nah to you (-10hp), Give Shrubbery (receive Blessed Hand grenade)
 	
+	Change events to only happen once, like artifacts
+
 Soon:	
 	Add ways to increase score
 	Add alchemy lab, wizard tower, etc. to upgrade certain types of cards
@@ -174,7 +178,7 @@ Notes:
 	- Literally Satan	Sets your deck on fire (add 3 flame cards) OR sets YOU on fire (-30 hp)
 	- Cave Bat		Fight (-1 hp), Feed (-10hp, get bat's blessing)
 	- Trolley Problem	Truck of puppies + 3 criminals vs baby or -1hp if you don't want to choose
-	- Knights who say nah	
+	- frog			choose 50% princess, 50% frog or some amount of gold gauranteed
 
 	Daily activities
 		Explore Caves 	- Random event						

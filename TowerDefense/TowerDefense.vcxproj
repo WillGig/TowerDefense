@@ -184,6 +184,7 @@
     <ClCompile Include="src\artifacts\LuckyTools.cpp" />
     <ClCompile Include="src\artifacts\MagicBeans.cpp" />
     <ClCompile Include="src\artifacts\MiniatureWormHole.cpp" />
+    <ClCompile Include="src\artifacts\Prince.cpp" />
     <ClCompile Include="src\artifacts\SpecialToxins.cpp" />
     <ClCompile Include="src\artifacts\Thermos.cpp" />
     <ClCompile Include="src\artifacts\TokenOfTheArmored.cpp" />
@@ -200,6 +201,7 @@
     <ClCompile Include="src\Auras\Storm.cpp" />
     <ClCompile Include="src\Auras\StunAttacks.cpp" />
     <ClCompile Include="src\cards\Attain.cpp" />
+    <ClCompile Include="src\cards\curses\Frog.cpp" />
     <ClCompile Include="src\cards\Envenom.cpp" />
     <ClCompile Include="src\cards\ExplosiveStrikes.cpp" />
     <ClCompile Include="src\cards\LifeAura.cpp" />
@@ -297,6 +299,7 @@
     <ClCompile Include="src\scenes\base_scenes\Tavern.cpp" />
     <ClCompile Include="src\scenes\base_scenes\Trader.cpp" />
     <ClCompile Include="src\scenes\random_events\CaveBat.cpp" />
+    <ClCompile Include="src\scenes\random_events\FrogPrince.cpp" />
     <ClCompile Include="src\scenes\random_events\RandomEvent.cpp" />
     <ClCompile Include="src\scenes\random_events\FountainOfYouth.cpp" />
     <ClCompile Include="src\scenes\random_events\KnightsWhoSayNah.cpp" />

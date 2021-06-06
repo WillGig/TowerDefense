@@ -306,6 +306,8 @@ void TowerDefense::LoadTextures()
     SpriteSheet curses("res/textures/Curses.png", 440, 560);
     Texture::LoadTexture("Flames",          curses.load(0, 0));
     Texture::LoadTexture("FlamesUpgraded",  curses.load(1, 0));
+    Texture::LoadTexture("Frog",            curses.load(2, 0));
+    Texture::LoadTexture("FrogUpgraded",    curses.load(3, 0));
 
     SpriteSheet cardInfo("res/textures/InfoTiles.png", 440, 170);
     Texture::LoadTexture("SummonInfo",      cardInfo.load(0, 0));
@@ -374,6 +376,7 @@ void TowerDefense::LoadTextures()
     Texture::LoadTexture("Miniature Worm Hole",     artifacts.load(7, 1));
     Texture::LoadTexture("Special Toxins",          artifacts.load(8, 1));
     Texture::LoadTexture("Extra Slot",              artifacts.load(9, 1));
+    Texture::LoadTexture("Prince",                  artifacts.load(0, 2));
 
     SpriteSheet artifactInfo("res/textures/ArtifactInfo.png", 440, 170);
     Texture::LoadTexture("Token Of The MuteInfo",       artifactInfo.load(0, 0));
@@ -396,6 +399,7 @@ void TowerDefense::LoadTextures()
     Texture::LoadTexture("Miniature Worm HoleInfo",     artifactInfo.load(1, 4));
     Texture::LoadTexture("Special ToxinsInfo",          artifactInfo.load(2, 4));
     Texture::LoadTexture("Extra SlotInfo",              artifactInfo.load(3, 4));
+    Texture::LoadTexture("PrinceInfo",                  artifactInfo.load(0, 5));
 
     std::cout << "...Animations" << std::endl;
 

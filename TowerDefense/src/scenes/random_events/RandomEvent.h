@@ -77,11 +77,16 @@ namespace TowerDefense
 		void Update() override;
 	};
 
-	class Frog : public RandomEvent
+	class FrogPrince : public RandomEvent
 	{
 	public:
-		Frog();
+		FrogPrince();
 		void Render() override;
 		void Update() override;
+
+	private:
+		std::unique_ptr<StaticImage> m_Image;
+		std::unique_ptr<Button> m_Button1, m_Button2;
+		std::unique_ptr<Text> m_Text1, m_Text2, m_Prompt;
 	};
 }

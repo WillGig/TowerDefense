@@ -10,4 +10,12 @@ namespace TowerDefense
 		void Play() override;
 		std::shared_ptr<Card> Clone() override;
 	};
+
+	class Frog : public Card
+	{
+	public:
+		Frog();
+		void Play() override;
+		std::shared_ptr<Card> Clone() override;
+	};
 }

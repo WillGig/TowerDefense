@@ -195,4 +195,11 @@ namespace TowerDefense
 		ExtraSlot();
 		void OnAquire() override;
 	};
+
+	class Prince : public Artifact
+	{
+	public:
+		Prince();
+		void OnFightEnd() override;
+	};
 }
