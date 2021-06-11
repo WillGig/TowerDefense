@@ -173,6 +173,7 @@
   <ItemGroup>
     <ClCompile Include="src\artifacts\Artifact.cpp" />
     <ClCompile Include="src\artifacts\ArtifactPile.cpp" />
+    <ClCompile Include="src\artifacts\BlessedHandGrenade.cpp" />
     <ClCompile Include="src\artifacts\BlessingOfTheBat.cpp" />
     <ClCompile Include="src\artifacts\Boulder.cpp" />
     <ClCompile Include="src\artifacts\Cooler.cpp" />
@@ -185,6 +186,7 @@
     <ClCompile Include="src\artifacts\MagicBeans.cpp" />
     <ClCompile Include="src\artifacts\MiniatureWormHole.cpp" />
     <ClCompile Include="src\artifacts\Prince.cpp" />
+    <ClCompile Include="src\artifacts\Shrubbery.cpp" />
     <ClCompile Include="src\artifacts\SpecialToxins.cpp" />
     <ClCompile Include="src\artifacts\Thermos.cpp" />
     <ClCompile Include="src\artifacts\TokenOfTheArmored.cpp" />
@@ -304,6 +306,7 @@
     <ClCompile Include="src\scenes\random_events\FountainOfYouth.cpp" />
     <ClCompile Include="src\scenes\random_events\KnightsWhoSayNah.cpp" />
     <ClCompile Include="src\scenes\random_events\LiterallySatan.cpp" />
+    <ClCompile Include="src\scenes\random_events\Treasure.cpp" />
     <ClCompile Include="src\scenes\random_events\TrolleyProblem.cpp" />
     <ClCompile Include="src\scenes\Combat.cpp" />
     <ClCompile Include="src\scenes\CombatReward.cpp" />

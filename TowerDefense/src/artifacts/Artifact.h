@@ -20,6 +20,8 @@ namespace TowerDefense
 		}
 		inline void Update() override {}
 		inline void RenderArtifactDetails() { m_DetailedImage->Render(); m_InfoImage->Render(); m_NameText->Render(); }
+		inline virtual void CombatRender() {}
+		inline virtual void CombatUpdate() {}
 		inline virtual void OnAquire() {}
 		inline virtual void OnAddCard(std::shared_ptr<Card> c) {}
 		inline virtual void OnRoundStart() {}
@@ -201,5 +203,26 @@ namespace TowerDefense
 	public:
 		Prince();
 		void OnFightEnd() override;
+	};
+
+	class Shrubbery : public Artifact
+	{
+	public:
+		Shrubbery();
+		void OnRoundStart() override;
+	};
+
+	class BlessedHandGrenade : public Artifact
+	{
+	public:
+		BlessedHandGrenade();
+		void CombatRender() override;
+		void CombatUpdate() override;
+		void OnFightStart() override;
+
+	private:
+		bool m_Ready;
+
+		std::unique_ptr<Button> m_Detonate;
 	};
 }

@@ -69,6 +69,16 @@ std::shared_ptr<TowerDefense::Artifact> TowerDefense::ArtifactPile::GetSelectedA
 	return m_Artifacts->at(m_SelectedArtifact);
 }
 
+bool TowerDefense::ArtifactPile::HasArtifact(const std::string& name)
+{
+	for (unsigned int i = 0; i < m_Artifacts->size(); i++)
+	{
+		if (m_Artifacts->at(i)->GetName() == name)
+			return true;
+	}
+	return false;
+}
+
 void TowerDefense::ArtifactPile::Clear()
 {
 	m_Artifacts->clear();

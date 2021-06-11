@@ -48,6 +48,8 @@ void TowerDefense::Combat::Render()
 	for (unsigned int i = 0; i < s_Auras->size(); i++)
 		s_Auras->at(i)->Render();
 
+	player.ArtifactCombatRender();
+
 	if (!player.DeckShowing() && !player.ArtifactsShowing())
 	{
 		player.RenderStats();
@@ -100,13 +102,13 @@ void TowerDefense::Combat::Update()
 			s_TowerInfo->Update();
 		if (m_SelectedTower)
 			m_SelectedTower->SetHighlighted();
-	}
 
-	if (!deckShow && !drawShow && !discardShow && !artifactsShow)
 		UpdateSelectedEnemy();
 
-	if(!deckShow && !drawShow && !discardShow && !artifactsShow)
 		UpdateSelectedTower();
+
+		player.ArtifactCombatUpdate();
+	}
 
 	UpdateEntities();
 

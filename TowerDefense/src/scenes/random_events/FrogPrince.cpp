@@ -22,6 +22,7 @@ TowerDefense::FrogPrince::FrogPrince()
 	m_Prompt = std::make_unique<Text>(text, 560.0f, 370.0f, 16.0f, 0.0f);
 	m_Prompt->SetColor(1.0f, 1.0f, 1.0f, 1.0f);
 }
+
 void TowerDefense::FrogPrince::Render()
 {
 	m_Image->Render();

@@ -1,5 +1,6 @@
 #pragma once
 #include "scenes/Scene.h"
+#include "scenes/CombatReward.h"
 
 namespace TowerDefense
 {
@@ -68,13 +69,17 @@ namespace TowerDefense
 		std::unique_ptr<Text> m_Text1, m_Text2, m_Text3, m_Prompt;
 	};
 
-	//Do something here
 	class KnightsWhoSayNah : public RandomEvent
 	{
 	public:
 		KnightsWhoSayNah();
 		void Render() override;
 		void Update() override;
+
+	private:
+		std::unique_ptr<Image> m_Image;
+		std::unique_ptr<Button> m_Button1, m_Button2, m_Button3;
+		std::unique_ptr<Text> m_Text1, m_Text2, m_Text3, m_Prompt;
 	};
 
 	class FrogPrince : public RandomEvent
@@ -88,5 +93,21 @@ namespace TowerDefense
 		std::unique_ptr<StaticImage> m_Image;
 		std::unique_ptr<Button> m_Button1, m_Button2;
 		std::unique_ptr<Text> m_Text1, m_Text2, m_Prompt;
+	};
+
+	class Treasure : public RandomEvent
+	{
+	public:
+		Treasure();
+		void Render() override;
+		void Update() override;
+
+	private:
+		std::unique_ptr<Image> m_Image;
+		std::unique_ptr<Button> m_Continue;
+		std::unique_ptr<Text> m_Prompt;
+
+		std::unique_ptr<ResourceReward> m_Gold;
+		std::unique_ptr<ArtifactReward> m_Artifact;
 	};
 }

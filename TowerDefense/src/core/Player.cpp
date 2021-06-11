@@ -150,24 +150,32 @@ void TowerDefense::Player::ChangeResource(int change, Resource res)
     if (res == Resource::WOOD)
     {
         m_Resources.w += change;
+        if (m_Resources.w < 0)
+            m_Resources.w = 0;
         m_WoodText = std::make_unique<Text>(std::to_string(m_Resources.w), 50.0f, 575.0f, 10.0f, 0.0f);
         m_WoodText->SetColor(1.0f, 1.0f, 1.0f, 1.0f);
     }
     else if (res == Resource::STONE)
     {
         m_Resources.x += change;
+        if (m_Resources.x < 0)
+            m_Resources.x = 0;
         m_StoneText = std::make_unique<Text>(std::to_string(m_Resources.x), 125.0f, 575.0f, 10.0f, 0.0f);
         m_StoneText->SetColor(1.0f, 1.0f, 1.0f, 1.0f);
     }
     else if (res == Resource::WHEAT)
     {
         m_Resources.y += change;
+        if (m_Resources.y < 0)
+            m_Resources.y = 0;
         m_WheatText = std::make_unique<Text>(std::to_string(m_Resources.y), 200.0f, 575.0f, 10.0f, 0.0f);
         m_WheatText->SetColor(1.0f, 1.0f, 1.0f, 1.0f);
     }
     else if (res == Resource::GOLD)
     {
         m_Resources.z += change;
+        if (m_Resources.z < 0)
+            m_Resources.z = 0;
         m_GoldText = std::make_unique<Text>(std::to_string(m_Resources.z), 275.0f, 575.0f, 10.0f, 0.0f);
         m_GoldText->SetColor(1.0f, 1.0f, 1.0f, 1.0f);
     }
@@ -424,6 +432,30 @@ void TowerDefense::Player::AddToArtifacts(std::shared_ptr<Artifact> a)
 void TowerDefense::Player::RemoveFromArtifacts(int index)
 {
     m_Artifacts->RemoveArtifact(index);
+}
+
+void TowerDefense::Player::RemoveFromArtifacts(const std::string name)
+{
+    for (int i = 0; i < m_Artifacts->GetSize(); i++)
+    {
+        if (m_Artifacts->GetArtifact(i)->GetName() == name)
+        {
+            m_Artifacts->RemoveArtifact(i);
+            return;
+        }
+    }
+}
+
+void TowerDefense::Player::ArtifactCombatRender()
+{
+    for (int i = 0; i < m_Artifacts->GetSize(); i++)
+        m_Artifacts->GetArtifact(i)->CombatRender();
+}
+
+void TowerDefense::Player::ArtifactCombatUpdate()
+{
+    for (int i = 0; i < m_Artifacts->GetSize(); i++)
+        m_Artifacts->GetArtifact(i)->CombatUpdate();
 }
 
 void TowerDefense::Player::ArtifactOnAddCard(std::shared_ptr<Card> c)

@@ -93,12 +93,16 @@ namespace TowerDefense
 		inline std::shared_ptr<Artifact> GetSelectedArtifact() { return m_Artifacts->GetSelectedArtifact(); };
 		void AddToArtifacts(std::shared_ptr<Artifact> a);
 		void RemoveFromArtifacts(int index);
+		void RemoveFromArtifacts(const std::string name);
+		inline bool HasArtifact(const std::string& name) { return m_Artifacts->HasArtifact(name); };
 
 		//Prefered method of Rendering and updating deck and artifact buttons and piles in most menus
 		void RenderDeckAndArtifacts();
 		void UpdateDeckAndArtifacts();
 
 		//Functions to check all artifacts for triggers on respective events
+		void ArtifactCombatRender();
+		void ArtifactCombatUpdate();
 		void ArtifactOnAddCard(std::shared_ptr<Card> c);
 		void ArtifactOnRoundStart();
 		void ArtifactOnCardPlay(std::shared_ptr<Card> c);

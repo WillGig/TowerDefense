@@ -377,6 +377,8 @@ void TowerDefense::LoadTextures()
     Texture::LoadTexture("Special Toxins",          artifacts.load(8, 1));
     Texture::LoadTexture("Extra Slot",              artifacts.load(9, 1));
     Texture::LoadTexture("Prince",                  artifacts.load(0, 2));
+    Texture::LoadTexture("Shrubbery",               artifacts.load(1, 2));
+    Texture::LoadTexture("Blessed Hand Grenade",    artifacts.load(2, 2));
 
     SpriteSheet artifactInfo("res/textures/ArtifactInfo.png", 440, 170);
     Texture::LoadTexture("Token Of The MuteInfo",       artifactInfo.load(0, 0));
@@ -400,6 +402,8 @@ void TowerDefense::LoadTextures()
     Texture::LoadTexture("Special ToxinsInfo",          artifactInfo.load(2, 4));
     Texture::LoadTexture("Extra SlotInfo",              artifactInfo.load(3, 4));
     Texture::LoadTexture("PrinceInfo",                  artifactInfo.load(0, 5));
+    Texture::LoadTexture("ShrubberyInfo",               artifactInfo.load(1, 5));
+    Texture::LoadTexture("Blessed Hand GrenadeInfo",    artifactInfo.load(2, 5));
 
     std::cout << "...Animations" << std::endl;
 

@@ -22,12 +22,12 @@ Current:
 		- Wandering sage
 		- wandering minstrel
 		- beggar turns to cleric?
-	- Treasure - random relic and some gold		
-	- Knights who say nah - Give in to their demands (-200 gold), They say Nah to you (-10hp), Give Shrubbery (receive Blessed Hand grenade)
+	- Knights who say nah - Give in to their demands (-300 gold), They say Nah to you (-10hp), Give Shrubbery (receive Blessed Hand grenade)
 	
 	Change events to only happen once, like artifacts
 
 Soon:	
+	Add viewing deck and artifacts to events
 	Add ways to increase score
 	Add alchemy lab, wizard tower, etc. to upgrade certain types of cards
 	Add Fishing		- Get a random relic/gold - minigame?			- 
@@ -179,6 +179,7 @@ Notes:
 	- Cave Bat		Fight (-1 hp), Feed (-10hp, get bat's blessing)
 	- Trolley Problem	Truck of puppies + 3 criminals vs baby or -1hp if you don't want to choose
 	- frog			choose 50% princess, 50% frog or some amount of gold gauranteed
+	- Treasure 		Random relic and some gold		
 
 	Daily activities
 		Explore Caves 	- Random event						
