@@ -1,6 +1,9 @@
 Current:
 	Examine text being off center (Event)
 	
+	Add traits that give magic and physical damage
+	change bard and sage to have above traits
+
 	can scout next battle for gold price
 	
 	Add more Artifacts:
@@ -12,7 +15,6 @@ Current:
 	- something		- Get an event every day
 	- something		- Can skip events
 	- Map to Eldorado	- Explore x times to turn into gold
-	- Shrubbery 		- Does something
 
 	Allow hovering over event options to show cards/artifacts obtained
 
@@ -22,7 +24,6 @@ Current:
 		- Wandering sage
 		- wandering minstrel
 		- beggar turns to cleric?
-	- Knights who say nah - Give in to their demands (-300 gold), They say Nah to you (-10hp), Give Shrubbery (receive Blessed Hand grenade)
 	
 	Change events to only happen once, like artifacts
 
@@ -172,6 +173,7 @@ Notes:
 	- Miniature Worm Hole 		sends the first enemy to get through back to the beginning
 	- Special Toxins		all poisons deal 1 extra damage
 	- Extra Slot 			+1 sideboard
+	- Shrubbery 			+10 energy at the start of each wave
 
 	Events
 	- Fountain of youth	Restore to full hp or +10 max hp
@@ -180,6 +182,7 @@ Notes:
 	- Trolley Problem	Truck of puppies + 3 criminals vs baby or -1hp if you don't want to choose
 	- frog			choose 50% princess, 50% frog or some amount of gold gauranteed
 	- Treasure 		Random relic and some gold		
+	- Knights who say nah   Give in to their demands (-300 gold), They say Nah to you (-10hp), Give Shrubbery (receive Blessed Hand grenade)
 
 	Daily activities
 		Explore Caves 	- Random event						

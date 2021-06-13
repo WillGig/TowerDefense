@@ -346,6 +346,8 @@ void TowerDefense::LoadTextures()
     Texture::LoadTexture("orcFemale",       heroImages.load(5, 1));
     Texture::LoadTexture("giantMale",       heroImages.load(0, 2));
     Texture::LoadTexture("giantFemale",     heroImages.load(1, 2));
+    Texture::LoadTexture("heath",           heroImages.load(2, 2));
+    Texture::LoadTexture("hoid",            heroImages.load(3, 2));
 
     SpriteSheet heroUpgrades("res/textures/HeroUpgrades.png", 440, 560);
     Texture::LoadTexture("damageUpgrade",       heroUpgrades.load(0, 0));
