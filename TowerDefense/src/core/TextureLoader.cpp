@@ -330,6 +330,10 @@ void TowerDefense::LoadTextures()
     Texture::LoadTexture("auraInfo",        cardInfo.load(1, 4));
     Texture::LoadTexture("stunInfo",        cardInfo.load(2, 4));
     Texture::LoadTexture("slowInfo",        cardInfo.load(3, 4));
+    Texture::LoadTexture("SpellweaverInfo", cardInfo.load(0, 5));
+    Texture::LoadTexture("SageInfo",        cardInfo.load(1, 5));
+    Texture::LoadTexture("FighterInfo",     cardInfo.load(2, 5));
+    Texture::LoadTexture("BerserkerInfo",   cardInfo.load(3, 5));
 
     SpriteSheet heroImages("res/textures/HeroImages.png", 440, 560);
     Texture::LoadTexture("humanMale",       heroImages.load(0, 0));

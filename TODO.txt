@@ -1,8 +1,5 @@
 Current:
 	Examine text being off center (Event)
-	
-	Add traits that give magic and physical damage
-	change bard and sage to have above traits
 
 	can scout next battle for gold price
 	
@@ -105,7 +102,11 @@ Notes:
 	- Veteran	starts upgraded				
 	- Just lucky	can crit				
 	- Battleready	costs 10% less				
-	- Explorer	draws a card when played	
+	- Explorer	draws a card when played
+	- Spellweaver	+1 magic damage
+	- Sage		+2 magic damage, -1 physical damage
+	- Fighter	+1 physical damage
+	- Berserker	+2 physical damage, -1 magical damage
 
 	Combats 
 	Broken into pools by day:

@@ -42,13 +42,13 @@ void TowerDefense::WanderingSage::Update()
 	{
 		auto quirks = std::make_shared<std::vector<std::shared_ptr<Quirk::Quirk>>>();
 		quirks->push_back(std::make_shared<Quirk::Human>());
-		quirks->push_back(std::make_shared<Quirk::Veteran>());
+		quirks->push_back(std::make_shared<Quirk::Sage>());
 		quirks->push_back(std::make_shared<Quirk::JustLucky>());
 		quirks->push_back(std::make_shared<Quirk::Nearsighted>());
 
 		Player& player = Player::Get();
 
-		player.AddToDeck(std::make_shared<HeroCard>("Heath", "Class:  Wizard\nRace:  Human\nVeteran\nJust Lucky\nNear Sighted\n", 100, "heath", std::make_shared<Tower::Wizard>(), quirks));
+		player.AddToDeck(std::make_shared<HeroCard>("Heath", "Class:  Wizard\nRace:  Human\nSage\nJust Lucky\nNear Sighted\n", 100, "heath", std::make_shared<Tower::Wizard>(), quirks));
 		player.ChangeResource(-player.GetResource(Resource::WOOD), Resource::WOOD);
 		m_Exit = true;
 	}

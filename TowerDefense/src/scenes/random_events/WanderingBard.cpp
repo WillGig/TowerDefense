@@ -44,11 +44,11 @@ void TowerDefense::WanderingBard::Update()
 	{
 		auto quirks = std::make_shared<std::vector<std::shared_ptr<Quirk::Quirk>>>();
 		quirks->push_back(std::make_shared<Quirk::Human>());
-		quirks->push_back(std::make_shared<Quirk::Veteran>());
+		quirks->push_back(std::make_shared<Quirk::Sage>());
 		quirks->push_back(std::make_shared<Quirk::Explorer>());
 		quirks->push_back(std::make_shared<Quirk::Nearsighted>());
 
-		player.AddToDeck(std::make_shared<HeroCard>("Hoid", "Class:  Bard\nRace:  Human\nVeteran\nExplorer\nNear Sighted\n", 50, "hoid", std::make_shared<Tower::Bard>(), quirks));
+		player.AddToDeck(std::make_shared<HeroCard>("Hoid", "Class:  Bard\nRace:  Human\nSage\nExplorer\nNear Sighted\n", 50, "hoid", std::make_shared<Tower::Bard>(), quirks));
 		player.ChangeResource(-300, Resource::GOLD);
 		m_Exit = true;
 	}

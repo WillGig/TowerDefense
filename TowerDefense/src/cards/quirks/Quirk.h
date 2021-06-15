@@ -127,6 +127,36 @@ namespace TowerDefense
 			std::shared_ptr<Quirk> Clone() override;
 		};
 
+		class Spellweaver : public Quirk
+		{
+		public:
+			Spellweaver();
+			void Apply(TowerDefense::HeroCard& h) override;
+			std::shared_ptr<Quirk> Clone() override;
+		};
+
+		class Fighter : public Quirk
+		{
+			Fighter();
+			void Apply(TowerDefense::HeroCard& h) override;
+			std::shared_ptr<Quirk> Clone() override;
+		};
+
+		class Sage : public Quirk
+		{
+		public:
+			Sage();
+			void Apply(TowerDefense::HeroCard& h) override;
+			std::shared_ptr<Quirk> Clone() override;
+		};
+
+		class Berserker : public Quirk
+		{
+			Berserker();
+			void Apply(TowerDefense::HeroCard& h) override;
+			std::shared_ptr<Quirk> Clone() override;
+		};
+
 		//NEGATIVE
 		class Nearsighted : public Quirk
 		{
