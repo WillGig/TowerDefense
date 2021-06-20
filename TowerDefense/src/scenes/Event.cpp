@@ -1,6 +1,7 @@
 #include "pch.h"
 #include "Event.h"
 #include "TowerDefense.h"
+#include "core/Player.h"
 
 TowerDefense::Event::Event()
 	:m_Phase(EventPhase::START), m_EventText(std::make_unique<Text>("EVENT", 400.0f, 450.0f, 50.0f, 0.0f)),
@@ -21,7 +22,9 @@ void TowerDefense::Event::Render()
 	}
 	else if (m_Phase == EventPhase::EVENT)
 	{
+		Player::Get().RenderStats();
 		m_RandomEvent->Render();
+		Player::Get().RenderDeckAndArtifacts();
 	}
 }
 
@@ -35,9 +38,15 @@ void TowerDefense::Event::Update()
 	}
 	else if (m_Phase == EventPhase::EVENT)
 	{
-		m_RandomEvent->Update();
-		if (m_RandomEvent->Exit())
-			SetScene(SceneType::PRECOMBAT);
+		Player& player = Player::Get();
+		player.UpdateDeckAndArtifacts();
+
+		if (!player.DeckShowing() && !player.ArtifactsShowing())
+		{
+			m_RandomEvent->Update();
+			if (m_RandomEvent->Exit())
+				SetScene(SceneType::PRECOMBAT);
+		}
 	}
 }
 

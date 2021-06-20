@@ -13,7 +13,6 @@ Current:
 	- Map to Eldorado	- Explore x times to turn into gold
 
 	Allow hovering over event options to show cards/artifacts obtained
-	Show player stats during events
 	Add second page to events to describe what happens
 	Change events to only happen once, like artifacts
 
@@ -28,7 +27,7 @@ Current:
 
 Soon:	
 	Tower upgrade rework - can upgrade towers in combat, show tower level, permanent upgrades from smithy
-	Add viewing deck and artifacts to events
+		- Star level shown below towers? Max level 5 (or 10)
 	Add ways to increase score
 	Add alchemy lab, wizard tower, etc. to upgrade certain types of cards
 	Add Fishing		- Get a random relic/gold - minigame?			- 
