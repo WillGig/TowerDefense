@@ -3,7 +3,7 @@
 
 std::shared_ptr<TowerDefense::RandomEvent> TowerDefense::RandomEvent::GetRandomCaveEvent()
 {
-	int encounter = (int)(Random::GetFloat() * 9);
+	int encounter = (int)(Random::GetFloat() * 10);
 
 	if (encounter == 0)
 		return std::make_shared<FountainOfYouth>();
@@ -21,6 +21,10 @@ std::shared_ptr<TowerDefense::RandomEvent> TowerDefense::RandomEvent::GetRandomC
 		return std::make_shared<WanderingSage>();
 	else if (encounter == 7)
 		return std::make_shared<WanderingBard>();
+	else if (encounter == 8)
+		return std::make_shared<WanderingCleric>();
+	//else if(encounter == 9)
+	//	return std::make_shared<TheBlackKnight>();
 	else
 		return std::make_shared<TrolleyProblem>();
 }

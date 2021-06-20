@@ -137,6 +137,7 @@ namespace TowerDefense
 
 		class Fighter : public Quirk
 		{
+		public:
 			Fighter();
 			void Apply(TowerDefense::HeroCard& h) override;
 			std::shared_ptr<Quirk> Clone() override;
@@ -152,6 +153,7 @@ namespace TowerDefense
 
 		class Berserker : public Quirk
 		{
+		public:
 			Berserker();
 			void Apply(TowerDefense::HeroCard& h) override;
 			std::shared_ptr<Quirk> Clone() override;

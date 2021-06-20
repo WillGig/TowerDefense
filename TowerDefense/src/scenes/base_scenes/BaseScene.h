@@ -111,6 +111,7 @@ namespace TowerDefense
 		void OnSwitch() override;
 		inline std::string GetName() override { return "Tavern"; }
 	private:
+		bool m_HeroTaken;
 		std::unique_ptr<TowerDefense::CardChoice> m_TavernChoice;
 		std::unique_ptr<Button> m_Confirm, m_Cancel;
 	};
@@ -183,5 +184,18 @@ namespace TowerDefense
 		std::unique_ptr<Text> m_HouseText, m_TotalText, m_AvailableText, m_LumberjacksText, m_MinersText, m_FarmersText, 
 			m_BuildCost, m_WorkerCost, m_TotalPopText, m_AvailablePopText, m_NumLumberJacks, m_NumMiners, m_NumFarmers;
 		std::unique_ptr<Image> m_HouseImage, m_WorkerImage, m_WorkerAvailableImage, m_WoodImage, m_StoneImage, m_WheatImage;
+	};
+
+	class Joust : public BaseScene
+	{
+	public:
+		Joust();
+		void Render() override;
+		void Update() override;
+		void OnSwitch() override;
+		inline std::string GetName() override { return "Joust"; }
+
+	private:
+		std::unique_ptr<Button> m_BackToCamp;
 	};
 }

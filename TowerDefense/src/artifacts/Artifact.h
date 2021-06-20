@@ -225,4 +225,11 @@ namespace TowerDefense
 
 		std::unique_ptr<Button> m_Detonate;
 	};
+
+	class ExplorersHat : public Artifact
+	{
+	public:
+		ExplorersHat();
+		void OnAquire() override;
+	};
 }

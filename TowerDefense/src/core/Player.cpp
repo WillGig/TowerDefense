@@ -64,7 +64,7 @@ void TowerDefense::Player::Reset()
     SetResource(0, Resource::STONE);
     SetResource(0, Resource::WHEAT);
     SetResource(0, Resource::GOLD);
-    m_ResourceGatherSpeed = Vec4i(100, 100, 100, 0);
+    m_ResourceGatherSpeed = Vec4i(100, 100, 100, 150);
     m_Population = 0;
     m_MaxPopulation = 10;
     m_NumberOfHouses = 1;
@@ -189,6 +189,8 @@ int TowerDefense::Player::GetResourceGatherRate(Resource res) const
         return m_ResourceGatherSpeed.x;
     else if (res == Resource::WHEAT)
         return m_ResourceGatherSpeed.y;
+    else if(res == Resource::EXPLORE)
+        return m_ResourceGatherSpeed.z;
     return 0;
 }
 
@@ -200,6 +202,8 @@ void TowerDefense::Player::SetResourceGatherRate(int rate, Resource res)
         m_ResourceGatherSpeed.x = rate;
     else if (res == Resource::WHEAT)
         m_ResourceGatherSpeed.y = rate;
+    else if (res == Resource::EXPLORE)
+        m_ResourceGatherSpeed.z = rate;
 }
 
 int TowerDefense::Player::GetWorkers(Resource res) const

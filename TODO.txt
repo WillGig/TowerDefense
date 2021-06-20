@@ -8,23 +8,26 @@ Current:
 	- Crystal Ball 		- scount for blood instead
 	- glasses 		- cures nearsightedness					
 	- laser-sword 		- could be used to fix nearsightedness... maybe	
-	- Explorers hat		- Gain 50 extra resources when exploring
 	- something		- Get an event every day
 	- something		- Can skip events
 	- Map to Eldorado	- Explore x times to turn into gold
 
 	Allow hovering over event options to show cards/artifacts obtained
+	Show player stats during events
+	Add second page to events to describe what happens
+	Change events to only happen once, like artifacts
 
 	Add more events:
 	- The Black Knight - Challenge to duel or decline challenge - Win (Gain jousting option in base), lose (-20 hp)
-	- Events that give you the option to add specific heros to your deck
-		- Wandering sage
-		- wandering minstrel
-		- beggar turns to cleric?
 	
-	Change events to only happen once, like artifacts
+	Add more mini-games
+	- cave exploring - rpg dungeon crawler like
+	- Archery	 - tanks style archery game
+	- The matrix	 - Osu! style clicking game
+	- tiles		 - pattern-based mini-game
 
 Soon:	
+	Tower upgrade rework - can upgrade towers in combat, show tower level, permanent upgrades from smithy
 	Add viewing deck and artifacts to events
 	Add ways to increase score
 	Add alchemy lab, wizard tower, etc. to upgrade certain types of cards
@@ -175,6 +178,7 @@ Notes:
 	- Special Toxins		all poisons deal 1 extra damage
 	- Extra Slot 			+1 sideboard
 	- Shrubbery 			+10 energy at the start of each wave
+	- Explorers hat			Gain 50 extra resources when exploring
 
 	Events
 	- Fountain of youth	Restore to full hp or +10 max hp
@@ -184,6 +188,9 @@ Notes:
 	- frog			choose 50% princess, 50% frog or some amount of gold gauranteed
 	- Treasure 		Random relic and some gold		
 	- Knights who say nah   Give in to their demands (-300 gold), They say Nah to you (-10hp), Give Shrubbery (receive Blessed Hand grenade)
+	- Wandering sage	Give all wood for heath the wizard
+	- Wandering bard	Give 300 gold for hoid the bard
+	- Wandering cleric 	Give all wheat for aramis
 
 	Daily activities
 		Explore Caves 	- Random event						

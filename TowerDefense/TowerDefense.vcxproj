@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup Label="ProjectConfigurations">
     <ProjectConfiguration Include="Debug|Win32">
@@ -178,6 +178,7 @@
     <ClCompile Include="src\artifacts\Boulder.cpp" />
     <ClCompile Include="src\artifacts\Cooler.cpp" />
     <ClCompile Include="src\artifacts\DollHouse.cpp" />
+    <ClCompile Include="src\artifacts\Explorershat.cpp" />
     <ClCompile Include="src\artifacts\ExtraSlot.cpp" />
     <ClCompile Include="src\artifacts\FruitCake.cpp" />
     <ClCompile Include="src\artifacts\HandOfMidas.cpp" />
@@ -298,6 +299,7 @@
     <ClCompile Include="src\scenes\base_scenes\CardSlot.cpp" />
     <ClCompile Include="src\scenes\base_scenes\GatherResources.cpp" />
     <ClCompile Include="src\scenes\base_scenes\Chapel.cpp" />
+    <ClCompile Include="src\scenes\base_scenes\Joust.cpp" />
     <ClCompile Include="src\scenes\base_scenes\Library.cpp" />
     <ClCompile Include="src\scenes\base_scenes\ManageWorkers.cpp" />
     <ClCompile Include="src\scenes\base_scenes\Rest.cpp" />
@@ -310,6 +312,7 @@
     <ClCompile Include="src\scenes\random_events\FountainOfYouth.cpp" />
     <ClCompile Include="src\scenes\random_events\KnightsWhoSayNah.cpp" />
     <ClCompile Include="src\scenes\random_events\LiterallySatan.cpp" />
+    <ClCompile Include="src\scenes\random_events\TheBlackKnight.cpp" />
     <ClCompile Include="src\scenes\random_events\Treasure.cpp" />
     <ClCompile Include="src\scenes\random_events\TrolleyProblem.cpp" />
     <ClCompile Include="src\scenes\Combat.cpp" />
@@ -330,6 +333,7 @@
     <ClCompile Include="src\core\Tile.cpp" />
     <ClCompile Include="src\core\Clock.cpp" />
     <ClCompile Include="src\scenes\random_events\WanderingBard.cpp" />
+    <ClCompile Include="src\scenes\random_events\WanderingCleric.cpp" />
     <ClCompile Include="src\scenes\random_events\WanderingSage.cpp" />
     <ClCompile Include="src\TowerDefense.cpp" />
     <ClCompile Include="src\towers\Alchemist.cpp" />

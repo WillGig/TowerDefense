@@ -61,6 +61,8 @@ void TowerDefense::LoadTextures()
     Texture::LoadTexture("manageWorkersButtonSelected", baseButtons.load(3, 9));
     Texture::LoadTexture("continueButton",              baseButtons.load(0, 10));
     Texture::LoadTexture("continueButtonSelected",      baseButtons.load(1, 10));
+    Texture::LoadTexture("joustButton",                 baseButtons.load(2, 10));
+    Texture::LoadTexture("joustButtonSelected",         baseButtons.load(3, 10));
         
     SpriteSheet buildHireButtons("res/textures/BuildHireButtons.png", 128, 50);
     Texture::LoadTexture("buildHouseButton",            buildHireButtons.load(0, 0));
@@ -330,10 +332,10 @@ void TowerDefense::LoadTextures()
     Texture::LoadTexture("auraInfo",        cardInfo.load(1, 4));
     Texture::LoadTexture("stunInfo",        cardInfo.load(2, 4));
     Texture::LoadTexture("slowInfo",        cardInfo.load(3, 4));
-    Texture::LoadTexture("SpellweaverInfo", cardInfo.load(0, 5));
-    Texture::LoadTexture("SageInfo",        cardInfo.load(1, 5));
-    Texture::LoadTexture("FighterInfo",     cardInfo.load(2, 5));
-    Texture::LoadTexture("BerserkerInfo",   cardInfo.load(3, 5));
+    Texture::LoadTexture("Spellweaver",     cardInfo.load(0, 5));
+    Texture::LoadTexture("Sage",            cardInfo.load(1, 5));
+    Texture::LoadTexture("Fighter",         cardInfo.load(2, 5));
+    Texture::LoadTexture("Berserker",       cardInfo.load(3, 5));
 
     SpriteSheet heroImages("res/textures/HeroImages.png", 440, 560);
     Texture::LoadTexture("humanMale",       heroImages.load(0, 0));
@@ -352,6 +354,7 @@ void TowerDefense::LoadTextures()
     Texture::LoadTexture("giantFemale",     heroImages.load(1, 2));
     Texture::LoadTexture("heath",           heroImages.load(2, 2));
     Texture::LoadTexture("hoid",            heroImages.load(3, 2));
+    Texture::LoadTexture("aramis",          heroImages.load(4, 2));
 
     SpriteSheet heroUpgrades("res/textures/HeroUpgrades.png", 440, 560);
     Texture::LoadTexture("damageUpgrade",       heroUpgrades.load(0, 0));
@@ -385,6 +388,7 @@ void TowerDefense::LoadTextures()
     Texture::LoadTexture("Prince",                  artifacts.load(0, 2));
     Texture::LoadTexture("Shrubbery",               artifacts.load(1, 2));
     Texture::LoadTexture("Blessed Hand Grenade",    artifacts.load(2, 2));
+    Texture::LoadTexture("Explorers Hat",           artifacts.load(3, 2));
 
     SpriteSheet artifactInfo("res/textures/ArtifactInfo.png", 440, 170);
     Texture::LoadTexture("Token Of The MuteInfo",       artifactInfo.load(0, 0));
@@ -410,6 +414,7 @@ void TowerDefense::LoadTextures()
     Texture::LoadTexture("PrinceInfo",                  artifactInfo.load(0, 5));
     Texture::LoadTexture("ShrubberyInfo",               artifactInfo.load(1, 5));
     Texture::LoadTexture("Blessed Hand GrenadeInfo",    artifactInfo.load(2, 5));
+    Texture::LoadTexture("Explorers HatInfo",           artifactInfo.load(3, 5));
 
     std::cout << "...Animations" << std::endl;
 

@@ -6,7 +6,7 @@
 
 namespace TowerDefense 
 {
-	enum class Resource { WOOD, STONE, WHEAT, GOLD };
+	enum class Resource { WOOD, STONE, WHEAT, GOLD , EXPLORE};
 
 	class SideboardSlot;
 

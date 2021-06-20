@@ -84,12 +84,13 @@ void TowerDefense::GatherResources::Update()
 			float wood = Random::GetFloat();
 			float stone = Random::GetFloat();
 			float wheat = Random::GetFloat();
-			m_AmountGathered.w = (int)round(wood / (wood + stone + wheat) * 150.0f);
-			m_AmountGathered.x = (int)round(stone / (wood + stone + wheat) * 150.0f);
-			m_AmountGathered.y = (int)round(wheat / (wood + stone + wheat) * 150.0f);
+			int gatherRate = player.GetResourceGatherRate(Resource::EXPLORE);
+			m_AmountGathered.w = (int)round(wood / (wood + stone + wheat) * gatherRate);
+			m_AmountGathered.x = (int)round(stone / (wood + stone + wheat) * gatherRate);
+			m_AmountGathered.y = (int)round(wheat / (wood + stone + wheat) * gatherRate);
 
-			//Ensure that exactly 150 resources are gathered
-			if (m_AmountGathered.w + m_AmountGathered.x + m_AmountGathered.y > 150.0f)
+			//Ensure that exactly gatherRate resources are gathered
+			if (m_AmountGathered.w + m_AmountGathered.x + m_AmountGathered.y > gatherRate)
 			{
 				if (m_AmountGathered.w > m_AmountGathered.x && m_AmountGathered.w > m_AmountGathered.y)
 					m_AmountGathered.w--;
@@ -98,7 +99,7 @@ void TowerDefense::GatherResources::Update()
 				else
 					m_AmountGathered.y--;
 			}
-			else if (m_AmountGathered.w + m_AmountGathered.x + m_AmountGathered.y < 150.0f)
+			else if (m_AmountGathered.w + m_AmountGathered.x + m_AmountGathered.y < gatherRate)
 			{
 				if (m_AmountGathered.w > m_AmountGathered.x && m_AmountGathered.w > m_AmountGathered.y)
 					m_AmountGathered.w++;
