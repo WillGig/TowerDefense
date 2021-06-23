@@ -15,7 +15,7 @@ namespace TowerDefense
 
 		virtual void EndRound();
 
-		bool Contains(float x, float y) const;
+		virtual bool Contains(float x, float y) const;
 
 		float GetDistance(float x, float y) const;
 

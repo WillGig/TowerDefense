@@ -297,6 +297,7 @@
     <ClCompile Include="src\scenes\base_scenes\Build.cpp" />
     <ClCompile Include="src\scenes\base_scenes\BuildButton.cpp" />
     <ClCompile Include="src\scenes\base_scenes\CardSlot.cpp" />
+    <ClCompile Include="src\scenes\base_scenes\ClickCircle.cpp" />
     <ClCompile Include="src\scenes\base_scenes\GatherResources.cpp" />
     <ClCompile Include="src\scenes\base_scenes\Chapel.cpp" />
     <ClCompile Include="src\scenes\base_scenes\Joust.cpp" />
@@ -466,6 +467,7 @@
     <ClInclude Include="src\scenes\base_scenes\BaseScene.h" />
     <ClInclude Include="src\scenes\base_scenes\BuildButton.h" />
     <ClInclude Include="src\scenes\base_scenes\CardSlot.h" />
+    <ClInclude Include="src\scenes\base_scenes\ClickCircle.h" />
     <ClInclude Include="src\scenes\random_events\RandomEvent.h" />
     <ClInclude Include="src\scenes\Combat.h" />
     <ClInclude Include="src\scenes\CombatReward.h" />

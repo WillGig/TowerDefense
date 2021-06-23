@@ -17,7 +17,6 @@ Current:
 	Change events to only happen once, like artifacts
 
 	Add more events:
-	- The Black Knight - Challenge to duel or decline challenge - Win (Gain jousting option in base), lose (-20 hp)
 	
 	Add more mini-games
 	- cave exploring - rpg dungeon crawler like
@@ -190,6 +189,7 @@ Notes:
 	- Wandering sage	Give all wood for heath the wizard
 	- Wandering bard	Give 300 gold for hoid the bard
 	- Wandering cleric 	Give all wheat for aramis
+	- The Black Knight 	Gain joust activity or heal 20 hp
 
 	Daily activities
 		Explore Caves 	- Random event						

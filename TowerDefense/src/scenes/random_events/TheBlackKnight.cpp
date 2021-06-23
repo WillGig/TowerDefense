@@ -7,8 +7,8 @@ TowerDefense::TheBlackKnight::TheBlackKnight()
 	:m_Image(std::make_unique<StaticImage>(180.0f, 350.0f, 300, 300, 0.0f, "events/BlackKnight")),
 	m_Button1(std::make_unique<Button>(400.0f, 150.0f, 600, 50, "eventButton")),
 	m_Button2(std::make_unique<Button>(400.0f, 100.0f, 600, 50, "eventButton")),
-	m_Text1(std::make_unique<Text>("I accept! (Gain Joust activity, lose 20 health)", 400.0f, 150.0f, 12.0f, 0.0f)),
-	m_Text2(std::make_unique<Text>("Search elsewhere knight. I have no time for games.", 400.0f, 100.0f, 12.0f, 0.0f))
+	m_Text1(std::make_unique<Text>("I accept! (Gain Joust activity)", 400.0f, 150.0f, 12.0f, 0.0f)),
+	m_Text2(std::make_unique<Text>("I am only here to rest in peace (Heal 20 HP)", 400.0f, 100.0f, 12.0f, 0.0f))
 {
 	m_Text1->SetColor(1.0f, 1.0f, 1.0f, 1.0f);
 	m_Text2->SetColor(1.0f, 1.0f, 1.0, 1.0f);
@@ -38,13 +38,13 @@ void TowerDefense::TheBlackKnight::Update()
 	if (m_Button1->IsClicked())
 	{
 		Base::AddBaseScene(std::make_shared<Joust>());
-		Player::Get().ChangeHealth(-20);
 		m_Exit = true;
 	}
 
 	m_Button2->Update();
 	if (m_Button2->IsClicked())
 	{
+		Player::Get().ChangeHealth(20);
 		m_Exit = true;
 	}
 }

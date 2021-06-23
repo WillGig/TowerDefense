@@ -115,6 +115,15 @@ void TowerDefense::PostCombatScreen::OnSwitch()
 		m_Defeated = true;
 		m_VictoryText = std::make_unique<Text>("DEFEAT", 400.0f, 510.0f, 36.0f, 0.0f);
 		m_VictoryText->SetColor(1.0f, 1.0f, 1.0f, 1.0f);
+
+		m_GameOverStats = std::make_unique<Text>("Days Survived\n\nDamage Dealt\n\nAmount Healed\n\nEnemies Defeated\n\nScore", 360.0f, 340.0f, 12.0f, 0.0f);
+		m_GameOverStats->SetColor(1.0f, 1.0f, 1.0f, 1.0f);
+		m_GameOverNumbers = std::make_unique<Text>(std::to_string(GetDay() - 1) + "\n\n"
+			+ std::to_string(player.GetDamageDealt()) + "\n\n"
+			+ std::to_string(player.GetAmountHealed()) + "\n\n"
+			+ std::to_string(player.GetEnemiesDefeated()) + "\n\n"
+			+ std::to_string(player.GetScore()), 500.0f, 340.0f, 12.0f, 0.0f);
+		m_GameOverNumbers->SetColor(1.0f, 1.0f, 1.0f, 1.0f);
 	}
 	else if(m_Defeated)
 	{
@@ -184,17 +193,7 @@ void TowerDefense::PostCombatScreen::OnSwitch()
 	m_EscapedNumbers->SetColor(1.0f, 1.0f, 1.0f, 1.0f);
 
 	if (m_Defeated)
-	{
-		m_GameOverStats = std::make_unique<Text>("Days Survived\n\nDamage Dealt\n\nAmount Healed\n\nEnemies Defeated\n\nScore", 360.0f, 340.0f, 12.0f, 0.0f);
-		m_GameOverStats->SetColor(1.0f, 1.0f, 1.0f, 1.0f);
-		m_GameOverNumbers = std::make_unique<Text>(std::to_string(GetDay()-1) + "\n\n"
-			+ std::to_string(player.GetDamageDealt()) + "\n\n"
-			+ std::to_string(player.GetAmountHealed()) + "\n\n"
-			+ std::to_string(player.GetEnemiesDefeated()) + "\n\n"
-			+ std::to_string(player.GetScore()), 500.0f, 340.0f, 12.0f, 0.0f);
-		m_GameOverNumbers->SetColor(1.0f, 1.0f, 1.0f, 1.0f);
 		return;
-	}
 
 	//Resources from Workers
 	if(player.GetWorkers(Resource::WOOD) > 0)

@@ -5,6 +5,7 @@
 #include "BuildButton.h"
 #include "CardSlot.h"
 #include "ArtifactSlot.h"
+#include "ClickCircle.h"
 
 namespace TowerDefense
 {
@@ -196,6 +197,17 @@ namespace TowerDefense
 		inline std::string GetName() override { return "Joust"; }
 
 	private:
-		std::unique_ptr<Button> m_BackToCamp;
+		int m_Distance, m_Winner, m_Level, m_CircleSpawn;
+
+		bool m_Jousting, m_Failed;
+
+		std::unique_ptr<Button> m_BackToCamp, m_Joust;
+
+		std::unique_ptr<Image> m_Player, m_Knight;
+
+		std::unique_ptr<Text> m_WinnerMessage, m_LevelText;
+
+		std::vector<ClickCircle> m_Circles;
+		std::vector<int> m_RemoveCircles;
 	};
 }
