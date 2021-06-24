@@ -11,7 +11,7 @@
 TowerDefense::Tower::Tower::Tower(float x, float y, int width, int height, float fireTime, int range, TowerType type, const std::string& name)
 	:Entity(x, y, width, height, 0.0f, name, Type::TOWER),
 	m_DamageType(), m_PhysicalDamage(0.0f), m_MagicDamage(0.0f), 
-	m_Spread(0.0f), m_CritChance(0.0f), m_CritMultiplier(2.0f),
+	m_Spread(0.0f), m_CritChance(0.0f), m_CritMultiplier(2.0f), m_SeeInvisibility(false),
 	m_FireTime(fireTime), m_TotalDamageDealt(0), m_FireReady(1000), m_Range(range), m_Highlighted(false), m_Clicked(false), 
 	m_TowerType(type), m_Name(name), m_TargetType(TargetType::FIRST), 
 	m_RegularImage(std::make_shared<Image>(name, x, y, width, height, 0.0f)),
@@ -180,12 +180,17 @@ std::shared_ptr<TowerDefense::Entity>  TowerDefense::Tower::Tower::FindTarget()
 	std::shared_ptr<Tower> targetTower;
 	auto entities = Combat::GetEntities();
 	for (unsigned int i = 0; i < entities->size(); i++) {
-		std::shared_ptr<TowerDefense::Entity> e = entities->at(i);
+		auto e = entities->at(i);
 		if (GetDistance(e->GetX(), e->GetY()) > m_Range)
 			continue;
 
 		if (m_TowerType == TowerType::DAMAGE) {
-			if (std::shared_ptr<Enemy::Enemy> enemy = std::dynamic_pointer_cast<Enemy::Enemy>(e)) {
+			if (e->GetEntityType() == Type::ENEMY) {
+				auto enemy = std::dynamic_pointer_cast<Enemy::Enemy>(e);
+
+				if (!enemy->Visible() && !m_SeeInvisibility)
+					continue;
+
 				if (!targetEnemy)
 					targetEnemy = enemy;
 				else if (m_TargetType == TargetType::FIRST && enemy->GetDistanceTraveled() > targetEnemy->GetDistanceTraveled())
@@ -240,12 +245,22 @@ void TowerDefense::Tower::Tower::ClearBuffs()
 		m_Buffs->at(i)->Remove(*this);
 }
 
-//Used to ensure that the same tower cannot stack buffs on one target
+//Used to ensure that the same tower or towers of the same type cannot stack buffs on one target
 bool TowerDefense::Tower::Tower::IsBuffedBy(Tower& t)
 {
 	for (unsigned int i = 0; i < m_Buffs->size(); i++)
 	{
 		if (m_Buffs->at(i)->GetSource() == t.GetID())
+			return true;
+		if (std::dynamic_pointer_cast<Tower>(Combat::GetEntity(m_Buffs->at(i)->GetSource()))->GetName() == t.GetName())
+			return true;
+	}
+	
+	for (unsigned int i = 0; i < m_AddBuffs->size(); i++)
+	{
+		if (m_AddBuffs->at(i)->GetSource() == t.GetID())
+			return true;
+		if (std::dynamic_pointer_cast<Tower>(Combat::GetEntity(m_AddBuffs->at(i)->GetSource()))->GetName() == t.GetName())
 			return true;
 	}
 	return false;

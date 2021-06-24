@@ -15,7 +15,7 @@ namespace TowerDefense
 
 		virtual void EndRound();
 
-		bool Contains(float x, float y) const;
+		virtual bool Contains(float x, float y) const;
 
 		float GetDistance(float x, float y) const;
 
@@ -38,6 +38,8 @@ namespace TowerDefense
 		inline virtual void SetRotation(float rotation) { m_Rotation = rotation; m_Image->SetRotation(m_Rotation); }
 
 		void SetImage(std::shared_ptr<Image> image);
+
+		inline std::string GetImageName() const { return m_Image->GetFile(); }
 
 	protected:
 		//Unique ID assigned to each entity at creation

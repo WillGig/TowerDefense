@@ -246,22 +246,22 @@
     <ClCompile Include="src\enemies\EnemyInfo.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\scenes\cave_scenes\CaveScene.cpp">
+    <ClCompile Include="src\scenes\random_events\RandomEvent.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\scenes\cave_scenes\FountainOfYouth.cpp">
+    <ClCompile Include="src\scenes\random_events\FountainOfYouth.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\scenes\cave_scenes\LiterallySatan.cpp">
+    <ClCompile Include="src\scenes\random_events\LiterallySatan.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\scenes\cave_scenes\CaveBat.cpp">
+    <ClCompile Include="src\scenes\random_events\CaveBat.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\scenes\cave_scenes\TrolleyProblem.cpp">
+    <ClCompile Include="src\scenes\random_events\TrolleyProblem.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\scenes\cave_scenes\KnightsWhoSayNah.cpp">
+    <ClCompile Include="src\scenes\random_events\KnightsWhoSayNah.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\cards\curses\Flames.cpp">
@@ -270,7 +270,7 @@
     <ClCompile Include="src\cards\quirks\Farsighted.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\scenes\base_scenes\Caves.cpp">
+    <ClCompile Include="src\scenes\base_scenes\GatherResources.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\scenes\base_scenes\Rest.cpp">
@@ -411,6 +411,156 @@
     <ClCompile Include="src\cards\StrongPoisons.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="src\enemies\DoubleOoze.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\enemies\JumpingOoze.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\enemies\Doubler.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\enemies\ShieldRat.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\enemies\ShamanRat.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\enemies\HealerRat.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\enemies\BlinkBug.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\enemies\RunnerBeetle.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\enemies\MegaOoze.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\artifacts\BlessingOfTheBat.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\enemies\TankBeetle.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\towers\Ranger.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\scenes\base_scenes\Trader.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\scenes\base_scenes\CardSlot.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\scenes\base_scenes\ArtifactSlot.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\artifacts\Artifact.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\enemies\EnemyIcon.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\scenes\base_scenes\ManageWorkers.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\artifacts\LuckyTools.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\artifacts\Boulder.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\artifacts\MagicBeans.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\artifacts\FruitCake.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\artifacts\DollHouse.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\artifacts\ToyDolls.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\artifacts\HandOfMidas.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\artifacts\HouseExpansionKit.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\artifacts\Thermos.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\artifacts\Cooler.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\artifacts\MiniatureWormHole.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\artifacts\SpecialToxins.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\cards\SideboardSlot.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\artifacts\ExtraSlot.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\scenes\Event.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\scenes\random_events\FrogPrince.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\artifacts\Prince.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\cards\curses\Frog.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\scenes\random_events\Treasure.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\artifacts\Shrubbery.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\artifacts\BlessedHandGrenade.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\scenes\random_events\WanderingSage.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\scenes\random_events\WanderingBard.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\cards\quirks\SpellWeaver.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\cards\quirks\Fighter.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\cards\quirks\Sage.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\cards\quirks\Berserker.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\scenes\random_events\WanderingCleric.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\scenes\random_events\TheBlackKnight.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\scenes\base_scenes\Joust.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\artifacts\Explorershat.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\scenes\base_scenes\ClickCircle.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="res\shaders\Texture.shader" />
@@ -418,6 +568,7 @@
     <None Include="res\shaders\Circle.shader" />
     <None Include="res\shaders\Rectangle.shader" />
     <None Include="res\shaders\Line.shader" />
+    <None Include="res\shaders\Invisible.shader" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="res\textures\CardBackgrounds.png">
@@ -541,6 +692,27 @@
       <Filter>Resource Files</Filter>
     </Image>
     <Image Include="res\textures\ArtifactInfo.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\textures\AuraCards.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\textures\AuraInfo.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\textures\Auras.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\textures\cardTemplate.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\textures\CombatRewardButton.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\textures\Stats.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\textures\BuildButtons.png">
       <Filter>Resource Files</Filter>
     </Image>
   </ItemGroup>
@@ -746,7 +918,7 @@
     <ClInclude Include="src\enemies\EnemyInfo.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\scenes\cave_scenes\CaveScene.h">
+    <ClInclude Include="src\scenes\random_events\RandomEvent.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\cards\curses\Curses.h">
@@ -783,6 +955,27 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\cards\AuraCards.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\towers\Ranger.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\scenes\base_scenes\CardSlot.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\scenes\base_scenes\ArtifactSlot.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\enemies\EnemyIcon.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\cards\SideboardSlot.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\scenes\Event.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\scenes\base_scenes\ClickCircle.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

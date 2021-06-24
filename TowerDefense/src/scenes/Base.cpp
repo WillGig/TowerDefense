@@ -12,8 +12,6 @@ TowerDefense::Base::Base()
 	m_WaitText(std::make_unique<Text>("Available Again Tomorrow!", 400.0f, 235.0f, 12.0f, 0.0f))
 {
 	m_WaitText->SetColor(1.0f, 1.0f, 1.0f, 1.0f);
-	AddBaseScene(std::make_shared<Caves>());
-	AddBaseScene(std::make_shared<Build>());
 }
 
 void TowerDefense::Base::Render()
@@ -27,7 +25,7 @@ void TowerDefense::Base::Render()
 			s_BaseScenes->at(i)->RenderButton();
 			if (s_BaseScenes->at(i)->ButtonSelected())
 			{
-				if (s_BaseScenes->at(i)->ActivityDone())
+				if (s_BaseScenes->at(i)->GetActivityReady() != 0)
 					m_WaitText->Render();
 				else
 					s_BaseScenes->at(i)->RenderText();
@@ -65,7 +63,18 @@ void TowerDefense::Base::Update()
 void TowerDefense::Base::OnSwitch()
 {
 	for (unsigned int i = 0; i < s_BaseScenes->size(); i++)
-		s_BaseScenes->at(i)->SetActivityDone(false);
+	{
+		int ready = s_BaseScenes->at(i)->GetActivityReady();
+		if (ready != 0)
+			s_BaseScenes->at(i)->SetActivityReady(ready - 1);
+	}
+}
+
+void TowerDefense::Base::Reset()
+{
+	s_BaseScenes = std::make_unique<std::vector<std::shared_ptr<BaseScene>>>();
+	AddBaseScene(std::make_shared<GatherResources>());
+	AddBaseScene(std::make_shared<Build>());
 }
 
 void TowerDefense::Base::CleanUp()
@@ -78,7 +87,18 @@ void TowerDefense::Base::UpdateActivities()
 	for (unsigned int i = 0; i < s_BaseScenes->size(); i++)
 	{
 		s_BaseScenes->at(i)->UpdateButton();
-		if (s_BaseScenes->at(i)->ButtonClicked() && !s_BaseScenes->at(i)->ActivityDone())
+
+		if (s_BaseScenes->at(i)->ButtonSelected() && s_BaseScenes->at(i)->GetActivityReady() != 0)
+		{
+			int ready = s_BaseScenes->at(i)->GetActivityReady();
+			if(ready == 1)
+				m_WaitText = std::make_unique<Text>("Available Again in 1 Day.", 400.0f, 235.0f, 12.0f, 0.0f);
+			else
+				m_WaitText = std::make_unique<Text>("Available Again in " + std::to_string(ready) + " Days.", 400.0f, 235.0f, 12.0f, 0.0f);
+			m_WaitText->SetColor(1.0f, 1.0f, 1.0f, 1.0f);
+		}
+
+		if (s_BaseScenes->at(i)->ButtonClicked() && s_BaseScenes->at(i)->GetActivityReady() == 0)
 		{
 			m_CurrentMenu = i;
 			s_BaseScenes->at(i)->OnSwitch();
@@ -93,7 +113,10 @@ void TowerDefense::Base::UpdateNextDay()
 	if (m_NextDay->IsClicked())
 	{
 		NextDay();
-		SetScene(SceneType::PRECOMBAT);
+		if (Random::GetFloat() > 0.5f)
+			SetScene(SceneType::PRECOMBAT);
+		else
+			SetScene(SceneType::EVENT);
 	}
 }
 

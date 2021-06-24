@@ -52,6 +52,9 @@ namespace TowerDefense
 			inline float GetDamageDealt() const { return m_TotalDamageDealt; }
 			inline void AddDamageDelt(float damage) { m_TotalDamageDealt += damage; }
 
+			inline bool CanSeeInvisibility() const { return m_SeeInvisibility; }
+			inline void SetSeeInvisilitity(bool see) { m_SeeInvisibility = see; }
+
 			inline void SetHighlighted() { m_Highlighted = true; }
 
 			inline bool GetClicked() { return m_Clicked; };
@@ -79,6 +82,8 @@ namespace TowerDefense
 			
 			DamageType m_DamageType;
 
+			bool m_SeeInvisibility;
+
 			float m_PhysicalDamage, m_MagicDamage, m_Spread, m_CritChance, m_CritMultiplier;
 
 		private:
@@ -86,6 +91,7 @@ namespace TowerDefense
 			void UpdateImage();
 			void Attack();
 			void UpdateBuffs();
+			
 
 			//Attack period in Game Updates (60 per second)
 			float m_FireTime, m_TotalDamageDealt;

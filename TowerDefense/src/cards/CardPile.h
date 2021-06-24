@@ -24,6 +24,8 @@ namespace TowerDefense
 
 		void Copy(std::shared_ptr<CardPile> p);
 
+		void CopyWithExclusions(std::shared_ptr<CardPile> p, std::shared_ptr<std::vector<unsigned int>> exclude);
+
 		void Clear();
 
 		void Shuffle();

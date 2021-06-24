@@ -1,8 +1,16 @@
 #include "pch.h"
 #include "Player.h"
+#include "scenes/Scene.h"
+#include "cards/SkillCards.h"
+#include "cards/AuraCards.h"
+#include "cards/TowerCards.h"
+#include "cards/SideboardSlot.h"
 
 TowerDefense::Player::Player()
-    :m_Health(100), m_MaxHealth(100), m_Energy(100), m_Resources(0, 0, 0, 0), m_Hand(std::make_shared<Hand>(10)),
+    :m_Health(100), m_MaxHealth(100), m_Energy(100), 
+    m_Population(0), m_MaxPopulation(0), m_NumberOfHouses(1), m_LumberJacks(0), m_Miners(0), m_Farmers(0),
+    m_DamageDealt(0), m_AmountHealed(0), m_EnemiesDefeated(0), m_Score(0),
+    m_Resources(0, 0, 0, 0), m_Hand(std::make_shared<Hand>(10)),
     m_Deck(std::make_shared<CardPile>(-100.0f,0.0f)), 
     m_DrawPile(std::make_shared<CardPile>(49.0f, 50.0f)),
     m_DiscardPile(std::make_shared<CardPile>(748.0f, 50.0f)),
@@ -41,6 +49,42 @@ TowerDefense::Player& TowerDefense::Player::Get()
 {
     static Player instance;
     return instance;
+}
+
+void TowerDefense::Player::Reset()
+{
+    SetHealth(100);
+    SetMaxHealth(100);
+    SetEnergy(100);
+    m_DamageDealt = 0;
+    m_AmountHealed = 0;
+    m_EnemiesDefeated = 0;
+    m_Score = 0;
+    SetResource(0, Resource::WOOD);
+    SetResource(0, Resource::STONE);
+    SetResource(0, Resource::WHEAT);
+    SetResource(0, Resource::GOLD);
+    m_ResourceGatherSpeed = Vec4i(100, 100, 100, 150);
+    m_Population = 0;
+    m_MaxPopulation = 10;
+    m_NumberOfHouses = 1;
+    m_LumberJacks = 0;
+    m_Miners = 0;
+    m_Farmers = 0;
+    m_Hand = std::make_shared<Hand>(10);
+    m_Deck = std::make_shared<CardPile>(-100.0f, 0.0f);
+    m_DrawPile = std::make_shared<CardPile>(49.0f, 50.0f);
+    m_DiscardPile = std::make_shared<CardPile>(748.0f, 50.0f);
+    m_Artifacts = std::make_shared<ArtifactPile>(570.0f, 570.0f);
+    m_SideBoardSlots = std::make_shared<std::vector<std::unique_ptr<SideboardSlot>>>();
+
+    //Starter Deck
+    for (int i = 0; i < 8; i++)
+        AddToDeck(std::make_shared<Focus>(false));
+    for (int i = 0; i < 4; i++)
+        AddToDeck(std::make_shared<ArcherCard>());
+    for (int i = 0; i < 2; i++)
+        AddToDeck(std::make_shared<PotOfGreed>());
 }
 
 void TowerDefense::Player::SetEnergy(int energy)
@@ -106,34 +150,122 @@ void TowerDefense::Player::ChangeResource(int change, Resource res)
     if (res == Resource::WOOD)
     {
         m_Resources.w += change;
+        if (m_Resources.w < 0)
+            m_Resources.w = 0;
         m_WoodText = std::make_unique<Text>(std::to_string(m_Resources.w), 50.0f, 575.0f, 10.0f, 0.0f);
         m_WoodText->SetColor(1.0f, 1.0f, 1.0f, 1.0f);
     }
     else if (res == Resource::STONE)
     {
         m_Resources.x += change;
+        if (m_Resources.x < 0)
+            m_Resources.x = 0;
         m_StoneText = std::make_unique<Text>(std::to_string(m_Resources.x), 125.0f, 575.0f, 10.0f, 0.0f);
         m_StoneText->SetColor(1.0f, 1.0f, 1.0f, 1.0f);
     }
     else if (res == Resource::WHEAT)
     {
         m_Resources.y += change;
+        if (m_Resources.y < 0)
+            m_Resources.y = 0;
         m_WheatText = std::make_unique<Text>(std::to_string(m_Resources.y), 200.0f, 575.0f, 10.0f, 0.0f);
         m_WheatText->SetColor(1.0f, 1.0f, 1.0f, 1.0f);
     }
     else if (res == Resource::GOLD)
     {
         m_Resources.z += change;
+        if (m_Resources.z < 0)
+            m_Resources.z = 0;
         m_GoldText = std::make_unique<Text>(std::to_string(m_Resources.z), 275.0f, 575.0f, 10.0f, 0.0f);
         m_GoldText->SetColor(1.0f, 1.0f, 1.0f, 1.0f);
     }
 }
 
+int TowerDefense::Player::GetResourceGatherRate(Resource res) const
+{
+    if (res == Resource::WOOD)
+        return m_ResourceGatherSpeed.w;
+    else if (res == Resource::STONE)
+        return m_ResourceGatherSpeed.x;
+    else if (res == Resource::WHEAT)
+        return m_ResourceGatherSpeed.y;
+    else if(res == Resource::EXPLORE)
+        return m_ResourceGatherSpeed.z;
+    return 0;
+}
+
+void TowerDefense::Player::SetResourceGatherRate(int rate, Resource res)
+{
+    if (res == Resource::WOOD)
+        m_ResourceGatherSpeed.w = rate;
+    else if (res == Resource::STONE)
+        m_ResourceGatherSpeed.x = rate;
+    else if (res == Resource::WHEAT)
+        m_ResourceGatherSpeed.y = rate;
+    else if (res == Resource::EXPLORE)
+        m_ResourceGatherSpeed.z = rate;
+}
+
+int TowerDefense::Player::GetWorkers(Resource res) const
+{
+    if (res == Resource::WOOD)
+        return m_LumberJacks;
+    else if (res == Resource::STONE)
+        return m_Miners;
+    else if (res == Resource::WHEAT)
+        return m_Farmers;
+    return 0;
+}
+
+void TowerDefense::Player::AddWorker(Resource res)
+{
+    if (res == Resource::WOOD)
+       m_LumberJacks++;
+    else if (res == Resource::STONE)
+        m_Miners++;
+    else if (res == Resource::WHEAT)
+        m_Farmers++;
+}
+
+void TowerDefense::Player::RemoveWorker(Resource res)
+{
+    if (res == Resource::WOOD)
+        m_LumberJacks--;
+    else if (res == Resource::STONE)
+        m_Miners--;
+    else if (res == Resource::WHEAT)
+        m_Farmers--;
+}
+
+void TowerDefense::Player::SetHealth(int health)
+{
+    m_Health = health;
+    m_HealthText = std::make_unique<Text>(std::to_string(m_Health) + "/" + std::to_string(m_MaxHealth), 660.0f, 575.0f, 10.0f, 0.0f);
+    m_HealthText->SetColor(m_TextColor.w, m_TextColor.x, m_TextColor.y, m_TextColor.z);
+}
+
 void TowerDefense::Player::ChangeHealth(int change)
 {
+    int previousHealth = m_Health;
     m_Health += change;
+    if (m_Health < 1)
+    {
+        m_Health = 0;
+        TowerDefense::SetScene(SceneType::POSTCOMBAT);
+    }
     if (m_Health > m_MaxHealth)
         m_Health = m_MaxHealth;
+
+    if (m_Health > previousHealth)
+        m_AmountHealed += m_Health - previousHealth;
+
+    m_HealthText = std::make_unique<Text>(std::to_string(m_Health) + "/" + std::to_string(m_MaxHealth), 660.0f, 575.0f, 10.0f, 0.0f);
+    m_HealthText->SetColor(m_TextColor.w, m_TextColor.x, m_TextColor.y, m_TextColor.z);
+}
+
+void TowerDefense::Player::SetMaxHealth(int health)
+{
+    m_MaxHealth = health;
     m_HealthText = std::make_unique<Text>(std::to_string(m_Health) + "/" + std::to_string(m_MaxHealth), 660.0f, 575.0f, 10.0f, 0.0f);
     m_HealthText->SetColor(m_TextColor.w, m_TextColor.x, m_TextColor.y, m_TextColor.z);
 }
@@ -229,7 +361,18 @@ void TowerDefense::Player::ResetCardPiles()
 {
     m_Hand->DiscardHand();
     m_DiscardPile->Clear();
-    m_Deck->Copy(m_DrawPile);
+
+    //Exclude any cards in sideboard slots
+    if (m_SideBoardSlots->size() > 0)
+    {
+        std::shared_ptr<std::vector<unsigned int>> exclude = std::make_shared<std::vector<unsigned int>>();
+        for (unsigned int i = 0; i < m_SideBoardSlots->size(); i++)
+            exclude->push_back(m_SideBoardSlots->at(i)->GetCard());
+        m_Deck->CopyWithExclusions(m_DrawPile, exclude);
+    }
+    else
+        m_Deck->Copy(m_DrawPile);
+
     m_DrawPile->Shuffle();
     DrawHand();
 }
@@ -257,6 +400,7 @@ void TowerDefense::Player::CleanUp()
     m_StoneIcon.reset();
     m_WheatIcon.reset();
     m_GoldIcon.reset();
+    m_SideBoardSlots->clear();
 }
 
 void TowerDefense::Player::AddToDeck(std::shared_ptr<Card> c)
@@ -294,6 +438,30 @@ void TowerDefense::Player::RemoveFromArtifacts(int index)
     m_Artifacts->RemoveArtifact(index);
 }
 
+void TowerDefense::Player::RemoveFromArtifacts(const std::string name)
+{
+    for (int i = 0; i < m_Artifacts->GetSize(); i++)
+    {
+        if (m_Artifacts->GetArtifact(i)->GetName() == name)
+        {
+            m_Artifacts->RemoveArtifact(i);
+            return;
+        }
+    }
+}
+
+void TowerDefense::Player::ArtifactCombatRender()
+{
+    for (int i = 0; i < m_Artifacts->GetSize(); i++)
+        m_Artifacts->GetArtifact(i)->CombatRender();
+}
+
+void TowerDefense::Player::ArtifactCombatUpdate()
+{
+    for (int i = 0; i < m_Artifacts->GetSize(); i++)
+        m_Artifacts->GetArtifact(i)->CombatUpdate();
+}
+
 void TowerDefense::Player::ArtifactOnAddCard(std::shared_ptr<Card> c)
 {
     for (int i = 0; i < m_Artifacts->GetSize(); i++)
@@ -322,4 +490,30 @@ void TowerDefense::Player::ArtifactOnFightEnd()
 {
     for (int i = 0; i < m_Artifacts->GetSize(); i++)
         m_Artifacts->GetArtifact(i)->OnFightEnd();
+}
+
+void TowerDefense::Player::ArtifactOnAddHouse()
+{
+    for (int i = 0; i < m_Artifacts->GetSize(); i++)
+        m_Artifacts->GetArtifact(i)->OnAddHouse();
+}
+
+void TowerDefense::Player::ArtifactOnEnemyHit(std::shared_ptr<Enemy::Enemy> e, std::shared_ptr<Entity> source, Tower::DamageType type)
+{
+    for (int i = 0; i < m_Artifacts->GetSize(); i++)
+        m_Artifacts->GetArtifact(i)->OnEnemyHit(e, source, type);
+}
+
+void TowerDefense::Player::ArtifactOnEnemyReachedEnd(std::shared_ptr<Enemy::Enemy> e)
+{
+    for(int i = 0; i < m_Artifacts->GetSize(); i++)
+        m_Artifacts->GetArtifact(i)->OnEnemyReachedEnd(e);
+}
+
+void TowerDefense::Player::AddSideBoardSlot()
+{
+    m_SideBoardSlots->push_back(std::make_unique<SideboardSlot>());
+    m_SideBoardSlots->at(m_SideBoardSlots->size()-1)->SetY(190.0f);
+    for (unsigned int i = 0; i < m_SideBoardSlots->size(); i++)
+        m_SideBoardSlots->at(i)->SetX(400.0f + (i - (m_SideBoardSlots->size() - 1) / 2.0f) * 100.0f);
 }

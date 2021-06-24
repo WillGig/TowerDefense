@@ -5,6 +5,8 @@ namespace TowerDefense
 {
 	enum class Resource;
 
+	class Artifact;
+
 	class CombatReward : public Button
 	{
 	public:
@@ -20,6 +22,7 @@ namespace TowerDefense
 
 	private:
 		virtual void OnClicked() = 0;
+		virtual void OnRightClicked() {}
 
 	protected:
 		bool m_RewardTaken, m_RequiresFocus, m_ShowingInfo;
@@ -47,13 +50,29 @@ namespace TowerDefense
 		CardReward(int numChoices);
 		void Render() override;
 		void Update() override;
-		void SetPosition(float x, float y) override;
 
 	private:
 		void OnClicked() override;
 
 		std::unique_ptr<CardChoice> m_CardChoice;
 		std::unique_ptr<Button> m_Confirm, m_Cancel;
+		std::unique_ptr<Rectangle> m_Fade;
+	};
+
+	class ArtifactReward : public CombatReward
+	{
+	public:
+		ArtifactReward();
+		void Render() override;
+		void Update() override;
+		void SetPosition(float x, float y) override;
+
+	private:
+		void OnClicked() override;
+		void OnRightClicked() override;
+
+		std::shared_ptr<Artifact> m_Artifact;
+		std::unique_ptr<Image> m_Image;
 		std::unique_ptr<Rectangle> m_Fade;
 	};
 }

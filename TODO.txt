@@ -1,41 +1,74 @@
 Current:
-	design more enemies and possible combats for days 1-10
-	Add days 11-20
-	Make enemies deal more damage? Damage amount above health bar?
-	Make enemy health bars show how much damage poison will do?
+	Examine text being off center (Event)
 
-Soon:
-	Remove stunning strike + poison interaction by adding damage types?
-	Change stations to only allow use every x days
-	Add note to tavern saying "New recruits expected in x days"
-	Jousting	-more gold than mining, but lose some health	- 
+	can scout next battle for gold price
+	
+	Add more Artifacts:
+	- Spyglass 		- scout for free, but the combat after next?
+	- Crystal Ball 		- scount for blood instead
+	- glasses 		- cures nearsightedness					
+	- laser-sword 		- could be used to fix nearsightedness... maybe	
+	- something		- Get an event every day
+	- something		- Can skip events
+	- Map to Eldorado	- Explore x times to turn into gold
+
+	Allow hovering over event options to show cards/artifacts obtained
+	Add second page to events to describe what happens
+	Change events to only happen once, like artifacts
+
+	Add more events:
+	
+	Add more mini-games
+	- cave exploring - rpg dungeon crawler like
+	- Archery	 - tanks style archery game
+	- The matrix	 - Osu! style clicking game
+	- tiles		 - pattern-based mini-game
+
+Soon:	
+	Tower upgrade rework - can upgrade towers in combat, show tower level, permanent upgrades from smithy
+		- Star level shown below towers? Max level 5 (or 10)
+	Add ways to increase score
+	Add alchemy lab, wizard tower, etc. to upgrade certain types of cards
+	Add Fishing		- Get a random relic/gold - minigame?			- 
+				- different fishing rods/tools?
+	Card that creates a wall in the path, stopping enemies temporarily
+	Non-tower deck? Cards with special effects if you don't have any towers
+		- Draw 2 cards. If you have no towers, draw 4 instead.
+		- Aura- if you have no towers, deal 10 damage per second to the strongest enemy
+		- frost wave - if you have no towers, stun all enemies for x seconds	
+	Add other professions? merchants, bring back gold for resources, bankers give interest based on total resources
+	Make it clear where income is coming from
+	Right click on enemies precombat for details
+	Add day 20 bosses and non-rat combats
+	New Trait: Sharp-Eyes - can see invisible enemies
 	Change text renderer to include color in vertex data to allow coloring of specific letters/words
 	Allow right clicking on smithing upgrades to show detailed versions of cards
-	Allow hovering over event options to show cards/artifacts obtained
 	add more potential hero upgrades
 		- range, damage, speed, more missiles, new spells, attacks stun/slow	
-	Shop/merchants
-	can scout next battle for gold price (towers cost gold in battle? 1 currency or two?)
 
 Long Term:
+	No duplicate cards in card selections\shops?
+	Add more maps/paths
+	Enemies that add curses to your draw pile
+	Tower that summons other towers (Conjurer?) upgrades to summon different types
+	Make Base buttons change when they are used
+	Add more groups of enemies to fight pools
+		- Add more orcs/goblins and move to their own category of enemies with spearate fight pools
+		- Add ghosts/spectors as a fight group
+	Bestiary with known enemies and descriptions
 	Add specifics to upgrades when right clicking on them to make it clear what they do
 	Make resolution adjustable
 	Change leveling for heros - add new types of attacks, etc.
-	Add combat info on precombat screen (at least name and picture)
 	Saving and Loading
 	Settings menu
 	In Game Menu
 	indicators for buffs on towers
-	Damage Types - physical, magical, special - shields protect from physical, spellcasters grant mass spell protection
-	Placable building towers?
 	More Towers - Disabling slowing/freezing towers
 		Druid 		- 
 		Melee Towers that fight enemies???
 		Fewer towers with branching class upgrades? Learn new spells?
 	Better graphics for towers
 	change image for enemies depending on the direction they face
-	Selling Towers?
-		
 
 Far away:
 	idle and cast animations for towers
@@ -70,38 +103,98 @@ Notes:
 	- Veteran	starts upgraded				
 	- Just lucky	can crit				
 	- Battleready	costs 10% less				
-	- Explorer	draws a card when played	
+	- Explorer	draws a card when played
+	- Spellweaver	+1 magic damage
+	- Sage		+2 magic damage, -1 physical damage
+	- Fighter	+1 physical damage
+	- Berserker	+2 physical damage, -1 magical damage
+
+	Combats 
+	Broken into pools by day:
+	- 1-3
+	- 4-6
+	- 7-9
+	- 10
+	- 11-13
+	- 14-16
+	- 17-19
+	- 20
+
+	Each day will pick a random fight that you have not encountered 
+	from the corresponding pool. Each Category of enemies will have 1 fight per pool.
+
+	Current categoies:
+	- Bugs		- Weak and fast/evasive or slow with lots of armor and resistances
+	- Oozes		- High health, but low resistances, have abilities related to duplicating, dividing, and healing
+	- Rats		- Medium health, medium resistances, more complex units like spell casters
+
 
 	Enemies
-	- Rat		fast but weak
-	- Giant Rat	slower and sturdier
-	- Boss Rat	very slow but with 100s of hp
-	- Goblin	fast and tough
-	- Orc		slow and extra tough
+	- Rat		Fast but weak
+	- Giant Rat	Slower and sturdier
+	- Boss Rat	Very slow but with 100s of hp
+	- Shield Rat	Strong shield that drops when taking heavy damage
+	- Shaman Rat	Casts spell that increases armor and mr of nearby enemies
+	- Healer Rat	Heals nearby enemies
+
+	- Beetle	Extra weak and extra fast
+	- Spider	Not as fast as a beetle, but much touger
+	- Tough Beetle	Slow but heavily armored
+	- Tank Beetle	Tons of hp, alternates between high armor and high mr
+	- Blink Bug	Turns invisible every few seconds
+	- Runner Beetle	Dashes forward every few seconds
+
+	- Slime		Medium speed, medium health
+	- Ooze		Just as fast and over twice as tough
+	- Double Ooze	Splits into two Slimes when killed
+	- Mega Ooze	Slower than a normal ooze, but with tons of hp splits into two double oozes
+	- Jumping Ooze	Jumps every few seconds
+	- Doubler	Gains health slowly and divides when at double hp
+
+	- Goblin	Fast and tough
+	- Orc		Slow and extra tough
 
 	Artifacts
-	- blessing of the bat										-
-	- glasses 			cures nearsightedness						-
-	- laser-sword 			could be used to fix nearsightedness... maybe			-
-	- Spy Glass 			scout fights in advance						- 
-	- token of the mute		start with 2 extra cards					- Done
-	- token of the armored		heal a little at the end of fights				- Done
-	- token of the broken		Add a lightening card to your hand at the start of a fight	- Done
-	- token of the vigilant		Gain 10 energy every 2 skills you play				- Done
+	- blessing of the bat		All towers can see invisible enemies												- 
+	- token of the mute		start with 2 extra cards				
+	- token of the armored		heal a little at the end of fights				
+	- token of the broken		Add a lightening card to your hand at the start of a fight	
+	- token of the vigilant		Gain 10 energy every 2 skills you play			
+	- Lucky Axe			Gain 50 extra wood when chopping wood
+	- Lucky Pickaxe			Gain 50 extra stone when mining
+	- Lucky Sythe			Gain 50 extra wheat when farming
+	- Boulder 			+300 stone
+	- Magic Beans 			+300 wood
+	- Fruitcake 			+300 food
+	- Doll House 			+10 max population
+	- Toy Dolls 			+1 worker per house you have
+	- Hand of Midas 		convert all of your other resources to gold, then double your gold
+	- House Expansion Kit		houses give +12 population instead of 10
+	- Thermos			start fights with 50 extra energy
+	- Cooler			your energy carries over between fights
+	- Miniature Worm Hole 		sends the first enemy to get through back to the beginning
+	- Special Toxins		all poisons deal 1 extra damage
+	- Extra Slot 			+1 sideboard
+	- Shrubbery 			+10 energy at the start of each wave
+	- Explorers hat			Gain 50 extra resources when exploring
 
 	Events
 	- Fountain of youth	Restore to full hp or +10 max hp
 	- Literally Satan	Sets your deck on fire (add 3 flame cards) OR sets YOU on fire (-30 hp)
 	- Cave Bat		Fight (-1 hp), Feed (-10hp, get bat's blessing)
 	- Trolley Problem	Truck of puppies + 3 criminals vs baby or -1hp if you don't want to choose
-	- Knights who say nah	
+	- frog			choose 50% princess, 50% frog or some amount of gold gauranteed
+	- Treasure 		Random relic and some gold		
+	- Knights who say nah   Give in to their demands (-300 gold), They say Nah to you (-10hp), Give Shrubbery (receive Blessed Hand grenade)
+	- Wandering sage	Give all wood for heath the wizard
+	- Wandering bard	Give 300 gold for hoid the bard
+	- Wandering cleric 	Give all wheat for aramis
+	- The Black Knight 	Gain joust activity or heal 20 hp
 
 	Daily activities
-		Explore Caves 	- Random event						- Done
-		Visit Library 	- Choose a new card					- Done
-		Go Fishing	- Get a random relic/gold - minigame?			- 
-				- different fishing rods/tools?
-		Smith		- upgrade a card					- Done
-		Go to Tavern	- Choose from 3 recruits (refreshes every few days)	- Done
-		rest 		- heal by 5						- Done
-		praying 	- Remove a Card						- Done
+		Explore Caves 	- Random event						
+		Visit Library 	- Choose a new card					
+		Smith		- upgrade a card					
+		Go to Tavern	- Choose from 3 recruits (refreshes every few days)	
+		rest 		- heal by 5						
+		praying 	- Remove a Card						

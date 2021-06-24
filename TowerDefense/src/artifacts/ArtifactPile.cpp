@@ -49,8 +49,8 @@ void TowerDefense::ArtifactPile::RenderArtifacts()
 
 void TowerDefense::ArtifactPile::AddArtifact(std::shared_ptr<Artifact> a)
 {
-	a->SetY(500.0f - 50 * (m_Artifacts->size() / 10));
-	a->SetX(400.0f - ((m_Artifacts->size() / 10) * 10 + 4.5f - m_Artifacts->size()) * 67.0f);
+	a->SetY(500.0f - 70 * (m_Artifacts->size() / 10));
+	a->SetX(400.0f - ((m_Artifacts->size() / 10) * 10 + 4.5f - m_Artifacts->size()) * 70.0f);
 	m_Artifacts->push_back(a);
 }
 
@@ -69,6 +69,16 @@ std::shared_ptr<TowerDefense::Artifact> TowerDefense::ArtifactPile::GetSelectedA
 	return m_Artifacts->at(m_SelectedArtifact);
 }
 
+bool TowerDefense::ArtifactPile::HasArtifact(const std::string& name)
+{
+	for (unsigned int i = 0; i < m_Artifacts->size(); i++)
+	{
+		if (m_Artifacts->at(i)->GetName() == name)
+			return true;
+	}
+	return false;
+}
+
 void TowerDefense::ArtifactPile::Clear()
 {
 	m_Artifacts->clear();
@@ -77,7 +87,7 @@ void TowerDefense::ArtifactPile::Clear()
 void TowerDefense::ArtifactPile::UpdatePositions()
 {
 	for (int i = 0; i < (int)m_Artifacts->size(); i++) {
-		m_Artifacts->at(i)->SetY(500.0f - 50 * (i / 10));
-		m_Artifacts->at(i)->SetX(400.0f - ((i / 10) * 10 + 4.5f - i) * 67.0f);
+		m_Artifacts->at(i)->SetY(500.0f - 70 * (i / 10));
+		m_Artifacts->at(i)->SetX(400.0f - ((i / 10) * 10 + 4.5f - i) * 70.0f);
 	}
 }

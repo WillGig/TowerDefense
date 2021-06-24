@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup Label="ProjectConfigurations">
     <ProjectConfiguration Include="Debug|Win32">
@@ -171,11 +171,30 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\artifacts\Artifact.cpp" />
     <ClCompile Include="src\artifacts\ArtifactPile.cpp" />
+    <ClCompile Include="src\artifacts\BlessedHandGrenade.cpp" />
+    <ClCompile Include="src\artifacts\BlessingOfTheBat.cpp" />
+    <ClCompile Include="src\artifacts\Boulder.cpp" />
+    <ClCompile Include="src\artifacts\Cooler.cpp" />
+    <ClCompile Include="src\artifacts\DollHouse.cpp" />
+    <ClCompile Include="src\artifacts\Explorershat.cpp" />
+    <ClCompile Include="src\artifacts\ExtraSlot.cpp" />
+    <ClCompile Include="src\artifacts\FruitCake.cpp" />
+    <ClCompile Include="src\artifacts\HandOfMidas.cpp" />
+    <ClCompile Include="src\artifacts\HouseExpansionKit.cpp" />
+    <ClCompile Include="src\artifacts\LuckyTools.cpp" />
+    <ClCompile Include="src\artifacts\MagicBeans.cpp" />
+    <ClCompile Include="src\artifacts\MiniatureWormHole.cpp" />
+    <ClCompile Include="src\artifacts\Prince.cpp" />
+    <ClCompile Include="src\artifacts\Shrubbery.cpp" />
+    <ClCompile Include="src\artifacts\SpecialToxins.cpp" />
+    <ClCompile Include="src\artifacts\Thermos.cpp" />
     <ClCompile Include="src\artifacts\TokenOfTheArmored.cpp" />
     <ClCompile Include="src\artifacts\TokenOfTheBroken.cpp" />
     <ClCompile Include="src\artifacts\TokenOfTheMute.cpp" />
     <ClCompile Include="src\artifacts\TokenOfTheVigilant.cpp" />
+    <ClCompile Include="src\artifacts\ToyDolls.cpp" />
     <ClCompile Include="src\Auras\Aura.cpp" />
     <ClCompile Include="src\Auras\ConstantDamage.cpp" />
     <ClCompile Include="src\Auras\DeathExplosions.cpp" />
@@ -185,6 +204,7 @@
     <ClCompile Include="src\Auras\Storm.cpp" />
     <ClCompile Include="src\Auras\StunAttacks.cpp" />
     <ClCompile Include="src\cards\Attain.cpp" />
+    <ClCompile Include="src\cards\curses\Frog.cpp" />
     <ClCompile Include="src\cards\Envenom.cpp" />
     <ClCompile Include="src\cards\ExplosiveStrikes.cpp" />
     <ClCompile Include="src\cards\LifeAura.cpp" />
@@ -197,13 +217,18 @@
     <ClCompile Include="src\cards\LightningBolt.cpp" />
     <ClCompile Include="src\cards\LightningStorm.cpp" />
     <ClCompile Include="src\cards\PoisonBall.cpp" />
+    <ClCompile Include="src\cards\quirks\Berserker.cpp" />
     <ClCompile Include="src\cards\quirks\Farsighted.cpp" />
+    <ClCompile Include="src\cards\quirks\Fighter.cpp" />
     <ClCompile Include="src\cards\quirks\JustLucky.cpp" />
+    <ClCompile Include="src\cards\quirks\Sage.cpp" />
+    <ClCompile Include="src\cards\quirks\SpellWeaver.cpp" />
     <ClCompile Include="src\cards\quirks\Veteran.cpp" />
     <ClCompile Include="src\cards\Recharge.cpp" />
     <ClCompile Include="src\cards\Reflect.cpp" />
     <ClCompile Include="src\cards\Refresh.cpp" />
     <ClCompile Include="src\cards\Ren.cpp" />
+    <ClCompile Include="src\cards\SideboardSlot.cpp" />
     <ClCompile Include="src\cards\Sift.cpp" />
     <ClCompile Include="src\cards\Skim.cpp" />
     <ClCompile Include="src\cards\StrongPoisons.cpp" />
@@ -235,10 +260,21 @@
     <ClCompile Include="src\cards\quirks\WoodElf.cpp" />
     <ClCompile Include="src\cards\upgrades\Upgrades.cpp" />
     <ClCompile Include="src\core\TextureLoader.cpp" />
+    <ClCompile Include="src\enemies\BlinkBug.cpp" />
+    <ClCompile Include="src\enemies\DoubleOoze.cpp" />
     <ClCompile Include="src\enemies\Enemy.cpp" />
+    <ClCompile Include="src\enemies\EnemyIcon.cpp" />
     <ClCompile Include="src\enemies\EnemyInfo.cpp" />
     <ClCompile Include="src\enemies\Fight.cpp" />
+    <ClCompile Include="src\enemies\HealerRat.cpp" />
     <ClCompile Include="src\enemies\HealthBar.cpp" />
+    <ClCompile Include="src\enemies\JumpingOoze.cpp" />
+    <ClCompile Include="src\enemies\Doubler.cpp" />
+    <ClCompile Include="src\enemies\MegaOoze.cpp" />
+    <ClCompile Include="src\enemies\RunnerBeetle.cpp" />
+    <ClCompile Include="src\enemies\ShamanRat.cpp" />
+    <ClCompile Include="src\enemies\ShieldRat.cpp" />
+    <ClCompile Include="src\enemies\TankBeetle.cpp" />
     <ClCompile Include="src\enemies\Wave.cpp" />
     <ClCompile Include="src\engine\Animation.cpp" />
     <ClCompile Include="src\core\AnimationEffect.cpp" />
@@ -257,22 +293,32 @@
     <ClCompile Include="src\engine\Input.cpp" />
     <ClCompile Include="src\engine\Log.cpp" />
     <ClCompile Include="src\Main.cpp" />
+    <ClCompile Include="src\scenes\base_scenes\ArtifactSlot.cpp" />
     <ClCompile Include="src\scenes\base_scenes\Build.cpp" />
     <ClCompile Include="src\scenes\base_scenes\BuildButton.cpp" />
-    <ClCompile Include="src\scenes\base_scenes\Caves.cpp" />
+    <ClCompile Include="src\scenes\base_scenes\CardSlot.cpp" />
+    <ClCompile Include="src\scenes\base_scenes\ClickCircle.cpp" />
+    <ClCompile Include="src\scenes\base_scenes\GatherResources.cpp" />
     <ClCompile Include="src\scenes\base_scenes\Chapel.cpp" />
+    <ClCompile Include="src\scenes\base_scenes\Joust.cpp" />
     <ClCompile Include="src\scenes\base_scenes\Library.cpp" />
+    <ClCompile Include="src\scenes\base_scenes\ManageWorkers.cpp" />
     <ClCompile Include="src\scenes\base_scenes\Rest.cpp" />
     <ClCompile Include="src\scenes\base_scenes\Smithing.cpp" />
     <ClCompile Include="src\scenes\base_scenes\Tavern.cpp" />
-    <ClCompile Include="src\scenes\cave_scenes\CaveBat.cpp" />
-    <ClCompile Include="src\scenes\cave_scenes\CaveScene.cpp" />
-    <ClCompile Include="src\scenes\cave_scenes\FountainOfYouth.cpp" />
-    <ClCompile Include="src\scenes\cave_scenes\KnightsWhoSayNah.cpp" />
-    <ClCompile Include="src\scenes\cave_scenes\LiterallySatan.cpp" />
-    <ClCompile Include="src\scenes\cave_scenes\TrolleyProblem.cpp" />
+    <ClCompile Include="src\scenes\base_scenes\Trader.cpp" />
+    <ClCompile Include="src\scenes\random_events\CaveBat.cpp" />
+    <ClCompile Include="src\scenes\random_events\FrogPrince.cpp" />
+    <ClCompile Include="src\scenes\random_events\RandomEvent.cpp" />
+    <ClCompile Include="src\scenes\random_events\FountainOfYouth.cpp" />
+    <ClCompile Include="src\scenes\random_events\KnightsWhoSayNah.cpp" />
+    <ClCompile Include="src\scenes\random_events\LiterallySatan.cpp" />
+    <ClCompile Include="src\scenes\random_events\TheBlackKnight.cpp" />
+    <ClCompile Include="src\scenes\random_events\Treasure.cpp" />
+    <ClCompile Include="src\scenes\random_events\TrolleyProblem.cpp" />
     <ClCompile Include="src\scenes\Combat.cpp" />
     <ClCompile Include="src\scenes\CombatReward.cpp" />
+    <ClCompile Include="src\scenes\Event.cpp" />
     <ClCompile Include="src\scenes\MainMenu.cpp" />
     <ClCompile Include="src\math\Mat4f.cpp" />
     <ClCompile Include="src\engine\Renderer.cpp" />
@@ -287,6 +333,9 @@
     <ClCompile Include="src\scenes\PreCombatScreen.cpp" />
     <ClCompile Include="src\core\Tile.cpp" />
     <ClCompile Include="src\core\Clock.cpp" />
+    <ClCompile Include="src\scenes\random_events\WanderingBard.cpp" />
+    <ClCompile Include="src\scenes\random_events\WanderingCleric.cpp" />
+    <ClCompile Include="src\scenes\random_events\WanderingSage.cpp" />
     <ClCompile Include="src\TowerDefense.cpp" />
     <ClCompile Include="src\towers\Alchemist.cpp" />
     <ClCompile Include="src\towers\Archer.cpp" />
@@ -300,6 +349,7 @@
     <ClCompile Include="src\towers\Paladin.cpp" />
     <ClCompile Include="src\towers\projectiles\Projectile.cpp" />
     <ClCompile Include="src\towers\projectiles\Projectiles.cpp" />
+    <ClCompile Include="src\towers\Ranger.cpp" />
     <ClCompile Include="src\towers\Tower.cpp" />
     <ClCompile Include="src\towers\TowerInfo.cpp" />
     <ClCompile Include="src\towers\Wizard.cpp" />
@@ -311,6 +361,7 @@
     <ClCompile Include="src\engine\VertexBuffer.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="res\shaders\Invisible.shader" />
     <None Include="res\shaders\Line.shader" />
     <None Include="res\shaders\Texture.shader" />
     <None Include="res\shaders\Circle.shader" />
@@ -325,8 +376,14 @@
     <Image Include="res\textures\ArrowButtonSelected.png" />
     <Image Include="res\textures\ArtifactInfo.png" />
     <Image Include="res\textures\Artifacts.png" />
+    <Image Include="res\textures\AuraCards.png" />
+    <Image Include="res\textures\AuraInfo.png" />
+    <Image Include="res\textures\Auras.png" />
     <Image Include="res\textures\BaseButtons.png" />
+    <Image Include="res\textures\BuildButtons.png" />
+    <Image Include="res\textures\cardTemplate.png" />
     <Image Include="res\textures\CombatButtons.png" />
+    <Image Include="res\textures\CombatRewardButton.png" />
     <Image Include="res\textures\Curses.png" />
     <Image Include="res\textures\Enemies.png" />
     <Image Include="res\textures\EnemyInfo.png" />
@@ -355,6 +412,7 @@
     <Image Include="res\textures\pauseOn.png" />
     <Image Include="res\textures\SkillCards.png" />
     <Image Include="res\textures\smithArrow.png" />
+    <Image Include="res\textures\Stats.png" />
     <Image Include="res\textures\tiles.png" />
     <Image Include="res\textures\TowerCards.png" />
     <Image Include="res\textures\TowerInfo.png" />
@@ -368,6 +426,7 @@
     <ClInclude Include="src\cards\curses\Curses.h" />
     <ClInclude Include="src\cards\InfoTile.h" />
     <ClInclude Include="src\cards\LightningBolt.h" />
+    <ClInclude Include="src\cards\SideboardSlot.h" />
     <ClInclude Include="src\cards\SkillCards.h" />
     <ClInclude Include="src\core\Board.h" />
     <ClInclude Include="src\cards\Card.h" />
@@ -383,6 +442,7 @@
     <ClInclude Include="src\core\TextureLoader.h" />
     <ClInclude Include="src\enemies\Enemies.h" />
     <ClInclude Include="src\enemies\Enemy.h" />
+    <ClInclude Include="src\enemies\EnemyIcon.h" />
     <ClInclude Include="src\enemies\EnemyInfo.h" />
     <ClInclude Include="src\enemies\Fight.h" />
     <ClInclude Include="src\enemies\HealthBar.h" />
@@ -403,11 +463,15 @@
     <ClInclude Include="src\engine\Image.h" />
     <ClInclude Include="src\engine\IndexBuffer.h" />
     <ClInclude Include="src\engine\Log.h" />
+    <ClInclude Include="src\scenes\base_scenes\ArtifactSlot.h" />
     <ClInclude Include="src\scenes\base_scenes\BaseScene.h" />
     <ClInclude Include="src\scenes\base_scenes\BuildButton.h" />
-    <ClInclude Include="src\scenes\cave_scenes\CaveScene.h" />
+    <ClInclude Include="src\scenes\base_scenes\CardSlot.h" />
+    <ClInclude Include="src\scenes\base_scenes\ClickCircle.h" />
+    <ClInclude Include="src\scenes\random_events\RandomEvent.h" />
     <ClInclude Include="src\scenes\Combat.h" />
     <ClInclude Include="src\scenes\CombatReward.h" />
+    <ClInclude Include="src\scenes\Event.h" />
     <ClInclude Include="src\scenes\MainMenu.h" />
     <ClInclude Include="src\math\Mat4f.h" />
     <ClInclude Include="src\math\Vector.h" />
@@ -434,6 +498,7 @@
     <ClInclude Include="src\towers\Paladin.h" />
     <ClInclude Include="src\towers\projectiles\Projectile.h" />
     <ClInclude Include="src\towers\projectiles\Projectiles.h" />
+    <ClInclude Include="src\towers\Ranger.h" />
     <ClInclude Include="src\towers\Tower.h" />
     <ClInclude Include="src\towers\TowerInfo.h" />
     <ClInclude Include="src\towers\Wizard.h" />

@@ -33,6 +33,45 @@ TowerDefense::Wave::Wave(const int enemies[], int size)
 		case 6:
 			m_Enemies->push_back(std::make_shared<Enemy::Slime>());
 			break;
+		case 7:
+			m_Enemies->push_back(std::make_shared<Enemy::Spider>());
+			break;
+		case 8:
+			m_Enemies->push_back(std::make_shared<Enemy::ToughBeetle>());
+			break;
+		case 9:
+			m_Enemies->push_back(std::make_shared<Enemy::Ooze>());
+			break;
+		case 10:
+			m_Enemies->push_back(std::make_shared<Enemy::MegaOoze>());
+			break;
+		case 11:
+			m_Enemies->push_back(std::make_shared<Enemy::DoubleOoze>());
+			break;
+		case 12:
+			m_Enemies->push_back(std::make_shared<Enemy::JumpingOoze>());
+			break;
+		case 13:
+			m_Enemies->push_back(std::make_shared<Enemy::Doubler>());
+			break;
+		case 14:
+			m_Enemies->push_back(std::make_shared<Enemy::ShieldRat>());
+			break;
+		case 15:
+			m_Enemies->push_back(std::make_shared<Enemy::ShamanRat>());
+			break;
+		case 16:
+			m_Enemies->push_back(std::make_shared<Enemy::HealerRat>());
+			break;
+		case 17:
+			m_Enemies->push_back(std::make_shared<Enemy::BlinkBug>());
+			break;
+		case 18:
+			m_Enemies->push_back(std::make_shared<Enemy::RunnerBeetle>());
+			break;
+		case 19:
+			m_Enemies->push_back(std::make_shared<Enemy::TankBeetle>());
+			break;
 		}
 	}
 }

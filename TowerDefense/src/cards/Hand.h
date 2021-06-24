@@ -32,13 +32,16 @@ namespace TowerDefense
 
 		inline int GetSize() const { return m_Cards->size(); }
 
-		inline void ResetSelectedCard() { m_SelectedCard = -1; m_Dragging = false; }
+		inline void ResetSelectedCard() { m_SelectedCard = -1; m_Dragging = false; m_ShowingInfo = false; }
+		inline void ResetDiscardCard() { m_CardsToDiscard = 0, m_CardsToExhaust = 0; }
 
 		inline int GetSelectedCard() const { return m_SelectedCard; }
 
 		inline bool DraggingCard() const { return m_Dragging; }
 
 		inline bool ShowingCardInfo() const { return m_ShowingInfo; }
+
+		inline std::shared_ptr<Card> GetCurrentPlayingCard() { return m_CurrentPlayingCard; }
 
 	private:
 		//Finds the current card being hovered over or clicked
@@ -48,6 +51,8 @@ namespace TowerDefense
 		//Returns the index of the selected card in the vector of selected cards
 		//Returns -1 if the card is not selected
 		int CardSelected(int card);
+
+		std::shared_ptr<Card> m_CurrentPlayingCard;
 
 		//m_CardSpacing represents how far apart each card is and gets smaller the more cards are in the hand
 		unsigned int m_MaxSize, m_CardSpacing;

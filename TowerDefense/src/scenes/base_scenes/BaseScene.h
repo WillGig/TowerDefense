@@ -1,18 +1,21 @@
 #pragma once
 #include "scenes/Scene.h"
-#include "scenes/cave_scenes/CaveScene.h"
+#include "scenes/random_events/RandomEvent.h"
 #include "cards/CardChoice.h"
 #include "BuildButton.h"
+#include "CardSlot.h"
+#include "ArtifactSlot.h"
+#include "ClickCircle.h"
 
 namespace TowerDefense
 {
 	class BuildButton;
 
+	class Artifact;
+
 	class BaseScene : public Scene
 	{
 	public:
-		inline bool ActivityDone() const { return m_ActivityDone; }
-		inline void SetActivityDone(bool done) { m_ActivityDone = done; }
 		inline bool Exit() const { return m_Exit; }
 		inline void RenderButton() { m_Button->Render(); }
 		inline void UpdateButton() { m_Button->Update(); }
@@ -22,37 +25,40 @@ namespace TowerDefense
 		inline void RenderText() { m_Description->Render(); }
 		inline void OnSwitch() override { m_Exit = false; m_Button->SetSelected(false); };
 		virtual std::string GetName() = 0;
+		inline int GetActivityReady() const { return m_ActivityReady; }
+		inline void SetActivityReady(int ready) { m_ActivityReady = ready; }
+
 	protected:
-		BaseScene(const std::string& button, const std::string& description)
-			:m_Exit(false), m_ActivityDone(false), m_Description(std::make_unique<Text>(description, 400.0f, 235.0f, 12.0f, 0.0f)),
+		BaseScene(const std::string& button, const std::string& description, int coolDown)
+			:m_Exit(false), m_ActivityCoolDown(coolDown), m_ActivityReady(0), 
+			m_Description(std::make_unique<Text>(description, 400.0f, 235.0f, 12.0f, 0.0f)),
 			m_Button(std::make_unique<Button>(0.0f, 0.0f, 180, 50, button)),
 			m_Fade(std::make_unique<Rectangle>(400.0f, 300.0f, 800.0f, 600.0f))
 		{
 			m_Description->SetColor(1.0f, 1.0f, 1.0f, 1.0f);
 			m_Fade->SetColor(0.0f, 0.0f, 0.0f, 0.95f);
 		}
-		bool m_Exit, m_ActivityDone;
+		int m_ActivityCoolDown, m_ActivityReady;
+		bool m_Exit;
 		std::unique_ptr<Text> m_Description;
 		std::unique_ptr<Button> m_Button;
 		std::unique_ptr<Rectangle> m_Fade;
 	};
 
-	class Caves : public BaseScene
+	class GatherResources : public BaseScene
 	{
 	public:
-		Caves();
+		GatherResources();
 		void Render() override;
 		void Update() override;
 		void OnSwitch() override;
-		inline std::string GetName() override { return "Caves"; }
+		inline std::string GetName() override { return "Gather Resources"; }
 	private:
 		enum class Activity {MENU, CHOP, MINE, FARM, EXPLORE};
 		Vec4i m_AmountGathered;
-		bool m_RandomEvent;
 		Activity m_CurrentActivity;
 		std::unique_ptr<Button> m_Chop, m_Mine, m_Farm, m_Explore, m_BackToCamp;
 		std::unique_ptr<Text> m_Text;
-		std::shared_ptr<CaveScene> m_CaveScene;
 	};
 
 	class Rest : public BaseScene
@@ -106,6 +112,7 @@ namespace TowerDefense
 		void OnSwitch() override;
 		inline std::string GetName() override { return "Tavern"; }
 	private:
+		bool m_HeroTaken;
 		std::unique_ptr<TowerDefense::CardChoice> m_TavernChoice;
 		std::unique_ptr<Button> m_Confirm, m_Cancel;
 	};
@@ -141,5 +148,66 @@ namespace TowerDefense
 
 		std::unique_ptr<Button> m_Cancel;
 		std::unique_ptr<std::vector<std::shared_ptr<BuildButton>>> m_Buttons;
+	};
+
+	class Trader : public BaseScene
+	{
+	public:
+		Trader();
+		void Render() override;
+		void Update() override;
+		void OnSwitch() override;
+		inline std::string GetName() override { return "Trader"; }
+	private:
+		void FindInfo();
+
+		int m_InfoCard, m_InfoArtifact, m_SpinEnd;
+		std::array<std::unique_ptr<CardSlot>, 6> m_Cards;
+		std::array<std::unique_ptr<ArtifactSlot>, 3> m_Artifacts;
+		std::unique_ptr<Button> m_Wood, m_Stone, m_Wheat, m_Spin, m_BackToCamp;
+		std::unique_ptr<Text> m_WoodText, m_StoneText, m_WheatText, m_SpinText;
+		std::unique_ptr<Image> m_WoodGoldIcon, m_StoneGoldIcon, m_WheatGoldIcon, m_SpinGoldIcon, m_SpinWheel, m_SpinPicker;
+	};
+
+	class ManageWorkers : public BaseScene
+	{
+	public:
+		ManageWorkers();
+		void Render() override;
+		void Update() override;
+		void OnSwitch() override;
+		inline std::string GetName() override { return "ManageWorkers"; }
+
+	private:
+		std::unique_ptr<Button> m_BackToCamp, m_WoodPlus, m_WoodAddAll, m_WoodMinus, m_WoodMinusAll, 
+			m_StonePlus, m_StoneMinus, m_StoneAddAll, m_StoneMinusAll, m_WheatPlus, m_WheatMinus, m_WheatAddAll,
+			m_WheatMinusAll, m_BuildHouse, m_HireWorker;
+		std::unique_ptr<Text> m_HouseText, m_TotalText, m_AvailableText, m_LumberjacksText, m_MinersText, m_FarmersText, 
+			m_BuildCost, m_WorkerCost, m_TotalPopText, m_AvailablePopText, m_NumLumberJacks, m_NumMiners, m_NumFarmers;
+		std::unique_ptr<Image> m_HouseImage, m_WorkerImage, m_WorkerAvailableImage, m_WoodImage, m_StoneImage, m_WheatImage;
+	};
+
+	class Joust : public BaseScene
+	{
+	public:
+		Joust();
+		void Render() override;
+		void Update() override;
+		void OnSwitch() override;
+		inline std::string GetName() override { return "Joust"; }
+
+	private:
+		int m_Distance, m_Winner, m_Level, m_CircleSpawn;
+
+		bool m_Jousting, m_Failed;
+
+		std::unique_ptr<Button> m_BackToCamp, m_Joust;
+
+		std::unique_ptr<Image> m_Player, m_Knight;
+
+		std::unique_ptr<Text> m_WinnerMessage, m_LevelText;
+
+		std::vector<ClickCircle> m_Circles;
+		std::vector<int> m_RemoveCircles;
 	};
 }

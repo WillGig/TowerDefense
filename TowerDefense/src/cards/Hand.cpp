@@ -64,22 +64,26 @@ void TowerDefense::Hand::Update()
 				m_Dragging = false;
 				if (Input::GetMouseY() > 600.0f * .35f)
 				{
-					if (player.GetEnergy() >= m_Cards->at(m_SelectedCard)->GetCost())
+					auto card = m_Cards->at(m_SelectedCard);
+					if (player.GetEnergy() >= card->GetCost())
 					{
-						auto card = m_Cards->at(m_SelectedCard);
 						if (card->CanPlay())
 						{
+							m_CurrentPlayingCard = card;
 							player.ChangeEnergy(0 - card->GetCost());
 							RemoveCard(m_Cards->at(m_SelectedCard)->GetHandPosition());
-							card->Play();
 							player.ArtifactOnCardPlay(card);
 							Combat::OnCardPlayAuras(card);
+							card->Play();
 							if (!card->Exhausts())
 								player.GetDiscardPile()->AddCard(card);
+							m_CurrentPlayingCard.reset();
 						}
+						else
+							card->SetOverBoard(false);
 					}
 					else
-						m_Cards->at(m_SelectedCard)->SetOverBoard(false);
+						card->SetOverBoard(false);
 				}
 			}
 		}

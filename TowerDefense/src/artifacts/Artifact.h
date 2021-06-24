@@ -3,6 +3,10 @@
 
 namespace TowerDefense
 {
+	namespace Enemy { class Enemy; }
+
+	namespace Tower { class Tower; enum class DamageType; }
+
 	class Artifact : public Entity
 	{
 	public:
@@ -14,19 +18,31 @@ namespace TowerDefense
 		{
 			m_NameText->SetColor(1.0f, 1.0f, 1.0f, 1.0f);
 		}
-		inline void Update() override {};
-		inline void RenderArtifactDetails() { m_DetailedImage->Render(); m_InfoImage->Render(); m_NameText->Render(); };
-		inline virtual void OnAquire() {};
-		inline virtual void OnAddCard(std::shared_ptr<Card> c) {};
-		inline virtual void OnRoundStart() {};
-		inline virtual void OnCardPlay(std::shared_ptr<Card> c) {};
-		inline virtual void OnFightStart() {};
-		inline virtual void OnFightEnd() {};
+		inline void Update() override {}
+		inline void RenderArtifactDetails() { m_DetailedImage->Render(); m_InfoImage->Render(); m_NameText->Render(); }
+		inline virtual void CombatRender() {}
+		inline virtual void CombatUpdate() {}
+		inline virtual void OnAquire() {}
+		inline virtual void OnAddCard(std::shared_ptr<Card> c) {}
+		inline virtual void OnRoundStart() {}
+		inline virtual void OnCardPlay(std::shared_ptr<Card> c) {}
+		inline virtual void OnFightStart() {}
+		inline virtual void OnFightEnd() {}
+		inline virtual void OnAddHouse() {}
+		inline virtual void OnEnemyHit(std::shared_ptr<Enemy::Enemy> e, std::shared_ptr<Entity> source, Tower::DamageType type) {}
+		inline virtual void OnEnemyReachedEnd(std::shared_ptr<Enemy::Enemy> e) {}
+
+		inline const std::string& GetName() const { return m_Name; }
+
+		static std::shared_ptr<Artifact> GetRandomArtifact();
+		static void CleanUp();
 
 	private:
 		std::string m_Name;
 		std::unique_ptr<Text> m_NameText;
 		std::unique_ptr<Image> m_DetailedImage, m_InfoImage;
+
+		static std::unique_ptr<std::vector<std::shared_ptr<Artifact>>> s_Artifacts;
 	};
 
 	class TokenOfTheMute : public Artifact
@@ -57,5 +73,163 @@ namespace TowerDefense
 		void OnCardPlay(std::shared_ptr<Card> c) override;
 	private:
 		int m_Counter;
+	};
+
+	class BlessingOfTheBat : public Artifact
+	{
+	public:
+		BlessingOfTheBat();
+		void OnCardPlay(std::shared_ptr<Card> c) override;
+	};
+
+	class LuckyAxe : public Artifact
+	{
+	public:
+		LuckyAxe();	
+		void OnAquire() override;
+	};
+
+	class LuckyPickaxe : public Artifact
+	{
+	public:
+		LuckyPickaxe();
+		void OnAquire() override;
+	};
+
+	class LuckySythe : public Artifact
+	{
+	public:
+		LuckySythe();
+		void OnAquire() override;
+	};
+
+	class Boulder : public Artifact
+	{
+	public:
+		Boulder();
+		void OnAquire() override;
+	};
+
+	class MagicBeans : public Artifact
+	{
+	public:
+		MagicBeans();
+		void OnAquire() override;
+	};
+
+	class FruitCake : public Artifact
+	{
+	public:
+		FruitCake();
+		void OnAquire() override;
+	};
+
+	class DollHouse : public Artifact
+	{
+	public:
+		DollHouse();
+		void OnAquire() override;
+	};
+
+	class ToyDolls : public Artifact
+	{
+	public:
+		ToyDolls();
+		void OnAquire() override;
+		void OnAddHouse() override;
+	private:
+		int m_NumberAdded;
+	};
+
+	class HandOfMidas : public Artifact
+	{
+	public:
+		HandOfMidas();
+		void OnAquire() override;
+	};
+
+	class HouseExpansionKit : public Artifact
+	{
+	public:
+		HouseExpansionKit();
+		void OnAquire() override;
+		void OnAddHouse() override;
+	};
+
+	class Thermos : public Artifact
+	{
+	public:
+		Thermos();
+		void OnFightStart() override;
+	};
+
+	class Cooler : public Artifact
+	{
+	public:
+		Cooler();
+		void OnFightStart() override;
+		void OnFightEnd() override;
+	private:
+		int m_EndEnergy;
+	};
+
+	class MiniatureWormHole : public Artifact
+	{
+	public:
+		MiniatureWormHole();
+		void OnFightStart() override;
+		void OnEnemyReachedEnd(std::shared_ptr<Enemy::Enemy> e) override;
+
+	private:
+		bool m_Ready;
+	};
+
+	class SpecialToxins : public Artifact
+	{
+	public:
+		SpecialToxins();
+		void OnEnemyHit(std::shared_ptr<Enemy::Enemy> e, std::shared_ptr<Entity> source, Tower::DamageType type) override;
+	};
+
+	class ExtraSlot : public Artifact
+	{
+	public:
+		ExtraSlot();
+		void OnAquire() override;
+	};
+
+	class Prince : public Artifact
+	{
+	public:
+		Prince();
+		void OnFightEnd() override;
+	};
+
+	class Shrubbery : public Artifact
+	{
+	public:
+		Shrubbery();
+		void OnRoundStart() override;
+	};
+
+	class BlessedHandGrenade : public Artifact
+	{
+	public:
+		BlessedHandGrenade();
+		void CombatRender() override;
+		void CombatUpdate() override;
+		void OnFightStart() override;
+
+	private:
+		bool m_Ready;
+
+		std::unique_ptr<Button> m_Detonate;
+	};
+
+	class ExplorersHat : public Artifact
+	{
+	public:
+		ExplorersHat();
+		void OnAquire() override;
 	};
 }

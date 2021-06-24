@@ -1,6 +1,9 @@
 #include "pch.h"
 #include "MainMenu.h"
 #include "TowerDefense.h"
+#include "core/Player.h"
+#include "Combat.h"
+#include "Base.h"
 
 TowerDefense::MainMenu::MainMenu()
 {
@@ -27,6 +30,11 @@ void TowerDefense::MainMenu::Update()
 	//Start New Game
 	if (m_Buttons[0]->IsClicked())
 	{
+		Random::Get().NewSeed();
+		ResetDay();
+		Combat::GenerateFights();
+		Base::Reset();
+		Player::Get().Reset();
 		SetScene(SceneType::BASE);
 	}
 	//Saving and Loading

@@ -18,6 +18,8 @@ namespace TowerDefense
 
 		std::shared_ptr<Artifact> GetSelectedArtifact();
 
+		bool HasArtifact(const std::string& name);
+
 		void Clear();
 
 		inline std::shared_ptr<Artifact> GetArtifact(int index) const { return m_Artifacts->at(index); }

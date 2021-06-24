@@ -14,9 +14,6 @@ namespace TowerDefense
 
 		protected:
 			void Fire(std::shared_ptr<TowerDefense::Entity> target) override;
-
-		private:
-			float m_AttackSpeedBuff;
 		};
 	}
 }

@@ -11,6 +11,8 @@ public:
 	inline void SetPosition(Vec3& newPosition) { m_Position = newPosition; }
 	inline void SetPosition(float x, float y, float z) { m_Position.x = x; m_Position.y = y; m_Position.z = z; }
 	inline void SetColor(float r, float g, float b, float a) { m_Color = Vec4(r, g, b, a); }
+	inline float GetWidth() const { return m_Width; }
+	inline float GetHeight() const { return m_Height; }
 private:
 	std::unique_ptr<VertexArray> m_VAO;
 	std::unique_ptr<VertexBuffer> m_VertexBuffer;
@@ -22,4 +24,6 @@ private:
 
 	//position of center of rectangle. Scale is relative to Renderer projection matrix
 	Vec3 m_Position;
+
+	float m_Width, m_Height;
 };

@@ -3,7 +3,7 @@
 #include "core/Player.h"
 
 TowerDefense::Chapel::Chapel()
-	:BaseScene("prayButton", "Forgive your mistakes."),
+	:BaseScene("prayButton", "Forgive your mistakes.", 2),
 	m_Index(-1),
 	m_RemoveText(std::make_unique<Text>("Remove Card?", 400.0f, 400.0f, 16.0f, 0.0f)),
 	m_Confirm(std::make_unique<Button>(400.0f, 190.0f, 180, 50, "confirmButton")),
@@ -37,7 +37,7 @@ void TowerDefense::Chapel::Update()
 		m_Confirm->Update();
 		if (m_Confirm->IsClicked())
 		{
-			m_ActivityDone = true;
+			m_ActivityReady = m_ActivityCoolDown;
 			m_Exit = true;
 			player.ShowDeck(false);
 			player.RemoveFromDeck(m_Index);

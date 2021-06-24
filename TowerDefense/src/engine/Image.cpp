@@ -28,6 +28,8 @@ Image::Image(const std::string& file, float x, float y, int width, int height, f
 
 	m_Shader = Shader::GetShader("res/shaders/Texture.Shader");
 	m_Shader->Bind();
+	m_InvisibleShader = Shader::GetShader("res/shaders/Invisible.Shader");
+	m_InvisibleShader->Bind();
 	m_Texture = Texture::GetTexture(file);
 	m_Shader->SetUniform1i("u_Texture", 0);
 }
@@ -41,5 +43,17 @@ void Image::Render()
 		m_Shader->Bind();
 		m_Shader->SetUniformMat4f("u_MVP", mvp);
 		Renderer::Get().Draw(*m_VAO, *m_IndexBuffer, *m_Shader);
+	}
+}
+
+void Image::RenderInvisible()
+{
+	m_Texture->Bind();
+	{
+		Mat4f model = Mat4f::Translate(m_Position) * Mat4f::Rotate(m_Rotation);
+		Mat4f mvp = Renderer::Get().GetProjectionMatrix() * model;
+		m_InvisibleShader->Bind();
+		m_InvisibleShader->SetUniformMat4f("u_MVP", mvp);
+		Renderer::Get().Draw(*m_VAO, *m_IndexBuffer, *m_InvisibleShader);
 	}
 }

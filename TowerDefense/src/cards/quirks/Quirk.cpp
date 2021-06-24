@@ -56,7 +56,7 @@ std::shared_ptr<TowerDefense::Quirk::Quirk> TowerDefense::Quirk::Quirk::GetRando
 	{
 		while (!q || Contains(exclude, q)) 
 		{
-			int quirkNumber = (int)(Random::GetFloat() * 5.0f);
+			int quirkNumber = (int)(Random::GetFloat() * 9.0f);
 			if (quirkNumber == 0)
 				q = std::make_shared<BattleReady>();
 			else if (quirkNumber == 1)
@@ -67,6 +67,14 @@ std::shared_ptr<TowerDefense::Quirk::Quirk> TowerDefense::Quirk::Quirk::GetRando
 				q = std::make_shared<JustLucky>();
 			else if (quirkNumber == 4)
 				q = std::make_shared<Farsighted>();
+			else if (quirkNumber == 5)
+				q = std::make_shared<Spellweaver>();
+			else if (quirkNumber == 6)
+				q = std::make_shared<Sage>();
+			else if (quirkNumber == 7)
+				q = std::make_shared<Fighter>();
+			else if (quirkNumber == 8)
+				q = std::make_shared<Berserker>();
 		}
 	}
 	else {

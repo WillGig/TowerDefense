@@ -4,7 +4,7 @@
 #include "TowerDefense.h"
 
 TowerDefense::Library::Library()
-	:BaseScene("visitLibraryButton", "Add to your collection."),
+	:BaseScene("visitLibraryButton", "Add to your collection.", 1),
 	m_Confirm(std::make_unique<Button>(400.0f, 190.0f, 180, 50, "confirmButton")),
 	m_Cancel(std::make_unique<Button>(690.0f, 125.0f, 180, 50, "cancelButton"))
 {
@@ -38,7 +38,7 @@ void TowerDefense::Library::Update()
 			if (m_Confirm->IsClicked())
 			{
 				player.AddToDeck(m_CardChoice->GetSelectedCard());
-				m_ActivityDone = true;
+				m_ActivityReady = m_ActivityCoolDown;
 				m_Exit = true;
 				m_CardChoice.reset();
 			}

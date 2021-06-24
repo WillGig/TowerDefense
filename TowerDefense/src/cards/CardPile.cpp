@@ -124,11 +124,30 @@ void TowerDefense::CardPile::Copy(std::shared_ptr<CardPile> p)
 {
 	p->Clear();
 	for (unsigned int i = 0; i < m_Cards->size(); i++)
-	{
 		p->AddCard(m_Cards->at(i)->Clone());
-	}
-		
 }
+
+//Copies the current card pile into p, while excluding any cards with IDs in the exclude list
+void TowerDefense::CardPile::CopyWithExclusions(std::shared_ptr<CardPile> p, std::shared_ptr < std::vector<unsigned int>> exclude)
+{
+	p->Clear();
+	for (unsigned int i = 0; i < m_Cards->size(); i++)
+	{
+		auto c = m_Cards->at(i);
+		bool include = true;
+		for (unsigned int j = 0; j < exclude->size(); j++)
+		{
+			if (c->GetID() == exclude->at(j))
+			{
+				include = false;
+				break;
+			}
+		}
+		if (include)
+			p->AddCard(c->Clone());
+	}	
+}
+
 
 void TowerDefense::CardPile::Clear()
 {

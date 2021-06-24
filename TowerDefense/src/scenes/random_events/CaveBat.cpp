@@ -1,5 +1,5 @@
 #include "pch.h"
-#include "CaveScene.h"
+#include "RandomEvent.h"
 #include "core/Player.h"
 
 TowerDefense::CaveBat::CaveBat()
@@ -45,7 +45,7 @@ void TowerDefense::CaveBat::Update()
 	else if (m_Button2->IsClicked())
 	{
 		Player::Get().ChangeHealth(-10);
-		//TODO: Add blessing of the bat artifact
+		Player::Get().AddToArtifacts(std::make_shared<BlessingOfTheBat>());
 		m_Exit = true;
 	}
 }

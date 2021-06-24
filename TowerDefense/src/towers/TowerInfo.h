@@ -23,7 +23,7 @@ namespace TowerDefense
 		float m_PreviousMouseX, m_PreviousMouseY, m_TowerDamage, m_TowerAttackSpeed, m_TowercritChance, m_TowerDamageDealt;
 		int m_TowerRange;
 
-		std::unique_ptr<Text> m_Name, m_Target, m_Stats;
+		std::unique_ptr<Text> m_Name, m_Target, m_Stats, m_StatsNumbers;
 
 		std::unique_ptr<Button> m_TargetLeft, m_TargetRight;
 

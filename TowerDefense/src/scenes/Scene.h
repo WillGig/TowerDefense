@@ -2,7 +2,7 @@
 
 namespace TowerDefense
 {
-	enum SceneType { MAINMENU, BASE, PRECOMBAT, COMBAT, POSTCOMBAT };
+	enum SceneType { MAINMENU, BASE, EVENT, PRECOMBAT, COMBAT, POSTCOMBAT };
 
 	class Scene
 	{

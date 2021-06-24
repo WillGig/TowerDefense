@@ -19,9 +19,9 @@ namespace TowerDefense
 		void UpdateStatsText();
 
 		bool m_Dragging;
-		float m_PreviousMouseX, m_PreviousMouseY, m_EnemyHP, m_EnemySpeed;
+		float m_PreviousMouseX, m_PreviousMouseY, m_EnemyHP, m_EnemySpeed, m_EnemyArmor, m_EnemyMagicResistance;
 
-		std::unique_ptr<Text> m_Name, m_Stats;
+		std::unique_ptr<Text> m_Name, m_Stats, m_StatsNumbers;
 
 		std::shared_ptr<Enemy::Enemy> m_Enemy;
 	};
