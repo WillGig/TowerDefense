@@ -186,8 +186,6 @@
     <ClCompile Include="src\artifacts\LuckyTools.cpp" />
     <ClCompile Include="src\artifacts\MagicBeans.cpp" />
     <ClCompile Include="src\artifacts\MapToEldorado.cpp" />
-=======
->>>>>>> 190f5d53eb452ef28f88bc5a3bbd65d3d1be5c32
     <ClCompile Include="src\artifacts\MiniatureWormHole.cpp" />
     <ClCompile Include="src\artifacts\Prince.cpp" />
     <ClCompile Include="src\artifacts\Shrubbery.cpp" />

@@ -389,10 +389,7 @@ void TowerDefense::LoadTextures()
     Texture::LoadTexture("Shrubbery",               artifacts.load(1, 2));
     Texture::LoadTexture("Blessed Hand Grenade",    artifacts.load(2, 2));
     Texture::LoadTexture("Explorers Hat",           artifacts.load(3, 2));
-<<<<<<< HEAD
     Texture::LoadTexture("Map To Eldorado",         artifacts.load(4, 2));
-=======
->>>>>>> 190f5d53eb452ef28f88bc5a3bbd65d3d1be5c32
 
     SpriteSheet artifactInfo("res/textures/ArtifactInfo.png", 440, 170);
     Texture::LoadTexture("Token Of The MuteInfo",       artifactInfo.load(0, 0));
@@ -419,10 +416,7 @@ void TowerDefense::LoadTextures()
     Texture::LoadTexture("ShrubberyInfo",               artifactInfo.load(1, 5));
     Texture::LoadTexture("Blessed Hand GrenadeInfo",    artifactInfo.load(2, 5));
     Texture::LoadTexture("Explorers HatInfo",           artifactInfo.load(3, 5));
-<<<<<<< HEAD
     Texture::LoadTexture("Map To EldoradoInfo",         artifactInfo.load(0, 6));
-=======
->>>>>>> 190f5d53eb452ef28f88bc5a3bbd65d3d1be5c32
 
     std::cout << "...Animations" << std::endl;
 

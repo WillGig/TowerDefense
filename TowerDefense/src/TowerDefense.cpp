@@ -157,6 +157,7 @@ void TowerDefense::CleanUp()
     Base::CleanUp();
     Combat::CleanUp();
     Artifact::CleanUp();
+    RandomEvent::CleanUp();
     Texture::FreeTextures();
     Shader::DeleteShaders();
     glfwTerminate();
