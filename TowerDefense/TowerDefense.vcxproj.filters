@@ -561,9 +561,12 @@
     <ClCompile Include="src\scenes\base_scenes\ClickCircle.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+<<<<<<< HEAD
     <ClCompile Include="src\artifacts\MapToEldorado.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+=======
+>>>>>>> 190f5d53eb452ef28f88bc5a3bbd65d3d1be5c32
   </ItemGroup>
   <ItemGroup>
     <None Include="res\shaders\Texture.shader" />
