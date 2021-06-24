@@ -29,6 +29,7 @@ namespace TowerDefense
 		inline virtual void OnFightStart() {}
 		inline virtual void OnFightEnd() {}
 		inline virtual void OnAddHouse() {}
+		inline virtual void OnExplore() {}
 		inline virtual void OnEnemyHit(std::shared_ptr<Enemy::Enemy> e, std::shared_ptr<Entity> source, Tower::DamageType type) {}
 		inline virtual void OnEnemyReachedEnd(std::shared_ptr<Enemy::Enemy> e) {}
 
@@ -231,5 +232,14 @@ namespace TowerDefense
 	public:
 		ExplorersHat();
 		void OnAquire() override;
+	};
+
+	class MapToEldorado : public Artifact
+	{
+	public:
+		MapToEldorado();
+		void OnExplore() override;
+	private:
+		int m_DaysRemaining;
 	};
 }

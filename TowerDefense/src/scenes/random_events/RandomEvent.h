@@ -14,6 +14,9 @@ namespace TowerDefense
 
 	protected:
 		bool m_Exit = false;
+
+	private:
+		static std::unique_ptr<std::vector<std::shared_ptr<RandomEvent>>> s_Events;
 	};
 
 	//Restore to full hp or +10 max hp

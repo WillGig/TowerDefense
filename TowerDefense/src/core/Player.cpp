@@ -498,6 +498,12 @@ void TowerDefense::Player::ArtifactOnAddHouse()
         m_Artifacts->GetArtifact(i)->OnAddHouse();
 }
 
+void TowerDefense::Player::ArtifactOnExplore()
+{
+    for (int i = 0; i < m_Artifacts->GetSize(); i++)
+        m_Artifacts->GetArtifact(i)->OnExplore();
+}
+
 void TowerDefense::Player::ArtifactOnEnemyHit(std::shared_ptr<Enemy::Enemy> e, std::shared_ptr<Entity> source, Tower::DamageType type)
 {
     for (int i = 0; i < m_Artifacts->GetSize(); i++)

@@ -109,6 +109,7 @@ namespace TowerDefense
 		void ArtifactOnFightStart();
 		void ArtifactOnFightEnd();
 		void ArtifactOnAddHouse();
+		void ArtifactOnExplore();
 		void ArtifactOnEnemyHit(std::shared_ptr<Enemy::Enemy> e, std::shared_ptr<Entity> source, Tower::DamageType type);
 		void ArtifactOnEnemyReachedEnd(std::shared_ptr<Enemy::Enemy> e);
 

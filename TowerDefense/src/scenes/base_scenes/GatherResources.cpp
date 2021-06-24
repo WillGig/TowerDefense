@@ -119,6 +119,8 @@ void TowerDefense::GatherResources::Update()
 
 			m_Text = std::make_unique<Text>(text, 400.0f, 350.0f, 12.0f, 0.0f);
 			m_Text->SetColor(1.0f, 1.0f, 1.0f, 1.0f);
+
+			player.ArtifactOnExplore();
 		}
 
 		m_BackToCamp->Update();

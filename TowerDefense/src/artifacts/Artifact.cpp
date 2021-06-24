@@ -28,6 +28,7 @@ std::shared_ptr<TowerDefense::Artifact> TowerDefense::Artifact::GetRandomArtifac
 		s_Artifacts->push_back(std::make_shared<ExtraSlot>());
 		s_Artifacts->push_back(std::make_shared<Shrubbery>());
 		s_Artifacts->push_back(std::make_shared<ExplorersHat>());
+		s_Artifacts->push_back(std::make_shared<MapToEldorado>());
 	}
 
 	int randomArtifact = (int)(Random::GetFloat() * s_Artifacts->size());
