@@ -1,5 +1,13 @@
 Current:
-	Examine text being off center (Event)
+
+	Tower upgrade rework - can upgrade towers in combat, show tower level, permanent upgrades from smithy
+		- Star level shown below towers? Max level 10 (or 5)
+
+	TODO: remove card version of tower upgrades
+	Add descriptions to tower upgrades (like auras)
+	Add special upgrades at levels 5 and 10
+	Add more upgrade options for different types of towers
+	Change damage type of cleric and bard to magic
 
 	can scout next battle for gold price
 	
@@ -10,17 +18,10 @@ Current:
 	- laser-sword 		- could be used to fix nearsightedness... maybe	
 	- something		- Get an event every day
 	- something		- Can skip events
-<<<<<<< HEAD
+	- Wax wings		
 
 	Allow hovering over event options to show cards/artifacts obtained
 	Add second page to events to describe what happens
-=======
-	- Map to Eldorado	- Explore x times to turn into gold
-
-	Allow hovering over event options to show cards/artifacts obtained
-	Add second page to events to describe what happens
-	Change events to only happen once, like artifacts
->>>>>>> 190f5d53eb452ef28f88bc5a3bbd65d3d1be5c32
 
 	Add more events:
 	
@@ -30,9 +31,7 @@ Current:
 	- The matrix	 - Osu! style clicking game
 	- tiles		 - pattern-based mini-game
 
-Soon:	
-	Tower upgrade rework - can upgrade towers in combat, show tower level, permanent upgrades from smithy
-		- Star level shown below towers? Max level 5 (or 10)
+Soon:
 	Add ways to increase score
 	Add alchemy lab, wizard tower, etc. to upgrade certain types of cards
 	Add Fishing		- Get a random relic/gold - minigame?			- 
@@ -183,10 +182,7 @@ Notes:
 	- Extra Slot 			+1 sideboard
 	- Shrubbery 			+10 energy at the start of each wave
 	- Explorers hat			Gain 50 extra resources when exploring
-<<<<<<< HEAD
 	- Map to Eldorado		Explore 10 times to gain 1000 gold
-=======
->>>>>>> 190f5d53eb452ef28f88bc5a3bbd65d3d1be5c32
 
 	Events
 	- Fountain of youth	Restore to full hp or +10 max hp

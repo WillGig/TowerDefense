@@ -8,6 +8,8 @@ namespace TowerDefense
 
 	namespace Tower
 	{
+		class Upgrade;
+
 		enum class TowerType { DAMAGE, SUPPORT };
 		enum class TargetType { FIRST, LAST, CLOSE, STRONG, WEAK };
 		enum class DamageType { PHYSICAL, MAGIC, POISON, TRUE};
@@ -29,9 +31,12 @@ namespace TowerDefense
 			inline std::string GetName() const { return m_Name; }
 			inline void SetName(const std::string& name) { m_Name = name; }
 
-			inline int GetRange() const { return m_Range; }
-			inline void SetRange(int range) { m_Range = range; }
+			inline void SetLevel(int level) { m_Level = level; }
+			inline int GetLevel() const { return m_Level; }
+			int GetUpgradeCost() const;
 
+			inline int GetRange() const { return m_Range; }
+			void SetRange(int range);
 			inline float GetAttackTime() const { return m_FireTime; }
 			inline void SetAttackTime(float speed) { m_FireTime = speed; }
 
@@ -65,6 +70,8 @@ namespace TowerDefense
 
 			std::shared_ptr<CardChoice> GetUpgrades();
 
+			std::shared_ptr<std::vector<std::shared_ptr<Upgrade>>> GetTowerUpgrades();
+
 			void ApplyBuff(std::shared_ptr<Buff> buff);
 
 			void RemoveBuff(int buffID);
@@ -78,8 +85,10 @@ namespace TowerDefense
 			virtual void Clicked();
 			float FindDirection(float x, float y);
 			bool ContainsCard(std::shared_ptr<std::vector<std::shared_ptr<Card>>> exclude, std::shared_ptr<Card> card);
+			bool ContainsUpgrade(std::shared_ptr<std::vector<std::shared_ptr<Upgrade>>> exclude, std::shared_ptr<Upgrade> upgrade);
 			virtual std::shared_ptr<Card> GetRandomUpgrade(std::shared_ptr<std::vector<std::shared_ptr<Card>>> exclude);
-			
+			virtual std::shared_ptr<Upgrade> GetRandomTowerUpgrade(std::shared_ptr<std::vector<std::shared_ptr<Upgrade>>> exclude);
+
 			DamageType m_DamageType;
 
 			bool m_SeeInvisibility;
@@ -91,11 +100,10 @@ namespace TowerDefense
 			void UpdateImage();
 			void Attack();
 			void UpdateBuffs();
-			
 
 			//Attack period in Game Updates (60 per second)
 			float m_FireTime, m_TotalDamageDealt;
-			int m_FireReady, m_Range;
+			int m_FireReady, m_Range, m_Level;
 			bool m_Highlighted, m_Clicked;
 			TowerType m_TowerType;
 			TargetType m_TargetType;
@@ -106,6 +114,8 @@ namespace TowerDefense
 
 			std::unique_ptr<std::vector<std::shared_ptr<Buff>>> m_Buffs, m_AddBuffs;
 			std::unique_ptr<std::vector<unsigned int>> m_RemoveBuffs;
+
+			std::shared_ptr<std::vector<std::shared_ptr<Upgrade>>> m_Upgrades;
 		};
 
 	}

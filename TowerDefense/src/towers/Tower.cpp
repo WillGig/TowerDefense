@@ -6,20 +6,22 @@
 #include "core/Board.h"
 #include "enemies/Enemy.h"
 #include "core/Player.h"
-#include "cards/Upgrades/Upgrades.h"
+#include "towers/upgrades/Upgrade.h"
+#include "cards/upgrades/Upgrades.h"
 
 TowerDefense::Tower::Tower::Tower(float x, float y, int width, int height, float fireTime, int range, TowerType type, const std::string& name)
 	:Entity(x, y, width, height, 0.0f, name, Type::TOWER),
 	m_DamageType(), m_PhysicalDamage(0.0f), m_MagicDamage(0.0f), 
 	m_Spread(0.0f), m_CritChance(0.0f), m_CritMultiplier(2.0f), m_SeeInvisibility(false),
-	m_FireTime(fireTime), m_TotalDamageDealt(0), m_FireReady(1000), m_Range(range), m_Highlighted(false), m_Clicked(false), 
+	m_FireTime(fireTime), m_TotalDamageDealt(0), m_Level(1), m_FireReady(1000), m_Range(range), m_Highlighted(false), m_Clicked(false), 
 	m_TowerType(type), m_Name(name), m_TargetType(TargetType::FIRST), 
 	m_RegularImage(std::make_shared<Image>(name, x, y, width, height, 0.0f)),
 	m_HighlightedImage(std::make_shared<Image>(name + "Highlighted", x, y, width, height, 0.0f)),
 	m_RangeCircle(std::make_shared<Circle>(0.0f, 0.0f, (float)range)),
 	m_Buffs(std::make_unique<std::vector<std::shared_ptr<Buff>>>()), 
 	m_AddBuffs(std::make_unique<std::vector<std::shared_ptr<Buff>>>()), 
-	m_RemoveBuffs(std::make_unique<std::vector<unsigned int>>())
+	m_RemoveBuffs(std::make_unique<std::vector<unsigned int>>()),
+	m_Upgrades(std::make_shared<std::vector<std::shared_ptr<Upgrade>>>())
 {
 	m_RangeCircle->SetColor(0.0f, 1.0f, 0.0f, 1.0f);
 }
@@ -107,6 +109,20 @@ void TowerDefense::Tower::Tower::SetY(float y)
 	m_RangeCircle->SetPosition(m_X, m_Y, 1.0f);
 }
 
+int TowerDefense::Tower::Tower::GetUpgradeCost() const
+{
+	return 50 * m_Level;
+}
+
+void TowerDefense::Tower::Tower::SetRange(int range)
+{ 
+	m_Range = range;  
+	m_RangeCircle = std::make_shared<Circle>(0.0f, 0.0f, (float)range); 
+	m_RangeCircle->SetColor(0.0f, 1.0f, 0.0f, 1.0f); 
+	m_RangeCircle->SetPosition(m_X, m_Y, 1.0f);
+}
+
+
 //Returns 3 random upgrades to choose from for hero towers
 std::shared_ptr<TowerDefense::CardChoice> TowerDefense::Tower::Tower::GetUpgrades()
 {
@@ -116,6 +132,17 @@ std::shared_ptr<TowerDefense::CardChoice> TowerDefense::Tower::Tower::GetUpgrade
 		upgrades->push_back(GetRandomUpgrade(upgrades));
 
 	return std::make_shared<CardChoice>(upgrades, -1);
+}
+
+std::shared_ptr<std::vector<std::shared_ptr<TowerDefense::Tower::Upgrade>>> TowerDefense::Tower::Tower::GetTowerUpgrades()
+{
+	if (m_Upgrades->size() == 0)
+	{
+		for (int i = 0; i < 3; i++)
+			m_Upgrades->push_back(GetRandomTowerUpgrade(m_Upgrades));
+	}
+
+	return m_Upgrades;
 }
 
 //Generates random upgrade, excluding already chosen types of upgrades
@@ -137,12 +164,39 @@ std::shared_ptr<TowerDefense::Card> TowerDefense::Tower::Tower::GetRandomUpgrade
 	return card;
 }
 
+std::shared_ptr<TowerDefense::Tower::Upgrade> TowerDefense::Tower::Tower::GetRandomTowerUpgrade(std::shared_ptr<std::vector<std::shared_ptr<Upgrade>>> exclude)
+{
+	std::shared_ptr<Upgrade> upgrade;
+
+	while (!upgrade || ContainsUpgrade(exclude, upgrade)) {
+		int randomUpgrade = (int)(Random::GetFloat() * 3.0f);
+		if (randomUpgrade == 0)
+			upgrade = std::make_shared<AttackSpeed>();
+		else if (randomUpgrade == 1)
+			upgrade = std::make_shared <Damage>();
+		else if (randomUpgrade == 2)
+			upgrade = std::make_shared <Range>();
+	}
+
+	return upgrade;
+}
+
 //Helper function to check if the upgrades list already contains the randomly chosen upgrade
 bool TowerDefense::Tower::Tower::ContainsCard(std::shared_ptr<std::vector<std::shared_ptr<Card>>> exclude, std::shared_ptr<Card> card)
 {
 	for (unsigned int i = 0; i < exclude->size(); i++)
 	{
 		if (exclude->at(i)->GetName() == card->GetName())
+			return true;
+	}
+	return false;
+}
+
+bool TowerDefense::Tower::Tower::ContainsUpgrade(std::shared_ptr<std::vector<std::shared_ptr<Upgrade>>> exclude, std::shared_ptr<Upgrade> upgrade)
+{
+	for (unsigned int i = 0; i < exclude->size(); i++)
+	{
+		if (exclude->at(i)->GetName() == upgrade->GetName())
 			return true;
 	}
 	return false;

@@ -157,6 +157,18 @@ void TowerDefense::LoadTextures()
     Texture::LoadTexture("minusAll",            doublePlusDoubleMinus.load(0, 1));
     Texture::LoadTexture("minusAllSelected",    doublePlusDoubleMinus.load(1, 1));
 
+    SpriteSheet upgradeButton("res/textures/UpgradeButton.png", 132, 40);
+    Texture::LoadTexture("upgradeButton", upgradeButton.load(0, 0));
+    Texture::LoadTexture("upgradeButtonSelected", upgradeButton.load(0, 1));
+
+    SpriteSheet towerUpgrades("res/textures/Upgrades.png", 50, 50);
+    Texture::LoadTexture("damageUpgrade",                   towerUpgrades.load(0, 0));
+    Texture::LoadTexture("damageUpgradeSelected",           towerUpgrades.load(0, 1));
+    Texture::LoadTexture("rangeUpgrade",                    towerUpgrades.load(1, 0));
+    Texture::LoadTexture("rangeUpgradeSelected",            towerUpgrades.load(1, 1));
+    Texture::LoadTexture("attackSpeedUpgrade",              towerUpgrades.load(2, 0));
+    Texture::LoadTexture("attackSpeedUpgradeSelected",      towerUpgrades.load(2, 1));
+
     std::cout << "...Towers" << std::endl;
 
     SpriteSheet towers("res/textures/Towers.png", 64, 64);

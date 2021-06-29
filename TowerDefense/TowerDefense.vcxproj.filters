@@ -1,988 +1,337 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <Filter Include="Source Files">
-      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
-      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
-    </Filter>
-    <Filter Include="Header Files">
-      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
-      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
-    </Filter>
-    <Filter Include="Resource Files">
-      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
-      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
-    </Filter>
+    <ClCompile Include="src\artifacts\Artifact.cpp" />
+    <ClCompile Include="src\artifacts\ArtifactPile.cpp" />
+    <ClCompile Include="src\artifacts\BlessedHandGrenade.cpp" />
+    <ClCompile Include="src\artifacts\BlessingOfTheBat.cpp" />
+    <ClCompile Include="src\artifacts\Boulder.cpp" />
+    <ClCompile Include="src\artifacts\Cooler.cpp" />
+    <ClCompile Include="src\artifacts\DollHouse.cpp" />
+    <ClCompile Include="src\artifacts\Explorershat.cpp" />
+    <ClCompile Include="src\artifacts\ExtraSlot.cpp" />
+    <ClCompile Include="src\artifacts\FruitCake.cpp" />
+    <ClCompile Include="src\artifacts\HandOfMidas.cpp" />
+    <ClCompile Include="src\artifacts\HouseExpansionKit.cpp" />
+    <ClCompile Include="src\artifacts\LuckyTools.cpp" />
+    <ClCompile Include="src\artifacts\MagicBeans.cpp" />
+    <ClCompile Include="src\artifacts\MapToEldorado.cpp" />
+    <ClCompile Include="src\artifacts\MiniatureWormHole.cpp" />
+    <ClCompile Include="src\artifacts\Prince.cpp" />
+    <ClCompile Include="src\artifacts\Shrubbery.cpp" />
+    <ClCompile Include="src\artifacts\SpecialToxins.cpp" />
+    <ClCompile Include="src\artifacts\Thermos.cpp" />
+    <ClCompile Include="src\artifacts\TokenOfTheArmored.cpp" />
+    <ClCompile Include="src\artifacts\TokenOfTheBroken.cpp" />
+    <ClCompile Include="src\artifacts\TokenOfTheMute.cpp" />
+    <ClCompile Include="src\artifacts\TokenOfTheVigilant.cpp" />
+    <ClCompile Include="src\artifacts\ToyDolls.cpp" />
+    <ClCompile Include="src\Auras\Aura.cpp" />
+    <ClCompile Include="src\Auras\ConstantDamage.cpp" />
+    <ClCompile Include="src\Auras\DeathExplosions.cpp" />
+    <ClCompile Include="src\Auras\EnhancePoison.cpp" />
+    <ClCompile Include="src\Auras\LifeSteal.cpp" />
+    <ClCompile Include="src\Auras\PoisonWeapons.cpp" />
+    <ClCompile Include="src\Auras\Storm.cpp" />
+    <ClCompile Include="src\Auras\StunAttacks.cpp" />
+    <ClCompile Include="src\cards\Attain.cpp" />
+    <ClCompile Include="src\cards\curses\Frog.cpp" />
+    <ClCompile Include="src\cards\Envenom.cpp" />
+    <ClCompile Include="src\cards\ExplosiveStrikes.cpp" />
+    <ClCompile Include="src\cards\LifeAura.cpp" />
+    <ClCompile Include="src\cards\Center.cpp" />
+    <ClCompile Include="src\cards\Concentrate.cpp" />
+    <ClCompile Include="src\cards\curses\Flames.cpp" />
+    <ClCompile Include="src\cards\Double.cpp" />
+    <ClCompile Include="src\cards\Gather.cpp" />
+    <ClCompile Include="src\cards\Lightning.cpp" />
+    <ClCompile Include="src\cards\LightningBolt.cpp" />
+    <ClCompile Include="src\cards\LightningStorm.cpp" />
+    <ClCompile Include="src\cards\PoisonBall.cpp" />
+    <ClCompile Include="src\cards\quirks\Berserker.cpp" />
+    <ClCompile Include="src\cards\quirks\Farsighted.cpp" />
+    <ClCompile Include="src\cards\quirks\Fighter.cpp" />
+    <ClCompile Include="src\cards\quirks\JustLucky.cpp" />
+    <ClCompile Include="src\cards\quirks\Sage.cpp" />
+    <ClCompile Include="src\cards\quirks\SpellWeaver.cpp" />
+    <ClCompile Include="src\cards\quirks\Veteran.cpp" />
+    <ClCompile Include="src\cards\Recharge.cpp" />
+    <ClCompile Include="src\cards\Reflect.cpp" />
+    <ClCompile Include="src\cards\Refresh.cpp" />
+    <ClCompile Include="src\cards\Ren.cpp" />
+    <ClCompile Include="src\cards\SideboardSlot.cpp" />
+    <ClCompile Include="src\cards\Sift.cpp" />
+    <ClCompile Include="src\cards\Skim.cpp" />
+    <ClCompile Include="src\cards\StrongPoisons.cpp" />
+    <ClCompile Include="src\cards\StunningStrikes.cpp" />
+    <ClCompile Include="src\cards\Surge.cpp" />
+    <ClCompile Include="src\cards\TheFloorIsLava.cpp" />
+    <ClCompile Include="src\core\Board.cpp" />
+    <ClCompile Include="src\cards\Card.cpp" />
+    <ClCompile Include="src\cards\CardChoice.cpp" />
+    <ClCompile Include="src\cards\CardPile.cpp" />
+    <ClCompile Include="src\cards\FireBall.cpp" />
+    <ClCompile Include="src\cards\Focus.cpp" />
+    <ClCompile Include="src\cards\FrostBall.cpp" />
+    <ClCompile Include="src\cards\Hand.cpp" />
+    <ClCompile Include="src\cards\HeroCard.cpp" />
+    <ClCompile Include="src\cards\quirks\BattleReady.cpp" />
+    <ClCompile Include="src\cards\quirks\Explorer.cpp" />
+    <ClCompile Include="src\cards\quirks\Giant.cpp" />
+    <ClCompile Include="src\cards\quirks\Gnome.cpp" />
+    <ClCompile Include="src\cards\quirks\Nearsighted.cpp" />
+    <ClCompile Include="src\cards\quirks\Orc.cpp" />
+    <ClCompile Include="src\cards\PotOfGreed.cpp" />
+    <ClCompile Include="src\cards\quirks\Dwarf.cpp" />
+    <ClCompile Include="src\cards\quirks\HighElf.cpp" />
+    <ClCompile Include="src\cards\quirks\Human.cpp" />
+    <ClCompile Include="src\cards\quirks\Quirk.cpp" />
+    <ClCompile Include="src\cards\TowerCard.cpp" />
+    <ClCompile Include="src\cards\TowerCards.cpp" />
+    <ClCompile Include="src\cards\quirks\WoodElf.cpp" />
+    <ClCompile Include="src\cards\upgrades\Upgrades.cpp" />
+    <ClCompile Include="src\core\TextureLoader.cpp" />
+    <ClCompile Include="src\enemies\BlinkBug.cpp" />
+    <ClCompile Include="src\enemies\DoubleOoze.cpp" />
+    <ClCompile Include="src\enemies\Enemy.cpp" />
+    <ClCompile Include="src\enemies\EnemyIcon.cpp" />
+    <ClCompile Include="src\enemies\EnemyInfo.cpp" />
+    <ClCompile Include="src\enemies\Fight.cpp" />
+    <ClCompile Include="src\enemies\HealerRat.cpp" />
+    <ClCompile Include="src\enemies\HealthBar.cpp" />
+    <ClCompile Include="src\enemies\JumpingOoze.cpp" />
+    <ClCompile Include="src\enemies\Doubler.cpp" />
+    <ClCompile Include="src\enemies\MegaOoze.cpp" />
+    <ClCompile Include="src\enemies\RunnerBeetle.cpp" />
+    <ClCompile Include="src\enemies\ShamanRat.cpp" />
+    <ClCompile Include="src\enemies\ShieldRat.cpp" />
+    <ClCompile Include="src\enemies\TankBeetle.cpp" />
+    <ClCompile Include="src\enemies\Wave.cpp" />
+    <ClCompile Include="src\engine\Animation.cpp" />
+    <ClCompile Include="src\core\AnimationEffect.cpp" />
+    <ClCompile Include="src\engine\Circle.cpp" />
+    <ClCompile Include="src\engine\Line.cpp" />
+    <ClCompile Include="src\engine\Rectangle.cpp" />
+    <ClCompile Include="src\engine\SpriteSheet.cpp" />
+    <ClCompile Include="src\cards\MassStun.cpp" />
+    <ClCompile Include="src\math\Random.cpp" />
+    <ClCompile Include="src\core\Player.cpp" />
+    <ClCompile Include="src\scenes\Base.cpp" />
+    <ClCompile Include="src\core\Button.cpp" />
+    <ClCompile Include="src\core\Entity.cpp" />
+    <ClCompile Include="src\engine\Image.cpp" />
+    <ClCompile Include="src\engine\IndexBuffer.cpp" />
+    <ClCompile Include="src\engine\Input.cpp" />
+    <ClCompile Include="src\engine\Log.cpp" />
+    <ClCompile Include="src\Main.cpp" />
+    <ClCompile Include="src\scenes\base_scenes\ArtifactSlot.cpp" />
+    <ClCompile Include="src\scenes\base_scenes\Build.cpp" />
+    <ClCompile Include="src\scenes\base_scenes\BuildButton.cpp" />
+    <ClCompile Include="src\scenes\base_scenes\CardSlot.cpp" />
+    <ClCompile Include="src\scenes\base_scenes\ClickCircle.cpp" />
+    <ClCompile Include="src\scenes\base_scenes\GatherResources.cpp" />
+    <ClCompile Include="src\scenes\base_scenes\Chapel.cpp" />
+    <ClCompile Include="src\scenes\base_scenes\Joust.cpp" />
+    <ClCompile Include="src\scenes\base_scenes\Library.cpp" />
+    <ClCompile Include="src\scenes\base_scenes\ManageWorkers.cpp" />
+    <ClCompile Include="src\scenes\base_scenes\Rest.cpp" />
+    <ClCompile Include="src\scenes\base_scenes\Smithing.cpp" />
+    <ClCompile Include="src\scenes\base_scenes\Tavern.cpp" />
+    <ClCompile Include="src\scenes\base_scenes\Trader.cpp" />
+    <ClCompile Include="src\scenes\random_events\CaveBat.cpp" />
+    <ClCompile Include="src\scenes\random_events\FrogPrince.cpp" />
+    <ClCompile Include="src\scenes\random_events\RandomEvent.cpp" />
+    <ClCompile Include="src\scenes\random_events\FountainOfYouth.cpp" />
+    <ClCompile Include="src\scenes\random_events\KnightsWhoSayNah.cpp" />
+    <ClCompile Include="src\scenes\random_events\LiterallySatan.cpp" />
+    <ClCompile Include="src\scenes\random_events\TheBlackKnight.cpp" />
+    <ClCompile Include="src\scenes\random_events\Treasure.cpp" />
+    <ClCompile Include="src\scenes\random_events\TrolleyProblem.cpp" />
+    <ClCompile Include="src\scenes\Combat.cpp" />
+    <ClCompile Include="src\scenes\CombatReward.cpp" />
+    <ClCompile Include="src\scenes\Event.cpp" />
+    <ClCompile Include="src\scenes\MainMenu.cpp" />
+    <ClCompile Include="src\math\Mat4f.cpp" />
+    <ClCompile Include="src\engine\Renderer.cpp" />
+    <ClCompile Include="src\engine\Shader.cpp" />
+    <ClCompile Include="src\engine\Text.cpp" />
+    <ClCompile Include="src\engine\Texture.cpp" />
+    <ClCompile Include="src\pch.cpp" />
+    <ClCompile Include="src\scenes\PostCombatScreen.cpp" />
+    <ClCompile Include="src\scenes\PreCombatScreen.cpp" />
+    <ClCompile Include="src\core\Tile.cpp" />
+    <ClCompile Include="src\core\Clock.cpp" />
+    <ClCompile Include="src\scenes\random_events\WanderingBard.cpp" />
+    <ClCompile Include="src\scenes\random_events\WanderingCleric.cpp" />
+    <ClCompile Include="src\scenes\random_events\WanderingSage.cpp" />
+    <ClCompile Include="src\TowerDefense.cpp" />
+    <ClCompile Include="src\towers\Alchemist.cpp" />
+    <ClCompile Include="src\towers\Archer.cpp" />
+    <ClCompile Include="src\towers\Bard.cpp" />
+    <ClCompile Include="src\towers\buffs\Buff.cpp" />
+    <ClCompile Include="src\towers\buffs\DamageBuff.cpp" />
+    <ClCompile Include="src\towers\buffs\SpeedBuff.cpp" />
+    <ClCompile Include="src\towers\Cleric.cpp" />
+    <ClCompile Include="src\towers\Giant.cpp" />
+    <ClCompile Include="src\towers\Monk.cpp" />
+    <ClCompile Include="src\towers\Paladin.cpp" />
+    <ClCompile Include="src\towers\projectiles\Projectile.cpp" />
+    <ClCompile Include="src\towers\projectiles\Projectiles.cpp" />
+    <ClCompile Include="src\towers\Ranger.cpp" />
+    <ClCompile Include="src\towers\Tower.cpp" />
+    <ClCompile Include="src\towers\TowerInfo.cpp" />
+    <ClCompile Include="src\towers\Wizard.cpp" />
+    <ClCompile Include="src\vendor\stb_image\stb_image.cpp" />
+    <ClCompile Include="src\engine\VertexArray.cpp" />
+    <ClCompile Include="src\engine\VertexBuffer.cpp" />
+    <ClCompile Include="src\towers\upgrades\Upgrade.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="src\Main.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\math\Mat4f.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\vendor\stb_image\stb_image.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\engine\Image.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\engine\IndexBuffer.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\engine\Renderer.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\engine\Shader.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\engine\Text.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\engine\Texture.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\engine\VertexArray.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\engine\VertexBuffer.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\engine\Log.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\TowerDefense.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\scenes\MainMenu.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\core\Entity.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\core\Button.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\engine\Input.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\pch.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\scenes\Base.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\scenes\PreCombatScreen.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\scenes\PostCombatScreen.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\scenes\Combat.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\cards\Card.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\cards\Hand.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\cards\CardPile.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\core\Player.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\cards\Focus.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\core\Board.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\core\Tile.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\enemies\Enemy.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\core\Clock.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\towers\Tower.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\towers\projectiles\Projectile.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\towers\projectiles\Projectiles.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\towers\Archer.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\cards\TowerCard.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\cards\TowerCards.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\towers\Wizard.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\towers\Giant.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\towers\Alchemist.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\core\AnimationEffect.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\engine\Animation.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\towers\Bard.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\towers\buffs\Buff.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\towers\buffs\SpeedBuff.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\towers\buffs\DamageBuff.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\towers\Cleric.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\towers\Paladin.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\towers\Monk.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\cards\PotOfGreed.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\cards\FireBall.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\engine\Circle.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\cards\FrostBall.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\engine\Rectangle.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\enemies\HealthBar.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\math\Random.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\enemies\Wave.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\enemies\Fight.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\cards\CardChoice.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\cards\quirks\Quirk.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\cards\HeroCard.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\cards\quirks\Human.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\cards\quirks\Dwarf.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\cards\quirks\HighElf.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\cards\quirks\WoodElf.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\cards\quirks\Orc.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\cards\quirks\Gnome.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\cards\quirks\Giant.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\cards\quirks\BattleReady.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\cards\quirks\Explorer.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\cards\quirks\Nearsighted.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\cards\upgrades\Upgrades.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\cards\quirks\Veteran.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\cards\quirks\JustLucky.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\engine\SpriteSheet.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\towers\TowerInfo.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\enemies\EnemyInfo.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\scenes\random_events\RandomEvent.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\scenes\random_events\FountainOfYouth.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\scenes\random_events\LiterallySatan.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\scenes\random_events\CaveBat.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\scenes\random_events\TrolleyProblem.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\scenes\random_events\KnightsWhoSayNah.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\cards\curses\Flames.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\cards\quirks\Farsighted.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\scenes\base_scenes\GatherResources.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\scenes\base_scenes\Rest.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\scenes\base_scenes\Library.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\scenes\base_scenes\Smithing.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\scenes\base_scenes\Tavern.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\scenes\base_scenes\Chapel.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\artifacts\TokenOfTheMute.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\artifacts\ArtifactPile.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\artifacts\TokenOfTheArmored.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\artifacts\TokenOfTheBroken.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\artifacts\TokenOfTheVigilant.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\cards\Lightning.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\engine\Line.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\cards\LightningBolt.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\scenes\base_scenes\Build.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\scenes\base_scenes\BuildButton.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\scenes\CombatReward.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\cards\Double.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\core\TextureLoader.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\cards\PoisonBall.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\cards\Sift.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\cards\Reflect.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\cards\Skim.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\cards\Refresh.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\cards\Center.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\cards\Gather.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\cards\Concentrate.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\cards\Recharge.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\cards\Attain.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\cards\Ren.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\cards\Surge.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\cards\MassStun.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Auras\LifeSteal.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\cards\LifeAura.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Auras\Aura.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Auras\PoisonWeapons.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\cards\Envenom.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Auras\StunAttacks.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\cards\StunningStrikes.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Auras\ConstantDamage.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\cards\TheFloorIsLava.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Auras\DeathExplosions.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\cards\ExplosiveStrikes.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Auras\Storm.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\cards\LightningStorm.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Auras\EnhancePoison.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\cards\StrongPoisons.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\enemies\DoubleOoze.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\enemies\JumpingOoze.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\enemies\Doubler.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\enemies\ShieldRat.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\enemies\ShamanRat.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\enemies\HealerRat.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\enemies\BlinkBug.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\enemies\RunnerBeetle.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\enemies\MegaOoze.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\artifacts\BlessingOfTheBat.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\enemies\TankBeetle.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\towers\Ranger.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\scenes\base_scenes\Trader.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\scenes\base_scenes\CardSlot.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\scenes\base_scenes\ArtifactSlot.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\artifacts\Artifact.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\enemies\EnemyIcon.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\scenes\base_scenes\ManageWorkers.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\artifacts\LuckyTools.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\artifacts\Boulder.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\artifacts\MagicBeans.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\artifacts\FruitCake.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\artifacts\DollHouse.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\artifacts\ToyDolls.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\artifacts\HandOfMidas.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\artifacts\HouseExpansionKit.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\artifacts\Thermos.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\artifacts\Cooler.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\artifacts\MiniatureWormHole.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\artifacts\SpecialToxins.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\cards\SideboardSlot.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\artifacts\ExtraSlot.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\scenes\Event.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\scenes\random_events\FrogPrince.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\artifacts\Prince.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\cards\curses\Frog.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\scenes\random_events\Treasure.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\artifacts\Shrubbery.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\artifacts\BlessedHandGrenade.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\scenes\random_events\WanderingSage.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\scenes\random_events\WanderingBard.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\cards\quirks\SpellWeaver.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\cards\quirks\Fighter.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\cards\quirks\Sage.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\cards\quirks\Berserker.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\scenes\random_events\WanderingCleric.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\scenes\random_events\TheBlackKnight.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\scenes\base_scenes\Joust.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\artifacts\Explorershat.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\scenes\base_scenes\ClickCircle.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-<<<<<<< HEAD
-    <ClCompile Include="src\artifacts\MapToEldorado.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-=======
->>>>>>> 190f5d53eb452ef28f88bc5a3bbd65d3d1be5c32
+    <ClInclude Include="src\artifacts\Artifact.h" />
+    <ClInclude Include="src\artifacts\ArtifactPile.h" />
+    <ClInclude Include="src\Auras\Aura.h" />
+    <ClInclude Include="src\cards\AuraCards.h" />
+    <ClInclude Include="src\cards\curses\Curses.h" />
+    <ClInclude Include="src\cards\InfoTile.h" />
+    <ClInclude Include="src\cards\LightningBolt.h" />
+    <ClInclude Include="src\cards\SideboardSlot.h" />
+    <ClInclude Include="src\cards\SkillCards.h" />
+    <ClInclude Include="src\core\Board.h" />
+    <ClInclude Include="src\cards\Card.h" />
+    <ClInclude Include="src\cards\CardChoice.h" />
+    <ClInclude Include="src\cards\CardPile.h" />
+    <ClInclude Include="src\cards\Hand.h" />
+    <ClInclude Include="src\cards\HeroCard.h" />
+    <ClInclude Include="src\cards\quirks\Quirk.h" />
+    <ClInclude Include="src\cards\TowerCard.h" />
+    <ClInclude Include="src\cards\TowerCards.h" />
+    <ClInclude Include="src\cards\upgrades\Upgrades.h" />
+    <ClInclude Include="src\cards\upgrades\Upgrade.h" />
+    <ClInclude Include="src\core\TextureLoader.h" />
+    <ClInclude Include="src\enemies\Enemies.h" />
+    <ClInclude Include="src\enemies\Enemy.h" />
+    <ClInclude Include="src\enemies\EnemyIcon.h" />
+    <ClInclude Include="src\enemies\EnemyInfo.h" />
+    <ClInclude Include="src\enemies\Fight.h" />
+    <ClInclude Include="src\enemies\HealthBar.h" />
+    <ClInclude Include="src\enemies\Wave.h" />
+    <ClInclude Include="src\engine\Animation.h" />
+    <ClInclude Include="src\core\AnimationEffect.h" />
+    <ClInclude Include="src\engine\Circle.h" />
+    <ClInclude Include="src\engine\Line.h" />
+    <ClInclude Include="src\engine\Rectangle.h" />
+    <ClInclude Include="src\engine\SpriteSheet.h" />
+    <ClInclude Include="src\math\Random.h" />
+    <ClInclude Include="src\core\Player.h" />
+    <ClInclude Include="src\scenes\Base.h" />
+    <ClInclude Include="src\core\Button.h" />
+    <ClInclude Include="src\core\Entity.h" />
+    <ClInclude Include="src\engine\Input.h" />
+    <ClInclude Include="src\core\StaticImage.h" />
+    <ClInclude Include="src\engine\Image.h" />
+    <ClInclude Include="src\engine\IndexBuffer.h" />
+    <ClInclude Include="src\engine\Log.h" />
+    <ClInclude Include="src\scenes\base_scenes\ArtifactSlot.h" />
+    <ClInclude Include="src\scenes\base_scenes\BaseScene.h" />
+    <ClInclude Include="src\scenes\base_scenes\BuildButton.h" />
+    <ClInclude Include="src\scenes\base_scenes\CardSlot.h" />
+    <ClInclude Include="src\scenes\base_scenes\ClickCircle.h" />
+    <ClInclude Include="src\scenes\random_events\RandomEvent.h" />
+    <ClInclude Include="src\scenes\Combat.h" />
+    <ClInclude Include="src\scenes\CombatReward.h" />
+    <ClInclude Include="src\scenes\Event.h" />
+    <ClInclude Include="src\scenes\MainMenu.h" />
+    <ClInclude Include="src\math\Mat4f.h" />
+    <ClInclude Include="src\math\Vector.h" />
+    <ClInclude Include="src\engine\Renderer.h" />
+    <ClInclude Include="src\engine\Shader.h" />
+    <ClInclude Include="src\engine\Text.h" />
+    <ClInclude Include="src\engine\Texture.h" />
+    <ClInclude Include="src\pch.h" />
+    <ClInclude Include="src\scenes\PostCombatScreen.h" />
+    <ClInclude Include="src\scenes\PreCombatScreen.h" />
+    <ClInclude Include="src\scenes\Scene.h" />
+    <ClInclude Include="src\core\Tile.h" />
+    <ClInclude Include="src\core\Clock.h" />
+    <ClInclude Include="src\TowerDefense.h" />
+    <ClInclude Include="src\towers\Alchemist.h" />
+    <ClInclude Include="src\towers\Archer.h" />
+    <ClInclude Include="src\towers\Bard.h" />
+    <ClInclude Include="src\towers\buffs\Buff.h" />
+    <ClInclude Include="src\towers\buffs\DamageBuff.h" />
+    <ClInclude Include="src\towers\buffs\SpeedBuff.h" />
+    <ClInclude Include="src\towers\Cleric.h" />
+    <ClInclude Include="src\towers\Giant.h" />
+    <ClInclude Include="src\towers\Monk.h" />
+    <ClInclude Include="src\towers\Paladin.h" />
+    <ClInclude Include="src\towers\projectiles\Projectile.h" />
+    <ClInclude Include="src\towers\projectiles\Projectiles.h" />
+    <ClInclude Include="src\towers\Ranger.h" />
+    <ClInclude Include="src\towers\Tower.h" />
+    <ClInclude Include="src\towers\TowerInfo.h" />
+    <ClInclude Include="src\towers\Wizard.h" />
+    <ClInclude Include="src\vendor\stb_image\stb_image.h" />
+    <ClInclude Include="src\engine\VertexArray.h" />
+    <ClInclude Include="src\engine\VertexBuffer.h" />
+    <ClInclude Include="src\engine\VertexBufferLayout.h" />
+    <ClInclude Include="src\towers\upgrades\Upgrade.h" />
   </ItemGroup>
   <ItemGroup>
+    <Image Include="res\textures\AnimationEffects.png" />
+    <Image Include="res\textures\Arial.png" />
+    <Image Include="res\textures\ArialBold.png" />
+    <Image Include="res\textures\ArrowButton.png" />
+    <Image Include="res\textures\ArrowButtonSelected.png" />
+    <Image Include="res\textures\ArtifactInfo.png" />
+    <Image Include="res\textures\Artifacts.png" />
+    <Image Include="res\textures\AuraCards.png" />
+    <Image Include="res\textures\AuraInfo.png" />
+    <Image Include="res\textures\Auras.png" />
+    <Image Include="res\textures\BaseButtons.png" />
+    <Image Include="res\textures\BuildButtons.png" />
+    <Image Include="res\textures\cardTemplate.png" />
+    <Image Include="res\textures\CombatButtons.png" />
+    <Image Include="res\textures\CombatRewardButton.png" />
+    <Image Include="res\textures\Curses.png" />
+    <Image Include="res\textures\Enemies.png" />
+    <Image Include="res\textures\EnemyInfo.png" />
+    <Image Include="res\textures\EventButtons.png" />
+    <Image Include="res\textures\events\CaveBat.png" />
+    <Image Include="res\textures\events\FountainOfYouth.png" />
+    <Image Include="res\textures\events\LiterallySatan.png" />
+    <Image Include="res\textures\events\TrolleyProblem.png" />
+    <Image Include="res\textures\fonts\Arial.png" />
+    <Image Include="res\textures\fonts\ArialBold.png" />
+    <Image Include="res\textures\HeroImages.png" />
+    <Image Include="res\textures\HeroUpgrades.png" />
+    <Image Include="res\textures\InfoTiles.png" />
+    <Image Include="res\textures\MainMenuButtons.png" />
+    <Image Include="res\textures\PlayerButtons.png" />
+    <Image Include="res\textures\projectiles\arrow.png" />
+    <Image Include="res\textures\projectiles\giantRock.png" />
+    <Image Include="res\textures\projectiles\magicMissile.png" />
+    <Image Include="res\textures\projectiles\poisonBomb.png" />
+    <Image Include="res\textures\selectedTile.png" />
+    <Image Include="res\textures\CardBackgrounds.png" />
+    <Image Include="res\textures\deckEmpty.png" />
+    <Image Include="res\textures\deckFull.png" />
+    <Image Include="res\textures\endButtonOn.png" />
+    <Image Include="res\textures\outline.png" />
+    <Image Include="res\textures\pauseOn.png" />
+    <Image Include="res\textures\SkillCards.png" />
+    <Image Include="res\textures\smithArrow.png" />
+    <Image Include="res\textures\Stats.png" />
+    <Image Include="res\textures\tiles.png" />
+    <Image Include="res\textures\TowerCards.png" />
+    <Image Include="res\textures\TowerInfo.png" />
+    <Image Include="res\textures\Towers.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="res\shaders\Invisible.shader" />
+    <None Include="res\shaders\Line.shader" />
     <None Include="res\shaders\Texture.shader" />
-    <None Include="res\shaders\Text.shader" />
     <None Include="res\shaders\Circle.shader" />
     <None Include="res\shaders\Rectangle.shader" />
-    <None Include="res\shaders\Line.shader" />
-    <None Include="res\shaders\Invisible.shader" />
-  </ItemGroup>
-  <ItemGroup>
-    <Image Include="res\textures\CardBackgrounds.png">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="res\textures\deckEmpty.png">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="res\textures\deckFull.png">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="res\textures\endButtonOn.png">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="res\textures\outline.png">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="res\textures\pauseOn.png">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="res\textures\smithArrow.png">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="res\textures\MainMenuButtons.png">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="res\textures\selectedTile.png">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="res\textures\tiles.png">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="res\textures\Arial.png">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="res\textures\ArialBold.png">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="res\textures\CombatButtons.png">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="res\textures\Enemies.png">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="res\textures\HeroUpgrades.png">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="res\textures\SkillCards.png">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="res\textures\TowerCards.png">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="res\textures\Towers.png">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="res\textures\AnimationEffects.png">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="res\textures\BaseButtons.png">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="res\textures\HeroImages.png">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="res\textures\InfoTiles.png">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="res\textures\ArrowButton.png">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="res\textures\ArrowButtonSelected.png">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="res\textures\Curses.png">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="res\textures\EnemyInfo.png">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="res\textures\EventButtons.png">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="res\textures\TowerInfo.png">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="res\textures\events\CaveBat.png">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="res\textures\events\FountainOfYouth.png">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="res\textures\events\LiterallySatan.png">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="res\textures\events\TrolleyProblem.png">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="res\textures\fonts\Arial.png">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="res\textures\fonts\ArialBold.png">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="res\textures\projectiles\arrow.png">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="res\textures\projectiles\giantRock.png">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="res\textures\projectiles\magicMissile.png">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="res\textures\projectiles\poisonBomb.png">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="res\textures\Artifacts.png">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="res\textures\PlayerButtons.png">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="res\textures\ArtifactInfo.png">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="res\textures\AuraCards.png">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="res\textures\AuraInfo.png">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="res\textures\Auras.png">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="res\textures\cardTemplate.png">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="res\textures\CombatRewardButton.png">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="res\textures\Stats.png">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="res\textures\BuildButtons.png">
-      <Filter>Resource Files</Filter>
-    </Image>
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="src\math\Mat4f.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\math\Vector.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\vendor\stb_image\stb_image.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\engine\Image.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\engine\IndexBuffer.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\engine\Renderer.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\engine\Shader.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\engine\Text.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\engine\Texture.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\engine\VertexArray.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\engine\VertexBuffer.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\engine\VertexBufferLayout.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\engine\Log.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\TowerDefense.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\scenes\Scene.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\scenes\MainMenu.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\core\Entity.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\core\StaticImage.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\core\Button.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\engine\Input.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\pch.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\scenes\Base.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\scenes\PreCombatScreen.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\scenes\PostCombatScreen.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\scenes\Combat.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\cards\Card.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\cards\Hand.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\cards\CardPile.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\core\Player.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\core\Board.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\core\Tile.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\enemies\Enemy.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\enemies\Enemies.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\core\Clock.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\towers\Tower.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\towers\projectiles\Projectile.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\towers\projectiles\Projectiles.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\towers\Archer.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\cards\TowerCard.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\cards\TowerCards.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\towers\Wizard.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\towers\Giant.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\towers\Alchemist.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\core\AnimationEffect.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\engine\Animation.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\towers\Bard.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\towers\buffs\Buff.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\towers\buffs\SpeedBuff.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\towers\buffs\DamageBuff.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\towers\Cleric.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\towers\Paladin.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\towers\Monk.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\engine\Circle.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\engine\Rectangle.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\enemies\HealthBar.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\math\Random.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\enemies\Wave.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\enemies\Fight.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\cards\CardChoice.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\cards\quirks\Quirk.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\cards\HeroCard.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\cards\upgrades\Upgrade.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\cards\upgrades\Upgrades.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\cards\InfoTile.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\engine\SpriteSheet.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\towers\TowerInfo.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\enemies\EnemyInfo.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\scenes\random_events\RandomEvent.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\cards\curses\Curses.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\scenes\base_scenes\BaseScene.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\artifacts\Artifact.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\artifacts\ArtifactPile.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\engine\Line.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\cards\LightningBolt.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\scenes\base_scenes\BuildButton.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\scenes\CombatReward.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\core\TextureLoader.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\cards\SkillCards.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Auras\Aura.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\cards\AuraCards.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\towers\Ranger.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\scenes\base_scenes\CardSlot.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\scenes\base_scenes\ArtifactSlot.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\enemies\EnemyIcon.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\cards\SideboardSlot.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\scenes\Event.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\scenes\base_scenes\ClickCircle.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
+    <None Include="res\shaders\Text.shader" />
   </ItemGroup>
 </Project>

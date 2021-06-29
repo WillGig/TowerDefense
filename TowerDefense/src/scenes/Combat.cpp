@@ -328,7 +328,7 @@ void TowerDefense::Combat::UpdateSelectedTower()
 			}
 		}
 
-		if ((!m_SelectedTower || !m_SelectedTower->Contains(Input::GetMouseX(), Input::GetMouseY())) && !clickingEnemy)
+		if ((!m_SelectedTower || (!m_SelectedTower->Contains(Input::GetMouseX(), Input::GetMouseY())) && !clickingEnemy && !s_TowerInfo->Upgrading()))
 		{
 			m_SelectedTower.reset();
 			s_TowerInfo.reset();
