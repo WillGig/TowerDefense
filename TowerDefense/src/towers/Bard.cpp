@@ -8,12 +8,14 @@ TowerDefense::Tower::Bard::Bard()
 	:Tower(0.0f, 0.0f, 32, 32, 60.0f, 75, TowerType::SUPPORT, "Bard")
 {
 	m_MagicDamage = 1.0f;
+	m_DamageType = DamageType::MAGIC;
 }
 
 TowerDefense::Tower::Bard::Bard(float fireTime, int range, float buff)
 	: Tower(0.0f, 0.0f, 32, 32, fireTime, range, TowerType::SUPPORT, "Bard")
 {
 	m_MagicDamage = buff;
+	m_DamageType = DamageType::MAGIC;
 }
 
 void TowerDefense::Tower::Bard::Fire(std::shared_ptr<TowerDefense::Entity> target)

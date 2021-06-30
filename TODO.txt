@@ -3,11 +3,10 @@ Current:
 	Tower upgrade rework - can upgrade towers in combat, show tower level, permanent upgrades from smithy
 		- Star level shown below towers? Max level 10 (or 5)
 
-	TODO: remove card version of tower upgrades
+	Rework smithing upgrades
 	Add descriptions to tower upgrades (like auras)
 	Add special upgrades at levels 5 and 10
 	Add more upgrade options for different types of towers
-	Change damage type of cleric and bard to magic
 
 	can scout next battle for gold price
 	
