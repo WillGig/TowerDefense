@@ -3,7 +3,7 @@
 
 TowerDefense::Aura::Aura(const std::string name, const std::string info)
 	:Entity(0.0f, 0.0f, 32, 32, 0.0f, name, Type::AURA), m_Name(name), m_Selected(false),
-	m_InfoImage(std::make_unique<Image>("AuraInfo", 0.0f, 0.0f, 220, 100, 0.0f)),
+	m_InfoImage(std::make_unique<Image>("InfoImage", 0.0f, 0.0f, 220, 100, 0.0f)),
 	m_InfoText(std::make_unique<Text>(info, 0.0f, 0.0f, 10.0f, 0.0f))
 {
 	m_InfoText->SetColor(1.0f, 1.0f, 1.0f, 1.0f);

@@ -2,7 +2,7 @@
 #include "Wizard.h"
 #include "scenes/Combat.h"
 #include "projectiles/Projectiles.h"
-#include "cards/upgrades/Upgrades.h"
+#include "upgrades/Upgrade.h"
 
 TowerDefense::Tower::Wizard::Wizard()
 	:Tower(0.0f, 0.0f, 32, 32, 100.0f, 150, TowerType::DAMAGE, "Wizard"),
@@ -34,23 +34,22 @@ void TowerDefense::Tower::Wizard::Fire(std::shared_ptr<TowerDefense::Entity> tar
 	}
 }
 
-std::shared_ptr<TowerDefense::Card> TowerDefense::Tower::Wizard::GetRandomUpgrade(std::shared_ptr<std::vector<std::shared_ptr<Card>>> exclude)
+std::shared_ptr<TowerDefense::Tower::Upgrade> TowerDefense::Tower::Wizard::GetRandomTowerUpgrade(std::shared_ptr<std::vector<std::shared_ptr<Upgrade>>> exclude)
 {
-	std::shared_ptr<Card> card;
+	std::shared_ptr<Upgrade> upgrade;
 
-	while (!card || ContainsCard(exclude, card)) {
-		int randomCard = (int)(Random::GetFloat() * 4.0f);
-		if (randomCard == 0)
-			card = std::make_shared<AttackSpeedUpgrade>(.15f);
-		else if (randomCard == 1)
-			card = std::make_shared <DamageUpgrade>(1.0f, 1.0f);
-		else if (randomCard == 2)
-			card = std::make_shared <RangeUpgrade>(25);
-		else if (randomCard == 3)
-			card = std::make_shared <MoreMissiles>();
+	while (!upgrade || ContainsUpgrade(exclude, upgrade)) {
+		int randomUpgrade = (int)(Random::GetFloat() * 4.0f);
+		if (randomUpgrade == 0)
+			upgrade = std::make_shared<AttackSpeed>();
+		else if (randomUpgrade == 1)
+			upgrade = std::make_shared<Damage>();
+		else if (randomUpgrade == 2)
+			upgrade = std::make_shared<Range>();
+		else if (randomUpgrade == 3)
+			upgrade = std::make_shared<MoreMissiles>();
 	}
-
-	return card;
+	return upgrade;
 }
 
 std::shared_ptr<TowerDefense::Tower::Tower> TowerDefense::Tower::Wizard::Clone()
