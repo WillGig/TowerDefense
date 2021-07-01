@@ -139,10 +139,14 @@ std::shared_ptr<std::vector<std::shared_ptr<TowerDefense::Tower::Upgrade>>> Towe
 {
 	if (m_Upgrades->size() == 0)
 	{
+		auto upgrades = GetPossibleUpgrades();
 		for (int i = 0; i < 3; i++)
-			m_Upgrades->push_back(GetRandomTowerUpgrade(m_Upgrades));
+		{
+			int randomUpgrade = (int)(Random::GetFloat() * upgrades->size());
+			m_Upgrades->push_back(upgrades->at(randomUpgrade));
+			upgrades->erase(upgrades->begin() + randomUpgrade);
+		}
 	}
-
 	return m_Upgrades;
 }
 
@@ -165,23 +169,15 @@ std::shared_ptr<TowerDefense::Card> TowerDefense::Tower::Tower::GetRandomUpgrade
 	return card;
 }
 
-std::shared_ptr<TowerDefense::Tower::Upgrade> TowerDefense::Tower::Tower::GetRandomTowerUpgrade(std::shared_ptr<std::vector<std::shared_ptr<Upgrade>>> exclude)
+std::shared_ptr<std::vector<std::shared_ptr<TowerDefense::Tower::Upgrade>>> TowerDefense::Tower::Tower::GetPossibleUpgrades()
 {
-	std::shared_ptr<Upgrade> upgrade;
+	auto upgrades = std::make_shared<std::vector<std::shared_ptr<Upgrade>>>();
+	upgrades->push_back(std::make_shared<AttackSpeed>());
+	upgrades->push_back(std::make_shared<Damage>());
+	upgrades->push_back(std::make_shared<Range>());
+	upgrades->push_back(std::make_shared<Crit>());
 
-	while (!upgrade || ContainsUpgrade(exclude, upgrade)) {
-		int randomUpgrade = (int)(Random::GetFloat() * 4.0f);
-		if (randomUpgrade == 0)
-			upgrade = std::make_shared<AttackSpeed>();
-		else if (randomUpgrade == 1)
-			upgrade = std::make_shared<Damage>();
-		else if (randomUpgrade == 2)
-			upgrade = std::make_shared<Range>();
-		else if (randomUpgrade == 3)
-			upgrade = std::make_shared<Crit>();
-	}
-
-	return upgrade;
+	return upgrades;
 }
 
 //Helper function to check if the upgrades list already contains the randomly chosen upgrade

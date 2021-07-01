@@ -34,24 +34,16 @@ void TowerDefense::Tower::Wizard::Fire(std::shared_ptr<TowerDefense::Entity> tar
 	}
 }
 
-std::shared_ptr<TowerDefense::Tower::Upgrade> TowerDefense::Tower::Wizard::GetRandomTowerUpgrade(std::shared_ptr<std::vector<std::shared_ptr<Upgrade>>> exclude)
+std::shared_ptr<std::vector<std::shared_ptr<TowerDefense::Tower::Upgrade>>> TowerDefense::Tower::Wizard::GetPossibleUpgrades()
 {
-	std::shared_ptr<Upgrade> upgrade;
+	auto upgrades = std::make_shared<std::vector<std::shared_ptr<Upgrade>>>();
+	upgrades->push_back(std::make_shared<AttackSpeed>());
+	upgrades->push_back(std::make_shared<Damage>());
+	upgrades->push_back(std::make_shared<Range>());
+	upgrades->push_back(std::make_shared<Crit>());
+	upgrades->push_back(std::make_shared<MoreMissiles>());
 
-	while (!upgrade || ContainsUpgrade(exclude, upgrade)) {
-		int randomUpgrade = (int)(Random::GetFloat() * 5.0f);
-		if (randomUpgrade == 0)
-			upgrade = std::make_shared<AttackSpeed>();
-		else if (randomUpgrade == 1)
-			upgrade = std::make_shared<Damage>();
-		else if (randomUpgrade == 2)
-			upgrade = std::make_shared<Range>();
-		else if (randomUpgrade == 3)
-			upgrade = std::make_shared<Crit>();
-		else if (randomUpgrade == 4)
-			upgrade = std::make_shared<MoreMissiles>();
-	}
-	return upgrade;
+	return upgrades;
 }
 
 std::shared_ptr<TowerDefense::Tower::Tower> TowerDefense::Tower::Wizard::Clone()

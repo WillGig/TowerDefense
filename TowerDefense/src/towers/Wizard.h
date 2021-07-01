@@ -15,12 +15,10 @@ namespace TowerDefense
 			inline int GetNumberOfMissiles() const { return m_NumberOfMissiles; }
 			inline void SetNumberOfMissiles(int num) { m_NumberOfMissiles = num; }
 
-			virtual std::shared_ptr<Upgrade> GetRandomTowerUpgrade(std::shared_ptr<std::vector<std::shared_ptr<Upgrade>>> exclude) override;
-
-		protected:
-			void Fire(std::shared_ptr<TowerDefense::Entity> target) override;
-
 		private:
+			void Fire(std::shared_ptr<TowerDefense::Entity> target) override;
+			std::shared_ptr<std::vector<std::shared_ptr<Upgrade>>> GetPossibleUpgrades() override;
+			
 			int m_NumberOfMissiles;
 		};
 	}

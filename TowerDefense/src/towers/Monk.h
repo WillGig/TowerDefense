@@ -20,7 +20,7 @@ namespace TowerDefense
 		private:
 			void Clicked() override;
 			void Fire(std::shared_ptr<TowerDefense::Entity> target) override;
-			virtual std::shared_ptr<Upgrade> GetRandomTowerUpgrade(std::shared_ptr<std::vector<std::shared_ptr<Upgrade>>> exclude) override;
+			std::shared_ptr<std::vector<std::shared_ptr<Upgrade>>> GetPossibleUpgrades() override;
 
 			bool m_Upgraded, m_Focused;
 			int m_NumberOfFocus;
