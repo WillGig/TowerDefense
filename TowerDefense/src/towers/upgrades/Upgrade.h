@@ -79,5 +79,13 @@ namespace TowerDefense
 
 			void UpgradeTower(std::shared_ptr<Tower> t) override;
 		};
+
+		class MoreFocus : public Upgrade
+		{
+		public:
+			MoreFocus();
+
+			void UpgradeTower(std::shared_ptr<Tower> t) override;
+		};
 	}
 }

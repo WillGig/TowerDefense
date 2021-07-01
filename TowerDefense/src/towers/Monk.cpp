@@ -4,12 +4,13 @@
 #include "projectiles/Projectiles.h"
 #include "cards/SkillCards.h"
 #include "core/Player.h"
+#include "upgrades/Upgrade.h"
 
 TowerDefense::Tower::Monk::Monk(bool upgraded)
 	:Tower(0.0f, 0.0f, 32, 32, 600.0f, 50, TowerType::SUPPORT, "Monk"),
-	m_Upgraded(upgraded), m_Focused(false), m_FocusedImage(std::make_shared<Image>("monkSelected", 0.0f, 0.0f, m_Width, m_Height, 0.0f))
-{
-}
+	m_Upgraded(upgraded), m_Focused(false), m_NumberOfFocus(1),
+	m_FocusedImage(std::make_shared<Image>("monkSelected", 0.0f, 0.0f, m_Width, m_Height, 0.0f))
+{}
 
 void TowerDefense::Tower::Monk::Update()
 {
@@ -27,10 +28,13 @@ void TowerDefense::Tower::Monk::Clicked()
 {
 	if (m_Focused) 
 	{
-		std::shared_ptr<Focus> focusCard = std::make_shared<Focus>(true);
-		if (m_Upgraded)
-			focusCard->Upgrade();
-		Player::Get().GetHand()->AddCard(focusCard);
+		for (int i = 0; i < m_NumberOfFocus; i++)
+		{
+			std::shared_ptr<Focus> focusCard = std::make_shared<Focus>(true);
+			if (m_Upgraded)
+				focusCard->Upgrade();
+			Player::Get().GetHand()->AddCard(focusCard);
+		}
 		m_Focused = false;
 	}
 	else
@@ -38,7 +42,22 @@ void TowerDefense::Tower::Monk::Clicked()
 }
 
 void TowerDefense::Tower::Monk::Fire(std::shared_ptr<TowerDefense::Entity> target)
+{}
+
+std::shared_ptr<TowerDefense::Tower::Upgrade> TowerDefense::Tower::Monk::GetRandomTowerUpgrade(std::shared_ptr<std::vector<std::shared_ptr<Upgrade>>> exclude)
 {
+	std::shared_ptr<Upgrade> upgrade;
+
+	while (!upgrade || ContainsUpgrade(exclude, upgrade)) {
+		int randomUpgrade = (int)(Random::GetFloat() * 3.0f);
+		if (randomUpgrade == 0)
+			upgrade = std::make_shared<AttackSpeed>();
+		else if (randomUpgrade == 1)
+			upgrade = std::make_shared<Damage>();
+		else if (randomUpgrade == 2)
+			upgrade = std::make_shared<MoreFocus>();
+	}
+	return upgrade;
 }
 
 std::shared_ptr<TowerDefense::Tower::Tower> TowerDefense::Tower::Monk::Clone()

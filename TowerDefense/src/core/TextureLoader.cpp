@@ -176,6 +176,8 @@ void TowerDefense::LoadTextures()
     Texture::LoadTexture("armorPenUpgradeSelected",         towerUpgrades.load(5, 1));
     Texture::LoadTexture("multishotUpgrade",                towerUpgrades.load(6, 0));
     Texture::LoadTexture("multishotUpgradeSelected",        towerUpgrades.load(6, 1));
+    Texture::LoadTexture("moreFocusUpgrade",                towerUpgrades.load(7, 0));
+    Texture::LoadTexture("moreFocusUpgradeSelected",        towerUpgrades.load(7, 1));
 
 
     std::cout << "...Towers" << std::endl;

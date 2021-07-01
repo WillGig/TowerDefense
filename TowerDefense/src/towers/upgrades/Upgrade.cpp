@@ -2,6 +2,7 @@
 #include "Upgrade.h"
 #include "towers/Wizard.h"
 #include "towers/Archer.h"
+#include "towers/Monk.h"
 
 TowerDefense::Tower::Upgrade::Upgrade(const std::string name, const std::string info)
 	:Button(0.0f, 0.0f, 50, 50, name), m_Name(name),
@@ -106,5 +107,17 @@ void TowerDefense::Tower::Multishot::UpgradeTower(std::shared_ptr<Tower> t)
 	auto a = std::dynamic_pointer_cast<Archer>(t);
 	if (a)
 		a->SetNumberOfArrows(a->GetNumberOfArrows() + 1);
+	t->SetLevel(t->GetLevel() + 1);
+}
+
+TowerDefense::Tower::MoreFocus::MoreFocus()
+	:Upgrade("moreFocusUpgrade", "Add an additional\nFocus to your hand\neach round")
+{}
+
+void TowerDefense::Tower::MoreFocus::UpgradeTower(std::shared_ptr<Tower> t)
+{
+	auto m = std::dynamic_pointer_cast<Monk>(t);
+	if (m)
+		m->SetNumberOfFocus(m->GetNumberOfFocus() + 1);
 	t->SetLevel(t->GetLevel() + 1);
 }

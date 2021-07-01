@@ -6,8 +6,9 @@ Current:
 	Rework smithing upgrades
 	Add special upgrades at levels 5 and 10
 	Add more upgrade options for different types of towers
-	 - crit upgrade, armor pen?, 
+	 - new spells/attacks?
 	Add more buildings (special building required for level 5 and upgrade for level 10)
+	Change upgrades for support towers and monks
 
 	can scout next battle for gold price
 	

@@ -15,12 +15,10 @@ namespace TowerDefense
 			inline int GetNumberOfArrows() const { return m_NumberOfArrows; }
 			inline void SetNumberOfArrows(int num) { m_NumberOfArrows = num; }
 
+		private:
+			void Fire(std::shared_ptr<TowerDefense::Entity> target) override;
 			virtual std::shared_ptr<Upgrade> GetRandomTowerUpgrade(std::shared_ptr<std::vector<std::shared_ptr<Upgrade>>> exclude) override;
 
-		protected:
-			void Fire(std::shared_ptr<TowerDefense::Entity> target) override;
-
-		private:
 			int m_NumberOfArrows;
 		};
 	}
