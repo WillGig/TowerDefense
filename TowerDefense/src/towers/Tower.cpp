@@ -12,7 +12,8 @@
 TowerDefense::Tower::Tower::Tower(float x, float y, int width, int height, float fireTime, int range, TowerType type, const std::string& name)
 	:Entity(x, y, width, height, 0.0f, name, Type::TOWER),
 	m_DamageType(), m_PhysicalDamage(0.0f), m_MagicDamage(0.0f), 
-	m_Spread(0.0f), m_CritChance(0.0f), m_CritMultiplier(2.0f), m_SeeInvisibility(false),
+	m_Spread(0.0f), m_CritChance(0.0f), m_CritMultiplier(2.0f), 
+	m_ArmorPenChance(0.0f), m_ArmorPenReduction(.5f), m_SeeInvisibility(false),
 	m_FireTime(fireTime), m_TotalDamageDealt(0), m_Level(1), m_FireReady(1000), m_Range(range), m_Highlighted(false), m_Clicked(false), 
 	m_TowerType(type), m_Name(name), m_TargetType(TargetType::FIRST), 
 	m_RegularImage(std::make_shared<Image>(name, x, y, width, height, 0.0f)),
@@ -169,13 +170,15 @@ std::shared_ptr<TowerDefense::Tower::Upgrade> TowerDefense::Tower::Tower::GetRan
 	std::shared_ptr<Upgrade> upgrade;
 
 	while (!upgrade || ContainsUpgrade(exclude, upgrade)) {
-		int randomUpgrade = (int)(Random::GetFloat() * 3.0f);
+		int randomUpgrade = (int)(Random::GetFloat() * 4.0f);
 		if (randomUpgrade == 0)
 			upgrade = std::make_shared<AttackSpeed>();
 		else if (randomUpgrade == 1)
-			upgrade = std::make_shared <Damage>();
+			upgrade = std::make_shared<Damage>();
 		else if (randomUpgrade == 2)
-			upgrade = std::make_shared <Range>();
+			upgrade = std::make_shared<Range>();
+		else if (randomUpgrade == 3)
+			upgrade = std::make_shared<Crit>();
 	}
 
 	return upgrade;

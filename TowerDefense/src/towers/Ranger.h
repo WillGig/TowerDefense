@@ -14,6 +14,8 @@ namespace TowerDefense
 
 		protected:
 			void Fire(std::shared_ptr<TowerDefense::Entity> target) override;
+
+			virtual std::shared_ptr<Upgrade> GetRandomTowerUpgrade(std::shared_ptr<std::vector<std::shared_ptr<Upgrade>>> exclude) override;
 		};
 	}
 }

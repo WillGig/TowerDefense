@@ -170,6 +170,12 @@ void TowerDefense::LoadTextures()
     Texture::LoadTexture("attackSpeedUpgradeSelected",      towerUpgrades.load(2, 1));
     Texture::LoadTexture("moreMissilesUpgrade",             towerUpgrades.load(3, 0));
     Texture::LoadTexture("moreMissilesUpgradeSelected",     towerUpgrades.load(3, 1));
+    Texture::LoadTexture("critUpgrade",                     towerUpgrades.load(4, 0));
+    Texture::LoadTexture("critUpgradeSelected",             towerUpgrades.load(4, 1));
+    Texture::LoadTexture("armorPenUpgrade",                 towerUpgrades.load(5, 0));
+    Texture::LoadTexture("armorPenUpgradeSelected",         towerUpgrades.load(5, 1));
+    Texture::LoadTexture("multishotUpgrade",                towerUpgrades.load(6, 0));
+    Texture::LoadTexture("multishotUpgradeSelected",        towerUpgrades.load(6, 1));
 
 
     std::cout << "...Towers" << std::endl;

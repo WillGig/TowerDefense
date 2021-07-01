@@ -54,6 +54,12 @@ namespace TowerDefense
 			inline float GetCritMultiplier() const { return m_CritMultiplier; }
 			inline void SetCritMultiplier(float multiplier) { m_CritMultiplier = multiplier; }
 
+			inline float GetArmorPenChance() const { return m_ArmorPenChance; }
+			inline void SetArmorPenChance(float chance) { m_ArmorPenChance = chance; }
+
+			inline float GetArmorPenReduction() const { return m_ArmorPenReduction; }
+			inline void SetArmorPenReduction(float reduction) { m_ArmorPenReduction = reduction; }
+
 			inline float GetDamageDealt() const { return m_TotalDamageDealt; }
 			inline void AddDamageDelt(float damage) { m_TotalDamageDealt += damage; }
 
@@ -93,7 +99,7 @@ namespace TowerDefense
 
 			bool m_SeeInvisibility;
 
-			float m_PhysicalDamage, m_MagicDamage, m_Spread, m_CritChance, m_CritMultiplier;
+			float m_PhysicalDamage, m_MagicDamage, m_Spread, m_CritChance, m_CritMultiplier, m_ArmorPenChance, m_ArmorPenReduction;
 
 		private:
 			std::shared_ptr<TowerDefense::Entity> FindTarget();

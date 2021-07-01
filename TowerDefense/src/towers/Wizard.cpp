@@ -39,7 +39,7 @@ std::shared_ptr<TowerDefense::Tower::Upgrade> TowerDefense::Tower::Wizard::GetRa
 	std::shared_ptr<Upgrade> upgrade;
 
 	while (!upgrade || ContainsUpgrade(exclude, upgrade)) {
-		int randomUpgrade = (int)(Random::GetFloat() * 4.0f);
+		int randomUpgrade = (int)(Random::GetFloat() * 5.0f);
 		if (randomUpgrade == 0)
 			upgrade = std::make_shared<AttackSpeed>();
 		else if (randomUpgrade == 1)
@@ -47,6 +47,8 @@ std::shared_ptr<TowerDefense::Tower::Upgrade> TowerDefense::Tower::Wizard::GetRa
 		else if (randomUpgrade == 2)
 			upgrade = std::make_shared<Range>();
 		else if (randomUpgrade == 3)
+			upgrade = std::make_shared<Crit>();
+		else if (randomUpgrade == 4)
 			upgrade = std::make_shared<MoreMissiles>();
 	}
 	return upgrade;

@@ -1,6 +1,7 @@
 #include "pch.h"
 #include "Upgrade.h"
 #include "towers/Wizard.h"
+#include "towers/Archer.h"
 
 TowerDefense::Tower::Upgrade::Upgrade(const std::string name, const std::string info)
 	:Button(0.0f, 0.0f, 50, 50, name), m_Name(name),
@@ -65,7 +66,7 @@ void TowerDefense::Tower::Range::UpgradeTower(std::shared_ptr<Tower> t)
 }
 
 TowerDefense::Tower::MoreMissiles::MoreMissiles()
-	:Upgrade("moreMissilesUpgrade", "Increase number of missiles by 1")
+	:Upgrade("moreMissilesUpgrade", "Increase number of\nmissiles by 1")
 {}
 
 void TowerDefense::Tower::MoreMissiles::UpgradeTower(std::shared_ptr<Tower> t)
@@ -73,5 +74,37 @@ void TowerDefense::Tower::MoreMissiles::UpgradeTower(std::shared_ptr<Tower> t)
 	auto w = std::dynamic_pointer_cast<Wizard>(t);
 	if (w)
 		w->SetNumberOfMissiles(w->GetNumberOfMissiles() + 1);
+	t->SetLevel(t->GetLevel() + 1);
+}
+
+TowerDefense::Tower::Crit::Crit()
+	:Upgrade("critUpgrade", "Increase critical\nchance by 25%")
+{}
+
+void TowerDefense::Tower::Crit::UpgradeTower(std::shared_ptr<Tower> t)
+{
+	t->SetCritChance(t->GetCritChance() + .25f);
+	t->SetLevel(t->GetLevel() + 1);
+}
+
+TowerDefense::Tower::ArmorPen::ArmorPen()
+	:Upgrade("armorPenUpgrade", "+20% Change to reduce\nenemy armor by 50%")
+{}
+
+void TowerDefense::Tower::ArmorPen::UpgradeTower(std::shared_ptr<Tower> t)
+{
+	t->SetArmorPenChance(t->GetArmorPenChance() + .2f);
+	t->SetLevel(t->GetLevel() + 1);
+}
+
+TowerDefense::Tower::Multishot::Multishot()
+	:Upgrade("multishotUpgrade", "Fire 1 additional arrow")
+{}
+
+void TowerDefense::Tower::Multishot::UpgradeTower(std::shared_ptr<Tower> t)
+{
+	auto a = std::dynamic_pointer_cast<Archer>(t);
+	if (a)
+		a->SetNumberOfArrows(a->GetNumberOfArrows() + 1);
 	t->SetLevel(t->GetLevel() + 1);
 }

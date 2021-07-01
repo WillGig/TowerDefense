@@ -55,5 +55,29 @@ namespace TowerDefense
 
 			void UpgradeTower(std::shared_ptr<Tower> t) override;
 		};
+
+		class Crit : public Upgrade
+		{
+		public:
+			Crit();
+
+			void UpgradeTower(std::shared_ptr<Tower> t) override;
+		};
+
+		class ArmorPen : public Upgrade
+		{
+		public:
+			ArmorPen();
+
+			void UpgradeTower(std::shared_ptr<Tower> t) override;
+		};
+
+		class Multishot : public Upgrade
+		{
+		public:
+			Multishot();
+
+			void UpgradeTower(std::shared_ptr<Tower> t) override;
+		};
 	}
 }
