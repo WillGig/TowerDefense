@@ -57,12 +57,12 @@ void TowerDefense::Tower::Damage::UpgradeTower(std::shared_ptr<Tower> t)
 }
 
 TowerDefense::Tower::Range::Range()
-	:Upgrade("rangeUpgrade", "Increase range by 25")
+	:Upgrade("rangeUpgrade", "Increase range by 50")
 {}
 
 void TowerDefense::Tower::Range::UpgradeTower(std::shared_ptr<Tower> t)
 {
-	t->SetRange(t->GetRange() + 25);
+	t->SetRange(t->GetRange() + 50);
 	t->SetLevel(t->GetLevel() + 1);
 }
 

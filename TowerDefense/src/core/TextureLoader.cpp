@@ -71,22 +71,24 @@ void TowerDefense::LoadTextures()
     Texture::LoadTexture("hireWorkerButtonSelected",    buildHireButtons.load(1, 1));
 
     SpriteSheet buildButtons("res/textures/BuildButtons.png", 375, 65);
-    Texture::LoadTexture("buildBed",                buildButtons.load(0, 0));
-    Texture::LoadTexture("buildHouse",              buildButtons.load(0, 1));
-    Texture::LoadTexture("buildLibrary",            buildButtons.load(0, 2));
-    Texture::LoadTexture("buildTrader",             buildButtons.load(0, 3));
-    Texture::LoadTexture("buildFishery",            buildButtons.load(0, 4));
-    Texture::LoadTexture("buildChapel",             buildButtons.load(0, 5));
-    Texture::LoadTexture("buildSmithy",             buildButtons.load(0, 6));
-    Texture::LoadTexture("buildTavern",             buildButtons.load(0, 7));
-    Texture::LoadTexture("buildBedSelected",        buildButtons.load(1, 0));
-    Texture::LoadTexture("buildHouseSelected",      buildButtons.load(1, 1));
-    Texture::LoadTexture("buildLibrarySelected",    buildButtons.load(1, 2));
-    Texture::LoadTexture("buildTraderSelected",     buildButtons.load(1, 3));
-    Texture::LoadTexture("buildFisherySelected",    buildButtons.load(1, 4));
-    Texture::LoadTexture("buildChapelSelected",     buildButtons.load(1, 5));
-    Texture::LoadTexture("buildSmithySelected",     buildButtons.load(1, 6));
-    Texture::LoadTexture("buildTavernSelected",     buildButtons.load(1, 7));
+    Texture::LoadTexture("buildBed",                        buildButtons.load(0, 0));
+    Texture::LoadTexture("buildHouse",                      buildButtons.load(0, 1));
+    Texture::LoadTexture("buildLibrary",                    buildButtons.load(0, 2));
+    Texture::LoadTexture("buildTrader",                     buildButtons.load(0, 3));
+    Texture::LoadTexture("buildFishery",                    buildButtons.load(0, 4));
+    Texture::LoadTexture("buildChapel",                     buildButtons.load(0, 5));
+    Texture::LoadTexture("buildSmithy",                     buildButtons.load(0, 6));
+    Texture::LoadTexture("buildTavern",                     buildButtons.load(0, 7));
+    Texture::LoadTexture("buildMagicalGenerator",           buildButtons.load(0, 8));
+    Texture::LoadTexture("buildBedSelected",                buildButtons.load(1, 0));
+    Texture::LoadTexture("buildHouseSelected",              buildButtons.load(1, 1));
+    Texture::LoadTexture("buildLibrarySelected",            buildButtons.load(1, 2));
+    Texture::LoadTexture("buildTraderSelected",             buildButtons.load(1, 3));
+    Texture::LoadTexture("buildFisherySelected",            buildButtons.load(1, 4));
+    Texture::LoadTexture("buildChapelSelected",             buildButtons.load(1, 5));
+    Texture::LoadTexture("buildSmithySelected",             buildButtons.load(1, 6));
+    Texture::LoadTexture("buildTavernSelected",             buildButtons.load(1, 7));
+    Texture::LoadTexture("buildMagicalGeneratorSelected",   buildButtons.load(1, 8));
 
     SpriteSheet combatButtons("res/textures/CombatButtons.png", 384, 128);
     Texture::LoadTexture("startButton",         combatButtons.load(0, 0));
@@ -413,6 +415,7 @@ void TowerDefense::LoadTextures()
     Texture::LoadTexture("Blessed Hand Grenade",    artifacts.load(2, 2));
     Texture::LoadTexture("Explorers Hat",           artifacts.load(3, 2));
     Texture::LoadTexture("Map To Eldorado",         artifacts.load(4, 2));
+    Texture::LoadTexture("Magical Generator",       artifacts.load(5, 2));
 
     SpriteSheet artifactInfo("res/textures/ArtifactInfo.png", 440, 170);
     Texture::LoadTexture("Token Of The MuteInfo",       artifactInfo.load(0, 0));
@@ -440,6 +443,7 @@ void TowerDefense::LoadTextures()
     Texture::LoadTexture("Blessed Hand GrenadeInfo",    artifactInfo.load(2, 5));
     Texture::LoadTexture("Explorers HatInfo",           artifactInfo.load(3, 5));
     Texture::LoadTexture("Map To EldoradoInfo",         artifactInfo.load(0, 6));
+    Texture::LoadTexture("Magical GeneratorInfo",       artifactInfo.load(1, 6));
 
     std::cout << "...Animations" << std::endl;
 

@@ -1,5 +1,7 @@
 #include "pch.h"
 #include "BuildButton.h"
+#include "scenes/Base.h"
+#include "core/Player.h"
 
 TowerDefense::BuildButton::BuildButton(const std::string& button, Vec4i cost, std::shared_ptr<BaseScene> scene)
 	:m_Button(std::make_unique<Button>(0.0f, 0.0f, 190, 33, button)), m_Cost(cost), m_Scene(scene),
@@ -41,4 +43,17 @@ void TowerDefense::BuildButton::SetPosition(float x, float y)
 	m_StoneImage->SetPosition(x + 205, y, 0.0f);
 	m_WheatCost->SetPosition(x + 250, y, 0.0f);
 	m_WheatImage->SetPosition(x + 280, y, 0.0f);
+}
+
+void TowerDefense::BuildButton::OnPurchased() 
+{ 
+	Base::AddBaseScene(m_Scene); 
+}
+
+TowerDefense::ArtifactBuildButton::ArtifactBuildButton(const std::string& button, Vec4i cost, std::shared_ptr<Artifact> artifact)
+	:BuildButton(button, cost, nullptr), m_Artifact(artifact)
+{}
+void TowerDefense::ArtifactBuildButton::OnPurchased()
+{
+	Player::Get().AddToArtifacts(m_Artifact);
 }

@@ -32,11 +32,15 @@ void TowerDefense::TowerInfo::Render()
 	m_Stats->Render();
 	m_StatsNumbers->Render();
 	m_Level->Render();
-	m_UpgradeText->Render();
 	m_TargetLeft->Render();
 	m_TargetRight->Render();
-	m_UpgradeButton->Render();
-	m_EnergyIcon->Render();
+
+	if (m_TowerLevel < 4)
+	{
+		m_UpgradeText->Render();
+		m_UpgradeButton->Render();
+		m_EnergyIcon->Render();
+	}
 
 	if (m_Upgrading)
 	{
@@ -74,7 +78,7 @@ void TowerDefense::TowerInfo::Update()
 			}
 		}
 	}
-	else
+	else if(m_TowerLevel < 4)
 	{
 		m_UpgradeButton->Update();
 

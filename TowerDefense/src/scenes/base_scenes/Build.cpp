@@ -40,7 +40,7 @@ void TowerDefense::Build::Update()
 					player.ChangeResource(-m_Buttons->at(i)->GetCost().w, Resource::WOOD);
 					player.ChangeResource(-m_Buttons->at(i)->GetCost().x, Resource::STONE);
 					player.ChangeResource(-m_Buttons->at(i)->GetCost().y, Resource::WHEAT);
-					Base::AddBaseScene(m_Buttons->at(i)->GetScene());
+					m_Buttons->at(i)->OnPurchased();
 					m_Exit = true;
 				}
 			}
@@ -74,6 +74,8 @@ void TowerDefense::Build::OnSwitch()
 			AddBuildButton(std::make_shared<BuildButton>("buildSmithy", Vec4i(100, 800, 100, 0), std::make_shared<Smithing>()));
 		if (!Base::ContainsScene("Tavern"))
 			AddBuildButton(std::make_shared<BuildButton>("buildTavern", Vec4i(500, 500, 1000, 0), std::make_shared<Tavern>()));
+		if (!Player::Get().HasArtifact("Magical Generator"))
+			AddBuildButton(std::make_shared<ArtifactBuildButton>("buildMagicalGenerator", Vec4i(300, 300, 300, 0), std::make_shared<MagicalGenerator>()));
 	}
 }
 

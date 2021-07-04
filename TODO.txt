@@ -1,9 +1,11 @@
 Current:
 
+	Bug: Game crashes if splitting enemy is killed at the very end
+
 	Tower upgrade rework - can upgrade towers in combat, show tower level, permanent upgrades from smithy
 		- Star level shown below towers? Max level 10 (or 5)
 
-	Rework smithing upgrades
+	Rework smithing upgrades for heros
 	Add special upgrades at levels 5 and 10
 	Add more upgrade options for different types of towers
 	 - new spells/attacks?
@@ -31,8 +33,11 @@ Current:
 	- Archery	 - tanks style archery game
 	- The matrix	 - Osu! style clicking game
 	- tiles		 - pattern-based mini-game
+	- Fishing
 
 Soon:
+	Sideboard keyword on some cards - button in precombat screen to toggle which ones you wnat
+	- Watchguard - archer that can see invisible with sideboard
 	Add ways to increase score
 	Add alchemy lab, wizard tower, etc. to upgrade certain types of cards
 	Add Fishing		- Get a random relic/gold - minigame?			- 
@@ -184,6 +189,7 @@ Notes:
 	- Shrubbery 			+10 energy at the start of each wave
 	- Explorers hat			Gain 50 extra resources when exploring
 	- Map to Eldorado		Explore 10 times to gain 1000 gold
+	- Magical Generator		Start fights with 50 extra energy
 
 	Events
 	- Fountain of youth	Restore to full hp or +10 max hp

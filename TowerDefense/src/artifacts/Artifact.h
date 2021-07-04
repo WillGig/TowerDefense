@@ -239,7 +239,15 @@ namespace TowerDefense
 	public:
 		MapToEldorado();
 		void OnExplore() override;
+
 	private:
 		int m_DaysRemaining;
+	};
+
+	class MagicalGenerator : public Artifact
+	{
+	public:
+		MagicalGenerator();
+		void OnFightStart() override;
 	};
 }
