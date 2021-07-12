@@ -34,7 +34,7 @@ namespace TowerDefense
 	{
 	public:
 		GraveBolt(float x, float y, float direction, float damage, unsigned int source)
-			:Projectile(x, y, 8, 8, 1.7f, direction, 500, damage, "projectiles/graveBolt", source)
+			:Projectile(x, y, 12, 12, 1.7f, direction, 500, damage, "projectiles/graveBolt", source)
 		{
 			m_TurnSpeed = 2.0f;
 		}

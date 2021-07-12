@@ -57,6 +57,9 @@ void TowerDefense::TowerInfo::Update()
 		m_TowerDamageDealt != m_Tower->GetDamageDealt() || m_TowerLevel != m_Tower->GetLevel() || m_UpgradeCost != m_Tower->GetUpgradeCost())
 		UpdateStatsText();
 
+	if (m_Name->GetMessage() != m_Tower->GetName())
+		m_Name = std::make_unique<Text>(m_Tower->GetName(), m_X, m_Y + 74.0f, 14.0f, 200.0f);
+
 	if (Player::Get().GetHand()->DraggingCard() || Combat::DraggingEnemyInfo())
 		return;
 

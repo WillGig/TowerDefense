@@ -164,7 +164,7 @@ void TowerDefense::Tower::WizardNecromancer::UpgradeTower(std::shared_ptr<Tower>
 	if (w)
 	{
 		w->SetGraveMissileFrequency(3);
-		w->SetName("Conjurer");
+		w->SetName("Necromancer");
 	}
 	t->SetImage("Necromancer");
 	t->SetLevel(t->GetLevel() + 1);
