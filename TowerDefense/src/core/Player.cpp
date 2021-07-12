@@ -60,9 +60,9 @@ void TowerDefense::Player::Reset()
     m_AmountHealed = 0;
     m_EnemiesDefeated = 0;
     m_Score = 0;
-    SetResource(0, Resource::WOOD);
-    SetResource(0, Resource::STONE);
-    SetResource(0, Resource::WHEAT);
+    SetResource(1000, Resource::WOOD);
+    SetResource(1000, Resource::STONE);
+    SetResource(1000, Resource::WHEAT);
     SetResource(0, Resource::GOLD);
     m_ResourceGatherSpeed = Vec4i(100, 100, 100, 150);
     m_Population = 0;
@@ -82,7 +82,7 @@ void TowerDefense::Player::Reset()
     for (int i = 0; i < 8; i++)
         AddToDeck(std::make_shared<Focus>(false));
     for (int i = 0; i < 4; i++)
-        AddToDeck(std::make_shared<ArcherCard>());
+        AddToDeck(std::make_shared<WizardCard>());
     for (int i = 0; i < 2; i++)
         AddToDeck(std::make_shared<PotOfGreed>());
 }

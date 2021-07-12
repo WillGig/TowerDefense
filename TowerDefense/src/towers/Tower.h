@@ -31,6 +31,8 @@ namespace TowerDefense
 			inline std::string GetName() const { return m_Name; }
 			inline void SetName(const std::string& name) { m_Name = name; }
 
+			void SetImage(const std::string& image);
+
 			inline void SetLevel(int level) { m_Level = level; }
 			inline int GetLevel() const { return m_Level; }
 			int GetUpgradeCost() const;
@@ -61,7 +63,7 @@ namespace TowerDefense
 			inline void SetArmorPenReduction(float reduction) { m_ArmorPenReduction = reduction; }
 
 			inline float GetDamageDealt() const { return m_TotalDamageDealt; }
-			inline void AddDamageDelt(float damage) { m_TotalDamageDealt += damage; }
+			inline void AddDamageDealt(float damage) { m_TotalDamageDealt += damage; }
 
 			inline bool CanSeeInvisibility() const { return m_SeeInvisibility; }
 			inline void SetSeeInvisilitity(bool see) { m_SeeInvisibility = see; }
@@ -73,6 +75,8 @@ namespace TowerDefense
 			inline std::shared_ptr<Circle> GetRangeCircle() const { return m_RangeCircle; }
 
 			inline TowerType GetType() const { return m_TowerType; }
+
+			virtual bool CanUpgrade() = 0;
 
 			std::shared_ptr<CardChoice> GetUpgrades();
 

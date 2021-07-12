@@ -15,6 +15,8 @@ namespace TowerDefense
 			inline int GetNumberOfFocus() const { return m_NumberOfFocus; }
 			inline void SetNumberOfFocus(int num) { m_NumberOfFocus = num; }
 
+			bool CanUpgrade() override;
+
 			std::shared_ptr<Tower> Clone();
 
 		private:

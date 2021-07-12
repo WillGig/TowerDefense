@@ -309,6 +309,7 @@
     <ClCompile Include="src\scenes\base_scenes\Smithing.cpp" />
     <ClCompile Include="src\scenes\base_scenes\Tavern.cpp" />
     <ClCompile Include="src\scenes\base_scenes\Trader.cpp" />
+    <ClCompile Include="src\scenes\base_scenes\WizardTower.cpp" />
     <ClCompile Include="src\scenes\random_events\CaveBat.cpp" />
     <ClCompile Include="src\scenes\random_events\FrogPrince.cpp" />
     <ClCompile Include="src\scenes\random_events\RandomEvent.cpp" />
@@ -346,6 +347,7 @@
     <ClCompile Include="src\towers\buffs\DamageBuff.cpp" />
     <ClCompile Include="src\towers\buffs\SpeedBuff.cpp" />
     <ClCompile Include="src\towers\Cleric.cpp" />
+    <ClCompile Include="src\towers\GhostTower.cpp" />
     <ClCompile Include="src\towers\Giant.cpp" />
     <ClCompile Include="src\towers\Monk.cpp" />
     <ClCompile Include="src\towers\Paladin.cpp" />
@@ -496,6 +498,7 @@
     <ClInclude Include="src\towers\buffs\DamageBuff.h" />
     <ClInclude Include="src\towers\buffs\SpeedBuff.h" />
     <ClInclude Include="src\towers\Cleric.h" />
+    <ClInclude Include="src\towers\GhostTower.h" />
     <ClInclude Include="src\towers\Giant.h" />
     <ClInclude Include="src\towers\Monk.h" />
     <ClInclude Include="src\towers\Paladin.h" />

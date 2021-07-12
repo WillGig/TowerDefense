@@ -121,3 +121,51 @@ void TowerDefense::Tower::MoreFocus::UpgradeTower(std::shared_ptr<Tower> t)
 		m->SetNumberOfFocus(m->GetNumberOfFocus() + 1);
 	t->SetLevel(t->GetLevel() + 1);
 }
+
+TowerDefense::Tower::WizardElementalist::WizardElementalist()
+	:Upgrade("elementalistUpgrade", "Gain a powerful\nlightning attack")
+{}
+
+void TowerDefense::Tower::WizardElementalist::UpgradeTower(std::shared_ptr<Tower> t)
+{
+	auto w = std::dynamic_pointer_cast<Wizard>(t);
+	if (w)
+	{
+		w->SetLightning(true);
+		w->SetName("Elementalist");
+	}
+	t->SetImage("Elementalist");
+	t->SetLevel(t->GetLevel() + 1);
+}
+
+TowerDefense::Tower::WizardConjurer::WizardConjurer()
+	:Upgrade("conjurerUpgrade", "Summon spirits\nto fight for you")
+{}
+
+void TowerDefense::Tower::WizardConjurer::UpgradeTower(std::shared_ptr<Tower> t)
+{
+	auto w = std::dynamic_pointer_cast<Wizard>(t);
+	if (w)
+	{
+		w->SetSummonner(true);
+		w->SetName("Conjurer");
+	}
+	t->SetImage("Conjurer");
+	t->SetLevel(t->GetLevel() + 1);
+}
+
+TowerDefense::Tower::WizardNecromancer::WizardNecromancer()
+	:Upgrade("necromancerUpgrade", "Drain life from\nyour enemies")
+{}
+
+void TowerDefense::Tower::WizardNecromancer::UpgradeTower(std::shared_ptr<Tower> t)
+{
+	auto w = std::dynamic_pointer_cast<Wizard>(t);
+	if (w)
+	{
+		w->SetGraveMissileFrequency(3);
+		w->SetName("Conjurer");
+	}
+	t->SetImage("Necromancer");
+	t->SetLevel(t->GetLevel() + 1);
+}

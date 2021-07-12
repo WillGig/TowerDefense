@@ -2,7 +2,7 @@
 #include "ClickCircle.h"
 
 TowerDefense::ClickCircle::ClickCircle(float x, float y, float radius, float changeSpeed)
-	:Entity(x, y, radius * 2, radius * 2, 0.0f, "", Type::ANIMATION), 
+	:Entity(x, y, (int)(radius * 2), (int)(radius * 2), 0.0f, "", Type::ANIMATION), 
 	m_Radius(radius), m_ChangeSpeed(changeSpeed), m_Remove(false), m_Clicked(false), m_CircleImage(x, y, radius)
 {}
 

@@ -2,6 +2,7 @@
 #include "Paladin.h"
 #include "scenes/Combat.h"
 #include "projectiles/Projectiles.h"
+#include "scenes/Base.h"
 
 TowerDefense::Tower::Paladin::Paladin()
 	:Tower(0.0f, 0.0f, 32, 32, 120.0f, 80, TowerType::DAMAGE, "Paladin")
@@ -28,6 +29,11 @@ void TowerDefense::Tower::Paladin::Fire(std::shared_ptr<TowerDefense::Entity> ta
 	std::shared_ptr<Enemy::Enemy> e = std::dynamic_pointer_cast<Enemy::Enemy>(target);
 	e->TakeDamage(e->GetMaxHealth() * damage * .01f + damage, GetID(), DamageType::MAGIC);
 	Combat::AddEntity(std::make_shared<AnimationEffect>(e->GetX(), e->GetY(), 100, 100, "smiteAnimation", 7, 30));
+}
+
+bool TowerDefense::Tower::Paladin::CanUpgrade()
+{
+	return (GetLevel() < 4 || (GetLevel() < 9 && Base::ContainsScene("")));
 }
 
 std::shared_ptr<TowerDefense::Tower::Tower> TowerDefense::Tower::Paladin::Clone()

@@ -186,6 +186,8 @@
     <ClCompile Include="src\engine\VertexBuffer.cpp" />
     <ClCompile Include="src\towers\upgrades\Upgrade.cpp" />
     <ClCompile Include="src\artifacts\MagicalGenerator.cpp" />
+    <ClCompile Include="src\scenes\base_scenes\WizardTower.cpp" />
+    <ClCompile Include="src\towers\GhostTower.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\artifacts\Artifact.h" />
@@ -276,6 +278,7 @@
     <ClInclude Include="src\engine\VertexBuffer.h" />
     <ClInclude Include="src\engine\VertexBufferLayout.h" />
     <ClInclude Include="src\towers\upgrades\Upgrade.h" />
+    <ClInclude Include="src\towers\GhostTower.h" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="res\textures\AnimationEffects.png" />

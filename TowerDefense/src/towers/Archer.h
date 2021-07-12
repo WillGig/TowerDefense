@@ -10,6 +10,7 @@ namespace TowerDefense
 		public:
 			Archer();
 			Archer(float fireTime, int range, float damage);
+			bool CanUpgrade() override;
 			std::shared_ptr<Tower> Clone();
 
 			inline int GetNumberOfArrows() const { return m_NumberOfArrows; }

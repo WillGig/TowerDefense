@@ -35,7 +35,7 @@ void TowerDefense::TowerInfo::Render()
 	m_TargetLeft->Render();
 	m_TargetRight->Render();
 
-	if (m_TowerLevel < 4)
+	if (m_Tower->CanUpgrade())
 	{
 		m_UpgradeText->Render();
 		m_UpgradeButton->Render();
@@ -78,7 +78,7 @@ void TowerDefense::TowerInfo::Update()
 			}
 		}
 	}
-	else if(m_TowerLevel < 4)
+	else if(m_Tower->CanUpgrade())
 	{
 		m_UpgradeButton->Update();
 

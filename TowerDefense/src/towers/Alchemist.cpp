@@ -2,6 +2,7 @@
 #include "Alchemist.h"
 #include "scenes/Combat.h"
 #include "projectiles/Projectiles.h"
+#include "scenes/Base.h"
 
 TowerDefense::Tower::Alchemist::Alchemist()
 	:Tower(0.0f, 0.0f, 32, 32, 240.0f, 100, TowerType::DAMAGE, "Alchemist")
@@ -26,6 +27,11 @@ void TowerDefense::Tower::Alchemist::Fire(std::shared_ptr<TowerDefense::Entity> 
 		Combat::AddEntity(std::make_shared<AnimationEffect>(m_X, m_Y, 32, 32, "critAnimation", 7, 30));
 	}
 	Combat::AddEntity(std::make_shared<TowerDefense::PoisonBomb>(m_X, m_Y, m_Rotation, damage, GetID()));
+}
+
+bool TowerDefense::Tower::Alchemist::CanUpgrade()
+{
+	return (GetLevel() < 4 || (GetLevel() < 9 && Base::ContainsScene("")));
 }
 
 std::shared_ptr<TowerDefense::Tower::Tower> TowerDefense::Tower::Alchemist::Clone()

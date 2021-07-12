@@ -36,8 +36,6 @@ namespace TowerDefense
 			inline float GetSpeed() const { return m_Speed; }
 			inline int GetGoldValue() const { return m_GoldValue; }
 
-			inline bool Visible() const { return m_Visible; }
-
 			inline std::string GetName() const { return m_Name; }
 
 			inline bool GetClicked() { return m_Clicked; };
@@ -52,7 +50,7 @@ namespace TowerDefense
 			int m_CurrentTile, m_Damage;
 			static int POISONTICKRATE;
 			float m_Health, m_MaxHealth, m_Armor, m_MagicResistance, m_DistanceTraveled, m_GoalX, m_GoalY;
-			bool m_Visible, m_ReachedEnd;
+			bool m_ReachedEnd;
 
 			std::shared_ptr<Image> m_RegularImage, m_SelectedImage;
 

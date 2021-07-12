@@ -3,6 +3,7 @@
 #include "scenes/Combat.h"
 #include "projectiles/Projectiles.h"
 #include "upgrades/Upgrade.h"
+#include "scenes/Base.h"
 
 TowerDefense::Tower::Ranger::Ranger()
 	:Tower(0.0f, 0.0f, 32, 32, 30.0f, 150, TowerType::DAMAGE, "Ranger")
@@ -46,6 +47,11 @@ std::shared_ptr<std::vector<std::shared_ptr<TowerDefense::Tower::Upgrade>>> Towe
 	upgrades->push_back(std::make_shared<ArmorPen>());
 
 	return upgrades;
+}
+
+bool TowerDefense::Tower::Ranger::CanUpgrade()
+{
+	return (GetLevel() < 4 || (GetLevel() < 9 && Base::ContainsScene("")));
 }
 
 std::shared_ptr<TowerDefense::Tower::Tower> TowerDefense::Tower::Ranger::Clone()

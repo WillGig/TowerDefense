@@ -5,6 +5,7 @@
 #include "cards/SkillCards.h"
 #include "core/Player.h"
 #include "upgrades/Upgrade.h"
+#include "scenes/Base.h"
 
 TowerDefense::Tower::Monk::Monk(bool upgraded)
 	:Tower(0.0f, 0.0f, 32, 32, 600.0f, 50, TowerType::SUPPORT, "Monk"),
@@ -16,7 +17,7 @@ void TowerDefense::Tower::Monk::Update()
 {
 	Tower::Tower::Update();
 	if (m_Focused)
-		SetImage(m_FocusedImage);
+		Entity::SetImage(m_FocusedImage);
 }
 
 void TowerDefense::Tower::Monk::EndRound()
@@ -52,6 +53,11 @@ std::shared_ptr<std::vector<std::shared_ptr<TowerDefense::Tower::Upgrade>>> Towe
 	upgrades->push_back(std::make_shared<MoreFocus>());
 
 	return upgrades;
+}
+
+bool TowerDefense::Tower::Monk::CanUpgrade()
+{
+	return (GetLevel() < 4 || (GetLevel() < 9 && Base::ContainsScene("")));
 }
 
 std::shared_ptr<TowerDefense::Tower::Tower> TowerDefense::Tower::Monk::Clone()

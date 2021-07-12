@@ -3,6 +3,7 @@
 #include "scenes/Combat.h"
 #include "projectiles/Projectiles.h"
 #include "buffs/SpeedBuff.h"
+#include "scenes/Base.h"
 
 TowerDefense::Tower::Bard::Bard()
 	:Tower(0.0f, 0.0f, 32, 32, 60.0f, 75, TowerType::SUPPORT, "Bard")
@@ -22,6 +23,11 @@ void TowerDefense::Tower::Bard::Fire(std::shared_ptr<TowerDefense::Entity> targe
 {
 	std::shared_ptr<Tower> tower = std::dynamic_pointer_cast<Tower>(target);
 	tower->ApplyBuff(std::make_shared<SpeedBuff>(150, m_ID, 1.0f + m_MagicDamage*0.25f));
+}
+
+bool TowerDefense::Tower::Bard::CanUpgrade()
+{
+	return (GetLevel() < 4 || (GetLevel() < 9 && Base::ContainsScene("")));
 }
 
 std::shared_ptr<TowerDefense::Tower::Tower> TowerDefense::Tower::Bard::Clone()

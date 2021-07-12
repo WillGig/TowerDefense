@@ -10,6 +10,7 @@ namespace TowerDefense
 		public:
 			Giant();
 			Giant(float fireTime, int range, float damage);
+			bool CanUpgrade() override;
 			std::shared_ptr<Tower> Clone();
 
 		protected:

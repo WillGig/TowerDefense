@@ -76,6 +76,11 @@ void TowerDefense::Build::OnSwitch()
 			AddBuildButton(std::make_shared<BuildButton>("buildTavern", Vec4i(500, 500, 1000, 0), std::make_shared<Tavern>()));
 		if (!Player::Get().HasArtifact("Magical Generator"))
 			AddBuildButton(std::make_shared<ArtifactBuildButton>("buildMagicalGenerator", Vec4i(300, 300, 300, 0), std::make_shared<MagicalGenerator>()));
+		else
+		{
+			if (!Base::ContainsScene("Study"))
+				AddBuildButton(std::make_shared<BuildButton>("buildWizardTower", Vec4i(200, 500, 0, 0), std::make_shared<WizardTower>()));
+		}
 	}
 }
 

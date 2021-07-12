@@ -10,6 +10,7 @@ namespace TowerDefense
 		public:
 			Ranger();
 			Ranger(float fireTime, int range, float damage);
+			bool CanUpgrade() override;
 			std::shared_ptr<Tower> Clone();
 
 		private:

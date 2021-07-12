@@ -55,11 +55,11 @@ void TowerDefense::Tower::Tower::UpdateImage()
 {
 	if (m_Highlighted)
 	{
-		SetImage(m_HighlightedImage);
+		Entity::SetImage(m_HighlightedImage);
 		m_Highlighted = false;
 	}
 	else
-		SetImage(m_RegularImage);
+		Entity::SetImage(m_RegularImage);
 }
 
 void TowerDefense::Tower::Tower::Attack()
@@ -108,6 +108,12 @@ void TowerDefense::Tower::Tower::SetY(float y)
 {
 	Entity::SetY(y);
 	m_RangeCircle->SetPosition(m_X, m_Y, 1.0f);
+}
+
+void TowerDefense::Tower::Tower::SetImage(const std::string& image)
+{
+	m_RegularImage = std::make_shared<Image>(image, m_X, m_Y, m_Width, m_Height, m_Rotation);
+	m_HighlightedImage = std::make_shared<Image>(image + "Highlighted", m_X, m_Y, m_Width, m_Height, m_Rotation);
 }
 
 int TowerDefense::Tower::Tower::GetUpgradeCost() const

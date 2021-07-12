@@ -1,6 +1,7 @@
 #include "pch.h"
 #include "Projectiles.h"
 #include "scenes/Combat.h"
+#include "core/Player.h"
 
 void TowerDefense::Arrow::HitEntity(std::shared_ptr<TowerDefense::Entity> e)
 {
@@ -19,6 +20,17 @@ void TowerDefense::MagicMissile::HitEntity(std::shared_ptr<TowerDefense::Entity>
 	if (e->GetEntityType() == Type::ENEMY) {
 		std::shared_ptr<Enemy::Enemy> enemy = std::dynamic_pointer_cast<Enemy::Enemy>(e);
 		enemy->TakeDamage(m_Damage, m_TowerSource, Tower::DamageType::MAGIC);
+	}
+	Destroy();
+}
+
+void TowerDefense::GraveBolt::HitEntity(std::shared_ptr<TowerDefense::Entity> e)
+{
+	if (e->GetEntityType() == Type::ENEMY) {
+		std::shared_ptr<Enemy::Enemy> enemy = std::dynamic_pointer_cast<Enemy::Enemy>(e);
+		enemy->TakeDamage(m_Damage, m_TowerSource, Tower::DamageType::MAGIC);
+		if (enemy->GetHealth() <= 0)
+			Player::Get().ChangeHealth(1);
 	}
 	Destroy();
 }

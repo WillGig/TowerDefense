@@ -210,4 +210,17 @@ namespace TowerDefense
 		std::vector<ClickCircle> m_Circles;
 		std::vector<int> m_RemoveCircles;
 	};
+
+	class WizardTower : public BaseScene
+	{
+	public:
+		WizardTower();
+		void Render() override;
+		void Update() override;
+		void OnSwitch() override;
+		inline std::string GetName() override { return "WizardTower"; }
+
+	private:
+		std::unique_ptr<Button> m_BackToCamp;
+	};
 }

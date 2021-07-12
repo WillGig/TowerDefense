@@ -2,13 +2,28 @@ Current:
 
 	Bug: Game crashes if splitting enemy is killed at the very end
 
+	Change upgrade cost to tower cost for first 4 levels, then 2x tower cost for next 4 levels
+
+	Summoner - summon instead of attack (every x attack starting at 4 or 5)
+		 - Create new decaying archer - give multishot equal to more missile bonus and range and damage bonuses?
+		 - upgrades include summon duration, and summon power level (increases chance to summon wizard or ranger or paladin or giant at max level?)
+
 	Tower upgrade rework - can upgrade towers in combat, show tower level, permanent upgrades from smithy
 		- Star level shown below towers? Max level 10 (or 5)
 
 	Rework smithing upgrades for heros
-	Add special upgrades at levels 5 and 10
+	Add special upgrades at levels 5 and 10 (changes image)
+	- Archer 	- Crossbowman (slower more powerful shot), Hacker (guided shots), longbowman (much larger range, piercing shots?)
+	- Wizard 	- Elementalist (lightning attack), summoner (summons ghost archers), necromancer (life drain attack)
+	- Ranger 	- Animal companion (animal spirit attacks enemies), Sniper (massive range, slower, stronger attacks), Laser-bow (bow replaced with constant laser attack)
+	- Paladin 	- Wings (can fly after enemies, then return to spot), Something angelic, Something inspirational
+	- Bard 		- Peace bard (slows nearby enemies), empowerer (bonus true damage), disarming words (attack which lowers enemy damage)
+	- Cleric 	- Lifebringer (heals you every round), battle cleric (can now attack), Death priest (weakens nearby enemies)
+	- Alchemist 	- Grenade gunner (faster, smaller attacks), True alchemy (turn enemies to gold), poison specialist (poisons slow or other effects)
+
 	Add more upgrade options for different types of towers
 	 - new spells/attacks?
+	 - piercing shots for rangers
 	Add more buildings (special building required for level 5 and upgrade for level 10)
 	Change upgrades for support towers and monks
 
@@ -21,7 +36,7 @@ Current:
 	- laser-sword 		- could be used to fix nearsightedness... maybe	
 	- something		- Get an event every day
 	- something		- Can skip events
-	- Wax wings		
+	- Wax wings		- Gives flappy bird type game?
 
 	Allow hovering over event options to show cards/artifacts obtained
 	Add second page to events to describe what happens

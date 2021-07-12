@@ -10,6 +10,7 @@ namespace TowerDefense
 		public:
 			Cleric();
 			Cleric(float fireTime, int range, float buff);
+			bool CanUpgrade() override;
 			std::shared_ptr<Tower> Clone();
 
 		protected:

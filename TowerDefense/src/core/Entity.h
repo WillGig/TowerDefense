@@ -37,6 +37,8 @@ namespace TowerDefense
 		inline float GetRotation() const { return m_Rotation; }
 		inline virtual void SetRotation(float rotation) { m_Rotation = rotation; m_Image->SetRotation(m_Rotation); }
 
+		inline bool Visible() const { return m_Visible; }
+
 		void SetImage(std::shared_ptr<Image> image);
 
 		inline std::string GetImageName() const { return m_Image->GetFile(); }
@@ -50,6 +52,8 @@ namespace TowerDefense
 		int m_Width, m_Height;
 
 		float m_X, m_Y, m_Rotation;
+
+		bool m_Visible;
 
 		std::shared_ptr<Image> m_Image;
 

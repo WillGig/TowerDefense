@@ -87,5 +87,29 @@ namespace TowerDefense
 
 			void UpgradeTower(std::shared_ptr<Tower> t) override;
 		};
+
+		class WizardElementalist : public Upgrade
+		{
+		public:
+			WizardElementalist();
+
+			void UpgradeTower(std::shared_ptr<Tower> t) override;
+		};
+
+		class WizardConjurer : public Upgrade
+		{
+		public:
+			WizardConjurer();
+
+			void UpgradeTower(std::shared_ptr<Tower> t) override;
+		};
+
+		class WizardNecromancer : public Upgrade
+		{
+		public:
+			WizardNecromancer();
+
+			void UpgradeTower(std::shared_ptr<Tower> t) override;
+		};
 	}
 }

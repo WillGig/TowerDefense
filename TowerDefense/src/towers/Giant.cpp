@@ -2,6 +2,7 @@
 #include "Giant.h"
 #include "scenes/Combat.h"
 #include "projectiles/Projectiles.h"
+#include "scenes/Base.h"
 
 TowerDefense::Tower::Giant::Giant()
 	:Tower(0.0f, 0.0f, 64, 64, 300.0f, 100, TowerType::DAMAGE, "GIANT")
@@ -28,6 +29,11 @@ void TowerDefense::Tower::Giant::Fire(std::shared_ptr<TowerDefense::Entity> targ
 		Combat::AddEntity(std::make_shared<AnimationEffect>(m_X, m_Y, 32, 32, "critAnimation", 7, 30));
 	}
 	Combat::AddEntity(std::make_shared<TowerDefense::GiantRock>(m_X, m_Y, m_Rotation, damage, GetID()));
+}
+
+bool TowerDefense::Tower::Giant::CanUpgrade()
+{
+	return (GetLevel() < 4 || (GetLevel() < 9 && Base::ContainsScene("")));
 }
 
 std::shared_ptr<TowerDefense::Tower::Tower> TowerDefense::Tower::Giant::Clone()

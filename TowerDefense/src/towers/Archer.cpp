@@ -3,6 +3,7 @@
 #include "scenes/Combat.h"
 #include "projectiles/Projectiles.h"
 #include "towers/upgrades/Upgrade.h"
+#include "scenes/Base.h"
 
 TowerDefense::Tower::Archer::Archer()
 	:Tower(0.0f, 0.0f, 32, 32, 40.0f, 100, TowerType::DAMAGE, "Archer"),
@@ -51,6 +52,11 @@ std::shared_ptr<std::vector<std::shared_ptr<TowerDefense::Tower::Upgrade>>> Towe
 	upgrades->push_back(std::make_shared<Multishot>());
 
 	return upgrades;
+}
+
+bool TowerDefense::Tower::Archer::CanUpgrade()
+{
+	return (GetLevel() < 4 || (GetLevel() < 9 && Base::ContainsScene("")));
 }
 
 std::shared_ptr<TowerDefense::Tower::Tower> TowerDefense::Tower::Archer::Clone()
