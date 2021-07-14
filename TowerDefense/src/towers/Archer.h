@@ -21,15 +21,20 @@ namespace TowerDefense
 			inline int GetPierce() const { return m_Pierce; }
 			inline void SetPierce(int num) { m_Pierce = num; }
 
+			//Turn rate of arrow projectiles
 			inline float GetTurnRate() const { return m_TurnRate; }
 			inline void SetTurnRate(float num) { m_TurnRate = num; }
+
+			//Arrow damage multiplied by this amount
+			inline float GetDamageModifier() const { return m_DamageModifier; }
+			inline void SetDamageModifier(float num) { m_DamageModifier = num; }
 
 		private:
 			void Fire(std::shared_ptr<TowerDefense::Entity> target) override;
 			std::shared_ptr<std::vector<std::shared_ptr<Upgrade>>> GetPossibleUpgrades() override;
 
 			int m_NumberOfArrows, m_Pierce;
-			float m_TurnRate;
+			float m_TurnRate, m_DamageModifier;
 		};
 	}
 }

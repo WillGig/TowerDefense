@@ -208,7 +208,7 @@ void TowerDefense::Tower::BBGunner::UpgradeTower(std::shared_ptr<Tower> t)
 	if (a)
 	{
 		a->SetAttackTime(a->GetAttackTime()/10.0f);
-		a->SetDamage(a->GetDamage(DamageType::PHYSICAL) / 5.0f, DamageType::PHYSICAL);
+		a->SetDamageModifier(0.2f);
 	}
 		
 	t->SetName("BB Gunner");
