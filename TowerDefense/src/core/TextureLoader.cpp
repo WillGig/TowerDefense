@@ -196,6 +196,10 @@ void TowerDefense::LoadTextures()
     Texture::LoadTexture("necromancerUpgradeSelected",      towerUpgrades.load(2, 3));
     Texture::LoadTexture("crossbowmanUpgrade",              towerUpgrades.load(3, 2));
     Texture::LoadTexture("crossbowmanUpgradeSelected",      towerUpgrades.load(3, 3));
+    Texture::LoadTexture("greyEyesUpgrade",                 towerUpgrades.load(4, 2));
+    Texture::LoadTexture("greyEyesUpgradeSelected",         towerUpgrades.load(4, 3));
+    Texture::LoadTexture("bbGunnerUpgrade",                 towerUpgrades.load(5, 2));
+    Texture::LoadTexture("bbGunnerUpgradeSelected",         towerUpgrades.load(5, 3));
 
 
     std::cout << "...Towers" << std::endl;
@@ -205,6 +209,10 @@ void TowerDefense::LoadTextures()
     Texture::LoadTexture("ArcherHighlighted",       towers.load(1, 0));
     Texture::LoadTexture("Crossbowman",             towers.load(2, 0));
     Texture::LoadTexture("CrossbowmanHighlighted",  towers.load(3, 0));
+    Texture::LoadTexture("GreyEyes",                towers.load(4, 0));
+    Texture::LoadTexture("GreyEyesHighlighted",     towers.load(5, 0));
+    Texture::LoadTexture("BBGunner",                towers.load(6, 0));
+    Texture::LoadTexture("BBGunnerHighlighted",     towers.load(7, 0));
     Texture::LoadTexture("Ranger",                  towers.load(0, 1));
     Texture::LoadTexture("RangerHighlighted",       towers.load(1, 1));
     Texture::LoadTexture("Wizard",                  towers.load(0, 2));

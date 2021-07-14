@@ -119,5 +119,21 @@ namespace TowerDefense
 
 			void UpgradeTower(std::shared_ptr<Tower> t) override;
 		};
+
+		class GreyEyes : public Upgrade
+		{
+		public:
+			GreyEyes();
+
+			void UpgradeTower(std::shared_ptr<Tower> t) override;
+		};
+
+		class BBGunner : public Upgrade
+		{
+		public:
+			BBGunner();
+
+			void UpgradeTower(std::shared_ptr<Tower> t) override;
+		};
 	}
 }

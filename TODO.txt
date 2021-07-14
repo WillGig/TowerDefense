@@ -10,7 +10,7 @@ Current:
 
 	Rework smithing upgrades for heros
 	Add special upgrades at levels 5 and 10 (changes image)
-	- Archer 	- Crossbowman (slower more powerful shot), Hacker (guided shots), longbowman (much larger range, piercing shots?)
+	- Archer 	- Crossbowman (slower more powerful shot), Grey Eyed(guided shots), bb gunner(much faster fire, lower damage)
 	- Wizard 	- Elementalist (lightning attack), summoner (summons ghost archers), necromancer (life drain attack)
 	- Ranger 	- Animal companion (animal spirit attacks enemies), Sniper (massive range, slower, stronger attacks), Laser-bow (bow replaced with constant laser attack)
 	- Paladin 	- Wings (can fly after enemies, then return to spot), Something angelic, Something inspirational

@@ -182,3 +182,36 @@ void TowerDefense::Tower::Crossbowman::UpgradeTower(std::shared_ptr<Tower> t)
 	t->SetImage("Crossbowman");
 	t->SetLevel(t->GetLevel() + 1);
 }
+
+TowerDefense::Tower::GreyEyes::GreyEyes()
+	:Upgrade("greyEyesUpgrade", "Arrows seek out\ntheir targets")
+{}
+
+void TowerDefense::Tower::GreyEyes::UpgradeTower(std::shared_ptr<Tower> t)
+{
+	auto a = std::dynamic_pointer_cast<Archer>(t);
+	if (a)
+		a->SetTurnRate(3.0f);
+
+	t->SetName("Grey Eyes");
+	t->SetImage("GreyEyes");
+	t->SetLevel(t->GetLevel() + 1);
+}
+
+TowerDefense::Tower::BBGunner::BBGunner()
+	:Upgrade("bbGunnerUpgrade", "Rapid fire attacks\nwith lower damage")
+{}
+
+void TowerDefense::Tower::BBGunner::UpgradeTower(std::shared_ptr<Tower> t)
+{
+	auto a = std::dynamic_pointer_cast<Archer>(t);
+	if (a)
+	{
+		a->SetAttackTime(a->GetAttackTime()/10.0f);
+		a->SetDamage(a->GetDamage(DamageType::PHYSICAL) / 5.0f, DamageType::PHYSICAL);
+	}
+		
+	t->SetName("BB Gunner");
+	t->SetImage("BBGunner");
+	t->SetLevel(t->GetLevel() + 1);
+}

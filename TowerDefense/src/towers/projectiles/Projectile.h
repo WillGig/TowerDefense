@@ -10,6 +10,9 @@ namespace TowerDefense
 		void Update() override;
 		void Destroy();
 
+		inline float GetTurnSpeed() const { return m_TurnSpeed; }
+		inline void SetTurnSpeed(float num) { m_TurnSpeed = num; }
+
 	protected:
 		virtual void HitEntity(std::shared_ptr<Entity> e) = 0;
 

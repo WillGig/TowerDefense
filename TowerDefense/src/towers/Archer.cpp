@@ -7,7 +7,7 @@
 
 TowerDefense::Tower::Archer::Archer()
 	:Tower(0.0f, 0.0f, 32, 32, 40.0f, 100, TowerType::DAMAGE, "Archer"),
-	m_NumberOfArrows(1), m_Pierce(1)
+	m_NumberOfArrows(1), m_Pierce(1), m_TurnRate(0.0f)
 {
 	m_Spread = .1f;
 	m_PhysicalDamage = 1.0f;
@@ -16,7 +16,7 @@ TowerDefense::Tower::Archer::Archer()
 
 TowerDefense::Tower::Archer::Archer(float fireTime, int range, float damage)
 	: Tower(0.0f, 0.0f, 32, 32, fireTime, range, TowerType::DAMAGE, "Archer"),
-	m_NumberOfArrows(1), m_Pierce(1)
+	m_NumberOfArrows(1), m_Pierce(1), m_TurnRate(0.0f)
 {
 	m_Spread = .1f;
 	m_PhysicalDamage = damage;
@@ -37,7 +37,10 @@ void TowerDefense::Tower::Archer::Fire(std::shared_ptr<TowerDefense::Entity> tar
 		if (Random::GetFloat() < m_ArmorPenChance)
 			armorReduction = m_ArmorPenReduction;
 		float angle = (i - ((m_NumberOfArrows - 1) / 2.0f)) * (90.0f / m_NumberOfArrows);
-		Combat::AddEntity(std::make_shared<TowerDefense::Arrow>(m_X, m_Y, m_Rotation + angle, damage, m_Pierce, armorReduction, GetID()));
+		auto arrow = std::make_shared<TowerDefense::Arrow>(m_X, m_Y, m_Rotation + angle, damage, m_Pierce, armorReduction, GetID());
+		if (m_TurnRate != 0)
+			arrow->SetTurnSpeed(m_TurnRate);
+		Combat::AddEntity(arrow);
 	}
 }
 
@@ -57,13 +60,15 @@ std::shared_ptr<std::vector<std::shared_ptr<TowerDefense::Tower::Upgrade>>> Towe
 	else if (GetLevel() == 4)
 	{
 		upgrades->push_back(std::make_shared<Crossbowman>());
-		upgrades->push_back(std::make_shared<Crossbowman>());
-		upgrades->push_back(std::make_shared<Crossbowman>());
+		upgrades->push_back(std::make_shared<GreyEyes>());
+		upgrades->push_back(std::make_shared<BBGunner>());
 	}
 	else
 	{
+		if (GetName() != "BB Gunner")
+			upgrades->push_back(std::make_shared<Damage>());
+
 		upgrades->push_back(std::make_shared<AttackSpeed>());
-		upgrades->push_back(std::make_shared<Damage>());
 		upgrades->push_back(std::make_shared<Range>());
 		upgrades->push_back(std::make_shared<Crit>());
 		upgrades->push_back(std::make_shared<ArmorPen>());
