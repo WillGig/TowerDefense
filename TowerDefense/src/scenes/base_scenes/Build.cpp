@@ -66,8 +66,8 @@ void TowerDefense::Build::OnSwitch()
 			AddBuildButton(std::make_shared<BuildButton>("buildLibrary", Vec4i(400, 100, 0, 0), std::make_shared<Library>()));
 		if (!Base::ContainsScene("Trader"))
 			AddBuildButton(std::make_shared<BuildButton>("buildTrader", Vec4i(100, 100, 300, 0), std::make_shared<Trader>()));
-		//if (!Base::ContainsScene("Fishing"))
-		//	AddBuildButton(BuildButton("buildFishery", 500, std::make_shared<Fishing>()));
+		if (!Base::ContainsScene("ArcheryRange"))
+			AddBuildButton(std::make_shared<BuildButton>("buildArcheryRange", Vec4i(400, 100, 0, 0), std::make_shared<ArcheryRange>()));
 		if (!Base::ContainsScene("Chapel"))
 			AddBuildButton(std::make_shared<BuildButton>("buildChapel", Vec4i(400, 400, 200, 0), std::make_shared<Chapel>()));
 		if (!Base::ContainsScene("Smithing"))

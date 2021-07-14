@@ -65,6 +65,8 @@ void TowerDefense::LoadTextures()
     Texture::LoadTexture("joustButtonSelected",         baseButtons.load(3, 10));
     Texture::LoadTexture("studyButton",                 baseButtons.load(0, 11));
     Texture::LoadTexture("studyButtonSelected",         baseButtons.load(1, 11));
+    Texture::LoadTexture("archeryButton",               baseButtons.load(2, 11));
+    Texture::LoadTexture("archeryButtonSelected",       baseButtons.load(3, 11));
         
     SpriteSheet buildHireButtons("res/textures/BuildHireButtons.png", 128, 50);
     Texture::LoadTexture("buildHouseButton",            buildHireButtons.load(0, 0));
@@ -83,6 +85,7 @@ void TowerDefense::LoadTextures()
     Texture::LoadTexture("buildTavern",                     buildButtons.load(0, 7));
     Texture::LoadTexture("buildMagicalGenerator",           buildButtons.load(0, 8));
     Texture::LoadTexture("buildWizardTower",                buildButtons.load(0, 9));
+    Texture::LoadTexture("buildArcheryRange",               buildButtons.load(0, 9));
     Texture::LoadTexture("buildBedSelected",                buildButtons.load(1, 0));
     Texture::LoadTexture("buildHouseSelected",              buildButtons.load(1, 1));
     Texture::LoadTexture("buildLibrarySelected",            buildButtons.load(1, 2));
@@ -92,7 +95,8 @@ void TowerDefense::LoadTextures()
     Texture::LoadTexture("buildSmithySelected",             buildButtons.load(1, 6));
     Texture::LoadTexture("buildTavernSelected",             buildButtons.load(1, 7));
     Texture::LoadTexture("buildMagicalGeneratorSelected",   buildButtons.load(1, 8));
-    Texture::LoadTexture("buildWizardTowerSelected",        buildButtons.load(1, 9));
+    Texture::LoadTexture("buildArcheryRangeSelected",       buildButtons.load(1, 9));
+    Texture::LoadTexture("buildWizardTowerSelected",        buildButtons.load(1, 10));
 
     SpriteSheet combatButtons("res/textures/CombatButtons.png", 384, 128);
     Texture::LoadTexture("startButton",         combatButtons.load(0, 0));
@@ -190,6 +194,8 @@ void TowerDefense::LoadTextures()
     Texture::LoadTexture("conjurerUpgradeSelected",         towerUpgrades.load(1, 3));
     Texture::LoadTexture("necromancerUpgrade",              towerUpgrades.load(2, 2));
     Texture::LoadTexture("necromancerUpgradeSelected",      towerUpgrades.load(2, 3));
+    Texture::LoadTexture("crossbowmanUpgrade",              towerUpgrades.load(3, 2));
+    Texture::LoadTexture("crossbowmanUpgradeSelected",      towerUpgrades.load(3, 3));
 
 
     std::cout << "...Towers" << std::endl;
@@ -197,6 +203,8 @@ void TowerDefense::LoadTextures()
     SpriteSheet towers("res/textures/Towers.png", 64, 64);
     Texture::LoadTexture("Archer",                  towers.load(0, 0));
     Texture::LoadTexture("ArcherHighlighted",       towers.load(1, 0));
+    Texture::LoadTexture("Crossbowman",             towers.load(2, 0));
+    Texture::LoadTexture("CrossbowmanHighlighted",  towers.load(3, 0));
     Texture::LoadTexture("Ranger",                  towers.load(0, 1));
     Texture::LoadTexture("RangerHighlighted",       towers.load(1, 1));
     Texture::LoadTexture("Wizard",                  towers.load(0, 2));

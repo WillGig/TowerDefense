@@ -6,15 +6,18 @@ namespace TowerDefense
 	class Arrow : public Projectile
 	{
 	public:
-		Arrow(float x, float y, float direction, float damage, float armorReduction, unsigned int source)
-			:Projectile(x, y, 6, 12, 8, direction, 300, damage, "projectiles/arrow", source), 
-			m_ArmorReduction(armorReduction)
+		Arrow(float x, float y, float direction, float damage, int health, float armorReduction, unsigned int source)
+			:Projectile(x, y, 6, 12, 8, direction, 300, damage, "projectiles/arrow", source), m_Health(health),
+			m_ArmorReduction(armorReduction),
+			m_HitObjects(std::make_unique<std::array<int, 5>>())
 		{}
 
 	private:
 		void HitEntity(std::shared_ptr<Entity> e) override;
 		
+		int m_Health;
 		float m_ArmorReduction;
+		std::unique_ptr<std::array<int, 5>> m_HitObjects;
 	};
 
 	class MagicMissile : public Projectile

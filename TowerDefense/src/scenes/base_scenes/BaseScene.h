@@ -211,6 +211,19 @@ namespace TowerDefense
 		std::vector<int> m_RemoveCircles;
 	};
 
+	class ArcheryRange : public BaseScene
+	{
+	public:
+		ArcheryRange();
+		void Render() override;
+		void Update() override;
+		void OnSwitch() override;
+		inline std::string GetName() override { return "ArcheryRange"; }
+
+	private:
+		std::unique_ptr<Button> m_BackToCamp;
+	};
+
 	class WizardTower : public BaseScene
 	{
 	public:

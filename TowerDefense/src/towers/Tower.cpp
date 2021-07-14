@@ -118,7 +118,11 @@ void TowerDefense::Tower::Tower::SetImage(const std::string& image)
 
 int TowerDefense::Tower::Tower::GetUpgradeCost() const
 {
-	return 50 * m_Level;
+	if (m_Level < 4)
+		return 50;
+	else if (m_Level < 9)
+		return 100;
+	return 200;
 }
 
 void TowerDefense::Tower::Tower::SetRange(int range)

@@ -5,6 +5,15 @@
 
 void TowerDefense::Arrow::HitEntity(std::shared_ptr<TowerDefense::Entity> e)
 {
+	if (m_Health <= 0)
+		return;
+
+	for (unsigned int i = 0; i < m_HitObjects->size(); i++)
+	{
+		if (m_HitObjects->at(i) && m_HitObjects->at(i) == e->GetID())
+			return;
+	}
+
 	if (e->GetEntityType() == Type::ENEMY) {
 		std::shared_ptr<Enemy::Enemy> enemy = std::dynamic_pointer_cast<Enemy::Enemy>(e);
 		enemy->TakeDamage(m_Damage, m_TowerSource, Tower::DamageType::PHYSICAL);
@@ -12,7 +21,12 @@ void TowerDefense::Arrow::HitEntity(std::shared_ptr<TowerDefense::Entity> e)
 		if (m_ArmorReduction > 0)
 			enemy->SetArmor(enemy->GetArmor() * (1.0f - m_ArmorReduction));
 	}
-	Destroy();
+
+	m_HitObjects->at(m_HitObjects->size() - m_Health) = e->GetID();
+	m_Health--;
+
+	if (m_Health == 0)
+		Destroy();
 }
 
 void TowerDefense::MagicMissile::HitEntity(std::shared_ptr<TowerDefense::Entity> e)

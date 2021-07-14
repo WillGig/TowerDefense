@@ -188,6 +188,7 @@
     <ClCompile Include="src\artifacts\MagicalGenerator.cpp" />
     <ClCompile Include="src\scenes\base_scenes\WizardTower.cpp" />
     <ClCompile Include="src\towers\GhostTower.cpp" />
+    <ClCompile Include="src\scenes\base_scenes\ArcheryRange.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\artifacts\Artifact.h" />

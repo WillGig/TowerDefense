@@ -111,5 +111,13 @@ namespace TowerDefense
 
 			void UpgradeTower(std::shared_ptr<Tower> t) override;
 		};
+
+		class Crossbowman : public Upgrade
+		{
+		public:
+			Crossbowman();
+
+			void UpgradeTower(std::shared_ptr<Tower> t) override;
+		};
 	}
 }

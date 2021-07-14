@@ -295,6 +295,7 @@
     <ClCompile Include="src\engine\Input.cpp" />
     <ClCompile Include="src\engine\Log.cpp" />
     <ClCompile Include="src\Main.cpp" />
+    <ClCompile Include="src\scenes\base_scenes\ArcheryRange.cpp" />
     <ClCompile Include="src\scenes\base_scenes\ArtifactSlot.cpp" />
     <ClCompile Include="src\scenes\base_scenes\Build.cpp" />
     <ClCompile Include="src\scenes\base_scenes\BuildButton.cpp" />

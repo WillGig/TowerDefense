@@ -8,9 +8,6 @@ Current:
 		 - Create new decaying archer - give multishot equal to more missile bonus and range and damage bonuses?
 		 - upgrades include summon duration, and summon power level (increases chance to summon wizard or ranger or paladin or giant at max level?)
 
-	Tower upgrade rework - can upgrade towers in combat, show tower level, permanent upgrades from smithy
-		- Star level shown below towers? Max level 10 (or 5)
-
 	Rework smithing upgrades for heros
 	Add special upgrades at levels 5 and 10 (changes image)
 	- Archer 	- Crossbowman (slower more powerful shot), Hacker (guided shots), longbowman (much larger range, piercing shots?)

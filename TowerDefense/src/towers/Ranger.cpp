@@ -34,7 +34,7 @@ void TowerDefense::Tower::Ranger::Fire(std::shared_ptr<TowerDefense::Entity> tar
 	if (Random::GetFloat() < m_ArmorPenChance)
 		armorReduction = m_ArmorPenReduction;
 
-	Combat::AddEntity(std::make_shared<TowerDefense::Arrow>(m_X, m_Y, m_Rotation, damage, armorReduction, GetID()));
+	Combat::AddEntity(std::make_shared<TowerDefense::Arrow>(m_X, m_Y, m_Rotation, damage, 1, armorReduction, GetID()));
 }
 
 std::shared_ptr<std::vector<std::shared_ptr<TowerDefense::Tower::Upgrade>>> TowerDefense::Tower::Ranger::GetPossibleUpgrades()

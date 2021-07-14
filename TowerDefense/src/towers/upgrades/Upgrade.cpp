@@ -130,10 +130,8 @@ void TowerDefense::Tower::WizardElementalist::UpgradeTower(std::shared_ptr<Tower
 {
 	auto w = std::dynamic_pointer_cast<Wizard>(t);
 	if (w)
-	{
 		w->SetLightning(true);
-		w->SetName("Elementalist");
-	}
+	t->SetName("Elementalist");
 	t->SetImage("Elementalist");
 	t->SetLevel(t->GetLevel() + 1);
 }
@@ -146,10 +144,8 @@ void TowerDefense::Tower::WizardConjurer::UpgradeTower(std::shared_ptr<Tower> t)
 {
 	auto w = std::dynamic_pointer_cast<Wizard>(t);
 	if (w)
-	{
 		w->SetSummonner(true);
-		w->SetName("Conjurer");
-	}
+	t->SetName("Conjurer");
 	t->SetImage("Conjurer");
 	t->SetLevel(t->GetLevel() + 1);
 }
@@ -162,10 +158,27 @@ void TowerDefense::Tower::WizardNecromancer::UpgradeTower(std::shared_ptr<Tower>
 {
 	auto w = std::dynamic_pointer_cast<Wizard>(t);
 	if (w)
-	{
 		w->SetGraveMissileFrequency(3);
-		w->SetName("Necromancer");
-	}
+	t->SetName("Necromancer");
 	t->SetImage("Necromancer");
+	t->SetLevel(t->GetLevel() + 1);
+}
+
+TowerDefense::Tower::Crossbowman::Crossbowman()
+	:Upgrade("crossbowmanUpgrade", "Slow, piercing shot")
+{}
+
+void TowerDefense::Tower::Crossbowman::UpgradeTower(std::shared_ptr<Tower> t)
+{
+	auto a = std::dynamic_pointer_cast<Archer>(t);
+	if (a)
+	{
+		a->SetPierce(3);
+		a->SetDamage(a->GetDamage(DamageType::PHYSICAL) + 3, DamageType::PHYSICAL);
+		a->SetAttackTime(a->GetAttackTime() * 3);
+	}
+
+	t->SetName("Crossbowman");
+	t->SetImage("Crossbowman");
 	t->SetLevel(t->GetLevel() + 1);
 }
