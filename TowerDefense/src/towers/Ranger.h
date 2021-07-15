@@ -1,6 +1,7 @@
 #pragma once
 #include "Tower.h"
 #include "AnimalCompanion.h"
+#include "LaserBeam.h"
 
 namespace TowerDefense
 {
@@ -20,6 +21,9 @@ namespace TowerDefense
 			inline int GetPierce() const { return m_Pierce; }
 			inline void SetPierce(int num) { m_Pierce = num; }
 
+
+			inline void SetLaser(bool laser) { m_Laser = laser; }
+
 			inline void SetCompanion(std::shared_ptr<AnimalCompanion> companion) { m_Companion = companion; }
 
 		private:
@@ -28,7 +32,11 @@ namespace TowerDefense
 
 			int m_Pierce;
 
+			bool m_Laser;
+
 			std::shared_ptr<AnimalCompanion> m_Companion;
+
+			std::shared_ptr<LaserBeam> m_LaserBeam;
 		};
 	}
 }

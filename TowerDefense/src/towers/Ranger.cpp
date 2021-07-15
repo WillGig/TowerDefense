@@ -7,7 +7,7 @@
 
 TowerDefense::Tower::Ranger::Ranger()
 	:Tower(0.0f, 0.0f, 32, 32, 30.0f, 150, TowerType::DAMAGE, "Ranger"),
-	m_Pierce(1)
+	m_Pierce(1), m_Laser(false)
 {
 	m_Spread = .1f;
 	m_PhysicalDamage = 1.0f;
@@ -16,7 +16,7 @@ TowerDefense::Tower::Ranger::Ranger()
 
 TowerDefense::Tower::Ranger::Ranger(float fireTime, int range, float damage)
 	: Tower(0.0f, 0.0f, 32, 32, fireTime, range, TowerType::DAMAGE, "Ranger"),
-	m_Pierce(1)
+	m_Pierce(1), m_Laser(false)
 {
 	m_Spread = .1f;
 	m_PhysicalDamage = damage;
@@ -28,6 +28,8 @@ void TowerDefense::Tower::Ranger::Update()
 	Tower::Update();
 	if (m_Companion)
 		m_Companion->Update();
+	if (m_LaserBeam)
+		m_LaserBeam->Update();
 }
 
 void TowerDefense::Tower::Ranger::Render()
@@ -35,6 +37,8 @@ void TowerDefense::Tower::Ranger::Render()
 	Tower::Render();
 	if (m_Companion)
 		m_Companion->Render();
+	if (m_LaserBeam)
+		m_LaserBeam->Render();
 }
 
 void TowerDefense::Tower::Ranger::Fire(std::shared_ptr<TowerDefense::Entity> target)
@@ -50,7 +54,16 @@ void TowerDefense::Tower::Ranger::Fire(std::shared_ptr<TowerDefense::Entity> tar
 	if (Random::GetFloat() < m_ArmorPenChance)
 		armorReduction = m_ArmorPenReduction;
 
-	Combat::AddEntity(std::make_shared<TowerDefense::Arrow>(m_X, m_Y, m_Rotation, damage, m_Pierce, armorReduction, GetID()));
+	if (m_Laser)
+	{
+		m_LaserBeam = std::make_shared<LaserBeam>(Combat::GetEntity(GetID()), std::dynamic_pointer_cast<Enemy::Enemy>(target));
+		auto e = std::dynamic_pointer_cast<Enemy::Enemy>(target);
+		e->TakeDamage(damage / 10.0f, GetID(), DamageType::PHYSICAL);
+		if (armorReduction != 0)
+			e->SetArmor(e->GetArmor() * (1.0f - armorReduction));
+	}
+	else
+		Combat::AddEntity(std::make_shared<TowerDefense::Arrow>(m_X, m_Y, m_Rotation, damage, m_Pierce, armorReduction, GetID()));
 }
 
 std::shared_ptr<std::vector<std::shared_ptr<TowerDefense::Tower::Upgrade>>> TowerDefense::Tower::Ranger::GetPossibleUpgrades()

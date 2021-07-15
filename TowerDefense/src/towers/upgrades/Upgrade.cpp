@@ -261,7 +261,11 @@ void TowerDefense::Tower::LaserBow::UpgradeTower(std::shared_ptr<Tower> t)
 {
 	auto r = std::dynamic_pointer_cast<Ranger>(t);
 	if (r)
+	{
+		r->SetLaser(true);
 		r->SetAttackTime(r->GetAttackTime() / 10.0f);
+	}
+		
 
 	t->SetName("Laser Bowman");
 	t->SetImage("LaserBow");
