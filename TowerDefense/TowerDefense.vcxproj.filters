@@ -189,6 +189,7 @@
     <ClCompile Include="src\scenes\base_scenes\WizardTower.cpp" />
     <ClCompile Include="src\towers\GhostTower.cpp" />
     <ClCompile Include="src\scenes\base_scenes\ArcheryRange.cpp" />
+    <ClCompile Include="src\towers\AnimalCompanion.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\artifacts\Artifact.h" />
@@ -280,6 +281,7 @@
     <ClInclude Include="src\engine\VertexBufferLayout.h" />
     <ClInclude Include="src\towers\upgrades\Upgrade.h" />
     <ClInclude Include="src\towers\GhostTower.h" />
+    <ClInclude Include="src\towers\AnimalCompanion.h" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="res\textures\AnimationEffects.png" />

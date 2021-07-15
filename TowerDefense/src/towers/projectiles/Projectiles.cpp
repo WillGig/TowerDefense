@@ -89,4 +89,12 @@ void TowerDefense::PoisonBomb::HitEntity(std::shared_ptr<TowerDefense::Entity> e
 	Destroy();
 }
 
+void TowerDefense::Feather::HitEntity(std::shared_ptr<TowerDefense::Entity> e)
+{
+	if (e->GetEntityType() == Type::ENEMY) {
+		std::shared_ptr<Enemy::Enemy> enemy = std::dynamic_pointer_cast<Enemy::Enemy>(e);
+		enemy->TakeDamage(m_Damage, m_TowerSource, Tower::DamageType::PHYSICAL);
+	}
+	Destroy();
+}
 		

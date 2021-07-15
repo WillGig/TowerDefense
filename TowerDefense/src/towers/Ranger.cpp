@@ -6,7 +6,8 @@
 #include "scenes/Base.h"
 
 TowerDefense::Tower::Ranger::Ranger()
-	:Tower(0.0f, 0.0f, 32, 32, 30.0f, 150, TowerType::DAMAGE, "Ranger")
+	:Tower(0.0f, 0.0f, 32, 32, 30.0f, 150, TowerType::DAMAGE, "Ranger"),
+	m_Pierce(1)
 {
 	m_Spread = .1f;
 	m_PhysicalDamage = 1.0f;
@@ -14,11 +15,26 @@ TowerDefense::Tower::Ranger::Ranger()
 }
 
 TowerDefense::Tower::Ranger::Ranger(float fireTime, int range, float damage)
-	: Tower(0.0f, 0.0f, 32, 32, fireTime, range, TowerType::DAMAGE, "Ranger")
+	: Tower(0.0f, 0.0f, 32, 32, fireTime, range, TowerType::DAMAGE, "Ranger"),
+	m_Pierce(1)
 {
 	m_Spread = .1f;
 	m_PhysicalDamage = damage;
 	m_DamageType = DamageType::PHYSICAL;
+}
+
+void TowerDefense::Tower::Ranger::Update()
+{
+	Tower::Update();
+	if (m_Companion)
+		m_Companion->Update();
+}
+
+void TowerDefense::Tower::Ranger::Render()
+{
+	Tower::Render();
+	if (m_Companion)
+		m_Companion->Render();
 }
 
 void TowerDefense::Tower::Ranger::Fire(std::shared_ptr<TowerDefense::Entity> target)
@@ -34,24 +50,42 @@ void TowerDefense::Tower::Ranger::Fire(std::shared_ptr<TowerDefense::Entity> tar
 	if (Random::GetFloat() < m_ArmorPenChance)
 		armorReduction = m_ArmorPenReduction;
 
-	Combat::AddEntity(std::make_shared<TowerDefense::Arrow>(m_X, m_Y, m_Rotation, damage, 1, armorReduction, GetID()));
+	Combat::AddEntity(std::make_shared<TowerDefense::Arrow>(m_X, m_Y, m_Rotation, damage, m_Pierce, armorReduction, GetID()));
 }
 
 std::shared_ptr<std::vector<std::shared_ptr<TowerDefense::Tower::Upgrade>>> TowerDefense::Tower::Ranger::GetPossibleUpgrades()
 {
 	auto upgrades = std::make_shared<std::vector<std::shared_ptr<Upgrade>>>();
-	upgrades->push_back(std::make_shared<AttackSpeed>());
-	upgrades->push_back(std::make_shared<Damage>());
-	upgrades->push_back(std::make_shared<Range>());
-	upgrades->push_back(std::make_shared<Crit>());
-	upgrades->push_back(std::make_shared<ArmorPen>());
+
+	if (GetLevel() < 4)
+	{
+		upgrades->push_back(std::make_shared<AttackSpeed>());
+		upgrades->push_back(std::make_shared<Damage>());
+		upgrades->push_back(std::make_shared<Range>());
+		upgrades->push_back(std::make_shared<Crit>());
+		upgrades->push_back(std::make_shared<ArmorPen>());
+	}
+	else if (GetLevel() == 4)
+	{
+		upgrades->push_back(std::make_shared<AnimalCompanionUpgrade>());
+		upgrades->push_back(std::make_shared<Sniper>());
+		upgrades->push_back(std::make_shared<LaserBow>());
+	}
+	else
+	{
+		upgrades->push_back(std::make_shared<AttackSpeed>());
+		upgrades->push_back(std::make_shared<Damage>());
+		upgrades->push_back(std::make_shared<Range>());
+		upgrades->push_back(std::make_shared<Crit>());
+		upgrades->push_back(std::make_shared<ArmorPen>());
+	}
 
 	return upgrades;
 }
 
 bool TowerDefense::Tower::Ranger::CanUpgrade()
 {
-	return (GetLevel() < 4 || (GetLevel() < 9 && Base::ContainsScene("")));
+	return (GetLevel() < 4 || (GetLevel() < 9 && Base::ContainsScene("ArcheryRange")));
 }
 
 std::shared_ptr<TowerDefense::Tower::Tower> TowerDefense::Tower::Ranger::Clone()

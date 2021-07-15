@@ -18,6 +18,9 @@ void TowerDefense::Tower::GhostArcher::Update()
 {
 	Archer::Update();
 
+	if (Combat::Paused())
+		return;
+
 	m_Master->AddDamageDealt(GetDamageDealt() - m_DamageGivenToMaster);
 	m_DamageGivenToMaster = GetDamageDealt();
 

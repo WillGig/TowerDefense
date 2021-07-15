@@ -342,6 +342,7 @@
     <ClCompile Include="src\scenes\random_events\WanderingSage.cpp" />
     <ClCompile Include="src\TowerDefense.cpp" />
     <ClCompile Include="src\towers\Alchemist.cpp" />
+    <ClCompile Include="src\towers\AnimalCompanion.cpp" />
     <ClCompile Include="src\towers\Archer.cpp" />
     <ClCompile Include="src\towers\Bard.cpp" />
     <ClCompile Include="src\towers\buffs\Buff.cpp" />
@@ -493,6 +494,7 @@
     <ClInclude Include="src\core\Clock.h" />
     <ClInclude Include="src\TowerDefense.h" />
     <ClInclude Include="src\towers\Alchemist.h" />
+    <ClInclude Include="src\towers\AnimalCompanion.h" />
     <ClInclude Include="src\towers\Archer.h" />
     <ClInclude Include="src\towers\Bard.h" />
     <ClInclude Include="src\towers\buffs\Buff.h" />

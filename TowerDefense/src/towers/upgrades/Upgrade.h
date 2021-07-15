@@ -135,5 +135,29 @@ namespace TowerDefense
 
 			void UpgradeTower(std::shared_ptr<Tower> t) override;
 		};
+
+		class AnimalCompanionUpgrade : public Upgrade
+		{
+		public:
+			AnimalCompanionUpgrade();
+
+			void UpgradeTower(std::shared_ptr<Tower> t) override;
+		};
+
+		class Sniper : public Upgrade
+		{
+		public:
+			Sniper();
+
+			void UpgradeTower(std::shared_ptr<Tower> t) override;
+		};
+
+		class LaserBow : public Upgrade
+		{
+		public:
+			LaserBow();
+
+			void UpgradeTower(std::shared_ptr<Tower> t) override;
+		};
 	}
 }

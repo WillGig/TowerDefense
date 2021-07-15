@@ -2,6 +2,10 @@ Current:
 
 	Bug: Game crashes if splitting enemy is killed at the very end
 
+	Add more possible ghost towers
+	Add more powerful companions
+	Allow clicking on companion tower for stats
+
 	Change upgrade cost to tower cost for first 4 levels, then 2x tower cost for next 4 levels
 
 	Summoner - summon instead of attack (every x attack starting at 4 or 5)

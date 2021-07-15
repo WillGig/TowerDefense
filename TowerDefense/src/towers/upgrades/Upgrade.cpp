@@ -3,6 +3,8 @@
 #include "towers/Wizard.h"
 #include "towers/Archer.h"
 #include "towers/Monk.h"
+#include "towers/Ranger.h"
+#include "towers/AnimalCompanion.h"
 
 TowerDefense::Tower::Upgrade::Upgrade(const std::string name, const std::string info)
 	:Button(0.0f, 0.0f, 50, 50, name), m_Name(name),
@@ -213,5 +215,50 @@ void TowerDefense::Tower::BBGunner::UpgradeTower(std::shared_ptr<Tower> t)
 		
 	t->SetName("BB Gunner");
 	t->SetImage("BBGunner");
+	t->SetLevel(t->GetLevel() + 1);
+}
+
+TowerDefense::Tower::AnimalCompanionUpgrade::AnimalCompanionUpgrade()
+	:Upgrade("animalCompanionUpgrade", "Summon an \nanimal companion\nto fight for you")
+{}
+
+void TowerDefense::Tower::AnimalCompanionUpgrade::UpgradeTower(std::shared_ptr<Tower> t)
+{
+	auto r = std::dynamic_pointer_cast<Ranger>(t);
+	if (r)
+		r->SetCompanion(std::make_shared<AnimalCompanion>(1.0f, 30.0f, 200, 1.0f, "Falcon", t));
+
+	t->SetName("Beast Master");
+	t->SetImage("AnimalCompanion");
+	t->SetLevel(t->GetLevel() + 1);
+}
+
+TowerDefense::Tower::Sniper::Sniper()
+	:Upgrade("sniperUpgrade", "Massive Range and\nslow, deadly attack")
+{}
+
+void TowerDefense::Tower::Sniper::UpgradeTower(std::shared_ptr<Tower> t)
+{
+	auto r = std::dynamic_pointer_cast<Ranger>(t);
+	if (r)
+		r->SetAttackTime(r->GetAttackTime() / 10.0f);
+
+	t->SetName("Sniper");
+	t->SetImage("Sniper");
+	t->SetLevel(t->GetLevel() + 1);
+}
+
+TowerDefense::Tower::LaserBow::LaserBow()
+	:Upgrade("laserBowUpgrade", "Laser-Bow")
+{}
+
+void TowerDefense::Tower::LaserBow::UpgradeTower(std::shared_ptr<Tower> t)
+{
+	auto r = std::dynamic_pointer_cast<Ranger>(t);
+	if (r)
+		r->SetAttackTime(r->GetAttackTime() / 10.0f);
+
+	t->SetName("Laser Bowman");
+	t->SetImage("LaserBow");
 	t->SetLevel(t->GetLevel() + 1);
 }

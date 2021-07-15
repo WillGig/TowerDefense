@@ -78,4 +78,15 @@ namespace TowerDefense
 	private:
 		int m_Radius, m_PoisonTime;
 	};
+
+	class Feather : public Projectile
+	{
+	public:
+		Feather(float x, float y, float direction, float damage, unsigned int source)
+			:Projectile(x, y, 6, 12, 8, direction, 300, damage, "projectiles/feather", source)
+		{}
+
+	private:
+		void HitEntity(std::shared_ptr<Entity> e) override;
+	};
 }
