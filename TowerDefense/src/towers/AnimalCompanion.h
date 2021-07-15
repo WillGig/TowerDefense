@@ -20,9 +20,9 @@ namespace TowerDefense
 			void FindGoal();
 			float GetDirection(std::shared_ptr<TowerDefense::Entity> e);
 
-			float m_GoalX, m_GoalY, m_Speed, m_SpeedX, m_SpeedY;
+			float m_GoalX, m_GoalY, m_Speed;
 
-			float m_GoalDirection;
+			float m_GoalDirection, m_CurrentDirection;
 
 			std::shared_ptr<Tower> m_Master;
 		};
