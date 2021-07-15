@@ -52,6 +52,7 @@ Current:
 	- Fishing
 
 Soon:
+	Allow right clicking on upgrades for more detailed information
 	Sideboard keyword on some cards - button in precombat screen to toggle which ones you wnat
 	- Watchguard - archer that can see invisible with sideboard
 	Add ways to increase score

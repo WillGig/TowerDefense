@@ -241,7 +241,12 @@ void TowerDefense::Tower::Sniper::UpgradeTower(std::shared_ptr<Tower> t)
 {
 	auto r = std::dynamic_pointer_cast<Ranger>(t);
 	if (r)
-		r->SetAttackTime(r->GetAttackTime() / 10.0f);
+	{
+		r->SetAttackTime(r->GetAttackTime() * 4.0f);
+		r->SetCritChance(r->GetCritChance() + .25f);
+		r->SetRange(r->GetRange() + 200);
+		r->SetCritMultiplier(4.0f);
+	}
 
 	t->SetName("Sniper");
 	t->SetImage("Sniper");
