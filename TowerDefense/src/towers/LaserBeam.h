@@ -12,6 +12,9 @@ namespace TowerDefense
 
 	private:
 		Line m_Line;
+		Circle m_Circle;
+
+		float m_CircleRadius, m_CircleChange;
 
 		std::shared_ptr<Entity> m_Source;
 		std::shared_ptr<Enemy::Enemy> m_Target;

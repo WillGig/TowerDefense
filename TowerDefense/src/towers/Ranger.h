@@ -21,7 +21,6 @@ namespace TowerDefense
 			inline int GetPierce() const { return m_Pierce; }
 			inline void SetPierce(int num) { m_Pierce = num; }
 
-
 			inline void SetLaser(bool laser) { m_Laser = laser; }
 
 			inline void SetCompanion(std::shared_ptr<AnimalCompanion> companion) { m_Companion = companion; }
