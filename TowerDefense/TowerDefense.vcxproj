@@ -309,6 +309,7 @@
     <ClCompile Include="src\scenes\base_scenes\Rest.cpp" />
     <ClCompile Include="src\scenes\base_scenes\Smithing.cpp" />
     <ClCompile Include="src\scenes\base_scenes\Tavern.cpp" />
+    <ClCompile Include="src\scenes\base_scenes\Temple.cpp" />
     <ClCompile Include="src\scenes\base_scenes\Trader.cpp" />
     <ClCompile Include="src\scenes\base_scenes\WizardTower.cpp" />
     <ClCompile Include="src\scenes\random_events\CaveBat.cpp" />

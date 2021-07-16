@@ -91,6 +91,8 @@ namespace TowerDefense
 			bool IsBuffedBy(Tower& t);
 
 		protected:
+			virtual std::shared_ptr<TowerDefense::Entity> FindTarget();
+			virtual void Attack();
 			virtual void Fire(std::shared_ptr<TowerDefense::Entity> target) = 0;
 			virtual void Clicked();
 			float FindDirection(float x, float y);
@@ -103,17 +105,17 @@ namespace TowerDefense
 
 			bool m_SeeInvisibility;
 
+			int m_FireReady;
+
 			float m_PhysicalDamage, m_MagicDamage, m_Spread, m_CritChance, m_CritMultiplier, m_ArmorPenChance, m_ArmorPenReduction;
 
 		private:
-			std::shared_ptr<TowerDefense::Entity> FindTarget();
 			void UpdateImage();
-			void Attack();
 			void UpdateBuffs();
 
 			//Attack period in Game Updates (60 per second)
 			float m_FireTime, m_TotalDamageDealt;
-			int m_FireReady, m_Range, m_Level;
+			int m_Range, m_Level;
 			bool m_Highlighted, m_Clicked;
 			TowerType m_TowerType;
 			TargetType m_TargetType;

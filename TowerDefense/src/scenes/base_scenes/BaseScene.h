@@ -236,4 +236,17 @@ namespace TowerDefense
 	private:
 		std::unique_ptr<Button> m_BackToCamp;
 	};
+
+	class Temple : public BaseScene
+	{
+	public:
+		Temple();
+		void Render() override;
+		void Update() override;
+		void OnSwitch() override;
+		inline std::string GetName() override { return "Temple"; }
+
+	private:
+		std::unique_ptr<Button> m_BackToCamp;
+	};
 }

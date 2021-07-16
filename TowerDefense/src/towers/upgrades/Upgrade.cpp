@@ -4,6 +4,7 @@
 #include "towers/Archer.h"
 #include "towers/Monk.h"
 #include "towers/Ranger.h"
+#include "towers/Paladin.h"
 #include "towers/AnimalCompanion.h"
 
 TowerDefense::Tower::Upgrade::Upgrade(const std::string name, const std::string info)
@@ -265,9 +266,23 @@ void TowerDefense::Tower::LaserBow::UpgradeTower(std::shared_ptr<Tower> t)
 		r->SetLaser(true);
 		r->SetAttackTime(r->GetAttackTime() / 10.0f);
 	}
-		
 
 	t->SetName("Laser Bowman");
 	t->SetImage("LaserBow");
+	t->SetLevel(t->GetLevel() + 1);
+}
+
+TowerDefense::Tower::Wings::Wings()
+	:Upgrade("wingsUpgrade", "Learn to fly")
+{}
+
+void TowerDefense::Tower::Wings::UpgradeTower(std::shared_ptr<Tower> t)
+{
+	auto p = std::dynamic_pointer_cast<Paladin>(t);
+	if (p)
+		p->SetSpeed(1.7f);
+
+	t->SetName("Winged Paladin");
+	t->SetImage("WingedPaladin");
 	t->SetLevel(t->GetLevel() + 1);
 }
