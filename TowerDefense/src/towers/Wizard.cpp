@@ -91,9 +91,9 @@ std::shared_ptr<std::vector<std::shared_ptr<TowerDefense::Tower::Upgrade>>> Towe
 	}
 	else if(GetLevel() == 4)
 	{
-		upgrades->push_back(std::make_shared<WizardElementalist>());
-		upgrades->push_back(std::make_shared<WizardConjurer>());
-		upgrades->push_back(std::make_shared<WizardNecromancer>());
+		upgrades->push_back(std::make_shared<Elementalist>());
+		upgrades->push_back(std::make_shared<Conjurer>());
+		upgrades->push_back(std::make_shared<Necromancer>());
 	}
 	else
 	{

@@ -17,7 +17,7 @@ Current:
 	- Archer 	- Crossbowman (slower more powerful shot), Grey Eyed(guided shots), bb gunner(much faster fire, lower damage)
 	- Wizard 	- Elementalist (lightning attack), summoner (summons ghost archers), necromancer (life drain attack)
 	- Ranger 	- Animal companion (animal spirit attacks enemies), Sniper (massive range, slower, stronger attacks), Laser-bow (bow replaced with constant laser attack)
-	- Paladin 	- Wings (can fly after enemies, then return to spot), Something angelic, Something inspirational
+	- Paladin 	- Wings (can fly after enemies, then return to spot), Vengence(AOE attacks), Inspiring Leader (Crits boost attackspeed of nearby towers)
 	- Alchemist 	- Grenade gunner (faster, smaller attacks), True alchemy (turn enemies to gold), poison specialist (poisons slow or other effects)
 	- Bard 		- Peace bard (slows nearby enemies), empowerer (bonus true damage), disarming words (attack which lowers enemy damage)
 	- Cleric 	- Lifebringer (heals you every round), battle cleric (can now attack), Death priest (weakens nearby enemies)

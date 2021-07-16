@@ -212,6 +212,10 @@ void TowerDefense::LoadTextures()
     Texture::LoadTexture("laserBowUpgradeSelected",         towerUpgrades.load(8, 3));
     Texture::LoadTexture("wingsUpgrade",                    towerUpgrades.load(0, 4));
     Texture::LoadTexture("wingsUpgradeSelected",            towerUpgrades.load(0, 5));
+    Texture::LoadTexture("vengenceUpgrade",                 towerUpgrades.load(1, 4));
+    Texture::LoadTexture("vengenceUpgradeSelected",         towerUpgrades.load(1, 5));
+    Texture::LoadTexture("inspiringLeaderUpgrade",          towerUpgrades.load(2, 4));
+    Texture::LoadTexture("inspiringLeaderUpgradeSelected",  towerUpgrades.load(2, 5));
 
 
     std::cout << "...Towers" << std::endl;
@@ -247,6 +251,10 @@ void TowerDefense::LoadTextures()
     Texture::LoadTexture("PaladinHighlighted",          towers.load(1, 4));
     Texture::LoadTexture("WingedPaladin",               towers.load(2, 4));
     Texture::LoadTexture("WingedPaladinHighlighted",    towers.load(3, 4));
+    Texture::LoadTexture("VengencePaladin",             towers.load(4, 4));
+    Texture::LoadTexture("VengencePaladinHighlighted",  towers.load(5, 4));
+    Texture::LoadTexture("InspiringPaladin",            towers.load(6, 4));
+    Texture::LoadTexture("InspiringPaladinHighlighted", towers.load(7, 4));
     Texture::LoadTexture("GIANT",                       towers.load(0, 5));
     Texture::LoadTexture("GIANTHighlighted",            towers.load(1, 5));
     Texture::LoadTexture("Bard",                        towers.load(0, 6));

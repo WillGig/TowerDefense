@@ -125,11 +125,11 @@ void TowerDefense::Tower::MoreFocus::UpgradeTower(std::shared_ptr<Tower> t)
 	t->SetLevel(t->GetLevel() + 1);
 }
 
-TowerDefense::Tower::WizardElementalist::WizardElementalist()
+TowerDefense::Tower::Elementalist::Elementalist()
 	:Upgrade("elementalistUpgrade", "Gain a powerful\nlightning attack")
 {}
 
-void TowerDefense::Tower::WizardElementalist::UpgradeTower(std::shared_ptr<Tower> t)
+void TowerDefense::Tower::Elementalist::UpgradeTower(std::shared_ptr<Tower> t)
 {
 	auto w = std::dynamic_pointer_cast<Wizard>(t);
 	if (w)
@@ -139,11 +139,11 @@ void TowerDefense::Tower::WizardElementalist::UpgradeTower(std::shared_ptr<Tower
 	t->SetLevel(t->GetLevel() + 1);
 }
 
-TowerDefense::Tower::WizardConjurer::WizardConjurer()
+TowerDefense::Tower::Conjurer::Conjurer()
 	:Upgrade("conjurerUpgrade", "Summon spirits\nto fight for you")
 {}
 
-void TowerDefense::Tower::WizardConjurer::UpgradeTower(std::shared_ptr<Tower> t)
+void TowerDefense::Tower::Conjurer::UpgradeTower(std::shared_ptr<Tower> t)
 {
 	auto w = std::dynamic_pointer_cast<Wizard>(t);
 	if (w)
@@ -153,11 +153,11 @@ void TowerDefense::Tower::WizardConjurer::UpgradeTower(std::shared_ptr<Tower> t)
 	t->SetLevel(t->GetLevel() + 1);
 }
 
-TowerDefense::Tower::WizardNecromancer::WizardNecromancer()
+TowerDefense::Tower::Necromancer::Necromancer()
 	:Upgrade("necromancerUpgrade", "Drain life from\nyour enemies")
 {}
 
-void TowerDefense::Tower::WizardNecromancer::UpgradeTower(std::shared_ptr<Tower> t)
+void TowerDefense::Tower::Necromancer::UpgradeTower(std::shared_ptr<Tower> t)
 {
 	auto w = std::dynamic_pointer_cast<Wizard>(t);
 	if (w)
@@ -280,9 +280,39 @@ void TowerDefense::Tower::Wings::UpgradeTower(std::shared_ptr<Tower> t)
 {
 	auto p = std::dynamic_pointer_cast<Paladin>(t);
 	if (p)
-		p->SetSpeed(1.7f);
+		p->SetSpeed(2.0f);
 
 	t->SetName("Winged Paladin");
 	t->SetImage("WingedPaladin");
+	t->SetLevel(t->GetLevel() + 1);
+}
+
+TowerDefense::Tower::Vengence::Vengence()
+	:Upgrade("vengenceUpgrade", "Attacks deal damage to\nall enemies in an area")
+{}
+
+void TowerDefense::Tower::Vengence::UpgradeTower(std::shared_ptr<Tower> t)
+{
+	auto p = std::dynamic_pointer_cast<Paladin>(t);
+	if (p)
+		p->SetDamageRadius(40.0f);
+
+	t->SetName("Vengence Paladin");
+	t->SetImage("VengencePaladin");
+	t->SetLevel(t->GetLevel() + 1);
+}
+
+TowerDefense::Tower::InspiringLeader::InspiringLeader()
+	:Upgrade("inspiringLeaderUpgrade", "Critical Strikes cause all\ntowers in range to attack\nfaster for a short time")
+{}
+
+void TowerDefense::Tower::InspiringLeader::UpgradeTower(std::shared_ptr<Tower> t)
+{
+	auto p = std::dynamic_pointer_cast<Paladin>(t);
+	if (p)
+		p->SetInspiring(true);
+
+	t->SetName("Inspiring Leader");
+	t->SetImage("InspiringPaladin");
 	t->SetLevel(t->GetLevel() + 1);
 }

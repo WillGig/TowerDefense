@@ -4,18 +4,19 @@
 #include "projectiles/Projectiles.h"
 #include "scenes/Base.h"
 #include "upgrades/Upgrade.h"
+#include "buffs/SpeedBuff.h"
 
 TowerDefense::Tower::Paladin::Paladin()
-	:Tower(0.0f, 0.0f, 32, 32, 120.0f, 80, TowerType::DAMAGE, "Paladin"), 
-	m_Speed(0.0f), m_XDisplacement(0.0f), m_YDisplacement(0.0f)
+	:Tower(0.0f, 0.0f, 32, 32, 120.0f, 80, TowerType::DAMAGE, "Paladin"), m_CircleTimer(0), m_Inspiring(false),
+	m_Speed(0.0f), m_XDisplacement(0.0f), m_YDisplacement(0.0f), m_DamageRadius(0.0f), m_DamageRadiusCircle(0.0f, 0.0f, 0.0f)
 {
 	m_MagicDamage = 5.0f;
 	m_DamageType = DamageType::MAGIC;
 }
 
 TowerDefense::Tower::Paladin::Paladin(float fireTime, int range, float damage)
-	: Tower(0.0f, 0.0f, 32, 32, fireTime, range, TowerType::DAMAGE, "Paladin"), 
-	m_Speed(0.0f), m_XDisplacement(0.0f), m_YDisplacement(0.0f)
+	: Tower(0.0f, 0.0f, 32, 32, fireTime, range, TowerType::DAMAGE, "Paladin"), m_CircleTimer(0), m_Inspiring(false),
+	m_Speed(0.0f), m_XDisplacement(0.0f), m_YDisplacement(0.0f), m_DamageRadius(0.0f), m_DamageRadiusCircle(0.0f, 0.0f, 0.0f)
 {
 	m_MagicDamage = damage;
 	m_DamageType = DamageType::MAGIC;
@@ -27,6 +28,15 @@ void TowerDefense::Tower::Paladin::Update()
 	if (m_Speed > 0.0f)
 		for(int i = 0; i < Combat::GetRoundSpeed(); i++)
 			Move();
+	if (m_CircleTimer > 0)
+		m_CircleTimer -= Combat::GetRoundSpeed();
+}
+
+void TowerDefense::Tower::Paladin::Render()
+{
+	Tower::Render();
+	if (m_DamageRadius > 0.0f && m_CircleTimer > 0)
+		m_DamageRadiusCircle.Render();
 }
 
 void TowerDefense::Tower::Paladin::Fire(std::shared_ptr<TowerDefense::Entity> target)
@@ -36,10 +46,40 @@ void TowerDefense::Tower::Paladin::Fire(std::shared_ptr<TowerDefense::Entity> ta
 	{
 		damage *= m_CritMultiplier;
 		Combat::AddEntity(std::make_shared<AnimationEffect>(m_X, m_Y, 32, 32, "critAnimation", 7, 30));
+
+		if (m_Inspiring)
+		{
+			auto entities = Combat::GetEntities();
+			for (unsigned int i = 0; i < entities->size(); i++) {
+				auto e = entities->at(i);
+				if (e->GetEntityType() == Type::TOWER)
+				{
+					if (GetDistance(e->GetX(), e->GetY()) < GetRange())
+						std::dynamic_pointer_cast<Tower>(e)->ApplyBuff(std::make_shared<SpeedBuff>(120, GetID(), m_CritMultiplier));
+				}
+			}
+		}
 	}
 	std::shared_ptr<Enemy::Enemy> e = std::dynamic_pointer_cast<Enemy::Enemy>(target);
 	e->TakeDamage(e->GetMaxHealth() * damage * .01f + damage, GetID(), DamageType::MAGIC);
 	Combat::AddEntity(std::make_shared<AnimationEffect>(e->GetX(), e->GetY(), 100, 100, "smiteAnimation", 7, 30));
+
+	if (m_DamageRadius > 0.0f)
+	{
+		auto entities = Combat::GetEntities();
+		for (unsigned int i = 0; i < entities->size(); i++) {
+			auto entity = entities->at(i);
+			if (entity->GetEntityType() == Type::ENEMY)
+			{
+				if (entity->GetID() != e->GetID() && entity->GetDistance(e->GetX(), e->GetY()) < m_DamageRadius)
+					std::dynamic_pointer_cast<Enemy::Enemy>(entity)->TakeDamage(damage, GetID(), DamageType::MAGIC);
+			}
+		}
+
+		m_CircleTimer = 30;
+		m_DamageRadiusCircle = Circle(e->GetX(), e->GetY(), m_DamageRadius);
+		m_DamageRadiusCircle.SetColor(1.0f, 0.0f, 0.0f, 1.0f);
+	}
 }
 
 bool TowerDefense::Tower::Paladin::CanUpgrade()
@@ -61,8 +101,8 @@ std::shared_ptr<std::vector<std::shared_ptr<TowerDefense::Tower::Upgrade>>> Towe
 	else if (GetLevel() == 4)
 	{
 		upgrades->push_back(std::make_shared<Wings>());
-		upgrades->push_back(std::make_shared<Wings>());
-		upgrades->push_back(std::make_shared<Wings>());
+		upgrades->push_back(std::make_shared<Vengence>());
+		upgrades->push_back(std::make_shared<InspiringLeader>());
 	}
 	else
 	{

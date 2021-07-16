@@ -11,10 +11,15 @@ namespace TowerDefense
 			Paladin();
 			Paladin(float fireTime, int range, float damage);
 			void Update() override;
+			void Render() override;
 			bool CanUpgrade() override;
 			std::shared_ptr<Tower> Clone();
 
 			inline void SetSpeed(float speed) { m_Speed = speed; }
+
+			inline void SetDamageRadius(float radius) { m_DamageRadius = radius; }
+
+			inline void SetInspiring(bool inspiring) { m_Inspiring = inspiring; }
 
 		private:
 			void Fire(std::shared_ptr<TowerDefense::Entity> target) override;
@@ -23,7 +28,13 @@ namespace TowerDefense
 			void Attack() override;
 			void Move();
 
-			float m_Speed, m_XDisplacement, m_YDisplacement;
+			int m_CircleTimer;
+
+			bool m_Inspiring;
+
+			float m_Speed, m_XDisplacement, m_YDisplacement, m_DamageRadius;
+
+			Circle m_DamageRadiusCircle;
 		};
 	}
 }
