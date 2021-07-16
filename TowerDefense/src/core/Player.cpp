@@ -82,7 +82,7 @@ void TowerDefense::Player::Reset()
     for (int i = 0; i < 8; i++)
         AddToDeck(std::make_shared<Focus>(false));
     for (int i = 0; i < 4; i++)
-        AddToDeck(std::make_shared<PaladinCard>());
+        AddToDeck(std::make_shared<AlchemistCard>());
     for (int i = 0; i < 2; i++)
         AddToDeck(std::make_shared<PotOfGreed>());
 }
@@ -153,7 +153,7 @@ void TowerDefense::Player::ChangeResource(int change, Resource res)
         if (m_Resources.w < 0)
             m_Resources.w = 0;
         m_WoodText = std::make_unique<Text>(std::to_string(m_Resources.w), 50.0f, 575.0f, 10.0f, 0.0f);
-        m_WoodText->SetColor(1.0f, 1.0f, 1.0f, 1.0f);
+        m_WoodText->SetColor(m_TextColor.w, m_TextColor.x, m_TextColor.y, m_TextColor.z);
     }
     else if (res == Resource::STONE)
     {
@@ -161,7 +161,7 @@ void TowerDefense::Player::ChangeResource(int change, Resource res)
         if (m_Resources.x < 0)
             m_Resources.x = 0;
         m_StoneText = std::make_unique<Text>(std::to_string(m_Resources.x), 125.0f, 575.0f, 10.0f, 0.0f);
-        m_StoneText->SetColor(1.0f, 1.0f, 1.0f, 1.0f);
+        m_StoneText->SetColor(m_TextColor.w, m_TextColor.x, m_TextColor.y, m_TextColor.z);
     }
     else if (res == Resource::WHEAT)
     {
@@ -169,7 +169,7 @@ void TowerDefense::Player::ChangeResource(int change, Resource res)
         if (m_Resources.y < 0)
             m_Resources.y = 0;
         m_WheatText = std::make_unique<Text>(std::to_string(m_Resources.y), 200.0f, 575.0f, 10.0f, 0.0f);
-        m_WheatText->SetColor(1.0f, 1.0f, 1.0f, 1.0f);
+        m_WheatText->SetColor(m_TextColor.w, m_TextColor.x, m_TextColor.y, m_TextColor.z);
     }
     else if (res == Resource::GOLD)
     {
@@ -177,7 +177,7 @@ void TowerDefense::Player::ChangeResource(int change, Resource res)
         if (m_Resources.z < 0)
             m_Resources.z = 0;
         m_GoldText = std::make_unique<Text>(std::to_string(m_Resources.z), 275.0f, 575.0f, 10.0f, 0.0f);
-        m_GoldText->SetColor(1.0f, 1.0f, 1.0f, 1.0f);
+        m_GoldText->SetColor(m_TextColor.w, m_TextColor.x, m_TextColor.y, m_TextColor.z);
     }
 }
 

@@ -249,4 +249,17 @@ namespace TowerDefense
 	private:
 		std::unique_ptr<Button> m_BackToCamp;
 	};
+
+	class AlchemyLab : public BaseScene
+	{
+	public:
+		AlchemyLab();
+		void Render() override;
+		void Update() override;
+		void OnSwitch() override;
+		inline std::string GetName() override { return "AlchemyLab"; }
+
+	private:
+		std::unique_ptr<Button> m_BackToCamp;
+	};
 }

@@ -66,17 +66,17 @@ namespace TowerDefense
 	class PoisonBomb : public Projectile
 	{
 	public:
-		PoisonBomb(float x, float y, float direction, float damage, unsigned int source)
+		PoisonBomb(float x, float y, float direction, float damage, float slow, float shred, int gold, int radius, unsigned int source)
 			:Projectile(x, y, 12, 12, 4, direction, 200, damage, "projectiles/poisonBomb", source),
-			m_Radius(50), m_PoisonTime(240)
-		{
-		}
+			m_Radius(radius), m_PoisonTime(240), m_GoldConversion(gold), m_SlowPercent(slow), m_ResistanceShredPercent(shred)
+		{}
 
 	protected:
 		void HitEntity(std::shared_ptr<Entity> e) override;
 
 	private:
-		int m_Radius, m_PoisonTime;
+		int m_Radius, m_PoisonTime, m_GoldConversion;
+		float m_SlowPercent, m_ResistanceShredPercent;
 	};
 
 	class Feather : public Projectile

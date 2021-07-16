@@ -82,10 +82,14 @@ void TowerDefense::PoisonBomb::HitEntity(std::shared_ptr<TowerDefense::Entity> e
 			if (e->GetEntityType() == Type::ENEMY) {
 				std::shared_ptr<Enemy::Enemy> enemy = std::dynamic_pointer_cast<Enemy::Enemy>(e);
 				enemy->Poison(m_Damage, m_PoisonTime, m_TowerSource);
+				enemy->Slow(m_SlowPercent, m_PoisonTime);
+				enemy->SetArmor(enemy->GetArmor() * m_ResistanceShredPercent);
+				enemy->SetMagicResistance(enemy->GetMagicResistance() * m_ResistanceShredPercent);
+				enemy->SetBounty(enemy->GetBounty() + m_GoldConversion);
 			}
 		}
 	}
-	Combat::AddEntity(std::make_shared<AnimationEffect>(m_X, m_Y, 100, 100, "acidExplosion", 7, 60));
+	Combat::AddEntity(std::make_shared<AnimationEffect>(m_X, m_Y, m_Radius * 2, m_Radius * 2, "acidExplosion", 7, 60));
 	Destroy();
 }
 

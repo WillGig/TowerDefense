@@ -13,6 +13,9 @@ namespace TowerDefense
 		inline float GetTurnSpeed() const { return m_TurnSpeed; }
 		inline void SetTurnSpeed(float num) { m_TurnSpeed = num; }
 
+		inline float GetSpeed() const { return m_Speed; }
+		inline void SetSpeed(float num) { m_Speed = num; }
+
 	protected:
 		virtual void HitEntity(std::shared_ptr<Entity> e) = 0;
 

@@ -42,6 +42,9 @@ namespace TowerDefense
 
 			void SetDistanceTravelled(float distance);
 
+			inline int GetBounty() const { return m_Bounty; };
+			inline void SetBounty(int bounty) { m_Bounty = bounty; }
+
 		protected:
 			virtual void Move();
 			void FindNewGoal(float x, float y);
@@ -59,7 +62,7 @@ namespace TowerDefense
 			void UpdateImage();
 			void UpdateDebuffs();
 
-			int m_GoldValue, m_SlowTime, m_PoisonTime, m_PoisonTick, m_StunTime;
+			int m_GoldValue, m_Bounty, m_SlowTime, m_PoisonTime, m_PoisonTick, m_StunTime;
 			float m_Speed, m_SlowPercent, m_PoisonAmount, m_StunResist;
 			bool m_Selected, m_Clicked;
 

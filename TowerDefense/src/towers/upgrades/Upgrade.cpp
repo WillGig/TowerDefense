@@ -5,6 +5,7 @@
 #include "towers/Monk.h"
 #include "towers/Ranger.h"
 #include "towers/Paladin.h"
+#include "Towers/Alchemist.h"
 #include "towers/AnimalCompanion.h"
 
 TowerDefense::Tower::Upgrade::Upgrade(const std::string name, const std::string info)
@@ -314,5 +315,57 @@ void TowerDefense::Tower::InspiringLeader::UpgradeTower(std::shared_ptr<Tower> t
 
 	t->SetName("Inspiring Leader");
 	t->SetImage("InspiringPaladin");
+	t->SetLevel(t->GetLevel() + 1);
+}
+
+TowerDefense::Tower::GrenadeGunner::GrenadeGunner()
+	:Upgrade("grenadeGunnerUpgrade", "Quickly launch\nsmaller grenades")
+{}
+
+void TowerDefense::Tower::GrenadeGunner::UpgradeTower(std::shared_ptr<Tower> t)
+{
+	auto a = std::dynamic_pointer_cast<Alchemist>(t);
+	if (a)
+	{
+		a->SetAttackTime(a->GetAttackTime() * 0.2f);
+		a->SetExplosionRadius(a->GetExplosionRadius() - 20);
+		a->SetGrenadeSpeed(a->GetGrenadeSpeed() * 2.0f);
+	}
+
+	t->SetName("Grenade Gunner");
+	t->SetImage("GrenadeGunner");
+	t->SetLevel(t->GetLevel() + 1);
+}
+
+TowerDefense::Tower::TrueAlchemy::TrueAlchemy()
+	:Upgrade("trueAlchemyUpgrade", "Turn enemies to gold")
+{}
+
+void TowerDefense::Tower::TrueAlchemy::UpgradeTower(std::shared_ptr<Tower> t)
+{
+	auto a = std::dynamic_pointer_cast<Alchemist>(t);
+	if (a)
+		a->SetGoldConversion(1);
+
+	t->SetName("True Alchemist");
+	t->SetImage("TrueAlchemist");
+	t->SetLevel(t->GetLevel() + 1);
+}
+
+TowerDefense::Tower::Poisoner::Poisoner()
+	:Upgrade("poisonerUpgrade", "Poisons slow enemies\nand reduce resistances")
+{}
+
+void TowerDefense::Tower::Poisoner::UpgradeTower(std::shared_ptr<Tower> t)
+{
+	auto a = std::dynamic_pointer_cast<Alchemist>(t);
+	if (a)
+	{
+		a->SetSlowPercent(0.7f);
+		a->SetResistanceShredPercent(0.25f);
+	}
+
+	t->SetName("Poisoner");
+	t->SetImage("Poisoner");
 	t->SetLevel(t->GetLevel() + 1);
 }

@@ -12,8 +12,8 @@ int TowerDefense::Enemy::Enemy::POISONTICKRATE = 30;
 TowerDefense::Enemy::Enemy::Enemy(int width, int height, float health, float speed, int goldValue, const std::string& name, int damage)
 	:Entity(0.0f, 0.0f, width, height, 0.0f, name, Type::ENEMY), m_Damage(damage), m_CurrentTile(-2),
 	m_SlowTime(0), m_PoisonTime(0), m_PoisonTick(0), m_StunTime(0), m_Health(health), m_Armor(0.0f), 
-	m_MagicResistance(0.0f), m_MaxHealth(health), m_Speed(speed), m_GoldValue(goldValue), m_SlowPercent(0.0f), 
-	m_PoisonAmount(0.0f), m_StunResist(0.0f), m_GoalX(), m_GoalY(), m_DistanceTraveled(0.0f), 
+	m_MagicResistance(0.0f), m_MaxHealth(health), m_Speed(speed), m_GoldValue(goldValue), m_Bounty(0), 
+	m_SlowPercent(0.0f), m_PoisonAmount(0.0f), m_StunResist(0.0f), m_GoalX(), m_GoalY(), m_DistanceTraveled(0.0f), 
 	m_ReachedEnd(false), m_Selected(false), m_Clicked(false), m_Name(name),
 	m_RegularImage(std::make_shared<Image>(name, 0.0f, 0.0f, width, height, 0.0f)), 
 	m_SelectedImage(std::make_shared<Image>(name + "Selected", 0.0f, 0.0f, width, height, 0.0f)),
@@ -225,6 +225,8 @@ void TowerDefense::Enemy::Enemy::ChangeHealth(float change)
 	{
 		Combat::GetCurrentFight()->AddDefeatedEnemy(*this);
 		Combat::OnEnemyDeath(GetID());
+		if(m_Bounty != 0)
+			Player::Get().ChangeResource(m_Bounty, Resource::GOLD);
 		Destroy();
 	}
 }
