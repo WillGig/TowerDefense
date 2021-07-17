@@ -48,8 +48,8 @@ void TowerDefense::Tower::Monk::Fire(std::shared_ptr<TowerDefense::Entity> targe
 std::shared_ptr<std::vector<std::shared_ptr<TowerDefense::Tower::Upgrade>>> TowerDefense::Tower::Monk::GetPossibleUpgrades()
 {
 	auto upgrades = std::make_shared<std::vector<std::shared_ptr<Upgrade>>>();
-	upgrades->push_back(std::make_shared<AttackSpeed>());
-	upgrades->push_back(std::make_shared<Damage>());
+	upgrades->push_back(std::make_shared<MoreFocus>());
+	upgrades->push_back(std::make_shared<MoreFocus>());
 	upgrades->push_back(std::make_shared<MoreFocus>());
 
 	return upgrades;
