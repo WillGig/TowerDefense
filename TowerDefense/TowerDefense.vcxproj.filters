@@ -193,6 +193,7 @@
     <ClCompile Include="src\towers\LaserBeam.cpp" />
     <ClCompile Include="src\scenes\base_scenes\Temple.cpp" />
     <ClCompile Include="src\scenes\base_scenes\AlchemyLab.cpp" />
+    <ClCompile Include="src\scenes\base_scenes\MusicHall.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\artifacts\Artifact.h" />

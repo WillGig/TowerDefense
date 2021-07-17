@@ -5,10 +5,9 @@
 
 TowerDefense::Build::Build()
 	:BaseScene("buildButton", "Create something new.", 0),
-	m_Cancel(std::make_unique<Button>(690.0f, 125.0f, 180, 50, "cancelButton")),
+	m_Cancel(std::make_unique<Button>(690.0f, 60.0f, 180, 50, "cancelButton")),
 	m_Buttons(std::make_unique<std::vector<std::shared_ptr<BuildButton>>>())
-{
-}
+{}
 
 void TowerDefense::Build::Render()
 {
@@ -68,6 +67,8 @@ void TowerDefense::Build::OnSwitch()
 			AddBuildButton(std::make_shared<BuildButton>("buildTrader", Vec4i(100, 100, 300, 0), std::make_shared<Trader>()));
 		if (!Base::ContainsScene("ArcheryRange"))
 			AddBuildButton(std::make_shared<BuildButton>("buildArcheryRange", Vec4i(400, 100, 0, 0), std::make_shared<ArcheryRange>()));
+		if (!Base::ContainsScene("MusicHall"))
+			AddBuildButton(std::make_shared<BuildButton>("buildMusicHall", Vec4i(300, 100, 100, 0), std::make_shared<MusicHall>()));
 		if (!Base::ContainsScene("Chapel"))
 			AddBuildButton(std::make_shared<BuildButton>("buildChapel", Vec4i(400, 400, 200, 0), std::make_shared<Chapel>()));
 		if (!Base::ContainsScene("Smithing"))
@@ -91,7 +92,7 @@ void TowerDefense::Build::OnSwitch()
 void TowerDefense::Build::AddBuildButton(std::shared_ptr<BuildButton> button)
 {
 	int position = m_Buttons->size();
-	button->SetPosition(400.0f, 417.0f - position * 33.0f);
+	button->SetPosition(400.0f, 437.0f - position * 33.0f);
 	m_Buttons->push_back(button);
 }
 

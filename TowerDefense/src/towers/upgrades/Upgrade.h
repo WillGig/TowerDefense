@@ -207,5 +207,29 @@ namespace TowerDefense
 
 			void UpgradeTower(std::shared_ptr<Tower> t) override;
 		};
+
+		class Pacifist : public Upgrade
+		{
+		public:
+			Pacifist();
+
+			void UpgradeTower(std::shared_ptr<Tower> t) override;
+		};
+
+		class Empowerer : public Upgrade
+		{
+		public:
+			Empowerer();
+
+			void UpgradeTower(std::shared_ptr<Tower> t) override;
+		};
+
+		class DisarmingWords : public Upgrade
+		{
+		public:
+			DisarmingWords();
+
+			void UpgradeTower(std::shared_ptr<Tower> t) override;
+		};
 	}
 }

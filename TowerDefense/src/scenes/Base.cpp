@@ -113,7 +113,7 @@ void TowerDefense::Base::UpdateNextDay()
 	if (m_NextDay->IsClicked())
 	{
 		NextDay();
-		if (Random::GetFloat() > 0.5f)
+		if (Random::GetFloat() > 0.75f)
 			SetScene(SceneType::PRECOMBAT);
 		else
 			SetScene(SceneType::EVENT);

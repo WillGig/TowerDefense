@@ -60,9 +60,9 @@ void TowerDefense::Player::Reset()
     m_AmountHealed = 0;
     m_EnemiesDefeated = 0;
     m_Score = 0;
-    SetResource(1000, Resource::WOOD);
-    SetResource(1000, Resource::STONE);
-    SetResource(1000, Resource::WHEAT);
+    SetResource(9999, Resource::WOOD);
+    SetResource(9999, Resource::STONE);
+    SetResource(9999, Resource::WHEAT);
     SetResource(0, Resource::GOLD);
     m_ResourceGatherSpeed = Vec4i(100, 100, 100, 150);
     m_Population = 0;

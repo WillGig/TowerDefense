@@ -6,6 +6,8 @@
 #include "towers/Ranger.h"
 #include "towers/Paladin.h"
 #include "Towers/Alchemist.h"
+#include "towers/Bard.h"
+#include "towers/Cleric.h"
 #include "towers/AnimalCompanion.h"
 
 TowerDefense::Tower::Upgrade::Upgrade(const std::string name, const std::string info)
@@ -367,5 +369,50 @@ void TowerDefense::Tower::Poisoner::UpgradeTower(std::shared_ptr<Tower> t)
 
 	t->SetName("Poisoner");
 	t->SetImage("Poisoner");
+	t->SetLevel(t->GetLevel() + 1);
+}
+
+TowerDefense::Tower::Pacifist::Pacifist()
+	:Upgrade("pacifistUpgrade", "Slow nearby enemies")
+{}
+
+void TowerDefense::Tower::Pacifist::UpgradeTower(std::shared_ptr<Tower> t)
+{
+	auto b = std::dynamic_pointer_cast<Bard>(t);
+	if (b)
+		b;
+
+	t->SetName("Peace Bard");
+	t->SetImage("PeaceBard");
+	t->SetLevel(t->GetLevel() + 1);
+}
+
+TowerDefense::Tower::Empowerer::Empowerer()
+	:Upgrade("empowererUpgrade", "Buffed towers will deal\nadditional damage that\nignores resistances")
+{}
+
+void TowerDefense::Tower::Empowerer::UpgradeTower(std::shared_ptr<Tower> t)
+{
+	auto b = std::dynamic_pointer_cast<Bard>(t);
+	if (b)
+		b;
+
+	t->SetName("Empowerer");
+	t->SetImage("Empowerer");
+	t->SetLevel(t->GetLevel() + 1);
+}
+
+TowerDefense::Tower::DisarmingWords::DisarmingWords()
+	:Upgrade("disarmingWordsUpgrade", "Debuffs enemies, reducing\nthe damage they deal")
+{}
+
+void TowerDefense::Tower::DisarmingWords::UpgradeTower(std::shared_ptr<Tower> t)
+{
+	auto b = std::dynamic_pointer_cast<Bard>(t);
+	if (b)
+		b;
+
+	t->SetName("Disarming Bard");
+	t->SetImage("DisarmingBard");
 	t->SetLevel(t->GetLevel() + 1);
 }

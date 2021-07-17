@@ -307,6 +307,7 @@
     <ClCompile Include="src\scenes\base_scenes\Joust.cpp" />
     <ClCompile Include="src\scenes\base_scenes\Library.cpp" />
     <ClCompile Include="src\scenes\base_scenes\ManageWorkers.cpp" />
+    <ClCompile Include="src\scenes\base_scenes\MusicHall.cpp" />
     <ClCompile Include="src\scenes\base_scenes\Rest.cpp" />
     <ClCompile Include="src\scenes\base_scenes\Smithing.cpp" />
     <ClCompile Include="src\scenes\base_scenes\Tavern.cpp" />

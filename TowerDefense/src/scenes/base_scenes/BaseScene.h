@@ -262,4 +262,17 @@ namespace TowerDefense
 	private:
 		std::unique_ptr<Button> m_BackToCamp;
 	};
+
+	class MusicHall : public BaseScene
+	{
+	public:
+		MusicHall();
+		void Render() override;
+		void Update() override;
+		void OnSwitch() override;
+		inline std::string GetName() override { return "MusicHall"; }
+
+	private:
+		std::unique_ptr<Button> m_BackToCamp;
+	};
 }
