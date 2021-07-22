@@ -79,12 +79,12 @@ void TowerDefense::Player::Reset()
     m_SideBoardSlots = std::make_shared<std::vector<std::unique_ptr<SideboardSlot>>>();
 
     //Starter Deck
-    for (int i = 0; i < 8; i++)
-        AddToDeck(std::make_shared<Focus>(false));
-    for (int i = 0; i < 4; i++)
+    //for (int i = 0; i < 8; i++)
+    //    AddToDeck(std::make_shared<Focus>(false));
+    for (int i = 0; i < 10; i++)
         AddToDeck(std::make_shared<ArcherCard>());
-    for (int i = 0; i < 2; i++)
-        AddToDeck(std::make_shared<PotOfGreed>());
+    for (int i = 0; i < 5; i++)
+        AddToDeck(std::make_shared<ClericCard>());
 }
 
 void TowerDefense::Player::SetEnergy(int energy)

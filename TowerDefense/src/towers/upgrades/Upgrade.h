@@ -231,5 +231,29 @@ namespace TowerDefense
 
 			void UpgradeTower(std::shared_ptr<Tower> t) override;
 		};
+
+		class Lifebringer : public Upgrade
+		{
+		public:
+			Lifebringer();
+
+			void UpgradeTower(std::shared_ptr<Tower> t) override;
+		};
+
+		class BattleCleric : public Upgrade
+		{
+		public:
+			BattleCleric();
+
+			void UpgradeTower(std::shared_ptr<Tower> t) override;
+		};
+
+		class DeathPriest : public Upgrade
+		{
+		public:
+			DeathPriest();
+
+			void UpgradeTower(std::shared_ptr<Tower> t) override;
+		};
 	}
 }

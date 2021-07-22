@@ -13,8 +13,13 @@ namespace TowerDefense
 			bool CanUpgrade() override;
 			std::shared_ptr<Tower> Clone();
 
-		protected:
+			inline void SetHeal(int heal) { m_Heal = heal; }
+
+		private:
 			void Fire(std::shared_ptr<TowerDefense::Entity> target) override;
+			void EndRound() override;
+
+			int m_Heal;
 		};
 	}
 }

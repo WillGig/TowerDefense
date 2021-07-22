@@ -236,6 +236,12 @@ void TowerDefense::LoadTextures()
     Texture::LoadTexture("empowererUpgradeSelected",        towerUpgrades.load(7, 5));
     Texture::LoadTexture("disarmingWordsUpgrade",           towerUpgrades.load(8, 4));
     Texture::LoadTexture("disarmingWordsUpgradeSelected",   towerUpgrades.load(8, 5));
+    Texture::LoadTexture("lifebringerUpgrade",              towerUpgrades.load(0, 6));
+    Texture::LoadTexture("lifebringerUpgradeSelected",      towerUpgrades.load(0, 7));
+    Texture::LoadTexture("battleClericUpgrade",             towerUpgrades.load(1, 6));
+    Texture::LoadTexture("battleClericUpgradeSelected",     towerUpgrades.load(1, 7));
+    Texture::LoadTexture("deathPriestUpgrade",              towerUpgrades.load(2, 6));
+    Texture::LoadTexture("deathPriestUpgradeSelected",      towerUpgrades.load(2, 7));
 
 
     std::cout << "...Towers" << std::endl;
