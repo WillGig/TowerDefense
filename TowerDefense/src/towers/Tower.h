@@ -103,6 +103,8 @@ namespace TowerDefense
 
 			DamageType m_DamageType;
 
+			TowerType m_TowerType;
+
 			bool m_SeeInvisibility;
 
 			int m_FireReady;
@@ -117,7 +119,6 @@ namespace TowerDefense
 			float m_FireTime, m_TotalDamageDealt;
 			int m_Range, m_Level;
 			bool m_Highlighted, m_Clicked;
-			TowerType m_TowerType;
 			TargetType m_TargetType;
 			std::string m_Name;
 

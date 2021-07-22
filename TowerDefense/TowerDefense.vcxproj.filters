@@ -194,6 +194,8 @@
     <ClCompile Include="src\scenes\base_scenes\Temple.cpp" />
     <ClCompile Include="src\scenes\base_scenes\AlchemyLab.cpp" />
     <ClCompile Include="src\scenes\base_scenes\MusicHall.cpp" />
+    <ClCompile Include="src\towers\buffs\RangeBuff.cpp" />
+    <ClCompile Include="src\towers\buffs\CritDamageBuff.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\artifacts\Artifact.h" />
@@ -287,6 +289,8 @@
     <ClInclude Include="src\towers\GhostTower.h" />
     <ClInclude Include="src\towers\AnimalCompanion.h" />
     <ClInclude Include="src\towers\LaserBeam.h" />
+    <ClInclude Include="src\towers\buffs\RangeBuff.h" />
+    <ClInclude Include="src\towers\buffs\CritDamageBuff.h" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="res\textures\AnimationEffects.png" />

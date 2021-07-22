@@ -5,8 +5,7 @@
 
 TowerDefense::DamageBuff::DamageBuff(int duration, int source, Tower::DamageType type, float modifier)
 	:Buff(duration, source), m_Type(type), m_Modifier(modifier)
-{
-}
+{}
 
 void TowerDefense::DamageBuff::Apply(Tower::Tower& t)
 {

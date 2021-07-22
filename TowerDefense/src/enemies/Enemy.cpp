@@ -276,6 +276,15 @@ void TowerDefense::Enemy::Enemy::SetY(float y)
 	m_DamageText->SetPosition(m_X - 5, m_Y + m_Height / 2 + 10, 0.0f);
 }
 
+void TowerDefense::Enemy::Enemy::SetDamage(int damage)
+{
+	m_Damage = damage;
+	if (m_Damage < 0)
+		m_Damage = 0;
+	m_DamageText = std::make_unique<Text>(std::to_string(m_Damage), m_X - 5, m_Y + m_Height / 2 + 10, 10.0f, 0.0f);
+	m_DamageText->SetColor(1.0f, 1.0f, 1.0f, 1.0f);
+	m_DamageText->SetDropShadow(1.0f);
+}
 
 void TowerDefense::Enemy::Enemy::CheckClicked()
 {

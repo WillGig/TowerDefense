@@ -3,27 +3,76 @@
 #include "scenes/Combat.h"
 #include "projectiles/Projectiles.h"
 #include "buffs/SpeedBuff.h"
+#include "buffs/RangeBuff.h"
+#include "buffs/CritDamageBuff.h"
 #include "scenes/Base.h"
 #include "upgrades/Upgrade.h"
 
 TowerDefense::Tower::Bard::Bard()
-	:Tower(0.0f, 0.0f, 32, 32, 60.0f, 75, TowerType::SUPPORT, "Bard")
+	:Tower(0.0f, 0.0f, 32, 32, 60.0f, 75, TowerType::SUPPORT, "Bard"), 
+	m_RangeBuff(0), m_SlowPercentage(0.0f), m_CritBuff(0.0f), m_HasAttack(false)
 {
 	m_MagicDamage = 1.0f;
 	m_DamageType = DamageType::MAGIC;
 }
 
 TowerDefense::Tower::Bard::Bard(float fireTime, int range, float buff)
-	: Tower(0.0f, 0.0f, 32, 32, fireTime, range, TowerType::SUPPORT, "Bard")
+	: Tower(0.0f, 0.0f, 32, 32, fireTime, range, TowerType::SUPPORT, "Bard"),
+	m_RangeBuff(0), m_SlowPercentage(0.0f), m_CritBuff(0.0f), m_HasAttack(false)
 {
 	m_MagicDamage = buff;
 	m_DamageType = DamageType::MAGIC;
 }
 
+void TowerDefense::Tower::Bard::Update()
+{
+	Tower::Update();
+
+	if (m_SlowPercentage == 0.0f)
+		return;
+
+	//Apply brief slow to enemies in range
+	auto entities = Combat::GetEntities();
+	for (unsigned int i = 0; i < entities->size(); i++)
+	{
+		auto entity = entities->at(i);
+		if (entity->GetEntityType() == Type::ENEMY)
+		{
+			if (GetDistance(entity->GetX(), entity->GetY()) < GetRange())
+				std::dynamic_pointer_cast<Enemy::Enemy>(entity)->Slow(m_SlowPercentage, Combat::GetRoundSpeed());
+		}
+	}
+}
+
+void TowerDefense::Tower::Bard::Attack()
+{
+	Tower::Attack();
+	if (m_HasAttack)
+	{
+		if (m_TowerType == TowerType::SUPPORT)
+			m_TowerType = TowerType::DAMAGE;
+		else
+			m_TowerType = TowerType::SUPPORT;
+	}
+}
+
 void TowerDefense::Tower::Bard::Fire(std::shared_ptr<TowerDefense::Entity> target)
 {
-	std::shared_ptr<Tower> tower = std::dynamic_pointer_cast<Tower>(target);
-	tower->ApplyBuff(std::make_shared<SpeedBuff>(150, m_ID, 1.0f + m_MagicDamage*0.25f));
+	if (target->GetEntityType() == Type::TOWER)
+	{
+		std::shared_ptr<Tower> tower = std::dynamic_pointer_cast<Tower>(target);
+		tower->ApplyBuff(std::make_shared<SpeedBuff>(150, m_ID, 1.0f + m_MagicDamage * 0.25f));
+		if(m_RangeBuff > 0)
+			tower->ApplyBuff(std::make_shared<RangeBuff>(150, m_ID, m_RangeBuff));
+		if(m_CritBuff > 0.0f)
+			tower->ApplyBuff(std::make_shared<CritDamageBuff>(150, m_ID, m_CritBuff));
+	}
+	else
+	{
+		std::shared_ptr<Enemy::Enemy> enemy = std::dynamic_pointer_cast<Enemy::Enemy>(target);
+		if(enemy->GetDamage() > 1)
+			enemy->SetDamage(enemy->GetDamage() - 1);
+	}
 }
 
 std::shared_ptr<std::vector<std::shared_ptr<TowerDefense::Tower::Upgrade>>> TowerDefense::Tower::Bard::GetPossibleUpgrades()

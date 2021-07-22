@@ -380,7 +380,7 @@ void TowerDefense::Tower::Pacifist::UpgradeTower(std::shared_ptr<Tower> t)
 {
 	auto b = std::dynamic_pointer_cast<Bard>(t);
 	if (b)
-		b;
+		b->SetSlowPercentage(.5f);
 
 	t->SetName("Peace Bard");
 	t->SetImage("PeaceBard");
@@ -388,14 +388,17 @@ void TowerDefense::Tower::Pacifist::UpgradeTower(std::shared_ptr<Tower> t)
 }
 
 TowerDefense::Tower::Empowerer::Empowerer()
-	:Upgrade("empowererUpgrade", "Buffed towers will deal\nadditional damage that\nignores resistances")
+	:Upgrade("empowererUpgrade", "Buffed towers have\nincreased range and\ncritical damage")
 {}
 
 void TowerDefense::Tower::Empowerer::UpgradeTower(std::shared_ptr<Tower> t)
 {
 	auto b = std::dynamic_pointer_cast<Bard>(t);
 	if (b)
-		b;
+	{
+		b->SetRangeBuff(25);
+		b->SetCritBuff(0.25f);
+	}
 
 	t->SetName("Empowerer");
 	t->SetImage("Empowerer");
@@ -410,7 +413,10 @@ void TowerDefense::Tower::DisarmingWords::UpgradeTower(std::shared_ptr<Tower> t)
 {
 	auto b = std::dynamic_pointer_cast<Bard>(t);
 	if (b)
-		b;
+	{
+		b->SetHasAttack(true);
+		b->SetAttackTime(b->GetAttackTime() / 2);
+	}
 
 	t->SetName("Disarming Bard");
 	t->SetImage("DisarmingBard");

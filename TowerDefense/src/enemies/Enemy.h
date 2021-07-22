@@ -45,6 +45,9 @@ namespace TowerDefense
 			inline int GetBounty() const { return m_Bounty; };
 			inline void SetBounty(int bounty) { m_Bounty = bounty; }
 
+			inline int GetDamage() const { return m_Damage; }
+			void SetDamage(int damage);
+
 		protected:
 			virtual void Move();
 			void FindNewGoal(float x, float y);

@@ -349,7 +349,9 @@
     <ClCompile Include="src\towers\Archer.cpp" />
     <ClCompile Include="src\towers\Bard.cpp" />
     <ClCompile Include="src\towers\buffs\Buff.cpp" />
+    <ClCompile Include="src\towers\buffs\CritDamageBuff.cpp" />
     <ClCompile Include="src\towers\buffs\DamageBuff.cpp" />
+    <ClCompile Include="src\towers\buffs\RangeBuff.cpp" />
     <ClCompile Include="src\towers\buffs\SpeedBuff.cpp" />
     <ClCompile Include="src\towers\Cleric.cpp" />
     <ClCompile Include="src\towers\GhostTower.cpp" />
@@ -502,7 +504,9 @@
     <ClInclude Include="src\towers\Archer.h" />
     <ClInclude Include="src\towers\Bard.h" />
     <ClInclude Include="src\towers\buffs\Buff.h" />
+    <ClInclude Include="src\towers\buffs\CritDamageBuff.h" />
     <ClInclude Include="src\towers\buffs\DamageBuff.h" />
+    <ClInclude Include="src\towers\buffs\RangeBuff.h" />
     <ClInclude Include="src\towers\buffs\SpeedBuff.h" />
     <ClInclude Include="src\towers\Cleric.h" />
     <ClInclude Include="src\towers\GhostTower.h" />

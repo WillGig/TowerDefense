@@ -5,6 +5,8 @@ Current:
 	Add more possible ghost towers
 	Add more powerful companions
 	Allow clicking on companion tower for stats
+	Add upgrades for specific subclasses
+	- peace bard - increase slow percent
 
 	Change upgrade cost to tower cost for first 4 levels, then 2x tower cost for next 4 levels
 
@@ -19,12 +21,13 @@ Current:
 	- Ranger 	- Animal companion (animal spirit attacks enemies), Sniper (massive range, slower, stronger attacks), Laser-bow (bow replaced with constant laser attack)
 	- Paladin 	- Wings (can fly after enemies, then return to spot), Vengence(AOE attacks), Inspiring Leader (Crits boost attackspeed of nearby towers)
 	- Alchemist 	- Grenade gunner (faster, smaller attacks), True alchemy (turn enemies to gold), poisoner (poisons slow or other effects)
-	- Bard 		- Peace bard (slows nearby enemies), empowerer (bonus true damage), disarming words (attack which lowers enemy damage)
+	- Bard 		- Peace bard (slows nearby enemies), empowerer (also buffs range and crit damage), disarming words (attack which lowers enemy damage)
 	- Cleric 	- Lifebringer (heals you every round), battle cleric (can now attack), Death priest (weakens nearby enemies)
 	
 	Add more upgrade options for different types of towers
 	 - new spells/attacks?
 	 - piercing shots for rangers
+	 - rain of arrows for rangers (fire x arrows in a line)
 	Add more buildings (special building required for level 5 and upgrade for level 10)
 	Change upgrades for support towers and monks
 
@@ -38,6 +41,7 @@ Current:
 	- something		- Get an event every day
 	- something		- Can skip events
 	- Wax wings		- Gives flappy bird type game?
+	- Sugar bowl		- Protects against disease?
 
 	Allow hovering over event options to show cards/artifacts obtained
 	Add second page to events to describe what happens
