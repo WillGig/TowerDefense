@@ -422,3 +422,48 @@ void TowerDefense::Tower::DisarmingWords::UpgradeTower(std::shared_ptr<Tower> t)
 	t->SetImage("DisarmingBard");
 	t->SetLevel(t->GetLevel() + 1);
 }
+
+TowerDefense::Tower::Lifebringer::Lifebringer()
+	:Upgrade("lifebringerUpgrade", "Heal every round")
+{}
+
+void TowerDefense::Tower::Lifebringer::UpgradeTower(std::shared_ptr<Tower> t)
+{
+	auto c = std::dynamic_pointer_cast<Cleric>(t);
+	if (c)
+		c;
+
+	t->SetName("Lifebringer Cleric");
+	t->SetImage("LifebringerCleric");
+	t->SetLevel(t->GetLevel() + 1);
+}
+
+TowerDefense::Tower::BattleCleric::BattleCleric()
+	:Upgrade("battleClericUpgrade", "Attack your enemies!")
+{}
+
+void TowerDefense::Tower::BattleCleric::UpgradeTower(std::shared_ptr<Tower> t)
+{
+	auto c = std::dynamic_pointer_cast<Cleric>(t);
+	if (c)
+		c;
+
+	t->SetName("Battle Cleric");
+	t->SetImage("BattleCleric");
+	t->SetLevel(t->GetLevel() + 1);
+}
+
+TowerDefense::Tower::DeathPriest::DeathPriest()
+	:Upgrade("deathPriestUpgrade", "Lower nearby enemy resistances")
+{}
+
+void TowerDefense::Tower::DeathPriest::UpgradeTower(std::shared_ptr<Tower> t)
+{
+	auto c = std::dynamic_pointer_cast<Cleric>(t);
+	if (c)
+		c;
+
+	t->SetName("Death Priest");
+	t->SetImage("DeathPriest");
+	t->SetLevel(t->GetLevel() + 1);
+}
