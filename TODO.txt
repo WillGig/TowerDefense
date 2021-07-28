@@ -1,5 +1,9 @@
 Current:
 
+	Add buff/debuff system for enemies 
+	 - make death cleric apply debuff
+	 - change slows, stuns (and poisons?) to debuffs
+
 	Bug: Game crashes if splitting enemy is killed at the very end
 
 	Add more possible ghost towers
@@ -7,6 +11,7 @@ Current:
 	Allow clicking on companion tower for stats
 	Add upgrades for specific subclasses
 	- peace bard - increase slow percent
+	- Life cleric - increase heal amount
 
 	Change upgrade cost to tower cost for first 4 levels, then 2x tower cost for next 4 levels
 

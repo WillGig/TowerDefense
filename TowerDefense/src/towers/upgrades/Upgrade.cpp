@@ -431,7 +431,7 @@ void TowerDefense::Tower::Lifebringer::UpgradeTower(std::shared_ptr<Tower> t)
 {
 	auto c = std::dynamic_pointer_cast<Cleric>(t);
 	if (c)
-		c;
+		c->SetHeal(1);
 
 	t->SetName("Lifebringer Cleric");
 	t->SetImage("LifebringerCleric");
@@ -446,7 +446,10 @@ void TowerDefense::Tower::BattleCleric::UpgradeTower(std::shared_ptr<Tower> t)
 {
 	auto c = std::dynamic_pointer_cast<Cleric>(t);
 	if (c)
-		c;
+	{
+		c->SetHasAttack(true);
+		c->SetAttackTime(c->GetAttackTime() / 2);
+	}
 
 	t->SetName("Battle Cleric");
 	t->SetImage("BattleCleric");

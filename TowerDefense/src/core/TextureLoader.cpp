@@ -299,6 +299,12 @@ void TowerDefense::LoadTextures()
     Texture::LoadTexture("DisarmingBardHighlighted",    towers.load(7, 6));
     Texture::LoadTexture("Cleric",                      towers.load(0, 7));
     Texture::LoadTexture("ClericHighlighted",           towers.load(1, 7));
+    Texture::LoadTexture("LifebringerCleric",           towers.load(2, 7));
+    Texture::LoadTexture("LifebringerClericHighlighted",towers.load(3, 7));
+    Texture::LoadTexture("BattleCleric",                towers.load(4, 7));
+    Texture::LoadTexture("BattleClericHighlighted",     towers.load(5, 7));
+    Texture::LoadTexture("DeathPriest",                 towers.load(6, 7));
+    Texture::LoadTexture("DeathPriestHighlighted",      towers.load(7, 7));
     Texture::LoadTexture("Monk",                        towers.load(0, 8));
     Texture::LoadTexture("MonkHighlighted",             towers.load(1, 8));
     Texture::LoadTexture("Falcon",                      towers.load(0, 9));
