@@ -84,8 +84,8 @@ void TowerDefense::PoisonBomb::HitEntity(std::shared_ptr<TowerDefense::Entity> e
 				std::shared_ptr<Enemy::Enemy> enemy = std::dynamic_pointer_cast<Enemy::Enemy>(e);
 				enemy->Poison(m_Damage, m_PoisonTime, m_TowerSource);
 				enemy->ApplyState(std::make_shared<Enemy::Slow>(m_PoisonTime, m_SlowPercent));
-				enemy->SetArmor(enemy->GetArmor() * m_ResistanceShredPercent);
-				enemy->SetMagicResistance(enemy->GetMagicResistance() * m_ResistanceShredPercent);
+				enemy->ApplyState(std::make_shared<Enemy::ArmorReduction>(180, m_ResistanceShredPercent));
+				enemy->ApplyState(std::make_shared<Enemy::MagicResistReduction>(180, m_ResistanceShredPercent));
 				enemy->SetBounty(enemy->GetBounty() + m_GoldConversion);
 			}
 		}
