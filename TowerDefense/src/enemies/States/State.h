@@ -62,6 +62,9 @@ namespace TowerDefense
 			void OnApply(Enemy& e) override;
 			void OnRemove(Enemy& e) override;
 			void OnCombine(Enemy& e, std::shared_ptr<State> other) override;
+
+		private:
+			float m_ReductionPercent;
 		};
 
 		class MagicResistReduction : public State
@@ -71,6 +74,9 @@ namespace TowerDefense
 			void OnApply(Enemy& e) override;
 			void OnRemove(Enemy& e) override;
 			void OnCombine(Enemy& e, std::shared_ptr<State> other) override;
+
+		private:
+			float m_ReductionPercent;
 		};
 
 	}

@@ -61,3 +61,57 @@ void TowerDefense::Enemy::Stun::OnCombine(Enemy& e, std::shared_ptr<State> other
 		e.SetStunned(true);
 	}
 }
+
+TowerDefense::Enemy::ArmorReduction::ArmorReduction(int time, float reductionPercent)
+	:State(time, StateType::ARMORREDUCTION), m_ReductionPercent(reductionPercent)
+{}
+
+void TowerDefense::Enemy::ArmorReduction::OnApply(Enemy& e)
+{
+	e.SetArmor(e.GetArmor() * m_ReductionPercent);
+}
+
+void TowerDefense::Enemy::ArmorReduction::OnRemove(Enemy& e)
+{
+	e.SetArmor(e.GetArmor() / m_ReductionPercent);
+}
+
+void TowerDefense::Enemy::ArmorReduction::OnCombine(Enemy& e, std::shared_ptr<State> other)
+{
+	auto otherAR = std::dynamic_pointer_cast<ArmorReduction>(other);
+	if (otherAR->m_ReductionPercent > m_ReductionPercent)
+	{
+		OnRemove(e);
+		m_ReductionPercent = otherAR->m_ReductionPercent;
+		OnApply(e);
+	}
+	if (otherAR->m_TimeRemaining > m_TimeRemaining)
+		m_TimeRemaining = otherAR->m_TimeRemaining;
+}
+
+TowerDefense::Enemy::MagicResistReduction::MagicResistReduction(int time, float reductionPercent)
+	:State(time, StateType::MAGICRESISTREDUCTION), m_ReductionPercent(reductionPercent)
+{}
+
+void TowerDefense::Enemy::MagicResistReduction::OnApply(Enemy& e)
+{
+	e.SetMagicResistance(e.GetMagicResistance() * m_ReductionPercent);
+}
+
+void TowerDefense::Enemy::MagicResistReduction::OnRemove(Enemy& e)
+{
+	e.SetMagicResistance(e.GetMagicResistance() / m_ReductionPercent);
+}
+
+void TowerDefense::Enemy::MagicResistReduction::OnCombine(Enemy& e, std::shared_ptr<State> other)
+{
+	auto otherMRR = std::dynamic_pointer_cast<MagicResistReduction>(other);
+	if (otherMRR->m_ReductionPercent > m_ReductionPercent)
+	{
+		OnRemove(e);
+		m_ReductionPercent = otherMRR->m_ReductionPercent;
+		OnApply(e);
+	}
+	if (otherMRR->m_TimeRemaining > m_TimeRemaining)
+		m_TimeRemaining = otherMRR->m_TimeRemaining;
+}
