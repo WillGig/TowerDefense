@@ -3,12 +3,14 @@ Current:
 	Add buff/debuff system for enemies 
 	 - make death cleric apply debuff
 	 - change slows, stuns (and poisons?) to debuffs
+	 - Make debuffs unique?
 
 	Bug: Game crashes if splitting enemy is killed at the very end
 
 	Add more possible ghost towers
 	Add more powerful companions
 	Allow clicking on companion tower for stats
+	Add animation to bard and cleric auras
 	Add upgrades for specific subclasses
 	- peace bard - increase slow percent
 	- Life cleric - increase heal amount

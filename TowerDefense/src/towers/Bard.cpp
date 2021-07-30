@@ -40,7 +40,7 @@ void TowerDefense::Tower::Bard::Update()
 		if (entity->GetEntityType() == Type::ENEMY)
 		{
 			if (GetDistance(entity->GetX(), entity->GetY()) < GetRange())
-				std::dynamic_pointer_cast<Enemy::Enemy>(entity)->ApplyState(std::make_shared<Enemy::Slow>(Combat::GetRoundSpeed(), m_SlowPercentage));
+				std::dynamic_pointer_cast<Enemy::Enemy>(entity)->ApplyState(std::make_shared<Enemy::Slow>(Combat::GetRoundSpeed()+1, m_SlowPercentage));
 		}
 	}
 }

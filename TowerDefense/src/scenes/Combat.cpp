@@ -523,7 +523,7 @@ void TowerDefense::Combat::OnEnemyDeath(unsigned int id)
 //Should be called once at the beginning of a run to generate the set of combats
 void TowerDefense::Combat::GenerateFights()
 {
-	s_CurrentFight = -1;
+	s_CurrentFight = 10;
 	s_Fights = std::make_unique<std::vector<std::shared_ptr<TowerDefense::Fight>>>();
 
 	//day 1-3 fights

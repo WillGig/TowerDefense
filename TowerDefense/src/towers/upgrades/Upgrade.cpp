@@ -457,14 +457,14 @@ void TowerDefense::Tower::BattleCleric::UpgradeTower(std::shared_ptr<Tower> t)
 }
 
 TowerDefense::Tower::DeathPriest::DeathPriest()
-	:Upgrade("deathPriestUpgrade", "Lower nearby enemy resistances")
+	:Upgrade("deathPriestUpgrade", "Lower nearby\nenemy resistances")
 {}
 
 void TowerDefense::Tower::DeathPriest::UpgradeTower(std::shared_ptr<Tower> t)
 {
 	auto c = std::dynamic_pointer_cast<Cleric>(t);
 	if (c)
-		c;
+		c->SetShredAuraPercent(.5f);
 
 	t->SetName("Death Priest");
 	t->SetImage("DeathPriest");

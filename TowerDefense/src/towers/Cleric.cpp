@@ -36,8 +36,11 @@ void TowerDefense::Tower::Cleric::Update()
 		if (entity->GetEntityType() == Type::ENEMY)
 		{
 			if (GetDistance(entity->GetX(), entity->GetY()) < GetRange())
-			{}
-				//TODO: Apply shred debuff
+			{
+				auto enemy = std::dynamic_pointer_cast<Enemy::Enemy>(entity);
+				enemy->ApplyState(std::make_shared<Enemy::ArmorReduction>(Combat::GetRoundSpeed()+1, m_ShredAuraPercent));
+				enemy->ApplyState(std::make_shared<Enemy::MagicResistReduction>(Combat::GetRoundSpeed()+1, m_ShredAuraPercent));
+			}
 		}
 	}
 }
