@@ -7,6 +7,7 @@
 #include "buffs/CritDamageBuff.h"
 #include "scenes/Base.h"
 #include "upgrades/Upgrade.h"
+#include "enemies/States/State.h"
 
 TowerDefense::Tower::Bard::Bard()
 	:Tower(0.0f, 0.0f, 32, 32, 60.0f, 75, TowerType::SUPPORT, "Bard"), 
@@ -39,7 +40,7 @@ void TowerDefense::Tower::Bard::Update()
 		if (entity->GetEntityType() == Type::ENEMY)
 		{
 			if (GetDistance(entity->GetX(), entity->GetY()) < GetRange())
-				std::dynamic_pointer_cast<Enemy::Enemy>(entity)->Slow(m_SlowPercentage, Combat::GetRoundSpeed());
+				std::dynamic_pointer_cast<Enemy::Enemy>(entity)->ApplyState(std::make_shared<Enemy::Slow>(Combat::GetRoundSpeed(), m_SlowPercentage));
 		}
 	}
 }

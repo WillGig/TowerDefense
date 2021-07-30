@@ -16,7 +16,7 @@ void TowerDefense::MassStun::Play()
 	for (unsigned int i = 0; i < entities->size(); i++) {
 		std::shared_ptr<Entity> e = entities->at(i);
 		if (e->GetEntityType() == Type::ENEMY)
-			std::dynamic_pointer_cast<Enemy::Enemy>(e)->Stun(stunDuration);
+			std::dynamic_pointer_cast<Enemy::Enemy>(e)->ApplyState(std::make_shared<Enemy::Stun>(stunDuration));
 	}
 }
 

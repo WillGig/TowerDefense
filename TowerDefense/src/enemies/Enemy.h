@@ -1,5 +1,6 @@
 #pragma once
 #include "HealthBar.h"
+#include "States/State.h"
 
 namespace TowerDefense
 {
@@ -11,6 +12,8 @@ namespace TowerDefense
 
 	namespace Enemy
 	{
+		class State;
+
 		class Enemy : public Entity
 		{
 		public:
@@ -20,9 +23,8 @@ namespace TowerDefense
 			virtual void TakeDamage(float damage, unsigned int source, Tower::DamageType type);
 			void ChangeHealth(float change);
 			//Time measured in game updates (60 per second)
-			void Slow(float slowPercent, int slowTime);
+			void ApplyState(std::shared_ptr<State> s);
 			void Poison(float poisonDamage, int poisonTime, unsigned int source);
-			void Stun(int stunTime);
 			virtual void SetX(float x) override;
 			virtual void SetY(float y) override;
 			inline void SetSelected(bool selected) { m_Selected = selected; }
@@ -33,6 +35,7 @@ namespace TowerDefense
 			inline void SetMagicResistance(float magicResistance) { m_MagicResistance = magicResistance; }
 			inline float GetMagicResistance() const { return m_MagicResistance; }
 			inline float GetDistanceTraveled() const { return m_DistanceTraveled; }
+			inline void SetSpeed(float speed) { m_Speed = speed; }
 			inline float GetSpeed() const { return m_Speed; }
 			inline int GetGoldValue() const { return m_GoldValue; }
 
@@ -47,6 +50,10 @@ namespace TowerDefense
 
 			inline int GetDamage() const { return m_Damage; }
 			void SetDamage(int damage);
+
+			inline void SetStunned(bool stunned) { m_Stunned = stunned; if(stunned) m_StunResist += 1.0f; }
+
+			inline float GetStunResist() const { return m_StunResist; }
 
 		protected:
 			virtual void Move();
@@ -65,9 +72,9 @@ namespace TowerDefense
 			void UpdateImage();
 			void UpdateDebuffs();
 
-			int m_GoldValue, m_Bounty, m_SlowTime, m_PoisonTime, m_PoisonTick, m_StunTime;
-			float m_Speed, m_SlowPercent, m_PoisonAmount, m_StunResist;
-			bool m_Selected, m_Clicked;
+			int m_GoldValue, m_Bounty, m_PoisonTime, m_PoisonTick;
+			float m_Speed, m_PoisonAmount, m_StunResist;
+			bool m_Selected, m_Clicked, m_Stunned;
 
 			unsigned int m_PoisonSource;
 
@@ -77,6 +84,8 @@ namespace TowerDefense
 
 			std::unique_ptr<Image> m_DamageIcon;
 			std::unique_ptr<Text> m_DamageText;
+
+			std::vector<std::shared_ptr<State>> m_States;
 		};
 	}
 }

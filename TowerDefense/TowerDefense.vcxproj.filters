@@ -196,6 +196,7 @@
     <ClCompile Include="src\scenes\base_scenes\MusicHall.cpp" />
     <ClCompile Include="src\towers\buffs\RangeBuff.cpp" />
     <ClCompile Include="src\towers\buffs\CritDamageBuff.cpp" />
+    <ClCompile Include="src\enemies\States\State.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\artifacts\Artifact.h" />
@@ -291,6 +292,7 @@
     <ClInclude Include="src\towers\LaserBeam.h" />
     <ClInclude Include="src\towers\buffs\RangeBuff.h" />
     <ClInclude Include="src\towers\buffs\CritDamageBuff.h" />
+    <ClInclude Include="src\enemies\States\State.h" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="res\textures\AnimationEffects.png" />

@@ -2,6 +2,7 @@
 #include "Projectiles.h"
 #include "scenes/Combat.h"
 #include "core/Player.h"
+#include "enemies/States/State.h"
 
 void TowerDefense::Arrow::HitEntity(std::shared_ptr<TowerDefense::Entity> e)
 {
@@ -82,7 +83,7 @@ void TowerDefense::PoisonBomb::HitEntity(std::shared_ptr<TowerDefense::Entity> e
 			if (e->GetEntityType() == Type::ENEMY) {
 				std::shared_ptr<Enemy::Enemy> enemy = std::dynamic_pointer_cast<Enemy::Enemy>(e);
 				enemy->Poison(m_Damage, m_PoisonTime, m_TowerSource);
-				enemy->Slow(m_SlowPercent, m_PoisonTime);
+				enemy->ApplyState(std::make_shared<Enemy::Slow>(m_PoisonTime, m_SlowPercent));
 				enemy->SetArmor(enemy->GetArmor() * m_ResistanceShredPercent);
 				enemy->SetMagicResistance(enemy->GetMagicResistance() * m_ResistanceShredPercent);
 				enemy->SetBounty(enemy->GetBounty() + m_GoldConversion);

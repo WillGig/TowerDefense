@@ -276,6 +276,7 @@
     <ClCompile Include="src\enemies\RunnerBeetle.cpp" />
     <ClCompile Include="src\enemies\ShamanRat.cpp" />
     <ClCompile Include="src\enemies\ShieldRat.cpp" />
+    <ClCompile Include="src\enemies\States\State.cpp" />
     <ClCompile Include="src\enemies\TankBeetle.cpp" />
     <ClCompile Include="src\enemies\Wave.cpp" />
     <ClCompile Include="src\engine\Animation.cpp" />
@@ -459,6 +460,7 @@
     <ClInclude Include="src\enemies\EnemyInfo.h" />
     <ClInclude Include="src\enemies\Fight.h" />
     <ClInclude Include="src\enemies\HealthBar.h" />
+    <ClInclude Include="src\enemies\States\State.h" />
     <ClInclude Include="src\enemies\Wave.h" />
     <ClInclude Include="src\engine\Animation.h" />
     <ClInclude Include="src\core\AnimationEffect.h" />
