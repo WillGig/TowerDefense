@@ -115,3 +115,44 @@ void TowerDefense::Enemy::MagicResistReduction::OnCombine(Enemy& e, std::shared_
 	if (otherMRR->m_TimeRemaining > m_TimeRemaining)
 		m_TimeRemaining = otherMRR->m_TimeRemaining;
 }
+
+TowerDefense::Enemy::Poison::Poison(int duration, float damage, unsigned int source, std::shared_ptr<Enemy> target)
+	:State(duration, StateType::POISON), m_Damage(damage), m_PoisonTick(0), m_TickRate(30), m_Source(source), m_Target(target)
+{}
+
+void TowerDefense::Enemy::Poison::Update()
+{
+	State::Update();
+
+	if (m_PoisonTick >= m_TickRate) {
+		m_Target->TakeDamage(m_Damage, m_Source, Tower::DamageType::POISON);
+		float totalPoisonDamage = m_Damage * (m_TimeRemaining / m_TickRate) * (100.0f / (100.0f + m_Target->GetMagicResistance()));
+		m_Target->SetPoisonPercent(totalPoisonDamage / m_Target->GetHealth());
+		m_PoisonTick = 0;
+	}
+	else
+		m_PoisonTick += Combat::GetRoundSpeed();	
+}
+
+void TowerDefense::Enemy::Poison::OnApply(Enemy& e)
+{
+	float totalPoisonDamage = m_Damage * (m_TimeRemaining / m_TickRate) * (100.0f / (100.0f + e.GetMagicResistance()));
+	e.SetPoisonPercent(totalPoisonDamage / e.GetHealth());
+}
+
+void TowerDefense::Enemy::Poison::OnRemove(Enemy& e)
+{
+	e.SetPoisonPercent(0.0f);
+}
+
+void TowerDefense::Enemy::Poison::OnCombine(Enemy& e, std::shared_ptr<State> other)
+{
+	auto otherPoison = std::dynamic_pointer_cast<Poison>(other);
+	if (otherPoison->m_TimeRemaining > m_TimeRemaining)
+		m_TimeRemaining = otherPoison->m_TimeRemaining;
+	if (otherPoison->m_Damage > m_Damage)
+	{
+		m_Damage = otherPoison->m_Damage;
+		m_Source = otherPoison->m_Source;
+	}
+}

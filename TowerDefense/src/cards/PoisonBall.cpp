@@ -72,7 +72,8 @@ void TowerDefense::PoisonBall::Play()
 		{
 			if (e->GetDistance(m_X, m_Y) < m_Radius)
 			{
-				std::dynamic_pointer_cast<Enemy::Enemy>(e)->Poison(m_PoisonAmount, m_PoisonTime, GetID());
+				auto enemy = std::dynamic_pointer_cast<Enemy::Enemy>(e);
+				enemy->ApplyState(std::make_shared<Enemy::Poison>(m_PoisonTime, m_PoisonAmount, GetID(), enemy));
 			}
 		}
 	}

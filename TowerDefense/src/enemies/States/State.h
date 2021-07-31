@@ -7,14 +7,14 @@ namespace TowerDefense
 	{
 		class Enemy;
 
-		enum class StateType { SLOW, STUN, ARMORREDUCTION, MAGICRESISTREDUCTION };
+		enum class StateType { SLOW, STUN, ARMORREDUCTION, MAGICRESISTREDUCTION, POISON};
 
 		class State
 		{
 		public:
 			State(int time, StateType type);
 
-			void Update();
+			virtual void Update();
 
 			virtual void OnApply(Enemy& e) = 0;
 
@@ -77,6 +77,22 @@ namespace TowerDefense
 
 		private:
 			float m_ReductionPercent;
+		};
+
+		class Poison : public State
+		{
+		public:
+			Poison(int duration, float damage, unsigned int source, std::shared_ptr<Enemy> target);
+			void Update() override;
+			void OnApply(Enemy& e) override;
+			void OnRemove(Enemy& e) override;
+			void OnCombine(Enemy& e, std::shared_ptr<State> other) override;
+
+		private:
+			float m_Damage;
+			int m_PoisonTick, m_TickRate;
+			unsigned int m_Source;
+			std::shared_ptr<Enemy> m_Target;
 		};
 
 	}

@@ -7,13 +7,12 @@
 #include "core/Clock.h"
 #include "towers/Tower.h"
 
-int TowerDefense::Enemy::Enemy::POISONTICKRATE = 30;
+//int TowerDefense::Enemy::Enemy::POISONTICKRATE = 30;
 
 TowerDefense::Enemy::Enemy::Enemy(int width, int height, float health, float speed, int goldValue, const std::string& name, int damage)
 	:Entity(0.0f, 0.0f, width, height, 0.0f, name, Type::ENEMY), m_Damage(damage), m_CurrentTile(-2),
-	m_PoisonTime(0), m_PoisonTick(0), m_Health(health), m_Armor(0.0f), 
-	m_MagicResistance(0.0f), m_MaxHealth(health), m_Speed(speed), m_GoldValue(goldValue), m_Bounty(0), 
-	m_PoisonAmount(0.0f), m_StunResist(0.0f), m_GoalX(), m_GoalY(), m_DistanceTraveled(0.0f), 
+	m_Health(health), m_Armor(0.0f), m_MagicResistance(0.0f), m_MaxHealth(health), m_Speed(speed), 
+	m_GoldValue(goldValue), m_Bounty(0), m_StunResist(0.0f), m_GoalX(), m_GoalY(), m_DistanceTraveled(0.0f), 
 	m_ReachedEnd(false), m_Selected(false), m_Clicked(false), m_Stunned(false), m_Name(name),
 	m_RegularImage(std::make_shared<Image>(name, 0.0f, 0.0f, width, height, 0.0f)), 
 	m_SelectedImage(std::make_shared<Image>(name + "Selected", 0.0f, 0.0f, width, height, 0.0f)),
@@ -125,24 +124,6 @@ void TowerDefense::Enemy::Enemy::UpdateDebuffs()
 		else
 			++it;
 	}
-
-	//update Poison
-	if (m_PoisonTime > 0) {
-		m_PoisonTime -= Combat::GetRoundSpeed();
-		if (m_PoisonTick >= POISONTICKRATE) {
-			TakeDamage(m_PoisonAmount * Combat::GetRoundSpeed(), m_PoisonSource, Tower::DamageType::POISON);
-			m_PoisonTick = 0;
-		}
-		else
-			m_PoisonTick += Combat::GetRoundSpeed();
-
-		if (m_PoisonTime < 1) {
-			m_PoisonAmount = 0.0;
-			m_PoisonTime = 0;
-			m_PoisonSource = 0;
-			m_PoisonTick = 0;
-		}
-	}
 }
 
 
@@ -214,9 +195,6 @@ void TowerDefense::Enemy::Enemy::ChangeHealth(float change)
 	if (m_Health > m_MaxHealth)
 		m_Health = m_MaxHealth;
 
-	float totalPoisonDamage = m_PoisonAmount * (m_PoisonTime/POISONTICKRATE) * (100.0f / (100.0f + m_MagicResistance));
-	m_HealthBar->SetFill(m_Health / m_MaxHealth, totalPoisonDamage/m_Health);
-	m_HealthBar->SetPosition(m_X - (10.0f - m_HealthBar->GetBarWidth()/2), m_Y + m_Height / 2);
 	if (m_Health <= 0)
 	{
 		Combat::GetCurrentFight()->AddDefeatedEnemy(*this);
@@ -242,17 +220,6 @@ void TowerDefense::Enemy::Enemy::ApplyState(std::shared_ptr<State> s)
 	}
 	s->OnApply(*this);
 	m_States.push_back(s);
-}
-
-void TowerDefense::Enemy::Enemy::Poison(float poisonDamage, int poisonTime, unsigned int source)
-{
-	if (m_PoisonTime < poisonTime)
-		m_PoisonTime = poisonTime;
-	if (m_PoisonAmount < poisonDamage)
-		m_PoisonAmount = poisonDamage;
-	float totalPoisonDamage = m_PoisonAmount * (m_PoisonTime / POISONTICKRATE) * (100.0f / (100.0f + m_MagicResistance));
-	m_HealthBar->SetFill(m_Health / m_MaxHealth, totalPoisonDamage / m_Health);
-	m_PoisonSource = source;
 }
 
 void TowerDefense::Enemy::Enemy::SetX(float x) 
@@ -307,4 +274,10 @@ void TowerDefense::Enemy::Enemy::SetDistanceTravelled(float distanceTravelled)
 	while (m_DistanceTraveled < distanceTravelled)
 		Move();
 
+}
+
+void TowerDefense::Enemy::Enemy::SetPoisonPercent(float percent)
+{
+	m_HealthBar->SetFill(m_Health / m_MaxHealth, percent);
+	m_HealthBar->SetPosition(m_X - (10.0f - m_HealthBar->GetBarWidth() / 2), m_Y + m_Height / 2);
 }

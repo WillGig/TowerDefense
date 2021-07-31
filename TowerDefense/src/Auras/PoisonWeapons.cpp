@@ -11,5 +11,8 @@ TowerDefense::PoisonWeapons::PoisonWeapons(float poisonDamage, int poisonDuratio
 void TowerDefense::PoisonWeapons::OnEnemyHit(std::shared_ptr<Enemy::Enemy> e, std::shared_ptr<Entity> source, Tower::DamageType type)
 {
 	if (source->GetEntityType() == Type::TOWER && type == Tower::DamageType::PHYSICAL)
-		e->Poison(m_PoisonDamage, m_PoisonDuration, GetID());
+	{
+		auto enemy = std::dynamic_pointer_cast<Enemy::Enemy>(e);
+		enemy->ApplyState(std::make_shared<Enemy::Poison>(m_PoisonDuration, m_PoisonDamage, GetID(), enemy));
+	}
 }

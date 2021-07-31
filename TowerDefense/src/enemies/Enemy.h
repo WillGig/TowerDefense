@@ -24,7 +24,7 @@ namespace TowerDefense
 			void ChangeHealth(float change);
 			//Time measured in game updates (60 per second)
 			void ApplyState(std::shared_ptr<State> s);
-			void Poison(float poisonDamage, int poisonTime, unsigned int source);
+			//void Poison(float poisonDamage, int poisonTime, unsigned int source);
 			virtual void SetX(float x) override;
 			virtual void SetY(float y) override;
 			inline void SetSelected(bool selected) { m_Selected = selected; }
@@ -55,13 +55,15 @@ namespace TowerDefense
 
 			inline float GetStunResist() const { return m_StunResist; }
 
+			void SetPoisonPercent(float percent);
+
 		protected:
 			virtual void Move();
 			void FindNewGoal(float x, float y);
 			virtual void Destroy();
 
 			int m_CurrentTile, m_Damage;
-			static int POISONTICKRATE;
+			//static int POISONTICKRATE;
 			float m_Health, m_MaxHealth, m_Armor, m_MagicResistance, m_DistanceTraveled, m_GoalX, m_GoalY;
 			bool m_ReachedEnd;
 
@@ -72,11 +74,9 @@ namespace TowerDefense
 			void UpdateImage();
 			void UpdateDebuffs();
 
-			int m_GoldValue, m_Bounty, m_PoisonTime, m_PoisonTick;
-			float m_Speed, m_PoisonAmount, m_StunResist;
+			int m_GoldValue, m_Bounty;
+			float m_Speed, m_StunResist;
 			bool m_Selected, m_Clicked, m_Stunned;
-
-			unsigned int m_PoisonSource;
 
 			std::string m_Name;
 
