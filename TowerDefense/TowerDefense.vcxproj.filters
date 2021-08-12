@@ -197,6 +197,7 @@
     <ClCompile Include="src\towers\buffs\RangeBuff.cpp" />
     <ClCompile Include="src\towers\buffs\CritDamageBuff.cpp" />
     <ClCompile Include="src\enemies\States\State.cpp" />
+    <ClCompile Include="src\scenes\base_scenes\SkillTree.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\artifacts\Artifact.h" />
@@ -293,6 +294,7 @@
     <ClInclude Include="src\towers\buffs\RangeBuff.h" />
     <ClInclude Include="src\towers\buffs\CritDamageBuff.h" />
     <ClInclude Include="src\enemies\States\State.h" />
+    <ClInclude Include="src\scenes\base_scenes\SkillTree.h" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="res\textures\AnimationEffects.png" />

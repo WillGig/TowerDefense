@@ -7,8 +7,6 @@
 #include "core/Clock.h"
 #include "towers/Tower.h"
 
-//int TowerDefense::Enemy::Enemy::POISONTICKRATE = 30;
-
 TowerDefense::Enemy::Enemy::Enemy(int width, int height, float health, float speed, int goldValue, const std::string& name, int damage)
 	:Entity(0.0f, 0.0f, width, height, 0.0f, name, Type::ENEMY), m_Damage(damage), m_CurrentTile(-2),
 	m_Health(health), m_Armor(0.0f), m_MagicResistance(0.0f), m_MaxHealth(health), m_Speed(speed), 

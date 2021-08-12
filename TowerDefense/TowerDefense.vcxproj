@@ -344,6 +344,7 @@
     <ClCompile Include="src\scenes\random_events\WanderingBard.cpp" />
     <ClCompile Include="src\scenes\random_events\WanderingCleric.cpp" />
     <ClCompile Include="src\scenes\random_events\WanderingSage.cpp" />
+    <ClCompile Include="src\scenes\base_scenes\SkillTree.cpp" />
     <ClCompile Include="src\TowerDefense.cpp" />
     <ClCompile Include="src\towers\Alchemist.cpp" />
     <ClCompile Include="src\towers\AnimalCompanion.cpp" />
@@ -483,6 +484,7 @@
     <ClInclude Include="src\scenes\base_scenes\BuildButton.h" />
     <ClInclude Include="src\scenes\base_scenes\CardSlot.h" />
     <ClInclude Include="src\scenes\base_scenes\ClickCircle.h" />
+    <ClInclude Include="src\scenes\base_scenes\SkillTree.h" />
     <ClInclude Include="src\scenes\random_events\RandomEvent.h" />
     <ClInclude Include="src\scenes\Combat.h" />
     <ClInclude Include="src\scenes\CombatReward.h" />

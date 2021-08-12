@@ -1,44 +1,48 @@
 Current:
+	Known Bugs: 
+		Game crashes if splitting enemy is killed at the very end
 
-	Add buff/debuff system for enemies 
-	 - make death cleric apply debuff
-	 - change slows, stuns (and poisons?) to debuffs
-	 - Make debuffs unique?
+	More Enemies(Days 21-30):
+	
+		- Rats
+			- Plague rat - shuffles infection into deck
+			- Witch rat - shuffes curses into deck
 
-	Bug: Game crashes if splitting enemy is killed at the very end
+		- Oozes
+			- Bigger oozes that split into mega oozes
+			- Toxic slime - shuffles slime into deck
 
-	Add more possible ghost towers
-	Add more powerful companions
-	Allow clicking on companion tower for stats
-	Add animation to bard and cleric auras
-	Add upgrades for specific subclasses
-	- peace bard - increase slow percent
-	- Life cleric - increase heal amount
+		- Bugs
+			- Gnats - invisible and fast
+			- Worms - burrow and become untargetable
+			- Tank-o-pods - big and tough
+			- Writhing mass(boss?) - releases swarms of smaller insects
 
-	Change upgrade cost to tower cost for first 4 levels, then 2x tower cost for next 4 levels
-
-	Summoner - summon instead of attack (every x attack starting at 4 or 5)
-		 - Create new decaying archer - give multishot equal to more missile bonus and range and damage bonuses?
-		 - upgrades include summon duration, and summon power level (increases chance to summon wizard or ranger or paladin or giant at max level?)
+	Base Buildings:
+		- Archery Range	- Archer, Ranger
+		- Music Hall	- Bard
+		- Wizard Tower	- Wizard
+		- Temple	- Paladin, Cleric
+		- Alchemy Lab	- Alchemist
+	
+	Level 5 Upgrade Progress:
+		Add more possible ghost towers
+		Add more powerful companions
+		Allow clicking on companion tower for stats
+		Add animation to bard and cleric auras
+		Add upgrades for specific subclasses
+		- peace bard - increase slow percent
+		- Life cleric - increase heal amount
+		- Summoner - summon duration and summon power level
 
 	Rework smithing upgrades for heros
-	Add special upgrades at levels 5 and 10 (changes image)
-	- Archer 	- Crossbowman (slower more powerful shot), Grey Eyed(guided shots), bb gunner(much faster fire, lower damage)
-	- Wizard 	- Elementalist (lightning attack), summoner (summons ghost archers), necromancer (life drain attack)
-	- Ranger 	- Animal companion (animal spirit attacks enemies), Sniper (massive range, slower, stronger attacks), Laser-bow (bow replaced with constant laser attack)
-	- Paladin 	- Wings (can fly after enemies, then return to spot), Vengence(AOE attacks), Inspiring Leader (Crits boost attackspeed of nearby towers)
-	- Alchemist 	- Grenade gunner (faster, smaller attacks), True alchemy (turn enemies to gold), poisoner (poisons slow or other effects)
-	- Bard 		- Peace bard (slows nearby enemies), empowerer (also buffs range and crit damage), disarming words (attack which lowers enemy damage)
-	- Cleric 	- Lifebringer (heals you every round), battle cleric (can now attack), Death priest (weakens nearby enemies)
 	
 	Add more upgrade options for different types of towers
 	 - new spells/attacks?
 	 - piercing shots for rangers
 	 - rain of arrows for rangers (fire x arrows in a line)
-	Add more buildings (special building required for level 5 and upgrade for level 10)
-	Change upgrades for support towers and monks
 
-	can scout next battle for gold price
+	Add Scouting
 	
 	Add more Artifacts:
 	- Spyglass 		- scout for free, but the combat after next?
@@ -50,10 +54,10 @@ Current:
 	- Wax wings		- Gives flappy bird type game?
 	- Sugar bowl		- Protects against disease?
 
-	Allow hovering over event options to show cards/artifacts obtained
-	Add second page to events to describe what happens
-
-	Add more events:
+	Event Improvements:
+		Allow hovering over event options to show cards/artifacts obtained
+		Add second page to events to describe what happens
+		Add more events:
 	
 	Add more mini-games
 	- cave exploring - rpg dungeon crawler like
@@ -126,6 +130,15 @@ Notes:
 	- Paladin	Smites enemies dealing damage based on maxHP
 	- Giant		Throws boulders
 	- Monk		Generates focus each round
+
+	Level 5 Upgrades that require buildings
+	- Archer 	- Crossbowman (slower more powerful shot), Grey Eyed(guided shots), bb gunner(much faster fire, lower damage)
+	- Wizard 	- Elementalist (lightning attack), summoner (summons ghost archers), necromancer (life drain attack)
+	- Ranger 	- Animal companion (animal spirit attacks enemies), Sniper (massive range, slower, stronger attacks), Laser-bow (bow replaced with constant laser attack)
+	- Paladin 	- Wings (can fly after enemies, then return to spot), Vengence(AOE attacks), Inspiring Leader (Crits boost attackspeed of nearby towers)
+	- Alchemist 	- Grenade gunner (faster, smaller attacks), True alchemy (turn enemies to gold), poisoner (poisons slow or other effects)
+	- Bard 		- Peace bard (slows nearby enemies), empowerer (also buffs range and crit damage), disarming words (attack which lowers enemy damage)
+	- Cleric 	- Lifebringer (heals you every round), battle cleric (can now attack), Death priest (weakens nearby enemies)
 
 	Races
 	- wood elf	+1 physical damage, -10% cast time
