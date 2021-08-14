@@ -264,6 +264,7 @@
     <ClCompile Include="src\cards\quirks\WoodElf.cpp" />
     <ClCompile Include="src\cards\upgrades\Upgrades.cpp" />
     <ClCompile Include="src\core\TextureLoader.cpp" />
+    <ClCompile Include="src\enemies\AssassinRat.cpp" />
     <ClCompile Include="src\enemies\BlinkBug.cpp" />
     <ClCompile Include="src\enemies\DoubleOoze.cpp" />
     <ClCompile Include="src\enemies\Enemy.cpp" />

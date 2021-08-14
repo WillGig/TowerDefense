@@ -152,6 +152,7 @@ void TowerDefense::CardPile::CopyWithExclusions(std::shared_ptr<CardPile> p, std
 void TowerDefense::CardPile::Clear()
 {
 	m_Cards->clear();
+	m_SelectedCard = -1;
 	SetImage(m_EmptyImage);
 }
 

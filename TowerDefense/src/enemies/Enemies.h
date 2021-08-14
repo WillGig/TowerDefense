@@ -228,7 +228,7 @@ namespace TowerDefense
 		{
 		public:
 			PlagueRat()
-				:Enemy(64, 64, 10.0f, 1.5f, 20, "Plague Rat", 3)
+				:Enemy(32, 32, 10.0f, 1.5f, 20, "Plague Rat", 3)
 			{}
 
 		private:
@@ -239,13 +239,29 @@ namespace TowerDefense
 		{
 		public:
 			WitchRat()
-				:Enemy(64, 64, 60.0f, 0.75f, 50, "Witch Rat", 5), m_CastTime(240), m_Cast(0)
+				:Enemy(32, 32, 60.0f, 0.75f, 50, "Witch Rat", 5), m_CastTime(240), m_Cast(0)
 			{}
 
 		private:
 			void Update() override;
 
 			int m_CastTime, m_Cast;
+		};
+
+		class AssassinRat : public Enemy
+		{
+		public:
+			AssassinRat()
+				:Enemy(32, 32, 75.0f, 0.5f, 25, "Assassin Rat", 5), m_CastTime(180), m_Cast(0), m_Running(false), m_InvisibleTime(180)
+			{
+				m_Armor = 25;
+				m_MagicResistance = 25;
+			}
+		private:
+			void Update() override;
+			void Move() override;
+			bool m_Running;
+			int m_CastTime, m_Cast, m_InvisibleTime;
 		};
 	}
 }

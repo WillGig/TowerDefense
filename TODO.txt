@@ -7,7 +7,7 @@ Current:
 		- Rats
 			- Plague rat - shuffles infection into deck
 			- Witch rat - shuffes curses into deck
-			- Assassin rat - alternate between turning invisible, and dashing
+			- Assassin rat - turns invisible and dashes forward
 
 		- Oozes
 			- Bigger oozes that split into mega oozes
