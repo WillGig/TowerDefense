@@ -355,6 +355,10 @@ void TowerDefense::LoadTextures()
     Texture::LoadTexture("Runner BeetleSelected",   enemies.load(3, 4));
     Texture::LoadTexture("Tank Beetle",             enemies.load(4, 4));
     Texture::LoadTexture("Tank BeetleSelected",     enemies.load(5, 4));
+    Texture::LoadTexture("Witch Rat",               enemies.load(6, 3));
+    Texture::LoadTexture("Witch RatSelected",       enemies.load(7, 3));
+    Texture::LoadTexture("Plague Rat",              enemies.load(6, 4));
+    Texture::LoadTexture("Plague RatSelected",      enemies.load(7, 4));
 
     std::cout << "...Cards" << std::endl;
 
@@ -437,10 +441,14 @@ void TowerDefense::LoadTextures()
     Texture::LoadTexture("lightningStormUpgraded",      auraCards.load(5, 1));
 
     SpriteSheet curses("res/textures/Curses.png", 440, 560);
-    Texture::LoadTexture("Flames",          curses.load(0, 0));
-    Texture::LoadTexture("FlamesUpgraded",  curses.load(1, 0));
-    Texture::LoadTexture("Frog",            curses.load(2, 0));
-    Texture::LoadTexture("FrogUpgraded",    curses.load(3, 0));
+    Texture::LoadTexture("Flames",              curses.load(0, 0));
+    Texture::LoadTexture("FlamesUpgraded",      curses.load(1, 0));
+    Texture::LoadTexture("Frog",                curses.load(2, 0));
+    Texture::LoadTexture("FrogUpgraded",        curses.load(3, 0));
+    Texture::LoadTexture("Infection",           curses.load(4, 0));
+    Texture::LoadTexture("InfectionUpgraded",   curses.load(5, 0));
+    Texture::LoadTexture("Hex",                 curses.load(6, 0));
+    Texture::LoadTexture("HexUpgraded",         curses.load(7, 0));
 
     SpriteSheet cardInfo("res/textures/InfoTiles.png", 440, 170);
     Texture::LoadTexture("SummonInfo",      cardInfo.load(0, 0));

@@ -122,7 +122,7 @@ void TowerDefense::Combat::OnSwitch()
 
 	//Reset Combat
 	Player& player = Player::Get();
-	player.SetEnergy(10000);
+	player.SetEnergy(100);
 	player.ResetCardPiles();
 	player.GetHand()->ResetSelectedCard();
 	player.GetHand()->ResetDiscardCard();

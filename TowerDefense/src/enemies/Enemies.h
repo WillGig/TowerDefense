@@ -223,5 +223,29 @@ namespace TowerDefense
 			void Update() override;
 			int m_SwitchTime, m_Switch;
 		};
+
+		class PlagueRat : public Enemy
+		{
+		public:
+			PlagueRat()
+				:Enemy(64, 64, 10.0f, 1.5f, 20, "Plague Rat", 3)
+			{}
+
+		private:
+			void Destroy() override;
+		};
+
+		class WitchRat : public Enemy
+		{
+		public:
+			WitchRat()
+				:Enemy(64, 64, 60.0f, 0.75f, 50, "Witch Rat", 5), m_CastTime(240), m_Cast(0)
+			{}
+
+		private:
+			void Update() override;
+
+			int m_CastTime, m_Cast;
+		};
 	}
 }

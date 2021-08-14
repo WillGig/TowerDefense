@@ -18,4 +18,22 @@ namespace TowerDefense
 		void Play() override;
 		std::shared_ptr<Card> Clone() override;
 	};
+
+	class Infection : public Card
+	{
+	public:
+		Infection();
+		void Play() override;
+		void Upgrade() override;
+		void OnUnplayed() override;
+		std::shared_ptr<Card> Clone() override;
+	};
+
+	class Hex : public Card
+	{
+	public:
+		Hex();
+		void Play() override;
+		std::shared_ptr<Card> Clone() override;
+	};
 }

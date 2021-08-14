@@ -10,7 +10,7 @@
 TowerDefense::Enemy::Enemy::Enemy(int width, int height, float health, float speed, int goldValue, const std::string& name, int damage)
 	:Entity(0.0f, 0.0f, width, height, 0.0f, name, Type::ENEMY), m_Damage(damage), m_CurrentTile(-2),
 	m_Health(health), m_Armor(0.0f), m_MagicResistance(0.0f), m_MaxHealth(health), m_Speed(speed), 
-	m_GoldValue(goldValue), m_Bounty(0), m_StunResist(0.0f), m_GoalX(), m_GoalY(), m_DistanceTraveled(0.0f), 
+	m_GoldValue(goldValue), m_Bounty(0), m_StunResist(0.0f), m_PoisonPercent(0.0f), m_GoalX(), m_GoalY(), m_DistanceTraveled(0.0f), 
 	m_ReachedEnd(false), m_Selected(false), m_Clicked(false), m_Stunned(false), m_Name(name),
 	m_RegularImage(std::make_shared<Image>(name, 0.0f, 0.0f, width, height, 0.0f)), 
 	m_SelectedImage(std::make_shared<Image>(name + "Selected", 0.0f, 0.0f, width, height, 0.0f)),
@@ -193,6 +193,9 @@ void TowerDefense::Enemy::Enemy::ChangeHealth(float change)
 	if (m_Health > m_MaxHealth)
 		m_Health = m_MaxHealth;
 
+	m_HealthBar->SetFill(m_Health / m_MaxHealth, m_PoisonPercent);
+	m_HealthBar->SetPosition(m_X - (10.0f - m_HealthBar->GetBarWidth() / 2), m_Y + m_Height / 2);
+
 	if (m_Health <= 0)
 	{
 		Combat::GetCurrentFight()->AddDefeatedEnemy(*this);
@@ -278,4 +281,5 @@ void TowerDefense::Enemy::Enemy::SetPoisonPercent(float percent)
 {
 	m_HealthBar->SetFill(m_Health / m_MaxHealth, percent);
 	m_HealthBar->SetPosition(m_X - (10.0f - m_HealthBar->GetBarWidth() / 2), m_Y + m_Height / 2);
+	m_PoisonPercent = percent;
 }

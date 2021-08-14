@@ -88,6 +88,9 @@ namespace TowerDefense
 		void AddToDeck(std::shared_ptr<Card> c);
 		void RemoveFromDeck(int index);
 
+		void AddToDrawPile(std::shared_ptr<Card> c);
+		void AddToDiscardPile(std::shared_ptr<Card> c);
+
 		//Player Artifact Controls
 		inline bool ArtifactsShowing() { return m_Artifacts->IsShowing(); };
 		inline std::shared_ptr<Artifact> GetSelectedArtifact() { return m_Artifacts->GetSelectedArtifact(); };

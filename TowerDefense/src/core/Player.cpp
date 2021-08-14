@@ -60,9 +60,9 @@ void TowerDefense::Player::Reset()
     m_AmountHealed = 0;
     m_EnemiesDefeated = 0;
     m_Score = 0;
-    SetResource(9999, Resource::WOOD);
-    SetResource(9999, Resource::STONE);
-    SetResource(9999, Resource::WHEAT);
+    SetResource(0, Resource::WOOD);
+    SetResource(0, Resource::STONE);
+    SetResource(0, Resource::WHEAT);
     SetResource(0, Resource::GOLD);
     m_ResourceGatherSpeed = Vec4i(100, 100, 100, 150);
     m_Population = 0;
@@ -407,6 +407,16 @@ void TowerDefense::Player::AddToDeck(std::shared_ptr<Card> c)
 {
     m_Deck->AddCard(c);
     ArtifactOnAddCard(c);
+}
+
+void TowerDefense::Player::AddToDrawPile(std::shared_ptr<Card> c)
+{
+    m_DrawPile->AddCard(c);
+}
+
+void TowerDefense::Player::AddToDiscardPile(std::shared_ptr<Card> c)
+{
+    m_DiscardPile->AddCard(c);
 }
 
 void TowerDefense::Player::RemoveFromDeck(int index)

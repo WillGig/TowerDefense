@@ -7,6 +7,7 @@ Current:
 		- Rats
 			- Plague rat - shuffles infection into deck
 			- Witch rat - shuffes curses into deck
+			- Assassin rat - alternate between turning invisible, and dashing
 
 		- Oozes
 			- Bigger oozes that split into mega oozes
@@ -16,6 +17,7 @@ Current:
 			- Gnats - invisible and fast
 			- Worms - burrow and become untargetable
 			- Tank-o-pods - big and tough
+			- Firefly - shuffles flames into deck
 			- Writhing mass(boss?) - releases swarms of smaller insects
 
 	Base Buildings:

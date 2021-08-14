@@ -198,6 +198,10 @@
     <ClCompile Include="src\towers\buffs\CritDamageBuff.cpp" />
     <ClCompile Include="src\enemies\States\State.cpp" />
     <ClCompile Include="src\scenes\base_scenes\SkillTree.cpp" />
+    <ClCompile Include="src\enemies\PlagueRat.cpp" />
+    <ClCompile Include="src\cards\curses\Infection.cpp" />
+    <ClCompile Include="src\enemies\WitchRat.cpp" />
+    <ClCompile Include="src\cards\curses\Hex.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\artifacts\Artifact.h" />

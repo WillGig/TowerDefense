@@ -207,6 +207,8 @@
     <ClCompile Include="src\Auras\StunAttacks.cpp" />
     <ClCompile Include="src\cards\Attain.cpp" />
     <ClCompile Include="src\cards\curses\Frog.cpp" />
+    <ClCompile Include="src\cards\curses\Hex.cpp" />
+    <ClCompile Include="src\cards\curses\Infection.cpp" />
     <ClCompile Include="src\cards\Envenom.cpp" />
     <ClCompile Include="src\cards\ExplosiveStrikes.cpp" />
     <ClCompile Include="src\cards\LifeAura.cpp" />
@@ -273,12 +275,14 @@
     <ClCompile Include="src\enemies\JumpingOoze.cpp" />
     <ClCompile Include="src\enemies\Doubler.cpp" />
     <ClCompile Include="src\enemies\MegaOoze.cpp" />
+    <ClCompile Include="src\enemies\PlagueRat.cpp" />
     <ClCompile Include="src\enemies\RunnerBeetle.cpp" />
     <ClCompile Include="src\enemies\ShamanRat.cpp" />
     <ClCompile Include="src\enemies\ShieldRat.cpp" />
     <ClCompile Include="src\enemies\States\State.cpp" />
     <ClCompile Include="src\enemies\TankBeetle.cpp" />
     <ClCompile Include="src\enemies\Wave.cpp" />
+    <ClCompile Include="src\enemies\WitchRat.cpp" />
     <ClCompile Include="src\engine\Animation.cpp" />
     <ClCompile Include="src\core\AnimationEffect.cpp" />
     <ClCompile Include="src\engine\Circle.cpp" />

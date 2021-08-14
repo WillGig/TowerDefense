@@ -63,7 +63,6 @@ namespace TowerDefense
 			virtual void Destroy();
 
 			int m_CurrentTile, m_Damage;
-			//static int POISONTICKRATE;
 			float m_Health, m_MaxHealth, m_Armor, m_MagicResistance, m_DistanceTraveled, m_GoalX, m_GoalY;
 			bool m_ReachedEnd;
 
@@ -75,7 +74,7 @@ namespace TowerDefense
 			void UpdateDebuffs();
 
 			int m_GoldValue, m_Bounty;
-			float m_Speed, m_StunResist;
+			float m_Speed, m_StunResist, m_PoisonPercent;
 			bool m_Selected, m_Clicked, m_Stunned;
 
 			std::string m_Name;

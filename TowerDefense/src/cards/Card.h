@@ -15,6 +15,8 @@ namespace TowerDefense
 
 		virtual void Play() = 0;
 
+		virtual void OnUnplayed() {};
+
 		void Update() override;
 
 		void RenderUpgrade(float x, float y);

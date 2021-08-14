@@ -230,6 +230,7 @@ void TowerDefense::Hand::DrawCard()
 void TowerDefense::Hand::DiscardHand()
 {
 	while (m_Cards->size() > 0) {
+		m_Cards->at(0)->OnUnplayed();
 		Player::Get().GetDiscardPile()->AddCard(m_Cards->at(0));
 		RemoveCard(0);
 	}
