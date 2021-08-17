@@ -335,8 +335,8 @@ void TowerDefense::LoadTextures()
     Texture::LoadTexture("OozeSelected",            enemies.load(3, 2));
     Texture::LoadTexture("Mega Ooze",               enemies.load(4, 1));
     Texture::LoadTexture("Mega OozeSelected",       enemies.load(5, 1));
-    Texture::LoadTexture("Double Ooze",             enemies.load(4, 2));
-    Texture::LoadTexture("Double OozeSelected",     enemies.load(5, 2));
+    Texture::LoadTexture("Double Slime",             enemies.load(4, 2));
+    Texture::LoadTexture("Double SlimeSelected",     enemies.load(5, 2));
     Texture::LoadTexture("Jumping Ooze",            enemies.load(6, 2));
     Texture::LoadTexture("Jumping OozeSelected",    enemies.load(7, 2));
     Texture::LoadTexture("Doubler",                 enemies.load(0, 3));

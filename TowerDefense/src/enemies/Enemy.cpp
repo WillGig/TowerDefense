@@ -272,7 +272,7 @@ void TowerDefense::Enemy::Enemy::SetDistanceTravelled(float distanceTravelled)
 	SetY(board.GetTiles()->at(tileX + tileY * board.GetWidth())->GetY());
 	FindNewGoal(m_X, m_Y);
 
-	while (m_DistanceTraveled < distanceTravelled)
+	while (m_DistanceTraveled < distanceTravelled && !m_ReachedEnd)
 		Move();
 
 }

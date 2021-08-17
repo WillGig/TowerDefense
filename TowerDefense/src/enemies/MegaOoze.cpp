@@ -9,8 +9,8 @@ void TowerDefense::Enemy::MegaOoze::Destroy()
 	if (m_Health > 0)
 		return;
 
-	std::shared_ptr<DoubleOoze> frontOoze = std::make_shared<DoubleOoze>();
-	std::shared_ptr<DoubleOoze> backOoze = std::make_shared<DoubleOoze>();
+	std::shared_ptr<DoubleSlime> frontOoze = std::make_shared<DoubleSlime>();
+	std::shared_ptr<DoubleSlime> backOoze = std::make_shared<DoubleSlime>();
 
 	frontOoze->SetDistanceTravelled(m_DistanceTraveled + 20);
 	backOoze->SetDistanceTravelled(m_DistanceTraveled - 20);

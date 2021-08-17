@@ -106,11 +106,11 @@ namespace TowerDefense
 			void Destroy() override;
 		};
 
-		class DoubleOoze : public Enemy
+		class DoubleSlime : public Enemy
 		{
 		public:
-			DoubleOoze()
-				:Enemy(48, 48, 15.0f, 0.5f, 10, "Double Ooze", 3)
+			DoubleSlime()
+				:Enemy(48, 48, 15.0f, 0.5f, 10, "Double Slime", 3)
 			{}
 
 		private:

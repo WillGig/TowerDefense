@@ -2,7 +2,7 @@
 #include "Enemies.h"
 #include "scenes/Combat.h"
 
-void TowerDefense::Enemy::DoubleOoze::Destroy()
+void TowerDefense::Enemy::DoubleSlime::Destroy()
 {
 	Enemy::Destroy();
 

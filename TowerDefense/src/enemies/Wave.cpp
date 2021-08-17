@@ -46,7 +46,7 @@ TowerDefense::Wave::Wave(const int enemies[], int size)
 			m_Enemies->push_back(std::make_shared<Enemy::MegaOoze>());
 			break;
 		case 11:
-			m_Enemies->push_back(std::make_shared<Enemy::DoubleOoze>());
+			m_Enemies->push_back(std::make_shared<Enemy::DoubleSlime>());
 			break;
 		case 12:
 			m_Enemies->push_back(std::make_shared<Enemy::JumpingOoze>());

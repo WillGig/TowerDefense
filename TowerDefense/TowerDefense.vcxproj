@@ -266,7 +266,7 @@
     <ClCompile Include="src\core\TextureLoader.cpp" />
     <ClCompile Include="src\enemies\AssassinRat.cpp" />
     <ClCompile Include="src\enemies\BlinkBug.cpp" />
-    <ClCompile Include="src\enemies\DoubleOoze.cpp" />
+    <ClCompile Include="src\enemies\DoubleSlime.cpp" />
     <ClCompile Include="src\enemies\Enemy.cpp" />
     <ClCompile Include="src\enemies\EnemyIcon.cpp" />
     <ClCompile Include="src\enemies\EnemyInfo.cpp" />

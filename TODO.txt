@@ -1,9 +1,4 @@
 Current:
-	Known Bugs: 
-		Game crashes if splitting enemy is killed at the very end
-
-	Change mega ooze to split into slimes
-
 	More Enemies(Days 21-30):
 	
 		- Rats
