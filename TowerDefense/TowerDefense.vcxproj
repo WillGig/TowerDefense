@@ -284,6 +284,7 @@
     <ClCompile Include="src\enemies\TankBeetle.cpp" />
     <ClCompile Include="src\enemies\Wave.cpp" />
     <ClCompile Include="src\enemies\WitchRat.cpp" />
+    <ClCompile Include="src\enemies\WrithingMass.cpp" />
     <ClCompile Include="src\engine\Animation.cpp" />
     <ClCompile Include="src\core\AnimationEffect.cpp" />
     <ClCompile Include="src\engine\Circle.cpp" />

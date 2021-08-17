@@ -263,5 +263,21 @@ namespace TowerDefense
 			bool m_Running;
 			int m_CastTime, m_Cast, m_InvisibleTime;
 		};
+
+		class WrithingMass : public Enemy
+		{
+		public:
+			WrithingMass()
+				:Enemy(64, 64, 1000.0f, 0.25f, 200, "Writhing Mass", 50), m_Cast(0), m_CastTime(60)
+			{
+				m_Armor = 150;
+				m_MagicResistance = 150;
+			}
+
+		private:
+			void Update() override;
+			void SummonSpawn();
+			int m_CastTime, m_Cast;
+		};
 	}
 }

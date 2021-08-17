@@ -203,6 +203,7 @@
     <ClCompile Include="src\enemies\WitchRat.cpp" />
     <ClCompile Include="src\cards\curses\Hex.cpp" />
     <ClCompile Include="src\enemies\AssassinRat.cpp" />
+    <ClCompile Include="src\enemies\WrithingMass.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\artifacts\Artifact.h" />

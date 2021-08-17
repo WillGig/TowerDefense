@@ -361,6 +361,8 @@ void TowerDefense::LoadTextures()
     Texture::LoadTexture("Plague RatSelected",      enemies.load(7, 4));
     Texture::LoadTexture("Assassin Rat",            enemies.load(0, 5));
     Texture::LoadTexture("Assassin RatSelected",    enemies.load(1, 5));
+    Texture::LoadTexture("Writhing Mass",           enemies.load(2, 5));
+    Texture::LoadTexture("Writhing MassSelected",   enemies.load(3, 5));
 
     std::cout << "...Cards" << std::endl;
 
