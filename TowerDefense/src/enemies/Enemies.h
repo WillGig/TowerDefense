@@ -268,7 +268,7 @@ namespace TowerDefense
 		{
 		public:
 			WrithingMass()
-				:Enemy(64, 64, 1000.0f, 0.25f, 200, "Writhing Mass", 50), m_Cast(0), m_CastTime(60)
+				:Enemy(64, 64, 1000.0f, 0.15f, 200, "Writhing Mass", 50), m_Cast(0), m_CastTime(90)
 			{
 				m_Armor = 150;
 				m_MagicResistance = 150;

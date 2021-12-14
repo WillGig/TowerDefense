@@ -13,7 +13,7 @@ Current:
 		- Bugs
 			- Gnats - invisible and fast
 			- Worms - burrow and become untargetable
-			- Tank-o-pods - big and tough
+			- Ankheg - big and tough
 			- Firefly - shuffles flames into deck
 			- Writhing mass(boss?) - releases swarms of smaller insects
 
