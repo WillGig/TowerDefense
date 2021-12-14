@@ -2,6 +2,7 @@
 #include "TowerDefense.h"
 #include "scenes/Scene.h"
 #include "scenes/MainMenu.h"
+#include "scenes/Settings.h"
 #include "scenes/Base.h"
 #include "scenes/Event.h"
 #include "scenes/PreCombatScreen.h"
@@ -15,10 +16,12 @@ void Update();
 void Render();
 
 GLFWwindow* window;
-std::array<std::unique_ptr<TowerDefense::Scene>, 6> scenes;
+std::array<std::unique_ptr<TowerDefense::Scene>, 7> scenes;
 
 int currentScene, day;
-bool running;
+bool running, showFPS;
+
+std::unique_ptr<Text> fps;
 
 //Initializes GLFW, GLEW, and objects needed for the game
 bool TowerDefense::Init()
@@ -84,6 +87,7 @@ bool TowerDefense::Init()
     std::cout << "Creating Scenes..." << std::endl;
     scenes = {
         std::make_unique<MainMenu>(),
+        std::make_unique<Settings>(),
         std::make_unique<Base>(),
         std::make_unique<Event>(),
         std::make_unique<PreCombatScreen>(),
@@ -92,6 +96,7 @@ bool TowerDefense::Init()
     };
     currentScene = 0;
     day = 0;
+    showFPS = false;
 
     std::cout << "Setting Path..." << std::endl;
     const int path[] = { 0, 9, 0, 8, 0, 7, 1, 7, 2, 7, 3, 7, 4, 7, 4, 6, 4, 5, 5, 5, 6, 5, 7, 5, 8, 5, 9, 5, 10, 5, 11, 5, 12, 5, 13, 5, 13, 4, 13, 3, 13, 2, 14, 2, 15, 2, 16, 2, 17, 2, 18, 2, 18, 1, 18, 0, 19, 0 };
@@ -127,11 +132,16 @@ void TowerDefense::Run()
         Render();
         frames++;
 
-        //Print FPS once per second
+        //Calculate FPS once per second
         if (timer == 60)
         {
             timer -= 60;
-            std::cout << frames << " FPS" << std::endl;
+            if (showFPS)
+            {
+                fps = std::make_unique<Text>(std::to_string(frames) + " FPS", 50.0f, 20.0f, 12.0f, 0.0f);
+                fps->SetColor(1.0f, 1.0f, 1.0f, 1.0f);
+                fps->SetDropShadow(1.0f);
+            }
             frames = 0;
         }
 
@@ -158,6 +168,7 @@ void TowerDefense::CleanUp()
     Combat::CleanUp();
     Artifact::CleanUp();
     RandomEvent::CleanUp();
+    fps.reset();
     Texture::FreeTextures();
     Shader::DeleteShaders();
     glfwTerminate();
@@ -167,6 +178,8 @@ void Render()
 {
     Renderer::Get().Clear();
     scenes[currentScene]->Render();
+    if (showFPS && fps)
+        fps->Render();
 }
 
 void Update()
@@ -199,4 +212,14 @@ void TowerDefense::ResetDay()
 {
     day = 0;
     Player::Get().UpdateDayText();
+}
+
+bool TowerDefense::FPSShowing()
+{
+    return showFPS;
+}
+
+void TowerDefense::ShowFPS(bool show)
+{
+    showFPS = show;
 }

@@ -24,7 +24,7 @@ void TowerDefense::Enemy::WrithingMass::SummonSpawn()
 {
 	std::shared_ptr<Enemy> e;
 
-	int enemyNum = Random::GetFloat() * 5;
+	int enemyNum =(int) (Random::GetFloat() * 5);
 
 	if (enemyNum == 0)
 	{

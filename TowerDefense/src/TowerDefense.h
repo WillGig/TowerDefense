@@ -13,4 +13,7 @@ namespace TowerDefense
 	int GetDay();
 	void NextDay();
 	void ResetDay();
+
+	bool FPSShowing();
+	void ShowFPS(bool show);
 }

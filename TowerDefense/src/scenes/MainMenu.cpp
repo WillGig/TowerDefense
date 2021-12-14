@@ -45,7 +45,7 @@ void TowerDefense::MainMenu::Update()
 	//Settings Menu
 	else if (m_Buttons[2]->IsClicked())
 	{
-
+		SetScene(SceneType::SETTINGS);
 	}
 	//Exit
 	else if (m_Buttons[3]->IsClicked())

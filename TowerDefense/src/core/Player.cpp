@@ -28,7 +28,8 @@ TowerDefense::Player::Player()
     m_StoneIcon(std::make_unique<Image>("stoneIcon", 155.0f, 575.0f, 20, 20, 0.0f)),
     m_WheatIcon(std::make_unique<Image>("wheatIcon", 230.0f, 575.0f, 20, 20, 0.0f)),
     m_GoldIcon(std::make_unique<Image>("goldIcon", 305.0f, 575.0f, 20, 20, 0.0f)),
-    m_Artifacts(std::make_shared<ArtifactPile>(570.0f, 570.0f))
+    m_Artifacts(std::make_shared<ArtifactPile>(570.0f, 570.0f)),
+    m_SideBoardSlots(std::make_shared<std::vector<std::unique_ptr<SideboardSlot>>>())
 {
     m_HealthText->SetColor(1.0f, 1.0f, 1.0f, 1.0f);
     m_EnergyText->SetColor(1.0f, 1.0f, 1.0f, 1.0f);

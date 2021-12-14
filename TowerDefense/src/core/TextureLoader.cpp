@@ -17,6 +17,12 @@ void TowerDefense::LoadTextures()
     Texture::LoadTexture("settingsButtonSelected",  mainMenuButtons.load(1, 2));
     Texture::LoadTexture("exitButton",              mainMenuButtons.load(0, 3));
     Texture::LoadTexture("exitButtonSelected",      mainMenuButtons.load(1, 3));
+    Texture::LoadTexture("backButton",              mainMenuButtons.load(0, 4));
+    Texture::LoadTexture("backButtonSelected",      mainMenuButtons.load(1, 4));
+    Texture::LoadTexture("showFPS",                 mainMenuButtons.load(0, 5));
+    Texture::LoadTexture("showFPSSelected",         mainMenuButtons.load(1, 5));
+    Texture::LoadTexture("hideFPS",                 mainMenuButtons.load(0, 6));
+    Texture::LoadTexture("hideFPSSelected",         mainMenuButtons.load(1, 6));
 
     SpriteSheet baseButtons("res/textures/BaseButtons.png", 180, 50);
     Texture::LoadTexture("confirmButton",               baseButtons.load(0, 0));
