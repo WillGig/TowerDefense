@@ -21,6 +21,8 @@ std::array<std::unique_ptr<TowerDefense::Scene>, 7> scenes;
 int currentScene, day;
 bool running, showFPS;
 
+float sceneFade, fadeSpeed;
+
 std::unique_ptr<Text> fps;
 
 //Initializes GLFW, GLEW, and objects needed for the game
@@ -85,6 +87,7 @@ bool TowerDefense::Init()
 
     //Game Object Initialization
     std::cout << "Creating Scenes..." << std::endl;
+    Scene::Init();
     scenes = {
         std::make_unique<MainMenu>(),
         std::make_unique<Settings>(),
@@ -97,6 +100,8 @@ bool TowerDefense::Init()
     currentScene = 0;
     day = 0;
     showFPS = false;
+    sceneFade = 1.0f;
+    fadeSpeed = .05f;
 
     std::cout << "Setting Path..." << std::endl;
     const int path[] = { 0, 9, 0, 8, 0, 7, 1, 7, 2, 7, 3, 7, 4, 7, 4, 6, 4, 5, 5, 5, 6, 5, 7, 5, 8, 5, 9, 5, 10, 5, 11, 5, 12, 5, 13, 5, 13, 4, 13, 3, 13, 2, 14, 2, 15, 2, 16, 2, 17, 2, 18, 2, 18, 1, 18, 0, 19, 0 };
@@ -168,6 +173,7 @@ void TowerDefense::CleanUp()
     Combat::CleanUp();
     Artifact::CleanUp();
     RandomEvent::CleanUp();
+    Scene::CleanUp();
     fps.reset();
     Texture::FreeTextures();
     Shader::DeleteShaders();
@@ -178,6 +184,9 @@ void Render()
 {
     Renderer::Get().Clear();
     scenes[currentScene]->Render();
+    if (sceneFade > 0.0f)
+        TowerDefense::Scene::RenderFade(sceneFade);
+
     if (showFPS && fps)
         fps->Render();
 }
@@ -185,6 +194,8 @@ void Render()
 void Update()
 {
     scenes[currentScene]->Update();
+    if (sceneFade > 0.0f)
+        sceneFade -= fadeSpeed;
     TowerDefense::Time::Get().Update();
 }
 
@@ -194,6 +205,7 @@ void TowerDefense::SetScene(unsigned int scene)
     {
         currentScene = scene;
         scenes[scene]->OnSwitch();
+        sceneFade = 1.0f;
     }
 }
 

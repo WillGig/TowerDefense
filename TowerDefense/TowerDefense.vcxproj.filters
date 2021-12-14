@@ -205,6 +205,7 @@
     <ClCompile Include="src\enemies\AssassinRat.cpp" />
     <ClCompile Include="src\enemies\WrithingMass.cpp" />
     <ClCompile Include="src\scenes\Settings.cpp" />
+    <ClCompile Include="src\scenes\Scene.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\artifacts\Artifact.h" />
