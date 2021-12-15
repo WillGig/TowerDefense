@@ -18,7 +18,7 @@ void Render();
 GLFWwindow* window;
 std::array<std::unique_ptr<TowerDefense::Scene>, 7> scenes;
 
-int currentScene, day;
+int currentScene, day, frameCap;
 bool running, showFPS;
 
 float sceneFade, fadeSpeed;
@@ -99,9 +99,10 @@ bool TowerDefense::Init()
     };
     currentScene = 0;
     day = 0;
-    showFPS = false;
+    showFPS = true;
     sceneFade = 1.0f;
     fadeSpeed = .05f;
+    frameCap = 0;
 
     std::cout << "Setting Path..." << std::endl;
     const int path[] = { 0, 9, 0, 8, 0, 7, 1, 7, 2, 7, 3, 7, 4, 7, 4, 6, 4, 5, 5, 5, 6, 5, 7, 5, 8, 5, 9, 5, 10, 5, 11, 5, 12, 5, 13, 5, 13, 4, 13, 3, 13, 2, 14, 2, 15, 2, 16, 2, 17, 2, 18, 2, 18, 1, 18, 0, 19, 0 };
@@ -116,26 +117,34 @@ void TowerDefense::Run()
     running = true;
     int frames = 0;
     int timer = 0;
-    double delta = 0;
+    double delta1 = 0, delta2 = 0;
     auto previousTime = std::chrono::high_resolution_clock::now();
 
     while (running)
     {
         auto currentTime = std::chrono::high_resolution_clock::now();
         std::chrono::duration<float> timePassed = currentTime - previousTime;
-        delta += timePassed.count() * 60.0;
+        delta1 += timePassed.count() * 60.0;
+        delta2 += timePassed.count() * (double)frameCap;
+
         previousTime = currentTime;
 
         //Update 60 times per second
-        if (delta > 1)
+        if (delta1 > 1)
         {
             Update();
-            delta--;
+            delta1--;
             timer++;
         }
 
-        Render();
-        frames++;
+        if (delta2 > 1 || frameCap == 0)
+        {
+            Render();
+            frames++;
+            if(frameCap != 0)
+                delta2--;
+        }
+        
 
         //Calculate FPS once per second
         if (timer == 60)
@@ -234,4 +243,14 @@ bool TowerDefense::FPSShowing()
 void TowerDefense::ShowFPS(bool show)
 {
     showFPS = show;
+}
+
+int TowerDefense::GetFrameCap()
+{
+    return frameCap;
+}
+
+void TowerDefense::SetFrameCap(int cap)
+{
+    frameCap = cap;
 }

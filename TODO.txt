@@ -1,7 +1,4 @@
 Current:
-	Settings Menu:
-		drop down menu (new object with vector of buttons)
-
 	Fix bug: dragging cards over other cards in hand
 
 	More Enemies(Days 21-30):

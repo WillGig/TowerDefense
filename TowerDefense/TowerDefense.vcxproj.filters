@@ -206,6 +206,7 @@
     <ClCompile Include="src\enemies\WrithingMass.cpp" />
     <ClCompile Include="src\scenes\Settings.cpp" />
     <ClCompile Include="src\scenes\Scene.cpp" />
+    <ClCompile Include="src\core\DropDown.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\artifacts\Artifact.h" />
@@ -304,6 +305,7 @@
     <ClInclude Include="src\enemies\States\State.h" />
     <ClInclude Include="src\scenes\base_scenes\SkillTree.h" />
     <ClInclude Include="src\scenes\Settings.h" />
+    <ClInclude Include="src\core\DropDown.h" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="res\textures\AnimationEffects.png" />

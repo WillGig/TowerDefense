@@ -16,4 +16,6 @@ namespace TowerDefense
 
 	bool FPSShowing();
 	void ShowFPS(bool show);
+	int GetFrameCap();
+	void SetFrameCap(int cap);
 }

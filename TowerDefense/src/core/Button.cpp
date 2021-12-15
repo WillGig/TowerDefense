@@ -5,7 +5,8 @@
 TowerDefense::Button::Button(float x, float y, int width, int height, const std::string& image)
 	:Entity(x, y, width, height, 0.0f, image, Type::BUTTON), m_Selected(false), m_Clicked(false),
 	m_RegularImage(std::make_shared<Image>(image, x, y, width, height, 0.0f)), 
-	m_SelectedImage(std::make_shared<Image>(image + "Selected", x, y, width, height, 0.0f))
+	m_SelectedImage(std::make_shared<Image>(image + "Selected", x, y, width, height, 0.0f)), 
+	m_Value(0), m_RequiresFocus(false)
 {
 }
 

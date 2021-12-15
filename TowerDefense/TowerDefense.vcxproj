@@ -263,6 +263,7 @@
     <ClCompile Include="src\cards\TowerCards.cpp" />
     <ClCompile Include="src\cards\quirks\WoodElf.cpp" />
     <ClCompile Include="src\cards\upgrades\Upgrades.cpp" />
+    <ClCompile Include="src\core\DropDown.cpp" />
     <ClCompile Include="src\core\TextureLoader.cpp" />
     <ClCompile Include="src\enemies\AssassinRat.cpp" />
     <ClCompile Include="src\enemies\BlinkBug.cpp" />
@@ -462,6 +463,7 @@
     <ClInclude Include="src\cards\TowerCards.h" />
     <ClInclude Include="src\cards\upgrades\Upgrades.h" />
     <ClInclude Include="src\cards\upgrades\Upgrade.h" />
+    <ClInclude Include="src\core\DropDown.h" />
     <ClInclude Include="src\core\TextureLoader.h" />
     <ClInclude Include="src\enemies\Enemies.h" />
     <ClInclude Include="src\enemies\Enemy.h" />

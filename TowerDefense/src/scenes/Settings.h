@@ -11,6 +11,9 @@ namespace TowerDefense
 		void Render() override;
 		void OnSwitch() override;
 	private:
-		std::array<std::unique_ptr<TowerDefense::Button>, 2> m_Buttons;
+		std::array<std::unique_ptr<TowerDefense::Button>, 3> m_Buttons;
+
+		//no other buttons should be interactable while button requires focus e.g. dropdown menu
+		int m_FocusedButton;
 	};
 }
