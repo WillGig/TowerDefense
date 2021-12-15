@@ -85,6 +85,15 @@ void TowerDefense::Hand::Update()
 					else
 						card->SetOverBoard(false);
 				}
+				else
+				{
+					float power = 3.0f;
+					if (m_Cards->size() > 6)
+						power = 2.5;
+					m_Cards->at(m_SelectedCard)->SetX(400.0f + (m_Cards->at(m_SelectedCard)->GetHandPosition() - (m_Cards->size() - 1) / 2.0f) * m_CardSpacing);
+					m_Cards->at(m_SelectedCard)->SetY(90.0f - pow(abs(m_Cards->at(m_SelectedCard)->GetHandPosition() - (m_Cards->size() - 1) / 2.0f), power));
+					m_Cards->at(m_SelectedCard)->SetRotation(0.0f - (m_Cards->at(m_SelectedCard)->GetHandPosition() - (m_Cards->size() - 1) / 2.0f) * 5);
+				}
 			}
 		}
 		else

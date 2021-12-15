@@ -1,6 +1,4 @@
 Current:
-	Fix bug: dragging cards over other cards in hand
-
 	More Enemies(Days 21-30):
 	
 		- Rats

@@ -537,13 +537,13 @@ void TowerDefense::Combat::GenerateFights()
 	//Bugs
 	waves = std::make_shared<std::vector<std::shared_ptr<Wave>>>();
 	const int enemies2[] = { 5, 0, 5, 100, 5, 100, 5, 100 , 5, 100, 5, 100, 5, 100, 5, 100};
-	waves->push_back(std::make_shared<Wave>(enemies2, 8));// 16));
+	waves->push_back(std::make_shared<Wave>(enemies2, 16));
 	pool1.push_back(std::make_shared<Fight>(waves));
 
 	//Oozes
 	waves = std::make_shared<std::vector<std::shared_ptr<Wave>>>();
 	const int enemies3[] = { 6, 0, 6, 250, 6, 250 };
-	waves->push_back(std::make_shared<Wave>(enemies3, 8));//6));
+	waves->push_back(std::make_shared<Wave>(enemies3, 6));
 	pool1.push_back(std::make_shared<Fight>(waves));
 
 	//day 4-6 fights
