@@ -207,6 +207,7 @@
     <ClCompile Include="src\scenes\Settings.cpp" />
     <ClCompile Include="src\scenes\Scene.cpp" />
     <ClCompile Include="src\core\DropDown.cpp" />
+    <ClCompile Include="src\core\SaveLoad.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\artifacts\Artifact.h" />
@@ -306,6 +307,7 @@
     <ClInclude Include="src\scenes\base_scenes\SkillTree.h" />
     <ClInclude Include="src\scenes\Settings.h" />
     <ClInclude Include="src\core\DropDown.h" />
+    <ClInclude Include="src\core\SaveLoad.h" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="res\textures\AnimationEffects.png" />
@@ -364,5 +366,6 @@
     <None Include="res\shaders\Circle.shader" />
     <None Include="res\shaders\Rectangle.shader" />
     <None Include="res\shaders\Text.shader" />
+    <None Include="res\saves\settings.dat" />
   </ItemGroup>
 </Project>

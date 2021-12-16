@@ -2,6 +2,7 @@
 #include "Settings.h"
 #include "TowerDefense.h"
 #include "core/DropDown.h"
+#include "core/SaveLoad.h"
 
 TowerDefense::Settings::Settings()
 	:m_FocusedButton(-1)
@@ -47,6 +48,7 @@ void TowerDefense::Settings::Update()
 	if (m_Buttons[0]->IsClicked())
 	{
 		SetScene(SceneType::MAINMENU);
+		Save::SaveSettings();
 	}
 	//Show FPS Toggle
 	else if (m_Buttons[1]->IsClicked())

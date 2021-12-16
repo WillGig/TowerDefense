@@ -1,4 +1,14 @@
 Current:
+	Saving
+		- current day
+		- health, max health, energy, 
+		- gold, wood, stone, wheat, gather rates
+		- cards in deck
+		- artifacts
+		- buildings
+		- combats
+		- events seen
+
 	More Enemies(Days 21-30):
 	
 		- Rats
