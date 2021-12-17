@@ -20,7 +20,7 @@ void Render();
 GLFWwindow* window;
 std::array<std::unique_ptr<TowerDefense::Scene>, 8> scenes;
 
-int currentScene, day, frameCap;
+int currentScene, nextScene, day, frameCap;
 bool running, showFPS;
 
 float sceneFade, fadeSpeed;
@@ -101,6 +101,7 @@ bool TowerDefense::Init()
         std::make_unique<PostCombatScreen>()
     };
     currentScene = 0;
+    nextScene = 0;
     day = 0;
     showFPS = true;
     sceneFade = 1.0f;
@@ -208,7 +209,18 @@ void Render()
 void Update()
 {
     scenes[currentScene]->Update();
-    if (sceneFade > 0.0f)
+
+    if (nextScene != currentScene)
+    {
+        if (sceneFade < 1.0f)
+            sceneFade += fadeSpeed;
+        else
+        {
+            currentScene = nextScene;
+            scenes[currentScene]->OnSwitch();
+        }
+    }
+    else if (sceneFade > 0.0f)
         sceneFade -= fadeSpeed;
     TowerDefense::Time::Get().Update();
 }
@@ -216,11 +228,7 @@ void Update()
 void TowerDefense::SetScene(unsigned int scene) 
 {
     if (scene < scenes.size())
-    {
-        currentScene = scene;
-        scenes[scene]->OnSwitch();
-        sceneFade = 1.0f;
-    }
+        nextScene = scene;
 }
 
 int TowerDefense::GetDay()
