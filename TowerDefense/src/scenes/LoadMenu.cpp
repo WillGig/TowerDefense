@@ -4,7 +4,9 @@
 #include "core/SaveLoad.h"
 
 TowerDefense::LoadMenu::LoadMenu()
+	:m_Title(std::make_unique<Text>("Tower Defense", 400.0f, 450.0f, 40.0f, 0.0f))
 {
+	m_Title->SetColor(0.7f, 0.7f, 0.7f, 1.0f);
 	m_Buttons =
 	{
 		std::make_unique<Button>(400.0f, 350.0f, 200, 50, "slot1"),
@@ -16,6 +18,7 @@ TowerDefense::LoadMenu::LoadMenu()
 
 void TowerDefense::LoadMenu::Render()
 {
+	m_Title->Render();
 	for (unsigned int i = 0; i < m_Buttons.size(); i++)
 		m_Buttons[i]->Render();
 }

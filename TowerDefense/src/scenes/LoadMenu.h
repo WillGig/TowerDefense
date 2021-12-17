@@ -12,5 +12,7 @@ namespace TowerDefense
 		void OnSwitch() override;
 	private:
 		std::array<std::unique_ptr<TowerDefense::Button>, 4> m_Buttons;
+
+		std::unique_ptr<Text> m_Title;
 	};
 }
