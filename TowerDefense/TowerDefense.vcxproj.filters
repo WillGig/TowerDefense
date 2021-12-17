@@ -208,6 +208,7 @@
     <ClCompile Include="src\scenes\Scene.cpp" />
     <ClCompile Include="src\core\DropDown.cpp" />
     <ClCompile Include="src\core\SaveLoad.cpp" />
+    <ClCompile Include="src\scenes\LoadMenu.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\artifacts\Artifact.h" />
@@ -308,6 +309,7 @@
     <ClInclude Include="src\scenes\Settings.h" />
     <ClInclude Include="src\core\DropDown.h" />
     <ClInclude Include="src\core\SaveLoad.h" />
+    <ClInclude Include="src\scenes\LoadMenu.h" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="res\textures\AnimationEffects.png" />

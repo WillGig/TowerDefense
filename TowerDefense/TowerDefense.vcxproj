@@ -323,6 +323,7 @@
     <ClCompile Include="src\scenes\base_scenes\Temple.cpp" />
     <ClCompile Include="src\scenes\base_scenes\Trader.cpp" />
     <ClCompile Include="src\scenes\base_scenes\WizardTower.cpp" />
+    <ClCompile Include="src\scenes\LoadMenu.cpp" />
     <ClCompile Include="src\scenes\random_events\CaveBat.cpp" />
     <ClCompile Include="src\scenes\random_events\FrogPrince.cpp" />
     <ClCompile Include="src\scenes\random_events\RandomEvent.cpp" />
@@ -498,6 +499,7 @@
     <ClInclude Include="src\scenes\base_scenes\CardSlot.h" />
     <ClInclude Include="src\scenes\base_scenes\ClickCircle.h" />
     <ClInclude Include="src\scenes\base_scenes\SkillTree.h" />
+    <ClInclude Include="src\scenes\LoadMenu.h" />
     <ClInclude Include="src\scenes\random_events\RandomEvent.h" />
     <ClInclude Include="src\scenes\Combat.h" />
     <ClInclude Include="src\scenes\CombatReward.h" />
