@@ -35,14 +35,9 @@ void TowerDefense::MainMenu::Update()
 	//Start New Game
 	if (m_Buttons[0]->IsClicked())
 	{
-		Random::Get().NewSeed();
-		ResetDay();
-		Combat::GenerateFights();
-		Base::Reset();
-		Player::Get().Reset();
-		SetScene(SceneType::BASE);
+		SetScene(SceneType::NEWGAMEMENU);
 	}
-	//Saving and Loading
+	//Load Game
 	else if (m_Buttons[1]->IsClicked())
 	{
 		SetScene(SceneType::LOADMENU);

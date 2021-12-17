@@ -19,6 +19,8 @@ std::unique_ptr<std::vector<std::shared_ptr<TowerDefense::Fight>>> TowerDefense:
 std::unique_ptr<TowerDefense::TowerInfo> TowerDefense::Combat::s_TowerInfo;
 std::unique_ptr<TowerDefense::EnemyInfo> TowerDefense::Combat::s_EnemyInfo;
 
+std::vector<int> TowerDefense::Combat::s_FightOrder;
+
 TowerDefense::Combat::Combat()
 	:m_TurnPhase(Phase::START),
 	m_StartButton(std::make_unique<Button>(76.0f, 201.0f, 96, 32, "startButton")),
@@ -519,10 +521,111 @@ void TowerDefense::Combat::OnEnemyDeath(unsigned int id)
 		s_Auras->at(i)->OnEnemyDeath(e);
 }
 
-//Create pools of difficulty for different fights and randomly select fights from the appropriate pools to fill up the s_Fights vector for the run
+//Generates a random seed of fights and sends it to the GenerateFightsFromRandomOrder function
 //Should be called once at the beginning of a run to generate the set of combats
 void TowerDefense::Combat::GenerateFights()
 {
+	std::vector<int> fightOrder(20);
+
+	std::vector<int> pool1{ 0,1,2 };
+	std::vector<int> pool2{ 0,1,2 };
+	std::vector<int> pool3{ 0,1,2 };
+	std::vector<int> pool4{ 0 };
+	std::vector<int> pool5{ 0,1,2 };
+	std::vector<int> pool6{ 0,1,2 };
+	std::vector<int> pool7{ 0,1,2 };
+	std::vector<int> pool8{ 0 };
+
+
+	int fight = (int)(Random::GetFloat() * pool1.size());
+	fightOrder[0] = pool1[fight];
+	pool1.erase(pool1.begin() + fight);
+
+	fight = (int)(Random::GetFloat() * pool1.size());
+	fightOrder[1] = pool1[fight];
+	pool1.erase(pool1.begin() + fight);
+
+	fight = (int)(Random::GetFloat() * pool1.size());
+	fightOrder[2] = pool1[fight];
+	pool1.erase(pool1.begin() + fight);
+
+	fight = (int)(Random::GetFloat() * pool2.size());
+	fightOrder[3] = pool2[fight];
+	pool2.erase(pool2.begin() + fight);
+
+	fight = (int)(Random::GetFloat() * pool2.size());
+	fightOrder[4] = pool2[fight];
+	pool2.erase(pool2.begin() + fight);
+
+	fight = (int)(Random::GetFloat() * pool2.size());
+	fightOrder[5] = pool2[fight];
+	pool2.erase(pool2.begin() + fight);
+
+	fight = (int)(Random::GetFloat() * pool3.size());
+	fightOrder[6] = pool3[fight];
+	pool3.erase(pool3.begin() + fight);
+
+	fight = (int)(Random::GetFloat() * pool3.size());
+	fightOrder[7] = pool3[fight];
+	pool3.erase(pool3.begin() + fight);
+
+	fight = (int)(Random::GetFloat() * pool3.size());
+	fightOrder[8] = pool3[fight];
+	pool3.erase(pool3.begin() + fight);
+
+	fight = (int)(Random::GetFloat() * pool4.size());
+	fightOrder[9] = pool4[fight];
+	pool4.erase(pool4.begin() + fight);
+
+	fight = (int)(Random::GetFloat() * pool5.size());
+	fightOrder[10] = pool5[fight];
+	pool5.erase(pool5.begin() + fight);
+
+	fight = (int)(Random::GetFloat() * pool5.size());
+	fightOrder[11] = pool5[fight];
+	pool5.erase(pool5.begin() + fight);
+
+	fight = (int)(Random::GetFloat() * pool5.size());
+	fightOrder[12] = pool5[fight];
+	pool5.erase(pool5.begin() + fight);
+
+	fight = (int)(Random::GetFloat() * pool6.size());
+	fightOrder[13] = pool6[fight];
+	pool6.erase(pool6.begin() + fight);
+
+	fight = (int)(Random::GetFloat() * pool6.size());
+	fightOrder[14] = pool6[fight];
+	pool6.erase(pool6.begin() + fight);
+
+	fight = (int)(Random::GetFloat() * pool6.size());
+	fightOrder[15] = pool6[fight];
+	pool6.erase(pool6.begin() + fight);
+
+	fight = (int)(Random::GetFloat() * pool7.size());
+	fightOrder[16] = pool7[fight];
+	pool7.erase(pool7.begin() + fight);
+
+	fight = (int)(Random::GetFloat() * pool7.size());
+	fightOrder[17] = pool7[fight];
+	pool7.erase(pool7.begin() + fight);
+
+	fight = (int)(Random::GetFloat() * pool7.size());
+	fightOrder[18] = pool7[fight];
+	pool7.erase(pool7.begin() + fight);
+
+	fight = (int)(Random::GetFloat() * pool8.size());
+	fightOrder[19] = pool8[fight];
+	pool8.erase(pool8.begin() + fight);
+
+	GenerateFightsFromOrder(fightOrder);
+}
+
+//Create pools of difficulty for different fights and fills up the s_Fights vector for the run according 
+//to the fightOrder array
+void TowerDefense::Combat::GenerateFightsFromOrder(std::vector<int> fightOrder)
+{
+	s_FightOrder = fightOrder;
+
 	s_CurrentFight = -1;
 	s_Fights = std::make_unique<std::vector<std::shared_ptr<TowerDefense::Fight>>>();
 
@@ -831,83 +934,24 @@ void TowerDefense::Combat::GenerateFights()
 	pool8.push_back(std::make_shared<Fight>(waves));
 
 	//determine combats from random pool
-	int fight = (int)(Random::GetFloat()* pool1.size());
-	s_Fights->push_back(pool1[fight]);
-	pool1.erase(pool1.begin() + fight);
-
-	fight = (int)(Random::GetFloat() * pool1.size());
-	s_Fights->push_back(pool1[fight]);
-	pool1.erase(pool1.begin() + fight);
-
-	fight = (int)(Random::GetFloat() * pool1.size());
-	s_Fights->push_back(pool1[fight]);
-	pool1.erase(pool1.begin() + fight);
-
-	fight = (int)(Random::GetFloat() * pool2.size());
-	s_Fights->push_back(pool2[fight]);
-	pool2.erase(pool2.begin() + fight);
-
-	fight = (int)(Random::GetFloat() * pool2.size());
-	s_Fights->push_back(pool2[fight]);
-	pool2.erase(pool2.begin() + fight);
-
-	fight = (int)(Random::GetFloat() * pool2.size());
-	s_Fights->push_back(pool2[fight]);
-	pool2.erase(pool2.begin() + fight);
-
-	fight = (int)(Random::GetFloat() * pool3.size());
-	s_Fights->push_back(pool3[fight]);
-	pool3.erase(pool3.begin() + fight);
-
-	fight = (int)(Random::GetFloat() * pool3.size());
-	s_Fights->push_back(pool3[fight]);
-	pool3.erase(pool3.begin() + fight);
-
-	fight = (int)(Random::GetFloat() * pool3.size());
-	s_Fights->push_back(pool3[fight]);
-	pool3.erase(pool3.begin() + fight);
-
-	fight = (int)(Random::GetFloat() * pool4.size());
-	s_Fights->push_back(pool4[fight]);
-	pool4.erase(pool4.begin() + fight);
-
-	fight = (int)(Random::GetFloat() * pool5.size());
-	s_Fights->push_back(pool5[fight]);
-	pool5.erase(pool5.begin() + fight);
-
-	fight = (int)(Random::GetFloat() * pool5.size());
-	s_Fights->push_back(pool5[fight]);
-	pool5.erase(pool5.begin() + fight);
-
-	fight = (int)(Random::GetFloat() * pool5.size());
-	s_Fights->push_back(pool5[fight]);
-	pool5.erase(pool5.begin() + fight);
-
-	fight = (int)(Random::GetFloat() * pool6.size());
-	s_Fights->push_back(pool6[fight]);
-	pool6.erase(pool6.begin() + fight);
-
-	fight = (int)(Random::GetFloat() * pool6.size());
-	s_Fights->push_back(pool6[fight]);
-	pool6.erase(pool6.begin() + fight);
-
-	fight = (int)(Random::GetFloat() * pool6.size());
-	s_Fights->push_back(pool6[fight]);
-	pool6.erase(pool6.begin() + fight);
-
-	fight = (int)(Random::GetFloat() * pool7.size());
-	s_Fights->push_back(pool7[fight]);
-	pool7.erase(pool7.begin() + fight);
-
-	fight = (int)(Random::GetFloat() * pool7.size());
-	s_Fights->push_back(pool7[fight]);
-	pool7.erase(pool7.begin() + fight);
-
-	fight = (int)(Random::GetFloat() * pool7.size());
-	s_Fights->push_back(pool7[fight]);
-	pool7.erase(pool7.begin() + fight);
-
-	fight = (int)(Random::GetFloat() * pool8.size());
-	s_Fights->push_back(pool8[fight]);
-	pool8.erase(pool8.begin() + fight);
+	s_Fights->push_back(pool1[fightOrder[0]]);
+	s_Fights->push_back(pool1[fightOrder[1]]);
+	s_Fights->push_back(pool1[fightOrder[2]]);
+	s_Fights->push_back(pool2[fightOrder[3]]);
+	s_Fights->push_back(pool2[fightOrder[4]]);
+	s_Fights->push_back(pool2[fightOrder[5]]);
+	s_Fights->push_back(pool3[fightOrder[6]]);
+	s_Fights->push_back(pool3[fightOrder[7]]);
+	s_Fights->push_back(pool3[fightOrder[8]]);
+	s_Fights->push_back(pool4[fightOrder[9]]);
+	s_Fights->push_back(pool5[fightOrder[10]]);
+	s_Fights->push_back(pool5[fightOrder[11]]);
+	s_Fights->push_back(pool5[fightOrder[12]]);
+	s_Fights->push_back(pool6[fightOrder[13]]);
+	s_Fights->push_back(pool6[fightOrder[14]]);
+	s_Fights->push_back(pool6[fightOrder[15]]);
+	s_Fights->push_back(pool7[fightOrder[16]]);
+	s_Fights->push_back(pool7[fightOrder[17]]);
+	s_Fights->push_back(pool7[fightOrder[18]]);
+	s_Fights->push_back(pool8[fightOrder[19]]);
 }

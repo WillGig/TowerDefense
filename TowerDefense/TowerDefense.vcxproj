@@ -197,14 +197,14 @@
     <ClCompile Include="src\artifacts\TokenOfTheMute.cpp" />
     <ClCompile Include="src\artifacts\TokenOfTheVigilant.cpp" />
     <ClCompile Include="src\artifacts\ToyDolls.cpp" />
-    <ClCompile Include="src\Auras\Aura.cpp" />
-    <ClCompile Include="src\Auras\ConstantDamage.cpp" />
-    <ClCompile Include="src\Auras\DeathExplosions.cpp" />
-    <ClCompile Include="src\Auras\EnhancePoison.cpp" />
-    <ClCompile Include="src\Auras\LifeSteal.cpp" />
-    <ClCompile Include="src\Auras\PoisonWeapons.cpp" />
-    <ClCompile Include="src\Auras\Storm.cpp" />
-    <ClCompile Include="src\Auras\StunAttacks.cpp" />
+    <ClCompile Include="src\auras\Aura.cpp" />
+    <ClCompile Include="src\auras\ConstantDamage.cpp" />
+    <ClCompile Include="src\auras\DeathExplosions.cpp" />
+    <ClCompile Include="src\auras\EnhancePoison.cpp" />
+    <ClCompile Include="src\auras\LifeSteal.cpp" />
+    <ClCompile Include="src\auras\PoisonWeapons.cpp" />
+    <ClCompile Include="src\auras\Storm.cpp" />
+    <ClCompile Include="src\auras\StunAttacks.cpp" />
     <ClCompile Include="src\cards\Attain.cpp" />
     <ClCompile Include="src\cards\curses\Frog.cpp" />
     <ClCompile Include="src\cards\curses\Hex.cpp" />
@@ -324,6 +324,7 @@
     <ClCompile Include="src\scenes\base_scenes\Trader.cpp" />
     <ClCompile Include="src\scenes\base_scenes\WizardTower.cpp" />
     <ClCompile Include="src\scenes\LoadMenu.cpp" />
+    <ClCompile Include="src\scenes\NewGameMenu.cpp" />
     <ClCompile Include="src\scenes\random_events\CaveBat.cpp" />
     <ClCompile Include="src\scenes\random_events\FrogPrince.cpp" />
     <ClCompile Include="src\scenes\random_events\RandomEvent.cpp" />
@@ -448,7 +449,7 @@
   <ItemGroup>
     <ClInclude Include="src\artifacts\Artifact.h" />
     <ClInclude Include="src\artifacts\ArtifactPile.h" />
-    <ClInclude Include="src\Auras\Aura.h" />
+    <ClInclude Include="src\auras\Aura.h" />
     <ClInclude Include="src\cards\AuraCards.h" />
     <ClInclude Include="src\cards\curses\Curses.h" />
     <ClInclude Include="src\cards\InfoTile.h" />
@@ -500,6 +501,7 @@
     <ClInclude Include="src\scenes\base_scenes\ClickCircle.h" />
     <ClInclude Include="src\scenes\base_scenes\SkillTree.h" />
     <ClInclude Include="src\scenes\LoadMenu.h" />
+    <ClInclude Include="src\scenes\NewGameMenu.h" />
     <ClInclude Include="src\scenes\random_events\RandomEvent.h" />
     <ClInclude Include="src\scenes\Combat.h" />
     <ClInclude Include="src\scenes\CombatReward.h" />

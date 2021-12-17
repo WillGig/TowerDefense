@@ -1,9 +1,9 @@
 #include "pch.h"
 #include "RandomEvent.h"
 
-std::unique_ptr<std::vector<std::shared_ptr<TowerDefense::RandomEvent>>> TowerDefense::RandomEvent::s_Events = std::make_unique<std::vector<std::shared_ptr<TowerDefense::RandomEvent>>>();
+std::shared_ptr<std::vector<std::shared_ptr<TowerDefense::RandomEvent>>> TowerDefense::RandomEvent::s_Events = std::make_shared<std::vector<std::shared_ptr<TowerDefense::RandomEvent>>>();
 
-std::shared_ptr<TowerDefense::RandomEvent> TowerDefense::RandomEvent::GetRandomCaveEvent()
+std::shared_ptr<TowerDefense::RandomEvent> TowerDefense::RandomEvent::GetRandomEvent()
 {
 
 	if (s_Events->size() == 0)

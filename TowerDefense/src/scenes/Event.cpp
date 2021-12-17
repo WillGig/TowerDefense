@@ -53,5 +53,5 @@ void TowerDefense::Event::Update()
 void TowerDefense::Event::OnSwitch()
 {
 	m_Phase = EventPhase::START;
-	m_RandomEvent = RandomEvent::GetRandomCaveEvent();
+	m_RandomEvent = RandomEvent::GetRandomEvent();
 }

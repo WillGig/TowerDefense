@@ -4,6 +4,8 @@ namespace TowerDefense
 {
 	namespace Save
 	{
+		static int SaveSlot;
+
 		void SaveSettings();
 		void SaveGame(int slot);
 	}

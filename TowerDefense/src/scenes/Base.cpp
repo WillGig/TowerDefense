@@ -3,8 +3,9 @@
 #include "TowerDefense.h"
 #include "core/Player.h"
 #include "cards/HeroCard.h"
+#include "core/SaveLoad.h"
 
-std::unique_ptr<std::vector<std::shared_ptr<TowerDefense::BaseScene>>> TowerDefense::Base::s_BaseScenes = std::make_unique<std::vector<std::shared_ptr<BaseScene>>>();
+std::shared_ptr<std::vector<std::shared_ptr<TowerDefense::BaseScene>>> TowerDefense::Base::s_BaseScenes = std::make_shared<std::vector<std::shared_ptr<BaseScene>>>();
 
 TowerDefense::Base::Base()
 	:m_CurrentMenu(-1),
@@ -68,6 +69,8 @@ void TowerDefense::Base::OnSwitch()
 		if (ready != 0)
 			s_BaseScenes->at(i)->SetActivityReady(ready - 1);
 	}
+
+	Save::SaveGame(Save::SaveSlot);
 }
 
 void TowerDefense::Base::Reset()
@@ -113,7 +116,7 @@ void TowerDefense::Base::UpdateNextDay()
 	if (m_NextDay->IsClicked())
 	{
 		NextDay();
-		if (Random::GetFloat() > 0.75f)
+		if (Random::GetFloat() > 0.25f)
 			SetScene(SceneType::PRECOMBAT);
 		else
 			SetScene(SceneType::EVENT);

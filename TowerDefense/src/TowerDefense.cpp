@@ -2,6 +2,7 @@
 #include "TowerDefense.h"
 #include "scenes/Scene.h"
 #include "scenes/MainMenu.h"
+#include "scenes/NewGameMenu.h"
 #include "scenes/LoadMenu.h"
 #include "scenes/Settings.h"
 #include "scenes/Base.h"
@@ -18,7 +19,7 @@ void Update();
 void Render();
 
 GLFWwindow* window;
-std::array<std::unique_ptr<TowerDefense::Scene>, 8> scenes;
+std::array<std::unique_ptr<TowerDefense::Scene>, 9> scenes;
 
 int currentScene, nextScene, day, frameCap;
 bool running, showFPS;
@@ -92,6 +93,7 @@ bool TowerDefense::Init()
     Scene::Init();
     scenes = {
         std::make_unique<MainMenu>(),
+        std::make_unique<NewGameMenu>(),
         std::make_unique<LoadMenu>(),
         std::make_unique<Settings>(),
         std::make_unique<Base>(),

@@ -21,6 +21,8 @@ namespace TowerDefense
 
 		static bool ContainsScene(const std::string& name);
 
+		static inline std::shared_ptr<std::vector<std::shared_ptr<BaseScene>>> GetBaseScenes() { return s_BaseScenes; }
+
 	private:
 		void UpdateActivities();
 		void UpdateNextDay();
@@ -31,6 +33,6 @@ namespace TowerDefense
 
 		std::unique_ptr<Text> m_WaitText;
 
-		static std::unique_ptr<std::vector<std::shared_ptr<BaseScene>>> s_BaseScenes;
+		static std::shared_ptr<std::vector<std::shared_ptr<BaseScene>>> s_BaseScenes;
 	};
 }

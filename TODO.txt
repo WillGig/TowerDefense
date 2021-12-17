@@ -3,10 +3,10 @@ Current:
 		- current day
 		- health, max health, energy, 
 		- gold, wood, stone, wheat, gather rates
-		- cards in deck
-		- artifacts
-		- buildings
 		- combats
+		- cards in deck
+		- artifacts (make sure to remove from pool)
+		- buildings
 		- events seen
 
 	More Enemies(Days 21-30):

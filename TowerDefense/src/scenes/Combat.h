@@ -25,6 +25,8 @@ namespace TowerDefense
 		void OnSwitch() override;
 		
 		static void GenerateFights();
+
+		static void GenerateFightsFromOrder(std::vector<int> fightOrder);
 		
 		static inline void AddEntity(std::shared_ptr<Entity> entity) { s_Adders->push_back(entity); }
 		
@@ -49,6 +51,11 @@ namespace TowerDefense
 		static inline bool DraggingEnemyInfo() { return s_EnemyInfo && s_EnemyInfo->Dragging(); }
 
 		static inline bool Paused() { return s_Paused; }
+
+		static inline std::vector<int> GetFightOrder() { return s_FightOrder; }
+
+		static inline int GetFightNumber() { return s_CurrentFight; }
+		static inline void SetFightNumber(int fight) { s_CurrentFight = fight; }
 
 		//Called at end of program to clean up memory
 		//Necessary to unbind static and singleton GLFW textures before calling glfwTerminate
@@ -98,5 +105,7 @@ namespace TowerDefense
 		static std::unique_ptr<std::vector<std::shared_ptr<Aura>>> s_Auras;
 
 		static std::unique_ptr<std::vector<std::shared_ptr<Fight>>> s_Fights;
+
+		static std::vector<int> s_FightOrder;
 	};
 }

@@ -9,8 +9,13 @@ namespace TowerDefense
 	public:
 		inline void OnSwitch() override {};
 		inline bool Exit() { return m_Exit; }
+		inline virtual const std::string GetName() = 0;
 
-		static std::shared_ptr<RandomEvent> GetRandomCaveEvent();
+		static std::shared_ptr<RandomEvent> GetRandomEvent();
+
+		static inline std::shared_ptr<std::vector<std::shared_ptr<RandomEvent>>> GetRemainingEvents() { return s_Events; }
+
+		static inline void SetRemainingEvents(std::shared_ptr<std::vector<std::shared_ptr<RandomEvent>>> e) { s_Events = e; }
 
 		static void CleanUp();
 
@@ -18,7 +23,7 @@ namespace TowerDefense
 		bool m_Exit = false;
 
 	private:
-		static std::unique_ptr<std::vector<std::shared_ptr<RandomEvent>>> s_Events;
+		static std::shared_ptr<std::vector<std::shared_ptr<RandomEvent>>> s_Events;
 	};
 
 	//Restore to full hp or +10 max hp
@@ -28,6 +33,7 @@ namespace TowerDefense
 		FountainOfYouth();
 		void Render() override;
 		void Update() override;
+		inline const std::string GetName() override { return "FountainOfYouth"; }
 	private:
 		std::unique_ptr<StaticImage> m_Image;
 		std::unique_ptr<Button> m_Button1, m_Button2;
@@ -41,6 +47,7 @@ namespace TowerDefense
 		LiterallySatan();
 		void Render() override;
 		void Update() override;
+		inline const std::string GetName() override { return "Devil"; }
 	private:
 		std::unique_ptr<StaticImage> m_Image;
 		std::unique_ptr<Button> m_Button1, m_Button2;
@@ -54,6 +61,7 @@ namespace TowerDefense
 		CaveBat();
 		void Render() override;
 		void Update() override;
+		inline const std::string GetName() override { return "CaveBat"; }
 	private:
 		std::unique_ptr<StaticImage> m_Image;
 		std::unique_ptr<Button> m_Button1, m_Button2;
@@ -68,6 +76,7 @@ namespace TowerDefense
 		TrolleyProblem();
 		void Render() override;
 		void Update() override;
+		inline const std::string GetName() override { return "Trolley"; }
 	private:
 		std::unique_ptr<StaticImage> m_Image;
 		std::unique_ptr<Button> m_Button1, m_Button2, m_Button3;
@@ -80,6 +89,7 @@ namespace TowerDefense
 		KnightsWhoSayNah();
 		void Render() override;
 		void Update() override;
+		inline const std::string GetName() override { return "KnightsWhoSayNah"; }
 
 	private:
 		std::unique_ptr<Image> m_Image;
@@ -93,6 +103,7 @@ namespace TowerDefense
 		FrogPrince();
 		void Render() override;
 		void Update() override;
+		inline const std::string GetName() override { return "FrogPrince"; }
 
 	private:
 		std::unique_ptr<StaticImage> m_Image;
@@ -106,6 +117,7 @@ namespace TowerDefense
 		Treasure();
 		void Render() override;
 		void Update() override;
+		inline const std::string GetName() override { return "Treasure"; }
 
 	private:
 		std::unique_ptr<Image> m_Image;
@@ -122,6 +134,7 @@ namespace TowerDefense
 		WanderingSage();
 		void Render() override;
 		void Update() override;
+		inline const std::string GetName() override { return "WanderingSage"; }
 
 	private:
 		std::unique_ptr<StaticImage> m_Image;
@@ -135,6 +148,7 @@ namespace TowerDefense
 		WanderingBard();
 		void Render() override;
 		void Update() override;
+		inline const std::string GetName() override { return "WanderingBard"; }
 
 	private:
 		std::unique_ptr<StaticImage> m_Image;
@@ -148,6 +162,7 @@ namespace TowerDefense
 		WanderingCleric();
 		void Render() override;
 		void Update() override;
+		inline const std::string GetName() override { return "WanderingCleric"; }
 
 	private:
 		std::unique_ptr<StaticImage> m_Image;
@@ -161,6 +176,7 @@ namespace TowerDefense
 		TheBlackKnight();
 		void Render() override;
 		void Update() override;
+		inline const std::string GetName() override { return "BlackKnight"; }
 
 	private:
 		std::unique_ptr<StaticImage> m_Image;

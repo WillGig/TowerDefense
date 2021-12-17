@@ -32,6 +32,7 @@ namespace TowerDefense
 		inline virtual void OnExplore() {}
 		inline virtual void OnEnemyHit(std::shared_ptr<Enemy::Enemy> e, std::shared_ptr<Entity> source, Tower::DamageType type) {}
 		inline virtual void OnEnemyReachedEnd(std::shared_ptr<Enemy::Enemy> e) {}
+		inline virtual std::string GetSaveData() const { return ""; }
 
 		inline const std::string& GetName() const { return m_Name; }
 
@@ -72,6 +73,7 @@ namespace TowerDefense
 	public:
 		TokenOfTheVigilant();
 		void OnCardPlay(std::shared_ptr<Card> c) override;
+		inline std::string GetSaveData() const override { return std::to_string(m_Counter) + "\n"; }
 	private:
 		int m_Counter;
 	};
@@ -138,6 +140,7 @@ namespace TowerDefense
 		ToyDolls();
 		void OnAquire() override;
 		void OnAddHouse() override;
+		inline std::string GetSaveData() const override { return std::to_string(m_NumberAdded) + "\n"; }
 	private:
 		int m_NumberAdded;
 	};
@@ -170,6 +173,7 @@ namespace TowerDefense
 		Cooler();
 		void OnFightStart() override;
 		void OnFightEnd() override;
+		inline std::string GetSaveData() const override { return std::to_string(m_EndEnergy) + "\n"; }
 	private:
 		int m_EndEnergy;
 	};
@@ -239,6 +243,7 @@ namespace TowerDefense
 	public:
 		MapToEldorado();
 		void OnExplore() override;
+		inline std::string GetSaveData() const override { return std::to_string(m_DaysRemaining) + "\n"; }
 
 	private:
 		int m_DaysRemaining;

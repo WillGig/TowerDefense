@@ -76,6 +76,7 @@ namespace TowerDefense
 		inline std::shared_ptr<Hand> GetHand() const { return m_Hand; }
 		inline std::shared_ptr<CardPile> GetDrawPile() const { return m_DrawPile; }
 		inline std::shared_ptr<CardPile> GetDiscardPile() const { return m_DiscardPile; }
+		inline std::shared_ptr<CardPile> GetDeck() const { return m_Deck; }
 
 		//Player Deck Controls
 		inline void RenderDeck() { m_Deck->RenderCards(); }
