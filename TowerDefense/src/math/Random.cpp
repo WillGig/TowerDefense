@@ -2,6 +2,7 @@
 #include "Random.h"
 
 TowerDefense::Random::Random()
+	:m_Seed(0)
 {}
 
 TowerDefense::Random& TowerDefense::Random::Get()

@@ -32,7 +32,7 @@ void TowerDefense::LoadMenu::Update()
 	for (unsigned int i = 0; i < 3; i++)
 	{
 		if (m_Buttons[i]->IsClicked())
-			Load::LoadGame(i);
+			Load::LoadGame(i+1);
 	}
 
 	//Return to MainMenu

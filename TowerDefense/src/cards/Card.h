@@ -49,6 +49,8 @@ namespace TowerDefense
 		static std::shared_ptr<Card> GetUncommonCard();
 		static std::shared_ptr<Card> GetRareCard();
 
+		static std::shared_ptr<Card> GetCardFromName(const std::string& name);
+			
 		static inline float GetUncommonChance() { return s_UncommonCardChance; }
 		static inline float GetRareChance() { return s_RareCardChance; }
 

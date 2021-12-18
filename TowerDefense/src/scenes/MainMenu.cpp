@@ -34,24 +34,16 @@ void TowerDefense::MainMenu::Update()
 
 	//Start New Game
 	if (m_Buttons[0]->IsClicked())
-	{
 		SetScene(SceneType::NEWGAMEMENU);
-	}
 	//Load Game
 	else if (m_Buttons[1]->IsClicked())
-	{
 		SetScene(SceneType::LOADMENU);
-	}
 	//Settings Menu
 	else if (m_Buttons[2]->IsClicked())
-	{
 		SetScene(SceneType::SETTINGS);
-	}
 	//Exit
 	else if (m_Buttons[3]->IsClicked())
-	{
 		Stop();
-	}
 }
 
 void TowerDefense::MainMenu::OnSwitch()

@@ -7,6 +7,11 @@ TowerDefense::TokenOfTheVigilant::TokenOfTheVigilant()
 {
 }
 
+TowerDefense::TokenOfTheVigilant::TokenOfTheVigilant(int counter)
+	: Artifact("Token Of The Vigilant"), m_Counter(counter)
+{
+}
+
 void TowerDefense::TokenOfTheVigilant::OnCardPlay(std::shared_ptr<Card> c)
 {
 	if (c->GetCardType() == CardType::SKILL)

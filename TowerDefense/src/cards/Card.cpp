@@ -141,3 +141,79 @@ std::shared_ptr<TowerDefense::Card> TowerDefense::Card::GetRareCard()
 	else
 		return std::make_shared<LightningStorm>();
 }
+
+std::shared_ptr<TowerDefense::Card> TowerDefense::Card::GetCardFromName(const std::string& name)
+{
+	if (name == "Focus")
+		return std::make_shared<Focus>(false);
+	else if (name == "Archer")
+		return std::make_shared<ArcherCard>();
+	else if (name == "Pot of Greed")
+		return std::make_shared<PotOfGreed>();
+	else if (name == "Double")
+		return std::make_shared<Double>();
+	else if (name == "Fire Ball")
+		return std::make_shared<FireBall>();
+	else if (name == "Frost Ball")
+		return std::make_shared<FrostBall>();
+	else if (name == "Poison Ball")
+		return std::make_shared<PoisonBall>();
+	else if (name == "Lightning")
+		return std::make_shared<Lightning>();
+	else if (name == "Sift")
+		return std::make_shared<Sift>();
+	else if (name == "Reflect")
+		return std::make_shared<Reflect>();
+	else if (name == "Skim")
+		return std::make_shared<Skim>();
+	else if (name == "Refresh")
+		return std::make_shared<Refresh>();
+	else if (name == "Center")
+		return std::make_shared<Center>();
+	else if (name == "Wizard")
+		return std::make_shared<WizardCard>();
+	else if (name == "Alchemist")
+		return std::make_shared<AlchemistCard>();
+	else if (name == "Bard")
+		return std::make_shared<BardCard>();
+	else if (name == "Ranger")
+		return std::make_shared<RangerCard>();
+	else if (name == "Monk")
+		return std::make_shared<MonkCard>();
+	else if (name == "Gather")
+		return std::make_shared<Gather>();
+	else if (name == "Concentrate")
+		return std::make_shared<Concentrate>();
+	else if (name == "Recharge")
+		return std::make_shared<Recharge>();
+	else if (name == "Attain")
+		return std::make_shared<Attain>();
+	else if (name == "Strong Poisons")
+		return std::make_shared<StrongPoisons>();
+	else if (name == "Envenom")
+		return std::make_shared<Envenom>();
+	else if (name == "Life Aura")
+		return std::make_shared<LifeAura>();
+	else if (name == "Stunning Strikes")
+		return std::make_shared<StunningStrikes>();
+	else if (name == "The Floor is Lava")
+		return std::make_shared<TheFloorIsLava>();
+	else if (name == "Giant")
+		return std::make_shared<GiantCard>();
+	else if (name == "Cleric")
+		return std::make_shared<ClericCard>();
+	else if (name == "Paladin")
+		return std::make_shared<PaladinCard>();
+	else if (name == "Ren")
+		return std::make_shared<Ren>();
+	else if (name == "Surge")
+		return std::make_shared<Surge>();
+	else if (name == "Mass Stun")
+		return std::make_shared<MassStun>();
+	else if (name == "Explosive Strikes")
+		return std::make_shared<ExplosiveStrikes>();
+	else if (name == "Lightning Storm")
+		return std::make_shared<LightningStorm>();
+	else
+		return nullptr;
+}

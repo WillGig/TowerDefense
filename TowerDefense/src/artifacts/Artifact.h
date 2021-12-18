@@ -72,6 +72,7 @@ namespace TowerDefense
 	{
 	public:
 		TokenOfTheVigilant();
+		TokenOfTheVigilant(int counter);
 		void OnCardPlay(std::shared_ptr<Card> c) override;
 		inline std::string GetSaveData() const override { return std::to_string(m_Counter) + "\n"; }
 	private:
@@ -138,6 +139,7 @@ namespace TowerDefense
 	{
 	public:
 		ToyDolls();
+		ToyDolls(int numAdded);
 		void OnAquire() override;
 		void OnAddHouse() override;
 		inline std::string GetSaveData() const override { return std::to_string(m_NumberAdded) + "\n"; }
@@ -171,6 +173,7 @@ namespace TowerDefense
 	{
 	public:
 		Cooler();
+		Cooler(int endEnergy);
 		void OnFightStart() override;
 		void OnFightEnd() override;
 		inline std::string GetSaveData() const override { return std::to_string(m_EndEnergy) + "\n"; }
@@ -242,6 +245,7 @@ namespace TowerDefense
 	{
 	public:
 		MapToEldorado();
+		MapToEldorado(int daysRemaining);
 		void OnExplore() override;
 		inline std::string GetSaveData() const override { return std::to_string(m_DaysRemaining) + "\n"; }
 

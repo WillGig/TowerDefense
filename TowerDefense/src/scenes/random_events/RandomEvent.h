@@ -13,9 +13,9 @@ namespace TowerDefense
 
 		static std::shared_ptr<RandomEvent> GetRandomEvent();
 
-		static inline std::shared_ptr<std::vector<std::shared_ptr<RandomEvent>>> GetRemainingEvents() { return s_Events; }
+		static std::shared_ptr<std::vector<std::shared_ptr<RandomEvent>>> GetRemainingEvents();
 
-		static inline void SetRemainingEvents(std::shared_ptr<std::vector<std::shared_ptr<RandomEvent>>> e) { s_Events = e; }
+		static void SetRemainingEvents(std::shared_ptr<std::vector<std::shared_ptr<RandomEvent>>> e);
 
 		static void CleanUp();
 

@@ -6,6 +6,10 @@ TowerDefense::ToyDolls::ToyDolls()
 	:Artifact("Toy Dolls"), m_NumberAdded(0)
 {}
 
+TowerDefense::ToyDolls::ToyDolls(int numAdded)
+	: Artifact("Toy Dolls"), m_NumberAdded(numAdded)
+{}
+
 void TowerDefense::ToyDolls::OnAquire()
 {
 	Player& player = Player::Get();

@@ -27,6 +27,16 @@ std::shared_ptr<TowerDefense::RandomEvent> TowerDefense::RandomEvent::GetRandomE
 	return e;
 }
 
+std::shared_ptr<std::vector<std::shared_ptr<TowerDefense::RandomEvent>>> TowerDefense::RandomEvent::GetRemainingEvents() 
+{ 
+	return s_Events; 
+}
+
+void TowerDefense::RandomEvent::SetRemainingEvents(std::shared_ptr<std::vector<std::shared_ptr<RandomEvent>>> e) 
+{ 
+	s_Events = e; 
+}
+
 void TowerDefense::RandomEvent::CleanUp()
 {
 	s_Events->clear();

@@ -10,7 +10,7 @@
 #include "upgrades/Upgrade.h"
 
 TowerDefense::HeroCard::HeroCard(const std::string& name, const std::string& text, int cost, const std::string& image, std::shared_ptr<Tower::Tower> tower, std::shared_ptr<std::vector<std::shared_ptr<Quirk::Quirk>>> quirks)
-	:TowerCard(name, cost, image, image), m_Level(1), m_CardText(text), m_Tower(tower), m_Quirks(quirks),
+	:TowerCard(name, cost, image, image), m_Level(1), m_CardText(text), m_TowerClass(tower->GetName()), m_Tower(tower), m_Quirks(quirks),
 	m_NameText(std::make_unique<Text>(name, 0.0f, 0.0f, 10.0f, (float)m_Width)),
 	m_BodyText(std::make_unique<Text>(text, 0.0f, 0.0f, 6.0f, (float)m_Width)),
 	m_DetailedNameText(std::make_unique<Text>(name, 400.0f, 417.0f, 20.0f, (float)m_Width*2)),

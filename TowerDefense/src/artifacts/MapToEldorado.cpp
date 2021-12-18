@@ -6,6 +6,10 @@ TowerDefense::MapToEldorado::MapToEldorado()
 	:Artifact("Map To Eldorado"), m_DaysRemaining(10)
 {}
 
+TowerDefense::MapToEldorado::MapToEldorado(int daysRemaining)
+	: Artifact("Map To Eldorado"), m_DaysRemaining(daysRemaining)
+{}
+
 void TowerDefense::MapToEldorado::OnExplore()
 {
 	m_DaysRemaining--;

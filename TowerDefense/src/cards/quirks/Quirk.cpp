@@ -29,6 +29,46 @@ std::shared_ptr<std::vector<std::shared_ptr<TowerDefense::Quirk::Quirk>>> TowerD
 	return quirks;
 }
 
+std::shared_ptr<TowerDefense::Quirk::Quirk> TowerDefense::Quirk::Quirk::GetQuirkFromName(const std::string name)
+{
+	if (name == "Human")
+		return std::make_shared<Human>();
+	else if (name == "Dwarf")
+		return std::make_shared<Dwarf>();
+	else if (name == "High Elf")
+		return std::make_shared<HighElf>();
+	else if (name == "Wood Elf")
+		return std::make_shared<WoodElf>();
+	else if (name == "Gnome")
+		return std::make_shared<Gnome>();
+	else if (name == "Orc")
+		return std::make_shared<Orc>();
+	else if (name == "Giant")
+		return std::make_shared<Giant>();
+	else if (name == "Battle Ready")
+		return std::make_shared<BattleReady>();
+	else if (name == "Explorer")
+		return std::make_shared<Explorer>();
+	else if (name == "Just Lucky")
+		return std::make_shared<JustLucky>();
+	else if (name == "Veteran")
+		return std::make_shared<Veteran>();
+	else if (name == "Farsighted")
+		return std::make_shared<Farsighted>();
+	else if (name == "Spellweaver")
+		return std::make_shared<Spellweaver>();
+	else if (name == "Fighter")
+		return std::make_shared<Fighter>();
+	else if (name == "Sage")
+		return std::make_shared<Sage>();
+	else if (name == "Berserker")
+		return std::make_shared<Berserker>();
+	else if (name == "Nearsighted")
+		return std::make_shared<Nearsighted>();
+	else
+		return nullptr;
+}
+
 //Returns random quirk of specified type that is not already included in the exclude vector
 //The racial quirk is not checked for exclusion, because there should never be two racial quirks on the same hero
 std::shared_ptr<TowerDefense::Quirk::Quirk> TowerDefense::Quirk::Quirk::GetRandomQuirk(QuirkType type, std::shared_ptr<std::vector<std::shared_ptr<Quirk>>> exclude)

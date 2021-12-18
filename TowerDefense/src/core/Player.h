@@ -38,8 +38,12 @@ namespace TowerDefense
 		int GetWorkers(Resource res) const;
 		void AddWorker(Resource res);
 		void RemoveWorker(Resource res);
+		//Only to be used for loading. All workers should be added via AddWorker
+		void SetNumWorkers(int num, Resource res);
 
 		inline int GetNumHouses() const { return m_NumberOfHouses; }
+		//Only to be used for loading. All houses should be added via AddHouse
+		inline void SetNumHouses(int numHouses) { m_NumberOfHouses = numHouses; }
 		inline void AddHouse() { m_NumberOfHouses++; m_MaxPopulation += 10; Player::Get().ArtifactOnAddHouse(); }
 
 		inline int GetHealth() const { return m_Health; }
@@ -88,6 +92,7 @@ namespace TowerDefense
 		int GetCardIndex(std::shared_ptr<Card> c);
 		void AddToDeck(std::shared_ptr<Card> c);
 		void RemoveFromDeck(int index);
+		inline void ClearDeck() { m_Deck->Clear(); }
 
 		void AddToDrawPile(std::shared_ptr<Card> c);
 		void AddToDiscardPile(std::shared_ptr<Card> c);
@@ -95,10 +100,12 @@ namespace TowerDefense
 		//Player Artifact Controls
 		inline bool ArtifactsShowing() { return m_Artifacts->IsShowing(); };
 		inline std::shared_ptr<Artifact> GetSelectedArtifact() { return m_Artifacts->GetSelectedArtifact(); };
+		void AddArtifactWithoutTrigger(std::shared_ptr<Artifact> a);
 		void AddToArtifacts(std::shared_ptr<Artifact> a);
 		void RemoveFromArtifacts(int index);
 		void RemoveFromArtifacts(const std::string name);
 		inline bool HasArtifact(const std::string& name) { return m_Artifacts->HasArtifact(name); };
+		inline void ClearArtifacts() { m_Artifacts->Clear(); }
 
 		//Prefered method of Rendering and updating deck and artifact buttons and piles in most menus
 		void RenderDeckAndArtifacts();
@@ -119,6 +126,7 @@ namespace TowerDefense
 
 		inline std::shared_ptr<std::vector<std::unique_ptr<SideboardSlot>>> GetSideBoardSlots() const { return m_SideBoardSlots; }
 		void AddSideBoardSlot();
+		void ClearSideBoardSlots();
 
 		//Called at end of program to clean up memory
 		//Necessary to unbind static and singleton GLFW textures before calling glfwTerminate

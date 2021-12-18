@@ -238,6 +238,16 @@ void TowerDefense::Player::RemoveWorker(Resource res)
         m_Farmers--;
 }
 
+void TowerDefense::Player::SetNumWorkers(int num, Resource res)
+{
+    if (res == Resource::WOOD)
+        m_LumberJacks = num;
+    else if (res == Resource::STONE)
+        m_Miners = num;
+    else if (res == Resource::WHEAT)
+        m_Farmers = num;
+}
+
 void TowerDefense::Player::SetHealth(int health)
 {
     m_Health = health;
@@ -437,6 +447,10 @@ int TowerDefense::Player::GetCardIndex(std::shared_ptr<Card> c)
     return -1;
 }
 
+void TowerDefense::Player::AddArtifactWithoutTrigger(std::shared_ptr<Artifact> a)
+{
+    m_Artifacts->AddArtifact(a);
+}
 
 void TowerDefense::Player::AddToArtifacts(std::shared_ptr<Artifact> a)
 {
@@ -533,4 +547,9 @@ void TowerDefense::Player::AddSideBoardSlot()
     m_SideBoardSlots->at(m_SideBoardSlots->size()-1)->SetY(190.0f);
     for (unsigned int i = 0; i < m_SideBoardSlots->size(); i++)
         m_SideBoardSlots->at(i)->SetX(400.0f + (i - (m_SideBoardSlots->size() - 1) / 2.0f) * 100.0f);
+}
+
+void TowerDefense::Player::ClearSideBoardSlots()
+{
+    m_SideBoardSlots->clear();
 }

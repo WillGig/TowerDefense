@@ -5,6 +5,8 @@
 #include "cards/HeroCard.h"
 #include "core/SaveLoad.h"
 
+int TowerDefense::Base::SaveSlot;
+
 std::shared_ptr<std::vector<std::shared_ptr<TowerDefense::BaseScene>>> TowerDefense::Base::s_BaseScenes = std::make_shared<std::vector<std::shared_ptr<BaseScene>>>();
 
 TowerDefense::Base::Base()
@@ -63,14 +65,14 @@ void TowerDefense::Base::Update()
 
 void TowerDefense::Base::OnSwitch()
 {
+	Save::SaveGame(SaveSlot);
+
 	for (unsigned int i = 0; i < s_BaseScenes->size(); i++)
 	{
 		int ready = s_BaseScenes->at(i)->GetActivityReady();
 		if (ready != 0)
 			s_BaseScenes->at(i)->SetActivityReady(ready - 1);
 	}
-
-	Save::SaveGame(Save::SaveSlot);
 }
 
 void TowerDefense::Base::Reset()

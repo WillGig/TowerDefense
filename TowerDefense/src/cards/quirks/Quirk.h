@@ -22,6 +22,8 @@ namespace TowerDefense
 
 			static std::shared_ptr<std::vector<std::shared_ptr<Quirk>>> GenerateQuirks();
 
+			static std::shared_ptr<Quirk> GetQuirkFromName(const std::string name);
+
 		private:
 			std::string m_Name;
 

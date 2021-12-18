@@ -16,7 +16,11 @@ namespace TowerDefense
 
 		inline const std::mt19937& GetState() const { return m_Generator; }
 
+		inline void SetState(std::mt19937 gen) { m_Generator = gen; }
+
 		inline const std::uniform_real_distribution<float>& GetDistState() const { return m_Distribution; }
+
+		inline void SetDistribution(std::uniform_real_distribution<float> dist) { m_Distribution = dist; }
 
 		static Random& Get();
 

@@ -41,7 +41,7 @@ void TowerDefense::NewGameMenu::Update()
 			Combat::GenerateFights();
 			Base::Reset();
 			Player::Get().Reset();
-			Save::SaveSlot = i+1;
+			Base::SaveSlot = i+1;
 			SetScene(SceneType::BASE);
 		}
 	}

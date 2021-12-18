@@ -11,6 +11,8 @@ namespace TowerDefense
 	void SetScene(unsigned int scene);
 	
 	int GetDay();
+	//For loading purposes. For all other purposes use NextDay
+	void SetDay(int d);
 	void NextDay();
 	void ResetDay();
 

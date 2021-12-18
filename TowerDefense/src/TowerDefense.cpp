@@ -238,6 +238,11 @@ int TowerDefense::GetDay()
     return day;
 }
 
+void TowerDefense::SetDay(int d)
+{
+    day = d;
+}
+
 void TowerDefense::NextDay()
 {
     day++;

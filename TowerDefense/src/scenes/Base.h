@@ -18,10 +18,13 @@ namespace TowerDefense
 		static void CleanUp();
 
 		static void AddBaseScene(std::shared_ptr<BaseScene> scene);
+		static inline void ClearBaseScenes() { s_BaseScenes->clear(); }
 
 		static bool ContainsScene(const std::string& name);
 
 		static inline std::shared_ptr<std::vector<std::shared_ptr<BaseScene>>> GetBaseScenes() { return s_BaseScenes; }
+
+		static int SaveSlot;
 
 	private:
 		void UpdateActivities();
