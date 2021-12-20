@@ -13,6 +13,6 @@ namespace TowerDefense
 	private:
 		std::array<std::unique_ptr<TowerDefense::Button>, 4> m_Buttons;
 
-		std::unique_ptr<Text> m_Title;
+		std::unique_ptr<Text> m_Title, m_Save1Info, m_Save2Info, m_Save3Info;
 	};
 }

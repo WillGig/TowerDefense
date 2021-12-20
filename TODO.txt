@@ -1,4 +1,11 @@
 Current:
+
+	In game settings menu
+
+	Game Over sends back to menu and deletes save file
+
+	pop up to overwrite save file (show data of save file?)
+
 	More Enemies(Days 21-30):
 	
 		- Rats
