@@ -3,6 +3,7 @@
 #include "TowerDefense.h"
 #include "core/Player.h"
 #include "scenes/Combat.h"
+#include "scenes/Base.h"
 
 TowerDefense::PostCombatScreen::PostCombatScreen()
 	:m_FocusedReward(-1), m_Defeated(false),
@@ -88,7 +89,12 @@ void TowerDefense::PostCombatScreen::Update()
 			{
 				m_BackToMenu->Update();
 				if (m_BackToMenu->IsClicked())
+				{
 					TowerDefense::SetScene(SceneType::MAINMENU);
+					std::string file = "res/saves/save" + std::to_string(Base::SaveSlot) + ".dat";
+					if (std::remove(file.c_str()) != 0)
+						std::cout << "Error deleting save file";
+				}
 			}
 			else
 			{
