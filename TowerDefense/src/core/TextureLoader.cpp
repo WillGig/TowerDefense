@@ -169,14 +169,16 @@ void TowerDefense::LoadTextures()
     Texture::LoadTexture("spinButtonSelected",      tradeButtons.load(1, 3));
 
     SpriteSheet statIcons("res/textures/Stats.png", 64, 64);
-    Texture::LoadTexture("healthIcon",  statIcons.load(0, 0));
-    Texture::LoadTexture("goldIcon",    statIcons.load(1, 0));
-    Texture::LoadTexture("energyIcon",  statIcons.load(2, 0));
-    Texture::LoadTexture("woodIcon",    statIcons.load(3, 0));
-    Texture::LoadTexture("stoneIcon",   statIcons.load(4, 0));
-    Texture::LoadTexture("wheatIcon",   statIcons.load(5, 0));
-    Texture::LoadTexture("workerIcon",  statIcons.load(6, 0));
-    Texture::LoadTexture("houseIcon",   statIcons.load(0, 1));
+    Texture::LoadTexture("healthIcon",              statIcons.load(0, 0));
+    Texture::LoadTexture("goldIcon",                statIcons.load(1, 0));
+    Texture::LoadTexture("energyIcon",              statIcons.load(2, 0));
+    Texture::LoadTexture("woodIcon",                statIcons.load(3, 0));
+    Texture::LoadTexture("stoneIcon",               statIcons.load(4, 0));
+    Texture::LoadTexture("wheatIcon",               statIcons.load(5, 0));
+    Texture::LoadTexture("workerIcon",              statIcons.load(6, 0));
+    Texture::LoadTexture("houseIcon",               statIcons.load(0, 1));
+    Texture::LoadTexture("settingsIcon",            statIcons.load(1, 1));
+    Texture::LoadTexture("settingsIconSelected",    statIcons.load(2, 1));
 
     SpriteSheet auras("res/textures/auras.png", 64, 64);
     Texture::LoadTexture("lifeSteal",       auras.load(0, 0));

@@ -12,6 +12,7 @@ std::shared_ptr<std::vector<std::shared_ptr<TowerDefense::BaseScene>>> TowerDefe
 TowerDefense::Base::Base()
 	:m_CurrentMenu(-1),
 	m_NextDay(std::make_unique<Button>(600.0f, 175.0f, 180, 50, "nextDayButton")),
+	m_Settings(std::make_unique<Button>(770.0f, 575.0f, 32, 32, "settingsIcon")),
 	m_WaitText(std::make_unique<Text>("Available Again Tomorrow!", 400.0f, 235.0f, 12.0f, 0.0f))
 {
 	m_WaitText->SetColor(1.0f, 1.0f, 1.0f, 1.0f);
@@ -35,6 +36,7 @@ void TowerDefense::Base::Render()
 			}
 		}
 		m_NextDay->Render();
+		m_Settings->Render();
 		player.RenderStats();
 		player.RenderDeckAndArtifacts();
 	}
@@ -46,6 +48,12 @@ void TowerDefense::Base::Update()
 {
 	if (m_CurrentMenu == -1)
 	{
+		m_Settings->Update();
+		if (m_Settings->IsClicked())
+		{
+			//settings menu
+		}
+
 		Player& player = Player::Get();
 		player.UpdateDeckAndArtifacts();
 

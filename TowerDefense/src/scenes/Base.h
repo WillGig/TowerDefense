@@ -32,7 +32,7 @@ namespace TowerDefense
 
 		int m_CurrentMenu;
 
-		std::unique_ptr<Button> m_NextDay;
+		std::unique_ptr<Button> m_NextDay, m_Settings;
 
 		std::unique_ptr<Text> m_WaitText;
 
