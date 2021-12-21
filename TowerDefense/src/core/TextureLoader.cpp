@@ -33,7 +33,10 @@ void TowerDefense::LoadTextures()
     Texture::LoadTexture("slotFullSelected",        mainMenuButtons.load(3, 3));
     Texture::LoadTexture("slotEmpty",               mainMenuButtons.load(2, 4));
     Texture::LoadTexture("slotEmptySelected",       mainMenuButtons.load(3, 4));
-
+    Texture::LoadTexture("menuConfirm",             mainMenuButtons.load(2, 5));
+    Texture::LoadTexture("menuConfirmSelected",     mainMenuButtons.load(3, 5));
+    Texture::LoadTexture("menuCancel",              mainMenuButtons.load(2, 6));
+    Texture::LoadTexture("menuCancelSelected",      mainMenuButtons.load(3, 6));
 
     SpriteSheet baseButtons("res/textures/BaseButtons.png", 180, 50);
     Texture::LoadTexture("confirmButton",               baseButtons.load(0, 0));
