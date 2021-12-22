@@ -8,6 +8,7 @@
 #include "towers/TowerInfo.h"
 #include "enemies/EnemyInfo.h"
 #include "Auras/Aura.h"
+#include "InGameSettings.h"
 
 namespace TowerDefense
 {
@@ -92,9 +93,11 @@ namespace TowerDefense
 
 		static int s_CurrentFight;
 		Phase m_TurnPhase;
-		std::unique_ptr<Button> m_StartButton, m_SpeedButton;
+		std::unique_ptr<Button> m_StartButton, m_SpeedButton, m_Settings;
 		std::shared_ptr<Tower::Tower> m_SelectedTower;
 		std::shared_ptr<Enemy::Enemy> m_SelectedEnemy;
+
+		std::unique_ptr<InGameSettings> m_SettingsMenu;
 
 		static std::unique_ptr<TowerInfo> s_TowerInfo;
 		static std::unique_ptr<EnemyInfo> s_EnemyInfo;

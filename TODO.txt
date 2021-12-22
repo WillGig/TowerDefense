@@ -1,5 +1,5 @@
 Current:
-	-In game settings menu
+	-Test settings menu on all screens
 
 	-More Enemies(Days 21-30):
 	

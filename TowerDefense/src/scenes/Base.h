@@ -4,6 +4,7 @@
 #include "cards/Card.h"
 #include "cards/CardChoice.h"
 #include "base_scenes/BaseScene.h"
+#include "InGameSettings.h"
 
 namespace TowerDefense
 {
@@ -35,6 +36,8 @@ namespace TowerDefense
 		std::unique_ptr<Button> m_NextDay, m_Settings;
 
 		std::unique_ptr<Text> m_WaitText;
+
+		std::unique_ptr<InGameSettings> m_SettingsMenu;
 
 		static std::shared_ptr<std::vector<std::shared_ptr<BaseScene>>> s_BaseScenes;
 	};

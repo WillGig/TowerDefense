@@ -1,6 +1,7 @@
 #pragma once
 #include "Scene.h"
 #include "random_events/RandomEvent.h"
+#include "InGameSettings.h"
 
 namespace TowerDefense
 {
@@ -20,7 +21,9 @@ namespace TowerDefense
 
 		std::unique_ptr<Text> m_EventText, m_EventQuestionMark;
 
-		std::unique_ptr<Button> m_Continue;
+		std::unique_ptr<Button> m_Continue, m_Settings;
+
+		std::unique_ptr<InGameSettings> m_SettingsMenu;
 
 		std::shared_ptr<RandomEvent> m_RandomEvent;
 	};

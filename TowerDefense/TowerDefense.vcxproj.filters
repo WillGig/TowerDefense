@@ -210,6 +210,7 @@
     <ClCompile Include="src\core\SaveLoad.cpp" />
     <ClCompile Include="src\scenes\LoadMenu.cpp" />
     <ClCompile Include="src\scenes\NewGameMenu.cpp" />
+    <ClCompile Include="src\scenes\InGameSettings.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\artifacts\Artifact.h" />
@@ -312,6 +313,7 @@
     <ClInclude Include="src\core\SaveLoad.h" />
     <ClInclude Include="src\scenes\LoadMenu.h" />
     <ClInclude Include="src\scenes\NewGameMenu.h" />
+    <ClInclude Include="src\scenes\InGameSettings.h" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="res\textures\AnimationEffects.png" />

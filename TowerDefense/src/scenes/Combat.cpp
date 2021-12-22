@@ -24,7 +24,9 @@ std::vector<int> TowerDefense::Combat::s_FightOrder;
 TowerDefense::Combat::Combat()
 	:m_TurnPhase(Phase::START),
 	m_StartButton(std::make_unique<Button>(76.0f, 201.0f, 96, 32, "startButton")),
-	m_SpeedButton(std::make_unique<Button>(76.0f, 159.0f, 96, 32, "speed1"))
+	m_SpeedButton(std::make_unique<Button>(76.0f, 159.0f, 96, 32, "speed1")),
+	m_Settings(std::make_unique<Button>(770.0f, 575.0f, 32, 32, "settingsIcon")),
+	m_SettingsMenu(std::make_unique<InGameSettings>())
 {
 }
 
@@ -57,6 +59,8 @@ void TowerDefense::Combat::Render()
 		player.RenderStats();
 		player.RenderDeckAndArtifacts();
 	}
+
+	m_Settings->Render();
 		
 	//Render Tower Information
 	if (s_TowerInfo)
@@ -74,15 +78,25 @@ void TowerDefense::Combat::Render()
 		player.RenderStats();
 		player.RenderDeckAndArtifacts();
 	}
+
+	//Settings Menu
+	if (m_SettingsMenu->IsShowing())
+		m_SettingsMenu->Render();
 }
 
 void TowerDefense::Combat::Update()
 {
+	if (m_SettingsMenu->IsShowing())
+	{
+		m_SettingsMenu->Update();
+		return;
+	}
+
 	Board::Get().Update();
 
-	UpdateCards();
-
 	UpdateWave();
+
+	UpdateCards();
 
 	Player& player = Player::Get();
 	bool deckShow = player.DeckShowing();
@@ -119,6 +133,8 @@ void TowerDefense::Combat::Update()
 
 void TowerDefense::Combat::OnSwitch()
 {
+	m_SettingsMenu->Show(false);
+
 	//Change Background Color
 	Renderer::Get().Clear(237.0f / 255.0f, 225.0f / 255.0f, 190.0f / 255.0f, 1.0f);
 
@@ -236,6 +252,14 @@ void TowerDefense::Combat::UpdateCards()
 		player.GetDrawPile()->Update();
 	if (!cardSelected && !deckShow && !drawShow && !artifactsShow && !draggingInfo)
 		player.GetDiscardPile()->Update();
+	if (!deckShow && !drawShow && !discardShow && !artifactsShow && !draggingInfo)
+	{
+		m_Settings->Update();
+		if (m_Settings->IsClicked())
+		{
+			m_SettingsMenu->Show(true);
+		}
+	}
 	if (!s_Paused && !deckShow && !drawShow && !artifactsShow && !discardShow && !draggingInfo)
 		player.GetHand()->Update();
 }

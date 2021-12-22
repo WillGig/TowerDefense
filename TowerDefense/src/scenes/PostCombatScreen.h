@@ -1,6 +1,7 @@
 #pragma once
 #include "Scene.h"
 #include "CombatReward.h"
+#include "InGameSettings.h"
 
 namespace TowerDefense
 {
@@ -17,7 +18,8 @@ namespace TowerDefense
 
 		int m_FocusedReward;
 		bool m_Defeated;
-		std::unique_ptr<Button> m_BackToCamp, m_BackToMenu;
+		std::unique_ptr<Button> m_BackToCamp, m_BackToMenu, m_Settings;
+		std::unique_ptr<InGameSettings> m_SettingsMenu;
 		std::unique_ptr<std::vector<std::shared_ptr<CombatReward>>> m_Rewards;
 		std::unique_ptr<Text> m_VictoryText, m_DefeatedStats, m_DefeatedNumbers, 
 			m_EscapedStats, m_EscapedNumbers, m_DamageDealt, m_DamageNumbers, m_GameOverStats, m_GameOverNumbers;
