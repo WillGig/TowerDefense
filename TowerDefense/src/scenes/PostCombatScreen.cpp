@@ -8,8 +8,6 @@ TowerDefense::PostCombatScreen::PostCombatScreen()
 	:m_FocusedReward(-1), m_Defeated(false),
 	m_BackToCamp(std::make_unique<Button>(400.0f, 100.0f, 180, 50, "returnToCampButton")),
 	m_BackToMenu(std::make_unique<Button>(400.0f, 100.0f, 180, 50, "backToMenuButton")),
-	m_Settings(std::make_unique<Button>(770.0f, 575.0f, 32, 32, "settingsIcon")),
-	m_SettingsMenu(std::make_unique<InGameSettings>()),
 	m_Rewards(std::make_unique<std::vector<std::shared_ptr<CombatReward>>>()),
 	m_VictoryText(std::make_unique<Text>("VICTORY", 400.0f, 510.0f, 36.0f, 0.0f)),
 	m_DamageDealt(std::make_unique<Text>("Damage Dealt:\n\nTowers:\nSkills\nAuras\nArtifacts", 610.0f, 370.0f, 12.0f, 0.0f))
@@ -22,7 +20,7 @@ void TowerDefense::PostCombatScreen::Render()
 {
 	Player& player = Player::Get();
 	player.RenderStats();
-	m_Settings->Render();
+	InGameSettings::Get().RenderButton();
 
 	m_VictoryText->Render();
 	m_DefeatedStats->Render();
@@ -53,15 +51,15 @@ void TowerDefense::PostCombatScreen::Render()
 	if(m_FocusedReward == -1 || !m_Rewards->at(m_FocusedReward)->ShowingInfo())
 		player.RenderDeckAndArtifacts();
 
-	if (m_SettingsMenu->IsShowing())
-		m_SettingsMenu->Render();
+	if (InGameSettings::Get().IsShowing())
+		InGameSettings::Get().Render();
 }
 
 void TowerDefense::PostCombatScreen::Update()
 {
-	if (m_SettingsMenu->IsShowing())
+	if (InGameSettings::Get().IsShowing())
 	{
-		m_SettingsMenu->Update();
+		InGameSettings::Get().Update();
 		return;
 	}
 
@@ -83,9 +81,8 @@ void TowerDefense::PostCombatScreen::Update()
 
 	if (!player.DeckShowing() && !player.ArtifactsShowing())
 	{
-		m_Settings->Update();
-		if (m_Settings->IsClicked())
-			m_SettingsMenu->Show(true);
+		if (!showingRewardInfo)
+			InGameSettings::Get().UpdateButton();
 
 		if (m_FocusedReward == -1)
 		{
@@ -121,7 +118,7 @@ void TowerDefense::PostCombatScreen::Update()
 
 void TowerDefense::PostCombatScreen::OnSwitch()
 {
-	m_SettingsMenu->Show(false);
+	InGameSettings::Get().Show(false);
 	Player& player = Player::Get();
 	Renderer::Get().Clear(0.0f, 0.0f, 0.0f, 1.0f);
 	player.SetTextColor(1.0f, 1.0f, 1.0f, 1.0f);

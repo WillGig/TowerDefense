@@ -1,6 +1,4 @@
 Current:
-	-Test settings menu on all screens
-
 	-More Enemies(Days 21-30):
 	
 		- Rats

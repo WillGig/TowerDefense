@@ -12,8 +12,6 @@ std::shared_ptr<std::vector<std::shared_ptr<TowerDefense::BaseScene>>> TowerDefe
 TowerDefense::Base::Base()
 	:m_CurrentMenu(-1),
 	m_NextDay(std::make_unique<Button>(600.0f, 175.0f, 180, 50, "nextDayButton")),
-	m_Settings(std::make_unique<Button>(770.0f, 575.0f, 32, 32, "settingsIcon")),
-	m_SettingsMenu(std::make_unique<InGameSettings>()),
 	m_WaitText(std::make_unique<Text>("Available Again Tomorrow!", 400.0f, 235.0f, 12.0f, 0.0f))
 {
 	m_WaitText->SetColor(1.0f, 1.0f, 1.0f, 1.0f);
@@ -37,11 +35,11 @@ void TowerDefense::Base::Render()
 			}
 		}
 		m_NextDay->Render();
-		m_Settings->Render();
+		InGameSettings::Get().RenderButton();
 		player.RenderStats();
 		player.RenderDeckAndArtifacts();
-		if (m_SettingsMenu->IsShowing())
-			m_SettingsMenu->Render();
+		if (InGameSettings::Get().IsShowing())
+			InGameSettings::Get().Render();
 	}
 	else
 		s_BaseScenes->at(m_CurrentMenu)->Render();
@@ -51,9 +49,9 @@ void TowerDefense::Base::Update()
 {
 	if (m_CurrentMenu == -1)
 	{
-		if (m_SettingsMenu->IsShowing())
+		if (InGameSettings::Get().IsShowing())
 		{
-			m_SettingsMenu->Update();
+			InGameSettings::Get().Update();
 			return;
 		}
 
@@ -62,9 +60,7 @@ void TowerDefense::Base::Update()
 
 		if (!player.DeckShowing() && !player.ArtifactsShowing())
 		{
-			m_Settings->Update();
-			if (m_Settings->IsClicked())
-				m_SettingsMenu->Show(true);
+			InGameSettings::Get().UpdateButton();
 			UpdateActivities();
 			UpdateNextDay();
 		}
@@ -83,7 +79,7 @@ void TowerDefense::Base::OnSwitch()
 
 	Save::SaveGame(SaveSlot);
 
-	m_SettingsMenu->Show(false);
+	InGameSettings::Get().Show(false);
 
 	for (unsigned int i = 0; i < s_BaseScenes->size(); i++)
 	{

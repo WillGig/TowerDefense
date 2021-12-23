@@ -21,9 +21,7 @@ namespace TowerDefense
 
 		std::unique_ptr<Text> m_EventText, m_EventQuestionMark;
 
-		std::unique_ptr<Button> m_Continue, m_Settings;
-
-		std::unique_ptr<InGameSettings> m_SettingsMenu;
+		std::unique_ptr<Button> m_Continue;
 
 		std::shared_ptr<RandomEvent> m_RandomEvent;
 	};

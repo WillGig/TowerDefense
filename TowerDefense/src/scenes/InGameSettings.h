@@ -6,7 +6,6 @@ namespace TowerDefense
 	class InGameSettings : public Scene
 	{
 	public:
-		InGameSettings();
 		void Render() override;
 		void Update() override;
 		void OnSwitch() override;
@@ -14,11 +13,21 @@ namespace TowerDefense
 		inline const bool IsShowing() { return m_Showing; }
 		inline void Show(bool show) { m_Showing = show; OnSwitch(); }
 
+		inline void RenderButton() { m_SettingsButton->Render(); }
+		void UpdateButton();
+
+		void CleanUp();
+
+		static InGameSettings& Get();
+
 	private:
+		InGameSettings();
+
 		bool m_Showing;
 
 		std::unique_ptr<Rectangle> m_Background;
 
-		std::unique_ptr<Button> m_Close, m_MainMenu;
+		std::shared_ptr<Button> m_SettingsButton;
+		std::unique_ptr<Button> m_MainMenu;
 	};
 }

@@ -33,11 +33,9 @@ namespace TowerDefense
 
 		int m_CurrentMenu;
 
-		std::unique_ptr<Button> m_NextDay, m_Settings;
+		std::unique_ptr<Button> m_NextDay;
 
 		std::unique_ptr<Text> m_WaitText;
-
-		std::unique_ptr<InGameSettings> m_SettingsMenu;
 
 		static std::shared_ptr<std::vector<std::shared_ptr<BaseScene>>> s_BaseScenes;
 	};

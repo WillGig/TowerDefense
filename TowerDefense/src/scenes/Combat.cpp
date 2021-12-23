@@ -24,9 +24,7 @@ std::vector<int> TowerDefense::Combat::s_FightOrder;
 TowerDefense::Combat::Combat()
 	:m_TurnPhase(Phase::START),
 	m_StartButton(std::make_unique<Button>(76.0f, 201.0f, 96, 32, "startButton")),
-	m_SpeedButton(std::make_unique<Button>(76.0f, 159.0f, 96, 32, "speed1")),
-	m_Settings(std::make_unique<Button>(770.0f, 575.0f, 32, 32, "settingsIcon")),
-	m_SettingsMenu(std::make_unique<InGameSettings>())
+	m_SpeedButton(std::make_unique<Button>(76.0f, 159.0f, 96, 32, "speed1"))
 {
 }
 
@@ -60,7 +58,7 @@ void TowerDefense::Combat::Render()
 		player.RenderDeckAndArtifacts();
 	}
 
-	m_Settings->Render();
+	InGameSettings::Get().RenderButton();
 		
 	//Render Tower Information
 	if (s_TowerInfo)
@@ -80,15 +78,15 @@ void TowerDefense::Combat::Render()
 	}
 
 	//Settings Menu
-	if (m_SettingsMenu->IsShowing())
-		m_SettingsMenu->Render();
+	if (InGameSettings::Get().IsShowing())
+		InGameSettings::Get().Render();
 }
 
 void TowerDefense::Combat::Update()
 {
-	if (m_SettingsMenu->IsShowing())
+	if (InGameSettings::Get().IsShowing())
 	{
-		m_SettingsMenu->Update();
+		InGameSettings::Get().Update();
 		return;
 	}
 
@@ -133,7 +131,7 @@ void TowerDefense::Combat::Update()
 
 void TowerDefense::Combat::OnSwitch()
 {
-	m_SettingsMenu->Show(false);
+	InGameSettings::Get().Show(false);
 
 	//Change Background Color
 	Renderer::Get().Clear(237.0f / 255.0f, 225.0f / 255.0f, 190.0f / 255.0f, 1.0f);
@@ -252,13 +250,9 @@ void TowerDefense::Combat::UpdateCards()
 		player.GetDrawPile()->Update();
 	if (!cardSelected && !deckShow && !drawShow && !artifactsShow && !draggingInfo)
 		player.GetDiscardPile()->Update();
-	if (!deckShow && !drawShow && !discardShow && !artifactsShow && !draggingInfo)
+	if (!cardSelected && !deckShow && !drawShow && !discardShow && !artifactsShow && !draggingInfo)
 	{
-		m_Settings->Update();
-		if (m_Settings->IsClicked())
-		{
-			m_SettingsMenu->Show(true);
-		}
+		InGameSettings::Get().UpdateButton();
 	}
 	if (!s_Paused && !deckShow && !drawShow && !artifactsShow && !discardShow && !draggingInfo)
 		player.GetHand()->Update();

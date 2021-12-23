@@ -7,9 +7,7 @@
 
 TowerDefense::PreCombatScreen::PreCombatScreen()
 	:m_CurrentCardSlot(-1), m_BeginCombat(std::make_unique<Button>(400.0f, 100.0f, 180, 50, "beginCombatButton")),
-	m_IncomingText(std::make_unique<Text>("Enemies Incoming!", 400.0f, 450.0f, 36.0f, 0.0f)),
-	m_Settings(std::make_unique<Button>(770.0f, 575.0f, 32, 32, "settingsIcon")),
-	m_SettingsMenu(std::make_unique<InGameSettings>())
+	m_IncomingText(std::make_unique<Text>("Enemies Incoming!", 400.0f, 450.0f, 36.0f, 0.0f))
 {
 	m_IncomingText->SetColor(1.0f, 1.0f, 1.0f, 1.0f);
 }
@@ -29,7 +27,7 @@ void TowerDefense::PreCombatScreen::Render()
 		m_BeginCombat->Render();
 
 		player.RenderStats();
-		m_Settings->Render();
+		InGameSettings::Get().RenderButton();
 
 		for (unsigned int i = 0; i < m_Enemies.size(); i++)
 			m_Enemies[i]->Render();
@@ -40,16 +38,16 @@ void TowerDefense::PreCombatScreen::Render()
 
 		player.RenderDeckAndArtifacts();
 
-		if (m_SettingsMenu->IsShowing())
-			m_SettingsMenu->Render();
+		if (InGameSettings::Get().IsShowing())
+			InGameSettings::Get().Render();
 	}
 }
 
 void TowerDefense::PreCombatScreen::Update()
 {
-	if (m_SettingsMenu->IsShowing())
+	if (InGameSettings::Get().IsShowing())
 	{
-		m_SettingsMenu->Update();
+		InGameSettings::Get().Update();
 		return;
 	}
 
@@ -69,9 +67,7 @@ void TowerDefense::PreCombatScreen::Update()
 		if (!player.DeckShowing() && !player.ArtifactsShowing())
 		{
 
-			m_Settings->Update();
-			if (m_Settings->IsClicked())
-				m_SettingsMenu->Show(true);
+			InGameSettings::Get().UpdateButton();
 
 			for (unsigned int i = 0; i < sideboardSlots->size(); i++)
 			{
@@ -89,7 +85,7 @@ void TowerDefense::PreCombatScreen::Update()
 
 void TowerDefense::PreCombatScreen::OnSwitch()
 {
-	m_SettingsMenu->Show(false);
+	InGameSettings::Get().Show(false);
 
 	m_Enemies = std::vector<std::unique_ptr<EnemyIcon>>();
 

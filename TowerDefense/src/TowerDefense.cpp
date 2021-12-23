@@ -191,6 +191,7 @@ void TowerDefense::CleanUp()
     Artifact::CleanUp();
     RandomEvent::CleanUp();
     Scene::CleanUp();
+    InGameSettings::Get().CleanUp();
     fps.reset();
     Texture::FreeTextures();
     Shader::DeleteShaders();
