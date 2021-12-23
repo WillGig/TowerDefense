@@ -21,7 +21,7 @@ void TowerDefense::InGameSettings::Render()
 void TowerDefense::InGameSettings::Update()
 {
 	m_SettingsButton->Update();
-	if (m_SettingsButton->IsClicked())
+	if (m_SettingsButton->IsClicked() || Input::GetKeyPressedAndSetFalse(GLFW_KEY_ESCAPE))
 	{
 		m_Showing = false;
 		return;
@@ -42,7 +42,7 @@ void TowerDefense::InGameSettings::OnSwitch()
 void TowerDefense::InGameSettings::UpdateButton()
 {
 	m_SettingsButton->Update();
-	if (m_SettingsButton->IsClicked())
+	if (m_SettingsButton->IsClicked() || Input::GetKeyPressedAndSetFalse(GLFW_KEY_ESCAPE))
 		Show(true);
 }
 
