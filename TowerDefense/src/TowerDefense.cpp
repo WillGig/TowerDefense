@@ -58,6 +58,7 @@ bool TowerDefense::Init()
     glfwSetCursorPosCallback(window, Input::cursor_position_callback);
     glfwSetMouseButtonCallback(window, Input::mouse_button_callback);
     glfwSetScrollCallback(window, Input::scroll_callback);
+    glfwSetKeyCallback(window, Input::key_callback);
     glfwSetWindowSizeCallback(window, Input::window_size_callback);
 
     //GLEW INitialization

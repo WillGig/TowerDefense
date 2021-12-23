@@ -12,6 +12,7 @@ float Input::MOUSEY = 0.0f;
 int Input::MOUSESCROLL = 0;
 bool Input::LEFTMOUSECLICKED = false;
 bool Input::RIGHTMOUSECLICKED = false;
+bool Input::KEYS[65536];
 
 //Sets the scale and sets HEIGHT to the height of the window
 //Must be called before use to set HEIGHT, even if scale is left at 1.0f
@@ -55,6 +56,12 @@ void Input::mouse_button_callback(GLFWwindow* window, int button, int action, in
 void Input::scroll_callback(GLFWwindow* window, double xoffset, double yoffset)
 {
     MOUSESCROLL = (int)yoffset;
+}
+
+void Input::key_callback(GLFWwindow* window, int key, int scancode, int action, int mods)
+{
+    if (key > 0 && key < 65536)
+        KEYS[key] = action != GLFW_RELEASE;
 }
 
 void Input::window_size_callback(GLFWwindow* window, int width, int height)

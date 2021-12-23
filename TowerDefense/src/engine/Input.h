@@ -9,6 +9,7 @@ public:
     static void cursor_position_callback(GLFWwindow* window, double xpos, double ypos);
     static void mouse_button_callback(GLFWwindow* window, int button, int action, int mods);
     static void scroll_callback(GLFWwindow* window, double xoffset, double yoffset);
+    static void key_callback(GLFWwindow* window, int key, int scancode, int action, int mods);
     static void window_size_callback(GLFWwindow* window, int width, int height);
 
     //Sets the scale and sets the dimesions of the window
@@ -26,13 +27,16 @@ public:
     inline static int GetMouseSCROLL() { int returner = MOUSESCROLL; MOUSESCROLL = 0; return returner; }
 
     inline static bool GetLeftMouseClicked() { return LEFTMOUSECLICKED; }
-    inline static bool GetLeftMouseClickedAndSetFalse() { if (LEFTMOUSECLICKED) { LEFTMOUSECLICKED = false; return true; } else return false; }
+    inline static bool GetLeftMouseClickedAndSetFalse() { if (LEFTMOUSECLICKED) { LEFTMOUSECLICKED = false; return true; } return false; }
     inline static bool GetRightMouseClicked() { return RIGHTMOUSECLICKED; }
-    inline static bool GetRightMouseClickedAndSetFalse() { if (RIGHTMOUSECLICKED) { RIGHTMOUSECLICKED = false; return true; } else return false; }
+    inline static bool GetRightMouseClickedAndSetFalse() { if (RIGHTMOUSECLICKED) { RIGHTMOUSECLICKED = false; return true; } return false; }
 
+    inline static bool GetKeyPressed(int key) { return KEYS[key]; }
+    inline static bool GetKeyPressedAndSetFalse(int key) { if (KEYS[key]) { KEYS[key] = false; return true; } return false; }
 
 private:
     static float SCALE, MOUSEX, MOUSEY, XOFF, YOFF;
     static int HEIGHT, WIDTH, MOUSESCROLL, MAXHEIGHT;
     static bool LEFTMOUSECLICKED, RIGHTMOUSECLICKED;
+    static bool KEYS[];
 };
