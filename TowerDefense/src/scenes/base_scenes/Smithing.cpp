@@ -19,10 +19,10 @@ void TowerDefense::Smithing::Render()
 	std::shared_ptr<HeroCard> heroCard = std::dynamic_pointer_cast<HeroCard>(m_SelectedCard);
 	if (m_SelectedCard && heroCard)
 	{
-		m_Fade->Render();
-		if (heroCard->GetUpgrades()->GetSelectedCard())
-			m_Confirm->Render();
-		heroCard->GetUpgrades()->Render();
+		//m_Fade->Render();
+		//if (heroCard->GetUpgrades()->GetSelectedCard())
+		//	m_Confirm->Render();
+		//heroCard->GetUpgrades()->Render();
 	}
 	else if (m_SelectedCard && !m_SelectedCard->IsUpgraded())
 	{
@@ -43,29 +43,29 @@ void TowerDefense::Smithing::Update()
 	std::shared_ptr<HeroCard> heroCard = std::dynamic_pointer_cast<HeroCard>(m_SelectedCard);
 	if (m_SelectedCard && heroCard)
 	{
-		bool showingInfo = heroCard->GetUpgrades() && heroCard->GetUpgrades()->ShowingInfo();
+		//bool showingInfo = heroCard->GetUpgrades() && heroCard->GetUpgrades()->ShowingInfo();
 
-		if (heroCard->GetUpgrades()->GetSelectedCard() && !showingInfo)
-		{
-			m_Confirm->Update();
-			if (m_Confirm->IsClicked())
-			{
-				m_ActivityReady = m_ActivityCoolDown;
-				m_Exit = true;
-				player.ShowDeck(false);
-				heroCard->Upgrade();
-			}
-		}
+		//if (heroCard->GetUpgrades()->GetSelectedCard() && !showingInfo)
+		//{
+			//m_Confirm->Update();
+			//if (m_Confirm->IsClicked())
+			//{
+			//	m_ActivityReady = m_ActivityCoolDown;
+			//	m_Exit = true;
+			//	player.ShowDeck(false);
+			//	heroCard->Upgrade();
+			//}
+		//}
 
-		if (!player.GetSelectedDeckCard() && !showingInfo)
-		{
-			m_Cancel->Update();
-			if (m_Cancel->IsClicked())
-				m_SelectedCard.reset();
-		}
+		//if (!player.GetSelectedDeckCard() && !showingInfo)
+		//{
+		//	m_Cancel->Update();
+		//	if (m_Cancel->IsClicked())
+		//		m_SelectedCard.reset();
+		//}
 
-		if (heroCard->GetUpgrades())
-			heroCard->GetUpgrades()->Update();
+		//if (heroCard->GetUpgrades())
+		//	heroCard->GetUpgrades()->Update();
 	}
 	else if (m_SelectedCard && !m_SelectedCard->IsUpgraded())
 	{
@@ -94,7 +94,7 @@ void TowerDefense::Smithing::Update()
 		}
 	}
 
-	if (!m_SelectedCard || m_SelectedCard->IsUpgraded())
+	if (!m_SelectedCard || m_SelectedCard->IsUpgraded() || heroCard)
 	{
 		if (!player.GetSelectedDeckCard())
 			FindSelectedCard();

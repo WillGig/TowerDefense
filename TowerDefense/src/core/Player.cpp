@@ -5,6 +5,7 @@
 #include "cards/AuraCards.h"
 #include "cards/TowerCards.h"
 #include "cards/SideboardSlot.h"
+#include "cards/HeroCard.h"
 
 TowerDefense::Player::Player()
     :m_Health(100), m_MaxHealth(100), m_Energy(100), 
