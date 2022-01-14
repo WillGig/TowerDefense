@@ -19,7 +19,7 @@ namespace TowerDefense
 		inline std::shared_ptr<SkillTreeSkill> GetParent() const { return m_Parent; }
 		inline std::vector<std::shared_ptr<SkillTreeSkill>> GetChildren() const { return m_Children; }
 
-		inline void AddChild(std::shared_ptr<SkillTreeSkill> child) { m_Children.push_back(child); };
+		void AddChild(std::shared_ptr<SkillTreeSkill> child);
 
 		inline bool IsApplied() const { return m_Applied; }
 
@@ -28,6 +28,7 @@ namespace TowerDefense
 
 		std::shared_ptr<SkillTreeSkill> m_Parent;
 		std::vector<std::shared_ptr<SkillTreeSkill>> m_Children;
+		std::vector<std::shared_ptr<Line>> m_Lines;
 	};
 
 	class TestSkill : public SkillTreeSkill
