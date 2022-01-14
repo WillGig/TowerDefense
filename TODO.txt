@@ -1,4 +1,8 @@
 Current:
+	Add specific skill trees
+	Add cost to buying skills
+	Allow access to settings menu from all base scenes
+
 	-More Enemies(Days 21-30):
 	
 		- Rats

@@ -318,6 +318,8 @@
     <ClCompile Include="src\scenes\base_scenes\ManageWorkers.cpp" />
     <ClCompile Include="src\scenes\base_scenes\MusicHall.cpp" />
     <ClCompile Include="src\scenes\base_scenes\Rest.cpp" />
+    <ClCompile Include="src\scenes\base_scenes\skill_trees\SkillTreeSkill.cpp" />
+    <ClCompile Include="src\scenes\base_scenes\skill_trees\TestSkill.cpp" />
     <ClCompile Include="src\scenes\base_scenes\Smithing.cpp" />
     <ClCompile Include="src\scenes\base_scenes\Tavern.cpp" />
     <ClCompile Include="src\scenes\base_scenes\Temple.cpp" />
@@ -355,7 +357,6 @@
     <ClCompile Include="src\scenes\random_events\WanderingBard.cpp" />
     <ClCompile Include="src\scenes\random_events\WanderingCleric.cpp" />
     <ClCompile Include="src\scenes\random_events\WanderingSage.cpp" />
-    <ClCompile Include="src\scenes\base_scenes\SkillTree.cpp" />
     <ClCompile Include="src\scenes\Scene.cpp" />
     <ClCompile Include="src\scenes\Settings.cpp" />
     <ClCompile Include="src\TowerDefense.cpp" />
@@ -500,7 +501,7 @@
     <ClInclude Include="src\scenes\base_scenes\BuildButton.h" />
     <ClInclude Include="src\scenes\base_scenes\CardSlot.h" />
     <ClInclude Include="src\scenes\base_scenes\ClickCircle.h" />
-    <ClInclude Include="src\scenes\base_scenes\SkillTree.h" />
+    <ClInclude Include="src\scenes\base_scenes\skill_trees\SkillTreeSkill.h" />
     <ClInclude Include="src\scenes\InGameSettings.h" />
     <ClInclude Include="src\scenes\LoadMenu.h" />
     <ClInclude Include="src\scenes\NewGameMenu.h" />

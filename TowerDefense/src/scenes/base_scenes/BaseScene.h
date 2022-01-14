@@ -6,6 +6,7 @@
 #include "CardSlot.h"
 #include "ArtifactSlot.h"
 #include "ClickCircle.h"
+#include "skill_trees/SkillTreeSkill.h"
 
 namespace TowerDefense
 {
@@ -221,6 +222,7 @@ namespace TowerDefense
 		inline std::string GetName() override { return "ArcheryRange"; }
 
 	private:
+		std::shared_ptr<SkillTreeSkill> m_Tree;
 		std::unique_ptr<Button> m_BackToCamp;
 	};
 

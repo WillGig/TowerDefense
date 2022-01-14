@@ -31,6 +31,8 @@ void TowerDefense::Button::Update()
 
 void TowerDefense::Button::SetSelected(bool selected)
 {
+	if (m_Selected == selected)
+		return;
 	m_Selected = selected;
 	if (m_Selected)
 		SetImage(m_SelectedImage);
