@@ -1,6 +1,13 @@
 Current:
+	Design skill trees
 	Add specific skill trees
-	Add cost to buying skills
+	Add skill trees for archery range, music hall, 
+		wizard tower, temple, and alchemy lab
+	Add second towers
+	 - music hall		Singer(replaces monk)
+	 - wizard tower 	Sorcerer
+	 - alchemy lab		Tinkerer?
+
 	Allow access to settings menu from all base scenes
 
 	-More Enemies(Days 21-30):

@@ -24,8 +24,11 @@ void TowerDefense::ArcheryRange::Render()
 	Player& player = Player::Get();
 	player.RenderStats();
 
-	m_Tree->Render();
 	m_BackToCamp->Render();
+
+	m_Tree->Render();
+	if (m_Tree->GetSelectedSkill())
+		m_Tree->GetSelectedSkill()->RenderInfo();
 
 	player.RenderDeckAndArtifacts();
 }
