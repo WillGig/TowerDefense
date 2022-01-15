@@ -1,6 +1,7 @@
 #include "pch.h"
 #include "BaseScene.h"
 #include "core/Player.h"
+#include "scenes/InGameSettings.h"
 
 TowerDefense::MusicHall::MusicHall()
 	:BaseScene("composeButton", "Express yourself", 0),
@@ -9,25 +10,35 @@ TowerDefense::MusicHall::MusicHall()
 
 void TowerDefense::MusicHall::Render()
 {
-	Player& player = Player::Get();
-	player.RenderStats();
-
 	m_BackToCamp->Render();
 
+	Player& player = Player::Get();
+	InGameSettings::Get().RenderButton();
+	player.RenderStats();
 	player.RenderDeckAndArtifacts();
+	if (InGameSettings::Get().IsShowing())
+		InGameSettings::Get().Render();
 }
 
 void TowerDefense::MusicHall::Update()
 {
+	if (InGameSettings::Get().IsShowing())
+	{
+		InGameSettings::Get().Update();
+		return;
+	}
+
 	Player& player = Player::Get();
 	player.UpdateDeckAndArtifacts();
 
-	if (!player.DeckShowing() && !player.ArtifactsShowing())
-	{
-		m_BackToCamp->Update();
-		if (m_BackToCamp->IsClicked())
-			m_Exit = true;
-	}
+	if (player.DeckShowing() || player.ArtifactsShowing())
+		return;
+
+	InGameSettings::Get().UpdateButton();
+
+	m_BackToCamp->Update();
+	if (m_BackToCamp->IsClicked())
+		m_Exit = true;
 }
 
 void TowerDefense::MusicHall::OnSwitch()

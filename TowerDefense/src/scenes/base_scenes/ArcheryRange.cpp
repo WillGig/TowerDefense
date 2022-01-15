@@ -2,6 +2,7 @@
 #include "BaseScene.h"
 #include "core/Player.h"
 #include "skill_trees/SkillTreeSkill.h"
+#include "scenes/InGameSettings.h"
 
 TowerDefense::ArcheryRange::ArcheryRange()
 	:BaseScene("archeryButton", "Practice your aim", 0),
@@ -21,25 +22,34 @@ TowerDefense::ArcheryRange::ArcheryRange()
 
 void TowerDefense::ArcheryRange::Render()
 {
-	Player& player = Player::Get();
-	player.RenderStats();
-
 	m_BackToCamp->Render();
 
 	m_Tree->Render();
 	if (m_Tree->GetSelectedSkill())
 		m_Tree->GetSelectedSkill()->RenderInfo();
 
+	Player& player = Player::Get();
+	InGameSettings::Get().RenderButton();
+	player.RenderStats();
 	player.RenderDeckAndArtifacts();
+	if (InGameSettings::Get().IsShowing())
+		InGameSettings::Get().Render();
 }
 
 void TowerDefense::ArcheryRange::Update()
 {
+	if (InGameSettings::Get().IsShowing())
+	{
+		InGameSettings::Get().Update();
+		return;
+	}
+
 	Player& player = Player::Get();
 	player.UpdateDeckAndArtifacts();
 
 	if (!player.DeckShowing() && !player.ArtifactsShowing())
 	{
+		InGameSettings::Get().UpdateButton();
 		m_Tree->Update();
 		m_BackToCamp->Update();
 		if (m_BackToCamp->IsClicked())

@@ -1,6 +1,7 @@
 #include "pch.h"
 #include "BaseScene.h"
 #include "core/Player.h"
+#include "scenes/InGameSettings.h"
 
 TowerDefense::ManageWorkers::ManageWorkers()
 	:BaseScene("manageWorkersButton", "Assign Tasks", 0),
@@ -44,9 +45,6 @@ TowerDefense::ManageWorkers::ManageWorkers()
 
 void TowerDefense::ManageWorkers::Render()
 {
-	Player& player = Player::Get();
-	player.RenderStats();
-
 	m_WoodPlus->Render();
 	m_WoodMinus->Render();
 	m_WoodAddAll->Render();
@@ -85,162 +83,174 @@ void TowerDefense::ManageWorkers::Render()
 	m_NumMiners->Render();
 	m_NumFarmers->Render();
 
+	Player& player = Player::Get();
+	InGameSettings::Get().RenderButton();
+	player.RenderStats();
 	player.RenderDeckAndArtifacts();
+	if (InGameSettings::Get().IsShowing())
+		InGameSettings::Get().Render();
 }
 
 void TowerDefense::ManageWorkers::Update()
 {
-	Player& player = Player::Get();
+	if (InGameSettings::Get().IsShowing())
+	{
+		InGameSettings::Get().Update();
+		return;
+	}
 
+	Player& player = Player::Get();
 	player.UpdateDeckAndArtifacts();
 
-	if (!player.DeckShowing() && !player.ArtifactsShowing())
+	if (player.DeckShowing() || player.ArtifactsShowing())
+		return;
+
+	InGameSettings::Get().UpdateButton();
+
+	m_WoodPlus->Update();
+	m_WoodMinus->Update();
+	m_WoodAddAll->Update();
+	m_WoodMinusAll->Update();
+	m_StonePlus->Update();
+	m_StoneMinus->Update();
+	m_StoneAddAll->Update();
+	m_StoneMinusAll->Update();
+	m_WheatPlus->Update();
+	m_WheatMinus->Update();
+	m_WheatAddAll->Update();
+	m_WheatMinusAll->Update();
+	m_BuildHouse->Update();
+	m_HireWorker->Update();
+	m_BackToCamp->Update();
+
+	if (m_WoodPlus->IsClicked() && player.GetAvailablePopulation() > 0)
 	{
-		m_WoodPlus->Update();
-		m_WoodMinus->Update();
-		m_WoodAddAll->Update();
-		m_WoodMinusAll->Update();
-		m_StonePlus->Update();
-		m_StoneMinus->Update();
-		m_StoneAddAll->Update();
-		m_StoneMinusAll->Update();
-		m_WheatPlus->Update();
-		m_WheatMinus->Update();
-		m_WheatAddAll->Update();
-		m_WheatMinusAll->Update();
-		m_BuildHouse->Update();
-		m_HireWorker->Update();
-		m_BackToCamp->Update();
-
-		if (m_WoodPlus->IsClicked() && player.GetAvailablePopulation() > 0)
-		{
-			player.AddWorker(Resource::WOOD);
-			m_AvailablePopText = std::make_unique<Text>(std::to_string(player.GetAvailablePopulation()), 460.0f, 450.0f, 12.0f, 0.0f);
-			m_AvailablePopText->SetColor(1.0f, 1.0f, 1.0f, 1.0f);
-			m_NumLumberJacks = std::make_unique<Text>(std::to_string(player.GetWorkers(Resource::WOOD)), 620.0f, 400.0f, 12.0f, 0.0f);
-			m_NumLumberJacks->SetColor(1.0f, 1.0f, 1.0f, 1.0f);
-		}
-		if (m_WoodMinus->IsClicked() && player.GetWorkers(Resource::WOOD) > 0)
-		{
-			player.RemoveWorker(Resource::WOOD);
-			m_AvailablePopText = std::make_unique<Text>(std::to_string(player.GetAvailablePopulation()), 460.0f, 450.0f, 12.0f, 0.0f);
-			m_AvailablePopText->SetColor(1.0f, 1.0f, 1.0f, 1.0f);
-			m_NumLumberJacks = std::make_unique<Text>(std::to_string(player.GetWorkers(Resource::WOOD)), 620.0f, 400.0f, 12.0f, 0.0f);
-			m_NumLumberJacks->SetColor(1.0f, 1.0f, 1.0f, 1.0f);
-		}
-		if (m_WoodAddAll->IsClicked() && player.GetAvailablePopulation() > 0)
-		{
-			while (player.GetAvailablePopulation() > 0)
-				player.AddWorker(Resource::WOOD);
-			m_AvailablePopText = std::make_unique<Text>(std::to_string(player.GetAvailablePopulation()), 460.0f, 450.0f, 12.0f, 0.0f);
-			m_AvailablePopText->SetColor(1.0f, 1.0f, 1.0f, 1.0f);
-			m_NumLumberJacks = std::make_unique<Text>(std::to_string(player.GetWorkers(Resource::WOOD)), 620.0f, 400.0f, 12.0f, 0.0f);
-			m_NumLumberJacks->SetColor(1.0f, 1.0f, 1.0f, 1.0f);
-		}
-		if (m_WoodMinusAll->IsClicked() && player.GetWorkers(Resource::WOOD) > 0)
-		{
-			while(player.GetWorkers(Resource::WOOD) > 0)
-				player.RemoveWorker(Resource::WOOD);
-			m_AvailablePopText = std::make_unique<Text>(std::to_string(player.GetAvailablePopulation()), 460.0f, 450.0f, 12.0f, 0.0f);
-			m_AvailablePopText->SetColor(1.0f, 1.0f, 1.0f, 1.0f);
-			m_NumLumberJacks = std::make_unique<Text>(std::to_string(player.GetWorkers(Resource::WOOD)), 620.0f, 400.0f, 12.0f, 0.0f);
-			m_NumLumberJacks->SetColor(1.0f, 1.0f, 1.0f, 1.0f);
-		}
-
-		if (m_StonePlus->IsClicked() && player.GetAvailablePopulation() > 0)
-		{
-			player.AddWorker(Resource::STONE);
-			m_AvailablePopText = std::make_unique<Text>(std::to_string(player.GetAvailablePopulation()), 460.0f, 450.0f, 12.0f, 0.0f);
-			m_AvailablePopText->SetColor(1.0f, 1.0f, 1.0f, 1.0f);
-			m_NumMiners = std::make_unique<Text>(std::to_string(player.GetWorkers(Resource::STONE)), 620.0f, 350.0f, 12.0f, 0.0f);
-			m_NumMiners->SetColor(1.0f, 1.0f, 1.0f, 1.0f);
-		}
-		if (m_StoneMinus->IsClicked() && player.GetWorkers(Resource::STONE) > 0)
-		{
-			player.RemoveWorker(Resource::STONE);
-			m_AvailablePopText = std::make_unique<Text>(std::to_string(player.GetAvailablePopulation()), 460.0f, 450.0f, 12.0f, 0.0f);
-			m_AvailablePopText->SetColor(1.0f, 1.0f, 1.0f, 1.0f);
-			m_NumMiners = std::make_unique<Text>(std::to_string(player.GetWorkers(Resource::STONE)), 620.0f, 350.0f, 12.0f, 0.0f);
-			m_NumMiners->SetColor(1.0f, 1.0f, 1.0f, 1.0f);
-		}
-		if (m_StoneAddAll->IsClicked() && player.GetAvailablePopulation() > 0)
-		{
-			while(player.GetAvailablePopulation() > 0)
-				player.AddWorker(Resource::STONE);
-			m_AvailablePopText = std::make_unique<Text>(std::to_string(player.GetAvailablePopulation()), 460.0f, 450.0f, 12.0f, 0.0f);
-			m_AvailablePopText->SetColor(1.0f, 1.0f, 1.0f, 1.0f);
-			m_NumMiners = std::make_unique<Text>(std::to_string(player.GetWorkers(Resource::STONE)), 620.0f, 350.0f, 12.0f, 0.0f);
-			m_NumMiners->SetColor(1.0f, 1.0f, 1.0f, 1.0f);
-		}
-		if (m_StoneMinusAll->IsClicked() && player.GetWorkers(Resource::STONE) > 0)
-		{
-			while(player.GetWorkers(Resource::STONE) > 0)
-				player.RemoveWorker(Resource::STONE);
-			m_AvailablePopText = std::make_unique<Text>(std::to_string(player.GetAvailablePopulation()), 460.0f, 450.0f, 12.0f, 0.0f);
-			m_AvailablePopText->SetColor(1.0f, 1.0f, 1.0f, 1.0f);
-			m_NumMiners = std::make_unique<Text>(std::to_string(player.GetWorkers(Resource::STONE)), 620.0f, 350.0f, 12.0f, 0.0f);
-			m_NumMiners->SetColor(1.0f, 1.0f, 1.0f, 1.0f);
-		}
-
-		if (m_WheatPlus->IsClicked() && player.GetAvailablePopulation() > 0)
-		{
-			player.AddWorker(Resource::WHEAT);
-			m_AvailablePopText = std::make_unique<Text>(std::to_string(player.GetAvailablePopulation()), 460.0f, 450.0f, 12.0f, 0.0f);
-			m_AvailablePopText->SetColor(1.0f, 1.0f, 1.0f, 1.0f);
-			m_NumFarmers = std::make_unique<Text>(std::to_string(player.GetWorkers(Resource::WHEAT)), 620.0f, 300.0f, 12.0f, 0.0f);
-			m_NumFarmers->SetColor(1.0f, 1.0f, 1.0f, 1.0f);
-		}
-		if (m_WheatMinus->IsClicked() && player.GetWorkers(Resource::WHEAT) > 0)
-		{
-			player.RemoveWorker(Resource::WHEAT);
-			m_AvailablePopText = std::make_unique<Text>(std::to_string(player.GetAvailablePopulation()), 460.0f, 450.0f, 12.0f, 0.0f);
-			m_AvailablePopText->SetColor(1.0f, 1.0f, 1.0f, 1.0f);
-			m_NumFarmers = std::make_unique<Text>(std::to_string(player.GetWorkers(Resource::WHEAT)), 620.0f, 300.0f, 12.0f, 0.0f);
-			m_NumFarmers->SetColor(1.0f, 1.0f, 1.0f, 1.0f);
-		}
-		if (m_WheatAddAll->IsClicked() && player.GetAvailablePopulation() > 0)
-		{
-			while (player.GetAvailablePopulation() > 0)
-				player.AddWorker(Resource::WHEAT);
-			m_AvailablePopText = std::make_unique<Text>(std::to_string(player.GetAvailablePopulation()), 460.0f, 450.0f, 12.0f, 0.0f);
-			m_AvailablePopText->SetColor(1.0f, 1.0f, 1.0f, 1.0f);
-			m_NumFarmers = std::make_unique<Text>(std::to_string(player.GetWorkers(Resource::WHEAT)), 620.0f, 300.0f, 12.0f, 0.0f);
-			m_NumFarmers->SetColor(1.0f, 1.0f, 1.0f, 1.0f);
-		}
-		if (m_WheatMinusAll->IsClicked() && player.GetWorkers(Resource::WHEAT) > 0)
-		{
-			while(player.GetWorkers(Resource::WHEAT) > 0)
-				player.RemoveWorker(Resource::WHEAT);
-			m_AvailablePopText = std::make_unique<Text>(std::to_string(player.GetAvailablePopulation()), 460.0f, 450.0f, 12.0f, 0.0f);
-			m_AvailablePopText->SetColor(1.0f, 1.0f, 1.0f, 1.0f);
-			m_NumFarmers = std::make_unique<Text>(std::to_string(player.GetWorkers(Resource::WHEAT)), 620.0f, 300.0f, 12.0f, 0.0f);
-			m_NumFarmers->SetColor(1.0f, 1.0f, 1.0f, 1.0f);
-		}
-
-		if (m_BuildHouse->IsClicked() && player.GetResource(Resource::WOOD) > 99 && player.GetResource(Resource::STONE) > 99)
-		{
-			player.ChangeResource(-100, Resource::WOOD);
-			player.ChangeResource(-100, Resource::STONE);
-			player.AddHouse();
-			m_HouseText = std::make_unique<Text>(std::to_string(player.GetNumHouses()), 317.0f, 500.0f, 12.0f, 0.0f);
-			m_HouseText->SetColor(1.0f, 1.0f, 1.0f, 1.0f);
-			m_TotalPopText = std::make_unique<Text>(std::to_string(player.GetPopulation()) + "/" + std::to_string(player.GetMaxPopulation()), 467.0f, 500.0f, 12.0f, 0.0f);
-			m_TotalPopText->SetColor(1.0f, 1.0f, 1.0f, 1.0f);
-		}
-
-		if (m_HireWorker->IsClicked() && player.GetResource(Resource::WHEAT) > 49 && player.GetMaxPopulation() - player.GetPopulation() > 0)
-		{
-			player.ChangeResource(-50, Resource::WHEAT);
-			player.SetPopulation(player.GetPopulation() + 1);
-			m_TotalPopText = std::make_unique<Text>(std::to_string(player.GetPopulation()) + "/" + std::to_string(player.GetMaxPopulation()), 467.0f, 500.0f, 12.0f, 0.0f);
-			m_TotalPopText->SetColor(1.0f, 1.0f, 1.0f, 1.0f);
-			m_AvailablePopText = std::make_unique<Text>(std::to_string(player.GetAvailablePopulation()), 460.0f, 450.0f, 12.0f, 0.0f);
-			m_AvailablePopText->SetColor(1.0f, 1.0f, 1.0f, 1.0f);
-		}
-
-		if (m_BackToCamp->IsClicked())
-			m_Exit = true;
+		player.AddWorker(Resource::WOOD);
+		m_AvailablePopText = std::make_unique<Text>(std::to_string(player.GetAvailablePopulation()), 460.0f, 450.0f, 12.0f, 0.0f);
+		m_AvailablePopText->SetColor(1.0f, 1.0f, 1.0f, 1.0f);
+		m_NumLumberJacks = std::make_unique<Text>(std::to_string(player.GetWorkers(Resource::WOOD)), 620.0f, 400.0f, 12.0f, 0.0f);
+		m_NumLumberJacks->SetColor(1.0f, 1.0f, 1.0f, 1.0f);
 	}
+	if (m_WoodMinus->IsClicked() && player.GetWorkers(Resource::WOOD) > 0)
+	{
+		player.RemoveWorker(Resource::WOOD);
+		m_AvailablePopText = std::make_unique<Text>(std::to_string(player.GetAvailablePopulation()), 460.0f, 450.0f, 12.0f, 0.0f);
+		m_AvailablePopText->SetColor(1.0f, 1.0f, 1.0f, 1.0f);
+		m_NumLumberJacks = std::make_unique<Text>(std::to_string(player.GetWorkers(Resource::WOOD)), 620.0f, 400.0f, 12.0f, 0.0f);
+		m_NumLumberJacks->SetColor(1.0f, 1.0f, 1.0f, 1.0f);
+	}
+	if (m_WoodAddAll->IsClicked() && player.GetAvailablePopulation() > 0)
+	{
+		while (player.GetAvailablePopulation() > 0)
+			player.AddWorker(Resource::WOOD);
+		m_AvailablePopText = std::make_unique<Text>(std::to_string(player.GetAvailablePopulation()), 460.0f, 450.0f, 12.0f, 0.0f);
+		m_AvailablePopText->SetColor(1.0f, 1.0f, 1.0f, 1.0f);
+		m_NumLumberJacks = std::make_unique<Text>(std::to_string(player.GetWorkers(Resource::WOOD)), 620.0f, 400.0f, 12.0f, 0.0f);
+		m_NumLumberJacks->SetColor(1.0f, 1.0f, 1.0f, 1.0f);
+	}
+	if (m_WoodMinusAll->IsClicked() && player.GetWorkers(Resource::WOOD) > 0)
+	{
+		while(player.GetWorkers(Resource::WOOD) > 0)
+			player.RemoveWorker(Resource::WOOD);
+		m_AvailablePopText = std::make_unique<Text>(std::to_string(player.GetAvailablePopulation()), 460.0f, 450.0f, 12.0f, 0.0f);
+		m_AvailablePopText->SetColor(1.0f, 1.0f, 1.0f, 1.0f);
+		m_NumLumberJacks = std::make_unique<Text>(std::to_string(player.GetWorkers(Resource::WOOD)), 620.0f, 400.0f, 12.0f, 0.0f);
+		m_NumLumberJacks->SetColor(1.0f, 1.0f, 1.0f, 1.0f);
+	}
+
+	if (m_StonePlus->IsClicked() && player.GetAvailablePopulation() > 0)
+	{
+		player.AddWorker(Resource::STONE);
+		m_AvailablePopText = std::make_unique<Text>(std::to_string(player.GetAvailablePopulation()), 460.0f, 450.0f, 12.0f, 0.0f);
+		m_AvailablePopText->SetColor(1.0f, 1.0f, 1.0f, 1.0f);
+		m_NumMiners = std::make_unique<Text>(std::to_string(player.GetWorkers(Resource::STONE)), 620.0f, 350.0f, 12.0f, 0.0f);
+		m_NumMiners->SetColor(1.0f, 1.0f, 1.0f, 1.0f);
+	}
+	if (m_StoneMinus->IsClicked() && player.GetWorkers(Resource::STONE) > 0)
+	{
+		player.RemoveWorker(Resource::STONE);
+		m_AvailablePopText = std::make_unique<Text>(std::to_string(player.GetAvailablePopulation()), 460.0f, 450.0f, 12.0f, 0.0f);
+		m_AvailablePopText->SetColor(1.0f, 1.0f, 1.0f, 1.0f);
+		m_NumMiners = std::make_unique<Text>(std::to_string(player.GetWorkers(Resource::STONE)), 620.0f, 350.0f, 12.0f, 0.0f);
+		m_NumMiners->SetColor(1.0f, 1.0f, 1.0f, 1.0f);
+	}
+	if (m_StoneAddAll->IsClicked() && player.GetAvailablePopulation() > 0)
+	{
+		while(player.GetAvailablePopulation() > 0)
+			player.AddWorker(Resource::STONE);
+		m_AvailablePopText = std::make_unique<Text>(std::to_string(player.GetAvailablePopulation()), 460.0f, 450.0f, 12.0f, 0.0f);
+		m_AvailablePopText->SetColor(1.0f, 1.0f, 1.0f, 1.0f);
+		m_NumMiners = std::make_unique<Text>(std::to_string(player.GetWorkers(Resource::STONE)), 620.0f, 350.0f, 12.0f, 0.0f);
+		m_NumMiners->SetColor(1.0f, 1.0f, 1.0f, 1.0f);
+	}
+	if (m_StoneMinusAll->IsClicked() && player.GetWorkers(Resource::STONE) > 0)
+	{
+		while(player.GetWorkers(Resource::STONE) > 0)
+			player.RemoveWorker(Resource::STONE);
+		m_AvailablePopText = std::make_unique<Text>(std::to_string(player.GetAvailablePopulation()), 460.0f, 450.0f, 12.0f, 0.0f);
+		m_AvailablePopText->SetColor(1.0f, 1.0f, 1.0f, 1.0f);
+		m_NumMiners = std::make_unique<Text>(std::to_string(player.GetWorkers(Resource::STONE)), 620.0f, 350.0f, 12.0f, 0.0f);
+		m_NumMiners->SetColor(1.0f, 1.0f, 1.0f, 1.0f);
+	}
+
+	if (m_WheatPlus->IsClicked() && player.GetAvailablePopulation() > 0)
+	{
+		player.AddWorker(Resource::WHEAT);
+		m_AvailablePopText = std::make_unique<Text>(std::to_string(player.GetAvailablePopulation()), 460.0f, 450.0f, 12.0f, 0.0f);
+		m_AvailablePopText->SetColor(1.0f, 1.0f, 1.0f, 1.0f);
+		m_NumFarmers = std::make_unique<Text>(std::to_string(player.GetWorkers(Resource::WHEAT)), 620.0f, 300.0f, 12.0f, 0.0f);
+		m_NumFarmers->SetColor(1.0f, 1.0f, 1.0f, 1.0f);
+	}
+	if (m_WheatMinus->IsClicked() && player.GetWorkers(Resource::WHEAT) > 0)
+	{
+		player.RemoveWorker(Resource::WHEAT);
+		m_AvailablePopText = std::make_unique<Text>(std::to_string(player.GetAvailablePopulation()), 460.0f, 450.0f, 12.0f, 0.0f);
+		m_AvailablePopText->SetColor(1.0f, 1.0f, 1.0f, 1.0f);
+		m_NumFarmers = std::make_unique<Text>(std::to_string(player.GetWorkers(Resource::WHEAT)), 620.0f, 300.0f, 12.0f, 0.0f);
+		m_NumFarmers->SetColor(1.0f, 1.0f, 1.0f, 1.0f);
+	}
+	if (m_WheatAddAll->IsClicked() && player.GetAvailablePopulation() > 0)
+	{
+		while (player.GetAvailablePopulation() > 0)
+			player.AddWorker(Resource::WHEAT);
+		m_AvailablePopText = std::make_unique<Text>(std::to_string(player.GetAvailablePopulation()), 460.0f, 450.0f, 12.0f, 0.0f);
+		m_AvailablePopText->SetColor(1.0f, 1.0f, 1.0f, 1.0f);
+		m_NumFarmers = std::make_unique<Text>(std::to_string(player.GetWorkers(Resource::WHEAT)), 620.0f, 300.0f, 12.0f, 0.0f);
+		m_NumFarmers->SetColor(1.0f, 1.0f, 1.0f, 1.0f);
+	}
+	if (m_WheatMinusAll->IsClicked() && player.GetWorkers(Resource::WHEAT) > 0)
+	{
+		while(player.GetWorkers(Resource::WHEAT) > 0)
+			player.RemoveWorker(Resource::WHEAT);
+		m_AvailablePopText = std::make_unique<Text>(std::to_string(player.GetAvailablePopulation()), 460.0f, 450.0f, 12.0f, 0.0f);
+		m_AvailablePopText->SetColor(1.0f, 1.0f, 1.0f, 1.0f);
+		m_NumFarmers = std::make_unique<Text>(std::to_string(player.GetWorkers(Resource::WHEAT)), 620.0f, 300.0f, 12.0f, 0.0f);
+		m_NumFarmers->SetColor(1.0f, 1.0f, 1.0f, 1.0f);
+	}
+
+	if (m_BuildHouse->IsClicked() && player.GetResource(Resource::WOOD) > 99 && player.GetResource(Resource::STONE) > 99)
+	{
+		player.ChangeResource(-100, Resource::WOOD);
+		player.ChangeResource(-100, Resource::STONE);
+		player.AddHouse();
+		m_HouseText = std::make_unique<Text>(std::to_string(player.GetNumHouses()), 317.0f, 500.0f, 12.0f, 0.0f);
+		m_HouseText->SetColor(1.0f, 1.0f, 1.0f, 1.0f);
+		m_TotalPopText = std::make_unique<Text>(std::to_string(player.GetPopulation()) + "/" + std::to_string(player.GetMaxPopulation()), 467.0f, 500.0f, 12.0f, 0.0f);
+		m_TotalPopText->SetColor(1.0f, 1.0f, 1.0f, 1.0f);
+	}
+
+	if (m_HireWorker->IsClicked() && player.GetResource(Resource::WHEAT) > 49 && player.GetMaxPopulation() - player.GetPopulation() > 0)
+	{
+		player.ChangeResource(-50, Resource::WHEAT);
+		player.SetPopulation(player.GetPopulation() + 1);
+		m_TotalPopText = std::make_unique<Text>(std::to_string(player.GetPopulation()) + "/" + std::to_string(player.GetMaxPopulation()), 467.0f, 500.0f, 12.0f, 0.0f);
+		m_TotalPopText->SetColor(1.0f, 1.0f, 1.0f, 1.0f);
+		m_AvailablePopText = std::make_unique<Text>(std::to_string(player.GetAvailablePopulation()), 460.0f, 450.0f, 12.0f, 0.0f);
+		m_AvailablePopText->SetColor(1.0f, 1.0f, 1.0f, 1.0f);
+	}
+
+	if (m_BackToCamp->IsClicked())
+		m_Exit = true;
 }
 
 void TowerDefense::ManageWorkers::OnSwitch()

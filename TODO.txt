@@ -8,8 +8,6 @@ Current:
 	 - wizard tower 	Sorcerer
 	 - alchemy lab		Tinkerer?
 
-	Allow access to settings menu from all base scenes
-
 	-More Enemies(Days 21-30):
 	
 		- Rats

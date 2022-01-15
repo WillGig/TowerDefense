@@ -1,6 +1,7 @@
 #include "pch.h"
 #include "BaseScene.h"
 #include "core/Player.h"
+#include "scenes/InGameSettings.h"
 
 TowerDefense::Rest::Rest()
 	:BaseScene("restButton", "Lick your wounds.", 1),
@@ -12,33 +13,42 @@ TowerDefense::Rest::Rest()
 
 void TowerDefense::Rest::Render()
 {
-	Player& player = Player::Get();
-	player.RenderStats();
 	m_RestText->Render();
 	m_Confirm->Render();
 	m_Cancel->Render();
+	Player& player = Player::Get();
+	InGameSettings::Get().RenderButton();
+	player.RenderStats();
 	player.RenderDeckAndArtifacts();
+	if (InGameSettings::Get().IsShowing())
+		InGameSettings::Get().Render();
 }
 
 void TowerDefense::Rest::Update()
 {
+	if (InGameSettings::Get().IsShowing())
+	{
+		InGameSettings::Get().Update();
+		return;
+	}
+
 	Player& player = Player::Get();
 	player.UpdateDeckAndArtifacts();
 
-	if (!player.DeckShowing() && !player.ArtifactsShowing())
-	{
-		m_Confirm->Update();
-		if (m_Confirm->IsClicked())
-		{
-			player.ChangeHealth(5);
-			m_ActivityReady = m_ActivityCoolDown;
-			m_Exit = true;
-		}
+	if (player.DeckShowing() || player.ArtifactsShowing())
+		return;
 
-		m_Cancel->Update();
-		if (m_Cancel->IsClicked())
-			m_Exit = true;
+	m_Confirm->Update();
+	if (m_Confirm->IsClicked())
+	{
+		player.ChangeHealth(5);
+		m_ActivityReady = m_ActivityCoolDown;
+		m_Exit = true;
 	}
+
+	m_Cancel->Update();
+	if (m_Cancel->IsClicked())
+		m_Exit = true;
 }
 
 void TowerDefense::Rest::OnSwitch()

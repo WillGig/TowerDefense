@@ -1,6 +1,7 @@
 #include "pch.h"
 #include "BaseScene.h"
 #include "core/Player.h"
+#include "scenes/InGameSettings.h"
 
 TowerDefense::WizardTower::WizardTower()
 	:BaseScene("studyButton", "Conduct your research", 0),
@@ -9,21 +10,30 @@ TowerDefense::WizardTower::WizardTower()
 
 void TowerDefense::WizardTower::Render()
 {
-	Player& player = Player::Get();
-	player.RenderStats();
-
 	m_BackToCamp->Render();
 
+	Player& player = Player::Get();
+	InGameSettings::Get().RenderButton();
+	player.RenderStats();
 	player.RenderDeckAndArtifacts();
+	if (InGameSettings::Get().IsShowing())
+		InGameSettings::Get().Render();
 }
 
 void TowerDefense::WizardTower::Update()
 {
+	if (InGameSettings::Get().IsShowing())
+	{
+		InGameSettings::Get().Update();
+		return;
+	}
+
 	Player& player = Player::Get();
 	player.UpdateDeckAndArtifacts();
 
 	if (!player.DeckShowing() && !player.ArtifactsShowing())
 	{
+		InGameSettings::Get().UpdateButton();
 		m_BackToCamp->Update();
 		if (m_BackToCamp->IsClicked())
 			m_Exit = true;

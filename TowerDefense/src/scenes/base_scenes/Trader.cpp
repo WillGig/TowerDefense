@@ -1,6 +1,7 @@
 #include "pch.h"
 #include "BaseScene.h"
 #include "core/Player.h"
+#include "scenes/InGameSettings.h"
 
 TowerDefense::Trader::Trader()
 	:BaseScene("tradeButton", "Let's make a deal.", 5), 
@@ -40,8 +41,6 @@ TowerDefense::Trader::Trader()
 
 void TowerDefense::Trader::Render()
 {
-	Player& player = Player::Get();
-	player.RenderStats();
 	m_BackToCamp->Render();
 
 	for (unsigned int i = 0; i < m_Cards.size(); i++)
@@ -71,8 +70,16 @@ void TowerDefense::Trader::Render()
 	m_SpinWheel->Render();
 	m_SpinPicker->Render();
 
+	Player& player = Player::Get();
+	player.RenderStats();
+
 	if (m_InfoCard == -1 && m_InfoArtifact == -1)
+	{
+		InGameSettings::Get().RenderButton();
 		player.RenderDeckAndArtifacts();
+		if (InGameSettings::Get().IsShowing())
+			InGameSettings::Get().Render();
+	}
 	else if (m_InfoArtifact == -1)
 		m_Cards[m_InfoCard]->Render();
 	else
@@ -85,8 +92,17 @@ void TowerDefense::Trader::Update()
 
 	FindInfo();
 
-	if(m_InfoCard == -1 && m_InfoArtifact == -1)
+	if (m_InfoCard == -1 && m_InfoArtifact == -1)
+	{
+		if (InGameSettings::Get().IsShowing())
+		{
+			InGameSettings::Get().Update();
+			return;
+		}
+
 		player.UpdateDeckAndArtifacts();
+		InGameSettings::Get().UpdateButton();
+	}
 
 	if (!player.DeckShowing() && !player.ArtifactsShowing())
 	{
@@ -107,8 +123,6 @@ void TowerDefense::Trader::Update()
 				if (m_Artifacts[i]->ArtifactAvailable())
 					m_Artifacts[i]->Update();
 			}
-
-			Player& player = Player::Get();
 
 			m_Wood->Update();
 			if (m_Wood->IsClicked() && player.GetResource(Resource::GOLD) > 299)
