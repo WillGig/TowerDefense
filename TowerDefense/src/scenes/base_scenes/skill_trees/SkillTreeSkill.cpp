@@ -91,11 +91,15 @@ void TowerDefense::SkillTreeSkill::SetPosition(float x, float y, float treeWidth
 			m_RequirementText->SetPosition(800.0f - 120.0f, 40.0f, 0.0f);
 	}
 
-	float xPos = x - treeWidth + treeWidth / ((float)m_Children.size());
+	float spacing = 0;
+	if(m_Children.size() > 1)
+		spacing = treeWidth / (float)(m_Children.size() - 1);
+
+	float xPos = x - ((m_Children.size() - 1) / 2.0f) * spacing;
 	for (auto child : m_Children)
 	{
 		child->SetPosition(xPos, y - 100, treeWidth/m_Children.size());
-		xPos += treeWidth / ((float)m_Children.size());
+		xPos += spacing;
 		std::shared_ptr<Line> connects = std::make_shared<Line>(Vec2(x, y), Vec2(child->GetX(), child->GetY()));
 		connects->SetColor(0.4f, 0.4f, 0.4f, 1.0f);
 		m_Lines.push_back(connects);
