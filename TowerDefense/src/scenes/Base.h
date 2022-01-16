@@ -4,6 +4,7 @@
 #include "cards/Card.h"
 #include "cards/CardChoice.h"
 #include "base_scenes/BaseScene.h"
+#include "InGameSettings.h"
 
 namespace TowerDefense
 {

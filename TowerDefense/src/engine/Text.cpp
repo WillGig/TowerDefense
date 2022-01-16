@@ -38,7 +38,9 @@ Text::Text(std::string msg, float x, float y, float size, float maxWidth)
 			yOffSet -= 20;
 			if (msg.length() > i+1)
 				xOffSet = (int)GetWidth(msg[i+1]) / 2;
-			continue;
+
+			if(msg[i] == '\n')
+				continue;
 		}
 
 		//Get vertex data for current character

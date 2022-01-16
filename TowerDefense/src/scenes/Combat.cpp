@@ -13,7 +13,7 @@ bool TowerDefense::Combat::s_Paused = false;
 std::shared_ptr<std::vector<std::shared_ptr<TowerDefense::Entity>>> TowerDefense::Combat::s_Entities = std::make_shared<std::vector<std::shared_ptr<TowerDefense::Entity>>>();
 std::shared_ptr<std::vector<std::shared_ptr<TowerDefense::Entity>>> TowerDefense::Combat::s_Adders = std::make_shared<std::vector<std::shared_ptr<TowerDefense::Entity>>>();
 std::shared_ptr<std::vector<int>> TowerDefense::Combat::s_Removers = std::make_shared<std::vector<int>>();
-std::unique_ptr<std::vector<std::shared_ptr<TowerDefense::Aura>>> TowerDefense::Combat::s_Auras = std::make_unique <std::vector<std::shared_ptr<TowerDefense::Aura>>>();
+std::unique_ptr<std::vector<std::shared_ptr<TowerDefense::Aura::Aura>>> TowerDefense::Combat::s_Auras = std::make_unique <std::vector<std::shared_ptr<TowerDefense::Aura::Aura>>>();
 std::unique_ptr<std::vector<std::shared_ptr<TowerDefense::Fight>>> TowerDefense::Combat::s_Fights = std::make_unique<std::vector<std::shared_ptr<TowerDefense::Fight>>>();
 
 std::unique_ptr<TowerDefense::TowerInfo> TowerDefense::Combat::s_TowerInfo;
@@ -57,6 +57,8 @@ void TowerDefense::Combat::Render()
 		player.RenderStats();
 		player.RenderDeckAndArtifacts();
 	}
+
+	InGameSettings::Get().RenderButton();
 		
 	//Render Tower Information
 	if (s_TowerInfo)
@@ -74,15 +76,25 @@ void TowerDefense::Combat::Render()
 		player.RenderStats();
 		player.RenderDeckAndArtifacts();
 	}
+
+	//Settings Menu
+	if (InGameSettings::Get().IsShowing())
+		InGameSettings::Get().Render();
 }
 
 void TowerDefense::Combat::Update()
 {
+	if (InGameSettings::Get().IsShowing())
+	{
+		InGameSettings::Get().Update();
+		return;
+	}
+
 	Board::Get().Update();
 
-	UpdateCards();
-
 	UpdateWave();
+
+	UpdateCards();
 
 	Player& player = Player::Get();
 	bool deckShow = player.DeckShowing();
@@ -119,6 +131,8 @@ void TowerDefense::Combat::Update()
 
 void TowerDefense::Combat::OnSwitch()
 {
+	InGameSettings::Get().Show(false);
+
 	//Change Background Color
 	Renderer::Get().Clear(237.0f / 255.0f, 225.0f / 255.0f, 190.0f / 255.0f, 1.0f);
 
@@ -146,6 +160,7 @@ void TowerDefense::Combat::OnSwitch()
 	ClearTowers();
 	s_Auras->clear();
 
+	player.ApplyAuras();
 	player.ArtifactOnFightStart();
 
 	s_CurrentFight++;
@@ -236,6 +251,10 @@ void TowerDefense::Combat::UpdateCards()
 		player.GetDrawPile()->Update();
 	if (!cardSelected && !deckShow && !drawShow && !artifactsShow && !draggingInfo)
 		player.GetDiscardPile()->Update();
+	if (!cardSelected && !deckShow && !drawShow && !discardShow && !artifactsShow && !draggingInfo)
+	{
+		InGameSettings::Get().UpdateButton();
+	}
 	if (!s_Paused && !deckShow && !drawShow && !artifactsShow && !discardShow && !draggingInfo)
 		player.GetHand()->Update();
 }
@@ -493,7 +512,7 @@ std::shared_ptr<TowerDefense::Entity> TowerDefense::Combat::GetEntity(unsigned i
 	return nullptr;
 }
 
-void TowerDefense::Combat::AddAura(std::shared_ptr<Aura> a)
+void TowerDefense::Combat::AddAura(std::shared_ptr<Aura::Aura> a)
 {
 	a->OnAquire();
 	a->SetX(150.0f + s_Auras->size() * 50);

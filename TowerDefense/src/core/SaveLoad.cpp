@@ -28,6 +28,11 @@ void TowerDefense::Save::SaveGame(int slot)
 	std::ofstream saveFile;
 	saveFile.open("res/saves/save" + std::to_string(slot) + ".dat");
 
+	//File Info
+	saveFile << TowerDefense::GetDay() << "\n";
+	time_t now = time(0);
+	saveFile << std::ctime(&now);
+
 	//Player Data
 	Player& player = Player::Get();
 	saveFile << player.GetMaxHealth() << "\n";
@@ -52,9 +57,6 @@ void TowerDefense::Save::SaveGame(int slot)
 	saveFile << player.GetEnemiesDefeated() << "\n";
 	saveFile << player.GetScore() << "\n";
 	saveFile << player.GetSideBoardSlots()->size() << "\n";
-
-	//Day
-	saveFile << TowerDefense::GetDay() << "\n";
 
 	//Combats
 	saveFile << Combat::GetFightNumber() << "\n";
@@ -165,6 +167,15 @@ void TowerDefense::Load::LoadGame(int slot)
 		std::string line;
 		try
 		{
+			//Day
+			std::cout << "...Day Data" << std::endl;
+			std::getline(saveFile, line);
+			TowerDefense::SetDay(std::stoi(line));
+			Player::Get().UpdateDayText();
+
+			//Date of save
+			std::getline(saveFile, line);
+
 			//Player Data
 			std::cout << "...Player Data" << std::endl;
 			Player& player = Player::Get();
@@ -220,17 +231,11 @@ void TowerDefense::Load::LoadGame(int slot)
 			for (int i = 0; i < numSlots; i++)
 				player.AddSideBoardSlot();
 
-			//Day
-			std::cout << "...Day Data" << std::endl;
-			std::getline(saveFile, line);
-			TowerDefense::SetDay(std::stoi(line));
-			Player::Get().UpdateDayText();
-
 			//Combats
 			std::cout << "...Combat Data" << std::endl;
 			std::getline(saveFile, line);
 			Combat::SetFightNumber(std::stoi(line));
-			std::vector<int> fightOrder(20);
+			std::vector<int> fightOrder =std::vector<int>();
 			for (int i = 0; i < 20; i++)
 			{
 				std::getline(saveFile, line);

@@ -1,6 +1,7 @@
 #include "pch.h"
 #include "CombatReward.h"
 #include "core/Player.h"
+#include "InGameSettings.h"
 
 TowerDefense::CombatReward::CombatReward(const std::string msg)
 	:Button(0.0f, 0.0f, 180, 50, "CombatReward"),
@@ -81,6 +82,7 @@ void TowerDefense::CardReward::Render()
 		m_Fade->Render();
 		Player& player = Player::Get();
 		player.RenderStats();
+		InGameSettings::Get().RenderButton();
 		player.RenderDeckAndArtifacts();
 		m_Cancel->Render();
 		if (m_CardChoice->GetSelectedCard())

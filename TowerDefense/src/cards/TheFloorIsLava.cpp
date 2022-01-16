@@ -12,9 +12,9 @@ TowerDefense::TheFloorIsLava::TheFloorIsLava()
 void TowerDefense::TheFloorIsLava::Play()
 {
 	if (m_Upgraded)
-		Combat::AddAura(std::make_shared<ConstantDamage>(2.0f, 120, "2 Damage every 2\nSeconds"));
+		Combat::AddAura(std::make_shared<Aura::ConstantDamage>(2.0f, 120));
 	else
-		Combat::AddAura(std::make_shared<ConstantDamage>(1.0f, 120, "1 Damage every 2\nSeconds"));
+		Combat::AddAura(std::make_shared<Aura::ConstantDamage>(1.0f, 120));
 }
 
 std::shared_ptr<TowerDefense::Card> TowerDefense::TheFloorIsLava::Clone()

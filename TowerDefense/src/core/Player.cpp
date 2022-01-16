@@ -5,6 +5,9 @@
 #include "cards/AuraCards.h"
 #include "cards/TowerCards.h"
 #include "cards/SideboardSlot.h"
+#include "cards/HeroCard.h"
+#include "auras/Aura.h"
+#include "scenes/Combat.h"
 
 TowerDefense::Player::Player()
     :m_Health(100), m_MaxHealth(100), m_Energy(100), 
@@ -14,21 +17,22 @@ TowerDefense::Player::Player()
     m_Deck(std::make_shared<CardPile>(-100.0f,0.0f)), 
     m_DrawPile(std::make_shared<CardPile>(49.0f, 50.0f)),
     m_DiscardPile(std::make_shared<CardPile>(748.0f, 50.0f)),
-    m_ViewDeck(std::make_unique<Button>(500.0f, 570.0f, 50, 50, "viewDeckButton")),
-    m_HealthText(std::make_unique<Text>(std::to_string(m_Health) + "/" + std::to_string(m_MaxHealth), 660.0f, 575.0f, 10.0f, 0.0f)),
-    m_EnergyText(std::make_unique<Text>(std::to_string(m_Energy), 740.0f, 575.0f, 10.0f, 0.0f)),
+    m_ViewDeck(std::make_unique<Button>(480.0f, 570.0f, 50, 50, "viewDeckButton")),
+    m_HealthText(std::make_unique<Text>(std::to_string(m_Health) + "/" + std::to_string(m_MaxHealth), 640.0f, 575.0f, 10.0f, 0.0f)),
+    m_EnergyText(std::make_unique<Text>(std::to_string(m_Energy), 720.0f, 575.0f, 10.0f, 0.0f)),
     m_WoodText(std::make_unique<Text>(std::to_string(m_Resources.w), 50.0f, 575.0f, 10.0f, 0.0f)),
     m_StoneText(std::make_unique<Text>(std::to_string(m_Resources.x), 125.0f, 575.0f, 10.0f, 0.0f)),
     m_WheatText(std::make_unique<Text>(std::to_string(m_Resources.y), 200.0f, 575.0f, 10.0f, 0.0f)),
     m_GoldText(std::make_unique<Text>(std::to_string(m_Resources.z), 275.0f, 575.0f, 10.0f, 0.0f)),
     m_DayText(std::make_unique<Text>("Day: " + std::to_string(GetDay()), 400.0f, 575.0f, 10.0f, 0.0f)),
-    m_HealthIcon(std::make_unique<Image>("healthIcon", 620.0f, 575.0f, 20, 20, 0.0f)),
-    m_EnergyIcon(std::make_unique<Image>("energyIcon", 710.0f, 575.0f, 20, 20, 0.0f)),
+    m_HealthIcon(std::make_unique<Image>("healthIcon", 600.0f, 575.0f, 20, 20, 0.0f)),
+    m_EnergyIcon(std::make_unique<Image>("energyIcon", 690.0f, 575.0f, 20, 20, 0.0f)),
     m_WoodIcon(std::make_unique<Image>("woodIcon", 80.0f, 575.0f, 20, 20, 0.0f)),
     m_StoneIcon(std::make_unique<Image>("stoneIcon", 155.0f, 575.0f, 20, 20, 0.0f)),
     m_WheatIcon(std::make_unique<Image>("wheatIcon", 230.0f, 575.0f, 20, 20, 0.0f)),
     m_GoldIcon(std::make_unique<Image>("goldIcon", 305.0f, 575.0f, 20, 20, 0.0f)),
-    m_Artifacts(std::make_shared<ArtifactPile>(570.0f, 570.0f)),
+    m_Artifacts(std::make_shared<ArtifactPile>(550.0f, 570.0f)),
+    m_CombatAuras(std::make_unique<std::vector<std::shared_ptr<Aura::Aura>>>()),
     m_SideBoardSlots(std::make_shared<std::vector<std::unique_ptr<SideboardSlot>>>())
 {
     m_HealthText->SetColor(1.0f, 1.0f, 1.0f, 1.0f);
@@ -76,7 +80,8 @@ void TowerDefense::Player::Reset()
     m_Deck = std::make_shared<CardPile>(-100.0f, 0.0f);
     m_DrawPile = std::make_shared<CardPile>(49.0f, 50.0f);
     m_DiscardPile = std::make_shared<CardPile>(748.0f, 50.0f);
-    m_Artifacts = std::make_shared<ArtifactPile>(570.0f, 570.0f);
+    m_Artifacts = std::make_shared<ArtifactPile>(550.0f, 570.0f);
+    m_CombatAuras = std::make_unique<std::vector<std::shared_ptr<Aura::Aura>>>();
     m_SideBoardSlots = std::make_shared<std::vector<std::unique_ptr<SideboardSlot>>>();
 
     //Starter Deck
@@ -91,7 +96,7 @@ void TowerDefense::Player::Reset()
 void TowerDefense::Player::SetEnergy(int energy)
 {
     m_Energy = energy;
-    m_EnergyText = std::make_unique<Text>(std::to_string(m_Energy), 740.0f, 575.0f, 10.0f, 0.0f);
+    m_EnergyText = std::make_unique<Text>(std::to_string(m_Energy), 720.0f, 575.0f, 10.0f, 0.0f);
     m_EnergyText->SetColor(m_TextColor.w, m_TextColor.x, m_TextColor.y, m_TextColor.z);
 }
 
@@ -100,7 +105,7 @@ void TowerDefense::Player::ChangeEnergy(int change)
     m_Energy += change;
     if (m_Energy > 9999)
         m_Energy = 9999;
-    m_EnergyText = std::make_unique<Text>(std::to_string(m_Energy), 740.0f, 575.0f, 10.0f, 0.0f);
+    m_EnergyText = std::make_unique<Text>(std::to_string(m_Energy), 720.0f, 575.0f, 10.0f, 0.0f);
     m_EnergyText->SetColor(m_TextColor.w, m_TextColor.x, m_TextColor.y, m_TextColor.z);
 }
 
@@ -251,7 +256,7 @@ void TowerDefense::Player::SetNumWorkers(int num, Resource res)
 void TowerDefense::Player::SetHealth(int health)
 {
     m_Health = health;
-    m_HealthText = std::make_unique<Text>(std::to_string(m_Health) + "/" + std::to_string(m_MaxHealth), 660.0f, 575.0f, 10.0f, 0.0f);
+    m_HealthText = std::make_unique<Text>(std::to_string(m_Health) + "/" + std::to_string(m_MaxHealth), 640.0f, 575.0f, 10.0f, 0.0f);
     m_HealthText->SetColor(m_TextColor.w, m_TextColor.x, m_TextColor.y, m_TextColor.z);
 }
 
@@ -270,14 +275,14 @@ void TowerDefense::Player::ChangeHealth(int change)
     if (m_Health > previousHealth)
         m_AmountHealed += m_Health - previousHealth;
 
-    m_HealthText = std::make_unique<Text>(std::to_string(m_Health) + "/" + std::to_string(m_MaxHealth), 660.0f, 575.0f, 10.0f, 0.0f);
+    m_HealthText = std::make_unique<Text>(std::to_string(m_Health) + "/" + std::to_string(m_MaxHealth), 640.0f, 575.0f, 10.0f, 0.0f);
     m_HealthText->SetColor(m_TextColor.w, m_TextColor.x, m_TextColor.y, m_TextColor.z);
 }
 
 void TowerDefense::Player::SetMaxHealth(int health)
 {
     m_MaxHealth = health;
-    m_HealthText = std::make_unique<Text>(std::to_string(m_Health) + "/" + std::to_string(m_MaxHealth), 660.0f, 575.0f, 10.0f, 0.0f);
+    m_HealthText = std::make_unique<Text>(std::to_string(m_Health) + "/" + std::to_string(m_MaxHealth), 640.0f, 575.0f, 10.0f, 0.0f);
     m_HealthText->SetColor(m_TextColor.w, m_TextColor.x, m_TextColor.y, m_TextColor.z);
 }
 
@@ -286,7 +291,7 @@ void TowerDefense::Player::ChangeMaxHealth(int change)
     m_MaxHealth += change; 
     if (m_Health > m_MaxHealth) 
         m_Health = m_MaxHealth;
-    m_HealthText = std::make_unique<Text>(std::to_string(m_Health) + "/" + std::to_string(m_MaxHealth), 660.0f, 575.0f, 10.0f, 0.0f);
+    m_HealthText = std::make_unique<Text>(std::to_string(m_Health) + "/" + std::to_string(m_MaxHealth), 640.0f, 575.0f, 10.0f, 0.0f);
     m_HealthText->SetColor(m_TextColor.w, m_TextColor.x, m_TextColor.y, m_TextColor.z);
 }
 
@@ -411,6 +416,7 @@ void TowerDefense::Player::CleanUp()
     m_StoneIcon.reset();
     m_WheatIcon.reset();
     m_GoldIcon.reset();
+    m_CombatAuras.reset();
     m_SideBoardSlots->clear();
 }
 
@@ -539,6 +545,27 @@ void TowerDefense::Player::ArtifactOnEnemyReachedEnd(std::shared_ptr<Enemy::Enem
 {
     for(int i = 0; i < m_Artifacts->GetSize(); i++)
         m_Artifacts->GetArtifact(i)->OnEnemyReachedEnd(e);
+}
+
+void TowerDefense::Player::AddCombatAura(std::shared_ptr<Aura::Aura> a)
+{
+    for (unsigned int i = 0; i < m_CombatAuras->size(); i++)
+    {
+        //Check if aura exists in combat auras
+        if (m_CombatAuras->at(i)->GetName() == a->GetName())
+        {
+            m_CombatAuras->at(i)->Combine(a);
+            return;
+        }
+    }
+
+    m_CombatAuras->push_back(a);
+}
+
+void TowerDefense::Player::ApplyAuras()
+{
+    for (unsigned int i = 0; i < m_CombatAuras->size(); i++)
+        Combat::AddAura(m_CombatAuras->at(i));
 }
 
 void TowerDefense::Player::AddSideBoardSlot()

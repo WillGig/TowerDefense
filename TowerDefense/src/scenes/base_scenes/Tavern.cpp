@@ -3,6 +3,7 @@
 #include "core/Player.h"
 #include "TowerDefense.h"
 #include "cards/HeroCard.h"
+#include "scenes/InGameSettings.h"
 
 TowerDefense::Tavern::Tavern()
 	:BaseScene("goTavernButton", "Meet new people!", 5), m_HeroTaken(true),
@@ -20,8 +21,13 @@ void TowerDefense::Tavern::Render()
 	if (m_TavernChoice->GetSelectedCard())
 		m_Confirm->Render();
 	m_TavernChoice->Render();
-	if(!m_TavernChoice->ShowingInfo())
+	if (!m_TavernChoice->ShowingInfo())
+	{
+		InGameSettings::Get().RenderButton();
 		player.RenderDeckAndArtifacts();
+		if (InGameSettings::Get().IsShowing())
+			InGameSettings::Get().Render();
+	}
 }
 
 void TowerDefense::Tavern::Update()
@@ -30,31 +36,42 @@ void TowerDefense::Tavern::Update()
 	bool showingInfo = m_TavernChoice && m_TavernChoice->ShowingInfo();
 
 	if (!showingInfo)
+	{
+		if (InGameSettings::Get().IsShowing())
+		{
+			InGameSettings::Get().Update();
+			return;
+		}
+
+		Player& player = Player::Get();
 		player.UpdateDeckAndArtifacts();
 
-	if (!player.DeckShowing() && !player.ArtifactsShowing())
-	{
-		if (m_TavernChoice->GetSelectedCard() && !showingInfo)
-		{
-			m_Confirm->Update();
-			if (m_Confirm->IsClicked())
-			{
-				player.AddToDeck(m_TavernChoice->GetSelectedCard());
-				m_ActivityReady = m_ActivityCoolDown;
-				m_Exit = true;
-				m_HeroTaken = true;
-				m_TavernChoice->RemoveSelectedCard();
-			}
-		}
-		if (!showingInfo)
-		{
-			m_Cancel->Update();
-			if (m_Cancel->IsClicked())
-				m_Exit = true;
-		}
-		if (m_TavernChoice)
-			m_TavernChoice->Update();
+		if (player.DeckShowing() || player.ArtifactsShowing())
+			return;
+
+		InGameSettings::Get().UpdateButton();
 	}
+
+	if (m_TavernChoice->GetSelectedCard() && !showingInfo)
+	{
+		m_Confirm->Update();
+		if (m_Confirm->IsClicked())
+		{
+			player.AddToDeck(m_TavernChoice->GetSelectedCard());
+			m_ActivityReady = m_ActivityCoolDown;
+			m_Exit = true;
+			m_HeroTaken = true;
+			m_TavernChoice->RemoveSelectedCard();
+		}
+	}
+	if (!showingInfo)
+	{
+		m_Cancel->Update();
+		if (m_Cancel->IsClicked())
+			m_Exit = true;
+	}
+	if (m_TavernChoice)
+		m_TavernChoice->Update();
 }
 
 void TowerDefense::Tavern::OnSwitch()

@@ -1,6 +1,7 @@
 #pragma once
 #include "Scene.h"
 #include "enemies/EnemyIcon.h"
+#include "InGameSettings.h"
 
 namespace TowerDefense
 {

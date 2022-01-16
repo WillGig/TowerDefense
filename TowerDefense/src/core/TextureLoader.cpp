@@ -29,12 +29,14 @@ void TowerDefense::LoadTextures()
     Texture::LoadTexture("60FPSSelected",           mainMenuButtons.load(3, 1));
     Texture::LoadTexture("uncappedFPS",             mainMenuButtons.load(2, 2));
     Texture::LoadTexture("uncappedFPSSelected",     mainMenuButtons.load(3, 2));
-    Texture::LoadTexture("slot1",                   mainMenuButtons.load(2, 3));
-    Texture::LoadTexture("slot1Selected",           mainMenuButtons.load(3, 3));
-    Texture::LoadTexture("slot2",                   mainMenuButtons.load(2, 4));
-    Texture::LoadTexture("slot2Selected",           mainMenuButtons.load(3, 4));
-    Texture::LoadTexture("slot3",                   mainMenuButtons.load(2, 5));
-    Texture::LoadTexture("slot3Selected",           mainMenuButtons.load(3, 5));
+    Texture::LoadTexture("slotFull",                mainMenuButtons.load(2, 3));
+    Texture::LoadTexture("slotFullSelected",        mainMenuButtons.load(3, 3));
+    Texture::LoadTexture("slotEmpty",               mainMenuButtons.load(2, 4));
+    Texture::LoadTexture("slotEmptySelected",       mainMenuButtons.load(3, 4));
+    Texture::LoadTexture("menuConfirm",             mainMenuButtons.load(2, 5));
+    Texture::LoadTexture("menuConfirmSelected",     mainMenuButtons.load(3, 5));
+    Texture::LoadTexture("menuCancel",              mainMenuButtons.load(2, 6));
+    Texture::LoadTexture("menuCancelSelected",      mainMenuButtons.load(3, 6));
 
     SpriteSheet baseButtons("res/textures/BaseButtons.png", 180, 50);
     Texture::LoadTexture("confirmButton",               baseButtons.load(0, 0));
@@ -167,14 +169,16 @@ void TowerDefense::LoadTextures()
     Texture::LoadTexture("spinButtonSelected",      tradeButtons.load(1, 3));
 
     SpriteSheet statIcons("res/textures/Stats.png", 64, 64);
-    Texture::LoadTexture("healthIcon",  statIcons.load(0, 0));
-    Texture::LoadTexture("goldIcon",    statIcons.load(1, 0));
-    Texture::LoadTexture("energyIcon",  statIcons.load(2, 0));
-    Texture::LoadTexture("woodIcon",    statIcons.load(3, 0));
-    Texture::LoadTexture("stoneIcon",   statIcons.load(4, 0));
-    Texture::LoadTexture("wheatIcon",   statIcons.load(5, 0));
-    Texture::LoadTexture("workerIcon",  statIcons.load(6, 0));
-    Texture::LoadTexture("houseIcon",   statIcons.load(0, 1));
+    Texture::LoadTexture("healthIcon",              statIcons.load(0, 0));
+    Texture::LoadTexture("goldIcon",                statIcons.load(1, 0));
+    Texture::LoadTexture("energyIcon",              statIcons.load(2, 0));
+    Texture::LoadTexture("woodIcon",                statIcons.load(3, 0));
+    Texture::LoadTexture("stoneIcon",               statIcons.load(4, 0));
+    Texture::LoadTexture("wheatIcon",               statIcons.load(5, 0));
+    Texture::LoadTexture("workerIcon",              statIcons.load(6, 0));
+    Texture::LoadTexture("houseIcon",               statIcons.load(0, 1));
+    Texture::LoadTexture("settingsIcon",            statIcons.load(1, 1));
+    Texture::LoadTexture("settingsIconSelected",    statIcons.load(2, 1));
 
     SpriteSheet auras("res/textures/auras.png", 64, 64);
     Texture::LoadTexture("lifeSteal",       auras.load(0, 0));
@@ -261,6 +265,9 @@ void TowerDefense::LoadTextures()
     Texture::LoadTexture("deathPriestUpgrade",              towerUpgrades.load(2, 6));
     Texture::LoadTexture("deathPriestUpgradeSelected",      towerUpgrades.load(2, 7));
 
+    SpriteSheet skillTreeSkills("res/textures/SkillTreeSkills.png", 64, 64);
+    Texture::LoadTexture("ArcherDamageSkill",           skillTreeSkills.load(0, 0));
+    Texture::LoadTexture("ArcherDamageSkillSelected",   skillTreeSkills.load(1, 0));
 
     std::cout << "...Towers" << std::endl;
     

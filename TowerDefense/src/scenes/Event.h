@@ -1,6 +1,7 @@
 #pragma once
 #include "Scene.h"
 #include "random_events/RandomEvent.h"
+#include "InGameSettings.h"
 
 namespace TowerDefense
 {

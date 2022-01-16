@@ -2,6 +2,7 @@
 #include "BaseScene.h"
 #include "core/Player.h"
 #include "TowerDefense.h"
+#include "scenes/InGameSettings.h"
 
 TowerDefense::Library::Library()
 	:BaseScene("visitLibraryButton", "Add to your collection.", 1),
@@ -19,7 +20,12 @@ void TowerDefense::Library::Render()
 		m_Confirm->Render();
 	m_CardChoice->Render();
 	if (!m_CardChoice->ShowingInfo())
+	{
+		InGameSettings::Get().RenderButton();
 		player.RenderDeckAndArtifacts();
+		if (InGameSettings::Get().IsShowing())
+			InGameSettings::Get().Render();
+	}
 }
 
 void TowerDefense::Library::Update()
@@ -28,30 +34,40 @@ void TowerDefense::Library::Update()
 	bool showingInfo = m_CardChoice && m_CardChoice->ShowingInfo();
 
 	if (!showingInfo)
-		player.UpdateDeckAndArtifacts();
-	
-	if (!player.DeckShowing() && !player.ArtifactsShowing())
 	{
-		if (m_CardChoice->GetSelectedCard() && !showingInfo)
+		if (InGameSettings::Get().IsShowing())
 		{
-			m_Confirm->Update();
-			if (m_Confirm->IsClicked())
-			{
-				player.AddToDeck(m_CardChoice->GetSelectedCard());
-				m_ActivityReady = m_ActivityCoolDown;
-				m_Exit = true;
-				m_CardChoice.reset();
-			}
+			InGameSettings::Get().Update();
+			return;
 		}
-		if (!showingInfo)
-		{
-			m_Cancel->Update();
-			if (m_Cancel->IsClicked())
-				m_Exit = true;
-		}
-		if (m_CardChoice)
-			m_CardChoice->Update();
+
+		player.UpdateDeckAndArtifacts();
+
+		if (player.DeckShowing() || player.ArtifactsShowing())
+			return;
+
+		InGameSettings::Get().UpdateButton();
 	}
+	
+	if (m_CardChoice->GetSelectedCard() && !showingInfo)
+	{
+		m_Confirm->Update();
+		if (m_Confirm->IsClicked())
+		{
+			player.AddToDeck(m_CardChoice->GetSelectedCard());
+			m_ActivityReady = m_ActivityCoolDown;
+			m_Exit = true;
+			m_CardChoice.reset();
+		}
+	}
+	if (!showingInfo)
+	{
+		m_Cancel->Update();
+		if (m_Cancel->IsClicked())
+			m_Exit = true;
+	}
+	if (m_CardChoice)
+		m_CardChoice->Update();
 }
 
 void TowerDefense::Library::OnSwitch()

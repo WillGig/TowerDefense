@@ -12,9 +12,9 @@ TowerDefense::LightningStorm::LightningStorm()
 void TowerDefense::LightningStorm::Play()
 {
 	if(m_Upgraded)
-		Combat::AddAura(std::make_shared<Storm>(5));
+		Combat::AddAura(std::make_shared<Aura::Storm>(5));
 	else
-		Combat::AddAura(std::make_shared<Storm>(3));
+		Combat::AddAura(std::make_shared<Aura::Storm>(3));
 }
 
 std::shared_ptr<TowerDefense::Card> TowerDefense::LightningStorm::Clone()

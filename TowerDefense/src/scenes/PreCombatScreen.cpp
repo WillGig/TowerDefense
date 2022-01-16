@@ -27,6 +27,7 @@ void TowerDefense::PreCombatScreen::Render()
 		m_BeginCombat->Render();
 
 		player.RenderStats();
+		InGameSettings::Get().RenderButton();
 
 		for (unsigned int i = 0; i < m_Enemies.size(); i++)
 			m_Enemies[i]->Render();
@@ -36,11 +37,20 @@ void TowerDefense::PreCombatScreen::Render()
 			sideboardSlots->at(i)->Render();
 
 		player.RenderDeckAndArtifacts();
+
+		if (InGameSettings::Get().IsShowing())
+			InGameSettings::Get().Render();
 	}
 }
 
 void TowerDefense::PreCombatScreen::Update()
 {
+	if (InGameSettings::Get().IsShowing())
+	{
+		InGameSettings::Get().Update();
+		return;
+	}
+
 	Player& player = Player::Get();
 	auto sideboardSlots = player.GetSideBoardSlots();
 
@@ -56,6 +66,8 @@ void TowerDefense::PreCombatScreen::Update()
 
 		if (!player.DeckShowing() && !player.ArtifactsShowing())
 		{
+
+			InGameSettings::Get().UpdateButton();
 
 			for (unsigned int i = 0; i < sideboardSlots->size(); i++)
 			{
@@ -73,6 +85,8 @@ void TowerDefense::PreCombatScreen::Update()
 
 void TowerDefense::PreCombatScreen::OnSwitch()
 {
+	InGameSettings::Get().Show(false);
+
 	m_Enemies = std::vector<std::unique_ptr<EnemyIcon>>();
 
 	auto fight = Combat::GetNextFight();

@@ -197,7 +197,6 @@
     <ClCompile Include="src\towers\buffs\RangeBuff.cpp" />
     <ClCompile Include="src\towers\buffs\CritDamageBuff.cpp" />
     <ClCompile Include="src\enemies\States\State.cpp" />
-    <ClCompile Include="src\scenes\base_scenes\SkillTree.cpp" />
     <ClCompile Include="src\enemies\PlagueRat.cpp" />
     <ClCompile Include="src\cards\curses\Infection.cpp" />
     <ClCompile Include="src\enemies\WitchRat.cpp" />
@@ -210,6 +209,12 @@
     <ClCompile Include="src\core\SaveLoad.cpp" />
     <ClCompile Include="src\scenes\LoadMenu.cpp" />
     <ClCompile Include="src\scenes\NewGameMenu.cpp" />
+    <ClCompile Include="src\scenes\InGameSettings.cpp" />
+    <ClCompile Include="src\scenes\base_scenes\skill_trees\SkillTreeSkill.cpp" />
+    <ClCompile Include="src\scenes\base_scenes\skill_trees\TestSkill.cpp" />
+    <ClCompile Include="src\scenes\base_scenes\skill_trees\ArcherDamage.cpp" />
+    <ClCompile Include="src\auras\ArcherDamage.cpp" />
+    <ClCompile Include="src\utils\StringUtils.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\artifacts\Artifact.h" />
@@ -306,12 +311,14 @@
     <ClInclude Include="src\towers\buffs\RangeBuff.h" />
     <ClInclude Include="src\towers\buffs\CritDamageBuff.h" />
     <ClInclude Include="src\enemies\States\State.h" />
-    <ClInclude Include="src\scenes\base_scenes\SkillTree.h" />
     <ClInclude Include="src\scenes\Settings.h" />
     <ClInclude Include="src\core\DropDown.h" />
     <ClInclude Include="src\core\SaveLoad.h" />
     <ClInclude Include="src\scenes\LoadMenu.h" />
     <ClInclude Include="src\scenes\NewGameMenu.h" />
+    <ClInclude Include="src\scenes\InGameSettings.h" />
+    <ClInclude Include="src\scenes\base_scenes\skill_trees\SkillTreeSkill.h" />
+    <ClInclude Include="src\utils\StringUtils.h" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="res\textures\AnimationEffects.png" />

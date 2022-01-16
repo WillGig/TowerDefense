@@ -21,6 +21,7 @@ void TowerDefense::PostCombatScreen::Render()
 {
 	Player& player = Player::Get();
 	player.RenderStats();
+	InGameSettings::Get().RenderButton();
 
 	m_VictoryText->Render();
 	m_DefeatedStats->Render();
@@ -50,10 +51,19 @@ void TowerDefense::PostCombatScreen::Render()
 
 	if(m_FocusedReward == -1 || !m_Rewards->at(m_FocusedReward)->ShowingInfo())
 		player.RenderDeckAndArtifacts();
+
+	if (InGameSettings::Get().IsShowing())
+		InGameSettings::Get().Render();
 }
 
 void TowerDefense::PostCombatScreen::Update()
 {
+	if (InGameSettings::Get().IsShowing())
+	{
+		InGameSettings::Get().Update();
+		return;
+	}
+
 	m_FocusedReward = -1;
 	for (unsigned int i = 0; i < m_Rewards->size(); i++)
 	{
@@ -72,6 +82,9 @@ void TowerDefense::PostCombatScreen::Update()
 
 	if (!player.DeckShowing() && !player.ArtifactsShowing())
 	{
+		if (!showingRewardInfo)
+			InGameSettings::Get().UpdateButton();
+
 		if (m_FocusedReward == -1)
 		{
 			int takenReward = -1;
@@ -111,6 +124,7 @@ void TowerDefense::PostCombatScreen::Update()
 
 void TowerDefense::PostCombatScreen::OnSwitch()
 {
+	InGameSettings::Get().Show(false);
 	Player& player = Player::Get();
 	Renderer::Get().Clear(0.0f, 0.0f, 0.0f, 1.0f);
 	player.SetTextColor(1.0f, 1.0f, 1.0f, 1.0f);

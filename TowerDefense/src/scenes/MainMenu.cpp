@@ -48,5 +48,5 @@ void TowerDefense::MainMenu::Update()
 
 void TowerDefense::MainMenu::OnSwitch()
 {
-
+	Renderer::Get().Clear(0.0f, 0.0f, 0.0f, 1.0f);
 }

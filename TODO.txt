@@ -1,5 +1,15 @@
 Current:
-	More Enemies(Days 21-30):
+	Design skill trees
+	Add specific skill trees
+	Add saving and loading for skill trees
+	Add skill trees for archery range, music hall, 
+		wizard tower, temple, and alchemy lab
+	Add second towers
+	 - music hall		Singer(replaces monk)
+	 - wizard tower 	Sorcerer
+	 - alchemy lab		Tinkerer?
+
+	-More Enemies(Days 21-30):
 	
 		- Rats
 			- Plague rat - shuffles infection into deck
@@ -34,8 +44,6 @@ Current:
 		- Life cleric - increase heal amount
 		- Summoner - summon duration and summon power level
 
-	Rework smithing upgrades for heros
-	
 	Add more upgrade options for different types of towers
 	 - new spells/attacks?
 	 - piercing shots for rangers
@@ -52,6 +60,12 @@ Current:
 	- something		- Can skip events
 	- Wax wings		- Gives flappy bird type game?
 	- Sugar bowl		- Protects against disease?
+	- explorer's pack	- allows cave exploring
+	- scholar's pack	- rune decoding puzzle (with time limit?)
+	- gambler's pack	- dice rolling betting game
+	- flute			- 
+	- guitar		- 
+	- harp			- 
 
 	Event Improvements:
 		Allow hovering over event options to show cards/artifacts obtained
@@ -66,6 +80,7 @@ Current:
 	- Fishing
 
 Soon:
+	Rework smithing upgrades for heros
 	Allow right clicking on upgrades for more detailed information
 	Sideboard keyword on some cards - button in precombat screen to toggle which ones you wnat
 	- Watchguard - archer that can see invisible with sideboard
@@ -91,9 +106,7 @@ Soon:
 Long Term:
 	No duplicate cards in card selections\shops?
 	Add more maps/paths
-	Enemies that add curses to your draw pile
-	Tower that summons other towers (Conjurer?) upgrades to summon different types
-	Make Base buttons change when they are used
+	Make Base buttons change when they are used?
 	Add more groups of enemies to fight pools
 		- Add more orcs/goblins and move to their own category of enemies with spearate fight pools
 		- Add ghosts/spectors as a fight group
@@ -101,9 +114,6 @@ Long Term:
 	Add specifics to upgrades when right clicking on them to make it clear what they do
 	Make resolution adjustable
 	Change leveling for heros - add new types of attacks, etc.
-	Saving and Loading
-	Settings menu
-	In Game Menu
 	indicators for buffs on towers
 	More Towers - Disabling slowing/freezing towers
 		Druid 		- 

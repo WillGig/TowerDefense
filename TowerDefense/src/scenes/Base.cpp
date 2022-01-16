@@ -35,8 +35,11 @@ void TowerDefense::Base::Render()
 			}
 		}
 		m_NextDay->Render();
+		InGameSettings::Get().RenderButton();
 		player.RenderStats();
 		player.RenderDeckAndArtifacts();
+		if (InGameSettings::Get().IsShowing())
+			InGameSettings::Get().Render();
 	}
 	else
 		s_BaseScenes->at(m_CurrentMenu)->Render();
@@ -46,11 +49,18 @@ void TowerDefense::Base::Update()
 {
 	if (m_CurrentMenu == -1)
 	{
+		if (InGameSettings::Get().IsShowing())
+		{
+			InGameSettings::Get().Update();
+			return;
+		}
+
 		Player& player = Player::Get();
 		player.UpdateDeckAndArtifacts();
 
 		if (!player.DeckShowing() && !player.ArtifactsShowing())
 		{
+			InGameSettings::Get().UpdateButton();
 			UpdateActivities();
 			UpdateNextDay();
 		}
@@ -65,7 +75,11 @@ void TowerDefense::Base::Update()
 
 void TowerDefense::Base::OnSwitch()
 {
+	Player::Get().SetTextColor(1.0f, 1.0f, 1.0f, 1.0f);
+
 	Save::SaveGame(SaveSlot);
+
+	InGameSettings::Get().Show(false);
 
 	for (unsigned int i = 0; i < s_BaseScenes->size(); i++)
 	{
@@ -80,6 +94,7 @@ void TowerDefense::Base::Reset()
 	s_BaseScenes = std::make_unique<std::vector<std::shared_ptr<BaseScene>>>();
 	AddBaseScene(std::make_shared<GatherResources>());
 	AddBaseScene(std::make_shared<Build>());
+	AddBaseScene(std::make_shared<ArcheryRange>());
 }
 
 void TowerDefense::Base::CleanUp()

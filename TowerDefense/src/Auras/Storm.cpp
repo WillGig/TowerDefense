@@ -3,13 +3,13 @@
 #include "scenes/combat.h"
 #include "cards/LightningBolt.h"
 
-TowerDefense::Storm::Storm(int damage)
+TowerDefense::Aura::Storm::Storm(int damage)
 	:Aura("storm", "Playing cards strikes\nenemies with lightning\ndealing " + std::to_string(damage) + " damage"),
 	m_Damage(damage)
 {
 }
 
-void TowerDefense::Storm::OnCardPlay(std::shared_ptr<Card> c)
+void TowerDefense::Aura::Storm::OnCardPlay(std::shared_ptr<Card> c)
 {
 	if (c->GetID() == GetID())
 		return;
@@ -34,7 +34,7 @@ void TowerDefense::Storm::OnCardPlay(std::shared_ptr<Card> c)
 }
 
 //Find all targets from lightning chaining between enemies in range of each other
-std::vector<std::shared_ptr<TowerDefense::Enemy::Enemy>> TowerDefense::Storm::GetTargets()
+std::vector<std::shared_ptr<TowerDefense::Enemy::Enemy>> TowerDefense::Aura::Storm::GetTargets()
 {
 	std::vector<std::shared_ptr<TowerDefense::Enemy::Enemy>> targets;
 
@@ -71,7 +71,7 @@ std::vector<std::shared_ptr<TowerDefense::Enemy::Enemy>> TowerDefense::Storm::Ge
 }
 
 //Find the first enemy in range of the current target that is not already in the list
-std::shared_ptr<TowerDefense::Enemy::Enemy> TowerDefense::Storm::GetEnemyInRange(std::shared_ptr<Enemy::Enemy> currentEnemy, std::vector<std::shared_ptr<Enemy::Enemy>> exclude, float range)
+std::shared_ptr<TowerDefense::Enemy::Enemy> TowerDefense::Aura::Storm::GetEnemyInRange(std::shared_ptr<Enemy::Enemy> currentEnemy, std::vector<std::shared_ptr<Enemy::Enemy>> exclude, float range)
 {
 	auto entities = Combat::GetEntities();
 	for (unsigned int i = 0; i < entities->size(); i++) {
@@ -87,7 +87,7 @@ std::shared_ptr<TowerDefense::Enemy::Enemy> TowerDefense::Storm::GetEnemyInRange
 	return nullptr;
 }
 
-bool TowerDefense::Storm::Contains(std::vector<std::shared_ptr<Enemy::Enemy>> list, unsigned int ID)
+bool TowerDefense::Aura::Storm::Contains(std::vector<std::shared_ptr<Enemy::Enemy>> list, unsigned int ID)
 {
 	for (unsigned int i = 0; i < list.size(); i++)
 	{
@@ -95,4 +95,15 @@ bool TowerDefense::Storm::Contains(std::vector<std::shared_ptr<Enemy::Enemy>> li
 			return true;
 	}
 	return false;
+}
+
+void TowerDefense::Aura::Storm::Combine(std::shared_ptr<Aura> other)
+{
+	auto otherStorm = std::dynamic_pointer_cast<Storm>(other);
+	if (otherStorm)
+	{
+		m_Damage += otherStorm->GetDamage();
+		m_InfoText = std::make_unique<Text>("Playing cards strikes\nenemies with lightning\ndealing " + std::to_string(m_Damage) + " damage", 0.0f, 0.0f, 10.0f, 0.0f);
+		m_InfoText->SetColor(1.0f, 1.0f, 1.0f, 1.0f);
+	}
 }

@@ -1,6 +1,7 @@
 #include "pch.h"
 #include "BaseScene.h"
 #include "core/Player.h"
+#include "scenes/InGameSettings.h"
 
 TowerDefense::GatherResources::GatherResources()
 	:BaseScene("getResourcesButton", "Hard Work Pays Off.", 1), 
@@ -15,8 +16,6 @@ TowerDefense::GatherResources::GatherResources()
 
 void TowerDefense::GatherResources::Render()
 {
-	Player& player = Player::Get();
-
 	if (m_CurrentActivity == Activity::MENU)
 	{
 		m_Chop->Render();
@@ -36,14 +35,29 @@ void TowerDefense::GatherResources::Render()
 		m_BackToCamp->Render();
 	}
 
+	Player& player = Player::Get();
+	InGameSettings::Get().RenderButton();
 	player.RenderStats();
 	player.RenderDeckAndArtifacts();
+	if (InGameSettings::Get().IsShowing())
+		InGameSettings::Get().Render();
 }
 
 void TowerDefense::GatherResources::Update()
 {
+	if (InGameSettings::Get().IsShowing())
+	{
+		InGameSettings::Get().Update();
+		return;
+	}
+
 	Player& player = Player::Get();
 	player.UpdateDeckAndArtifacts();
+
+	if (player.DeckShowing() || player.ArtifactsShowing())
+		return;
+
+	InGameSettings::Get().UpdateButton();
 	
 	if (m_CurrentActivity == Activity::MENU)
 	{
