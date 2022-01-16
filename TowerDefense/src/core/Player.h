@@ -10,6 +10,8 @@ namespace TowerDefense
 
 	class SideboardSlot;
 
+	namespace Aura { class Aura; }
+
 	class Player
 	{
 	public:
@@ -124,6 +126,10 @@ namespace TowerDefense
 		void ArtifactOnEnemyHit(std::shared_ptr<Enemy::Enemy> e, std::shared_ptr<Entity> source, Tower::DamageType type);
 		void ArtifactOnEnemyReachedEnd(std::shared_ptr<Enemy::Enemy> e);
 
+		//Combat Auras (from skill trees)
+		void AddCombatAura(std::shared_ptr<Aura::Aura> a);
+		void ApplyAuras();
+
 		inline std::shared_ptr<std::vector<std::unique_ptr<SideboardSlot>>> GetSideBoardSlots() const { return m_SideBoardSlots; }
 		void AddSideBoardSlot();
 		void ClearSideBoardSlots();
@@ -147,6 +153,7 @@ namespace TowerDefense
 		std::unique_ptr<Text> m_HealthText, m_EnergyText, m_DayText, m_WoodText, m_StoneText, m_WheatText, m_GoldText;
 		std::unique_ptr<Image> m_HealthIcon, m_EnergyIcon, m_WoodIcon, m_StoneIcon, m_WheatIcon, m_GoldIcon;
 		std::shared_ptr<ArtifactPile> m_Artifacts;
+		std::unique_ptr<std::vector<std::shared_ptr<Aura::Aura>>> m_CombatAuras;
 		std::shared_ptr<std::vector<std::unique_ptr<SideboardSlot>>> m_SideBoardSlots;
 	};
 }

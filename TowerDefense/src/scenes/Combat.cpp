@@ -13,7 +13,7 @@ bool TowerDefense::Combat::s_Paused = false;
 std::shared_ptr<std::vector<std::shared_ptr<TowerDefense::Entity>>> TowerDefense::Combat::s_Entities = std::make_shared<std::vector<std::shared_ptr<TowerDefense::Entity>>>();
 std::shared_ptr<std::vector<std::shared_ptr<TowerDefense::Entity>>> TowerDefense::Combat::s_Adders = std::make_shared<std::vector<std::shared_ptr<TowerDefense::Entity>>>();
 std::shared_ptr<std::vector<int>> TowerDefense::Combat::s_Removers = std::make_shared<std::vector<int>>();
-std::unique_ptr<std::vector<std::shared_ptr<TowerDefense::Aura>>> TowerDefense::Combat::s_Auras = std::make_unique <std::vector<std::shared_ptr<TowerDefense::Aura>>>();
+std::unique_ptr<std::vector<std::shared_ptr<TowerDefense::Aura::Aura>>> TowerDefense::Combat::s_Auras = std::make_unique <std::vector<std::shared_ptr<TowerDefense::Aura::Aura>>>();
 std::unique_ptr<std::vector<std::shared_ptr<TowerDefense::Fight>>> TowerDefense::Combat::s_Fights = std::make_unique<std::vector<std::shared_ptr<TowerDefense::Fight>>>();
 
 std::unique_ptr<TowerDefense::TowerInfo> TowerDefense::Combat::s_TowerInfo;
@@ -160,6 +160,7 @@ void TowerDefense::Combat::OnSwitch()
 	ClearTowers();
 	s_Auras->clear();
 
+	player.ApplyAuras();
 	player.ArtifactOnFightStart();
 
 	s_CurrentFight++;
@@ -511,7 +512,7 @@ std::shared_ptr<TowerDefense::Entity> TowerDefense::Combat::GetEntity(unsigned i
 	return nullptr;
 }
 
-void TowerDefense::Combat::AddAura(std::shared_ptr<Aura> a)
+void TowerDefense::Combat::AddAura(std::shared_ptr<Aura::Aura> a)
 {
 	a->OnAquire();
 	a->SetX(150.0f + s_Auras->size() * 50);

@@ -6,16 +6,13 @@
 
 TowerDefense::ArcheryRange::ArcheryRange()
 	:BaseScene("archeryButton", "Practice your aim", 0),
-	m_Tree(std::make_shared<TestSkill>()),
+	m_Tree(std::make_shared<ArcherDamage>()),
 	m_BackToCamp(std::make_unique<Button>(690.0f, 60.0f, 180, 50, "returnToCampButton"))
 {
-	m_Tree->AddChild(std::make_shared<TestSkill>(m_Tree));
-	auto child = std::make_shared<TestSkill>(m_Tree);
-	auto child2 = std::make_shared<TestSkill>(child);
-	child2->AddChild(std::make_shared<TestSkill>(child2));
-	child2->AddChild(std::make_shared<TestSkill>(child2));
+	auto child = std::make_shared<ArcherDamage>(m_Tree);
+	auto child2 = std::make_shared<ArcherDamage>(child);
+	child2->AddChild(std::make_shared<ArcherDamage>(child2));
 	child->AddChild(child2);
-	child->AddChild(std::make_shared<TestSkill>(child));
 	m_Tree->AddChild(child);
 	m_Tree->SetPosition(400.0f, 400.0f, 600.0f);
 }

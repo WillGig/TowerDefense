@@ -12,9 +12,9 @@ TowerDefense::LifeAura::LifeAura()
 void TowerDefense::LifeAura::Play()
 {
 	if(m_Upgraded)
-		Combat::AddAura(std::make_shared<LifeSteal>(2));
+		Combat::AddAura(std::make_shared<Aura::LifeSteal>(2));
 	else
-		Combat::AddAura(std::make_shared<LifeSteal>(1));
+		Combat::AddAura(std::make_shared<Aura::LifeSteal>(1));
 }
 
 std::shared_ptr<TowerDefense::Card> TowerDefense::LifeAura::Clone()

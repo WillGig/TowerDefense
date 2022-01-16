@@ -37,7 +37,7 @@ namespace TowerDefense
 
 		static inline std::shared_ptr<std::vector<std::shared_ptr<Entity>>> GetEntities() { return s_Entities; }
 
-		static void AddAura(std::shared_ptr<Aura> a);
+		static void AddAura(std::shared_ptr<Aura::Aura> a);
 		static void OnCardPlayAuras(std::shared_ptr<Card> c);
 		static void OnEnemyHit(unsigned int id, std::shared_ptr<Entity>  source, Tower::DamageType type);
 		static void OnEnemyDeath(unsigned int id);
@@ -103,7 +103,7 @@ namespace TowerDefense
 		static std::shared_ptr<std::vector<std::shared_ptr<Entity>>> s_Entities, s_Adders;
 		static std::shared_ptr<std::vector<int>> s_Removers;
 
-		static std::unique_ptr<std::vector<std::shared_ptr<Aura>>> s_Auras;
+		static std::unique_ptr<std::vector<std::shared_ptr<Aura::Aura>>> s_Auras;
 
 		static std::unique_ptr<std::vector<std::shared_ptr<Fight>>> s_Fights;
 

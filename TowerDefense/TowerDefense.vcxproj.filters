@@ -212,6 +212,9 @@
     <ClCompile Include="src\scenes\InGameSettings.cpp" />
     <ClCompile Include="src\scenes\base_scenes\skill_trees\SkillTreeSkill.cpp" />
     <ClCompile Include="src\scenes\base_scenes\skill_trees\TestSkill.cpp" />
+    <ClCompile Include="src\scenes\base_scenes\skill_trees\ArcherDamage.cpp" />
+    <ClCompile Include="src\auras\ArcherDamage.cpp" />
+    <ClCompile Include="src\utils\StringUtils.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\artifacts\Artifact.h" />
@@ -315,6 +318,7 @@
     <ClInclude Include="src\scenes\NewGameMenu.h" />
     <ClInclude Include="src\scenes\InGameSettings.h" />
     <ClInclude Include="src\scenes\base_scenes\skill_trees\SkillTreeSkill.h" />
+    <ClInclude Include="src\utils\StringUtils.h" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="res\textures\AnimationEffects.png" />

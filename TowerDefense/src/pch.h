@@ -14,6 +14,7 @@
 #include <math.h>
 #include <unordered_map>
 #include <iomanip>
+#include "utils/StringUtils.h"
 
 //GLEW and GLFW
 #include <GL/glew.h>

@@ -13,9 +13,9 @@ TowerDefense::Envenom::Envenom()
 void TowerDefense::Envenom::Play()
 {
 	if (m_Upgraded)
-		Combat::AddAura(std::make_shared<PoisonWeapons>(1.0f, 90, "1.0"));
+		Combat::AddAura(std::make_shared<Aura::PoisonWeapons>(1.0f, 90));
 	else
-		Combat::AddAura(std::make_shared<PoisonWeapons>(0.5f, 90, "0.5"));
+		Combat::AddAura(std::make_shared<Aura::PoisonWeapons>(0.5f, 90));
 }
 
 std::shared_ptr<TowerDefense::Card> TowerDefense::Envenom::Clone()

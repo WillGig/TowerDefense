@@ -265,6 +265,9 @@ void TowerDefense::LoadTextures()
     Texture::LoadTexture("deathPriestUpgrade",              towerUpgrades.load(2, 6));
     Texture::LoadTexture("deathPriestUpgradeSelected",      towerUpgrades.load(2, 7));
 
+    SpriteSheet skillTreeSkills("res/textures/SkillTreeSkills.png", 64, 64);
+    Texture::LoadTexture("ArcherDamageSkill",           skillTreeSkills.load(0, 0));
+    Texture::LoadTexture("ArcherDamageSkillSelected",   skillTreeSkills.load(1, 0));
 
     std::cout << "...Towers" << std::endl;
     

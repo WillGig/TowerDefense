@@ -1,6 +1,7 @@
 Current:
 	Design skill trees
 	Add specific skill trees
+	Add saving and loading for skill trees
 	Add skill trees for archery range, music hall, 
 		wizard tower, temple, and alchemy lab
 	Add second towers

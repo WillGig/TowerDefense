@@ -6,6 +6,8 @@
 #include "cards/TowerCards.h"
 #include "cards/SideboardSlot.h"
 #include "cards/HeroCard.h"
+#include "auras/Aura.h"
+#include "scenes/Combat.h"
 
 TowerDefense::Player::Player()
     :m_Health(100), m_MaxHealth(100), m_Energy(100), 
@@ -30,6 +32,7 @@ TowerDefense::Player::Player()
     m_WheatIcon(std::make_unique<Image>("wheatIcon", 230.0f, 575.0f, 20, 20, 0.0f)),
     m_GoldIcon(std::make_unique<Image>("goldIcon", 305.0f, 575.0f, 20, 20, 0.0f)),
     m_Artifacts(std::make_shared<ArtifactPile>(550.0f, 570.0f)),
+    m_CombatAuras(std::make_unique<std::vector<std::shared_ptr<Aura::Aura>>>()),
     m_SideBoardSlots(std::make_shared<std::vector<std::unique_ptr<SideboardSlot>>>())
 {
     m_HealthText->SetColor(1.0f, 1.0f, 1.0f, 1.0f);
@@ -78,6 +81,7 @@ void TowerDefense::Player::Reset()
     m_DrawPile = std::make_shared<CardPile>(49.0f, 50.0f);
     m_DiscardPile = std::make_shared<CardPile>(748.0f, 50.0f);
     m_Artifacts = std::make_shared<ArtifactPile>(550.0f, 570.0f);
+    m_CombatAuras = std::make_unique<std::vector<std::shared_ptr<Aura::Aura>>>();
     m_SideBoardSlots = std::make_shared<std::vector<std::unique_ptr<SideboardSlot>>>();
 
     //Starter Deck
@@ -412,6 +416,7 @@ void TowerDefense::Player::CleanUp()
     m_StoneIcon.reset();
     m_WheatIcon.reset();
     m_GoldIcon.reset();
+    m_CombatAuras.reset();
     m_SideBoardSlots->clear();
 }
 
@@ -540,6 +545,27 @@ void TowerDefense::Player::ArtifactOnEnemyReachedEnd(std::shared_ptr<Enemy::Enem
 {
     for(int i = 0; i < m_Artifacts->GetSize(); i++)
         m_Artifacts->GetArtifact(i)->OnEnemyReachedEnd(e);
+}
+
+void TowerDefense::Player::AddCombatAura(std::shared_ptr<Aura::Aura> a)
+{
+    for (unsigned int i = 0; i < m_CombatAuras->size(); i++)
+    {
+        //Check if aura exists in combat auras
+        if (m_CombatAuras->at(i)->GetName() == a->GetName())
+        {
+            m_CombatAuras->at(i)->Combine(a);
+            return;
+        }
+    }
+
+    m_CombatAuras->push_back(a);
+}
+
+void TowerDefense::Player::ApplyAuras()
+{
+    for (unsigned int i = 0; i < m_CombatAuras->size(); i++)
+        Combat::AddAura(m_CombatAuras->at(i));
 }
 
 void TowerDefense::Player::AddSideBoardSlot()

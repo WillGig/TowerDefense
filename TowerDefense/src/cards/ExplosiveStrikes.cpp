@@ -12,9 +12,9 @@ TowerDefense::ExplosiveStrikes::ExplosiveStrikes()
 void TowerDefense::ExplosiveStrikes::Play()
 {
 	if(m_Upgraded)
-		Combat::AddAura(std::make_shared<DeathExplosions>(10));
+		Combat::AddAura(std::make_shared<Aura::DeathExplosions>(10));
 	else
-		Combat::AddAura(std::make_shared<DeathExplosions>(5));
+		Combat::AddAura(std::make_shared<Aura::DeathExplosions>(5));
 }
 
 std::shared_ptr<TowerDefense::Card> TowerDefense::ExplosiveStrikes::Clone()

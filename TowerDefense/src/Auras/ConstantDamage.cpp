@@ -2,13 +2,13 @@
 #include "Aura.h"
 #include "scenes/Combat.h"
 
-TowerDefense::ConstantDamage::ConstantDamage(float damage, int time, const std::string damagePerTime)
-	:Aura("constantDamage", "Deal " + damagePerTime + " to All Enemies"), 
+TowerDefense::Aura::ConstantDamage::ConstantDamage(float damage, int time)
+	:Aura("constantDamage", "Deal " + Utils::TruncateFloat(damage, 1) + " Damage every " + Utils::TruncateFloat((float)time/60.0f, 1) + "\nSeconds to All Enemies"),
 	m_Damage(damage), m_Time(time), m_NextDamage(0)
 {
 }
 
-void TowerDefense::ConstantDamage::Update()
+void TowerDefense::Aura::ConstantDamage::Update()
 {
 	Aura::Update();
 
@@ -30,4 +30,16 @@ void TowerDefense::ConstantDamage::Update()
 		else
 			m_NextDamage--;
 	}
+}
+
+void TowerDefense::Aura::ConstantDamage::Combine(std::shared_ptr<Aura> other)
+{
+	auto otherConstantDamage = std::dynamic_pointer_cast<ConstantDamage>(other);
+	if (otherConstantDamage)
+	{
+		m_Damage += otherConstantDamage->GetDamage();
+		m_InfoText = std::make_unique<Text>("Deal " + Utils::TruncateFloat(m_Damage, 1) + " Damage every " + Utils::TruncateFloat((float)m_Time / 60.0f, 1) + "\nSeconds to All Enemies", 0.0f, 0.0f, 10.0f, 0.0f);
+		m_InfoText->SetColor(1.0f, 1.0f, 1.0f, 1.0f);
+	}
+		
 }
