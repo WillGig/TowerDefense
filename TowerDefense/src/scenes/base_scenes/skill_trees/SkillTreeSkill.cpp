@@ -32,7 +32,7 @@ void TowerDefense::SkillTreeSkill::Update()
 		{
 			Apply();
 			m_Applied = true;
-			Player::Get().ChangeResource(m_Cost, Resource::GOLD);
+			Player::Get().ChangeResource(-m_Cost, Resource::GOLD);
 			for (auto l : m_Lines)
 				l->SetColor(1.0f, 1.0f, 1.0f, 1.0f);
 			for (auto child : m_Children)
