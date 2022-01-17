@@ -9,7 +9,7 @@ TowerDefense::SkillTreeSkill::SkillTreeSkill(const std::string& image, const std
 {
 	if (parent)
 	{
-		m_RequirementText = std::make_unique<Text>("Requires: " + parent->GetName(), 0.0f, 0.0f, 12.0f, 0.0f);
+		m_RequirementText = std::make_unique<Text>("Requires: " + parent->GetName(), 0.0f, 0.0f, 10.0f, 0.0f);
 		m_RequirementText->SetColor(1.0f, 0.0f, 0.0f, 1.0f);
 	}
 }
@@ -79,14 +79,14 @@ void TowerDefense::SkillTreeSkill::SetPosition(float x, float y, float treeWidth
 	if (x > 400)
 	{
 		m_InfoImage->SetPosition(120.0f, 110.0f, 0.0f);
-		m_InfoText->SetPosition(120.0f, 160.0f, 0.0f);
+		m_InfoText->SetPosition(120.0f, 150.0f, 0.0f);
 		if (m_RequirementText)
 			m_RequirementText->SetPosition(120.0f, 40.0f, 0.0f);
 	}
 	else
 	{
 		m_InfoImage->SetPosition(800.0f - 120.0f, 110.0f, 0.0f);
-		m_InfoText->SetPosition(800.0f - 120.0f, 160.0f, 0.0f);
+		m_InfoText->SetPosition(800.0f - 120.0f, 150.0f, 0.0f);
 		if (m_RequirementText)
 			m_RequirementText->SetPosition(800.0f - 120.0f, 40.0f, 0.0f);
 	}
@@ -133,6 +133,6 @@ std::shared_ptr<const TowerDefense::SkillTreeSkill> TowerDefense::SkillTreeSkill
 
 void TowerDefense::SkillTreeSkill::SetRequirementText(const std::string& text)
 {
-	m_RequirementText = std::make_unique<Text>(text, 0.0f, 0.0f, 12.0f, 0.0f);
+	m_RequirementText = std::make_unique<Text>(text, 0.0f, 0.0f, 10.0f, 0.0f);
 	m_RequirementText->SetColor(1.0f, 0.0f, 0.0f, 1.0f);
 }

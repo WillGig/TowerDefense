@@ -211,10 +211,11 @@
     <ClCompile Include="src\scenes\NewGameMenu.cpp" />
     <ClCompile Include="src\scenes\InGameSettings.cpp" />
     <ClCompile Include="src\scenes\base_scenes\skill_trees\SkillTreeSkill.cpp" />
-    <ClCompile Include="src\scenes\base_scenes\skill_trees\TestSkill.cpp" />
     <ClCompile Include="src\scenes\base_scenes\skill_trees\ArcherDamage.cpp" />
     <ClCompile Include="src\auras\ArcherDamage.cpp" />
     <ClCompile Include="src\utils\StringUtils.cpp" />
+    <ClCompile Include="src\scenes\base_scenes\skill_trees\MultiShot.cpp" />
+    <ClCompile Include="src\Auras\MultiShot.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\artifacts\Artifact.h" />

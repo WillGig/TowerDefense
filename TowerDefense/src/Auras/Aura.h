@@ -133,5 +133,17 @@ namespace TowerDefense
 		private:
 			float m_Damage;
 		};
+
+		class MultiShot : public Aura
+		{
+		public:
+			MultiShot(int extraShots);
+			void OnCardPlay(std::shared_ptr<Card> c) override;
+			void Combine(std::shared_ptr<Aura> other) override;
+			inline int GetExtraShots() const { return m_ExtraShots; }
+
+		private:
+			int m_ExtraShots;
+		};
 	}
 }

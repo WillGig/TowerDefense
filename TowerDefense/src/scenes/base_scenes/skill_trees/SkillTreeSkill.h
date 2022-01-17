@@ -52,19 +52,17 @@ namespace TowerDefense
 
 	};
 
-	class TestSkill : public SkillTreeSkill
-	{
-	public:
-		TestSkill();
-		TestSkill(std::shared_ptr<SkillTreeSkill> parent);
-		void Apply() override;
-	};
-
 	class ArcherDamage : public SkillTreeSkill
 	{
 	public:
-		ArcherDamage();
 		ArcherDamage(std::shared_ptr<SkillTreeSkill> parent);
+		void Apply() override;
+	};
+
+	class MultiShot : public SkillTreeSkill
+	{
+	public:
+		MultiShot(std::shared_ptr<SkillTreeSkill> parent);
 		void Apply() override;
 	};
 }

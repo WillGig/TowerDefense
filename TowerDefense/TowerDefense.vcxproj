@@ -203,6 +203,7 @@
     <ClCompile Include="src\auras\DeathExplosions.cpp" />
     <ClCompile Include="src\auras\EnhancePoison.cpp" />
     <ClCompile Include="src\auras\LifeSteal.cpp" />
+    <ClCompile Include="src\Auras\MultiShot.cpp" />
     <ClCompile Include="src\auras\PoisonWeapons.cpp" />
     <ClCompile Include="src\auras\Storm.cpp" />
     <ClCompile Include="src\auras\StunAttacks.cpp" />
@@ -321,7 +322,7 @@
     <ClCompile Include="src\scenes\base_scenes\Rest.cpp" />
     <ClCompile Include="src\scenes\base_scenes\skill_trees\ArcherDamage.cpp" />
     <ClCompile Include="src\scenes\base_scenes\skill_trees\SkillTreeSkill.cpp" />
-    <ClCompile Include="src\scenes\base_scenes\skill_trees\TestSkill.cpp" />
+    <ClCompile Include="src\scenes\base_scenes\skill_trees\MultiShot.cpp" />
     <ClCompile Include="src\scenes\base_scenes\Smithing.cpp" />
     <ClCompile Include="src\scenes\base_scenes\Tavern.cpp" />
     <ClCompile Include="src\scenes\base_scenes\Temple.cpp" />

@@ -185,10 +185,11 @@ void TowerDefense::LoadTextures()
     Texture::LoadTexture("poisonWeapons",   auras.load(1, 0));
     Texture::LoadTexture("stunAttacks",     auras.load(2, 0));
     Texture::LoadTexture("constantDamage",  auras.load(3, 0));
-    Texture::LoadTexture("deathExplosions", auras.load(0, 1));
-    Texture::LoadTexture("storm",           auras.load(1, 1));
-    Texture::LoadTexture("enhancePoison",   auras.load(2, 1));
-    Texture::LoadTexture("archerDamage",    auras.load(3, 1));
+    Texture::LoadTexture("deathExplosions", auras.load(4, 0));
+    Texture::LoadTexture("storm",           auras.load(5, 0));
+    Texture::LoadTexture("enhancePoison",   auras.load(6, 0));
+    Texture::LoadTexture("archerDamage",    auras.load(7, 0));
+    Texture::LoadTexture("multiShot",       auras.load(0, 1));
 
     SpriteSheet plusMinus("res/textures/PlusMinus.png", 64, 64);
     Texture::LoadTexture("plus",            plusMinus.load(0, 0));
@@ -269,6 +270,8 @@ void TowerDefense::LoadTextures()
     SpriteSheet skillTreeSkills("res/textures/SkillTreeSkills.png", 64, 64);
     Texture::LoadTexture("ArcherDamageSkill",           skillTreeSkills.load(0, 0));
     Texture::LoadTexture("ArcherDamageSkillSelected",   skillTreeSkills.load(1, 0));
+    Texture::LoadTexture("MultiShotSkill",              skillTreeSkills.load(2, 0));
+    Texture::LoadTexture("MultiShotSkillSelected",      skillTreeSkills.load(3, 0));
 
     std::cout << "...Towers" << std::endl;
     

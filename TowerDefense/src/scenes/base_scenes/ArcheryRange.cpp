@@ -6,15 +6,20 @@
 
 TowerDefense::ArcheryRange::ArcheryRange()
 	:BaseScene("archeryButton", "Practice your aim", 0),
-	m_Tree(std::make_shared<ArcherDamage>()),
+	m_Tree(std::make_shared<ArcherDamage>(nullptr)),
 	m_BackToCamp(std::make_unique<Button>(690.0f, 60.0f, 180, 50, "returnToCampButton"))
 {
-	auto child = std::make_shared<ArcherDamage>(m_Tree);
-	auto child2 = std::make_shared<ArcherDamage>(child);
-	child2->AddChild(std::make_shared<ArcherDamage>(child2));
-	child->AddChild(child2);
-	m_Tree->AddChild(child);
-	m_Tree->SetPosition(400.0f, 400.0f, 600.0f);
+	auto multi1 = std::make_shared<MultiShot>(m_Tree);
+	multi1->AddChild(std::make_shared<MultiShot>(multi1));
+	m_Tree->AddChild(multi1);
+
+	auto damage2 = std::make_shared<ArcherDamage>(m_Tree);
+	auto damage3 = std::make_shared<ArcherDamage>(damage2);
+	damage3->AddChild(std::make_shared<ArcherDamage>(damage3));
+	damage2->AddChild(damage3);
+	m_Tree->AddChild(damage2);
+
+	m_Tree->SetPosition(400.0f, 500.0f, 400.0f);
 }
 
 void TowerDefense::ArcheryRange::Render()
