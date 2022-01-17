@@ -28,7 +28,7 @@ TowerDefense::ArcheryRange::ArcheryRange()
 	critChance1->AddChild(critDamage1);
 	m_Tree->AddChild(critChance1);
 
-	m_Tree->SetPosition(400.0f, 500.0f, 400.0f);
+	m_Tree->SetPosition(400.0f, 450.0f, 400.0f);
 }
 
 void TowerDefense::ArcheryRange::Render()
