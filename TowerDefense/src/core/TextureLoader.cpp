@@ -187,7 +187,8 @@ void TowerDefense::LoadTextures()
     Texture::LoadTexture("constantDamage",  auras.load(3, 0));
     Texture::LoadTexture("deathExplosions", auras.load(0, 1));
     Texture::LoadTexture("storm",           auras.load(1, 1));
-    Texture::LoadTexture("enhancePoison",  auras.load(2, 1));
+    Texture::LoadTexture("enhancePoison",   auras.load(2, 1));
+    Texture::LoadTexture("archerDamage",    auras.load(3, 1));
 
     SpriteSheet plusMinus("res/textures/PlusMinus.png", 64, 64);
     Texture::LoadTexture("plus",            plusMinus.load(0, 0));

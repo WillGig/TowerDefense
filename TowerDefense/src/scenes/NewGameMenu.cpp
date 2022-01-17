@@ -169,4 +169,7 @@ void TowerDefense::NewGameMenu::OnSwitch()
 		m_Buttons[2]->SetImages("slotEmpty");
 	}
 	save3.close();
+
+	m_Confirming = false;
+	m_ConfirmingSlot = -1;
 }

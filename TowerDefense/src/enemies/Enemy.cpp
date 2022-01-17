@@ -91,7 +91,7 @@ void TowerDefense::Enemy::Enemy::Move()
 	if (reachedX && reachedY)
 	{
 		//Calculate extra movement towards new goal
-		float extraMovement = m_Speed- abs(m_X - m_GoalX) - abs(m_Y - m_GoalY);
+		float extraMovement = m_Speed - abs(m_X - m_GoalX) - abs(m_Y - m_GoalY);
 		SetX(m_GoalX);
 		SetY(m_GoalY);
 		FindNewGoal(m_X, m_Y);

@@ -5,7 +5,7 @@
 #include "towers/Ranger.h"
 
 TowerDefense::Aura::ArcherDamage::ArcherDamage(float damage)
-	:Aura("Archer Damage", "Archers and Rangers\ndeal " + Utils::TruncateFloat(damage, 1) + " extra damage"),
+	:Aura("archerDamage", "Archers and Rangers\ndeal " + Utils::TruncateFloat(damage, 1) + " extra damage"),
 	m_Damage(damage)
 {}
 
