@@ -197,6 +197,8 @@
     <ClCompile Include="src\artifacts\TokenOfTheMute.cpp" />
     <ClCompile Include="src\artifacts\TokenOfTheVigilant.cpp" />
     <ClCompile Include="src\artifacts\ToyDolls.cpp" />
+    <ClCompile Include="src\Auras\ArcherCritChance.cpp" />
+    <ClCompile Include="src\Auras\ArcherCritDamage.cpp" />
     <ClCompile Include="src\auras\ArcherDamage.cpp" />
     <ClCompile Include="src\auras\Aura.cpp" />
     <ClCompile Include="src\auras\ConstantDamage.cpp" />
@@ -320,6 +322,8 @@
     <ClCompile Include="src\scenes\base_scenes\ManageWorkers.cpp" />
     <ClCompile Include="src\scenes\base_scenes\MusicHall.cpp" />
     <ClCompile Include="src\scenes\base_scenes\Rest.cpp" />
+    <ClCompile Include="src\scenes\base_scenes\skill_trees\ArcherCritChance.cpp" />
+    <ClCompile Include="src\scenes\base_scenes\skill_trees\ArcherCritDamage.cpp" />
     <ClCompile Include="src\scenes\base_scenes\skill_trees\ArcherDamage.cpp" />
     <ClCompile Include="src\scenes\base_scenes\skill_trees\SkillTreeSkill.cpp" />
     <ClCompile Include="src\scenes\base_scenes\skill_trees\MultiShot.cpp" />

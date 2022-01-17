@@ -216,6 +216,10 @@
     <ClCompile Include="src\utils\StringUtils.cpp" />
     <ClCompile Include="src\scenes\base_scenes\skill_trees\MultiShot.cpp" />
     <ClCompile Include="src\Auras\MultiShot.cpp" />
+    <ClCompile Include="src\scenes\base_scenes\skill_trees\ArcherCritChance.cpp" />
+    <ClCompile Include="src\Auras\ArcherCritChance.cpp" />
+    <ClCompile Include="src\scenes\base_scenes\skill_trees\ArcherCritDamage.cpp" />
+    <ClCompile Include="src\Auras\ArcherCritDamage.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\artifacts\Artifact.h" />

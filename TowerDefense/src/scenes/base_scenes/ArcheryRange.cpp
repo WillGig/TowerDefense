@@ -19,6 +19,15 @@ TowerDefense::ArcheryRange::ArcheryRange()
 	damage2->AddChild(damage3);
 	m_Tree->AddChild(damage2);
 
+	auto critChance1 = std::make_shared<ArcherCritChance>(m_Tree);
+	auto critChance2 = std::make_shared<ArcherCritChance>(critChance1);
+	critChance2->AddChild(std::make_shared<ArcherCritChance>(critChance2));
+	auto critDamage1 = std::make_shared<ArcherCritDamage>(critChance1);
+	critDamage1->AddChild(std::make_shared<ArcherCritDamage>(critDamage1));
+	critChance1->AddChild(critChance2);
+	critChance1->AddChild(critDamage1);
+	m_Tree->AddChild(critChance1);
+
 	m_Tree->SetPosition(400.0f, 500.0f, 400.0f);
 }
 

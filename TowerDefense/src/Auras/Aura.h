@@ -145,5 +145,29 @@ namespace TowerDefense
 		private:
 			int m_ExtraShots;
 		};
+
+		class ArcherCritChance : public Aura
+		{
+		public:
+			ArcherCritChance(float chance);
+			void OnCardPlay(std::shared_ptr<Card> c) override;
+			void Combine(std::shared_ptr<Aura> other) override;
+			inline float GetChance() const { return m_Chance; }
+
+		private:
+			float m_Chance;
+		};
+
+		class ArcherCritDamage : public Aura
+		{
+		public:
+			ArcherCritDamage(float damage);
+			void OnCardPlay(std::shared_ptr<Card> c) override;
+			void Combine(std::shared_ptr<Aura> other) override;
+			inline float GetDamage() const { return m_Damage; }
+
+		private:
+			float m_Damage;
+		};
 	}
 }

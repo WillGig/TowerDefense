@@ -65,4 +65,18 @@ namespace TowerDefense
 		MultiShot(std::shared_ptr<SkillTreeSkill> parent);
 		void Apply() override;
 	};
+
+	class ArcherCritChance : public SkillTreeSkill
+	{
+	public:
+		ArcherCritChance(std::shared_ptr<SkillTreeSkill> parent);
+		void Apply() override;
+	};
+
+	class ArcherCritDamage : public SkillTreeSkill
+	{
+	public:
+		ArcherCritDamage(std::shared_ptr<SkillTreeSkill> parent);
+		void Apply() override;
+	};
 }
