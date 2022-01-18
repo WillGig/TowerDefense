@@ -190,8 +190,8 @@ void TowerDefense::LoadTextures()
     Texture::LoadTexture("enhancePoison",       auras.load(6, 0));
     Texture::LoadTexture("archerDamage",        auras.load(7, 0));
     Texture::LoadTexture("multiShot",           auras.load(0, 1));
-    Texture::LoadTexture("archerCritChance",    auras.load(1, 1));
-    Texture::LoadTexture("archerCritDamage",    auras.load(2, 1));
+    Texture::LoadTexture("critChance",          auras.load(1, 1));
+    Texture::LoadTexture("critDamage",          auras.load(2, 1));
 
     SpriteSheet plusMinus("res/textures/PlusMinus.png", 64, 64);
     Texture::LoadTexture("plus",            plusMinus.load(0, 0));
@@ -270,14 +270,30 @@ void TowerDefense::LoadTextures()
     Texture::LoadTexture("deathPriestUpgradeSelected",      towerUpgrades.load(2, 7));
 
     SpriteSheet skillTreeSkills("res/textures/SkillTreeSkills.png", 64, 64);
-    Texture::LoadTexture("ArcherDamageSkill",                   skillTreeSkills.load(0, 0));
-    Texture::LoadTexture("ArcherDamageSkillSelected",           skillTreeSkills.load(1, 0));
-    Texture::LoadTexture("MultiShotSkill",                      skillTreeSkills.load(2, 0));
-    Texture::LoadTexture("MultiShotSkillSelected",              skillTreeSkills.load(3, 0));
-    Texture::LoadTexture("ArcherCritChanceSkill",               skillTreeSkills.load(4, 0));
-    Texture::LoadTexture("ArcherCritChanceSkillSelected",       skillTreeSkills.load(5, 0));
-    Texture::LoadTexture("ArcherCritDamageSkill",               skillTreeSkills.load(6, 0));
-    Texture::LoadTexture("ArcherCritDamageSkillSelected",       skillTreeSkills.load(7, 0));
+    Texture::LoadTexture("DamageSkill1",                    skillTreeSkills.load(0, 0));
+    Texture::LoadTexture("DamageSkill1Selected",            skillTreeSkills.load(1, 0));
+    Texture::LoadTexture("DamageSkill2",                    skillTreeSkills.load(0, 1));
+    Texture::LoadTexture("DamageSkill2Selected",            skillTreeSkills.load(1, 1));
+    Texture::LoadTexture("DamageSkill3",                    skillTreeSkills.load(0, 2));
+    Texture::LoadTexture("DamageSkill3Selected",            skillTreeSkills.load(1, 2));
+    Texture::LoadTexture("CritChanceSkill1",                skillTreeSkills.load(2, 0));
+    Texture::LoadTexture("CritChanceSkill1Selected",        skillTreeSkills.load(3, 0));
+    Texture::LoadTexture("CritChanceSkill2",                skillTreeSkills.load(2, 1));
+    Texture::LoadTexture("CritChanceSkill2Selected",        skillTreeSkills.load(3, 1));
+    Texture::LoadTexture("CritChanceSkill3",                skillTreeSkills.load(2, 2));
+    Texture::LoadTexture("CritChanceSkill3Selected",        skillTreeSkills.load(3, 2));
+    Texture::LoadTexture("CritDamageSkill1",                skillTreeSkills.load(4, 0));
+    Texture::LoadTexture("CritDamageSkill1Selected",        skillTreeSkills.load(5, 0));
+    Texture::LoadTexture("CritDamageSkill2",                skillTreeSkills.load(4, 1));
+    Texture::LoadTexture("CritDamageSkill2Selected",        skillTreeSkills.load(5, 1));
+    Texture::LoadTexture("CritDamageSkill3",                skillTreeSkills.load(4, 2));
+    Texture::LoadTexture("CritDamageSkill3Selected",        skillTreeSkills.load(5, 2));
+    Texture::LoadTexture("MultiShotSkill1",                 skillTreeSkills.load(0, 3));
+    Texture::LoadTexture("MultiShotSkill1Selected",         skillTreeSkills.load(1, 3));
+    Texture::LoadTexture("MultiShotSkill2",                 skillTreeSkills.load(0, 4));
+    Texture::LoadTexture("MultiShotSkill2Selected",         skillTreeSkills.load(1, 4));
+    Texture::LoadTexture("Level10Skill",                    skillTreeSkills.load(6, 0));
+    Texture::LoadTexture("Level10SkillSelected",            skillTreeSkills.load(7, 0));
 
     std::cout << "...Towers" << std::endl;
     

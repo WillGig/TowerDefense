@@ -6,24 +6,24 @@
 
 TowerDefense::ArcheryRange::ArcheryRange()
 	:BaseScene("archeryButton", "Practice your aim", 0),
-	m_Tree(std::make_shared<ArcherDamage>(nullptr)),
+	m_Tree(std::make_shared<ArcherDamage>(1, nullptr)),
 	m_BackToCamp(std::make_unique<Button>(690.0f, 60.0f, 180, 50, "returnToCampButton"))
 {
-	auto multi1 = std::make_shared<MultiShot>(m_Tree);
-	multi1->AddChild(std::make_shared<MultiShot>(multi1));
+	auto multi1 = std::make_shared<MultiShot>(1, m_Tree);
+	multi1->AddChild(std::make_shared<MultiShot>(2, multi1));
 	m_Tree->AddChild(multi1);
 
-	auto damage2 = std::make_shared<ArcherDamage>(m_Tree);
-	auto damage3 = std::make_shared<ArcherDamage>(damage2);
-	damage3->AddChild(std::make_shared<ArcherDamage>(damage3));
+	auto damage2 = std::make_shared<ArcherDamage>(2, m_Tree);
+	auto damage3 = std::make_shared<ArcherDamage>(3, damage2);
+	damage3->AddChild(std::make_shared<ArcherLevel10>(damage3));
 	damage2->AddChild(damage3);
 	m_Tree->AddChild(damage2);
 
-	auto critChance1 = std::make_shared<ArcherCritChance>(m_Tree);
-	auto critChance2 = std::make_shared<ArcherCritChance>(critChance1);
-	critChance2->AddChild(std::make_shared<ArcherCritChance>(critChance2));
-	auto critDamage1 = std::make_shared<ArcherCritDamage>(critChance1);
-	critDamage1->AddChild(std::make_shared<ArcherCritDamage>(critDamage1));
+	auto critChance1 = std::make_shared<ArcherCritChance>(1, m_Tree);
+	auto critChance2 = std::make_shared<ArcherCritChance>(2, critChance1);
+	critChance2->AddChild(std::make_shared<ArcherCritChance>(3, critChance2));
+	auto critDamage1 = std::make_shared<ArcherCritDamage>(1, critChance1);
+	critDamage1->AddChild(std::make_shared<ArcherCritDamage>(2, critDamage1));
 	critChance1->AddChild(critChance2);
 	critChance1->AddChild(critDamage1);
 	m_Tree->AddChild(critChance1);

@@ -325,8 +325,10 @@
     <ClCompile Include="src\scenes\base_scenes\skill_trees\ArcherCritChance.cpp" />
     <ClCompile Include="src\scenes\base_scenes\skill_trees\ArcherCritDamage.cpp" />
     <ClCompile Include="src\scenes\base_scenes\skill_trees\ArcherDamage.cpp" />
+    <ClCompile Include="src\scenes\base_scenes\skill_trees\ArcherLevel10.cpp" />
     <ClCompile Include="src\scenes\base_scenes\skill_trees\SkillTreeSkill.cpp" />
     <ClCompile Include="src\scenes\base_scenes\skill_trees\MultiShot.cpp" />
+    <ClCompile Include="src\scenes\base_scenes\skill_trees\WizardDamage.cpp" />
     <ClCompile Include="src\scenes\base_scenes\Smithing.cpp" />
     <ClCompile Include="src\scenes\base_scenes\Tavern.cpp" />
     <ClCompile Include="src\scenes\base_scenes\Temple.cpp" />
