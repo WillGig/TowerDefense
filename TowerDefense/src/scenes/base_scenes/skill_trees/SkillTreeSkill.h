@@ -41,7 +41,7 @@ namespace TowerDefense
 		std::string m_Name;
 
 		std::unique_ptr<Image> m_InfoImage;
-		std::unique_ptr<Text> m_RequirementText;
+		std::unique_ptr<Text> m_NameText, m_RequirementText, m_CostText;
 
 		std::shared_ptr<SkillTreeSkill> m_Parent;
 		std::vector<std::shared_ptr<SkillTreeSkill>> m_Children;
