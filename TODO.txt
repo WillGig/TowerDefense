@@ -1,12 +1,11 @@
 Current:
-	Design skill trees
-	Add specific skill trees
 	Add saving and loading for skill trees
-	Add skill trees for archery range, music hall, 
-		wizard tower, temple, and alchemy lab
+
+	Add more skills to skill trees
+
 	Add second towers
-	 - music hall		Singer(replaces monk)
-	 - wizard tower 	Sorcerer
+	 - music hall		Singer(replaces monk)/siren
+	 - wizard tower 	Sorcerer/scholar?
 	 - alchemy lab		Tinkerer?
 
 	-More Enemies(Days 21-30):
@@ -26,13 +25,6 @@ Current:
 			- Ankheg - big and tough
 			- Firefly - shuffles flames into deck
 			- Writhing mass(boss?) - releases swarms of smaller insects
-
-	Base Buildings:
-		- Archery Range	- Archer, Ranger
-		- Music Hall	- Bard
-		- Wizard Tower	- Wizard
-		- Temple	- Paladin, Cleric
-		- Alchemy Lab	- Alchemist
 	
 	Level 5 Upgrade Progress:
 		Add more possible ghost towers

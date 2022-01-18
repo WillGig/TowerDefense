@@ -197,6 +197,7 @@
     <ClCompile Include="src\artifacts\TokenOfTheMute.cpp" />
     <ClCompile Include="src\artifacts\TokenOfTheVigilant.cpp" />
     <ClCompile Include="src\artifacts\ToyDolls.cpp" />
+    <ClCompile Include="src\auras\AlchemistDamage.cpp" />
     <ClCompile Include="src\Auras\ArcherCritChance.cpp" />
     <ClCompile Include="src\Auras\ArcherCritDamage.cpp" />
     <ClCompile Include="src\auras\ArcherDamage.cpp" />
@@ -204,11 +205,14 @@
     <ClCompile Include="src\auras\ConstantDamage.cpp" />
     <ClCompile Include="src\auras\DeathExplosions.cpp" />
     <ClCompile Include="src\auras\EnhancePoison.cpp" />
+    <ClCompile Include="src\auras\HolyPower.cpp" />
     <ClCompile Include="src\auras\LifeSteal.cpp" />
     <ClCompile Include="src\Auras\MultiShot.cpp" />
+    <ClCompile Include="src\auras\MusicPower.cpp" />
     <ClCompile Include="src\auras\PoisonWeapons.cpp" />
     <ClCompile Include="src\auras\Storm.cpp" />
     <ClCompile Include="src\auras\StunAttacks.cpp" />
+    <ClCompile Include="src\auras\WizardDamage.cpp" />
     <ClCompile Include="src\cards\Attain.cpp" />
     <ClCompile Include="src\cards\curses\Frog.cpp" />
     <ClCompile Include="src\cards\curses\Hex.cpp" />
@@ -322,10 +326,13 @@
     <ClCompile Include="src\scenes\base_scenes\ManageWorkers.cpp" />
     <ClCompile Include="src\scenes\base_scenes\MusicHall.cpp" />
     <ClCompile Include="src\scenes\base_scenes\Rest.cpp" />
+    <ClCompile Include="src\scenes\base_scenes\skill_trees\AlchemistDamage.cpp" />
     <ClCompile Include="src\scenes\base_scenes\skill_trees\ArcherCritChance.cpp" />
     <ClCompile Include="src\scenes\base_scenes\skill_trees\ArcherCritDamage.cpp" />
     <ClCompile Include="src\scenes\base_scenes\skill_trees\ArcherDamage.cpp" />
-    <ClCompile Include="src\scenes\base_scenes\skill_trees\ArcherLevel10.cpp" />
+    <ClCompile Include="src\scenes\base_scenes\skill_trees\HolyPower.cpp" />
+    <ClCompile Include="src\scenes\base_scenes\skill_trees\Level10.cpp" />
+    <ClCompile Include="src\scenes\base_scenes\skill_trees\MusicPower.cpp" />
     <ClCompile Include="src\scenes\base_scenes\skill_trees\SkillTreeSkill.cpp" />
     <ClCompile Include="src\scenes\base_scenes\skill_trees\MultiShot.cpp" />
     <ClCompile Include="src\scenes\base_scenes\skill_trees\WizardDamage.cpp" />

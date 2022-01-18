@@ -11,7 +11,7 @@ TowerDefense::SkillTreeSkill::SkillTreeSkill(const std::string& image, const std
 {
 	if (parent)
 	{
-		m_RequirementText = std::make_unique<Text>("Requires: " + parent->GetName(), 0.0f, 0.0f, 10.0f, 0.0f);
+		m_RequirementText = std::make_unique<Text>("Need: " + parent->GetName(), 0.0f, 0.0f, 10.0f, 0.0f);
 		m_RequirementText->SetColor(1.0f, 0.0f, 0.0f, 1.0f);
 	}
 }

@@ -236,6 +236,7 @@ namespace TowerDefense
 		inline std::string GetName() override { return "WizardTower"; }
 
 	private:
+		std::shared_ptr<SkillTreeSkill> m_Tree;
 		std::unique_ptr<Button> m_BackToCamp;
 	};
 
@@ -249,6 +250,7 @@ namespace TowerDefense
 		inline std::string GetName() override { return "Temple"; }
 
 	private:
+		std::shared_ptr<SkillTreeSkill> m_Tree;
 		std::unique_ptr<Button> m_BackToCamp;
 	};
 
@@ -262,6 +264,7 @@ namespace TowerDefense
 		inline std::string GetName() override { return "AlchemyLab"; }
 
 	private:
+		std::shared_ptr<SkillTreeSkill> m_Tree;
 		std::unique_ptr<Button> m_BackToCamp;
 	};
 
@@ -275,6 +278,7 @@ namespace TowerDefense
 		inline std::string GetName() override { return "MusicHall"; }
 
 	private:
+		std::shared_ptr<SkillTreeSkill> m_Tree;
 		std::unique_ptr<Button> m_BackToCamp;
 	};
 }

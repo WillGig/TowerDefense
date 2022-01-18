@@ -169,5 +169,53 @@ namespace TowerDefense
 		private:
 			float m_Damage;
 		};
+
+		class WizardDamage : public Aura
+		{
+		public:
+			WizardDamage(float damage);
+			void OnCardPlay(std::shared_ptr<Card> c) override;
+			void Combine(std::shared_ptr<Aura> other) override;
+			inline float GetDamage() const { return m_Damage; }
+
+		private:
+			float m_Damage;
+		};
+
+		class HolyPower : public Aura
+		{
+		public:
+			HolyPower(float power);
+			void OnCardPlay(std::shared_ptr<Card> c) override;
+			void Combine(std::shared_ptr<Aura> other) override;
+			inline float GetPower() const { return m_Power; }
+
+		private:
+			float m_Power;
+		};
+
+		class MusicPower : public Aura
+		{
+		public:
+			MusicPower(float power);
+			void OnCardPlay(std::shared_ptr<Card> c) override;
+			void Combine(std::shared_ptr<Aura> other) override;
+			inline float GetPower() const { return m_Power; }
+
+		private:
+			float m_Power;
+		};
+
+		class AlchemistDamage : public Aura
+		{
+		public:
+			AlchemistDamage(float damage);
+			void OnCardPlay(std::shared_ptr<Card> c) override;
+			void Combine(std::shared_ptr<Aura> other) override;
+			inline float GetDamage() const { return m_Damage; }
+
+		private:
+			float m_Damage;
+		};
 	}
 }

@@ -188,7 +188,7 @@ void TowerDefense::LoadTextures()
     Texture::LoadTexture("deathExplosions",     auras.load(4, 0));
     Texture::LoadTexture("storm",               auras.load(5, 0));
     Texture::LoadTexture("enhancePoison",       auras.load(6, 0));
-    Texture::LoadTexture("archerDamage",        auras.load(7, 0));
+    Texture::LoadTexture("damageUp",            auras.load(7, 0));
     Texture::LoadTexture("multiShot",           auras.load(0, 1));
     Texture::LoadTexture("critChance",          auras.load(1, 1));
     Texture::LoadTexture("critDamage",          auras.load(2, 1));

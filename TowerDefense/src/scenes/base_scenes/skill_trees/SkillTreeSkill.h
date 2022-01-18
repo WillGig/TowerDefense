@@ -80,6 +80,34 @@ namespace TowerDefense
 		void Apply() override;
 	};
 
+	class WizardDamage : public SkillTreeSkill
+	{
+	public:
+		WizardDamage(int level, std::shared_ptr<SkillTreeSkill> parent);
+		void Apply() override;
+	};
+
+	class HolyPower : public SkillTreeSkill
+	{
+	public:
+		HolyPower(int level, std::shared_ptr<SkillTreeSkill> parent);
+		void Apply() override;
+	};
+
+	class MusicPower : public SkillTreeSkill
+	{
+	public:
+		MusicPower(int level, std::shared_ptr<SkillTreeSkill> parent);
+		void Apply() override;
+	};
+
+	class AlchemistDamage : public SkillTreeSkill
+	{
+	public:
+		AlchemistDamage(int level, std::shared_ptr<SkillTreeSkill> parent);
+		void Apply() override;
+	};
+
 	class ArcherLevel10 : public SkillTreeSkill
 	{
 	public:
@@ -87,10 +115,31 @@ namespace TowerDefense
 		void Apply() override;
 	};
 
-	class WizardDamage : public SkillTreeSkill
+	class WizardLevel10 : public SkillTreeSkill
 	{
 	public:
-		WizardDamage(int level, std::shared_ptr<SkillTreeSkill> parent);
+		WizardLevel10(std::shared_ptr<SkillTreeSkill> parent);
+		void Apply() override;
+	};
+
+	class TempleLevel10 : public SkillTreeSkill
+	{
+	public:
+		TempleLevel10(std::shared_ptr<SkillTreeSkill> parent);
+		void Apply() override;
+	};
+
+	class MusicHallLevel10 : public SkillTreeSkill
+	{
+	public:
+		MusicHallLevel10(std::shared_ptr<SkillTreeSkill> parent);
+		void Apply() override;
+	};
+
+	class AlchemyLabLevel10 : public SkillTreeSkill
+	{
+	public:
+		AlchemyLabLevel10(std::shared_ptr<SkillTreeSkill> parent);
 		void Apply() override;
 	};
 }

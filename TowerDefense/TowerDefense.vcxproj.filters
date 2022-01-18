@@ -221,7 +221,14 @@
     <ClCompile Include="src\scenes\base_scenes\skill_trees\ArcherCritDamage.cpp" />
     <ClCompile Include="src\Auras\ArcherCritDamage.cpp" />
     <ClCompile Include="src\scenes\base_scenes\skill_trees\WizardDamage.cpp" />
-    <ClCompile Include="src\scenes\base_scenes\skill_trees\ArcherLevel10.cpp" />
+    <ClCompile Include="src\auras\WizardDamage.cpp" />
+    <ClCompile Include="src\scenes\base_scenes\skill_trees\Level10.cpp" />
+    <ClCompile Include="src\auras\HolyPower.cpp" />
+    <ClCompile Include="src\scenes\base_scenes\skill_trees\HolyPower.cpp" />
+    <ClCompile Include="src\auras\MusicPower.cpp" />
+    <ClCompile Include="src\scenes\base_scenes\skill_trees\MusicPower.cpp" />
+    <ClCompile Include="src\auras\AlchemistDamage.cpp" />
+    <ClCompile Include="src\scenes\base_scenes\skill_trees\AlchemistDamage.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\artifacts\Artifact.h" />
