@@ -1,6 +1,5 @@
 Current:
-	Add loading bar at 
-	beginning and when starting or loading a game
+	Add loading bar when starting or loading a game
 
 	Add more skills to skill trees
 

@@ -87,10 +87,9 @@ bool TowerDefense::Init()
     //Set Mouse Input dimensions
     Input::SetScale(scale, hOffSet, vOffSet, 600, window);
 
-    LoadTextures();
+    LoadingScreen::LoadTextures(window);
 
     //Game Object Initialization
-    std::cout << "Creating Scenes..." << std::endl;
     Scene::Init();
     scenes = {
         std::make_unique<MainMenu>(),
@@ -113,7 +112,6 @@ bool TowerDefense::Init()
 
     Load::LoadSettings();
 
-    std::cout << "Setting Path..." << std::endl;
     const int path[] = { 0, 9, 0, 8, 0, 7, 1, 7, 2, 7, 3, 7, 4, 7, 4, 6, 4, 5, 5, 5, 6, 5, 7, 5, 8, 5, 9, 5, 10, 5, 11, 5, 12, 5, 13, 5, 13, 4, 13, 3, 13, 2, 14, 2, 15, 2, 16, 2, 17, 2, 18, 2, 18, 1, 18, 0, 19, 0 };
     Board::Get().SetPath(path, sizeof(path));
 
@@ -153,7 +151,6 @@ void TowerDefense::Run()
             if(frameCap != 0)
                 delta2--;
         }
-        
 
         //Calculate FPS once per second
         if (timer == 60)
