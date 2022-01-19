@@ -1,5 +1,6 @@
 #include "pch.h"
 #include "Base.h"
+#include "base_scenes/skill_scenes/SkillScene.h"
 #include "TowerDefense.h"
 #include "core/Player.h"
 #include "cards/HeroCard.h"
@@ -94,6 +95,7 @@ void TowerDefense::Base::Reset()
 	s_BaseScenes = std::make_unique<std::vector<std::shared_ptr<BaseScene>>>();
 	AddBaseScene(std::make_shared<GatherResources>());
 	AddBaseScene(std::make_shared<Build>());
+	AddBaseScene(std::make_shared<ArcheryRange>());
 }
 
 void TowerDefense::Base::CleanUp()

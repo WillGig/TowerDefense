@@ -30,3 +30,8 @@ void TowerDefense::Aura::MultiShot::Combine(std::shared_ptr<Aura> other)
 		m_InfoText->SetColor(1.0f, 1.0f, 1.0f, 1.0f);
 	}
 }
+
+const std::string TowerDefense::Aura::MultiShot::GetSaveData() const
+{
+	return "MultiShot\n" + std::to_string(m_ExtraShots);
+}

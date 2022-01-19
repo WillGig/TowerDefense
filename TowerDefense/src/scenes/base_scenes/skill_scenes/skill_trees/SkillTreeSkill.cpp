@@ -144,3 +144,51 @@ void TowerDefense::SkillTreeSkill::SetRequirementText(const std::string& text)
 	m_RequirementText = std::make_unique<Text>(text, 0.0f, 0.0f, 10.0f, 0.0f);
 	m_RequirementText->SetColor(1.0f, 0.0f, 0.0f, 1.0f);
 }
+
+const std::string TowerDefense::SkillTreeSkill::GetSkillsSelected() const
+{
+	std::string value;
+
+	if (m_Applied)
+		value = "1";
+	else
+		value = "0";
+
+	for (auto child : m_Children)
+		value += child->GetSkillsSelected();
+
+	return value;
+}
+
+void TowerDefense::SkillTreeSkill::SetSkillsSelected(const std::string& selected)
+{
+	char applied = selected[0];
+	if (applied == '1')
+	{
+		m_Applied = true;
+		for (auto l : m_Lines)
+			l->SetColor(1.0f, 1.0f, 1.0f, 1.0f);
+		for (auto child : m_Children)
+			child->SetRequirementText("");
+	}
+
+	std::string current = selected;
+	for (auto child : m_Children)
+	{
+		child->SetSkillsSelected(current.substr(1, child->GetNumInTree()));
+		current = current.substr(child->GetNumInTree());
+	}
+}
+
+int TowerDefense::SkillTreeSkill::GetNumInTree() const
+{
+	if (m_Children.size() == 0)
+		return 1;
+
+	int num = 1;
+
+	for (auto child : m_Children)
+		num += child->GetNumInTree();
+
+	return num;
+}

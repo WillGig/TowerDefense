@@ -43,3 +43,8 @@ void TowerDefense::Aura::ConstantDamage::Combine(std::shared_ptr<Aura> other)
 	}
 		
 }
+
+const std::string TowerDefense::Aura::ConstantDamage::GetSaveData() const
+{
+	return "Constant Damage\n" + Utils::TruncateFloat(m_Damage, 1);
+}

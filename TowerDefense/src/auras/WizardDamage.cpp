@@ -31,3 +31,8 @@ void TowerDefense::Aura::WizardDamage::Combine(std::shared_ptr<Aura> other)
 		m_InfoText->SetColor(1.0f, 1.0f, 1.0f, 1.0f);
 	}
 }
+
+const std::string TowerDefense::Aura::WizardDamage::GetSaveData() const
+{
+	return "Wizard Damage\n" + Utils::TruncateFloat(m_Damage, 1);
+}

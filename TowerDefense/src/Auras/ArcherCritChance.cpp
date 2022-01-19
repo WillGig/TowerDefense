@@ -35,3 +35,8 @@ void TowerDefense::Aura::ArcherCritChance::Combine(std::shared_ptr<Aura> other)
 		m_InfoText->SetColor(1.0f, 1.0f, 1.0f, 1.0f);
 	}
 }
+
+const std::string TowerDefense::Aura::ArcherCritChance::GetSaveData() const
+{
+	return "Archer Crit Chance\n" + Utils::TruncateFloat(m_Chance*100, 1);
+}

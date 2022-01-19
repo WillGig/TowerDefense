@@ -24,3 +24,8 @@ void TowerDefense::Aura::StunAttacks::Combine(std::shared_ptr<Aura> other)
 		m_InfoText->SetColor(1.0f, 1.0f, 1.0f, 1.0f);
 	}
 }
+
+const std::string TowerDefense::Aura::StunAttacks::GetSaveData() const
+{
+	return "Stun Attacks\n" + std::to_string(m_StunDuration);
+}

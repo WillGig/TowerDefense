@@ -13,6 +13,7 @@ namespace TowerDefense
 			void Render() override;
 			virtual void Update() override;
 			virtual void Combine(std::shared_ptr<Aura> other) = 0;
+			virtual const std::string GetSaveData() const = 0;
 			void SetX(float x) override;
 			void SetY(float y) override;
 			inline virtual void OnAquire() {};
@@ -37,6 +38,7 @@ namespace TowerDefense
 			void OnEnemyDeath(std::shared_ptr<Enemy::Enemy> e) override;
 			void Combine(std::shared_ptr<Aura> other) override;
 			inline int GetLifeSteal() const { return m_LifeSteal; }
+			const std::string GetSaveData() const override;
 
 		private:
 			int m_LifeSteal;
@@ -50,6 +52,7 @@ namespace TowerDefense
 			void Combine(std::shared_ptr<Aura> other) override;
 			inline float GetPoisonDamage() const { return m_PoisonDamage; }
 			inline int GetPoisonDuration() const { return m_PoisonDuration; }
+			const std::string GetSaveData() const override;
 
 		private:
 			float m_PoisonDamage;
@@ -63,6 +66,7 @@ namespace TowerDefense
 			void OnEnemyHit(std::shared_ptr<Enemy::Enemy> e, std::shared_ptr<Entity> source, Tower::DamageType type) override;
 			void Combine(std::shared_ptr<Aura> other) override;
 			inline int GetStunDuration() const { return m_StunDuration; }
+			const std::string GetSaveData() const override;
 
 		private:
 			int m_StunDuration;
@@ -75,6 +79,7 @@ namespace TowerDefense
 			void Update() override;
 			void Combine(std::shared_ptr<Aura> other) override;
 			inline float GetDamage() const { return m_Damage; }
+			const std::string GetSaveData() const override;
 
 		private:
 			float m_Damage;
@@ -89,6 +94,7 @@ namespace TowerDefense
 			void Combine(std::shared_ptr<Aura> other) override;
 			inline int GetDamage() const { return m_Damage; }
 			inline int GetRadius() const { return m_Radius; }
+			const std::string GetSaveData() const override;
 
 		private:
 			int m_Damage, m_Radius;
@@ -101,6 +107,7 @@ namespace TowerDefense
 			void OnCardPlay(std::shared_ptr<Card> c) override;
 			void Combine(std::shared_ptr<Aura> other) override;
 			inline int GetDamage() const { return m_Damage; }
+			const std::string GetSaveData() const override;
 
 		private:
 			std::vector<std::shared_ptr<TowerDefense::Enemy::Enemy>> GetTargets();
@@ -117,6 +124,7 @@ namespace TowerDefense
 			void OnEnemyHit(std::shared_ptr<Enemy::Enemy> e, std::shared_ptr<Entity> source, Tower::DamageType type) override;
 			void Combine(std::shared_ptr<Aura> other) override;
 			inline float GetExtraDamage() const { return m_ExtraDamage; }
+			const std::string GetSaveData() const override;
 
 		private:
 			float m_ExtraDamage;
@@ -129,6 +137,7 @@ namespace TowerDefense
 			void OnCardPlay(std::shared_ptr<Card> c) override;
 			void Combine(std::shared_ptr<Aura> other) override;
 			inline float GetDamage() const { return m_Damage; }
+			const std::string GetSaveData() const override;
 
 		private:
 			float m_Damage;
@@ -141,6 +150,7 @@ namespace TowerDefense
 			void OnCardPlay(std::shared_ptr<Card> c) override;
 			void Combine(std::shared_ptr<Aura> other) override;
 			inline int GetExtraShots() const { return m_ExtraShots; }
+			const std::string GetSaveData() const override;
 
 		private:
 			int m_ExtraShots;
@@ -153,6 +163,7 @@ namespace TowerDefense
 			void OnCardPlay(std::shared_ptr<Card> c) override;
 			void Combine(std::shared_ptr<Aura> other) override;
 			inline float GetChance() const { return m_Chance; }
+			const std::string GetSaveData() const override;
 
 		private:
 			float m_Chance;
@@ -165,6 +176,7 @@ namespace TowerDefense
 			void OnCardPlay(std::shared_ptr<Card> c) override;
 			void Combine(std::shared_ptr<Aura> other) override;
 			inline float GetDamage() const { return m_Damage; }
+			const std::string GetSaveData() const override;
 
 		private:
 			float m_Damage;
@@ -177,6 +189,7 @@ namespace TowerDefense
 			void OnCardPlay(std::shared_ptr<Card> c) override;
 			void Combine(std::shared_ptr<Aura> other) override;
 			inline float GetDamage() const { return m_Damage; }
+			const std::string GetSaveData() const override;
 
 		private:
 			float m_Damage;
@@ -189,6 +202,7 @@ namespace TowerDefense
 			void OnCardPlay(std::shared_ptr<Card> c) override;
 			void Combine(std::shared_ptr<Aura> other) override;
 			inline float GetPower() const { return m_Power; }
+			const std::string GetSaveData() const override;
 
 		private:
 			float m_Power;
@@ -201,6 +215,7 @@ namespace TowerDefense
 			void OnCardPlay(std::shared_ptr<Card> c) override;
 			void Combine(std::shared_ptr<Aura> other) override;
 			inline float GetPower() const { return m_Power; }
+			const std::string GetSaveData() const override;
 
 		private:
 			float m_Power;
@@ -213,6 +228,7 @@ namespace TowerDefense
 			void OnCardPlay(std::shared_ptr<Card> c) override;
 			void Combine(std::shared_ptr<Aura> other) override;
 			inline float GetDamage() const { return m_Damage; }
+			const std::string GetSaveData() const override;
 
 		private:
 			float m_Damage;

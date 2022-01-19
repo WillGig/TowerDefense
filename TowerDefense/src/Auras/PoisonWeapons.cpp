@@ -29,3 +29,8 @@ void TowerDefense::Aura::PoisonWeapons::Combine(std::shared_ptr<Aura> other)
 		m_InfoText->SetColor(1.0f, 1.0f, 1.0f, 1.0f);
 	}
 }
+
+const std::string TowerDefense::Aura::PoisonWeapons::GetSaveData() const
+{
+	return "Poison Weapons\n" + Utils::TruncateFloat(m_PoisonDamage, 1) + "\n" + std::to_string(m_PoisonDuration);
+}

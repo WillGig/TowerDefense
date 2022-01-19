@@ -129,6 +129,8 @@ namespace TowerDefense
 		//Combat Auras (from skill trees)
 		void AddCombatAura(std::shared_ptr<Aura::Aura> a);
 		void ApplyAuras();
+		void ClearAuras();
+		const std::string GetCombatAuraSaveData() const;
 
 		inline std::shared_ptr<std::vector<std::unique_ptr<SideboardSlot>>> GetSideBoardSlots() const { return m_SideBoardSlots; }
 		void AddSideBoardSlot();

@@ -1,5 +1,8 @@
 Current:
-	Add saving and loading for skill trees
+	Fix bug: fight number not being properly saved/loaded	
+
+	Add loading bar at 
+	beginning and when starting or loading a game
 
 	Add more skills to skill trees
 

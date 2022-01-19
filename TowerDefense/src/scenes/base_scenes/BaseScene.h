@@ -6,7 +6,6 @@
 #include "CardSlot.h"
 #include "ArtifactSlot.h"
 #include "ClickCircle.h"
-#include "skill_trees/SkillTreeSkill.h"
 
 namespace TowerDefense
 {
@@ -210,75 +209,5 @@ namespace TowerDefense
 
 		std::vector<ClickCircle> m_Circles;
 		std::vector<int> m_RemoveCircles;
-	};
-
-	class ArcheryRange : public BaseScene
-	{
-	public:
-		ArcheryRange();
-		void Render() override;
-		void Update() override;
-		void OnSwitch() override;
-		inline std::string GetName() override { return "ArcheryRange"; }
-
-	private:
-		std::shared_ptr<SkillTreeSkill> m_Tree;
-		std::unique_ptr<Button> m_BackToCamp;
-	};
-
-	class WizardTower : public BaseScene
-	{
-	public:
-		WizardTower();
-		void Render() override;
-		void Update() override;
-		void OnSwitch() override;
-		inline std::string GetName() override { return "WizardTower"; }
-
-	private:
-		std::shared_ptr<SkillTreeSkill> m_Tree;
-		std::unique_ptr<Button> m_BackToCamp;
-	};
-
-	class Temple : public BaseScene
-	{
-	public:
-		Temple();
-		void Render() override;
-		void Update() override;
-		void OnSwitch() override;
-		inline std::string GetName() override { return "Temple"; }
-
-	private:
-		std::shared_ptr<SkillTreeSkill> m_Tree;
-		std::unique_ptr<Button> m_BackToCamp;
-	};
-
-	class AlchemyLab : public BaseScene
-	{
-	public:
-		AlchemyLab();
-		void Render() override;
-		void Update() override;
-		void OnSwitch() override;
-		inline std::string GetName() override { return "AlchemyLab"; }
-
-	private:
-		std::shared_ptr<SkillTreeSkill> m_Tree;
-		std::unique_ptr<Button> m_BackToCamp;
-	};
-
-	class MusicHall : public BaseScene
-	{
-	public:
-		MusicHall();
-		void Render() override;
-		void Update() override;
-		void OnSwitch() override;
-		inline std::string GetName() override { return "MusicHall"; }
-
-	private:
-		std::shared_ptr<SkillTreeSkill> m_Tree;
-		std::unique_ptr<Button> m_BackToCamp;
 	};
 }

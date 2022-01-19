@@ -186,14 +186,14 @@
     <ClCompile Include="src\engine\VertexBuffer.cpp" />
     <ClCompile Include="src\towers\upgrades\Upgrade.cpp" />
     <ClCompile Include="src\artifacts\MagicalGenerator.cpp" />
-    <ClCompile Include="src\scenes\base_scenes\WizardTower.cpp" />
+    <ClCompile Include="src\scenes\base_scenes\skill_scenes\WizardTower.cpp" />
     <ClCompile Include="src\towers\GhostTower.cpp" />
-    <ClCompile Include="src\scenes\base_scenes\ArcheryRange.cpp" />
+    <ClCompile Include="src\scenes\base_scenes\skill_scenes\ArcheryRange.cpp" />
     <ClCompile Include="src\towers\AnimalCompanion.cpp" />
     <ClCompile Include="src\towers\LaserBeam.cpp" />
-    <ClCompile Include="src\scenes\base_scenes\Temple.cpp" />
-    <ClCompile Include="src\scenes\base_scenes\AlchemyLab.cpp" />
-    <ClCompile Include="src\scenes\base_scenes\MusicHall.cpp" />
+    <ClCompile Include="src\scenes\base_scenes\skill_scenes\Temple.cpp" />
+    <ClCompile Include="src\scenes\base_scenes\skill_scenes\AlchemyLab.cpp" />
+    <ClCompile Include="src\scenes\base_scenes\skill_scenes\MusicHall.cpp" />
     <ClCompile Include="src\towers\buffs\RangeBuff.cpp" />
     <ClCompile Include="src\towers\buffs\CritDamageBuff.cpp" />
     <ClCompile Include="src\enemies\States\State.cpp" />
@@ -210,25 +210,26 @@
     <ClCompile Include="src\scenes\LoadMenu.cpp" />
     <ClCompile Include="src\scenes\NewGameMenu.cpp" />
     <ClCompile Include="src\scenes\InGameSettings.cpp" />
-    <ClCompile Include="src\scenes\base_scenes\skill_trees\SkillTreeSkill.cpp" />
-    <ClCompile Include="src\scenes\base_scenes\skill_trees\ArcherDamage.cpp" />
+    <ClCompile Include="src\scenes\base_scenes\skill_scenes\skill_trees\SkillTreeSkill.cpp" />
+    <ClCompile Include="src\scenes\base_scenes\skill_scenes\skill_trees\ArcherDamage.cpp" />
     <ClCompile Include="src\auras\ArcherDamage.cpp" />
     <ClCompile Include="src\utils\StringUtils.cpp" />
-    <ClCompile Include="src\scenes\base_scenes\skill_trees\MultiShot.cpp" />
+    <ClCompile Include="src\scenes\base_scenes\skill_scenes\skill_trees\MultiShot.cpp" />
     <ClCompile Include="src\Auras\MultiShot.cpp" />
-    <ClCompile Include="src\scenes\base_scenes\skill_trees\ArcherCritChance.cpp" />
+    <ClCompile Include="src\scenes\base_scenes\skill_scenes\skill_trees\ArcherCritChance.cpp" />
     <ClCompile Include="src\Auras\ArcherCritChance.cpp" />
-    <ClCompile Include="src\scenes\base_scenes\skill_trees\ArcherCritDamage.cpp" />
+    <ClCompile Include="src\scenes\base_scenes\skill_scenes\skill_trees\ArcherCritDamage.cpp" />
     <ClCompile Include="src\Auras\ArcherCritDamage.cpp" />
-    <ClCompile Include="src\scenes\base_scenes\skill_trees\WizardDamage.cpp" />
+    <ClCompile Include="src\scenes\base_scenes\skill_scenes\skill_trees\WizardDamage.cpp" />
     <ClCompile Include="src\auras\WizardDamage.cpp" />
-    <ClCompile Include="src\scenes\base_scenes\skill_trees\Level10.cpp" />
+    <ClCompile Include="src\scenes\base_scenes\skill_scenes\skill_trees\Level10.cpp" />
     <ClCompile Include="src\auras\HolyPower.cpp" />
-    <ClCompile Include="src\scenes\base_scenes\skill_trees\HolyPower.cpp" />
+    <ClCompile Include="src\scenes\base_scenes\skill_scenes\skill_trees\HolyPower.cpp" />
     <ClCompile Include="src\auras\MusicPower.cpp" />
-    <ClCompile Include="src\scenes\base_scenes\skill_trees\MusicPower.cpp" />
+    <ClCompile Include="src\scenes\base_scenes\skill_scenes\skill_trees\MusicPower.cpp" />
     <ClCompile Include="src\auras\AlchemistDamage.cpp" />
-    <ClCompile Include="src\scenes\base_scenes\skill_trees\AlchemistDamage.cpp" />
+    <ClCompile Include="src\scenes\base_scenes\skill_scenes\skill_trees\AlchemistDamage.cpp" />
+    <ClCompile Include="src\scenes\base_scenes\skill_scenes\SkillScene.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\artifacts\Artifact.h" />
@@ -331,8 +332,9 @@
     <ClInclude Include="src\scenes\LoadMenu.h" />
     <ClInclude Include="src\scenes\NewGameMenu.h" />
     <ClInclude Include="src\scenes\InGameSettings.h" />
-    <ClInclude Include="src\scenes\base_scenes\skill_trees\SkillTreeSkill.h" />
+    <ClInclude Include="src\scenes\base_scenes\skill_scenes\skill_trees\SkillTreeSkill.h" />
     <ClInclude Include="src\utils\StringUtils.h" />
+    <ClInclude Include="src\scenes\base_scenes\skill_scenes\SkillScene.h" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="res\textures\AnimationEffects.png" />

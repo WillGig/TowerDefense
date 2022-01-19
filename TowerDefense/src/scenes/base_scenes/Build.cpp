@@ -1,5 +1,6 @@
 #include "pch.h"
 #include "BaseScene.h"
+#include "skill_scenes/SkillScene.h"
 #include "core/Player.h"
 #include "scenes/Base.h"
 

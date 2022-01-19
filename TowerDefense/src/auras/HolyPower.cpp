@@ -35,3 +35,8 @@ void TowerDefense::Aura::HolyPower::Combine(std::shared_ptr<Aura> other)
 		m_InfoText->SetColor(1.0f, 1.0f, 1.0f, 1.0f);
 	}
 }
+
+const std::string TowerDefense::Aura::HolyPower::GetSaveData() const
+{
+	return "Holy Power\n" + Utils::TruncateFloat(m_Power, 1);
+}

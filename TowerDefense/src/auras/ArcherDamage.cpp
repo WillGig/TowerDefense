@@ -35,3 +35,8 @@ void TowerDefense::Aura::ArcherDamage::Combine(std::shared_ptr<Aura> other)
 		m_InfoText->SetColor(1.0f, 1.0f, 1.0f, 1.0f);
 	}
 }
+
+const std::string TowerDefense::Aura::ArcherDamage::GetSaveData() const
+{
+	return "Archer Damage\n" + Utils::TruncateFloat(m_Damage, 1);
+}

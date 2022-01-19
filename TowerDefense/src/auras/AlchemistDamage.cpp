@@ -31,3 +31,8 @@ void TowerDefense::Aura::AlchemistDamage::Combine(std::shared_ptr<Aura> other)
 		m_InfoText->SetColor(1.0f, 1.0f, 1.0f, 1.0f);
 	}
 }
+
+const std::string TowerDefense::Aura::AlchemistDamage::GetSaveData() const
+{
+	return "Alchemist Damage\n" + Utils::TruncateFloat(m_Damage, 1);
+}

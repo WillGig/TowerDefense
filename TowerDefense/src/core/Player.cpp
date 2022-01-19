@@ -68,7 +68,7 @@ void TowerDefense::Player::Reset()
     SetResource(0, Resource::WOOD);
     SetResource(0, Resource::STONE);
     SetResource(0, Resource::WHEAT);
-    SetResource(0, Resource::GOLD);
+    SetResource(99999, Resource::GOLD);
     m_ResourceGatherSpeed = Vec4i(100, 100, 100, 150);
     m_Population = 0;
     m_MaxPopulation = 10;
@@ -566,6 +566,21 @@ void TowerDefense::Player::ApplyAuras()
 {
     for (unsigned int i = 0; i < m_CombatAuras->size(); i++)
         Combat::AddAura(m_CombatAuras->at(i));
+}
+
+void TowerDefense::Player::ClearAuras()
+{
+    m_CombatAuras->clear();
+}
+
+const std::string TowerDefense::Player::GetCombatAuraSaveData() const
+{
+    std::string data = std::to_string(m_CombatAuras->size()) + "\n";
+
+    for (unsigned int i = 0; i < m_CombatAuras->size(); i++)
+        data += m_CombatAuras->at(i)->GetSaveData() + "\n";
+
+    return data;
 }
 
 void TowerDefense::Player::AddSideBoardSlot()

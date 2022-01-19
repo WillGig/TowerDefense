@@ -35,6 +35,11 @@ namespace TowerDefense
 
 		void SetRequirementText(const std::string& text);
 
+		const std::string GetSkillsSelected() const;
+		void SetSkillsSelected(const std::string& selected);
+
+		int GetNumInTree() const;
+
 	private:
 		bool m_Applied;
 		int m_Cost;

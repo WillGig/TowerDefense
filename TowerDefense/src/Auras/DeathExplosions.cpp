@@ -39,3 +39,8 @@ void TowerDefense::Aura::DeathExplosions::Combine(std::shared_ptr<Aura> other)
 		m_InfoText->SetColor(1.0f, 1.0f, 1.0f, 1.0f);
 	}
 }
+
+const std::string TowerDefense::Aura::DeathExplosions::GetSaveData() const
+{
+	return "Death Explosions\n" + std::to_string(m_Damage);
+}

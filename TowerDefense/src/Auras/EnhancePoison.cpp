@@ -23,3 +23,8 @@ void TowerDefense::Aura::EnhancePoison::Combine(std::shared_ptr<Aura> other)
 		m_InfoText->SetColor(1.0f, 1.0f, 1.0f, 1.0f);
 	}
 }
+
+const std::string TowerDefense::Aura::EnhancePoison::GetSaveData() const
+{
+	return "Enhance Poison\n" + Utils::TruncateFloat(m_ExtraDamage, 1);
+}

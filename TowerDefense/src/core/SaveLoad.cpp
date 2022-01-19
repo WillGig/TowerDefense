@@ -5,6 +5,7 @@
 #include "scenes/Combat.h"
 #include "cards/HeroCard.h"
 #include "scenes/Base.h"
+#include "scenes/base_scenes/skill_scenes/SkillScene.h"
 #include "scenes/random_events/RandomEvent.h"
 #include "towers/Ranger.h"
 #include "towers/Wizard.h"
@@ -58,6 +59,9 @@ void TowerDefense::Save::SaveGame(int slot)
 	saveFile << player.GetScore() << "\n";
 	saveFile << player.GetSideBoardSlots()->size() << "\n";
 
+	//Player Combat Auras
+	saveFile << player.GetCombatAuraSaveData();
+
 	//Combats
 	saveFile << Combat::GetFightNumber() << "\n";
 	std::vector<int> fightOrder = Combat::GetFightOrder();
@@ -106,6 +110,10 @@ void TowerDefense::Save::SaveGame(int slot)
 	{
 		saveFile << baseScenes->at(i)->GetName() << "\n";
 		saveFile << baseScenes->at(i)->GetActivityReady() << "\n";
+		if (auto skillScene = std::dynamic_pointer_cast<SkillScene>(baseScenes->at(i)))
+			saveFile << skillScene->GetSkillsSelected() << "\n";
+		else
+			saveFile << "0\n";
 	}
 
 	//Events
@@ -230,6 +238,109 @@ void TowerDefense::Load::LoadGame(int slot)
 			player.ClearSideBoardSlots();
 			for (int i = 0; i < numSlots; i++)
 				player.AddSideBoardSlot();
+
+			//Player 
+			std::getline(saveFile, line);
+			int numAuras = std::stoi(line);
+			player.ClearAuras();
+			for (int i = 0; i < numAuras; i++)
+			{
+				std::getline(saveFile, line);
+				std::string name = line;
+
+				if (name == "Alchemist Damage")
+				{
+					std::getline(saveFile, line);
+					float damage = std::stof(line);
+					player.AddCombatAura(std::make_shared<Aura::AlchemistDamage>(damage));
+				}
+				else if (name == "Archer Crit Chance")
+				{
+					std::getline(saveFile, line);
+					float chance = std::stof(line);
+					player.AddCombatAura(std::make_shared<Aura::ArcherCritChance>(chance/100.0f));
+				}
+				else if (name == "Archer Crit Damage")
+				{
+					std::getline(saveFile, line);
+					float damage = std::stof(line);
+					player.AddCombatAura(std::make_shared<Aura::ArcherCritDamage>(damage/100.0f));
+				}
+				else if (name == "Archer Damage")
+				{
+					std::getline(saveFile, line);
+					float damage = std::stof(line);
+					player.AddCombatAura(std::make_shared<Aura::ArcherDamage>(damage));
+				}
+				else if (name == "Constant Damage")
+				{
+					std::getline(saveFile, line);
+					float damage = std::stof(line);
+					player.AddCombatAura(std::make_shared<Aura::ArcherCritChance>(damage));
+				}
+				else if (name == "Death Explosions")
+				{
+					std::getline(saveFile, line);
+					int damage = std::stoi(line);
+					player.AddCombatAura(std::make_shared<Aura::DeathExplosions>(damage));
+				}
+				else if (name == "Enhance Poison")
+				{
+					std::getline(saveFile, line);
+					float damage = std::stof(line);
+					player.AddCombatAura(std::make_shared<Aura::EnhancePoison>(damage));
+				}
+				else if (name == "Holy Power")
+				{
+					std::getline(saveFile, line);
+					float power = std::stof(line);
+					player.AddCombatAura(std::make_shared<Aura::HolyPower>(power));
+				}
+				else if (name == "Life Steal")
+				{
+					std::getline(saveFile, line);
+					int life = std::stoi(line);
+					player.AddCombatAura(std::make_shared<Aura::LifeSteal>(life));
+				}
+				else if (name == "MultiShot")
+				{
+					std::getline(saveFile, line);
+					int shots = std::stoi(line);
+					player.AddCombatAura(std::make_shared<Aura::MultiShot>(shots));
+				}
+				else if (name == "Music Power")
+				{
+					std::getline(saveFile, line);
+					float power = std::stof(line);
+					player.AddCombatAura(std::make_shared<Aura::MusicPower>(power));
+				}
+				else if (name == "Poison Weapons")
+				{
+					std::getline(saveFile, line);
+					float damage = std::stof(line);
+					std::getline(saveFile, line);
+					int duration = std::stoi(line);
+					player.AddCombatAura(std::make_shared<Aura::PoisonWeapons>(damage, duration));
+				}
+				else if (name == "Storm")
+				{
+					std::getline(saveFile, line);
+					int damage = std::stoi(line);
+					player.AddCombatAura(std::make_shared<Aura::Storm>(damage));
+				}
+				else if (name == "Stun Attacks")
+				{
+					std::getline(saveFile, line);
+					int duration = std::stoi(line);
+					player.AddCombatAura(std::make_shared<Aura::StunAttacks>(duration));
+				}
+				else if (name == "Wizard Damage")
+				{
+					std::getline(saveFile, line);
+					float damage = std::stof(line);
+					player.AddCombatAura(std::make_shared<Aura::WizardDamage>(damage));
+				}
+			}
 
 			//Combats
 			std::cout << "...Combat Data" << std::endl;
@@ -399,6 +510,8 @@ void TowerDefense::Load::LoadGame(int slot)
 				const std::string name = line;
 				std::getline(saveFile, line);
 				int activityReady = std::stoi(line);
+				std::getline(saveFile, line);
+				const std::string activeSkills = line;
 
 				if (name == "Gather Resources")
 					Base::AddBaseScene(std::make_shared<GatherResources>());
@@ -436,6 +549,8 @@ void TowerDefense::Load::LoadGame(int slot)
 					continue;
 				}
 				Base::GetBaseScenes()->at(Base::GetBaseScenes()->size() - 1)->SetActivityReady(activityReady);
+				if (auto skillScene = std::dynamic_pointer_cast<SkillScene>(Base::GetBaseScenes()->at(Base::GetBaseScenes()->size() - 1)))
+					skillScene->SetSkillsSelected(activeSkills);
 			}
 
 			//Events

@@ -31,3 +31,8 @@ void TowerDefense::Aura::MusicPower::Combine(std::shared_ptr<Aura> other)
 		m_InfoText->SetColor(1.0f, 1.0f, 1.0f, 1.0f);
 	}
 }
+
+const std::string TowerDefense::Aura::MusicPower::GetSaveData() const
+{
+	return "Music Power\n" + Utils::TruncateFloat(m_Power, 1);
+}
