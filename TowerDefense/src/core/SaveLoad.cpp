@@ -345,7 +345,7 @@ void TowerDefense::Load::LoadGame(int slot)
 			//Combats
 			std::cout << "...Combat Data" << std::endl;
 			std::getline(saveFile, line);
-			Combat::SetFightNumber(std::stoi(line));
+			int fightNumber = std::stoi(line);
 			std::vector<int> fightOrder =std::vector<int>();
 			for (int i = 0; i < 20; i++)
 			{
@@ -353,6 +353,7 @@ void TowerDefense::Load::LoadGame(int slot)
 				fightOrder.push_back(std::stoi(line));
 			}
 			Combat::GenerateFightsFromOrder(fightOrder);
+			Combat::SetFightNumber(fightNumber);
 
 			//Cards
 			std::cout << "...Card Data" << std::endl;
