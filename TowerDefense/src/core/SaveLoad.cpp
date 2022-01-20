@@ -494,6 +494,10 @@ void TowerDefense::Load::LoadGame(int slot)
 					std::getline(saveFile, line);
 					player.AddArtifactWithoutTrigger(std::make_shared<MapToEldorado>(std::stoi(line)));
 				}
+				else if (name == "Blessing of the Bat")
+					player.AddArtifactWithoutTrigger(std::make_shared<BlessingOfTheBat>());
+				else if (name == "Magical Generator")
+					player.AddArtifactWithoutTrigger(std::make_shared<MagicalGenerator>());
 				else
 					std::cout << "Error: Artifact " << name << " does not exist" << std::endl;
 			}
