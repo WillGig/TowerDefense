@@ -237,6 +237,8 @@ void TowerDefense::ManageWorkers::Update()
 		m_HouseText->SetColor(1.0f, 1.0f, 1.0f, 1.0f);
 		m_TotalPopText = std::make_unique<Text>(std::to_string(player.GetPopulation()) + "/" + std::to_string(player.GetMaxPopulation()), 467.0f, 500.0f, 12.0f, 0.0f);
 		m_TotalPopText->SetColor(1.0f, 1.0f, 1.0f, 1.0f);
+		m_AvailablePopText = std::make_unique<Text>(std::to_string(player.GetAvailablePopulation()), 460.0f, 450.0f, 12.0f, 0.0f);
+		m_AvailablePopText->SetColor(1.0f, 1.0f, 1.0f, 1.0f);
 	}
 
 	if (m_HireWorker->IsClicked() && player.GetResource(Resource::WHEAT) > 49 && player.GetMaxPopulation() - player.GetPopulation() > 0)

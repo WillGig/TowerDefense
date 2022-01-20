@@ -68,7 +68,7 @@ void TowerDefense::Player::Reset()
     SetResource(0, Resource::WOOD);
     SetResource(0, Resource::STONE);
     SetResource(0, Resource::WHEAT);
-    SetResource(99999, Resource::GOLD);
+    SetResource(0, Resource::GOLD);
     m_ResourceGatherSpeed = Vec4i(100, 100, 100, 150);
     m_Population = 0;
     m_MaxPopulation = 10;

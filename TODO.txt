@@ -1,9 +1,12 @@
 Current:
-	Add loading bar when starting or loading a game
+	Event Improvements:
+		Allow hovering over event options to show cards/artifacts obtained
+		Add second page to events to describe what happens
+		Add more events:
 
 	Add more skills to skill trees
 
-	Add second towers
+	Add second towers for buildings
 	 - music hall		Singer(replaces monk)/siren
 	 - wizard tower 	Sorcerer/scholar?
 	 - alchemy lab		Tinkerer?
@@ -59,11 +62,6 @@ Current:
 	- guitar		- 
 	- harp			- 
 
-	Event Improvements:
-		Allow hovering over event options to show cards/artifacts obtained
-		Add second page to events to describe what happens
-		Add more events:
-	
 	Add more mini-games
 	- cave exploring - rpg dungeon crawler like
 	- Archery	 - tanks style archery game

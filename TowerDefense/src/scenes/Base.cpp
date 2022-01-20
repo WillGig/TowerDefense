@@ -95,7 +95,6 @@ void TowerDefense::Base::Reset()
 	s_BaseScenes = std::make_unique<std::vector<std::shared_ptr<BaseScene>>>();
 	AddBaseScene(std::make_shared<GatherResources>());
 	AddBaseScene(std::make_shared<Build>());
-	AddBaseScene(std::make_shared<ArcheryRange>());
 }
 
 void TowerDefense::Base::CleanUp()

@@ -630,10 +630,11 @@ void TowerDefense::LoadingScreen::Load(const std::string& path, std::shared_ptr<
 {
     static int loadPercent = 0;
     static int numLoaded = 0;
-
-    Texture::LoadTexture(path, t);
+    
+    Texture::LoadTexture(path, t); //Cache texture
     numLoaded++;
 
+    //Render loadbar and text if percent has changed
     int percent = (int)(((float)numLoaded / 551.0f)*100.0f);
     if (loadPercent != percent)
     {
@@ -642,6 +643,7 @@ void TowerDefense::LoadingScreen::Load(const std::string& path, std::shared_ptr<
     }
 }
 
+//Renders loadbar, message, and load percent
 void TowerDefense::LoadingScreen::RenderProgress(GLFWwindow* window, const std::string loadMessage, int loadPercent)
 {
     Renderer::Get().Clear();
