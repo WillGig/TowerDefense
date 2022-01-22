@@ -10,6 +10,7 @@ namespace TowerDefense
 		inline void OnSwitch() override {};
 		inline bool Exit() { return m_Exit; }
 		inline virtual const std::string GetName() = 0;
+		inline virtual void RenderEnd() = 0;
 
 		static std::shared_ptr<RandomEvent> GetRandomEvent();
 
@@ -33,6 +34,7 @@ namespace TowerDefense
 		FountainOfYouth();
 		void Render() override;
 		void Update() override;
+		void RenderEnd() override;
 		inline const std::string GetName() override { return "FountainOfYouth"; }
 	private:
 		std::unique_ptr<StaticImage> m_Image;
@@ -47,6 +49,7 @@ namespace TowerDefense
 		LiterallySatan();
 		void Render() override;
 		void Update() override;
+		void RenderEnd() override;
 		inline const std::string GetName() override { return "Devil"; }
 	private:
 		std::unique_ptr<StaticImage> m_Image;
@@ -61,6 +64,7 @@ namespace TowerDefense
 		CaveBat();
 		void Render() override;
 		void Update() override;
+		void RenderEnd() override;
 		inline const std::string GetName() override { return "CaveBat"; }
 	private:
 		std::unique_ptr<StaticImage> m_Image;
@@ -76,6 +80,7 @@ namespace TowerDefense
 		TrolleyProblem();
 		void Render() override;
 		void Update() override;
+		void RenderEnd() override;
 		inline const std::string GetName() override { return "Trolley"; }
 	private:
 		std::unique_ptr<StaticImage> m_Image;
@@ -83,12 +88,14 @@ namespace TowerDefense
 		std::unique_ptr<Text> m_Text1, m_Text2, m_Text3, m_Prompt;
 	};
 
+	//Pay gold or lose life. Special option with shrubbery
 	class KnightsWhoSayNah : public RandomEvent
 	{
 	public:
 		KnightsWhoSayNah();
 		void Render() override;
 		void Update() override;
+		void RenderEnd() override;
 		inline const std::string GetName() override { return "KnightsWhoSayNah"; }
 
 	private:
@@ -97,12 +104,14 @@ namespace TowerDefense
 		std::unique_ptr<Text> m_Text1, m_Text2, m_Text3, m_Prompt;
 	};
 
+	//Kiss for artifact/curse or get gold
 	class FrogPrince : public RandomEvent
 	{
 	public:
 		FrogPrince();
 		void Render() override;
 		void Update() override;
+		void RenderEnd() override;
 		inline const std::string GetName() override { return "FrogPrince"; }
 
 	private:
@@ -111,12 +120,14 @@ namespace TowerDefense
 		std::unique_ptr<Text> m_Text1, m_Text2, m_Prompt;
 	};
 
+	//Random amount of gold and an artifact
 	class Treasure : public RandomEvent
 	{
 	public:
 		Treasure();
 		void Render() override;
 		void Update() override;
+		void RenderEnd() override;
 		inline const std::string GetName() override { return "Treasure"; }
 
 	private:
@@ -128,12 +139,14 @@ namespace TowerDefense
 		std::unique_ptr<ArtifactReward> m_Artifact;
 	};
 
+	//Add a wizard hero to your deck (lose all wood)
 	class WanderingSage : public RandomEvent
 	{
 	public:
 		WanderingSage();
 		void Render() override;
 		void Update() override;
+		void RenderEnd() override;
 		inline const std::string GetName() override { return "WanderingSage"; }
 
 	private:
@@ -142,12 +155,14 @@ namespace TowerDefense
 		std::unique_ptr<Text> m_Text1, m_Text2, m_Prompt;
 	};
 
+	//Add a bard hero to your deck (costs gold)
 	class WanderingBard : public RandomEvent
 	{
 	public:
 		WanderingBard();
 		void Render() override;
 		void Update() override;
+		void RenderEnd() override;
 		inline const std::string GetName() override { return "WanderingBard"; }
 
 	private:
@@ -156,12 +171,14 @@ namespace TowerDefense
 		std::unique_ptr<Text> m_Text1, m_Text2, m_Prompt;
 	};
 
+	//Add a cleric hero (lose all wheat)
 	class WanderingCleric : public RandomEvent
 	{
 	public:
 		WanderingCleric();
 		void Render() override;
 		void Update() override;
+		void RenderEnd() override;
 		inline const std::string GetName() override { return "WanderingCleric"; }
 
 	private:
@@ -170,12 +187,14 @@ namespace TowerDefense
 		std::unique_ptr<Text> m_Text1, m_Text2, m_Prompt;
 	};
 
+	//Gain joust minigame or heal
 	class TheBlackKnight : public RandomEvent
 	{
 	public:
 		TheBlackKnight();
 		void Render() override;
 		void Update() override;
+		void RenderEnd() override;
 		inline const std::string GetName() override { return "BlackKnight"; }
 
 	private:

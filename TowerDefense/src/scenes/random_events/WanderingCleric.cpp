@@ -35,6 +35,12 @@ void TowerDefense::WanderingCleric::Render()
 	m_Prompt->Render();
 }
 
+void TowerDefense::WanderingCleric::RenderEnd()
+{
+	m_Image->Render();
+	m_Prompt->Render();
+}
+
 void TowerDefense::WanderingCleric::Update()
 {
 	m_Button1->Update();
@@ -49,12 +55,28 @@ void TowerDefense::WanderingCleric::Update()
 		Player& player = Player::Get();
 		player.AddToDeck(std::make_shared<HeroCard>("Aramis", "Class:  Cleric\nRace:  Human\nSage\nVeteran\nNear Sighted\n", 50, "aramis", std::make_shared<Tower::Cleric>(), quirks));
 		player.ChangeResource(-player.GetResource(Resource::WHEAT), Resource::WHEAT);
+		
+		std::string text =
+			"All of your wheat has been given away.\n"
+			"You gain Aramis the cleric!";
+
+		m_Prompt = std::make_unique<Text>(text, 560.0f, 370.0f, 12.0f, 0.0f);
+		m_Prompt->SetColor(1.0f, 1.0f, 1.0f, 1.0f);
+		
 		m_Exit = true;
 	}
 
 	m_Button2->Update();
 	if (m_Button2->IsClicked())
 	{
+		std::string text =
+			"The man gives you a disgusted look.\n\n"
+			"He spits on the ground at your feet,\n"
+			"turns, and leaves.\n";
+
+		m_Prompt = std::make_unique<Text>(text, 560.0f, 370.0f, 12.0f, 0.0f);
+		m_Prompt->SetColor(1.0f, 1.0f, 1.0f, 1.0f);
+
 		m_Exit = true;
 	}
 }

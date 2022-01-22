@@ -35,6 +35,12 @@ void TowerDefense::WanderingSage::Render()
 	m_Prompt->Render();
 }
 
+void TowerDefense::WanderingSage::RenderEnd()
+{
+	m_Image->Render();
+	m_Prompt->Render();
+}
+
 void TowerDefense::WanderingSage::Update()
 {
 	m_Button1->Update();
@@ -50,12 +56,28 @@ void TowerDefense::WanderingSage::Update()
 
 		player.AddToDeck(std::make_shared<HeroCard>("Heath", "Class:  Wizard\nRace:  Human\nSage\nJust Lucky\nNear Sighted\n", 100, "heath", std::make_shared<Tower::Wizard>(), quirks));
 		player.ChangeResource(-player.GetResource(Resource::WOOD), Resource::WOOD);
+		
+		std::string text =
+			"You gain heath the wizard!\n"
+			"All of your wood has been burnt.";
+
+		m_Prompt = std::make_unique<Text>(text, 560.0f, 370.0f, 16.0f, 0.0f);
+		m_Prompt->SetColor(1.0f, 1.0f, 1.0f, 1.0f);
+		
 		m_Exit = true;
 	}
 
 	m_Button2->Update();
 	if (m_Button2->IsClicked())
 	{
+		std::string text =
+			"\"Fine I'll show you another one!\"\n"
+			"Before you can do anything, he\n"
+			"dissapears in a puff of smoke!\n";
+
+		m_Prompt = std::make_unique<Text>(text, 560.0f, 370.0f, 16.0f, 0.0f);
+		m_Prompt->SetColor(1.0f, 1.0f, 1.0f, 1.0f);
+
 		m_Exit = true;
 	}
 }

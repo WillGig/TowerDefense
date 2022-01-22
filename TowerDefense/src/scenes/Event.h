@@ -15,7 +15,7 @@ namespace TowerDefense
 
 	private:
 
-		enum class EventPhase {START, EVENT};
+		enum class EventPhase {START, EVENT, END};
 
 		EventPhase m_Phase;
 

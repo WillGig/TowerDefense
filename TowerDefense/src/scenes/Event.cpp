@@ -30,6 +30,17 @@ void TowerDefense::Event::Render()
 		if (InGameSettings::Get().IsShowing())
 			InGameSettings::Get().Render();
 	}
+	else if (m_Phase == EventPhase::END)
+	{
+		Player::Get().RenderStats();
+		InGameSettings::Get().RenderButton();
+		m_RandomEvent->RenderEnd();
+		m_Continue->Render();
+		Player::Get().RenderDeckAndArtifacts();
+
+		if (InGameSettings::Get().IsShowing())
+			InGameSettings::Get().Render();
+	}
 }
 
 void TowerDefense::Event::Update()
@@ -57,8 +68,14 @@ void TowerDefense::Event::Update()
 
 			m_RandomEvent->Update();
 			if (m_RandomEvent->Exit())
-				SetScene(SceneType::PRECOMBAT);
+				m_Phase = EventPhase::END;
 		}
+	}
+	else if (m_Phase == EventPhase::END)
+	{
+		m_Continue->Update();
+		if(m_Continue->IsClicked())
+			SetScene(SceneType::PRECOMBAT);
 	}
 }
 

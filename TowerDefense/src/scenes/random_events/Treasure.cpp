@@ -8,9 +8,7 @@ TowerDefense::Treasure::Treasure()
 	m_Gold(std::make_unique<ResourceReward>((int)(Random::GetFloat() * 300), Resource::GOLD)),
 	m_Artifact(std::make_unique<ArtifactReward>())
 {
-	std::string text = "You find treasure!\n";
-
-	m_Prompt = std::make_unique<Text>(text, 550.0f, 450.0f, 16.0f, 0.0f);
+	m_Prompt = std::make_unique<Text>("You find treasure!", 550.0f, 450.0f, 16.0f, 0.0f);
 	m_Prompt->SetColor(1.0f, 1.0f, 1.0f, 1.0f);
 
 	m_Gold->SetPosition(550.0f, 350.0f);
@@ -28,6 +26,12 @@ void TowerDefense::Treasure::Render()
 		m_Artifact->Render();
 }
 
+void TowerDefense::Treasure::RenderEnd()
+{
+	m_Image->Render();
+	m_Prompt->Render();
+}
+
 void TowerDefense::Treasure::Update()
 {
 	if (m_Artifact)
@@ -42,7 +46,11 @@ void TowerDefense::Treasure::Update()
 
 	m_Continue->Update();
 	if (m_Continue->IsClicked())
+	{
+		m_Prompt = std::make_unique<Text>("You gather what\nyou can and continue\non your way.", 550.0f, 350.0f, 16.0f, 0.0f);
+		m_Prompt->SetColor(1.0f, 1.0f, 1.0f, 1.0f);
 		m_Exit = true;
+	}
 
 	if (m_Gold)
 	{

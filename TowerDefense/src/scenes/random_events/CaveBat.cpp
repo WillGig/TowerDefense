@@ -16,7 +16,7 @@ TowerDefense::CaveBat::CaveBat()
 		"You see a bat. He looks\n"
 		"happy, but hungry.\n"
 		"He could be happier.\n\n"
-		"He looks at you.\n";
+		"He looks at you.";
 
 	m_Prompt = std::make_unique<Text>(text, 550.0f, 400.0f, 16.0f, 0.0f);
 	m_Prompt->SetColor(1.0f, 1.0f, 1.0f, 1.0f);
@@ -32,6 +32,12 @@ void TowerDefense::CaveBat::Render()
 	m_Text2->Render();
 }
 
+void TowerDefense::CaveBat::RenderEnd()
+{
+	m_Image->Render();
+	m_Prompt->Render();
+}
+
 void TowerDefense::CaveBat::Update()
 {
 	m_Button1->Update();
@@ -40,11 +46,32 @@ void TowerDefense::CaveBat::Update()
 	if (m_Button1->IsClicked())
 	{
 		Player::Get().ChangeHealth(-1);
+
+		std::string text =
+			"Swat!\n"
+			"The bat is no more.\n\n"
+			"Your hand stings a little,\n"
+			"but it wasn't much of a fight";
+
+		m_Prompt = std::make_unique<Text>(text, 550.0f, 400.0f, 16.0f, 0.0f);
+		m_Prompt->SetColor(1.0f, 1.0f, 1.0f, 1.0f);
+
 		m_Exit = true;
 	}
 	else if (m_Button2->IsClicked())
 	{
 		Player::Get().ChangeHealth(-10);
+
+		std::string text =
+			"You extend your arm and the\n"
+			"bat flies over. With a \n"
+			"chomp it bites in and starts\n"
+			"lapping up blood.\n\n"
+			"He looks happy.";
+
+		m_Prompt = std::make_unique<Text>(text, 550.0f, 400.0f, 16.0f, 0.0f);
+		m_Prompt->SetColor(1.0f, 1.0f, 1.0f, 1.0f);
+
 		Player::Get().AddToArtifacts(std::make_shared<BlessingOfTheBat>());
 		m_Exit = true;
 	}

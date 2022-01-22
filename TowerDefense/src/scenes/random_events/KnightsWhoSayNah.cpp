@@ -42,12 +42,25 @@ void TowerDefense::KnightsWhoSayNah::Render()
 	}
 }
 
+void TowerDefense::KnightsWhoSayNah::RenderEnd()
+{
+	m_Image->Render();
+	m_Prompt->Render();
+}
 void TowerDefense::KnightsWhoSayNah::Update()
 {
 	m_Button1->Update();
 	if (m_Button1->IsClicked())
 	{
 		Player::Get().ChangeResource(-300, Resource::GOLD);
+
+		std::string text =
+			"\"A wise choice!\n"
+			"Move along now.\"";
+
+		m_Prompt = std::make_unique<Text>(text, 560.0f, 370.0f, 16.0f, 0.0f);
+		m_Prompt->SetColor(1.0f, 1.0f, 1.0f, 1.0f);
+
 		m_Exit = true;
 	}
 
@@ -55,6 +68,14 @@ void TowerDefense::KnightsWhoSayNah::Update()
 	if (m_Button2->IsClicked())
 	{
 		Player::Get().ChangeHealth(-10);
+
+		std::string text =
+			"\"Nah! Nah! Nah! Nah! Nah!\n"
+			"Nah! Nah! Nah! Nah!\"";
+
+		m_Prompt = std::make_unique<Text>(text, 560.0f, 370.0f, 16.0f, 0.0f);
+		m_Prompt->SetColor(1.0f, 1.0f, 1.0f, 1.0f);
+
 		m_Exit = true;
 	}
 
@@ -65,6 +86,19 @@ void TowerDefense::KnightsWhoSayNah::Update()
 		{
 			Player::Get().AddToArtifacts(std::make_shared<BlessedHandGrenade>());
 			Player::Get().RemoveFromArtifacts("Shrubbery");
+
+			std::string text =
+				"\"Oooh it looks nice.\n\n"
+				"All of the Knights begin to crowd"
+				"around and  inspect the shruberry\n\n"
+				"After a while the leader comes up\n"
+				"holding a box. \n\n"
+				"\"We thank you for the shruberry\n"
+				"Take this: you may need it";
+
+			m_Prompt = std::make_unique<Text>(text, 560.0f, 370.0f, 16.0f, 0.0f);
+			m_Prompt->SetColor(1.0f, 1.0f, 1.0f, 1.0f);
+
 			m_Exit = true;
 		}
 	}

@@ -33,6 +33,12 @@ void TowerDefense::FountainOfYouth::Render()
 	m_Text2->Render();
 }
 
+void TowerDefense::FountainOfYouth::RenderEnd()
+{
+	m_Image->Render();
+	m_Prompt->Render();
+}
+
 void TowerDefense::FountainOfYouth::Update()
 {
 	m_Button1->Update();
@@ -42,11 +48,31 @@ void TowerDefense::FountainOfYouth::Update()
 	{
 		Player& player = Player::Get();
 		player.ChangeHealth(player.GetMaxHealth()-player.GetHealth());
+		
+		std::string text =
+			"You drink deeply form the\n"
+			"fountain. The water is cool\n"
+			"and refreshing.\n\n"
+			"You feel reinvigorated\n";
+
+		m_Prompt = std::make_unique<Text>(text, 550.0f, 350.0f, 18.0f, 0.0f);
+		m_Prompt->SetColor(1.0f, 1.0f, 1.0f, 1.0f);
+
 		m_Exit = true;
 	}
 	else if (m_Button2->IsClicked())
 	{
 		Player::Get().ChangeMaxHealth(10);
+
+		std::string text =
+			"As you bathe in the water\n"
+			"you begin feeling stronger.\n\n"
+			"You emerge certain that your\n"
+			"life has been extended.\n";
+
+		m_Prompt = std::make_unique<Text>(text, 550.0f, 350.0f, 18.0f, 0.0f);
+		m_Prompt->SetColor(1.0f, 1.0f, 1.0f, 1.0f);
+
 		m_Exit = true;
 	}
 }

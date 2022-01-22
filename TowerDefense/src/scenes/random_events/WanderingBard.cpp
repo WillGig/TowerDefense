@@ -35,6 +35,12 @@ void TowerDefense::WanderingBard::Render()
 	m_Prompt->Render();
 }
 
+void TowerDefense::WanderingBard::RenderEnd()
+{
+	m_Image->Render();
+	m_Prompt->Render();
+}
+
 void TowerDefense::WanderingBard::Update()
 {
 	Player& player = Player::Get();
@@ -50,12 +56,28 @@ void TowerDefense::WanderingBard::Update()
 
 		player.AddToDeck(std::make_shared<HeroCard>("Hoid", "Class:  Bard\nRace:  Human\nSage\nExplorer\nNear Sighted\n", 50, "hoid", std::make_shared<Tower::Bard>(), quirks));
 		player.ChangeResource(-300, Resource::GOLD);
+
+		std::string text =
+			"You gain hoid the bard!\n";
+
+		m_Prompt = std::make_unique<Text>(text, 560.0f, 370.0f, 12.0f, 0.0f);
+		m_Prompt->SetColor(1.0f, 1.0f, 1.0f, 1.0f);
+
 		m_Exit = true;
 	}
 
 	m_Button2->Update();
 	if (m_Button2->IsClicked())
 	{
+		std::string text =
+			"\"I see... \"\n"
+			"With a dip of his head\n"
+			"and a turn of his heel,\n"
+			"he turns away and leaves.\n";
+
+		m_Prompt = std::make_unique<Text>(text, 560.0f, 370.0f, 12.0f, 0.0f);
+		m_Prompt->SetColor(1.0f, 1.0f, 1.0f, 1.0f);
+
 		m_Exit = true;
 	}
 }

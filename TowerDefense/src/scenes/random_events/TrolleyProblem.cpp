@@ -37,6 +37,12 @@ void TowerDefense::TrolleyProblem::Render()
 	m_Text3->Render();
 }
 
+void TowerDefense::TrolleyProblem::RenderEnd()
+{
+	m_Image->Render();
+	m_Prompt->Render();
+}
+
 void TowerDefense::TrolleyProblem::Update()
 {
 	m_Button1->Update();
@@ -44,12 +50,37 @@ void TowerDefense::TrolleyProblem::Update()
 	m_Button3->Update();
 
 	if (m_Button1->IsClicked())
+	{
+		m_Prompt = std::make_unique<Text>("Splat.", 400.0f, 250.0f, 12.0f, 0.0f);
+		m_Prompt->SetColor(1.0f, 1.0f, 1.0f, 1.0f);
+
 		m_Exit = true;
+	}
 	else if (m_Button2->IsClicked())
+	{
+		std::string text =
+			"The ensuing crash is horrifying and chaotic. \n"
+			"Bits of puppy and person lie everywhere.\n"
+			"It's going to take a while to forget this...\n";
+
+		m_Prompt = std::make_unique<Text>(text, 400.0f, 250.0f, 12.0f, 0.0f);
+		m_Prompt->SetColor(1.0f, 1.0f, 1.0f, 1.0f);
+
 		m_Exit = true;
+	}
 	else if(m_Button3->IsClicked())
 	{ 
 		Player::Get().ChangeHealth(-1);
+
+		std::string text =
+			"Sometimes a choice must be made.\n"
+			"And sometimes that is a choice between babies\n"
+			"and puppies. Someday you may have to make that choice.\n"
+			"Delaying it will not change this.";
+
+		m_Prompt = std::make_unique<Text>(text, 400.0f, 250.0f, 12.0f, 0.0f);
+		m_Prompt->SetColor(1.0f, 1.0f, 1.0f, 1.0f);
+
 		m_Exit = true;
 	}
 }
