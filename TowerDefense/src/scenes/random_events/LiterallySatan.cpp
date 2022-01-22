@@ -1,14 +1,14 @@
 #include "pch.h"
 #include "RandomEvent.h"
 #include "core/Player.h"
-#include "cards/curses/Curses.h"
 
 TowerDefense::LiterallySatan::LiterallySatan()
 	:m_Image(std::make_unique<StaticImage>(200.0f, 350.0f, 300, 300, 0.0f, "events/LiterallySatan")),
 	m_Button1(std::make_unique<Button>(400.0f, 150.0f, 600, 50, "eventButton")),
 	m_Button2(std::make_unique<Button>(400.0f, 100.0f, 600, 50, "eventButton")),
-	m_Text1(std::make_unique<Text>("Burn them. (Add 3 burns to your deck.)", 400.0f, 150.0f, 12.0f, 0.0f)),
-	m_Text2(std::make_unique<Text>("Burn me. (Lose 30 HP)", 400.0f, 100.0f, 12.0f, 0.0f))
+	m_Text1(std::make_unique<Text>("Burn them. (Add 3 flames to your deck.)", 400.0f, 150.0f, 12.0f, 0.0f)),
+	m_Text2(std::make_unique<Text>("Burn me. (Lose 30 HP)", 400.0f, 100.0f, 12.0f, 0.0f)),
+	m_DemoCard(std::make_unique<Flames>())
 {
 	m_Text1->SetColor(1.0f, 1.0f, 1.0f, 1.0f);
 	m_Text2->SetColor(1.0f, 1.0f, 1.0f, 1.0f);
@@ -24,6 +24,9 @@ TowerDefense::LiterallySatan::LiterallySatan()
 
 	m_Prompt = std::make_unique<Text>(text, 560.0f, 400.0f, 16.0f, 0.0f);
 	m_Prompt->SetColor(1.0f, 1.0f, 1.0f, 1.0f);
+
+	m_DemoCard->SetX(700.0f);
+	m_DemoCard->SetY(150.0f);
 }
 
 void TowerDefense::LiterallySatan::Render()
@@ -34,6 +37,9 @@ void TowerDefense::LiterallySatan::Render()
 	m_Button2->Render();
 	m_Text1->Render();
 	m_Text2->Render();
+
+	if (m_Button1->IsSelected())
+		m_DemoCard->Render();
 }
 
 void TowerDefense::LiterallySatan::RenderEnd()

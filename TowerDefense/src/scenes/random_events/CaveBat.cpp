@@ -7,7 +7,8 @@ TowerDefense::CaveBat::CaveBat()
 	m_Button1(std::make_unique<Button>(400.0f, 150.0f, 600, 50, "eventButton")),
 	m_Button2(std::make_unique<Button>(400.0f, 100.0f, 600, 50, "eventButton")),
 	m_Text1(std::make_unique<Text>("Fight (-1 HP)", 400.0f, 150.0f, 12.0f, 0.0f)),
-	m_Text2(std::make_unique<Text>("Feed (-10 HP. Get the bat's blessing.)", 400.0f, 100.0f, 12.0f, 0.0f))
+	m_Text2(std::make_unique<Text>("Feed (-10 HP. Get the bat's blessing.)", 400.0f, 100.0f, 12.0f, 0.0f)),
+	m_DemoArtifact(std::make_unique<BlessingOfTheBat>())
 {
 	m_Text1->SetColor(1.0f, 1.0f, 1.0f, 1.0f);
 	m_Text2->SetColor(1.0f, 1.0f, 1.0f, 1.0f);
@@ -20,6 +21,9 @@ TowerDefense::CaveBat::CaveBat()
 
 	m_Prompt = std::make_unique<Text>(text, 550.0f, 400.0f, 16.0f, 0.0f);
 	m_Prompt->SetColor(1.0f, 1.0f, 1.0f, 1.0f);
+
+	m_DemoArtifact->SetX(650.0f);
+	m_DemoArtifact->SetY(100.0f);
 }
 
 void TowerDefense::CaveBat::Render()
@@ -30,6 +34,9 @@ void TowerDefense::CaveBat::Render()
 	m_Button2->Render();
 	m_Text1->Render();
 	m_Text2->Render();
+
+	if (m_Button2->IsSelected())
+		m_DemoArtifact->Render();
 }
 
 void TowerDefense::CaveBat::RenderEnd()

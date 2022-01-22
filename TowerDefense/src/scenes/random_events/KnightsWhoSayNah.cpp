@@ -9,7 +9,8 @@ TowerDefense::KnightsWhoSayNah::KnightsWhoSayNah()
 	m_Button3(std::make_unique<Button>(400.0f, 50.0f, 600, 50, "eventButton")),
 	m_Text1(std::make_unique<Text>("Give in to their demands (-300 Gold)", 400.0f, 150.0f, 12.0f, 0.0f)),
 	m_Text2(std::make_unique<Text>("They say Nah to you (-10hp)", 400.0f, 100.0f, 12.0f, 0.0f)),
-	m_Text3(std::make_unique<Text>("Give Shrubbery (Recieve Blessed Hand grenade)", 400.0f, 50.0f, 12.0f, 0.0f))
+	m_Text3(std::make_unique<Text>("Give Shrubbery (Recieve Blessed Hand grenade)", 400.0f, 50.0f, 12.0f, 0.0f)),
+	m_DemoArtifact(std::make_unique<BlessedHandGrenade>())
 {
 	m_Text1->SetColor(1.0f, 1.0f, 1.0f, 1.0f);
 	m_Text2->SetColor(1.0f, 1.0f, 1.0, 1.0f);
@@ -24,6 +25,9 @@ TowerDefense::KnightsWhoSayNah::KnightsWhoSayNah()
 
 	m_Prompt = std::make_unique<Text>(text, 560.0f, 370.0f, 16.0f, 0.0f);
 	m_Prompt->SetColor(1.0f, 1.0f, 1.0f, 1.0f);
+
+	m_DemoArtifact->SetX(650.0f);
+	m_DemoArtifact->SetY(50.0f);
 }
 
 void TowerDefense::KnightsWhoSayNah::Render()
@@ -39,6 +43,8 @@ void TowerDefense::KnightsWhoSayNah::Render()
 	{
 		m_Button3->Render();
 		m_Text3->Render();
+		if (m_Button3->IsSelected())
+			m_DemoArtifact->Render();
 	}
 }
 

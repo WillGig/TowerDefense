@@ -1,6 +1,9 @@
 #pragma once
 #include "scenes/Scene.h"
 #include "scenes/CombatReward.h"
+#include "cards/curses/curses.h"
+#include "artifacts/Artifact.h"
+#include "cards/HeroCard.h"
 
 namespace TowerDefense
 {
@@ -55,6 +58,7 @@ namespace TowerDefense
 		std::unique_ptr<StaticImage> m_Image;
 		std::unique_ptr<Button> m_Button1, m_Button2;
 		std::unique_ptr<Text> m_Text1, m_Text2, m_Prompt;
+		std::unique_ptr<Flames> m_DemoCard;
 	};
 
 	//Fight (-1 hp), Feed (-10hp, get bat's blessing)
@@ -70,6 +74,7 @@ namespace TowerDefense
 		std::unique_ptr<StaticImage> m_Image;
 		std::unique_ptr<Button> m_Button1, m_Button2;
 		std::unique_ptr<Text> m_Text1, m_Text2, m_Prompt;
+		std::unique_ptr<BlessingOfTheBat> m_DemoArtifact;
 	};
 
 	//Truck of puppies is going to run over a baby. Divert to crash into 3 convicts instead, killing them and the puppies
@@ -102,6 +107,7 @@ namespace TowerDefense
 		std::unique_ptr<Image> m_Image;
 		std::unique_ptr<Button> m_Button1, m_Button2, m_Button3;
 		std::unique_ptr<Text> m_Text1, m_Text2, m_Text3, m_Prompt;
+		std::unique_ptr<BlessedHandGrenade> m_DemoArtifact;
 	};
 
 	//Kiss for artifact/curse or get gold
@@ -118,6 +124,8 @@ namespace TowerDefense
 		std::unique_ptr<StaticImage> m_Image;
 		std::unique_ptr<Button> m_Button1, m_Button2;
 		std::unique_ptr<Text> m_Text1, m_Text2, m_Prompt;
+		std::unique_ptr<Prince> m_DemoArtifact;
+		std::unique_ptr<Frog> m_DemoCard;
 	};
 
 	//Random amount of gold and an artifact
@@ -153,6 +161,7 @@ namespace TowerDefense
 		std::unique_ptr<StaticImage> m_Image;
 		std::unique_ptr<Button> m_Button1, m_Button2;
 		std::unique_ptr<Text> m_Text1, m_Text2, m_Prompt;
+		std::unique_ptr<HeroCard> m_DemoCard;
 	};
 
 	//Add a bard hero to your deck (costs gold)
@@ -169,6 +178,7 @@ namespace TowerDefense
 		std::unique_ptr<StaticImage> m_Image;
 		std::unique_ptr<Button> m_Button1, m_Button2;
 		std::unique_ptr<Text> m_Text1, m_Text2, m_Prompt;
+		std::unique_ptr<HeroCard> m_DemoCard;
 	};
 
 	//Add a cleric hero (lose all wheat)
@@ -185,6 +195,7 @@ namespace TowerDefense
 		std::unique_ptr<StaticImage> m_Image;
 		std::unique_ptr<Button> m_Button1, m_Button2;
 		std::unique_ptr<Text> m_Text1, m_Text2, m_Prompt;
+		std::unique_ptr<HeroCard> m_DemoCard;
 	};
 
 	//Gain joust minigame or heal

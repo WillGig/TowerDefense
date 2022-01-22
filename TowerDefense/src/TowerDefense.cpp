@@ -103,7 +103,7 @@ bool TowerDefense::Init()
         std::make_unique<PostCombatScreen>()
     };
     currentScene = 0;
-    nextScene = 5;
+    nextScene = 0;// 5;
     day = 0;
     showFPS = true;
     sceneFade = 1.0f;

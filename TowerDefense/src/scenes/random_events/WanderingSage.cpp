@@ -1,7 +1,6 @@
 #include "pch.h"
 #include "RandomEvent.h"
 #include "core/Player.h"
-#include "cards/HeroCard.h"
 #include "Towers/Wizard.h"
 #include "cards/quirks/Quirk.h"
 
@@ -23,6 +22,16 @@ TowerDefense::WanderingSage::WanderingSage()
 
 	m_Prompt = std::make_unique<Text>(text, 560.0f, 370.0f, 16.0f, 0.0f);
 	m_Prompt->SetColor(1.0f, 1.0f, 1.0f, 1.0f);
+
+	auto quirks = std::make_shared<std::vector<std::shared_ptr<Quirk::Quirk>>>();
+	quirks->push_back(std::make_shared<Quirk::Human>());
+	quirks->push_back(std::make_shared<Quirk::Sage>());
+	quirks->push_back(std::make_shared<Quirk::JustLucky>());
+	quirks->push_back(std::make_shared<Quirk::Nearsighted>());
+	m_DemoCard = std::make_unique<HeroCard>("Heath", "Class:  Wizard\nRace:  Human\nSage\nJust Lucky\nNear Sighted\n", 100, "heath", std::make_shared<Tower::Wizard>(), quirks);
+
+	m_DemoCard->SetX(700.0f);
+	m_DemoCard->SetY(150.0f);
 }
 
 void TowerDefense::WanderingSage::Render()
@@ -33,6 +42,9 @@ void TowerDefense::WanderingSage::Render()
 	m_Text1->Render();
 	m_Text2->Render();
 	m_Prompt->Render();
+
+	if (m_Button1->IsSelected())
+		m_DemoCard->Render();
 }
 
 void TowerDefense::WanderingSage::RenderEnd()

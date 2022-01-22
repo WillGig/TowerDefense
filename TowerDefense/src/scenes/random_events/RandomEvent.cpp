@@ -5,6 +5,9 @@ std::shared_ptr<std::vector<std::shared_ptr<TowerDefense::RandomEvent>>> TowerDe
 
 std::shared_ptr<TowerDefense::RandomEvent> TowerDefense::RandomEvent::GetRandomEvent()
 {
+
+	//return std::make_shared<LiterallySatan>();
+
 	if (s_Events->size() == 0)
 	{
 		s_Events->push_back(std::make_shared<FountainOfYouth>());

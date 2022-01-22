@@ -23,6 +23,16 @@ TowerDefense::WanderingBard::WanderingBard()
 
 	m_Prompt = std::make_unique<Text>(text, 560.0f, 370.0f, 12.0f, 0.0f);
 	m_Prompt->SetColor(1.0f, 1.0f, 1.0f, 1.0f);
+
+	auto quirks = std::make_shared<std::vector<std::shared_ptr<Quirk::Quirk>>>();
+	quirks->push_back(std::make_shared<Quirk::Human>());
+	quirks->push_back(std::make_shared<Quirk::Sage>());
+	quirks->push_back(std::make_shared<Quirk::Explorer>());
+	quirks->push_back(std::make_shared<Quirk::Nearsighted>());
+	m_DemoCard = std::make_unique<HeroCard>("Hoid", "Class:  Bard\nRace:  Human\nSage\nExplorer\nNear Sighted\n", 50, "hoid", std::make_shared<Tower::Bard>(), quirks);
+
+	m_DemoCard->SetX(700.0f);
+	m_DemoCard->SetY(150.0f);
 }
 
 void TowerDefense::WanderingBard::Render()
@@ -33,6 +43,9 @@ void TowerDefense::WanderingBard::Render()
 	m_Text1->Render();
 	m_Text2->Render();
 	m_Prompt->Render();
+
+	if (m_Button1->IsSelected())
+		m_DemoCard->Render();
 }
 
 void TowerDefense::WanderingBard::RenderEnd()
