@@ -17,7 +17,9 @@ namespace TowerDefense
 
 		enum class EventPhase {START, EVENT, END};
 
-		EventPhase m_Phase;
+		float m_TransitionFade, m_FadeSpeed;
+
+		EventPhase m_Phase, m_NextPhase;
 
 		std::unique_ptr<Text> m_EventText, m_EventQuestionMark;
 

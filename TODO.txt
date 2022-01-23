@@ -1,8 +1,4 @@
 Current:
-	Event Improvements:
-		Add fade in and out between event phases		
-		Add more events
-
 	Add more skills to skill trees
 
 	Add second towers for buildings
@@ -67,6 +63,8 @@ Current:
 	- The matrix	 - Osu! style clicking game
 	- tiles		 - pattern-based mini-game
 	- Fishing
+
+	Add more events
 
 Soon:
 	Rework smithing upgrades for heros

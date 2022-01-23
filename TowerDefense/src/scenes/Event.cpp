@@ -4,7 +4,9 @@
 #include "core/Player.h"
 
 TowerDefense::Event::Event()
-	:m_Phase(EventPhase::START), m_EventText(std::make_unique<Text>("EVENT", 400.0f, 450.0f, 50.0f, 0.0f)),
+	:m_TransitionFade(1.0f), m_FadeSpeed(0.05f), 
+	m_Phase(EventPhase::START), m_NextPhase(EventPhase::START),
+	m_EventText(std::make_unique<Text>("EVENT", 400.0f, 450.0f, 50.0f, 0.0f)),
 	m_EventQuestionMark(std::make_unique<Text>("?", 400.0f, 300.0f, 100.0f, 0.0f)),
 	m_Continue(std::make_unique<Button>(400.0f, 150.0f, 180, 50, "continueButton"))
 {
@@ -39,6 +41,9 @@ void TowerDefense::Event::Render()
 		if (InGameSettings::Get().IsShowing())
 			InGameSettings::Get().Render();
 	}
+
+	if (m_TransitionFade > 0.0f)
+		RenderFade(m_TransitionFade);
 }
 
 void TowerDefense::Event::Update()
@@ -53,7 +58,7 @@ void TowerDefense::Event::Update()
 	{
 		m_Continue->Update();
 		if (m_Continue->IsClicked())
-			m_Phase = EventPhase::EVENT;
+			m_NextPhase = EventPhase::EVENT;
 	}
 	else
 	{
@@ -72,9 +77,10 @@ void TowerDefense::Event::Update()
 
 			if (m_Phase == EventPhase::EVENT)
 			{
-				m_RandomEvent->Update();
+				if(m_Phase == m_NextPhase)
+					m_RandomEvent->Update();
 				if (m_RandomEvent->Exit())
-					m_Phase = EventPhase::END;
+					m_NextPhase = EventPhase::END;
 			}
 			else if (m_Phase == EventPhase::END)
 			{
@@ -84,6 +90,16 @@ void TowerDefense::Event::Update()
 			}
 		}
 	}
+
+	if (m_NextPhase != m_Phase)
+	{
+		if (m_TransitionFade < 1.0f)
+			m_TransitionFade += m_FadeSpeed;
+		else
+			m_Phase = m_NextPhase;
+	}
+	else if (m_TransitionFade > 0.0f)
+		m_TransitionFade -= m_FadeSpeed;
 }
 
 void TowerDefense::Event::OnSwitch()
