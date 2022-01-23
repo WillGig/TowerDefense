@@ -20,23 +20,21 @@ void TowerDefense::Event::Render()
 		m_EventQuestionMark->Render();
 		m_Continue->Render();
 	}
-	else if (m_Phase == EventPhase::EVENT)
+	else
 	{
 		Player::Get().RenderStats();
 		InGameSettings::Get().RenderButton();
-		m_RandomEvent->Render();
-		Player::Get().RenderDeckAndArtifacts();
+		
+		if(m_Phase == EventPhase::EVENT)
+			m_RandomEvent->Render();
+		else if (m_Phase == EventPhase::END)
+		{
+			m_RandomEvent->RenderEnd();
+			m_Continue->Render();
+		}
 
-		if (InGameSettings::Get().IsShowing())
-			InGameSettings::Get().Render();
-	}
-	else if (m_Phase == EventPhase::END)
-	{
-		Player::Get().RenderStats();
-		InGameSettings::Get().RenderButton();
-		m_RandomEvent->RenderEnd();
-		m_Continue->Render();
-		Player::Get().RenderDeckAndArtifacts();
+		if(!m_RandomEvent->ShowingInfo())
+			Player::Get().RenderDeckAndArtifacts();
 
 		if (InGameSettings::Get().IsShowing())
 			InGameSettings::Get().Render();
@@ -57,8 +55,14 @@ void TowerDefense::Event::Update()
 		if (m_Continue->IsClicked())
 			m_Phase = EventPhase::EVENT;
 	}
-	else if (m_Phase == EventPhase::EVENT)
+	else
 	{
+		if (m_RandomEvent->ShowingInfo())
+		{
+			m_RandomEvent->Update();
+			return;
+		}
+
 		Player& player = Player::Get();
 		player.UpdateDeckAndArtifacts();
 
@@ -66,16 +70,19 @@ void TowerDefense::Event::Update()
 		{
 			InGameSettings::Get().UpdateButton();
 
-			m_RandomEvent->Update();
-			if (m_RandomEvent->Exit())
-				m_Phase = EventPhase::END;
+			if (m_Phase == EventPhase::EVENT)
+			{
+				m_RandomEvent->Update();
+				if (m_RandomEvent->Exit())
+					m_Phase = EventPhase::END;
+			}
+			else if (m_Phase == EventPhase::END)
+			{
+				m_Continue->Update();
+				if (m_Continue->IsClicked())
+					SetScene(SceneType::PRECOMBAT);
+			}
 		}
-	}
-	else if (m_Phase == EventPhase::END)
-	{
-		m_Continue->Update();
-		if(m_Continue->IsClicked())
-			SetScene(SceneType::PRECOMBAT);
 	}
 }
 

@@ -3,7 +3,7 @@
 #include "core/Player.h"
 
 TowerDefense::KnightsWhoSayNah::KnightsWhoSayNah()
-	:m_Image(std::make_unique<Image>("events/KnightsWhoSayNah", 180.0f, 350.0f, 300, 300, 0.0f)),
+	:m_ShowingDemoInfo(false), m_Image(std::make_unique<Image>("events/KnightsWhoSayNah", 180.0f, 350.0f, 300, 300, 0.0f)),
 	m_Button1(std::make_unique<Button>(400.0f, 150.0f, 600, 50, "eventButton")),
 	m_Button2(std::make_unique<Button>(400.0f, 100.0f, 600, 50, "eventButton")),
 	m_Button3(std::make_unique<Button>(400.0f, 50.0f, 600, 50, "eventButton")),
@@ -46,6 +46,12 @@ void TowerDefense::KnightsWhoSayNah::Render()
 		if (m_Button3->IsSelected())
 			m_DemoArtifact->Render();
 	}
+
+	if (m_ShowingDemoInfo)
+	{
+		RenderFade(.9f);
+		m_DemoArtifact->RenderArtifactDetails();
+	}
 }
 
 void TowerDefense::KnightsWhoSayNah::RenderEnd()
@@ -55,6 +61,16 @@ void TowerDefense::KnightsWhoSayNah::RenderEnd()
 }
 void TowerDefense::KnightsWhoSayNah::Update()
 {
+	if (m_ShowingDemoInfo)
+	{
+		if (Input::GetLeftMouseClickedAndSetFalse())
+			m_ShowingDemoInfo = false;
+		return;
+	}
+
+	if (m_Button3->IsSelected() && m_DemoArtifact->Contains(Input::GetMouseX(), Input::GetMouseY()) && Input::GetRightMouseClickedAndSetFalse())
+		m_ShowingDemoInfo = true;
+
 	m_Button1->Update();
 	if (m_Button1->IsClicked())
 	{

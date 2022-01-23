@@ -3,7 +3,7 @@
 #include "core/Player.h"
 
 TowerDefense::CaveBat::CaveBat()
-	:m_Image(std::make_unique<StaticImage>(220.0f, 350.0f, 300, 300, 0.0f, "events/CaveBat")),
+	:m_ShowingDemoInfo(false), m_Image(std::make_unique<StaticImage>(220.0f, 350.0f, 300, 300, 0.0f, "events/CaveBat")),
 	m_Button1(std::make_unique<Button>(400.0f, 150.0f, 600, 50, "eventButton")),
 	m_Button2(std::make_unique<Button>(400.0f, 100.0f, 600, 50, "eventButton")),
 	m_Text1(std::make_unique<Text>("Fight (-1 HP)", 400.0f, 150.0f, 12.0f, 0.0f)),
@@ -37,6 +37,12 @@ void TowerDefense::CaveBat::Render()
 
 	if (m_Button2->IsSelected())
 		m_DemoArtifact->Render();
+
+	if (m_ShowingDemoInfo)
+	{
+		RenderFade(.9f);
+		m_DemoArtifact->RenderArtifactDetails();
+	}
 }
 
 void TowerDefense::CaveBat::RenderEnd()
@@ -47,6 +53,16 @@ void TowerDefense::CaveBat::RenderEnd()
 
 void TowerDefense::CaveBat::Update()
 {
+	if (m_ShowingDemoInfo)
+	{
+		if (Input::GetLeftMouseClickedAndSetFalse())
+			m_ShowingDemoInfo = false;
+		return;
+	}
+
+	if (m_Button2->IsSelected() && m_DemoArtifact->Contains(Input::GetMouseX(), Input::GetMouseY()) && Input::GetRightMouseClickedAndSetFalse())
+		m_ShowingDemoInfo = true;
+
 	m_Button1->Update();
 	m_Button2->Update();
 

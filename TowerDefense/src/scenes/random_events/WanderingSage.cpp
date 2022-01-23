@@ -5,7 +5,7 @@
 #include "cards/quirks/Quirk.h"
 
 TowerDefense::WanderingSage::WanderingSage()
-	:m_Image(std::make_unique<StaticImage>(180.0f, 350.0f, 300, 300, 0.0f, "events/Sage")),
+	:m_ShowingDemoInfo(false), m_Image(std::make_unique<StaticImage>(180.0f, 350.0f, 300, 300, 0.0f, "events/Sage")),
 	m_Button1(std::make_unique<Button>(400.0f, 150.0f, 600, 50, "eventButton")),
 	m_Button2(std::make_unique<Button>(400.0f, 100.0f, 600, 50, "eventButton")),
 	m_Text1(std::make_unique<Text>("Show me. (Lose all wood, gain Heath the Wizard)", 400.0f, 150.0f, 12.0f, 0.0f)),
@@ -45,6 +45,12 @@ void TowerDefense::WanderingSage::Render()
 
 	if (m_Button1->IsSelected())
 		m_DemoCard->Render();
+
+	if (m_ShowingDemoInfo)
+	{
+		RenderFade(.9f);
+		m_DemoCard->RenderCardDetails();
+	}
 }
 
 void TowerDefense::WanderingSage::RenderEnd()
@@ -55,6 +61,16 @@ void TowerDefense::WanderingSage::RenderEnd()
 
 void TowerDefense::WanderingSage::Update()
 {
+	if (m_ShowingDemoInfo)
+	{
+		if (Input::GetLeftMouseClickedAndSetFalse())
+			m_ShowingDemoInfo = false;
+		return;
+	}
+
+	if (m_Button1->IsSelected() && m_DemoCard->Contains(Input::GetMouseX(), Input::GetMouseY()) && Input::GetRightMouseClickedAndSetFalse())
+		m_ShowingDemoInfo = true;
+
 	m_Button1->Update();
 	if (m_Button1->IsClicked())
 	{

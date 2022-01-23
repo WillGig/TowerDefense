@@ -14,6 +14,7 @@ namespace TowerDefense
 		inline bool Exit() { return m_Exit; }
 		inline virtual const std::string GetName() = 0;
 		inline virtual void RenderEnd() = 0;
+		inline virtual bool ShowingInfo() const { return false; }
 
 		static std::shared_ptr<RandomEvent> GetRandomEvent();
 
@@ -54,7 +55,9 @@ namespace TowerDefense
 		void Update() override;
 		void RenderEnd() override;
 		inline const std::string GetName() override { return "Devil"; }
+		inline bool ShowingInfo() const override { return m_ShowingDemoInfo; }
 	private:
+		bool m_ShowingDemoInfo;
 		std::unique_ptr<StaticImage> m_Image;
 		std::unique_ptr<Button> m_Button1, m_Button2;
 		std::unique_ptr<Text> m_Text1, m_Text2, m_Prompt;
@@ -70,7 +73,9 @@ namespace TowerDefense
 		void Update() override;
 		void RenderEnd() override;
 		inline const std::string GetName() override { return "CaveBat"; }
+		inline bool ShowingInfo() const override { return m_ShowingDemoInfo; }
 	private:
+		bool m_ShowingDemoInfo;
 		std::unique_ptr<StaticImage> m_Image;
 		std::unique_ptr<Button> m_Button1, m_Button2;
 		std::unique_ptr<Text> m_Text1, m_Text2, m_Prompt;
@@ -102,8 +107,10 @@ namespace TowerDefense
 		void Update() override;
 		void RenderEnd() override;
 		inline const std::string GetName() override { return "KnightsWhoSayNah"; }
+		inline bool ShowingInfo() const override { return m_ShowingDemoInfo; }
 
 	private:
+		bool m_ShowingDemoInfo;
 		std::unique_ptr<Image> m_Image;
 		std::unique_ptr<Button> m_Button1, m_Button2, m_Button3;
 		std::unique_ptr<Text> m_Text1, m_Text2, m_Text3, m_Prompt;
@@ -119,8 +126,10 @@ namespace TowerDefense
 		void Update() override;
 		void RenderEnd() override;
 		inline const std::string GetName() override { return "FrogPrince"; }
+		inline bool ShowingInfo() const override { return m_ShowingDemoCardInfo || m_ShowingDemoArtifactInfo; }
 
 	private:
+		bool m_ShowingDemoCardInfo, m_ShowingDemoArtifactInfo;
 		std::unique_ptr<StaticImage> m_Image;
 		std::unique_ptr<Button> m_Button1, m_Button2;
 		std::unique_ptr<Text> m_Text1, m_Text2, m_Prompt;
@@ -156,8 +165,10 @@ namespace TowerDefense
 		void Update() override;
 		void RenderEnd() override;
 		inline const std::string GetName() override { return "WanderingSage"; }
+		inline bool ShowingInfo() const override { return m_ShowingDemoInfo; }
 
 	private:
+		bool m_ShowingDemoInfo;
 		std::unique_ptr<StaticImage> m_Image;
 		std::unique_ptr<Button> m_Button1, m_Button2;
 		std::unique_ptr<Text> m_Text1, m_Text2, m_Prompt;
@@ -173,8 +184,10 @@ namespace TowerDefense
 		void Update() override;
 		void RenderEnd() override;
 		inline const std::string GetName() override { return "WanderingBard"; }
+		inline bool ShowingInfo() const override { return m_ShowingDemoInfo; }
 
 	private:
+		bool m_ShowingDemoInfo;
 		std::unique_ptr<StaticImage> m_Image;
 		std::unique_ptr<Button> m_Button1, m_Button2;
 		std::unique_ptr<Text> m_Text1, m_Text2, m_Prompt;
@@ -190,8 +203,10 @@ namespace TowerDefense
 		void Update() override;
 		void RenderEnd() override;
 		inline const std::string GetName() override { return "WanderingCleric"; }
+		inline bool ShowingInfo() const override { return m_ShowingDemoInfo; }
 
 	private:
+		bool m_ShowingDemoInfo;
 		std::unique_ptr<StaticImage> m_Image;
 		std::unique_ptr<Button> m_Button1, m_Button2;
 		std::unique_ptr<Text> m_Text1, m_Text2, m_Prompt;

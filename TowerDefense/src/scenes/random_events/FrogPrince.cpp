@@ -4,7 +4,8 @@
 #include "cards/curses/Curses.h"
 
 TowerDefense::FrogPrince::FrogPrince()
-	:m_Image(std::make_unique<StaticImage>(180.0f, 350.0f, 300, 300, 0.0f, "events/Frog")),
+	:m_ShowingDemoCardInfo(false), m_ShowingDemoArtifactInfo(false),
+	m_Image(std::make_unique<StaticImage>(180.0f, 350.0f, 300, 300, 0.0f, "events/Frog")),
 	m_Button1(std::make_unique<Button>(400.0f, 150.0f, 600, 50, "eventButton")),
 	m_Button2(std::make_unique<Button>(400.0f, 100.0f, 600, 50, "eventButton")),
 	m_Text1(std::make_unique<Text>("Kiss the Frog. (50% Prince, 50% Frog)", 400.0f, 150.0f, 12.0f, 0.0f)),
@@ -45,6 +46,17 @@ void TowerDefense::FrogPrince::Render()
 		m_DemoArtifact->Render();
 		m_DemoCard->Render();
 	}
+
+	if (m_ShowingDemoCardInfo)
+	{
+		RenderFade(.9f);
+		m_DemoCard->RenderCardDetails();
+	}
+	else if(m_ShowingDemoArtifactInfo)
+	{
+		RenderFade(.9f);
+		m_DemoArtifact->RenderArtifactDetails();
+	}
 }
 
 void TowerDefense::FrogPrince::RenderEnd()
@@ -55,6 +67,27 @@ void TowerDefense::FrogPrince::RenderEnd()
 
 void TowerDefense::FrogPrince::Update()
 {
+	if (m_ShowingDemoCardInfo)
+	{
+		if (Input::GetLeftMouseClickedAndSetFalse())
+			m_ShowingDemoCardInfo = false;
+		return;
+	}
+	else if (m_ShowingDemoArtifactInfo)
+	{
+		if (Input::GetLeftMouseClickedAndSetFalse())
+			m_ShowingDemoArtifactInfo = false;
+		return;
+	}
+
+	if (m_Button1->IsSelected())
+	{
+		if (m_DemoCard->Contains(Input::GetMouseX(), Input::GetMouseY()) && Input::GetRightMouseClickedAndSetFalse())
+			m_ShowingDemoCardInfo = true;
+		else if (m_DemoArtifact->Contains(Input::GetMouseX(), Input::GetMouseY()) && Input::GetRightMouseClickedAndSetFalse())
+			m_ShowingDemoArtifactInfo = true;
+	}
+
 	m_Button1->Update();
 	if (m_Button1->IsClicked())
 	{
