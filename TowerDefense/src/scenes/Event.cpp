@@ -105,5 +105,6 @@ void TowerDefense::Event::Update()
 void TowerDefense::Event::OnSwitch()
 {
 	m_Phase = EventPhase::START;
+	m_NextPhase = EventPhase::START;
 	m_RandomEvent = RandomEvent::GetRandomEvent();
 }
