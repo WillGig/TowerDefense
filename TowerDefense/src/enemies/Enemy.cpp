@@ -6,7 +6,6 @@
 #include "scenes/Combat.h"
 #include "core/Clock.h"
 #include "towers/Tower.h"
-#include "Enemies.h"
 
 TowerDefense::Enemy::Enemy::Enemy(int width, int height, float health, float speed, int goldValue, const std::string& name, int damage)
 	:Entity(0.0f, 0.0f, width, height, 0.0f, name, Type::ENEMY), m_Damage(damage), m_CurrentTile(-2),
