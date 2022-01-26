@@ -88,7 +88,7 @@ void TowerDefense::Player::Reset()
     for (int i = 0; i < 8; i++)
         AddToDeck(std::make_shared<Focus>(false));
     for (int i = 0; i < 4; i++)
-        AddToDeck(std::make_shared<ArcherCard>());
+        AddToDeck(std::make_shared<AlchemistCard>());
     for (int i = 0; i < 2; i++)
         AddToDeck(std::make_shared<PotOfGreed>());
 }

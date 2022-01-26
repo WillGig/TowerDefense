@@ -82,7 +82,7 @@ void TowerDefense::PoisonBomb::HitEntity(std::shared_ptr<TowerDefense::Entity> e
 		{
 			if (e->GetEntityType() == Type::ENEMY) {
 				std::shared_ptr<Enemy::Enemy> enemy = std::dynamic_pointer_cast<Enemy::Enemy>(e);
-				enemy->ApplyState(std::make_shared<Enemy::Poison>(m_PoisonTime, m_Damage, GetID(), enemy));
+				enemy->ApplyState(std::make_shared<Enemy::Poison>(m_PoisonTime, m_Damage, m_TowerSource, enemy));
 				if(m_SlowPercent > 0.0f)
 					enemy->ApplyState(std::make_shared<Enemy::Slow>(m_PoisonTime, m_SlowPercent));
 				if (m_ResistanceShredPercent > 0.0f)
