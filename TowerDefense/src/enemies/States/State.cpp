@@ -124,6 +124,9 @@ void TowerDefense::Enemy::Poison::Update()
 {
 	State::Update();
 
+	if (!Active())
+		return;
+
 	if (m_PoisonTick >= m_TickRate) {
 		m_Target->TakeDamage(m_Damage, m_Source, Tower::DamageType::POISON);
 		float totalPoisonDamage = m_Damage * (m_TimeRemaining / m_TickRate) * (100.0f / (100.0f + m_Target->GetMagicResistance()));

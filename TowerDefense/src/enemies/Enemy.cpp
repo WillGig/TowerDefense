@@ -6,6 +6,7 @@
 #include "scenes/Combat.h"
 #include "core/Clock.h"
 #include "towers/Tower.h"
+#include "Enemies.h"
 
 TowerDefense::Enemy::Enemy::Enemy(int width, int height, float health, float speed, int goldValue, const std::string& name, int damage)
 	:Entity(0.0f, 0.0f, width, height, 0.0f, name, Type::ENEMY), m_Damage(damage), m_CurrentTile(-2),
@@ -113,14 +114,16 @@ void TowerDefense::Enemy::Enemy::UpdateDebuffs()
 	auto it = m_States.begin();
 	while (it != m_States.end())
 	{
-		(*it)->Update();
 		if (!(*it)->Active())
 		{
 			(*it)->OnRemove(*this);
 			it = m_States.erase(it);
 		}
 		else
+		{
+			(*it)->Update();
 			++it;
+		}
 	}
 }
 
@@ -183,7 +186,7 @@ void TowerDefense::Enemy::Enemy::TakeDamage(float damage, unsigned int sourceID,
 		Player::Get().ArtifactOnEnemyHit(std::dynamic_pointer_cast<Enemy>(Combat::GetEntity(GetID())), source, type);
 		Combat::GetCurrentFight()->AddDamage(effectiveDamage, source);
 	}
-		
+
 	ChangeHealth(-effectiveDamage);
 }
 
