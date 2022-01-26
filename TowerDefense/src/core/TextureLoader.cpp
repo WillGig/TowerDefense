@@ -384,12 +384,12 @@ void TowerDefense::LoadingScreen::LoadTextures(GLFWwindow* w)
     Load("Tough BeetleSelected",    enemies.load(1, 2), w);
     Load("Ooze",                    enemies.load(2, 2), w);
     Load("OozeSelected",            enemies.load(3, 2), w);
-    Load("Mega Ooze",               enemies.load(4, 1), w);
-    Load("Mega OozeSelected",       enemies.load(5, 1), w);
-    Load("Double Slime",             enemies.load(4, 2), w);
-    Load("Double SlimeSelected",     enemies.load(5, 2), w);
-    Load("Jumping Ooze",            enemies.load(6, 2), w);
-    Load("Jumping OozeSelected",    enemies.load(7, 2), w);
+    Load("Double Ooze",             enemies.load(4, 1), w);
+    Load("Double OozeSelected",     enemies.load(5, 1), w);
+    Load("Mega Ooze",               enemies.load(6, 1), w);
+    Load("Mega OozeSelected",       enemies.load(7, 1), w);
+    Load("Jumping Ooze",            enemies.load(0, 3), w);
+    Load("Jumping OozeSelected",    enemies.load(1, 3), w);
     Load("Doubler",                 enemies.load(0, 3), w);
     Load("DoublerSelected",         enemies.load(1, 3), w);
     Load("Shield Rat",              enemies.load(2, 3), w);

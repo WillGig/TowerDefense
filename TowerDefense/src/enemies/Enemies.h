@@ -5,6 +5,17 @@ namespace TowerDefense
 {
 	namespace Enemy
 	{
+		enum t {
+			//Rats
+			RAT, GIANTRAT, SHIELDRAT, SHAMANRAT, HEALERRAT, PLAGUERAT, WITCHRAT, ASSASSINRAT, BOSSRAT,
+			//Slimes
+			SLIME, OOZE, DOUBLEOOZE, MEGAOOZE, JUMPINGOOZE, DOUBLER, WRITHINGMASS,
+			//Bugs
+			BEETLE, SPIDER, TOUGHBEETLE, BLINKBUG, RUNNERBEETLE, TANKBEETLE, 
+			//Other
+			GOBLIN, ORC
+		};
+
 		class Rat : public Enemy
 		{
 		public:
@@ -94,6 +105,8 @@ namespace TowerDefense
 			Ooze()
 				:Enemy(32, 32, 20.0f, 0.7f, 8, "Ooze", 3)
 			{}
+		private:
+			void Destroy() override;
 		};
 
 		class MegaOoze : public Enemy
@@ -106,11 +119,11 @@ namespace TowerDefense
 			void Destroy() override;
 		};
 
-		class DoubleSlime : public Enemy
+		class DoubleOoze : public Enemy
 		{
 		public:
-			DoubleSlime()
-				:Enemy(48, 48, 15.0f, 0.5f, 10, "Double Slime", 3)
+			DoubleOoze()
+				:Enemy(48, 48, 15.0f, 0.5f, 10, "Double Ooze", 3)
 			{}
 
 		private:
@@ -279,5 +292,84 @@ namespace TowerDefense
 			void SummonSpawn();
 			int m_CastTime, m_Cast;
 		};
+
+		static std::shared_ptr<Enemy> GetEnemy(int type)
+		{
+			switch (type) {
+			case RAT:
+				return std::make_shared<Rat>();
+				break;
+			case GIANTRAT:
+				return std::make_shared<GiantRat>();
+				break;
+			case GOBLIN:
+				return std::make_shared<Goblin>();
+				break;
+			case ORC:
+				return std::make_shared<Orc>();
+				break;
+			case BOSSRAT:
+				return std::make_shared<BossRat>();
+				break;
+			case BEETLE:
+				return std::make_shared<Beetle>();
+				break;
+			case SLIME:
+				return std::make_shared<Slime>();
+				break;
+			case SPIDER:
+				return std::make_shared<Spider>();
+				break;
+			case TOUGHBEETLE:
+				return std::make_shared<ToughBeetle>();
+				break;
+			case OOZE:
+				return std::make_shared<Ooze>();
+				break;
+			case MEGAOOZE:
+				return std::make_shared<MegaOoze>();
+				break;
+			case DOUBLEOOZE:
+				return std::make_shared<DoubleOoze>();
+				break;
+			case JUMPINGOOZE:
+				return std::make_shared<JumpingOoze>();
+				break;
+			case DOUBLER:
+				return std::make_shared<Doubler>();
+				break;
+			case SHIELDRAT:
+				return std::make_shared<ShieldRat>();
+				break;
+			case SHAMANRAT:
+				return std::make_shared<ShamanRat>();
+				break;
+			case HEALERRAT:
+				return std::make_shared<HealerRat>();
+				break;
+			case BLINKBUG:
+				return std::make_shared<BlinkBug>();
+				break;
+			case RUNNERBEETLE:
+				return std::make_shared<RunnerBeetle>();
+				break;
+			case TANKBEETLE:
+				return std::make_shared<TankBeetle>();
+				break;
+			case PLAGUERAT:
+				return std::make_shared<PlagueRat>();
+				break;
+			case WITCHRAT:
+				return std::make_shared<WitchRat>();
+				break;
+			case ASSASSINRAT:
+				return std::make_shared<AssassinRat>();
+				break;
+			case WRITHINGMASS:
+				return std::make_shared<WrithingMass>();
+				break;
+			}
+			return nullptr;
+		}
 	}
 }

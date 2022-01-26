@@ -549,11 +549,11 @@ void TowerDefense::Combat::GenerateFights()
 	std::vector<int> pool1{ 0,1,2 };
 	std::vector<int> pool2{ 0,1,2 };
 	std::vector<int> pool3{ 0,1,2 };
-	std::vector<int> pool4{ 0 };
+	std::vector<int> pool4{ 0,1,2 };
 	std::vector<int> pool5{ 0,1,2 };
 	std::vector<int> pool6{ 0,1,2 };
 	std::vector<int> pool7{ 0,1,2 };
-	std::vector<int> pool8{ 0 };
+	std::vector<int> pool8{ 0,1,2 };
 
 
 	int fight = (int)(Random::GetFloat() * pool1.size());
@@ -648,23 +648,25 @@ void TowerDefense::Combat::GenerateFightsFromOrder(std::vector<int> fightOrder)
 	s_CurrentFight = -1;
 	s_Fights = std::make_unique<std::vector<std::shared_ptr<TowerDefense::Fight>>>();
 
+	using namespace Enemy;
+
 	//day 1-3 fights
 	std::vector<std::shared_ptr<Fight>> pool1;
 	//Rats
 	auto waves = std::make_shared<std::vector<std::shared_ptr<Wave>>>();
-	const int enemies1[] = { 0, 0, 0, 200, 0, 200, 0, 200 };
+	const int enemies1[] = { RAT, 0, RAT, 200, RAT, 200, RAT, 200 };
 	waves->push_back(std::make_shared<Wave>(enemies1, 8));
 	pool1.push_back(std::make_shared<Fight>(waves));
 
 	//Bugs
 	waves = std::make_shared<std::vector<std::shared_ptr<Wave>>>();
-	const int enemies2[] = { 5, 0, 5, 100, 5, 100, 5, 100 , 5, 100, 5, 100, 5, 100, 5, 100};
+	const int enemies2[] = { BEETLE, 0, BEETLE, 100, BEETLE, 100, BEETLE, 100 , BEETLE, 100, BEETLE, 100, BEETLE, 100, BEETLE, 100};
 	waves->push_back(std::make_shared<Wave>(enemies2, 16));
 	pool1.push_back(std::make_shared<Fight>(waves));
 
 	//Oozes
 	waves = std::make_shared<std::vector<std::shared_ptr<Wave>>>();
-	const int enemies3[] = { 6, 0, 6, 250, 6, 250 };
+	const int enemies3[] = { SLIME, 0, SLIME, 250, SLIME, 250 };
 	waves->push_back(std::make_shared<Wave>(enemies3, 6));
 	pool1.push_back(std::make_shared<Fight>(waves));
 
@@ -672,9 +674,9 @@ void TowerDefense::Combat::GenerateFightsFromOrder(std::vector<int> fightOrder)
 	std::vector<std::shared_ptr<Fight>> pool2;
 	//Rats
 	waves = std::make_shared<std::vector<std::shared_ptr<Wave>>>();
-	const int enemies4[] = { 0, 0, 0, 100, 0, 100, 0, 100, 0, 100 };
-	const int enemies5[] = { 0, 0, 0, 50, 0, 50, 0, 50, 0, 50, 0, 50, 0, 50 };
-	const int enemies6[] = { 0, 0, 0, 50, 0, 50, 1, 150 };
+	const int enemies4[] = { RAT, 0, RAT, 100, RAT, 100, RAT, 100, RAT, 100 };
+	const int enemies5[] = { RAT, 0, RAT, 50, RAT, 50, RAT, 50, RAT, 50, RAT, 50, RAT, 50 };
+	const int enemies6[] = { RAT, 0, RAT, 50, RAT, 50, GIANTRAT, 150 };
 	waves->push_back(std::make_shared<Wave>(enemies4, 10));
 	waves->push_back(std::make_shared<Wave>(enemies5, 14));
 	waves->push_back(std::make_shared<Wave>(enemies6, 8));
@@ -682,9 +684,9 @@ void TowerDefense::Combat::GenerateFightsFromOrder(std::vector<int> fightOrder)
 
 	//Oozes
 	waves = std::make_shared<std::vector<std::shared_ptr<Wave>>>();
-	const int enemies7[] = { 6, 0, 6, 150, 6, 150, 6, 150, 6, 150 };
-	const int enemies8[] = { 6, 0, 6, 100, 6, 100, 6, 100, 6, 100, 6, 100, 6, 100, 6, 100, 6, 100 };
-	const int enemies9[] = { 6, 0, 6, 100, 6, 100, 9, 200, 9, 50 };
+	const int enemies7[] = { SLIME, 0, SLIME, 150, SLIME, 150, SLIME, 150, SLIME, 150 };
+	const int enemies8[] = { SLIME, 0, SLIME, 100, SLIME, 100, SLIME, 100, SLIME, 100, SLIME, 100, SLIME, 100, SLIME, 100, SLIME, 100 };
+	const int enemies9[] = { SLIME, 0, SLIME, 100, SLIME, 100, OOZE, 200, OOZE, 50 };
 	waves->push_back(std::make_shared<Wave>(enemies7, 10));
 	waves->push_back(std::make_shared<Wave>(enemies8, 18));
 	waves->push_back(std::make_shared<Wave>(enemies9, 10));
@@ -692,9 +694,9 @@ void TowerDefense::Combat::GenerateFightsFromOrder(std::vector<int> fightOrder)
 	
 	//Bugs
 	waves = std::make_shared<std::vector<std::shared_ptr<Wave>>>();
-	const int enemies10[] = { 5, 0, 5, 50, 5, 50, 5, 50, 5, 50, 5, 50, 5, 50, 5, 50 };
-	const int enemies11[] = { 5, 0, 5, 20, 5, 20, 5, 20, 5, 20, 5, 20, 5, 20 };
-	const int enemies12[] = { 5, 0, 5, 10, 5, 10, 5, 10, 5, 10, 5, 10, 5, 10, 5, 10, 5, 10, 5, 10, 7, 150, 7, 30 , 7, 30 };
+	const int enemies10[] = { BEETLE, 0, BEETLE, 50, BEETLE, 50, BEETLE, 50, BEETLE, 50, BEETLE, 50, BEETLE, 50, BEETLE, 50 };
+	const int enemies11[] = { BEETLE, 0, BEETLE, 20, BEETLE, 20, BEETLE, 20, BEETLE, 20, BEETLE, 20, BEETLE, 20 };
+	const int enemies12[] = { BEETLE, 0, BEETLE, 10, BEETLE, 10, BEETLE, 10, BEETLE, 10, BEETLE, 10, BEETLE, 10, BEETLE, 10, BEETLE, 10, BEETLE, 10, SPIDER, 150, SPIDER, 30 , SPIDER, 30 };
 	waves->push_back(std::make_shared<Wave>(enemies10, 16));
 	waves->push_back(std::make_shared<Wave>(enemies11, 14));
 	waves->push_back(std::make_shared<Wave>(enemies12, 26));
@@ -704,9 +706,9 @@ void TowerDefense::Combat::GenerateFightsFromOrder(std::vector<int> fightOrder)
 	std::vector<std::shared_ptr<Fight>> pool3;
 	//Rats
 	waves = std::make_shared<std::vector<std::shared_ptr<Wave>>>();
-	const int enemies13[] = { 2, 0, 2, 200, 2, 200, 2, 200 };
-	const int enemies14[] = { 2, 0, 2, 100, 2, 100, 2, 100, 2, 100 };
-	const int enemies15[] = { 2, 0, 2, 50, 2, 50, 3, 150, 3, 150 };
+	const int enemies13[] = { GOBLIN, 0, GOBLIN, 200, GOBLIN, 200, GOBLIN, 200 };
+	const int enemies14[] = { GOBLIN, 0, GOBLIN, 100, GOBLIN, 100, 2, 100, GOBLIN, 100 };
+	const int enemies15[] = { GOBLIN, 0, GOBLIN, 50, GOBLIN, 50, ORC, 150, ORC, 150 };
 	waves->push_back(std::make_shared<Wave>(enemies13, 8));
 	waves->push_back(std::make_shared<Wave>(enemies14, 10));
 	waves->push_back(std::make_shared<Wave>(enemies15, 10));
@@ -714,9 +716,9 @@ void TowerDefense::Combat::GenerateFightsFromOrder(std::vector<int> fightOrder)
 
 	//Oozes
 	waves = std::make_shared<std::vector<std::shared_ptr<Wave>>>();
-	const int enemies16[] = { 6, 0, 6, 100, 6, 100, 6, 100, 6, 100 };
-	const int enemies17[] = { 6, 0, 6, 100, 6, 100, 6, 100, 6, 100, 9, 100, 9, 100 , 9, 100 , 9, 100 };
-	const int enemies18[] = { 10, 0 };
+	const int enemies16[] = { SLIME, 0, SLIME, 100, SLIME, 100, SLIME, 100, SLIME, 100 };
+	const int enemies17[] = { SLIME, 0, SLIME, 100, SLIME, 100, SLIME, 100, SLIME, 100, OOZE, 100, OOZE, 100 , OOZE, 100 , OOZE, 100 };
+	const int enemies18[] = { MEGAOOZE, 0 };
 	waves->push_back(std::make_shared<Wave>(enemies16, 10));
 	waves->push_back(std::make_shared<Wave>(enemies17, 18));
 	waves->push_back(std::make_shared<Wave>(enemies18, 2));
@@ -724,9 +726,9 @@ void TowerDefense::Combat::GenerateFightsFromOrder(std::vector<int> fightOrder)
 
 	//Bugs
 	waves = std::make_shared<std::vector<std::shared_ptr<Wave>>>();
-	const int enemies19[] = { 7, 0, 7, 100, 7, 100, 7, 100};
-	const int enemies20[] = { 7, 0, 7, 50, 7, 50, 7, 50, 7, 50, 7, 50, 7, 50, 7, 50, 7, 50, 7, 50 };
-	const int enemies21[] = { 7, 0, 7, 20, 7, 20, 7, 20, 7, 20, 8, 150, 8, 150, 8, 150, 8, 150, 8, 150 };
+	const int enemies19[] = { SPIDER, 0, SPIDER, 100, SPIDER, 100, SPIDER, 100};
+	const int enemies20[] = { SPIDER, 0, SPIDER, 50, SPIDER, 50, SPIDER, 50, SPIDER, 50, SPIDER, 50, SPIDER, 50, SPIDER, 50, SPIDER, 50, SPIDER, 50 };
+	const int enemies21[] = { SPIDER, 0, SPIDER, 20, SPIDER, 20, SPIDER, 20, SPIDER, 20, TOUGHBEETLE, 150, TOUGHBEETLE, 150, TOUGHBEETLE, 150, TOUGHBEETLE, 150, TOUGHBEETLE, 150 };
 	waves->push_back(std::make_shared<Wave>(enemies19, 8));
 	waves->push_back(std::make_shared<Wave>(enemies20, 20));
 	waves->push_back(std::make_shared<Wave>(enemies21, 20));
@@ -736,16 +738,16 @@ void TowerDefense::Combat::GenerateFightsFromOrder(std::vector<int> fightOrder)
 	std::vector<std::shared_ptr<Fight>> pool4;
 	//Rats
 	waves = std::make_shared<std::vector<std::shared_ptr<Wave>>>();
-	const int enemies22[] = { 0, 0, 0, 50, 0, 50, 0, 50, 0, 50 };
-	const int enemies23[] = { 0, 0, 0, 50, 0, 50, 0, 50, 0, 50, 0, 50, 0, 50, 0, 50, 0, 50, 0, 50 };
-	const int enemies24[] = { 0, 0, 0, 50, 0, 50, 1, 50 };
-	const int enemies25[] = { 0, 0, 0, 50, 0, 50, 0, 50, 0, 50, 1, 50, 0, 50, 0, 50, 1, 50, 0, 50 };
-	const int enemies26[] = { 0, 0, 0, 50, 0, 50, 0, 50, 0, 50, 0, 50, 0, 50, 1, 50, 1, 50, 1, 50 };
-	const int enemies27[] = { 2, 0, 2, 50, 2, 50, 2, 50, 2, 50 };
-	const int enemies28[] = { 0, 0, 0, 25, 0, 25, 0, 25, 0, 25, 2, 50, 2, 50, 2, 50, 2, 50, 2, 50 };
-	const int enemies29[] = { 0, 0, 0, 25, 0, 25, 0, 25, 0, 25, 1, 50, 1, 50, 1, 50, 2, 50, 2, 50, 2, 50, 3, 100 };
-	const int enemies30[] = { 2, 0, 2, 50, 2, 50, 2, 50, 2, 50, 2, 50, 2, 50, 3, 50, 3, 100, 3, 100 };
-	const int enemies31[] = { 4, 0 };
+	const int enemies22[] = { RAT, 0, RAT, 50, RAT, 50, RAT, 50, RAT, 50 };
+	const int enemies23[] = { RAT, 0, RAT, 50, RAT, 50, RAT, 50, RAT, 50, RAT, 50, RAT, 50, RAT, 50, RAT, 50, RAT, 50 };
+	const int enemies24[] = { RAT, 0, RAT, 50, RAT, 50, GIANTRAT, 50 };
+	const int enemies25[] = { RAT, 0, RAT, 50, RAT, 50, RAT, 50, RAT, 50, GIANTRAT, 50, RAT, 50, RAT, 50, GIANTRAT, 50, RAT, 50 };
+	const int enemies26[] = { RAT, 0, RAT, 50, RAT, 50, RAT, 50, RAT, 50, RAT, 50, RAT, 50, GIANTRAT, 50, GIANTRAT, 50, GIANTRAT, 50 };
+	const int enemies27[] = { GOBLIN, 0, GOBLIN, 50, GOBLIN, 50, GOBLIN, 50, GOBLIN, 50 };
+	const int enemies28[] = { RAT, 0, RAT, 25, RAT, 25, RAT, 25, RAT, 25, GOBLIN, 50, GOBLIN, 50, GOBLIN, 50, GOBLIN, 50, GOBLIN, 50 };
+	const int enemies29[] = { RAT, 0, RAT, 25, RAT, 25, RAT, 25, RAT, 25, GIANTRAT, 50, GIANTRAT, 50, GIANTRAT, 50, GOBLIN, 50, GOBLIN, 50, GOBLIN, 50, ORC, 100 };
+	const int enemies30[] = { GOBLIN, 0, GOBLIN, 50, GOBLIN, 50, GOBLIN, 50, GOBLIN, 50, GOBLIN, 50, GOBLIN, 50, ORC, 50, ORC, 100, ORC, 100 };
+	const int enemies31[] = { BOSSRAT, 0 };
 	waves->push_back(std::make_shared<Wave>(enemies22, 10));
 	waves->push_back(std::make_shared<Wave>(enemies23, 20));
 	waves->push_back(std::make_shared<Wave>(enemies24, 8));
@@ -760,16 +762,16 @@ void TowerDefense::Combat::GenerateFightsFromOrder(std::vector<int> fightOrder)
 
 	//Oozes
 	waves = std::make_shared<std::vector<std::shared_ptr<Wave>>>();
-	const int enemies32[] = { 6, 0, 6, 100, 6, 100, 6, 100, 6, 100 };
-	const int enemies33[] = { 6, 0, 6, 60, 6, 60, 6, 60, 6, 60, 6, 60, 6, 60 };
-	const int enemies34[] = { 6, 0, 6, 50, 6, 50, 9, 50 };
-	const int enemies35[] = { 6, 0, 6, 50, 6, 50, 6, 50, 6, 50, 9, 150, 9, 150, 9, 150 };
-	const int enemies36[] = { 9, 0, 9, 100, 9, 100, 9, 100, 9, 100 };
-	const int enemies37[] = { 9, 0, 9, 100, 9, 100, 11, 150, 11, 100 };
-	const int enemies38[] = { 10, 0 };
-	const int enemies39[] = { 6, 0, 6, 50, 6, 50, 6, 50, 9, 100, 9, 100, 9, 100, 11, 150, 11, 150, 11, 150 };
-	const int enemies40[] = { 11, 0, 11, 75, 11, 75, 9, 50, 9, 50, 9, 50, 9, 50, 11, 75, 11, 75, 11, 75 };
-	const int enemies41[] = { 10, 0 , 10, 150};
+	const int enemies32[] = { SLIME, 0, SLIME, 100, SLIME, 100, SLIME, 100, SLIME, 100 };
+	const int enemies33[] = { SLIME, 0, SLIME, 60, SLIME, 60, SLIME, 60, SLIME, 60, SLIME, 60, SLIME, 60 };
+	const int enemies34[] = { SLIME, 0, SLIME, 50, SLIME, 50, OOZE, 50 };
+	const int enemies35[] = { SLIME, 0, SLIME, 50, SLIME, 50, SLIME, 50, SLIME, 50, OOZE, 150, OOZE, 150, OOZE, 150 };
+	const int enemies36[] = { OOZE, 0, OOZE, 100, OOZE, 100, OOZE, 100, OOZE, 100 };
+	const int enemies37[] = { OOZE, 0, OOZE, 100, OOZE, 100, DOUBLEOOZE, 150, DOUBLEOOZE, 100 };
+	const int enemies38[] = { MEGAOOZE, 0 };
+	const int enemies39[] = { SLIME, 0, SLIME, 50, SLIME, 50, SLIME, 50, OOZE, 100, OOZE, 100, OOZE, 100, DOUBLEOOZE, 150, DOUBLEOOZE, 150, DOUBLEOOZE, 150 };
+	const int enemies40[] = { DOUBLEOOZE, 0, DOUBLEOOZE, 75, DOUBLEOOZE, 75, OOZE, 50, OOZE, 50, OOZE, 50, OOZE, 50, DOUBLEOOZE, 75, DOUBLEOOZE, 75, DOUBLEOOZE, 75 };
+	const int enemies41[] = { MEGAOOZE, 0 , MEGAOOZE, 150};
 	waves->push_back(std::make_shared<Wave>(enemies32, 10));
 	waves->push_back(std::make_shared<Wave>(enemies33, 14));
 	waves->push_back(std::make_shared<Wave>(enemies34, 8));
@@ -784,16 +786,16 @@ void TowerDefense::Combat::GenerateFightsFromOrder(std::vector<int> fightOrder)
 
 	//Bugs
 	waves = std::make_shared<std::vector<std::shared_ptr<Wave>>>();
-	const int enemies42[] = { 5, 0, 5, 50, 5, 50, 5, 50, 5, 50, 5, 50, 5, 50 };
-	const int enemies43[] = { 5, 0, 5, 50, 5, 50, 5, 50, 5, 50, 5, 50, 7, 150, 7, 150, 7, 150 };
-	const int enemies44[] = { 5, 0, 5, 150, 5, 150, 5, 150, 5, 10, 5, 10, 5, 10, 5, 10, 5, 10, 5, 10, 5, 10, 5, 10, 5, 10, 5, 10, 5, 10, 5, 10, 5, 10 };
-	const int enemies45[] = { 7, 0, 7, 100, 7, 100, 7, 100, 7, 100, 7, 100 };
-	const int enemies46[] = { 7, 0, 7, 100, 7, 100, 5, 10, 5, 10, 5, 10, 5, 10, 5, 10, 7, 100, 7, 100, 7, 100, 5, 10, 5, 10, 5, 10, 5, 10, 5, 10, 7, 100, 7, 100, 7, 100 };
-	const int enemies47[] = { 7, 0, 7, 100, 7, 100, 8, 100, 8, 100 };
-	const int enemies48[] = { 8, 0, 8, 50, 8, 50, 8, 50, 8, 50, 8, 50, 8, 50 };
-	const int enemies49[] = { 8, 0, 8, 100, 8, 100, 5, 10, 5, 10, 5, 10, 5, 10, 5, 10, 8, 100, 8, 100, 8, 100, 5, 10, 5, 10, 5, 10, 5, 10, 5, 10, 8, 100, 8, 100, 8, 100 };
-	const int enemies50[] = { 8, 0, 8, 100, 7, 20, 7, 20, 7, 20, 8, 100, 8, 100, 7, 20, 7, 20, 7, 20, 8, 100, 8, 100 };
-	const int enemies51[] = { 19, 0 };
+	const int enemies42[] = { BEETLE, 0, BEETLE, 50, BEETLE, 50, BEETLE, 50, BEETLE, 50, BEETLE, 50, BEETLE, 50 };
+	const int enemies43[] = { BEETLE, 0, BEETLE, 50, BEETLE, 50, BEETLE, 50, BEETLE, 50, BEETLE, 50, SPIDER, 150, SPIDER, 150, SPIDER, 150 };
+	const int enemies44[] = { BEETLE, 0, BEETLE, 150, BEETLE, 150, BEETLE, 150, BEETLE, 10, BEETLE, 10, BEETLE, 10, BEETLE, 10, BEETLE, 10, BEETLE, 10, BEETLE, 10, BEETLE, 10, BEETLE, 10, BEETLE, 10, BEETLE, 10, BEETLE, 10, BEETLE, 10 };
+	const int enemies45[] = { SPIDER, 0, SPIDER, 100, SPIDER, 100, SPIDER, 100, SPIDER, 100, SPIDER, 100 };
+	const int enemies46[] = { SPIDER, 0, SPIDER, 100, SPIDER, 100, BEETLE, 10, BEETLE, 10, BEETLE, 10, BEETLE, 10, BEETLE, 10, SPIDER, 100, SPIDER, 100, SPIDER, 100, BEETLE, 10, BEETLE, 10, BEETLE, 10, BEETLE, 10, BEETLE, 10, SPIDER, 100, SPIDER, 100, SPIDER, 100 };
+	const int enemies47[] = { SPIDER, 0, SPIDER, 100, SPIDER, 100, TOUGHBEETLE, 100, TOUGHBEETLE, 100 };
+	const int enemies48[] = { TOUGHBEETLE, 0, TOUGHBEETLE, 50, TOUGHBEETLE, 50, TOUGHBEETLE, 50, TOUGHBEETLE, 50, TOUGHBEETLE, 50, TOUGHBEETLE, 50 };
+	const int enemies49[] = { TOUGHBEETLE, 0, TOUGHBEETLE, 100, TOUGHBEETLE, 100, BEETLE, 10, BEETLE, 10, BEETLE, 10, BEETLE, 10, BEETLE, 10, TOUGHBEETLE, 100, TOUGHBEETLE, 100, TOUGHBEETLE, 100, BEETLE, 10, BEETLE, 10, BEETLE, 10, BEETLE, 10, BEETLE, 10, TOUGHBEETLE, 100, TOUGHBEETLE, 100, TOUGHBEETLE, 100 };
+	const int enemies50[] = { TOUGHBEETLE, 0, TOUGHBEETLE, 100, SPIDER, 20, SPIDER, 20, SPIDER, 20, TOUGHBEETLE, 100, TOUGHBEETLE, 100, SPIDER, 20, SPIDER, 20, SPIDER, 20, TOUGHBEETLE, 100, TOUGHBEETLE, 100 };
+	const int enemies51[] = { TANKBEETLE, 0 };
 	waves->push_back(std::make_shared<Wave>(enemies42, 14));
 	waves->push_back(std::make_shared<Wave>(enemies43, 18));
 	waves->push_back(std::make_shared<Wave>(enemies44, 34));
@@ -810,9 +812,9 @@ void TowerDefense::Combat::GenerateFightsFromOrder(std::vector<int> fightOrder)
 	std::vector<std::shared_ptr<Fight>> pool5;
 	//Rats
 	waves = std::make_shared<std::vector<std::shared_ptr<Wave>>>();
-	const int enemies52[] = { 0, 0, 0, 30, 0, 30, 0, 30, 0, 30, 1, 100, 1, 100, 14, 100 };
-	const int enemies53[] = { 14, 0, 14, 50, 14, 50, 14, 50, 14, 50 };
-	const int enemies54[] = { 14, 0, 14, 30, 15, 30, 14, 30, 14, 30 };
+	const int enemies52[] = { RAT, 0, RAT, 30, RAT, 30, RAT, 30, RAT, 30, GIANTRAT, 100, GIANTRAT, 100, SHIELDRAT, 100 };
+	const int enemies53[] = { SHIELDRAT, 0, SHIELDRAT, 50, SHIELDRAT, 50, SHIELDRAT, 50, SHIELDRAT, 50 };
+	const int enemies54[] = { SHIELDRAT, 0, SHIELDRAT, 30, SHAMANRAT, 30, SHIELDRAT, 30, SHIELDRAT, 30 };
 	waves->push_back(std::make_shared<Wave>(enemies52, 16));
 	waves->push_back(std::make_shared<Wave>(enemies53, 10));
 	waves->push_back(std::make_shared<Wave>(enemies54, 10));
@@ -820,9 +822,9 @@ void TowerDefense::Combat::GenerateFightsFromOrder(std::vector<int> fightOrder)
 
 	//Oozes
 	waves = std::make_shared<std::vector<std::shared_ptr<Wave>>>();
-	const int enemies55[] = { 12, 0, 12, 150, 12, 200, 12, 200, 9, 200 };
-	const int enemies56[] = { 12, 0, 12, 50, 12, 50, 12, 50, 12, 50 };
-	const int enemies57[] = { 12, 0, 12, 50, 12, 50, 11, 150, 11, 150 };
+	const int enemies55[] = { JUMPINGOOZE, 0, JUMPINGOOZE, 150, JUMPINGOOZE, 200, JUMPINGOOZE, 200, OOZE, 200 };
+	const int enemies56[] = { JUMPINGOOZE, 0, JUMPINGOOZE, 50, JUMPINGOOZE, 50, JUMPINGOOZE, 50, JUMPINGOOZE, 50 };
+	const int enemies57[] = { JUMPINGOOZE, 0, JUMPINGOOZE, 50, JUMPINGOOZE, 50, DOUBLEOOZE, 150, DOUBLEOOZE, 150 };
 	waves->push_back(std::make_shared<Wave>(enemies55, 10));
 	waves->push_back(std::make_shared<Wave>(enemies56, 10));
 	waves->push_back(std::make_shared<Wave>(enemies57, 10));
@@ -830,9 +832,9 @@ void TowerDefense::Combat::GenerateFightsFromOrder(std::vector<int> fightOrder)
 
 	//Bugs
 	waves = std::make_shared<std::vector<std::shared_ptr<Wave>>>();
-	const int enemies58[] = { 17, 0, 17, 200, 17, 200};
-	const int enemies59[] = { 8, 0, 17, 100, 17, 50, 8, 100, 8, 100 };
-	const int enemies60[] = { 17, 0, 17, 50, 17, 50, 17, 50, 17, 50, 17, 50, 17, 50 };
+	const int enemies58[] = { BLINKBUG, 0, BLINKBUG, 200, BLINKBUG, 200};
+	const int enemies59[] = { TOUGHBEETLE, 0, BLINKBUG, 100, BLINKBUG, 50, TOUGHBEETLE, 100, TOUGHBEETLE, 100 };
+	const int enemies60[] = { BLINKBUG, 0, BLINKBUG, 50, BLINKBUG, 50, BLINKBUG, 50, BLINKBUG, 50, BLINKBUG, 50, BLINKBUG, 50 };
 	waves->push_back(std::make_shared<Wave>(enemies58, 6));
 	waves->push_back(std::make_shared<Wave>(enemies59, 10));
 	waves->push_back(std::make_shared<Wave>(enemies60, 14));
@@ -842,9 +844,9 @@ void TowerDefense::Combat::GenerateFightsFromOrder(std::vector<int> fightOrder)
 	std::vector<std::shared_ptr<Fight>> pool6;
 	//Rats
 	waves = std::make_shared<std::vector<std::shared_ptr<Wave>>>();
-	const int enemies61[] = { 1, 0, 1, 100, 1, 100, 15, 100, 15, 100, 1, 100, 1, 100, 1, 100};
-	const int enemies62[] = { 14, 0, 14, 100, 15, 100, 15, 50, 15, 50, 14, 100, 14, 100 };
-	const int enemies63[] = { 14, 0, 14, 50, 16, 50, 16, 50, 14, 50, 14, 50, 15, 50, 15, 50, 14, 50, 14, 50 };
+	const int enemies61[] = { GIANTRAT, 0, GIANTRAT, 100, GIANTRAT, 100, SHAMANRAT, 100, SHAMANRAT, 100, GIANTRAT, 100, GIANTRAT, 100, GIANTRAT, 100};
+	const int enemies62[] = { SHIELDRAT, 0, SHIELDRAT, 100, SHAMANRAT, 100, SHAMANRAT, 50, SHAMANRAT, 50, SHIELDRAT, 100, SHIELDRAT, 100 };
+	const int enemies63[] = { SHIELDRAT, 0, SHIELDRAT, 50, HEALERRAT, 50, HEALERRAT, 50, SHIELDRAT, 50, SHIELDRAT, 50, SHAMANRAT, 50, SHAMANRAT, 50, SHIELDRAT, 50, SHIELDRAT, 50 };
 	waves->push_back(std::make_shared<Wave>(enemies61, 16));
 	waves->push_back(std::make_shared<Wave>(enemies62, 14));
 	waves->push_back(std::make_shared<Wave>(enemies63, 20));
@@ -852,9 +854,9 @@ void TowerDefense::Combat::GenerateFightsFromOrder(std::vector<int> fightOrder)
 
 	//Oozes
 	waves = std::make_shared<std::vector<std::shared_ptr<Wave>>>();
-	const int enemies64[] = { 11, 0, 11, 150, 11, 200, 9, 200, 9, 200 };
-	const int enemies65[] = { 11, 0, 11, 100, 11, 100, 11, 100, 11, 100, 13, 100, 13, 100 };
-	const int enemies66[] = { 9, 0, 9, 50, 9, 50, 13, 150, 13, 150 };
+	const int enemies64[] = { DOUBLEOOZE, 0, DOUBLEOOZE, 150, DOUBLEOOZE, 200, OOZE, 200, OOZE, 200 };
+	const int enemies65[] = { DOUBLEOOZE, 0, DOUBLEOOZE, 100, DOUBLEOOZE, 100, DOUBLEOOZE, 100, DOUBLEOOZE, 100, DOUBLER, 100, DOUBLER, 100 };
+	const int enemies66[] = { OOZE, 0, OOZE, 50, OOZE, 50, DOUBLER, 150, DOUBLER, 150 };
 	waves->push_back(std::make_shared<Wave>(enemies64, 10));
 	waves->push_back(std::make_shared<Wave>(enemies65, 14));
 	waves->push_back(std::make_shared<Wave>(enemies66, 10));
@@ -862,9 +864,9 @@ void TowerDefense::Combat::GenerateFightsFromOrder(std::vector<int> fightOrder)
 
 	//Bugs
 	waves = std::make_shared<std::vector<std::shared_ptr<Wave>>>();
-	const int enemies67[] = { 17, 0, 17, 200, 17, 200, 18, 200};
-	const int enemies68[] = { 8, 0, 17, 100, 17, 50, 18, 100, 18, 100 };
-	const int enemies69[] = { 8, 0, 8, 50, 17, 50, 17, 50, 18, 50, 18, 50, 18, 50 };
+	const int enemies67[] = { BLINKBUG, 0, BLINKBUG, 200, BLINKBUG, 200, RUNNERBEETLE, 200};
+	const int enemies68[] = { TOUGHBEETLE, 0, BLINKBUG, 100, BLINKBUG, 50, RUNNERBEETLE, 100, RUNNERBEETLE, 100 };
+	const int enemies69[] = { TOUGHBEETLE, 0, TOUGHBEETLE, 50, BLINKBUG, 50, BLINKBUG, 50, RUNNERBEETLE, 50, RUNNERBEETLE, 50, RUNNERBEETLE, 50 };
 	waves->push_back(std::make_shared<Wave>(enemies67, 8));
 	waves->push_back(std::make_shared<Wave>(enemies68, 10));
 	waves->push_back(std::make_shared<Wave>(enemies69, 14));
@@ -874,9 +876,9 @@ void TowerDefense::Combat::GenerateFightsFromOrder(std::vector<int> fightOrder)
 	std::vector<std::shared_ptr<Fight>> pool7;
 	//Rats
 	waves = std::make_shared<std::vector<std::shared_ptr<Wave>>>();
-	const int enemies70[] = { 1, 0, 1, 100, 1, 100, 15, 100, 15, 100, 1, 100, 1, 100, 1, 100 };
-	const int enemies71[] = { 14, 0, 14, 100, 15, 100, 15, 50, 15, 50, 14, 100, 14, 100 };
-	const int enemies72[] = { 14, 0, 14, 50, 16, 50, 16, 50, 14, 50, 14, 50, 15, 50, 15, 50, 14, 50, 14, 50 };
+	const int enemies70[] = { GIANTRAT, 0, GIANTRAT, 100, GIANTRAT, 100, SHAMANRAT, 100, SHAMANRAT, 100, GIANTRAT, 100, GIANTRAT, 100, GIANTRAT, 100 };
+	const int enemies71[] = { SHIELDRAT, 0, SHIELDRAT, 100, SHAMANRAT, 100, SHAMANRAT, 50, SHAMANRAT, 50, SHIELDRAT, 100, SHIELDRAT, 100 };
+	const int enemies72[] = { SHIELDRAT, 0, SHIELDRAT, 50, HEALERRAT, 50, HEALERRAT, 50, SHIELDRAT, 50, SHIELDRAT, 50, SHAMANRAT, 50, SHAMANRAT, 50, SHIELDRAT, 50, SHIELDRAT, 50 };
 	waves->push_back(std::make_shared<Wave>(enemies70, 16));
 	waves->push_back(std::make_shared<Wave>(enemies71, 14));
 	waves->push_back(std::make_shared<Wave>(enemies72, 20));
@@ -884,9 +886,9 @@ void TowerDefense::Combat::GenerateFightsFromOrder(std::vector<int> fightOrder)
 
 	//Oozes
 	waves = std::make_shared<std::vector<std::shared_ptr<Wave>>>();
-	const int enemies73[] = { 11, 0, 11, 150, 11, 200, 9, 200, 9, 200 };
-	const int enemies74[] = { 11, 0, 11, 50, 11, 50, 11, 50, 11, 50, 11, 50, 11, 50, 11, 50, 13, 50, 13, 50 };
-	const int enemies75[] = { 9, 0, 9, 50, 9, 50, 13, 150, 13, 150 };
+	const int enemies73[] = { DOUBLEOOZE, 0, DOUBLEOOZE, 150, DOUBLEOOZE, 200, OOZE, 200, OOZE, 200 };
+	const int enemies74[] = { DOUBLEOOZE, 0, DOUBLEOOZE, 50, DOUBLEOOZE, 50, DOUBLEOOZE, 50, DOUBLEOOZE, 50, DOUBLEOOZE, 50, DOUBLEOOZE, 50, DOUBLEOOZE, 50, SHIELDRAT, 50, SHIELDRAT, 50 };
+	const int enemies75[] = { DOUBLEOOZE, 0, DOUBLEOOZE, 50, DOUBLEOOZE, 50, SHIELDRAT, 150, SHIELDRAT, 150 };
 	waves->push_back(std::make_shared<Wave>(enemies73, 10));
 	waves->push_back(std::make_shared<Wave>(enemies74, 20));
 	waves->push_back(std::make_shared<Wave>(enemies75, 10));
@@ -894,9 +896,9 @@ void TowerDefense::Combat::GenerateFightsFromOrder(std::vector<int> fightOrder)
 
 	//Bugs
 	waves = std::make_shared<std::vector<std::shared_ptr<Wave>>>();
-	const int enemies76[] = { 17, 0, 17, 200, 17, 200, 18, 200 };
-	const int enemies77[] = { 8, 0, 17, 100, 17, 50, 18, 100, 18, 100 };
-	const int enemies78[] = { 8, 0, 8, 50, 17, 50, 17, 50, 18, 50, 18, 50, 18, 50 };
+	const int enemies76[] = { BLINKBUG, 0, BLINKBUG, 200, BLINKBUG, 200, RUNNERBEETLE, 200 };
+	const int enemies77[] = { TOUGHBEETLE, 0, BLINKBUG, 100, BLINKBUG, 50, RUNNERBEETLE, 100, RUNNERBEETLE, 100 };
+	const int enemies78[] = { TOUGHBEETLE, 0, TOUGHBEETLE, 50, BLINKBUG, 50, BLINKBUG, 50, RUNNERBEETLE, 50, RUNNERBEETLE, 50, RUNNERBEETLE, 50 };
 	waves->push_back(std::make_shared<Wave>(enemies76, 8));
 	waves->push_back(std::make_shared<Wave>(enemies77, 10));
 	waves->push_back(std::make_shared<Wave>(enemies78, 14));
@@ -906,16 +908,16 @@ void TowerDefense::Combat::GenerateFightsFromOrder(std::vector<int> fightOrder)
 	std::vector<std::shared_ptr<Fight>> pool8;
 	//Rats
 	waves = std::make_shared<std::vector<std::shared_ptr<Wave>>>();
-	const int enemies79[] = { 0, 0, 0, 30, 0, 30, 0, 30, 1, 150, 1, 150, 1, 150, 1, 150 };
-	const int enemies80[] = { 1, 0, 1, 100, 1, 100, 1, 100, 1, 100, 14, 150, 14, 150, 14, 150 };
-	const int enemies81[] = { 0, 0, 0, 20, 0, 20, 0, 20, 0, 20, 0, 20, 0, 20, 0, 20, 0, 20, 0, 20, 0, 20, 0, 20, 0, 20, 0, 20, 0, 20, 0, 20, 0, 20, 0, 20, 0, 20, 0, 20 };
-	const int enemies82[] = { 1, 0, 1, 50, 1, 50, 1, 50, 1, 50, 1, 50, 1, 50, 1, 50 };
-	const int enemies83[] = { 14, 0, 14, 100, 14, 100, 14, 100, 15, 100, 15, 100, 15, 100 };
-	const int enemies84[] = { 14, 0, 14, 100, 16, 100, 16, 100, 14, 100, 14, 100, 15, 100, 15, 100, 14, 100, 14, 100 };
-	const int enemies85[] = { 4, 0, 4, 300 };
-	const int enemies86[] = { 14, 0, 14, 100, 14, 100, 4, 100, 16, 50, 16, 50, 15, 50, 15, 50 };
-	const int enemies87[] = { 4, 0, 4, 100, 15, 50, 15, 50, 15, 50, 16, 50, 16, 50, 16, 50 };
-	const int enemies88[] = { 4, 0, 4, 100, 4, 100, 4, 100, 4, 100 };
+	const int enemies79[] = { RAT, 0, RAT, 30, RAT, 30, RAT, 30, GIANTRAT, 150, GIANTRAT, 150, GIANTRAT, 150, GIANTRAT, 150 };
+	const int enemies80[] = { GIANTRAT, 0, GIANTRAT, 100, GIANTRAT, 100, GIANTRAT, 100, GIANTRAT, 100, SHIELDRAT, 150, SHIELDRAT, 150, SHIELDRAT, 150 };
+	const int enemies81[] = { RAT, 0, RAT, 20, RAT, 20, RAT, 20, RAT, 20, RAT, 20, RAT, 20, RAT, 20, RAT, 20, RAT, 20, RAT, 20, RAT, 20, RAT, 20, RAT, 20, RAT, 20, RAT, 20, RAT, 20, RAT, 20, RAT, 20, RAT, 20 };
+	const int enemies82[] = { GIANTRAT, 0, GIANTRAT, 50, GIANTRAT, 50, GIANTRAT, 50, GIANTRAT, 50, GIANTRAT, 50, GIANTRAT, 50, GIANTRAT, 50 };
+	const int enemies83[] = { SHIELDRAT, 0, SHIELDRAT, 100, SHIELDRAT, 100, SHIELDRAT, 100, SHAMANRAT, 100, SHAMANRAT, 100, SHAMANRAT, 100 };
+	const int enemies84[] = { SHIELDRAT, 0, SHIELDRAT, 100, HEALERRAT, 100, HEALERRAT, 100, SHIELDRAT, 100, SHIELDRAT, 100, SHAMANRAT, 100, SHAMANRAT, 100, SHIELDRAT, 100, SHIELDRAT, 100 };
+	const int enemies85[] = { BOSSRAT, 0, BOSSRAT, 300 };
+	const int enemies86[] = { SHIELDRAT, 0, SHIELDRAT, 100, SHIELDRAT, 100, BOSSRAT, 100, HEALERRAT, 50, HEALERRAT, 50, SHAMANRAT, 50, SHAMANRAT, 50 };
+	const int enemies87[] = { BOSSRAT, 0, BOSSRAT, 100, SHAMANRAT, 50, SHAMANRAT, 50, SHAMANRAT, 50, HEALERRAT, 50, HEALERRAT, 50, HEALERRAT, 50 };
+	const int enemies88[] = { BOSSRAT, 0, BOSSRAT, 100, BOSSRAT, 100, BOSSRAT, 100, BOSSRAT, 100 };
 	waves->push_back(std::make_shared<Wave>(enemies79, 16));
 	waves->push_back(std::make_shared<Wave>(enemies80, 16));
 	waves->push_back(std::make_shared<Wave>(enemies81, 40));
@@ -930,27 +932,69 @@ void TowerDefense::Combat::GenerateFightsFromOrder(std::vector<int> fightOrder)
 
 	//Oozes
 	waves = std::make_shared<std::vector<std::shared_ptr<Wave>>>();
-	const int enemies89[] = { 6, 0, 6, 30, 6, 30, 6, 30, 6, 30, 6, 30, 6, 30, 6, 30, 6, 30, 6, 30, 9, 240, 9, 60, 9, 60 };
-	const int enemies90[] = { 11, 0, 11, 50, 11, 50, 11, 50, 11, 50, 11, 50, 11, 50, 11, 50, 13, 50, 13, 50 };
-	const int enemies91[] = { 9, 0, 9, 50, 9, 50, 13, 150, 13, 150 };
-	const int enemies92[] = { 12, 0, 12, 50, 12, 50, 12, 50, 11, 50, 11, 50, 11, 50, 11, 50 };
-	const int enemies93[] = { 14, 0, 14, 100, 14, 100, 14, 100, 15, 100, 15, 100, 15, 100 };
-	const int enemies94[] = { 14, 0, 14, 100, 16, 100, 16, 100, 14, 100, 14, 100, 15, 100, 15, 100, 14, 100, 14, 100 };
-	const int enemies95[] = { 10, 0, 10, 300 };
-	const int enemies96[] = { 14, 0, 14, 100, 14, 100, 4, 100, 16, 50, 16, 50, 15, 50, 15, 50 };
-	const int enemies97[] = { 4, 0, 4, 100, 15, 50, 15, 50, 15, 50, 16, 50, 16, 50, 16, 50 };
-	const int enemies98[] = { 23, 0 };
+	const int enemies89[] = { SLIME, 0, SLIME, 30, SLIME, 30, SLIME, 30, SLIME, 30, SLIME, 30, SLIME, 30, SLIME, 30, SLIME, 30, SLIME, 30, OOZE, 240, OOZE, 60, OOZE, 60 };
+	const int enemies90[] = { DOUBLEOOZE, 0, DOUBLEOOZE, 50, DOUBLEOOZE, 50, DOUBLEOOZE, 50, DOUBLEOOZE, 50, DOUBLEOOZE, 50, DOUBLEOOZE, 50, DOUBLEOOZE, 50, DOUBLER, 50, DOUBLER, 50 };
+	const int enemies91[] = { OOZE, 0, OOZE, 50, OOZE, 50, DOUBLER, 150, DOUBLER, 150 };
+	const int enemies92[] = { JUMPINGOOZE, 0, JUMPINGOOZE, 50, JUMPINGOOZE, 50, JUMPINGOOZE, 50, DOUBLEOOZE, 50, DOUBLEOOZE, 50, DOUBLEOOZE, 50, DOUBLEOOZE, 50 };
+	const int enemies93[] = { DOUBLEOOZE, 0, DOUBLEOOZE, 100, DOUBLEOOZE, 100, DOUBLEOOZE, 100, DOUBLEOOZE, 100, MEGAOOZE, 100, MEGAOOZE, 100 };
+	const int enemies94[] = { DOUBLEOOZE, 0, DOUBLEOOZE, 100, DOUBLEOOZE, 100, OOZE, 100, OOZE, 100, OOZE, 100, DOUBLEOOZE, 100, DOUBLEOOZE, 100, DOUBLEOOZE, 100, DOUBLEOOZE, 100 };
+	const int enemies95[] = { MEGAOOZE, 0, MEGAOOZE, 150, MEGAOOZE, 150, MEGAOOZE, 150 };
+	const int enemies96[] = { DOUBLEOOZE, 0, DOUBLEOOZE, 100, DOUBLEOOZE, 100, MEGAOOZE, 100, DOUBLEOOZE, 50, DOUBLEOOZE, 50, DOUBLEOOZE, 50, MEGAOOZE, 50 };
+	const int enemies97[] = { MEGAOOZE, 0, MEGAOOZE, 100, MEGAOOZE, 50, DOUBLER, 50, DOUBLER, 50, MEGAOOZE, 50, MEGAOOZE, 50, MEGAOOZE, 50 };
+	const int enemies98[] = { WRITHINGMASS, 0 };
 	waves->push_back(std::make_shared<Wave>(enemies89, 16));
 	waves->push_back(std::make_shared<Wave>(enemies90, 16));
 	waves->push_back(std::make_shared<Wave>(enemies91, 40));
 	waves->push_back(std::make_shared<Wave>(enemies92, 16));
 	waves->push_back(std::make_shared<Wave>(enemies93, 14));
 	waves->push_back(std::make_shared<Wave>(enemies94, 20));
-	waves->push_back(std::make_shared<Wave>(enemies95, 4));
+	waves->push_back(std::make_shared<Wave>(enemies95, 8));
 	waves->push_back(std::make_shared<Wave>(enemies96, 16));
 	waves->push_back(std::make_shared<Wave>(enemies97, 16));
 	waves->push_back(std::make_shared<Wave>(enemies98, 2));
 	pool8.push_back(std::make_shared<Fight>(waves));
+
+	//Bugs
+	waves = std::make_shared<std::vector<std::shared_ptr<Wave>>>();
+	const int enemies99[] = { BLINKBUG, 0, BLINKBUG, 200, BLINKBUG, 200 };
+	const int enemies100[] = { TOUGHBEETLE, 0, BLINKBUG, 100, BLINKBUG, 50, TOUGHBEETLE, 100, TOUGHBEETLE, 100 };
+	const int enemies101[] = { BLINKBUG, 0, BLINKBUG, 50, BLINKBUG, 50, BLINKBUG, 50, BLINKBUG, 50, BLINKBUG, 50, BLINKBUG, 50 };
+	const int enemies102[] = { BLINKBUG, 0, BLINKBUG, 200, BLINKBUG, 200, RUNNERBEETLE, 200 };
+	const int enemies103[] = { TOUGHBEETLE, 0, BLINKBUG, 100, BLINKBUG, 50, RUNNERBEETLE, 100, RUNNERBEETLE, 100 };
+	const int enemies104[] = { TOUGHBEETLE, 0, TOUGHBEETLE, 50, BLINKBUG, 50, BLINKBUG, 50, RUNNERBEETLE, 50, RUNNERBEETLE, 50, RUNNERBEETLE, 50 };
+	const int enemies105[] = { BLINKBUG, 0, BLINKBUG, 200, BLINKBUG, 200, RUNNERBEETLE, 200 };
+	const int enemies106[] = { TOUGHBEETLE, 0, BLINKBUG, 100, BLINKBUG, 50, RUNNERBEETLE, 100, RUNNERBEETLE, 100 };
+	const int enemies107[] = { TOUGHBEETLE, 0, TOUGHBEETLE, 50, BLINKBUG, 50, BLINKBUG, 50, RUNNERBEETLE, 50, RUNNERBEETLE, 50, RUNNERBEETLE, 50 };
+	const int enemies108[] = { TANKBEETLE, 0, TANKBEETLE, 50, TANKBEETLE, 50 };
+	waves->push_back(std::make_shared<Wave>(enemies99, 6));
+	waves->push_back(std::make_shared<Wave>(enemies100, 10));
+	waves->push_back(std::make_shared<Wave>(enemies101, 14));
+	waves->push_back(std::make_shared<Wave>(enemies102, 8));
+	waves->push_back(std::make_shared<Wave>(enemies103, 10));
+	waves->push_back(std::make_shared<Wave>(enemies104, 14));
+	waves->push_back(std::make_shared<Wave>(enemies105, 14));
+	waves->push_back(std::make_shared<Wave>(enemies106, 10));
+	waves->push_back(std::make_shared<Wave>(enemies107, 14));
+	waves->push_back(std::make_shared<Wave>(enemies108, 6));
+	pool8.push_back(std::make_shared<Fight>(waves));
+
+	//Day 21-23
+	std::vector<std::shared_ptr<Fight>> pool9;
+	//Rats
+	waves = std::make_shared<std::vector<std::shared_ptr<Wave>>>();
+	const int enemies109[] = { PLAGUERAT, 0, PLAGUERAT, 50, PLAGUERAT, 50, PLAGUERAT, 50 };
+	const int enemies110[] = { PLAGUERAT, 0, GIANTRAT, 50, GIANTRAT, 30, GIANTRAT, 30, PLAGUERAT, 50, GIANTRAT, 50, GIANTRAT, 30, GIANTRAT, 30, PLAGUERAT, 50, PLAGUERAT, 50 };
+	const int enemies111[] = { ASSASSINRAT, 0, ASSASSINRAT, 50, ASSASSINRAT, 50, ASSASSINRAT, 50, BOSSRAT, 100, BOSSRAT, 50 };
+	waves->push_back(std::make_shared<Wave>(enemies109, 8));
+	waves->push_back(std::make_shared<Wave>(enemies110, 18));
+	waves->push_back(std::make_shared<Wave>(enemies111, 12));
+	pool9.push_back(std::make_shared<Fight>(waves));
+
+	//Oozes
+	waves = std::make_shared<std::vector<std::shared_ptr<Wave>>>();
+	const int enemies112[] = { RAT };
+	const int enemies113[] = { RAT };
+	const int enemies114[] = { RAT };
 
 	//determine combats from random pool
 	s_Fights->push_back(pool1[fightOrder[0]]);

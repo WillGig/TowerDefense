@@ -92,7 +92,7 @@
     <ClCompile Include="src\cards\upgrades\Upgrades.cpp" />
     <ClCompile Include="src\core\TextureLoader.cpp" />
     <ClCompile Include="src\enemies\BlinkBug.cpp" />
-    <ClCompile Include="src\enemies\DoubleSlime.cpp" />
+    <ClCompile Include="src\enemies\DoubleOoze.cpp" />
     <ClCompile Include="src\enemies\Enemy.cpp" />
     <ClCompile Include="src\enemies\EnemyIcon.cpp" />
     <ClCompile Include="src\enemies\EnemyInfo.cpp" />
@@ -230,6 +230,7 @@
     <ClCompile Include="src\auras\AlchemistDamage.cpp" />
     <ClCompile Include="src\scenes\base_scenes\skill_scenes\skill_trees\AlchemistDamage.cpp" />
     <ClCompile Include="src\scenes\base_scenes\skill_scenes\SkillScene.cpp" />
+    <ClCompile Include="src\enemies\Ooze.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\artifacts\Artifact.h" />
