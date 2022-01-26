@@ -75,12 +75,9 @@ void TowerDefense::LiterallySatan::Update()
 			Player::Get().AddToDeck(std::make_shared<Flames>());
 
 		std::string text =
-			"His eyes light up and he smiles.\n"
-			"Fire leaps out from his hands and\n"
-			"you feel the heat of the flames.\n\n"
-			"After some time, the fire recedes\n"
-			"and the smoke clear.\n"
-			"The man is gone.\n";
+			"As the cards burn he rolls on\n"
+			"the floor cackling.\n\n"
+			"Time to leave...\n";
 
 		m_Prompt = std::make_unique<Text>(text, 560.0f, 400.0f, 16.0f, 0.0f);
 		m_Prompt->SetColor(1.0f, 1.0f, 1.0f, 1.0f);
@@ -92,9 +89,12 @@ void TowerDefense::LiterallySatan::Update()
 		Player::Get().ChangeHealth(-30);
 
 		std::string text =
-			"As the cards burn he rolls on\n"
-			"the floor cackling.\n\n"
-			"Time to leave...\n";
+			"His eyes light up and he smiles.\n"
+			"Fire leaps out from his hands and\n"
+			"you feel the heat of the flames.\n\n"
+			"After some time, the fire recedes\n"
+			"and the smoke clear.\n"
+			"The man is gone.\n";
 
 		m_Prompt = std::make_unique<Text>(text, 560.0f, 400.0f, 16.0f, 0.0f);
 		m_Prompt->SetColor(1.0f, 1.0f, 1.0f, 1.0f);
