@@ -544,7 +544,7 @@ void TowerDefense::Combat::OnEnemyDeath(unsigned int id)
 //Should be called once at the beginning of a run to generate the set of combats
 void TowerDefense::Combat::GenerateFights()
 {
-	std::vector<int> fightOrder(20);
+	std::vector<int> fightOrder(23);
 
 	std::vector<int> pool1{ 0,1,2 };
 	std::vector<int> pool2{ 0,1,2 };
@@ -554,6 +554,7 @@ void TowerDefense::Combat::GenerateFights()
 	std::vector<int> pool6{ 0,1,2 };
 	std::vector<int> pool7{ 0,1,2 };
 	std::vector<int> pool8{ 0,1,2 };
+	std::vector<int> pool9{ 0,1,2 };
 
 
 	int fight = (int)(Random::GetFloat() * pool1.size());
@@ -635,6 +636,18 @@ void TowerDefense::Combat::GenerateFights()
 	fight = (int)(Random::GetFloat() * pool8.size());
 	fightOrder[19] = pool8[fight];
 	pool8.erase(pool8.begin() + fight);
+
+	fight = (int)(Random::GetFloat() * pool9.size());
+	fightOrder[20] = pool9[fight];
+	pool9.erase(pool9.begin() + fight);
+
+	fight = (int)(Random::GetFloat() * pool9.size());
+	fightOrder[21] = pool9[fight];
+	pool9.erase(pool9.begin() + fight);
+
+	fight = (int)(Random::GetFloat() * pool9.size());
+	fightOrder[22] = pool9[fight];
+	pool9.erase(pool9.begin() + fight);
 
 	GenerateFightsFromOrder(fightOrder);
 }
@@ -718,10 +731,10 @@ void TowerDefense::Combat::GenerateFightsFromOrder(std::vector<int> fightOrder)
 	waves = std::make_shared<std::vector<std::shared_ptr<Wave>>>();
 	const int enemies16[] = { SLIME, 0, SLIME, 100, SLIME, 100, SLIME, 100, SLIME, 100 };
 	const int enemies17[] = { SLIME, 0, SLIME, 100, SLIME, 100, SLIME, 100, SLIME, 100, BLOB, 100, BLOB, 100 , BLOB, 100 , BLOB, 100 };
-	const int enemies18[] = { DOUBLEOOZE, 0 };
+	const int enemies18[] = { OOZE, 0, OOZE, 120};
 	waves->push_back(std::make_shared<Wave>(enemies16, 10));
 	waves->push_back(std::make_shared<Wave>(enemies17, 18));
-	waves->push_back(std::make_shared<Wave>(enemies18, 2));
+	waves->push_back(std::make_shared<Wave>(enemies18, 4));
 	pool3.push_back(std::make_shared<Fight>(waves));
 
 	//Bugs
@@ -888,7 +901,7 @@ void TowerDefense::Combat::GenerateFightsFromOrder(std::vector<int> fightOrder)
 	waves = std::make_shared<std::vector<std::shared_ptr<Wave>>>();
 	const int enemies73[] = { OOZE, 0, OOZE, 150, OOZE, 200, BLOB, 200, BLOB, 200 };
 	const int enemies74[] = { OOZE, 0, OOZE, 50, OOZE, 50, OOZE, 50, OOZE, 50, OOZE, 50, OOZE, 50, OOZE, 50, SHIELDRAT, 50, SHIELDRAT, 50 };
-	const int enemies75[] = { OOZE, 0, OOZE, 50, OOZE, 50, SHIELDRAT, 150, SHIELDRAT, 150 };
+	const int enemies75[] = { OOZE, 0, OOZE, 50, OOZE, 50, DOUBLEOOZE, 150, DOUBLEOOZE, 150 };
 	waves->push_back(std::make_shared<Wave>(enemies73, 10));
 	waves->push_back(std::make_shared<Wave>(enemies74, 20));
 	waves->push_back(std::make_shared<Wave>(enemies75, 10));
@@ -1002,12 +1015,12 @@ void TowerDefense::Combat::GenerateFightsFromOrder(std::vector<int> fightOrder)
 
 	//Bugs
 	waves = std::make_shared<std::vector<std::shared_ptr<Wave>>>();
-	const int enemies115[] = { RAT };
-	const int enemies116[] = { RAT };
-	const int enemies117[] = { RAT };
-	waves->push_back(std::make_shared<Wave>(enemies115, 1));
-	waves->push_back(std::make_shared<Wave>(enemies116, 1));
-	waves->push_back(std::make_shared<Wave>(enemies117, 1));
+	const int enemies115[] = { FIREFLY, 0, FIREFLY, 30, FIREFLY, 30, FIREFLY, 30, FIREFLY, 30 , FIREFLY, 30, FIREFLY, 30, FIREFLY, 30};
+	const int enemies116[] = { GNAT, 0, GNAT, 60, GNAT, 60, GNAT, 60, GNAT, 60 };
+	const int enemies117[] = { GNAT, 0, GNAT, 20, GNAT, 20, TANKBEETLE, 60, GNAT, 60, GNAT, 20, GNAT, 20, TANKBEETLE, 60, GNAT, 60, GNAT, 20, GNAT, 20 };
+	waves->push_back(std::make_shared<Wave>(enemies115, 16));
+	waves->push_back(std::make_shared<Wave>(enemies116, 10));
+	waves->push_back(std::make_shared<Wave>(enemies117, 22));
 	pool9.push_back(std::make_shared<Fight>(waves));
 
 	//determine combats from random pool
@@ -1031,4 +1044,7 @@ void TowerDefense::Combat::GenerateFightsFromOrder(std::vector<int> fightOrder)
 	s_Fights->push_back(pool7[fightOrder[17]]);
 	s_Fights->push_back(pool7[fightOrder[18]]);
 	s_Fights->push_back(pool8[fightOrder[19]]);
+	s_Fights->push_back(pool9[fightOrder[20]]);
+	s_Fights->push_back(pool9[fightOrder[21]]);
+	s_Fights->push_back(pool9[fightOrder[22]]);
 }

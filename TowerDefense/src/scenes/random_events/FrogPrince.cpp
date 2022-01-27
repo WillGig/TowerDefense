@@ -124,7 +124,7 @@ void TowerDefense::FrogPrince::Update()
 		Player::Get().ChangeResource(200, Resource::GOLD);
 
 		std::string text =
-			"It doesn't take long to.\n"
+			"It doesn't take long to\n"
 			"find a buyer. \n\n"
 			"The frog croaks sadly as\n"
 			"he is taken away in chains.\n";

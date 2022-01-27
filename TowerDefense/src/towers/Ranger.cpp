@@ -28,6 +28,10 @@ void TowerDefense::Tower::Ranger::Update()
 	Tower::Update();
 	if (m_Companion)
 		m_Companion->Update();
+
+	if (!FindTarget())
+		m_LaserBeam = nullptr;
+
 	if (m_LaserBeam)
 		m_LaserBeam->Update();
 }

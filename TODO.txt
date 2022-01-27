@@ -1,4 +1,6 @@
 Current:
+	Crash on day 19 loading screen
+
 	Add more skills to skill trees
 
 	Add second towers for buildings

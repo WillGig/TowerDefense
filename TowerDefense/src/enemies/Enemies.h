@@ -11,7 +11,7 @@ namespace TowerDefense
 			//Slimes
 			SLIME, BLOB, OOZE, DOUBLEOOZE, MEGAOOZE, JUMPINGOOZE, DOUBLER, TOXICSLIME, WRITHINGMASS,
 			//Bugs
-			BEETLE, SPIDER, TOUGHBEETLE, BLINKBUG, RUNNERBEETLE, TANKBEETLE, GNAT, ANKHEG,
+			BEETLE, SPIDER, TOUGHBEETLE, BLINKBUG, RUNNERBEETLE, TANKBEETLE, FIREFLY, GNAT, ANKHEG,
 			//Other
 			GOBLIN, ORC
 		};
@@ -147,7 +147,7 @@ namespace TowerDefense
 		{
 		public:
 			JumpingOoze()
-				:Enemy(32, 32, 10.0f, 0.5f, 15, "Jumping Ooze", 1), m_JumpTime(40), m_TimeBetweenJumps(180), m_JumpCoolDown(m_TimeBetweenJumps),
+				:Enemy(32, 32, 25.0f, 0.5f, 15, "Jumping Ooze", 1), m_JumpTime(40), m_TimeBetweenJumps(180), m_JumpCoolDown(m_TimeBetweenJumps),
 				m_JumpFrame(m_JumpTime + 1), m_JumpDistance(80), m_JumpGoal()
 			{}
 
@@ -392,6 +392,8 @@ namespace TowerDefense
 				return std::make_shared<HealerRat>();
 			case BLINKBUG:
 				return std::make_shared<BlinkBug>();
+			case FIREFLY:
+				return std::make_shared<FireFly>();
 			case RUNNERBEETLE:
 				return std::make_shared<RunnerBeetle>();
 			case TANKBEETLE:
