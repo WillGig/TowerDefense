@@ -347,7 +347,7 @@ void TowerDefense::Load::LoadGame(int slot)
 			std::getline(saveFile, line);
 			int fightNumber = std::stoi(line);
 			std::vector<int> fightOrder =std::vector<int>();
-			for (int i = 0; i < 20; i++)
+			for (int i = 0; i < 23; i++)
 			{
 				std::getline(saveFile, line);
 				fightOrder.push_back(std::stoi(line));

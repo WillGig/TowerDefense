@@ -163,9 +163,9 @@ namespace TowerDefense
 		{
 		public:
 			Doubler()
-				:Enemy(32, 32, 20.0f, 0.3f, 0, "Doubler", 2), m_GrowTime(30), m_Time(0)
+				:Enemy(32, 32, 40.0f, 0.3f, 0, "Doubler", 2), m_GrowTime(30), m_Time(0)
 			{
-				m_MaxHealth = 40;
+				m_MaxHealth = 80;
 			}
 
 		private:
