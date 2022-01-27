@@ -1,7 +1,7 @@
 Current:
-	Crash on day 19 loading screen
-
+	
 	Add more skills to skill trees
+	Change skills to skill points instead of gold
 
 	Add second towers for buildings
 	 - music hall		Singer(replaces monk)/siren
@@ -9,22 +9,10 @@ Current:
 	 - alchemy lab		Tinkerer?
 
 	-More Enemies(Days 21-30):
-	
 		- Rats
-			- Plague rat - shuffles infection into deck
-			- Witch rat - shuffes curses into deck
-			- Assassin rat - turns invisible and dashes forward
-
 		- Oozes
-			- Mega ooze splits into double oozes
-			- Toxic slime - shuffles sludge into deck
-
 		- Bugs
-			- Gnats - invisible and fast
 			- Worms - burrow and become untargetable
-			- Ankheg - big and tough
-			- Firefly - shuffles flames into deck
-			- Writhing mass(boss?) - releases swarms of smaller insects
 	
 	Level 5 Upgrade Progress:
 		Add more possible ghost towers
@@ -186,13 +174,9 @@ Notes:
 	- Shield Rat	Strong shield that drops when taking heavy damage
 	- Shaman Rat	Casts spell that increases armor and mr of nearby enemies
 	- Healer Rat	Heals nearby enemies
-
-	- Beetle	Extra weak and extra fast
-	- Spider	Not as fast as a beetle, but much touger
-	- Tough Beetle	Slow but heavily armored
-	- Tank Beetle	Tons of hp, alternates between high armor and high mr
-	- Blink Bug	Turns invisible every few seconds
-	- Runner Beetle	Dashes forward every few seconds
+	- Plague rat 	shuffles infection into deck
+	- Witch rat 	shuffes curses into deck
+	- Assassin rat 	turns invisible and dashes forward
 
 	- Slime		Medium speed, medium health
 	- Blob		Twice as much health, dies into slime
@@ -201,6 +185,18 @@ Notes:
 	- Mega Ooze	Slower than a normal ooze, but with tons of hp splits into two double oozes
 	- Jumping Ooze	Jumps every few seconds
 	- Doubler	Gains health slowly and divides when at double hp
+	- Toxic slime - shuffles sludge into deck
+
+	- Beetle	Extra weak and extra fast
+	- Spider	Not as fast as a beetle, but much touger
+	- Tough Beetle	Slow but heavily armored
+	- Tank Beetle	Tons of hp, alternates between high armor and high mr
+	- Blink Bug	Turns invisible every few seconds
+	- Runner Beetle	Dashes forward every few seconds
+	- Gnats 	invisible and fast
+	- Ankheg 	big and tough
+	- Firefly	shuffles flames into deck
+	- Writhing mass	releases swarms of smaller insects
 
 	- Goblin	Fast and tough
 	- Orc		Slow and extra tough

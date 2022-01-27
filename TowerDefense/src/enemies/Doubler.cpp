@@ -12,7 +12,7 @@ void TowerDefense::Enemy::Doubler::Update()
 	{
 		if (m_Time == m_GrowTime)
 		{
-			ChangeHealth(1);
+			ChangeHealth(2);
 			m_Time = 0;
 		}
 		else

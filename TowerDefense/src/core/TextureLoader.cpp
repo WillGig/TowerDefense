@@ -650,7 +650,7 @@ void TowerDefense::LoadingScreen::Load(const std::string& path, std::shared_ptr<
     numLoaded++;
 
     //Render loadbar and text if percent has changed
-    int percent = (int)(((float)numLoaded / 551.0f)*100.0f);
+    int percent = (int)(((float)numLoaded / 559.0f)*100.0f);
     if (loadPercent != percent)
     {
         RenderProgress(window, "Loading... " + loadCategory, percent);

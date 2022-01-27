@@ -429,6 +429,7 @@ void TowerDefense::Player::AddToDeck(std::shared_ptr<Card> c)
 void TowerDefense::Player::AddToDrawPile(std::shared_ptr<Card> c)
 {
     m_DrawPile->AddCard(c);
+    m_DrawPile->Shuffle();
 }
 
 void TowerDefense::Player::AddToDiscardPile(std::shared_ptr<Card> c)
