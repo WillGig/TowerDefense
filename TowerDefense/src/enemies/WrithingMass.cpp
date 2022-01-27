@@ -29,13 +29,13 @@ void TowerDefense::Enemy::WrithingMass::SummonSpawn()
 	if (enemyNum == 0)
 		e = std::make_shared<Slime>();
 	else if (enemyNum == 1)
-		e = std::make_shared<Ooze>();
+		e = std::make_shared<Blob>();
 	else if (enemyNum == 2)
-		e = std::make_shared<DoubleOoze>();
+		e = std::make_shared<Ooze>();
 	else if (enemyNum == 3)
 		e = std::make_shared<JumpingOoze>();
-	else if (enemyNum == 4)
-		e = std::make_shared<MegaOoze>();
+	else
+		e = std::make_shared<DoubleOoze>();
 
 	e->SetDistanceTravelled(GetDistanceTraveled() + 15);
 	Combat::AddEntity(e);

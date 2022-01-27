@@ -36,4 +36,13 @@ namespace TowerDefense
 		void Play() override;
 		std::shared_ptr<Card> Clone() override;
 	};
+
+	class Sludge : public Card
+	{
+	public:
+		Sludge();
+		void Play() override;
+		void Upgrade() override;
+		std::shared_ptr<Card> Clone() override;
+	};
 }

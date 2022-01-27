@@ -217,6 +217,7 @@
     <ClCompile Include="src\cards\curses\Frog.cpp" />
     <ClCompile Include="src\cards\curses\Hex.cpp" />
     <ClCompile Include="src\cards\curses\Infection.cpp" />
+    <ClCompile Include="src\cards\curses\Sludge.cpp" />
     <ClCompile Include="src\cards\Envenom.cpp" />
     <ClCompile Include="src\cards\ExplosiveStrikes.cpp" />
     <ClCompile Include="src\cards\LifeAura.cpp" />
@@ -276,11 +277,13 @@
     <ClCompile Include="src\core\TextureLoader.cpp" />
     <ClCompile Include="src\enemies\AssassinRat.cpp" />
     <ClCompile Include="src\enemies\BlinkBug.cpp" />
+    <ClCompile Include="src\enemies\Blob.cpp" />
     <ClCompile Include="src\enemies\DoubleOoze.cpp" />
     <ClCompile Include="src\enemies\Enemy.cpp" />
     <ClCompile Include="src\enemies\EnemyIcon.cpp" />
     <ClCompile Include="src\enemies\EnemyInfo.cpp" />
     <ClCompile Include="src\enemies\Fight.cpp" />
+    <ClCompile Include="src\enemies\FireFly.cpp" />
     <ClCompile Include="src\enemies\HealerRat.cpp" />
     <ClCompile Include="src\enemies\HealthBar.cpp" />
     <ClCompile Include="src\enemies\JumpingOoze.cpp" />
@@ -293,6 +296,7 @@
     <ClCompile Include="src\enemies\ShieldRat.cpp" />
     <ClCompile Include="src\enemies\States\State.cpp" />
     <ClCompile Include="src\enemies\TankBeetle.cpp" />
+    <ClCompile Include="src\enemies\ToxicSlime.cpp" />
     <ClCompile Include="src\enemies\Wave.cpp" />
     <ClCompile Include="src\enemies\WitchRat.cpp" />
     <ClCompile Include="src\enemies\WrithingMass.cpp" />

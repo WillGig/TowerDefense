@@ -14,7 +14,7 @@ Current:
 			- Assassin rat - turns invisible and dashes forward
 
 		- Oozes
-			- Bigger oozes that split into mega oozes
+			- Mega ooze splits into double oozes
 			- Toxic slime - shuffles slime into deck
 
 		- Bugs
@@ -193,8 +193,9 @@ Notes:
 	- Runner Beetle	Dashes forward every few seconds
 
 	- Slime		Medium speed, medium health
-	- Ooze		Just as fast and over twice as tough
-	- Double Ooze	Splits into two Slimes when killed
+	- Blob		Twice as much health, dies into slime
+	- Ooze		Twice the health again, dies into blob
+	- Double Ooze	Splits into two Oozes when killed
 	- Mega Ooze	Slower than a normal ooze, but with tons of hp splits into two double oozes
 	- Jumping Ooze	Jumps every few seconds
 	- Doubler	Gains health slowly and divides when at double hp

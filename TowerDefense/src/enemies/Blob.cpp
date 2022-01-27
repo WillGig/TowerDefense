@@ -2,14 +2,14 @@
 #include "Enemies.h"
 #include "scenes/Combat.h"
 
-void TowerDefense::Enemy::Ooze::Destroy()
+void TowerDefense::Enemy::Blob::Destroy()
 {
 	Enemy::Destroy();
 
 	if (m_Health > 0)
 		return;
 
-	auto slime = std::make_shared<Blob>();
+	auto slime = std::make_shared<Slime>();
 	slime->SetDistanceTravelled(m_DistanceTraveled);
 	Combat::AddEntity(slime);
 }

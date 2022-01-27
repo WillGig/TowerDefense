@@ -231,6 +231,10 @@
     <ClCompile Include="src\scenes\base_scenes\skill_scenes\skill_trees\AlchemistDamage.cpp" />
     <ClCompile Include="src\scenes\base_scenes\skill_scenes\SkillScene.cpp" />
     <ClCompile Include="src\enemies\Ooze.cpp" />
+    <ClCompile Include="src\enemies\Blob.cpp" />
+    <ClCompile Include="src\cards\curses\Sludge.cpp" />
+    <ClCompile Include="src\enemies\ToxicSlime.cpp" />
+    <ClCompile Include="src\enemies\FireFly.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\artifacts\Artifact.h" />

@@ -387,16 +387,20 @@ void TowerDefense::LoadingScreen::LoadTextures(GLFWwindow* w)
 
     Load("Slime",                   enemies.load(0, 2), w);
     Load("SlimeSelected",           enemies.load(1, 2), w);
-    Load("Ooze",                    enemies.load(2, 2), w);
-    Load("OozeSelected",            enemies.load(3, 2), w);
-    Load("Double Ooze",             enemies.load(4, 2), w);
-    Load("Double OozeSelected",     enemies.load(5, 2), w);
-    Load("Mega Ooze",               enemies.load(6, 2), w);
-    Load("Mega OozeSelected",       enemies.load(7, 2), w);
+    Load("Blob",                    enemies.load(2, 2), w);
+    Load("BlobSelected",            enemies.load(3, 2), w);
+    Load("Ooze",                    enemies.load(4, 2), w);
+    Load("OozeSelected",            enemies.load(5, 2), w);
+    Load("Double Ooze",             enemies.load(6, 2), w);
+    Load("Double OozeSelected",     enemies.load(7, 2), w);
+    Load("Mega Ooze",               enemies.load(8, 2), w);
+    Load("Mega OozeSelected",       enemies.load(9, 2), w);
     Load("Jumping Ooze",            enemies.load(10, 2), w);
     Load("Jumping OozeSelected",    enemies.load(11, 2), w);
-    Load("Doubler",                 enemies.load(12, 2), w);
-    Load("DoublerSelected",         enemies.load(13, 2), w);
+    Load("Toxic Slime",             enemies.load(12, 2), w);
+    Load("Toxic SlimeSelected",     enemies.load(13, 2), w);
+    Load("Doubler",                 enemies.load(14, 2), w);
+    Load("DoublerSelected",         enemies.load(15, 2), w);
     Load("Writhing Mass",           enemies.load(0, 3), w);
     Load("Writhing MassSelected",   enemies.load(1, 3), w);
 
@@ -412,6 +416,12 @@ void TowerDefense::LoadingScreen::LoadTextures(GLFWwindow* w)
     Load("Runner BeetleSelected",   enemies.load(9, 4), w);
     Load("Tank Beetle",             enemies.load(10, 4), w);
     Load("Tank BeetleSelected",     enemies.load(11, 4), w);
+    Load("Gnat",                    enemies.load(12, 4), w);
+    Load("GnatSelected",            enemies.load(13, 4), w);
+    Load("Ankheg",                  enemies.load(0, 5), w);
+    Load("AnkhegSelected",          enemies.load(1, 5), w);
+    Load("Fire Fly",                enemies.load(2, 5), w);
+    Load("Fire FlySelected",        enemies.load(3, 5), w);
 
     Load("Goblin",                  enemies.load(0, 6), w);
     Load("GoblinSelected",          enemies.load(1, 6), w);
@@ -507,6 +517,8 @@ void TowerDefense::LoadingScreen::LoadTextures(GLFWwindow* w)
     Load("InfectionUpgraded",   curses.load(5, 0), w);
     Load("Hex",                 curses.load(6, 0), w);
     Load("HexUpgraded",         curses.load(7, 0), w);
+    Load("Sludge",              curses.load(0, 1), w);
+    Load("SludgeUpgraded",      curses.load(1, 1), w);
 
     SpriteSheet cardInfo("res/textures/InfoTiles.png", 440, 170);
     Load("SummonInfo",      cardInfo.load(0, 0), w);
