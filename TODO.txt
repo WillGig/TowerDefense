@@ -15,7 +15,7 @@ Current:
 
 		- Oozes
 			- Mega ooze splits into double oozes
-			- Toxic slime - shuffles slime into deck
+			- Toxic slime - shuffles sludge into deck
 
 		- Bugs
 			- Gnats - invisible and fast
