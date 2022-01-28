@@ -1,7 +1,4 @@
 Current:
-
-	Add option to delete saved games	
-
 	Add more skills to skill trees
 	Change skills to skill points instead of gold
 

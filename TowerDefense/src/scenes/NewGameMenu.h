@@ -14,7 +14,7 @@ namespace TowerDefense
 		bool m_Confirming;
 		int m_ConfirmingSlot;
 
-		std::array<std::unique_ptr<TowerDefense::Button>, 6> m_Buttons;
+		std::array<std::unique_ptr<TowerDefense::Button>, 9> m_Buttons;
 
 		std::unique_ptr<Text> m_Title, m_Save1Info, m_Save2Info, m_Save3Info, m_ConfirmText;
 

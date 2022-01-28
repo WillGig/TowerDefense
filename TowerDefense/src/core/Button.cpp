@@ -44,4 +44,9 @@ void TowerDefense::Button::SetImages(const std::string& image)
 {
 	m_RegularImage = std::make_shared<Image>(image, m_X, m_Y, m_Width, m_Height, 0.0f);
 	m_SelectedImage = std::make_shared<Image>(image + "Selected", m_X, m_Y, m_Width, m_Height, 0.0f);
+
+	if (m_Selected)
+		SetImage(m_SelectedImage);
+	else
+		SetImage(m_RegularImage);
 }

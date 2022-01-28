@@ -38,6 +38,10 @@ void TowerDefense::LoadingScreen::LoadTextures(GLFWwindow* w)
     Load("menuCancel",              mainMenuButtons.load(2, 6), w);
     Load("menuCancelSelected",      mainMenuButtons.load(3, 6), w);
 
+    SpriteSheet xButton("res/textures/XButton.png", 50, 50);
+    Load("xButton",                     xButton.load(0, 0), w);
+    Load("xButtonSelected",             xButton.load(1, 0), w);
+
     SpriteSheet baseButtons("res/textures/BaseButtons.png", 180, 50);
     Load("confirmButton",               baseButtons.load(0, 0), w);
     Load("confirmButtonSelected",       baseButtons.load(1, 0), w);
@@ -650,7 +654,7 @@ void TowerDefense::LoadingScreen::Load(const std::string& path, std::shared_ptr<
     numLoaded++;
 
     //Render loadbar and text if percent has changed
-    int percent = (int)(((float)numLoaded / 559.0f)*100.0f);
+    int percent = (int)(((float)numLoaded / 561.0f) * 100.0f);
     if (loadPercent != percent)
     {
         RenderProgress(window, "Loading... " + loadCategory, percent);
