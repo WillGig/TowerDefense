@@ -500,6 +500,8 @@ void TowerDefense::Load::LoadGame(int slot)
 					player.AddArtifactWithoutTrigger(std::make_shared<MagicalGenerator>());
 				else
 					std::cout << "Error: Artifact " << name << " does not exist" << std::endl;
+
+				Artifact::RemoveFromPool(name);
 			}
 
 			//Buildings

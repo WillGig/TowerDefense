@@ -37,6 +37,18 @@ std::shared_ptr<TowerDefense::Artifact> TowerDefense::Artifact::GetRandomArtifac
 	return a;
 }
 
+void TowerDefense::Artifact::RemoveFromPool(const std::string& artifact)
+{
+	for (unsigned int i = 0; i < s_Artifacts->size(); i++)
+	{
+		if (s_Artifacts->at(i)->GetName() == artifact)
+		{
+			s_Artifacts->erase(s_Artifacts->begin() + i);
+			return;
+		}
+	}
+}
+
 void TowerDefense::Artifact::CleanUp()
 {
 	s_Artifacts->clear();

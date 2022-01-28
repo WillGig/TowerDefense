@@ -53,6 +53,9 @@ void TowerDefense::LoadMenu::Update()
 
 void TowerDefense::LoadMenu::OnSwitch()
 {
+	for (int i = 0; i < m_Buttons.size(); i++)
+		m_Buttons[i]->SetSelected(false);
+
 	std::ifstream save1("res/saves/save1.dat");
 	if (save1.is_open())
 	{

@@ -1,11 +1,13 @@
 Current:
-	
+
+	Add option to delete saved games	
+
 	Add more skills to skill trees
 	Change skills to skill points instead of gold
 
 	Add second towers for buildings
 	 - music hall		Singer(replaces monk)/siren
-	 - wizard tower 	Sorcerer/scholar?
+	 - wizard tower 	Sorcerer/scholar(replaces monk?)?
 	 - alchemy lab		Tinkerer?
 
 	-More Enemies(Days 21-30):

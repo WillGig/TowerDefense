@@ -37,6 +37,7 @@ namespace TowerDefense
 		inline const std::string& GetName() const { return m_Name; }
 
 		static std::shared_ptr<Artifact> GetRandomArtifact();
+		static void RemoveFromPool(const std::string& artifact);
 		static void CleanUp();
 
 	private:
