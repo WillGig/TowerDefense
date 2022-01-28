@@ -114,7 +114,7 @@ namespace TowerDefense
 		{
 		public:
 			Ooze()
-				:Enemy(32, 32, 28.0f, 0.6f, 8, "Ooze", 3)
+				:Enemy(32, 32, 28.0f, 0.6f, 8, "Ooze", 5)
 			{}
 
 		private:
@@ -125,7 +125,7 @@ namespace TowerDefense
 		{
 		public:
 			DoubleOoze()
-				:Enemy(48, 48, 50.0f, 0.5f, 10, "Double Ooze", 3)
+				:Enemy(48, 48, 50.0f, 0.5f, 10, "Double Ooze", 7)
 			{}
 
 		private:
