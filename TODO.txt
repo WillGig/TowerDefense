@@ -1,10 +1,17 @@
 Current:
+	
+	Show wave number during combat
+	
+	Change monk to scholar - add upgrades at wizard tower
+
+	Change towers to single use?
+
 	Add more skills to skill trees
 	Change skills to skill points instead of gold
 
 	Add second towers for buildings
-	 - music hall		Singer(replaces monk)/siren
-	 - wizard tower 	Sorcerer/scholar(replaces monk?)?
+	 - music hall		Singer/siren
+	 - wizard tower 	Scholar(replaces monk)
 	 - alchemy lab		Tinkerer?
 
 	-More Enemies(Days 21-30):

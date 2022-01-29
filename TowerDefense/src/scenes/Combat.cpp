@@ -544,7 +544,7 @@ void TowerDefense::Combat::OnEnemyDeath(unsigned int id)
 //Should be called once at the beginning of a run to generate the set of combats
 void TowerDefense::Combat::GenerateFights()
 {
-	std::vector<int> fightOrder(23);
+	std::vector<int> fightOrder(26);
 
 	std::vector<int> pool1{ 0,1,2 };
 	std::vector<int> pool2{ 0,1,2 };
@@ -555,6 +555,7 @@ void TowerDefense::Combat::GenerateFights()
 	std::vector<int> pool7{ 0,1,2 };
 	std::vector<int> pool8{ 0,1,2 };
 	std::vector<int> pool9{ 0,1,2 };
+	std::vector<int> pool10{ 0,1,2 };
 
 
 	int fight = (int)(Random::GetFloat() * pool1.size());
@@ -648,6 +649,18 @@ void TowerDefense::Combat::GenerateFights()
 	fight = (int)(Random::GetFloat() * pool9.size());
 	fightOrder[22] = pool9[fight];
 	pool9.erase(pool9.begin() + fight);
+
+	fight = (int)(Random::GetFloat() * pool10.size());
+	fightOrder[23] = pool10[fight];
+	pool10.erase(pool10.begin() + fight);
+
+	fight = (int)(Random::GetFloat() * pool10.size());
+	fightOrder[24] = pool10[fight];
+	pool10.erase(pool10.begin() + fight);
+
+	fight = (int)(Random::GetFloat() * pool10.size());
+	fightOrder[25] = pool10[fight];
+	pool10.erase(pool10.begin() + fight);
 
 	GenerateFightsFromOrder(fightOrder);
 }
@@ -1023,6 +1036,52 @@ void TowerDefense::Combat::GenerateFightsFromOrder(std::vector<int> fightOrder)
 	waves->push_back(std::make_shared<Wave>(enemies117, 22));
 	pool9.push_back(std::make_shared<Fight>(waves));
 
+	//Day 24-27
+	std::vector<std::shared_ptr<Fight>> pool10;
+	//Rats
+	waves = std::make_shared<std::vector<std::shared_ptr<Wave>>>();
+	const int enemies118[] = { PLAGUERAT, 0, PLAGUERAT, 100, PLAGUERAT, 100, PLAGUERAT, 100, PLAGUERAT, 100 };
+	const int enemies119[] = { PLAGUERAT, 0, PLAGUERAT, 30, PLAGUERAT, 30, PLAGUERAT, 30, WITCHRAT, 60, WITCHRAT, 30 };
+	const int enemies120[] = { PLAGUERAT, 0, ASSASSINRAT, 100, PLAGUERAT, 100, ASSASSINRAT, 100, PLAGUERAT, 100, ASSASSINRAT, 100, PLAGUERAT, 100 };
+	const int enemies121[] = { WITCHRAT, 0, WITCHRAT, 60, SHIELDRAT, 120, SHIELDRAT, 30, SHIELDRAT, 30, WITCHRAT, 60, WITCHRAT, 60, WITCHRAT, 60 };
+	const int enemies122[] = { ASSASSINRAT, 0, ASSASSINRAT, 50, ASSASSINRAT, 50, BOSSRAT, 100, BOSSRAT, 100, ASSASSINRAT, 0, ASSASSINRAT, 50, ASSASSINRAT, 50 };
+	waves->push_back(std::make_shared<Wave>(enemies118, 10));
+	waves->push_back(std::make_shared<Wave>(enemies119, 12));
+	waves->push_back(std::make_shared<Wave>(enemies120, 14));
+	waves->push_back(std::make_shared<Wave>(enemies121, 16));
+	waves->push_back(std::make_shared<Wave>(enemies122, 16));
+	pool10.push_back(std::make_shared<Fight>(waves));
+
+	//Oozes
+	waves = std::make_shared<std::vector<std::shared_ptr<Wave>>>();
+	const int enemies123[] = { TOXICSLIME, 0, TOXICSLIME, 60, TOXICSLIME, 60, TOXICSLIME, 60, TOXICSLIME, 60 };
+	const int enemies124[] = { TOXICSLIME, 0, TOXICSLIME, 30, TOXICSLIME, 30, OOZE, 60, OOZE, 30, OOZE, 30, DOUBLEOOZE, 60, DOUBLEOOZE, 60 };
+	const int enemies125[] = { TOXICSLIME, 0, DOUBLEOOZE, 60, TOXICSLIME, 60, DOUBLEOOZE, 60, TOXICSLIME, 60, DOUBLEOOZE, 60 };
+	const int enemies126[] = { DOUBLEOOZE, 0, DOUBLEOOZE, 30,  JUMPINGOOZE, 60, JUMPINGOOZE, 20, JUMPINGOOZE, 20, JUMPINGOOZE, 20, JUMPINGOOZE, 20, MEGAOOZE, 60, MEGAOOZE, 60};
+	const int enemies127[] = { SLIME, 0, SLIME, 20, SLIME, 20, BLOB, 60, BLOB, 20, BLOB, 20, OOZE, 60, OOZE, 20, OOZE, 20, DOUBLEOOZE, 60, DOUBLEOOZE, 20, DOUBLEOOZE, 20, MEGAOOZE, 60, MEGAOOZE, 60, MEGAOOZE, 60 };
+	waves->push_back(std::make_shared<Wave>(enemies123, 10));
+	waves->push_back(std::make_shared<Wave>(enemies124, 16));
+	waves->push_back(std::make_shared<Wave>(enemies125, 12));
+	waves->push_back(std::make_shared<Wave>(enemies126, 18));
+	waves->push_back(std::make_shared<Wave>(enemies127, 30));
+	pool10.push_back(std::make_shared<Fight>(waves));
+
+	//Bugs
+	waves = std::make_shared<std::vector<std::shared_ptr<Wave>>>();
+	const int enemies128[] = { FIREFLY, 0, FIREFLY, 60, FIREFLY, 60, FIREFLY, 60, FIREFLY, 60, FIREFLY, 60 };
+	const int enemies129[] = { GNAT, 0, GNAT, 100, GNAT, 100, GNAT, 100, GNAT, 100 };
+	const int enemies130[] = { TANKBEETLE, 0, TANKBEETLE, 30, TANKBEETLE, 30, GNAT, 60, GNAT, 20, GNAT, 20, GNAT, 20, GNAT, 20 };
+	const int enemies131[] = { BEETLE, 0, BEETLE, 10, BEETLE, 10, BEETLE, 10, BEETLE, 10, BEETLE, 10, BEETLE, 10, BEETLE, 10, BEETLE, 10, BEETLE, 10,
+		BLINKBUG, 60, BLINKBUG, 10, BLINKBUG, 10, BLINKBUG, 10, BLINKBUG, 10, BLINKBUG, 10, BLINKBUG, 10, BLINKBUG, 10, BLINKBUG, 10, BLINKBUG, 10, 
+		GNAT, 60, GNAT, 20, GNAT,  GNAT, 20, GNAT, 20, GNAT, 20, GNAT, 20, GNAT, 20, GNAT, 20, GNAT, 20 };
+	const int enemies132[] = { ANKHEG, 0, ANKHEG, 30, ANKHEG, 30, GNAT, 30, GNAT, 30, GNAT, 30, ANKHEG, 30, ANKHEG, 30, ANKHEG, 30 };
+	waves->push_back(std::make_shared<Wave>(enemies128, 12));
+	waves->push_back(std::make_shared<Wave>(enemies129, 10));
+	waves->push_back(std::make_shared<Wave>(enemies130, 16));
+	waves->push_back(std::make_shared<Wave>(enemies131, 60));
+	waves->push_back(std::make_shared<Wave>(enemies132, 18));
+	pool10.push_back(std::make_shared<Fight>(waves));
+
 	//determine combats from random pool
 	s_Fights->push_back(pool1[fightOrder[0]]);
 	s_Fights->push_back(pool1[fightOrder[1]]);
@@ -1047,4 +1106,7 @@ void TowerDefense::Combat::GenerateFightsFromOrder(std::vector<int> fightOrder)
 	s_Fights->push_back(pool9[fightOrder[20]]);
 	s_Fights->push_back(pool9[fightOrder[21]]);
 	s_Fights->push_back(pool9[fightOrder[22]]);
+	s_Fights->push_back(pool9[fightOrder[23]]);
+	s_Fights->push_back(pool9[fightOrder[24]]);
+	s_Fights->push_back(pool9[fightOrder[25]]);
 }
