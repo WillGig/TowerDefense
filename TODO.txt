@@ -1,7 +1,5 @@
 Current:
 	
-	Show wave number during combat
-	
 	Change monk to scholar - add upgrades at wizard tower
 
 	Change towers to single use?

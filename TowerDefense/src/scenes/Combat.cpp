@@ -47,6 +47,8 @@ void TowerDefense::Combat::Render()
 	m_StartButton->Render();
 	m_SpeedButton->Render();
 
+	m_WaveNumber->Render();
+
 	for (unsigned int i = 0; i < s_Auras->size(); i++)
 		s_Auras->at(i)->Render();
 
@@ -145,6 +147,9 @@ void TowerDefense::Combat::OnSwitch()
 	m_TurnPhase = Phase::START;
 
 	m_StartButton->SetImages("startButton");
+	m_WaveNumber = std::make_unique<Text>("Wave: 1/" + 
+		std::to_string(s_Fights->at(s_CurrentFight + 1)->GetNumberOfWaves()), 76.0f, 120.0f, 14.0f, 0.0f);
+
 	m_SelectedTower.reset();
 	s_TowerInfo.reset();
 	m_SelectedEnemy.reset();
@@ -303,6 +308,9 @@ void TowerDefense::Combat::UpdateButtons()
 				m_TurnPhase = Phase::START;
 				Player::Get().DrawHand();
 				m_StartButton->SetImages("startButton");
+				auto fight = s_Fights->at(s_CurrentFight);
+				m_WaveNumber = std::make_unique<Text>("Wave: " + std::to_string(fight->GetCurrentWave() + 2) + "/"
+					+ std::to_string(fight->GetNumberOfWaves()), 76.0f, 120.0f, 14.0f, 0.0f);
 			}
 		}
 	}

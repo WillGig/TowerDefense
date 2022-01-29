@@ -93,7 +93,11 @@ namespace TowerDefense
 
 		static int s_CurrentFight;
 		Phase m_TurnPhase;
+
 		std::unique_ptr<Button> m_StartButton, m_SpeedButton;
+
+		std::unique_ptr<Text> m_WaveNumber;
+
 		std::shared_ptr<Tower::Tower> m_SelectedTower;
 		std::shared_ptr<Enemy::Enemy> m_SelectedEnemy;
 

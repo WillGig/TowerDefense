@@ -11,7 +11,8 @@ namespace TowerDefense
 		inline std::shared_ptr<Wave> GetWave() const {return m_CurrentWave == -1 ? nullptr : m_Waves->at(m_CurrentWave); }
 		inline std::shared_ptr<Wave> GetWave(int index) const { return m_Waves->at(index); }
 		inline void NextWave() { m_CurrentWave++; }
-		inline int NumberOfWaves() const { return (int)m_Waves->size(); }
+		inline int GetCurrentWave() const { return m_CurrentWave; }
+		inline int GetNumberOfWaves() const { return (int)m_Waves->size(); }
 
 		std::unordered_map<std::string, std::pair<int, int>> m_DefeatedEnemies, m_EscapedEnemies;
 		void AddDefeatedEnemy(const Enemy::Enemy& e);

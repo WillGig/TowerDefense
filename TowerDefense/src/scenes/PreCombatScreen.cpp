@@ -91,7 +91,7 @@ void TowerDefense::PreCombatScreen::OnSwitch()
 
 	auto fight = Combat::GetNextFight();
 
-	for (int i = 0; i < fight->NumberOfWaves(); i++)
+	for (int i = 0; i < fight->GetNumberOfWaves(); i++)
 	{
 		auto wave = fight->GetWave(i);
 		for (int j = 0; j < wave->NumberOfEnemies(); j++)
