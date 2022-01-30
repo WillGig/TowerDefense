@@ -27,8 +27,9 @@ namespace TowerDefense
 		private:
 			std::string m_Name;
 
-			static std::shared_ptr<Quirk> GetRandomQuirk(QuirkType type, std::shared_ptr<std::vector<std::shared_ptr<Quirk>>> exclude);
-			static bool Contains(std::shared_ptr<std::vector<std::shared_ptr<Quirk>>> quirks, std::shared_ptr<Quirk> q);
+			static std::shared_ptr<Quirk> GetRandomRace();
+			static std::shared_ptr<Quirk> GetRandomPositiveQuirk(std::shared_ptr<Quirk> exclude);
+			static std::shared_ptr<Quirk> GetRandomNegativeQuirk();
 		};
 
 		//RACES
