@@ -231,6 +231,8 @@ void TowerDefense::LoadingScreen::LoadTextures(GLFWwindow* w)
     Load("multishotUpgradeSelected",        towerUpgrades.load(6, 1), w);
     Load("moreFocusUpgrade",                towerUpgrades.load(7, 0), w);
     Load("moreFocusUpgradeSelected",        towerUpgrades.load(7, 1), w);
+    Load("heightenedSensesUpgrade",         towerUpgrades.load(8, 0), w);
+    Load("heightenedSensesUpgradeSelected", towerUpgrades.load(8, 1), w);
     Load("elementalistUpgrade",             towerUpgrades.load(0, 2), w);
     Load("elementalistUpgradeSelected",     towerUpgrades.load(0, 3), w);
     Load("conjurerUpgrade",                 towerUpgrades.load(1, 2), w);
@@ -658,7 +660,7 @@ void TowerDefense::LoadingScreen::Load(const std::string& path, std::shared_ptr<
     numLoaded++;
 
     //Render loadbar and text if percent has changed
-    int percent = (int)(((float)numLoaded / 565.0f) * 100.0f);
+    int percent = (int)(((float)numLoaded / 571.0f) * 100.0f);
     if (loadPercent != percent)
     {
         RenderProgress(window, "Loading... " + loadCategory, percent);

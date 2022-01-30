@@ -72,6 +72,15 @@ void TowerDefense::Tower::Range::UpgradeTower(std::shared_ptr<Tower> t)
 	t->SetLevel(t->GetLevel() + 1);
 }
 
+TowerDefense::Tower::HeightenedSenses::HeightenedSenses()
+	:Upgrade("heightenedSensesUpgrade", "Tower can now see\ninvisible enemies")
+{}
+
+void TowerDefense::Tower::HeightenedSenses::UpgradeTower(std::shared_ptr<Tower> t)
+{
+	t->SetSeeInvisilitity(true);
+}
+
 TowerDefense::Tower::MoreMissiles::MoreMissiles()
 	:Upgrade("moreMissilesUpgrade", "Increase number of\nmissiles by 1")
 {}

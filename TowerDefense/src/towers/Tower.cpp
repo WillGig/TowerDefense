@@ -135,7 +135,7 @@ void TowerDefense::Tower::Tower::SetRange(int range)
 
 
 //Returns 3 random upgrades to choose from for hero towers
-std::shared_ptr<TowerDefense::CardChoice> TowerDefense::Tower::Tower::GetUpgrades()
+/*std::shared_ptr<TowerDefense::CardChoice> TowerDefense::Tower::Tower::GetUpgrades()
 {
 	auto upgrades = std::make_shared<std::vector<std::shared_ptr<Card>>>();
 
@@ -143,7 +143,7 @@ std::shared_ptr<TowerDefense::CardChoice> TowerDefense::Tower::Tower::GetUpgrade
 		upgrades->push_back(GetRandomUpgrade(upgrades));
 
 	return std::make_shared<CardChoice>(upgrades, -1);
-}
+}*/
 
 std::shared_ptr<std::vector<std::shared_ptr<TowerDefense::Tower::Upgrade>>> TowerDefense::Tower::Tower::GetTowerUpgrades()
 {
@@ -162,7 +162,7 @@ std::shared_ptr<std::vector<std::shared_ptr<TowerDefense::Tower::Upgrade>>> Towe
 
 //Generates random upgrade, excluding already chosen types of upgrades
 //Can be overwritten in specific tower classes to customize buffs to specific towers
-std::shared_ptr<TowerDefense::Card> TowerDefense::Tower::Tower::GetRandomUpgrade(std::shared_ptr<std::vector<std::shared_ptr<Card>>> exclude)
+/*std::shared_ptr<TowerDefense::Card> TowerDefense::Tower::Tower::GetRandomUpgrade(std::shared_ptr<std::vector<std::shared_ptr<Card>>> exclude)
 {
 	std::shared_ptr<Card> card;
 
@@ -177,7 +177,7 @@ std::shared_ptr<TowerDefense::Card> TowerDefense::Tower::Tower::GetRandomUpgrade
 	}
 
 	return card;
-}
+}*/
 
 std::shared_ptr<std::vector<std::shared_ptr<TowerDefense::Tower::Upgrade>>> TowerDefense::Tower::Tower::GetPossibleUpgrades()
 {
@@ -185,7 +185,9 @@ std::shared_ptr<std::vector<std::shared_ptr<TowerDefense::Tower::Upgrade>>> Towe
 	upgrades->push_back(std::make_shared<AttackSpeed>());
 	upgrades->push_back(std::make_shared<Damage>());
 	upgrades->push_back(std::make_shared<Range>());
-	upgrades->push_back(std::make_shared<Crit>());
+	
+	if (!CanSeeInvisibility())
+		upgrades->push_back(std::make_shared<HeightenedSenses>());
 
 	return upgrades;
 }

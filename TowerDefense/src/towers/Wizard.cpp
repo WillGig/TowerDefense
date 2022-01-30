@@ -83,10 +83,7 @@ std::shared_ptr<std::vector<std::shared_ptr<TowerDefense::Tower::Upgrade>>> Towe
 
 	if (GetLevel() < 4)
 	{
-		upgrades->push_back(std::make_shared<AttackSpeed>());
-		upgrades->push_back(std::make_shared<Damage>());
-		upgrades->push_back(std::make_shared<Range>());
-		upgrades->push_back(std::make_shared<Crit>());
+		upgrades = Tower::GetPossibleUpgrades();
 		upgrades->push_back(std::make_shared<MoreMissiles>());
 	}
 	else if(GetLevel() == 4)
@@ -97,10 +94,7 @@ std::shared_ptr<std::vector<std::shared_ptr<TowerDefense::Tower::Upgrade>>> Towe
 	}
 	else
 	{
-		upgrades->push_back(std::make_shared<AttackSpeed>());
-		upgrades->push_back(std::make_shared<Damage>());
-		upgrades->push_back(std::make_shared<Range>());
-		upgrades->push_back(std::make_shared<Crit>());
+		upgrades = Tower::GetPossibleUpgrades();
 		upgrades->push_back(std::make_shared<MoreMissiles>());
 	}
 

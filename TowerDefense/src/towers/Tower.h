@@ -78,7 +78,7 @@ namespace TowerDefense
 
 			virtual bool CanUpgrade() = 0;
 
-			std::shared_ptr<CardChoice> GetUpgrades();
+			//std::shared_ptr<CardChoice> GetUpgrades();
 
 			std::shared_ptr<std::vector<std::shared_ptr<Upgrade>>> GetTowerUpgrades();
 
@@ -98,7 +98,7 @@ namespace TowerDefense
 			float FindDirection(float x, float y);
 			bool ContainsCard(std::shared_ptr<std::vector<std::shared_ptr<Card>>> exclude, std::shared_ptr<Card> card);
 			bool ContainsUpgrade(std::shared_ptr<std::vector<std::shared_ptr<Upgrade>>> exclude, std::shared_ptr<Upgrade> upgrade);
-			virtual std::shared_ptr<Card> GetRandomUpgrade(std::shared_ptr<std::vector<std::shared_ptr<Card>>> exclude);
+			//virtual std::shared_ptr<Card> GetRandomUpgrade(std::shared_ptr<std::vector<std::shared_ptr<Card>>> exclude);
 			virtual std::shared_ptr<std::vector<std::shared_ptr<Upgrade>>> GetPossibleUpgrades();
 
 			DamageType m_DamageType;

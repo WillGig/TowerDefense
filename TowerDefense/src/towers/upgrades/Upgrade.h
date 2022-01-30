@@ -64,6 +64,14 @@ namespace TowerDefense
 			void UpgradeTower(std::shared_ptr<Tower> t) override;
 		};
 
+		class HeightenedSenses : public Upgrade
+		{
+		public:
+			HeightenedSenses();
+
+			void UpgradeTower(std::shared_ptr<Tower> t) override;
+		};
+
 		class ArmorPen : public Upgrade
 		{
 		public:

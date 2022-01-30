@@ -21,7 +21,7 @@ TowerDefense::HeroCard::HeroCard(const std::string& name, const std::string& tex
 	m_Tower->SetName(name);
 
 	//Generate upgrade choices for tower
-	m_Upgrades = m_Tower->GetUpgrades();
+	//m_Upgrades = m_Tower->GetUpgrades();
 
 	//Apply effects of quirks
 	if (m_Quirks)
@@ -74,8 +74,8 @@ void TowerDefense::HeroCard::RenderCardDetails()
 void TowerDefense::HeroCard::Upgrade()
 {
 	m_Level++;
-	std::dynamic_pointer_cast<TowerDefense::Upgrade>(m_Upgrades->GetSelectedCard())->UpgradeHero(*this);
-	m_Upgrades = m_Tower->GetUpgrades();
+	//std::dynamic_pointer_cast<TowerDefense::Upgrade>(m_Upgrades->GetSelectedCard())->UpgradeHero(*this);
+	//m_Upgrades = m_Tower->GetUpgrades();
 }
 
 bool TowerDefense::HeroCard::CanPlay()

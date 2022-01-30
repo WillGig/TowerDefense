@@ -1,7 +1,8 @@
 Current:
+	Change how quirks are randomly selected
+
 	Add more ways to deal with invisibility
 	 - Watchguard?
-	 - invisibility upgrade
 	 - skill tree options?	
 
 	Change monk to scholar - add upgrades at wizard tower
