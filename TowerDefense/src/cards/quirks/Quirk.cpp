@@ -96,7 +96,7 @@ std::shared_ptr<TowerDefense::Quirk::Quirk> TowerDefense::Quirk::Quirk::GetRando
 	{
 		while (!q || Contains(exclude, q)) 
 		{
-			int quirkNumber = (int)(Random::GetFloat() * 9.0f);
+			int quirkNumber = (int)(Random::GetFloat() * 10.0f);
 			if (quirkNumber == 0)
 				q = std::make_shared<BattleReady>();
 			else if (quirkNumber == 1)
@@ -115,6 +115,8 @@ std::shared_ptr<TowerDefense::Quirk::Quirk> TowerDefense::Quirk::Quirk::GetRando
 				q = std::make_shared<Fighter>();
 			else if (quirkNumber == 8)
 				q = std::make_shared<Berserker>();
+			else if (quirkNumber == 9)
+				q = std::make_shared<SuperSenses>();
 		}
 	}
 	else {

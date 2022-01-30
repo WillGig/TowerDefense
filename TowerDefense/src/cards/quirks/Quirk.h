@@ -161,6 +161,14 @@ namespace TowerDefense
 			std::shared_ptr<Quirk> Clone() override;
 		};
 
+		class SuperSenses : public Quirk
+		{
+		public:
+			SuperSenses();
+			void Apply(TowerDefense::HeroCard& h) override;
+			std::shared_ptr<Quirk> Clone() override;
+		};
+
 		//NEGATIVE
 		class Nearsighted : public Quirk
 		{

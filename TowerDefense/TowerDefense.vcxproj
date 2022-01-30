@@ -238,6 +238,7 @@
     <ClCompile Include="src\cards\quirks\JustLucky.cpp" />
     <ClCompile Include="src\cards\quirks\Sage.cpp" />
     <ClCompile Include="src\cards\quirks\SpellWeaver.cpp" />
+    <ClCompile Include="src\cards\quirks\SuperSenses.cpp" />
     <ClCompile Include="src\cards\quirks\Veteran.cpp" />
     <ClCompile Include="src\cards\Recharge.cpp" />
     <ClCompile Include="src\cards\Reflect.cpp" />

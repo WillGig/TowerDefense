@@ -552,6 +552,7 @@ void TowerDefense::LoadingScreen::LoadTextures(GLFWwindow* w)
     Load("Sage",            cardInfo.load(1, 5), w);
     Load("Fighter",         cardInfo.load(2, 5), w);
     Load("Berserker",       cardInfo.load(3, 5), w);
+    Load("Super Senses",    cardInfo.load(0, 6), w);
 
     SpriteSheet heroImages("res/textures/HeroImages.png", 440, 560);
     Load("humanMale",       heroImages.load(0, 0), w);
