@@ -233,5 +233,14 @@ namespace TowerDefense
 		private:
 			float m_Damage;
 		};
+
+		class Sight : public Aura
+		{
+		public:
+			Sight();
+			void OnCardPlay(std::shared_ptr<Card> c) override;
+			void Combine(std::shared_ptr<Aura> other) override;
+			const std::string GetSaveData() const override;
+		};
 	}
 }

@@ -210,6 +210,7 @@
     <ClCompile Include="src\Auras\MultiShot.cpp" />
     <ClCompile Include="src\auras\MusicPower.cpp" />
     <ClCompile Include="src\auras\PoisonWeapons.cpp" />
+    <ClCompile Include="src\auras\Sight.cpp" />
     <ClCompile Include="src\auras\Storm.cpp" />
     <ClCompile Include="src\auras\StunAttacks.cpp" />
     <ClCompile Include="src\auras\WizardDamage.cpp" />
@@ -218,6 +219,7 @@
     <ClCompile Include="src\cards\curses\Hex.cpp" />
     <ClCompile Include="src\cards\curses\Infection.cpp" />
     <ClCompile Include="src\cards\curses\Sludge.cpp" />
+    <ClCompile Include="src\cards\EchoLocation.cpp" />
     <ClCompile Include="src\cards\Envenom.cpp" />
     <ClCompile Include="src\cards\ExplosiveStrikes.cpp" />
     <ClCompile Include="src\cards\LifeAura.cpp" />

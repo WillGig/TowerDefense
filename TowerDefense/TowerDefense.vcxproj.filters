@@ -235,6 +235,8 @@
     <ClCompile Include="src\cards\curses\Sludge.cpp" />
     <ClCompile Include="src\enemies\ToxicSlime.cpp" />
     <ClCompile Include="src\enemies\FireFly.cpp" />
+    <ClCompile Include="src\auras\Sight.cpp" />
+    <ClCompile Include="src\cards\EchoLocation.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\artifacts\Artifact.h" />

@@ -196,6 +196,7 @@ void TowerDefense::LoadingScreen::LoadTextures(GLFWwindow* w)
     Load("multiShot",           auras.load(0, 1), w);
     Load("critChance",          auras.load(1, 1), w);
     Load("critDamage",          auras.load(2, 1), w);
+    Load("sight",               auras.load(3, 1), w);
 
     SpriteSheet plusMinus("res/textures/PlusMinus.png", 64, 64);
     Load("plus",            plusMinus.load(0, 0), w);
@@ -507,10 +508,12 @@ void TowerDefense::LoadingScreen::LoadTextures(GLFWwindow* w)
     Load("theFloorIsLavaUpgraded",      auraCards.load(7, 0), w);
     Load("strongPoisons",               auraCards.load(0, 1), w);
     Load("strongPoisonsUpgraded",       auraCards.load(1, 1), w);
-    Load("explosiveStrikes",            auraCards.load(2, 1), w);
-    Load("explosiveStrikesUpgraded",    auraCards.load(3, 1), w);
-    Load("lightningStorm",              auraCards.load(4, 1), w);
-    Load("lightningStormUpgraded",      auraCards.load(5, 1), w);
+    Load("echoLocation",                auraCards.load(2, 1), w);
+    Load("echoLocationUpgraded",        auraCards.load(3, 1), w);
+    Load("explosiveStrikes",            auraCards.load(4, 1), w);
+    Load("explosiveStrikesUpgraded",    auraCards.load(5, 1), w);
+    Load("lightningStorm",              auraCards.load(6, 1), w);
+    Load("lightningStormUpgraded",      auraCards.load(7, 1), w);
 
     SpriteSheet curses("res/textures/Curses.png", 440, 560);
     Load("Flames",              curses.load(0, 0), w);
@@ -654,7 +657,7 @@ void TowerDefense::LoadingScreen::Load(const std::string& path, std::shared_ptr<
     numLoaded++;
 
     //Render loadbar and text if percent has changed
-    int percent = (int)(((float)numLoaded / 561.0f) * 100.0f);
+    int percent = (int)(((float)numLoaded / 565.0f) * 100.0f);
     if (loadPercent != percent)
     {
         RenderProgress(window, "Loading... " + loadCategory, percent);

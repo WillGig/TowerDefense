@@ -98,7 +98,7 @@ std::shared_ptr<TowerDefense::Card> TowerDefense::Card::GetCommonCard()
 
 std::shared_ptr<TowerDefense::Card> TowerDefense::Card::GetUncommonCard()
 {
-	int randomCard = (int)(Random::GetFloat() * 12);
+	int randomCard = (int)(Random::GetFloat() * 13);
 
 	if (randomCard == 0)
 		return std::make_shared<Gather>();
@@ -122,6 +122,8 @@ std::shared_ptr<TowerDefense::Card> TowerDefense::Card::GetUncommonCard()
 		return std::make_shared<GiantCard>();
 	else if (randomCard == 10)
 		return std::make_shared<ClericCard>();
+	else if (randomCard == 11)
+		return std::make_shared<EchoLocation>();
 	else
 		return std::make_shared<PaladinCard>();
 }
@@ -214,6 +216,8 @@ std::shared_ptr<TowerDefense::Card> TowerDefense::Card::GetCardFromName(const st
 		return std::make_shared<ExplosiveStrikes>();
 	else if (name == "Lightning Storm")
 		return std::make_shared<LightningStorm>();
+	else if (name == "Echo Location")
+		return std::make_shared<EchoLocation>();
 	else
 		return nullptr;
 }

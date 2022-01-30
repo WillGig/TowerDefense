@@ -340,6 +340,10 @@ void TowerDefense::Load::LoadGame(int slot)
 					float damage = std::stof(line);
 					player.AddCombatAura(std::make_shared<Aura::WizardDamage>(damage));
 				}
+				else if (name == "Sight")
+				{
+					player.AddCombatAura(std::make_shared<Aura::Sight>());
+				}
 			}
 
 			//Combats

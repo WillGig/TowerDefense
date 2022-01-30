@@ -87,6 +87,7 @@ Soon:
 	Allow right clicking on smithing upgrades to show detailed versions of cards
 
 Long Term:
+	Specific bosses for every 10 days for each faction
 	No duplicate cards in card selections\shops?
 	Add more maps/paths
 	Make Base buttons change when they are used?

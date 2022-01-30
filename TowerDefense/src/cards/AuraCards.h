@@ -58,4 +58,13 @@ namespace TowerDefense
 		void Play() override;
 		std::shared_ptr<Card> Clone() override;
 	};
+
+	class EchoLocation : public Card
+	{
+	public:
+		EchoLocation();
+		void Play() override;
+		void Upgrade() override;
+		std::shared_ptr<Card> Clone() override;
+	};
 }
