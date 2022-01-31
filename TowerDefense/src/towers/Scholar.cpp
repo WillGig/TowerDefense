@@ -10,7 +10,7 @@
 TowerDefense::Tower::Scholar::Scholar(bool upgraded)
 	:Tower(0.0f, 0.0f, 32, 32, 600.0f, 50, TowerType::SUPPORT, "Scholar"),
 	m_Upgraded(upgraded), m_Focused(false), m_NumberOfFocus(1),
-	m_FocusedImage(std::make_shared<Image>("monkSelected", 0.0f, 0.0f, m_Width, m_Height, 0.0f))
+	m_FocusedImage(std::make_shared<Image>("ScholarSelected", 0.0f, 0.0f, m_Width, m_Height, 0.0f))
 {}
 
 void TowerDefense::Tower::Scholar::Update()

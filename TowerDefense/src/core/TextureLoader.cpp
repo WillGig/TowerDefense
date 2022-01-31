@@ -367,6 +367,7 @@ void TowerDefense::LoadingScreen::LoadTextures(GLFWwindow* w)
     Load("ScholarHighlighted",          towers.load(1, 8), w);
     Load("Falcon",                      towers.load(0, 9), w);
     Load("FalconHighlighted",           towers.load(1, 9), w);
+    Load("ScholarSelected",             towers.load(2, 9), w);
 
     loadCategory = "Enemies";
 

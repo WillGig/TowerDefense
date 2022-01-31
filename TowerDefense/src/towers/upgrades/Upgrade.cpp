@@ -2,7 +2,7 @@
 #include "Upgrade.h"
 #include "towers/Wizard.h"
 #include "towers/Archer.h"
-#include "towers/Monk.h"
+#include "towers/Scholar.h"
 #include "towers/Ranger.h"
 #include "towers/Paladin.h"
 #include "Towers/Alchemist.h"
@@ -131,7 +131,7 @@ TowerDefense::Tower::MoreFocus::MoreFocus()
 
 void TowerDefense::Tower::MoreFocus::UpgradeTower(std::shared_ptr<Tower> t)
 {
-	auto m = std::dynamic_pointer_cast<Monk>(t);
+	auto m = std::dynamic_pointer_cast<Scholar>(t);
 	if (m)
 		m->SetNumberOfFocus(m->GetNumberOfFocus() + 1);
 	t->SetLevel(t->GetLevel() + 1);
