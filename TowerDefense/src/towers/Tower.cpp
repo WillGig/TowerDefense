@@ -185,6 +185,7 @@ std::shared_ptr<std::vector<std::shared_ptr<TowerDefense::Tower::Upgrade>>> Towe
 	upgrades->push_back(std::make_shared<AttackSpeed>());
 	upgrades->push_back(std::make_shared<Damage>());
 	upgrades->push_back(std::make_shared<Range>());
+	upgrades->push_back(std::make_shared<Crit>());
 	
 	if (!CanSeeInvisibility())
 		upgrades->push_back(std::make_shared<HeightenedSenses>());
