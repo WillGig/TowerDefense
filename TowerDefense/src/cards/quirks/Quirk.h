@@ -6,6 +6,8 @@ namespace TowerDefense
 
 	class HeroCard;
 
+	class Upgrade;
+
 	namespace Quirk
 	{
 		enum class Gender { MALE, FEMALE };

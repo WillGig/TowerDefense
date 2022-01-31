@@ -1024,10 +1024,10 @@ void TowerDefense::Combat::GenerateFightsFromOrder(std::vector<int> fightOrder)
 	waves->push_back(std::make_shared<Wave>(enemies102, 8));
 	waves->push_back(std::make_shared<Wave>(enemies103, 10));
 	waves->push_back(std::make_shared<Wave>(enemies104, 14));
-	waves->push_back(std::make_shared<Wave>(enemies105, 14));
+	waves->push_back(std::make_shared<Wave>(enemies105, 8));
 	waves->push_back(std::make_shared<Wave>(enemies106, 10));
 	waves->push_back(std::make_shared<Wave>(enemies107, 14));
-	waves->push_back(std::make_shared<Wave>(enemies108, 6));
+	waves->push_back(std::make_shared<Wave>(enemies108, 2));
 	pool8.push_back(std::make_shared<Fight>(waves));
 
 	//Day 21-23
