@@ -180,7 +180,7 @@ std::shared_ptr<TowerDefense::Card> TowerDefense::Card::GetCardFromName(const st
 		return std::make_shared<BardCard>();
 	else if (name == "Ranger")
 		return std::make_shared<RangerCard>();
-	else if (name == "Monk")
+	else if (name == "Scholar")
 		return std::make_shared<ScholarCard>();
 	else if (name == "Gather")
 		return std::make_shared<Gather>();
