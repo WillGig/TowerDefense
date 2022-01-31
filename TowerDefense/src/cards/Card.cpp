@@ -93,7 +93,7 @@ std::shared_ptr<TowerDefense::Card> TowerDefense::Card::GetCommonCard()
 	else if (randomCard == 13)
 		return std::make_shared<RangerCard>();
 	else
-		return std::make_shared<MonkCard>();
+		return std::make_shared<ScholarCard>();
 }
 
 std::shared_ptr<TowerDefense::Card> TowerDefense::Card::GetUncommonCard()
@@ -181,7 +181,7 @@ std::shared_ptr<TowerDefense::Card> TowerDefense::Card::GetCardFromName(const st
 	else if (name == "Ranger")
 		return std::make_shared<RangerCard>();
 	else if (name == "Monk")
-		return std::make_shared<MonkCard>();
+		return std::make_shared<ScholarCard>();
 	else if (name == "Gather")
 		return std::make_shared<Gather>();
 	else if (name == "Concentrate")

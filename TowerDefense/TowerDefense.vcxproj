@@ -398,7 +398,7 @@
     <ClCompile Include="src\towers\GhostTower.cpp" />
     <ClCompile Include="src\towers\Giant.cpp" />
     <ClCompile Include="src\towers\LaserBeam.cpp" />
-    <ClCompile Include="src\towers\Monk.cpp" />
+    <ClCompile Include="src\towers\Scholar.cpp" />
     <ClCompile Include="src\towers\Paladin.cpp" />
     <ClCompile Include="src\towers\projectiles\Projectile.cpp" />
     <ClCompile Include="src\towers\projectiles\Projectiles.cpp" />
@@ -564,7 +564,7 @@
     <ClInclude Include="src\towers\GhostTower.h" />
     <ClInclude Include="src\towers\Giant.h" />
     <ClInclude Include="src\towers\LaserBeam.h" />
-    <ClInclude Include="src\towers\Monk.h" />
+    <ClInclude Include="src\towers\Scholar.h" />
     <ClInclude Include="src\towers\Paladin.h" />
     <ClInclude Include="src\towers\projectiles\Projectile.h" />
     <ClInclude Include="src\towers\projectiles\Projectiles.h" />

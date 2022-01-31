@@ -363,8 +363,8 @@ void TowerDefense::LoadingScreen::LoadTextures(GLFWwindow* w)
     Load("BattleClericHighlighted",     towers.load(5, 7), w);
     Load("DeathPriest",                 towers.load(6, 7), w);
     Load("DeathPriestHighlighted",      towers.load(7, 7), w);
-    Load("Monk",                        towers.load(0, 8), w);
-    Load("MonkHighlighted",             towers.load(1, 8), w);
+    Load("Scholar",                     towers.load(0, 8), w);
+    Load("ScholarHighlighted",          towers.load(1, 8), w);
     Load("Falcon",                      towers.load(0, 9), w);
     Load("FalconHighlighted",           towers.load(1, 9), w);
 
@@ -452,8 +452,8 @@ void TowerDefense::LoadingScreen::LoadTextures(GLFWwindow* w)
     Load("paladinCardUpgraded",     towerCards.load(5, 1), w);
     Load("giantCard",               towerCards.load(0, 2), w);
     Load("giantCardUpgraded",       towerCards.load(1, 2), w);
-    Load("monkCard",                towerCards.load(2, 2), w);
-    Load("monkCardUpgraded",        towerCards.load(3, 2), w);
+    Load("scholarCard",             towerCards.load(2, 2), w);
+    Load("scholarCardUpgraded",     towerCards.load(3, 2), w);
     Load("rangerCard",              towerCards.load(4, 2), w);
     Load("rangerCardUpgraded",      towerCards.load(5, 2), w);
 

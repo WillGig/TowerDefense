@@ -7,7 +7,7 @@
 #include "towers/Bard.h"
 #include "towers/Cleric.h"
 #include "towers/Paladin.h"
-#include "towers/Monk.h"
+#include "towers/Scholar.h"
 #include "towers/Ranger.h"
 
 std::shared_ptr<TowerDefense::Tower::Tower> TowerDefense::ArcherCard::GetTower()
@@ -138,17 +138,17 @@ std::shared_ptr<TowerDefense::Card> TowerDefense::PaladinCard::Clone()
 	return card;
 }
 
-std::shared_ptr<TowerDefense::Tower::Tower> TowerDefense::MonkCard::GetTower()
+std::shared_ptr<TowerDefense::Tower::Tower> TowerDefense::ScholarCard::GetTower()
 {
 	if (m_Upgraded)
-		return std::make_shared<Tower::Monk>(true);
+		return std::make_shared<Tower::Scholar>(true);
 	else
-		return std::make_shared<Tower::Monk>(false);
+		return std::make_shared<Tower::Scholar>(false);
 }
 
-std::shared_ptr<TowerDefense::Card> TowerDefense::MonkCard::Clone()
+std::shared_ptr<TowerDefense::Card> TowerDefense::ScholarCard::Clone()
 {
-	auto card = std::make_shared<MonkCard>();
+	auto card = std::make_shared<ScholarCard>();
 	if (m_Upgraded)
 		card->Upgrade();
 	return card;

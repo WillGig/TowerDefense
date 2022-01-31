@@ -5,6 +5,7 @@ Current:
 
 	Add more skills to skill trees
 	Change skills to skill points instead of gold
+	How to get skill points?
 
 	Add second towers for buildings
 	 - music hall		Singer/siren

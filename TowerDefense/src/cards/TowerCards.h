@@ -116,11 +116,11 @@ namespace TowerDefense
 		std::shared_ptr<Tower::Tower> GetTower() override;
 	};
 
-	class MonkCard : public TowerCard
+	class ScholarCard : public TowerCard
 	{
 	public:
-		MonkCard()
-			:TowerCard("Monk", 20, "monkCard", "monkCardUpgraded")
+		ScholarCard()
+			:TowerCard("Scholar", 20, "scholarCard", "scholarCardUpgraded")
 		{
 			AddInfoCard(std::make_shared<InfoTile>("SummonInfo"));
 		}

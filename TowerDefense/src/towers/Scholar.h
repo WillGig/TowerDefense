@@ -5,10 +5,10 @@ namespace TowerDefense
 {
 	namespace Tower
 	{
-		class Monk : public Tower
+		class Scholar : public Tower
 		{
 		public:
-			Monk(bool upgraded);
+			Scholar(bool upgraded);
 			void Update() override;
 			void EndRound() override;
 
