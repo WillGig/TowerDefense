@@ -27,7 +27,7 @@ void TowerDefense::Aura::WizardDamage::Combine(std::shared_ptr<Aura> other)
 	if (otherWizardDamage)
 	{
 		m_Damage += otherWizardDamage->GetDamage();
-		m_InfoText = std::make_unique<Text>("Wizards deal " + Utils::TruncateFloat(m_Damage, 1) + " extra damage", 0.0f, 0.0f, 10.0f, 0.0f);
+		m_InfoText = std::make_unique<Text>("Wizards deal " + Utils::TruncateFloat(m_Damage, 1) + "\nextra damage", 0.0f, 0.0f, 10.0f, 0.0f);
 		m_InfoText->SetColor(1.0f, 1.0f, 1.0f, 1.0f);
 	}
 }
