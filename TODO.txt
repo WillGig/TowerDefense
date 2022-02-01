@@ -62,6 +62,7 @@ Current:
 	Add more events
 
 Soon:
+	Allow starting a game with a specific seed
 	Rework smithing upgrades for heros
 	Allow right clicking on upgrades for more detailed information
 	Sideboard keyword on some cards - button in precombat screen to toggle which ones you wnat

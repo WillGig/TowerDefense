@@ -71,7 +71,8 @@ void TowerDefense::KnightsWhoSayNah::Update()
 	if (m_Button3->IsSelected() && m_DemoArtifact->Contains(Input::GetMouseX(), Input::GetMouseY()) && Input::GetRightMouseClickedAndSetFalse())
 		m_ShowingDemoInfo = true;
 
-	m_Button1->Update();
+	if(Player::Get().GetResource(Resource::GOLD) > 299)
+		m_Button1->Update();
 	if (m_Button1->IsClicked())
 	{
 		Player::Get().ChangeResource(-300, Resource::GOLD);
