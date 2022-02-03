@@ -20,12 +20,6 @@ TowerDefense::Enemy::Enemy::Enemy(int width, int height, float health, float spe
 {
 	m_DamageText->SetColor(1.0f, 1.0f, 1.0f, 1.0f);
 	m_DamageText->SetDropShadow(1.0f);
-	Board& board = Board::Get();
-	int tileX = board.GetPath()->at(0);
-	int tileY = board.GetPath()->at(1);
-	SetX(board.GetTiles()->at(tileX + tileY * board.GetWidth())->GetX());
-	SetY(board.GetTiles()->at(tileX + tileY * board.GetWidth())->GetY());
-	FindNewGoal(m_X, m_Y);
 }
 
 void TowerDefense::Enemy::Enemy::Update()
@@ -66,6 +60,16 @@ void TowerDefense::Enemy::Enemy::Render()
 	m_HealthBar->Render();
 	m_DamageIcon->Render();
 	m_DamageText->Render();
+}
+
+void TowerDefense::Enemy::Enemy::MoveToStart()
+{
+	Board& board = Board::Get();
+	int tileX = board.GetPath()->at(0);
+	int tileY = board.GetPath()->at(1);
+	SetX(board.GetTiles()->at(tileX + tileY * board.GetWidth())->GetX());
+	SetY(board.GetTiles()->at(tileX + tileY * board.GetWidth())->GetY());
+	FindNewGoal(m_X, m_Y);
 }
 
 //Set Image to selected or unselected

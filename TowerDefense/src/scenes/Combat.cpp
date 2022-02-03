@@ -133,6 +133,9 @@ void TowerDefense::Combat::Update()
 
 void TowerDefense::Combat::OnSwitch()
 {
+	//Switch Board
+	Board::Get().SelectRandomBoard();
+
 	InGameSettings::Get().Show(false);
 
 	//Change Background Color
@@ -278,7 +281,10 @@ void TowerDefense::Combat::UpdateWave()
 	if (m_TurnPhase == Phase::COMBAT && wave->HasMoreEnemies() && !s_Paused) {
 		std::shared_ptr<Enemy::Enemy> e = s_Fights->at(s_CurrentFight)->GetWave()->GetNextEnemy();
 		if (e)
+		{
+			e->MoveToStart();
 			AddEntity(e);
+		}
 	}
 }
 

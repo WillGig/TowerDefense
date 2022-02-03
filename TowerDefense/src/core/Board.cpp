@@ -121,16 +121,53 @@ void TowerDefense::Board::Render()
         m_SelectedTile->Render();
 }
 
+void TowerDefense::Board::SetPath(const int path[], int size)
+{
+    SetPath(std::make_shared<std::vector<int>>(path, path + size / sizeof(int)));
+}
+
 //Save path to m_Path as tiles and change tile images along path
 //Path should be alternating x and y coordinates of tiles from start to end
 //0, 0 is the bottom left corner of the board
-void TowerDefense::Board::SetPath(const int path[], int size)
+void TowerDefense::Board::SetPath(std::shared_ptr<std::vector<int>> path)
 {
-    m_Path = std::make_shared< std::vector<int>>(path, path + size / sizeof(int));
+    m_Path = path;
+
+    for (int y = 0; y < m_Height; y++)
+    {
+        for (int x = 0; x < m_Width; x++)
+        {
+            SetTileImage(x, y, 0);
+            m_Tiles->at(x + y * m_Width)->SetOccupied(false);
+        }
+    }
+    
+
     for (unsigned int i = 0; i < m_Path->size(); i += 2) {
         std::shared_ptr<Tile> tile = m_Tiles->at(m_Path->at(i) + m_Path->at(i + 1) * m_Width);
         SetTileImage(m_Path->at(i), m_Path->at(i + 1), 1);
         tile->SetOccupied(true);
+    }
+}
+
+void TowerDefense::Board::SelectRandomBoard()
+{
+    int map = (int)(Random::GetFloat() * 3);
+
+    if (map == 0)
+    {
+        const int path[] = { 0, 9, 0, 8, 0, 7, 1, 7, 2, 7, 3, 7, 4, 7, 4, 6, 4, 5, 5, 5, 6, 5, 7, 5, 8, 5, 9, 5, 10, 5, 11, 5, 12, 5, 13, 5, 13, 4, 13, 3, 13, 2, 14, 2, 15, 2, 16, 2, 17, 2, 18, 2, 18, 1, 18, 0, 19, 0 };
+        SetPath(path, sizeof(path));
+    }
+    else if (map == 1)
+    {
+        const int path[] = { 0, 5, 1, 5, 2, 5, 3, 5, 4, 5, 5, 5, 6, 5, 6, 6, 6, 7, 6, 8, 5, 8, 4, 8, 3, 8, 3, 7, 3, 6, 3, 5, 3, 4, 3, 3, 4, 3, 5, 3, 6, 3, 7, 3, 8, 3, 9, 3, 10, 3, 11, 3, 12, 3, 12, 4, 12, 5, 12, 6, 11, 6, 10, 6, 9, 6, 9, 5, 9, 4, 9, 3, 9, 2, 9, 1, 10, 1, 11, 1, 12, 1, 13, 1, 14, 1, 15, 1, 16, 1, 17, 1, 18, 1, 19, 1 };
+        SetPath(path, sizeof(path));
+    }
+    else if (map == 2)
+    {
+        const int path[] = { 0, 3, 1, 3, 2, 3, 2, 4, 2, 5, 3, 5, 4, 5, 5, 5, 5, 4, 5, 3, 5, 2, 6, 2, 7, 2, 8, 2, 8, 3, 8, 4, 8, 5, 8, 6, 8, 7, 9, 7, 10, 7, 11, 7, 11, 6, 11, 5, 11, 4, 11, 3, 11, 2, 11, 1, 12, 1, 13, 1, 14, 1, 14, 2, 14, 3, 14, 4, 14, 5, 14, 6, 14, 7, 14, 8, 15, 8, 16, 8, 17, 8, 17, 7, 17, 6, 17, 5, 17, 4, 17, 3, 17, 2, 17, 1, 17, 0, 18, 0, 19, 0 };
+        SetPath(path, sizeof(path));
     }
 }
 

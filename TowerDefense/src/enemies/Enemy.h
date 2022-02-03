@@ -20,6 +20,7 @@ namespace TowerDefense
 			Enemy(int width, int height, float health, float speed, int goldValue, const std::string& name, int damage);
 			void Update() override;
 			void Render() override;
+			void MoveToStart();
 			virtual void TakeDamage(float damage, unsigned int source, Tower::DamageType type);
 			void ChangeHealth(float change);
 			//Time measured in game updates (60 per second)
