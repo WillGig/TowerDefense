@@ -13,12 +13,10 @@ namespace TowerDefense
 
 		void Render();
 
-		//Path should be alternating x and y coordinates of tiles from start to end
-		//0, 0 is the bottom left corner of the board
-		void SetPath(const int path[], int size);
-		void SetPath(std::shared_ptr<std::vector<int>> path);
+		void LoadMap(const std::string& file);
 
-		void SelectRandomBoard();
+		//Selects a random map file from res/maps and loads it
+		void LoadRandomMap();
 
 		//Returns true if the currently held tower can fit in the selected space
 		bool ValidPlace();

@@ -134,7 +134,7 @@ void TowerDefense::Combat::Update()
 void TowerDefense::Combat::OnSwitch()
 {
 	//Switch Board
-	Board::Get().SelectRandomBoard();
+	Board::Get().LoadRandomMap();
 
 	InGameSettings::Get().Show(false);
 

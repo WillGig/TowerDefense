@@ -3,6 +3,11 @@
 #include "TowerDefense.h"
 #include "Player.h"
 
+#define EMPTY 0xffffff
+#define PATH 0xffff00
+#define START 0x00ff00
+#define END 0xff0000
+
 int TowerDefense::Board::TILESIZE = 32;
 
 TowerDefense::Board::Board(int width, int height)
@@ -121,54 +126,177 @@ void TowerDefense::Board::Render()
         m_SelectedTile->Render();
 }
 
-void TowerDefense::Board::SetPath(const int path[], int size)
+void TowerDefense::Board::LoadMap(const std::string& file)
 {
-    SetPath(std::make_shared<std::vector<int>>(path, path + size / sizeof(int)));
-}
+    stbi_set_flip_vertically_on_load(0);
 
-//Save path to m_Path as tiles and change tile images along path
-//Path should be alternating x and y coordinates of tiles from start to end
-//0, 0 is the bottom left corner of the board
-void TowerDefense::Board::SetPath(std::shared_ptr<std::vector<int>> path)
-{
-    m_Path = path;
+    int width, height, channels;
+    //Load map data
+    unsigned char* data = stbi_load(file.c_str(), &width, &height, &channels, 3);
 
-    for (int y = 0; y < m_Height; y++)
+    //Verify data loaded
+    if (!data)
     {
-        for (int x = 0; x < m_Width; x++)
+        std::cout << "Failed to load map " << file << std::endl;
+        std::cout << "Loading default map" << std::endl;
+        LoadMap("res/maps/map0.png");
+        return;
+    }
+
+    //Verify map dimensions
+    if (width != m_Width || height != m_Height)
+    {
+        std::cout << "Invalid map dimensions for map " << file << std::endl;
+        std::cout << "Loading default map" << std::endl;
+        LoadMap("res/maps/map0.png");
+        stbi_image_free(data);
+        return;
+    }
+
+    //Load all tile images and set occupied tiles
+    int startX = -1, startY = -1, endX = -1, endY = -1;
+    for (int y = 0; y < height; y++)
+    {
+        for (int x = 0; x < width; x++)
         {
-            SetTileImage(x, y, 0);
-            m_Tiles->at(x + y * m_Width)->SetOccupied(false);
+            int r = data[(x + y * width) * channels];
+            int g = data[(x + y * width) * channels + 1];
+            int b = data[(x + y * width) * channels + 2];
+
+            long rgb = ((r & 0xff) << 16) + ((g & 0xff) << 8) + (b & 0xff);
+
+            int bX = x;
+            int bY = height - 1 - y;
+
+            switch (rgb)
+            {
+            case START:
+                SetTileImage(bX, bY, 1);
+                m_Tiles->at(bX + bY * m_Width)->SetOccupied(true);
+                startX = x;
+                startY = y;
+                break;
+            case END:
+                SetTileImage(bX, bY, 1);
+                m_Tiles->at(bX + bY * m_Width)->SetOccupied(true);
+                endX = x;
+                endY = y;
+                break;
+            case PATH:
+                SetTileImage(bX, bY, 1);
+                m_Tiles->at(bX + bY * m_Width)->SetOccupied(true);
+                break;
+            default:
+                SetTileImage(bX, bY, 0);
+                m_Tiles->at(bX + bY * m_Width)->SetOccupied(false);
+            }
         }
     }
-    
 
-    for (unsigned int i = 0; i < m_Path->size(); i += 2) {
-        std::shared_ptr<Tile> tile = m_Tiles->at(m_Path->at(i) + m_Path->at(i + 1) * m_Width);
-        SetTileImage(m_Path->at(i), m_Path->at(i + 1), 1);
-        tile->SetOccupied(true);
+    //Verify that path has start and end tiles
+    if (startX == -1)
+    {
+        std::cout << "Failed to find path start for map " << file << std::endl;
+        stbi_image_free(data);
+        std::cout << "Loading default map" << std::endl;
+        LoadMap("res/maps/map0.png");
+        return;
     }
+    else if (endX == -1)
+    {
+        std::cout << "Failed to find path end for map " << file << std::endl;
+        stbi_image_free(data);
+        std::cout << "Loading default map" << std::endl;
+        LoadMap("res/maps/map0.png");
+        return;
+    }
+
+    //Load path
+    int currentX = startX;
+    int currentY = startY;
+    int previousDirection = -1;
+    m_Path = std::make_shared<std::vector<int>>();
+    while (currentX != endX || currentY != endY)
+    {
+        m_Path->push_back(currentX);
+        m_Path->push_back(m_Height - 1 - currentY);
+
+        //find direction of path
+        for (int i = 0; i < 5; i++)
+        {
+            //All directions have been checked and no path tile was found
+            if (i == 4)
+            {
+                std::cout << "Error: path end not found" << std::endl;
+                stbi_image_free(data);
+                std::cout << "Loading default map" << std::endl;
+                LoadMap("res/maps/map0.png");
+                return;
+            }
+
+            int direction;
+            if (previousDirection > -1)
+                direction = (previousDirection + i) % 4; //Check forward first
+            else
+                direction = i % 4;
+
+            if (previousDirection == (direction + 2) % 4) //Skip the previous path tile
+                continue;
+
+            int xPos = currentX + (int)sin(direction * (PI / 2.0f));
+            int yPos = currentY + (int)cos(direction * (PI / 2.0f));
+
+            //Bounds checking
+            if (xPos < 0 || xPos > m_Width || yPos < 0 || yPos > m_Height)
+                continue;
+
+            int r = data[(xPos + yPos * width) * channels];
+            int g = data[(xPos + yPos * width) * channels + 1];
+            int b = data[(xPos + yPos * width) * channels + 2];
+            long rgb = ((r & 0xff) << 16) + ((g & 0xff) << 8) + (b & 0xff);
+
+            //Move to next tile in path
+            if (rgb == PATH || rgb == END)
+            {
+                currentX = xPos;
+                currentY = yPos;
+                previousDirection = direction;
+                break;
+            }
+        }
+    }
+    //Add end tile
+    m_Path->push_back(currentX);
+    m_Path->push_back(m_Height - 1 - currentY);
+
+    stbi_image_free(data);
 }
 
-void TowerDefense::Board::SelectRandomBoard()
+void TowerDefense::Board::LoadRandomMap()
 {
-    int map = (int)(Random::GetFloat() * 3);
+    int numMaps = 0;
+    bool exists = true;
+    while (exists)
+    {
+        std::ifstream file("res/maps/map" + std::to_string(numMaps) + ".png");
+        
+        exists = (bool)file;
+        
+        if (exists)
+        {
+            numMaps++;
+            file.close();
+        }
+    }
 
-    if (map == 0)
+    if (numMaps == 0)
     {
-        const int path[] = { 0, 9, 0, 8, 0, 7, 1, 7, 2, 7, 3, 7, 4, 7, 4, 6, 4, 5, 5, 5, 6, 5, 7, 5, 8, 5, 9, 5, 10, 5, 11, 5, 12, 5, 13, 5, 13, 4, 13, 3, 13, 2, 14, 2, 15, 2, 16, 2, 17, 2, 18, 2, 18, 1, 18, 0, 19, 0 };
-        SetPath(path, sizeof(path));
+        std::cout << "Error: No map files found" << std::endl;
+        return;
     }
-    else if (map == 1)
-    {
-        const int path[] = { 0, 5, 1, 5, 2, 5, 3, 5, 4, 5, 5, 5, 6, 5, 6, 6, 6, 7, 6, 8, 5, 8, 4, 8, 3, 8, 3, 7, 3, 6, 3, 5, 3, 4, 3, 3, 4, 3, 5, 3, 6, 3, 7, 3, 8, 3, 9, 3, 10, 3, 11, 3, 12, 3, 12, 4, 12, 5, 12, 6, 11, 6, 10, 6, 9, 6, 9, 5, 9, 4, 9, 3, 9, 2, 9, 1, 10, 1, 11, 1, 12, 1, 13, 1, 14, 1, 15, 1, 16, 1, 17, 1, 18, 1, 19, 1 };
-        SetPath(path, sizeof(path));
-    }
-    else if (map == 2)
-    {
-        const int path[] = { 0, 3, 1, 3, 2, 3, 2, 4, 2, 5, 3, 5, 4, 5, 5, 5, 5, 4, 5, 3, 5, 2, 6, 2, 7, 2, 8, 2, 8, 3, 8, 4, 8, 5, 8, 6, 8, 7, 9, 7, 10, 7, 11, 7, 11, 6, 11, 5, 11, 4, 11, 3, 11, 2, 11, 1, 12, 1, 13, 1, 14, 1, 14, 2, 14, 3, 14, 4, 14, 5, 14, 6, 14, 7, 14, 8, 15, 8, 16, 8, 17, 8, 17, 7, 17, 6, 17, 5, 17, 4, 17, 3, 17, 2, 17, 1, 17, 0, 18, 0, 19, 0 };
-        SetPath(path, sizeof(path));
-    }
+   
+    int map = (int)(Random::GetFloat() * numMaps);
+    LoadMap("res/maps/map" + std::to_string(numMaps) + ".png");
 }
 
 bool TowerDefense::Board::Contains(float x, float y) const
