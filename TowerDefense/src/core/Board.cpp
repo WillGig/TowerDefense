@@ -3,10 +3,12 @@
 #include "TowerDefense.h"
 #include "Player.h"
 
-#define EMPTY 0xffffff
-#define PATH 0xffff00
-#define START 0x00ff00
-#define END 0xff0000
+#define EMPTY   0xffffff
+#define PATH    0xffff00
+#define START   0x00ff00
+#define END     0xff0000
+#define ROCK    0xA5A5A5
+#define TREE    0x007F0E
 
 int TowerDefense::Board::TILESIZE = 32;
 
@@ -186,6 +188,14 @@ void TowerDefense::Board::LoadMap(const std::string& file)
                 SetTileImage(bX, bY, 1);
                 m_Tiles->at(bX + bY * m_Width)->SetOccupied(true);
                 break;
+            case ROCK:
+                SetTileImage(bX, bY, 2);
+                m_Tiles->at(bX + bY * m_Width)->SetOccupied(true);
+                break;
+            case TREE:
+                SetTileImage(bX, bY, 3);
+                m_Tiles->at(bX + bY * m_Width)->SetOccupied(true);
+                break;
             default:
                 SetTileImage(bX, bY, 0);
                 m_Tiles->at(bX + bY * m_Width)->SetOccupied(false);
@@ -296,7 +306,7 @@ void TowerDefense::Board::LoadRandomMap()
     }
    
     int map = (int)(Random::GetFloat() * numMaps);
-    LoadMap("res/maps/map" + std::to_string(numMaps) + ".png");
+    LoadMap("res/maps/map" + std::to_string(map) + ".png");
 }
 
 bool TowerDefense::Board::Contains(float x, float y) const
@@ -381,19 +391,19 @@ std::unique_ptr<float[]> TowerDefense::Board::GetPositions(unsigned int tileNumb
 
     pos[0] = (-width / 2 + xOff);
     pos[1] = (-height / 2 + yOff);
-    pos[2] = ((coords.first - width / 2) / 64.0f);
+    pos[2] = ((coords.first - width / 2) / 128.0f);
     pos[3] = ((coords.second - height / 2) / 32.0f);
     pos[4] = (width / 2 + xOff);
     pos[5] = (-height / 2 + yOff);
-    pos[6] = ((coords.first + width / 2) / 64.0f);
+    pos[6] = ((coords.first + width / 2) / 128.0f);
     pos[7] = ((coords.second - height / 2) / 32.0f);
     pos[8] = (width / 2 + xOff);
     pos[9] = (height / 2 + yOff);
-    pos[10] = ((coords.first + width / 2) / 64.0f);
+    pos[10] = ((coords.first + width / 2) / 128.0f);
     pos[11] = ((coords.second + height / 2) / 32.0f);
     pos[12] = (-width / 2 + xOff);
     pos[13] = (height / 2 + yOff);
-    pos[14] = ((coords.first - width / 2) / 64.0f);
+    pos[14] = ((coords.first - width / 2) / 128.0f);
     pos[15] = ((coords.second + height / 2) / 32.0f);
 
     return pos;
@@ -406,6 +416,8 @@ std::pair<float, float> TowerDefense::Board::GetCoords(unsigned int tileNumber)
     {
     case 0: return std::make_pair<float, float>(16.0f, 16.0f);
     case 1: return std::make_pair<float, float>(48.0f, 16.0f);
+    case 2: return std::make_pair<float, float>(80.0f, 16.0f);
+    case 3: return std::make_pair<float, float>(112.0f, 16.0f);
     }
 
     std::cout << "Error Tile " << tileNumber << " not found!" << std::endl;
