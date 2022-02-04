@@ -57,35 +57,35 @@ void TowerDefense::Build::OnSwitch()
 	BaseScene::OnSwitch();
 	m_Buttons->clear();
 	if (!Base::ContainsScene("Rest"))
-		AddBuildButton(std::make_shared<BuildButton>("buildBed", Vec4i(100, 0, 0, 0), std::make_shared<Rest>()));
+		AddBuildButton(std::make_shared<BuildButton>("buildBed", Vec4i(100, 0, 0, 0), std::make_shared<Rest>(), "Sleep to restore health."));
 	if (!Base::ContainsScene("ManageWorkers"))
-		AddBuildButton(std::make_shared<BuildButton>("buildHouse", Vec4i(100, 100, 0, 0), std::make_shared<ManageWorkers>()));
+		AddBuildButton(std::make_shared<BuildButton>("buildHouse", Vec4i(100, 100, 0, 0), std::make_shared<ManageWorkers>(), "The beginning of\nsomething bigger."));
 	else
 	{
 		if (!Base::ContainsScene("Library"))
-			AddBuildButton(std::make_shared<BuildButton>("buildLibrary", Vec4i(400, 100, 0, 0), std::make_shared<Library>()));
+			AddBuildButton(std::make_shared<BuildButton>("buildLibrary", Vec4i(400, 100, 0, 0), std::make_shared<Library>(), "Add cards to your deck."));
 		if (!Base::ContainsScene("Trader"))
-			AddBuildButton(std::make_shared<BuildButton>("buildTrader", Vec4i(100, 100, 300, 0), std::make_shared<Trader>()));
+			AddBuildButton(std::make_shared<BuildButton>("buildTrader", Vec4i(100, 100, 300, 0), std::make_shared<Trader>(), "Buy cards, artifacts,\nand resources."));
 		if (!Base::ContainsScene("ArcheryRange"))
-			AddBuildButton(std::make_shared<BuildButton>("buildArcheryRange", Vec4i(400, 100, 0, 0), std::make_shared<ArcheryRange>()));
+			AddBuildButton(std::make_shared<BuildButton>("buildArcheryRange", Vec4i(400, 100, 0, 0), std::make_shared<ArcheryRange>(), "Train your archers\nand rangers."));
 		if (!Base::ContainsScene("MusicHall"))
-			AddBuildButton(std::make_shared<BuildButton>("buildMusicHall", Vec4i(300, 100, 100, 0), std::make_shared<MusicHall>()));
+			AddBuildButton(std::make_shared<BuildButton>("buildMusicHall", Vec4i(300, 100, 100, 0), std::make_shared<MusicHall>(), "Train your bards."));
 		if (!Base::ContainsScene("Chapel"))
-			AddBuildButton(std::make_shared<BuildButton>("buildChapel", Vec4i(400, 400, 200, 0), std::make_shared<Chapel>()));
+			AddBuildButton(std::make_shared<BuildButton>("buildChapel", Vec4i(400, 400, 200, 0), std::make_shared<Chapel>(), "Remove cards from your\ndeck."));
 		if (!Base::ContainsScene("Smithing"))
-			AddBuildButton(std::make_shared<BuildButton>("buildSmithy", Vec4i(100, 800, 100, 0), std::make_shared<Smithing>()));
+			AddBuildButton(std::make_shared<BuildButton>("buildSmithy", Vec4i(100, 800, 100, 0), std::make_shared<Smithing>(), "Upgrade cards in your\ndeck."));
 		if (!Base::ContainsScene("Tavern"))
-			AddBuildButton(std::make_shared<BuildButton>("buildTavern", Vec4i(500, 500, 1000, 0), std::make_shared<Tavern>()));
+			AddBuildButton(std::make_shared<BuildButton>("buildTavern", Vec4i(500, 500, 1000, 0), std::make_shared<Tavern>(), "Add hero cards to your\ndeck."));
 		if (!Player::Get().HasArtifact("Magical Generator"))
-			AddBuildButton(std::make_shared<ArtifactBuildButton>("buildMagicalGenerator", Vec4i(300, 300, 300, 0), std::make_shared<MagicalGenerator>()));
+			AddBuildButton(std::make_shared<ArtifactBuildButton>("buildMagicalGenerator", Vec4i(300, 300, 300, 0), std::make_shared<MagicalGenerator>(), "Increase starting energy\nby 100.\n\nAllows development of\nmore advanced buildings."));
 		else
 		{
 			if (!Base::ContainsScene("WizardTower"))
-				AddBuildButton(std::make_shared<BuildButton>("buildWizardTower", Vec4i(200, 500, 0, 0), std::make_shared<WizardTower>()));
+				AddBuildButton(std::make_shared<BuildButton>("buildWizardTower", Vec4i(200, 500, 0, 0), std::make_shared<WizardTower>(), "Train your wizards and\nscholars."));
 			if (!Base::ContainsScene("Temple"))
-				AddBuildButton(std::make_shared<BuildButton>("buildTemple", Vec4i(300, 300, 100, 0), std::make_shared<Temple>()));
+				AddBuildButton(std::make_shared<BuildButton>("buildTemple", Vec4i(300, 300, 100, 0), std::make_shared<Temple>(), "Train your paladins and\nclerics."));
 			if (!Base::ContainsScene("AlchemyLab"))
-				AddBuildButton(std::make_shared<BuildButton>("buildAlchemyLab", Vec4i(400, 300, 000, 0), std::make_shared<AlchemyLab>()));
+				AddBuildButton(std::make_shared<BuildButton>("buildAlchemyLab", Vec4i(400, 300, 000, 0), std::make_shared<AlchemyLab>(), "Train your alchemists."));
 		}
 	}
 }

@@ -8,7 +8,7 @@ namespace TowerDefense
 	class BuildButton
 	{
 	public:
-		BuildButton(const std::string& button, Vec4i cost, std::shared_ptr<BaseScene> scene);
+		BuildButton(const std::string& button, Vec4i cost, std::shared_ptr<BaseScene> scene, const std::string& description);
 		void Update();
 		void Render();
 		void SetPosition(float x, float y);
@@ -20,14 +20,14 @@ namespace TowerDefense
 		Vec4i m_Cost;
 		std::shared_ptr<BaseScene> m_Scene;
 		std::unique_ptr<Button> m_Button;
-		std::unique_ptr<Text> m_WoodCost, m_StoneCost, m_WheatCost;
+		std::unique_ptr<Text> m_Description, m_WoodCost, m_StoneCost, m_WheatCost;
 		std::unique_ptr<Image> m_WoodImage, m_StoneImage, m_WheatImage;
 	};
 
 	class ArtifactBuildButton : public BuildButton
 	{
 	public:
-		ArtifactBuildButton(const std::string& button, Vec4i cost, std::shared_ptr<Artifact> artifact);
+		ArtifactBuildButton(const std::string& button, Vec4i cost, std::shared_ptr<Artifact> artifact, const std::string& description);
 		void OnPurchased() override;
 
 	private:

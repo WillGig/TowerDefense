@@ -1,5 +1,8 @@
 Current:
-	Change monk to scholar - add upgrades at wizard tower
+	Make event text wait to change until fade is done
+
+	Add scholar upgrades at wizard tower
+	Add level 5 upgrades for scholar
 
 	Change towers to single use?
 
@@ -9,7 +12,6 @@ Current:
 
 	Add second towers for buildings
 	 - music hall		Singer/siren
-	 - wizard tower 	Scholar(replaces monk)
 	 - alchemy lab		Tinkerer?
 
 	-More Enemies(Days 21-30):
