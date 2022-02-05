@@ -3,7 +3,8 @@
 #include "core/Player.h"
 
 TowerDefense::KnightsWhoSayNah::KnightsWhoSayNah()
-	:m_ShowingDemoInfo(false), m_Image(std::make_unique<Image>("events/KnightsWhoSayNah", 180.0f, 350.0f, 300, 300, 0.0f)),
+	:m_Choice(0), m_ShowingDemoInfo(false), 
+	m_Image(std::make_unique<Image>("events/KnightsWhoSayNah", 180.0f, 350.0f, 300, 300, 0.0f)),
 	m_Button1(std::make_unique<Button>(400.0f, 150.0f, 600, 50, "eventButton")),
 	m_Button2(std::make_unique<Button>(400.0f, 100.0f, 600, 50, "eventButton")),
 	m_Button3(std::make_unique<Button>(400.0f, 50.0f, 600, 50, "eventButton")),
@@ -59,6 +60,43 @@ void TowerDefense::KnightsWhoSayNah::RenderEnd()
 	m_Image->Render();
 	m_Prompt->Render();
 }
+
+void TowerDefense::KnightsWhoSayNah::OnEndSwitch()
+{
+	if (m_Choice == 1)
+	{
+		std::string text =
+			"\"A wise choice!\n"
+			"Move along now.\"";
+
+		m_Prompt = std::make_unique<Text>(text, 560.0f, 370.0f, 16.0f, 0.0f);
+		m_Prompt->SetColor(1.0f, 1.0f, 1.0f, 1.0f);
+	}
+	else if (m_Choice == 2)
+	{
+		std::string text =
+			"\"Nah! Nah! Nah! Nah! Nah!\n"
+			"Nah! Nah! Nah! Nah!\"";
+
+		m_Prompt = std::make_unique<Text>(text, 560.0f, 370.0f, 16.0f, 0.0f);
+		m_Prompt->SetColor(1.0f, 1.0f, 1.0f, 1.0f);
+	}
+	else if (m_Choice == 3)
+	{
+		std::string text =
+			"\"Oooh it looks nice.\n\n"
+			"All of the Knights begin to crowd"
+			"around and  inspect the shruberry\n\n"
+			"After a while the leader comes up\n"
+			"holding a box. \n\n"
+			"\"We thank you for the shruberry\n"
+			"Take this: you may need it";
+
+		m_Prompt = std::make_unique<Text>(text, 560.0f, 370.0f, 16.0f, 0.0f);
+		m_Prompt->SetColor(1.0f, 1.0f, 1.0f, 1.0f);
+	}
+}
+
 void TowerDefense::KnightsWhoSayNah::Update()
 {
 	if (m_ShowingDemoInfo)
@@ -77,13 +115,7 @@ void TowerDefense::KnightsWhoSayNah::Update()
 	{
 		Player::Get().ChangeResource(-300, Resource::GOLD);
 
-		std::string text =
-			"\"A wise choice!\n"
-			"Move along now.\"";
-
-		m_Prompt = std::make_unique<Text>(text, 560.0f, 370.0f, 16.0f, 0.0f);
-		m_Prompt->SetColor(1.0f, 1.0f, 1.0f, 1.0f);
-
+		m_Choice = 1;
 		m_Exit = true;
 	}
 
@@ -92,13 +124,7 @@ void TowerDefense::KnightsWhoSayNah::Update()
 	{
 		Player::Get().ChangeHealth(-10);
 
-		std::string text =
-			"\"Nah! Nah! Nah! Nah! Nah!\n"
-			"Nah! Nah! Nah! Nah!\"";
-
-		m_Prompt = std::make_unique<Text>(text, 560.0f, 370.0f, 16.0f, 0.0f);
-		m_Prompt->SetColor(1.0f, 1.0f, 1.0f, 1.0f);
-
+		m_Choice = 2;
 		m_Exit = true;
 	}
 
@@ -110,18 +136,7 @@ void TowerDefense::KnightsWhoSayNah::Update()
 			Player::Get().AddToArtifacts(std::make_shared<BlessedHandGrenade>());
 			Player::Get().RemoveFromArtifacts("Shrubbery");
 
-			std::string text =
-				"\"Oooh it looks nice.\n\n"
-				"All of the Knights begin to crowd"
-				"around and  inspect the shruberry\n\n"
-				"After a while the leader comes up\n"
-				"holding a box. \n\n"
-				"\"We thank you for the shruberry\n"
-				"Take this: you may need it";
-
-			m_Prompt = std::make_unique<Text>(text, 560.0f, 370.0f, 16.0f, 0.0f);
-			m_Prompt->SetColor(1.0f, 1.0f, 1.0f, 1.0f);
-
+			m_Choice = 3;
 			m_Exit = true;
 		}
 	}

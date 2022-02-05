@@ -4,7 +4,8 @@
 #include "scenes/Base.h"
 
 TowerDefense::TheBlackKnight::TheBlackKnight()
-	:m_Image(std::make_unique<StaticImage>(180.0f, 350.0f, 300, 300, 0.0f, "events/BlackKnight")),
+	:m_Choice(0), 
+	m_Image(std::make_unique<StaticImage>(180.0f, 350.0f, 300, 300, 0.0f, "events/BlackKnight")),
 	m_Button1(std::make_unique<Button>(400.0f, 150.0f, 600, 50, "eventButton")),
 	m_Button2(std::make_unique<Button>(400.0f, 100.0f, 600, 50, "eventButton")),
 	m_Text1(std::make_unique<Text>("I accept! (Gain Joust activity)", 400.0f, 150.0f, 12.0f, 0.0f)),
@@ -39,13 +40,10 @@ void TowerDefense::TheBlackKnight::RenderEnd()
 	m_Prompt->Render();
 }
 
-void TowerDefense::TheBlackKnight::Update()
+void TowerDefense::TheBlackKnight::OnEndSwitch()
 {
-	m_Button1->Update();
-	if (m_Button1->IsClicked())
+	if (m_Choice == 1)
 	{
-		Base::AddBaseScene(std::make_shared<Joust>());
-
 		std::string text =
 			"\"I will prepare. We shall fight at dawn.\"\n"
 			"\"He rides off to get ready. \n"
@@ -53,7 +51,27 @@ void TowerDefense::TheBlackKnight::Update()
 
 		m_Prompt = std::make_unique<Text>(text, 560.0f, 370.0f, 12.0f, 0.0f);
 		m_Prompt->SetColor(1.0f, 1.0f, 1.0f, 1.0f);
+	}
+	else if (m_Choice == 2)
+	{
+		std::string text =
+			"He nods his head in understanding\n"
+			"and rides off to continue his search.\n\n"
+			"You rest for some time at the stream.\n";
 
+		m_Prompt = std::make_unique<Text>(text, 560.0f, 370.0f, 12.0f, 0.0f);
+		m_Prompt->SetColor(1.0f, 1.0f, 1.0f, 1.0f);
+	}
+}
+
+void TowerDefense::TheBlackKnight::Update()
+{
+	m_Button1->Update();
+	if (m_Button1->IsClicked())
+	{
+		Base::AddBaseScene(std::make_shared<Joust>());
+
+		m_Choice = 1;
 		m_Exit = true;
 	}
 
@@ -62,14 +80,7 @@ void TowerDefense::TheBlackKnight::Update()
 	{
 		Player::Get().ChangeHealth(20);
 
-		std::string text =
-			"He nods his head in understanding\n"
-			"and rides off to continue his search.\n\n"
-			"You rest for some time at the stream.\n";
-
-		m_Prompt = std::make_unique<Text>(text, 560.0f, 370.0f, 12.0f, 0.0f);
-		m_Prompt->SetColor(1.0f, 1.0f, 1.0f, 1.0f);
-
+		m_Choice = 2;
 		m_Exit = true;
 	}
 }

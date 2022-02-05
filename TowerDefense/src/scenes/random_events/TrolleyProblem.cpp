@@ -3,7 +3,8 @@
 #include "core/Player.h"
 
 TowerDefense::TrolleyProblem::TrolleyProblem()
-	:m_Image(std::make_unique<StaticImage>(400.0f, 425.0f, 600, 300, 0.0f, "events/TrolleyProblem")),
+	:m_Choice(0),
+	m_Image(std::make_unique<StaticImage>(400.0f, 425.0f, 600, 300, 0.0f, "events/TrolleyProblem")),
 	m_Button1(std::make_unique<Button>(400.0f, 175.0f, 600, 50, "eventButton")),
 	m_Button2(std::make_unique<Button>(400.0f, 125.0f, 600, 50, "eventButton")),
 	m_Button3(std::make_unique<Button>(400.0f, 75.0f, 600, 50, "eventButton")),
@@ -43,20 +44,14 @@ void TowerDefense::TrolleyProblem::RenderEnd()
 	m_Prompt->Render();
 }
 
-void TowerDefense::TrolleyProblem::Update()
+void TowerDefense::TrolleyProblem::OnEndSwitch()
 {
-	m_Button1->Update();
-	m_Button2->Update();
-	m_Button3->Update();
-
-	if (m_Button1->IsClicked())
+	if (m_Choice == 1)
 	{
 		m_Prompt = std::make_unique<Text>("Splat.", 400.0f, 250.0f, 12.0f, 0.0f);
 		m_Prompt->SetColor(1.0f, 1.0f, 1.0f, 1.0f);
-
-		m_Exit = true;
 	}
-	else if (m_Button2->IsClicked())
+	else if (m_Choice == 2)
 	{
 		std::string text =
 			"The ensuing crash is horrifying and chaotic. \n"
@@ -65,13 +60,9 @@ void TowerDefense::TrolleyProblem::Update()
 
 		m_Prompt = std::make_unique<Text>(text, 400.0f, 250.0f, 12.0f, 0.0f);
 		m_Prompt->SetColor(1.0f, 1.0f, 1.0f, 1.0f);
-
-		m_Exit = true;
 	}
-	else if(m_Button3->IsClicked())
-	{ 
-		Player::Get().ChangeHealth(-1);
-
+	else if (m_Choice == 3)
+	{
 		std::string text =
 			"Sometimes a choice must be made.\n"
 			"And sometimes that is a choice between babies\n"
@@ -80,7 +71,30 @@ void TowerDefense::TrolleyProblem::Update()
 
 		m_Prompt = std::make_unique<Text>(text, 400.0f, 250.0f, 12.0f, 0.0f);
 		m_Prompt->SetColor(1.0f, 1.0f, 1.0f, 1.0f);
+	}
+}
 
+void TowerDefense::TrolleyProblem::Update()
+{
+	m_Button1->Update();
+	m_Button2->Update();
+	m_Button3->Update();
+
+	if (m_Button1->IsClicked())
+	{
+		m_Choice = 1;
+		m_Exit = true;
+	}
+	else if (m_Button2->IsClicked())
+	{
+		m_Choice = 2;
+		m_Exit = true;
+	}
+	else if(m_Button3->IsClicked())
+	{ 
+		Player::Get().ChangeHealth(-1);
+
+		m_Choice = 3;
 		m_Exit = true;
 	}
 }

@@ -5,7 +5,8 @@
 #include "cards/quirks/Quirk.h"
 
 TowerDefense::WanderingSage::WanderingSage()
-	:m_ShowingDemoInfo(false), m_Image(std::make_unique<StaticImage>(180.0f, 350.0f, 300, 300, 0.0f, "events/Sage")),
+	:m_Choice(0), m_ShowingDemoInfo(false), 
+	m_Image(std::make_unique<StaticImage>(180.0f, 350.0f, 300, 300, 0.0f, "events/Sage")),
 	m_Button1(std::make_unique<Button>(400.0f, 150.0f, 600, 50, "eventButton")),
 	m_Button2(std::make_unique<Button>(400.0f, 100.0f, 600, 50, "eventButton")),
 	m_Text1(std::make_unique<Text>("Show me. (Lose all wood, gain Heath the Wizard)", 400.0f, 150.0f, 12.0f, 0.0f)),
@@ -59,6 +60,29 @@ void TowerDefense::WanderingSage::RenderEnd()
 	m_Prompt->Render();
 }
 
+void TowerDefense::WanderingSage::OnEndSwitch()
+{
+	if (m_Choice == 1)
+	{
+		std::string text =
+			"You gain heath the wizard!\n"
+			"All of your wood has been burnt.";
+
+		m_Prompt = std::make_unique<Text>(text, 560.0f, 370.0f, 16.0f, 0.0f);
+		m_Prompt->SetColor(1.0f, 1.0f, 1.0f, 1.0f);
+	}
+	else if (m_Choice == 2)
+	{
+		std::string text =
+			"\"Fine I'll show you another one!\"\n"
+			"Before you can do anything, he\n"
+			"dissapears in a puff of smoke!\n";
+
+		m_Prompt = std::make_unique<Text>(text, 560.0f, 370.0f, 16.0f, 0.0f);
+		m_Prompt->SetColor(1.0f, 1.0f, 1.0f, 1.0f);
+	}
+}
+
 void TowerDefense::WanderingSage::Update()
 {
 	if (m_ShowingDemoInfo)
@@ -85,27 +109,14 @@ void TowerDefense::WanderingSage::Update()
 		player.AddToDeck(std::make_shared<HeroCard>("Heath", "Class:  Wizard\nRace:  Human\nSage\nJust Lucky\nNear Sighted\n", 100, "heath", std::make_shared<Tower::Wizard>(), quirks));
 		player.ChangeResource(-player.GetResource(Resource::WOOD), Resource::WOOD);
 		
-		std::string text =
-			"You gain heath the wizard!\n"
-			"All of your wood has been burnt.";
-
-		m_Prompt = std::make_unique<Text>(text, 560.0f, 370.0f, 16.0f, 0.0f);
-		m_Prompt->SetColor(1.0f, 1.0f, 1.0f, 1.0f);
-		
+		m_Choice = 1;
 		m_Exit = true;
 	}
 
 	m_Button2->Update();
 	if (m_Button2->IsClicked())
 	{
-		std::string text =
-			"\"Fine I'll show you another one!\"\n"
-			"Before you can do anything, he\n"
-			"dissapears in a puff of smoke!\n";
-
-		m_Prompt = std::make_unique<Text>(text, 560.0f, 370.0f, 16.0f, 0.0f);
-		m_Prompt->SetColor(1.0f, 1.0f, 1.0f, 1.0f);
-
+		m_Choice = 2;
 		m_Exit = true;
 	}
 }

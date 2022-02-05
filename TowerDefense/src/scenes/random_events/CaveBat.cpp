@@ -3,7 +3,8 @@
 #include "core/Player.h"
 
 TowerDefense::CaveBat::CaveBat()
-	:m_ShowingDemoInfo(false), m_Image(std::make_unique<StaticImage>(220.0f, 350.0f, 300, 300, 0.0f, "events/CaveBat")),
+	:m_Choice(0), m_ShowingDemoInfo(false), 
+	m_Image(std::make_unique<StaticImage>(220.0f, 350.0f, 300, 300, 0.0f, "events/CaveBat")),
 	m_Button1(std::make_unique<Button>(400.0f, 150.0f, 600, 50, "eventButton")),
 	m_Button2(std::make_unique<Button>(400.0f, 100.0f, 600, 50, "eventButton")),
 	m_Text1(std::make_unique<Text>("Fight (-1 HP)", 400.0f, 150.0f, 12.0f, 0.0f)),
@@ -51,6 +52,33 @@ void TowerDefense::CaveBat::RenderEnd()
 	m_Prompt->Render();
 }
 
+void TowerDefense::CaveBat::OnEndSwitch()
+{
+	if (m_Choice == 1)
+	{
+		std::string text =
+			"Swat!\n"
+			"The bat is no more.\n\n"
+			"Your hand stings a little,\n"
+			"but it wasn't much of a fight";
+
+		m_Prompt = std::make_unique<Text>(text, 550.0f, 400.0f, 16.0f, 0.0f);
+		m_Prompt->SetColor(1.0f, 1.0f, 1.0f, 1.0f);
+	}
+	else if (m_Choice == 2)
+	{
+		std::string text =
+			"You extend your arm and the\n"
+			"bat flies over. With a \n"
+			"chomp it bites in and starts\n"
+			"lapping up blood.\n\n"
+			"He looks happy.";
+
+		m_Prompt = std::make_unique<Text>(text, 550.0f, 400.0f, 16.0f, 0.0f);
+		m_Prompt->SetColor(1.0f, 1.0f, 1.0f, 1.0f);
+	}
+}
+
 void TowerDefense::CaveBat::Update()
 {
 	if (m_ShowingDemoInfo)
@@ -70,32 +98,15 @@ void TowerDefense::CaveBat::Update()
 	{
 		Player::Get().ChangeHealth(-1);
 
-		std::string text =
-			"Swat!\n"
-			"The bat is no more.\n\n"
-			"Your hand stings a little,\n"
-			"but it wasn't much of a fight";
-
-		m_Prompt = std::make_unique<Text>(text, 550.0f, 400.0f, 16.0f, 0.0f);
-		m_Prompt->SetColor(1.0f, 1.0f, 1.0f, 1.0f);
-
+		m_Choice = 1;
 		m_Exit = true;
 	}
 	else if (m_Button2->IsClicked())
 	{
 		Player::Get().ChangeHealth(-10);
-
-		std::string text =
-			"You extend your arm and the\n"
-			"bat flies over. With a \n"
-			"chomp it bites in and starts\n"
-			"lapping up blood.\n\n"
-			"He looks happy.";
-
-		m_Prompt = std::make_unique<Text>(text, 550.0f, 400.0f, 16.0f, 0.0f);
-		m_Prompt->SetColor(1.0f, 1.0f, 1.0f, 1.0f);
-
 		Player::Get().AddToArtifacts(std::make_shared<BlessingOfTheBat>());
+
+		m_Choice = 2;
 		m_Exit = true;
 	}
 }

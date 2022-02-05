@@ -4,7 +4,7 @@
 #include "cards/curses/Curses.h"
 
 TowerDefense::FrogPrince::FrogPrince()
-	:m_ShowingDemoCardInfo(false), m_ShowingDemoArtifactInfo(false),
+	:m_Choice(0), m_ShowingDemoCardInfo(false), m_ShowingDemoArtifactInfo(false),
 	m_Image(std::make_unique<StaticImage>(180.0f, 350.0f, 300, 300, 0.0f, "events/Frog")),
 	m_Button1(std::make_unique<Button>(400.0f, 150.0f, 600, 50, "eventButton")),
 	m_Button2(std::make_unique<Button>(400.0f, 100.0f, 600, 50, "eventButton")),
@@ -65,6 +65,47 @@ void TowerDefense::FrogPrince::RenderEnd()
 	m_Prompt->Render();
 }
 
+void TowerDefense::FrogPrince::OnEndSwitch()
+{
+	if (m_Choice == 1)
+	{
+		std::string text;
+
+		if (Random::GetFloat() > 0.5f)
+		{
+			Player::Get().AddToArtifacts(std::make_shared<Prince>());
+			text =
+				"A huge cloud of smoke appears.\n"
+				"Eventually the smoke disapates and...\n"
+				"a prince appears!\n\n"
+				"\"Happy to be of service, my friend.\"\n";
+		}
+		else
+		{
+			Player::Get().AddToDeck(std::make_shared<Frog>());
+			text =
+				"A huge cloud of smoke appears.\n"
+				"Eventually the smoke disapates and...\n"
+				"The frog is still there.\n\n"
+				"\"Did it work? Am I a prince now?\"\n";
+		}
+
+		m_Prompt = std::make_unique<Text>(text, 560.0f, 370.0f, 16.0f, 0.0f);
+		m_Prompt->SetColor(1.0f, 1.0f, 1.0f, 1.0f);
+	}
+	else if (m_Choice == 2)
+	{
+		std::string text =
+			"It doesn't take long to\n"
+			"find a buyer. \n\n"
+			"The frog croaks sadly as\n"
+			"he is taken away in chains.\n";
+
+		m_Prompt = std::make_unique<Text>(text, 560.0f, 370.0f, 16.0f, 0.0f);
+		m_Prompt->SetColor(1.0f, 1.0f, 1.0f, 1.0f);
+	}
+}
+
 void TowerDefense::FrogPrince::Update()
 {
 	if (m_ShowingDemoCardInfo)
@@ -91,30 +132,7 @@ void TowerDefense::FrogPrince::Update()
 	m_Button1->Update();
 	if (m_Button1->IsClicked())
 	{
-		std::string text;
-
-		if (Random::GetFloat() > 0.5f)
-		{
-			Player::Get().AddToArtifacts(std::make_shared<Prince>());
-			text =
-				"A huge cloud of smoke appears.\n"
-				"Eventually the smoke disapates and...\n"
-				"a prince appears!\n\n"
-				"\"Happy to be of service, my friend.\"\n";
-		}
-		else
-		{
-			Player::Get().AddToDeck(std::make_shared<Frog>());
-			text =
-				"A huge cloud of smoke appears.\n"
-				"Eventually the smoke disapates and...\n"
-				"The frog is still there.\n\n"
-				"\"Did it work? Am I a prince now?\"\n";
-		}
-
-		m_Prompt = std::make_unique<Text>(text, 560.0f, 370.0f, 16.0f, 0.0f);
-		m_Prompt->SetColor(1.0f, 1.0f, 1.0f, 1.0f);
-		
+		m_Choice = 1;
 		m_Exit = true;
 	}
 
@@ -123,15 +141,7 @@ void TowerDefense::FrogPrince::Update()
 	{
 		Player::Get().ChangeResource(200, Resource::GOLD);
 
-		std::string text =
-			"It doesn't take long to\n"
-			"find a buyer. \n\n"
-			"The frog croaks sadly as\n"
-			"he is taken away in chains.\n";
-
-		m_Prompt = std::make_unique<Text>(text, 560.0f, 370.0f, 16.0f, 0.0f);
-		m_Prompt->SetColor(1.0f, 1.0f, 1.0f, 1.0f);
-
+		m_Choice = 2;
 		m_Exit = true;
 	}
 }

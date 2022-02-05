@@ -3,7 +3,8 @@
 #include "core/Player.h"
 
 TowerDefense::FountainOfYouth::FountainOfYouth()
-	:m_Image(std::make_unique<StaticImage>(230.0f, 350.0f, 300, 300, 0.0f, "events/FountainOfYouth")),
+	:m_Choice(0),
+	m_Image(std::make_unique<StaticImage>(230.0f, 350.0f, 300, 300, 0.0f, "events/FountainOfYouth")),
 	m_Button1(std::make_unique<Button>(400.0f, 150.0f, 600, 50, "eventButton")),
 	m_Button2(std::make_unique<Button>(400.0f, 100.0f, 600, 50, "eventButton")),
 	m_Text1(std::make_unique<Text>("Drink (Heal to Full HP)", 400.0f, 150.0f, 12.0f, 0.0f)),
@@ -39,6 +40,32 @@ void TowerDefense::FountainOfYouth::RenderEnd()
 	m_Prompt->Render();
 }
 
+void TowerDefense::FountainOfYouth::OnEndSwitch()
+{
+	if (m_Choice == 1)
+	{
+		std::string text =
+			"You drink deeply form the\n"
+			"fountain. The water is cool\n"
+			"and refreshing.\n\n"
+			"You feel reinvigorated\n";
+
+		m_Prompt = std::make_unique<Text>(text, 550.0f, 350.0f, 18.0f, 0.0f);
+		m_Prompt->SetColor(1.0f, 1.0f, 1.0f, 1.0f);
+	}
+	else if (m_Choice == 2)
+	{
+		std::string text =
+			"As you bathe in the water\n"
+			"you begin feeling stronger.\n\n"
+			"You emerge certain that your\n"
+			"life has been extended.\n";
+
+		m_Prompt = std::make_unique<Text>(text, 550.0f, 350.0f, 18.0f, 0.0f);
+		m_Prompt->SetColor(1.0f, 1.0f, 1.0f, 1.0f);
+	}
+}
+
 void TowerDefense::FountainOfYouth::Update()
 {
 	m_Button1->Update();
@@ -48,31 +75,13 @@ void TowerDefense::FountainOfYouth::Update()
 	{
 		Player& player = Player::Get();
 		player.ChangeHealth(player.GetMaxHealth()-player.GetHealth());
-		
-		std::string text =
-			"You drink deeply form the\n"
-			"fountain. The water is cool\n"
-			"and refreshing.\n\n"
-			"You feel reinvigorated\n";
-
-		m_Prompt = std::make_unique<Text>(text, 550.0f, 350.0f, 18.0f, 0.0f);
-		m_Prompt->SetColor(1.0f, 1.0f, 1.0f, 1.0f);
-
+		m_Choice = 1;
 		m_Exit = true;
 	}
 	else if (m_Button2->IsClicked())
 	{
 		Player::Get().ChangeMaxHealth(10);
-
-		std::string text =
-			"As you bathe in the water\n"
-			"you begin feeling stronger.\n\n"
-			"You emerge certain that your\n"
-			"life has been extended.\n";
-
-		m_Prompt = std::make_unique<Text>(text, 550.0f, 350.0f, 18.0f, 0.0f);
-		m_Prompt->SetColor(1.0f, 1.0f, 1.0f, 1.0f);
-
+		m_Choice = 2;
 		m_Exit = true;
 	}
 }

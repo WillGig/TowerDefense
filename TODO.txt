@@ -1,6 +1,4 @@
 Current:
-	Make event text wait to change until fade is done
-
 	Add scholar upgrades at wizard tower
 	Add level 5 upgrades for scholar
 

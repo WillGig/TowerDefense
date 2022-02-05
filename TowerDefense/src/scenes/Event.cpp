@@ -96,7 +96,11 @@ void TowerDefense::Event::Update()
 		if (m_TransitionFade < 1.0f)
 			m_TransitionFade += m_FadeSpeed;
 		else
+		{
 			m_Phase = m_NextPhase;
+			if (m_Phase == EventPhase::END)
+				m_RandomEvent->OnEndSwitch();
+		}
 	}
 	else if (m_TransitionFade > 0.0f)
 		m_TransitionFade -= m_FadeSpeed;

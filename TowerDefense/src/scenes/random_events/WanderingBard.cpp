@@ -6,7 +6,8 @@
 #include "cards/quirks/Quirk.h"
 
 TowerDefense::WanderingBard::WanderingBard()
-	:m_ShowingDemoInfo(false), m_Image(std::make_unique<StaticImage>(180.0f, 350.0f, 300, 300, 0.0f, "events/Bard")),
+	:m_Choice(0), m_ShowingDemoInfo(false), 
+	m_Image(std::make_unique<StaticImage>(180.0f, 350.0f, 300, 300, 0.0f, "events/Bard")),
 	m_Button1(std::make_unique<Button>(400.0f, 150.0f, 600, 50, "eventButton")),
 	m_Button2(std::make_unique<Button>(400.0f, 100.0f, 600, 50, "eventButton")),
 	m_Text1(std::make_unique<Text>("Play it! (Lose 300 gold, gain Hoid the Bard)", 400.0f, 150.0f, 12.0f, 0.0f)),
@@ -60,6 +61,29 @@ void TowerDefense::WanderingBard::RenderEnd()
 	m_Prompt->Render();
 }
 
+void TowerDefense::WanderingBard::OnEndSwitch()
+{
+	if (m_Choice == 1)
+	{
+		std::string text =
+			"You gain hoid the bard!\n";
+
+		m_Prompt = std::make_unique<Text>(text, 560.0f, 370.0f, 12.0f, 0.0f);
+		m_Prompt->SetColor(1.0f, 1.0f, 1.0f, 1.0f);
+	}
+	else if (m_Choice == 2)
+	{
+		std::string text =
+			"\"I see... \"\n"
+			"With a dip of his head\n"
+			"and a turn of his heel,\n"
+			"he turns away and leaves.\n";
+
+		m_Prompt = std::make_unique<Text>(text, 560.0f, 370.0f, 12.0f, 0.0f);
+		m_Prompt->SetColor(1.0f, 1.0f, 1.0f, 1.0f);
+	}
+}
+
 void TowerDefense::WanderingBard::Update()
 {
 	if (m_ShowingDemoInfo)
@@ -86,27 +110,14 @@ void TowerDefense::WanderingBard::Update()
 		player.AddToDeck(std::make_shared<HeroCard>("Hoid", "Class:  Bard\nRace:  Human\nSage\nExplorer\nNear Sighted\n", 50, "hoid", std::make_shared<Tower::Bard>(), quirks));
 		player.ChangeResource(-300, Resource::GOLD);
 
-		std::string text =
-			"You gain hoid the bard!\n";
-
-		m_Prompt = std::make_unique<Text>(text, 560.0f, 370.0f, 12.0f, 0.0f);
-		m_Prompt->SetColor(1.0f, 1.0f, 1.0f, 1.0f);
-
+		m_Choice = 1;
 		m_Exit = true;
 	}
 
 	m_Button2->Update();
 	if (m_Button2->IsClicked())
 	{
-		std::string text =
-			"\"I see... \"\n"
-			"With a dip of his head\n"
-			"and a turn of his heel,\n"
-			"he turns away and leaves.\n";
-
-		m_Prompt = std::make_unique<Text>(text, 560.0f, 370.0f, 12.0f, 0.0f);
-		m_Prompt->SetColor(1.0f, 1.0f, 1.0f, 1.0f);
-
+		m_Choice = 2;
 		m_Exit = true;
 	}
 }

@@ -6,7 +6,8 @@
 #include "cards/quirks/Quirk.h"
 
 TowerDefense::WanderingCleric::WanderingCleric()
-	:m_ShowingDemoInfo(false), m_Image(std::make_unique<StaticImage>(180.0f, 350.0f, 300, 300, 0.0f, "events/Cleric")),
+	:m_Choice(0), m_ShowingDemoInfo(false), 
+	m_Image(std::make_unique<StaticImage>(180.0f, 350.0f, 300, 300, 0.0f, "events/Cleric")),
 	m_Button1(std::make_unique<Button>(400.0f, 150.0f, 600, 50, "eventButton")),
 	m_Button2(std::make_unique<Button>(400.0f, 100.0f, 600, 50, "eventButton")),
 	m_Text1(std::make_unique<Text>("What is mine, is theirs. (Lose all your wheat, gain Aramis the cleric)", 400.0f, 150.0f, 12.0f, 0.0f)),
@@ -60,6 +61,29 @@ void TowerDefense::WanderingCleric::RenderEnd()
 	m_Prompt->Render();
 }
 
+void TowerDefense::WanderingCleric::OnEndSwitch()
+{
+	if (m_Choice == 1)
+	{
+		std::string text =
+			"All of your wheat has been given away.\n"
+			"You gain Aramis the cleric!";
+
+		m_Prompt = std::make_unique<Text>(text, 560.0f, 370.0f, 12.0f, 0.0f);
+		m_Prompt->SetColor(1.0f, 1.0f, 1.0f, 1.0f);
+	}
+	else if (m_Choice == 2)
+	{
+		std::string text =
+			"The man gives you a disgusted look.\n\n"
+			"He spits on the ground at your feet,\n"
+			"turns, and leaves.\n";
+
+		m_Prompt = std::make_unique<Text>(text, 560.0f, 370.0f, 12.0f, 0.0f);
+		m_Prompt->SetColor(1.0f, 1.0f, 1.0f, 1.0f);
+	}
+}
+
 void TowerDefense::WanderingCleric::Update()
 {
 	if (m_ShowingDemoInfo)
@@ -85,27 +109,14 @@ void TowerDefense::WanderingCleric::Update()
 		player.AddToDeck(std::make_shared<HeroCard>("Aramis", "Class:  Cleric\nRace:  Human\nSage\nVeteran\nNear Sighted\n", 50, "aramis", std::make_shared<Tower::Cleric>(), quirks));
 		player.ChangeResource(-player.GetResource(Resource::WHEAT), Resource::WHEAT);
 		
-		std::string text =
-			"All of your wheat has been given away.\n"
-			"You gain Aramis the cleric!";
-
-		m_Prompt = std::make_unique<Text>(text, 560.0f, 370.0f, 12.0f, 0.0f);
-		m_Prompt->SetColor(1.0f, 1.0f, 1.0f, 1.0f);
-		
+		m_Choice = 1;
 		m_Exit = true;
 	}
 
 	m_Button2->Update();
 	if (m_Button2->IsClicked())
 	{
-		std::string text =
-			"The man gives you a disgusted look.\n\n"
-			"He spits on the ground at your feet,\n"
-			"turns, and leaves.\n";
-
-		m_Prompt = std::make_unique<Text>(text, 560.0f, 370.0f, 12.0f, 0.0f);
-		m_Prompt->SetColor(1.0f, 1.0f, 1.0f, 1.0f);
-
+		m_Choice = 2;
 		m_Exit = true;
 	}
 }
