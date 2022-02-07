@@ -470,40 +470,47 @@ void TowerDefense::LoadingScreen::LoadTextures(GLFWwindow* w)
     Load("focusExhaustsUpgraded",   skillCards.load(3, 0), w);
     Load("potOfGreed",              skillCards.load(4, 0), w);
     Load("potOfGreedUpgraded",      skillCards.load(5, 0), w);
-    Load("fireBall",                skillCards.load(6, 0), w);
-    Load("fireBallUpgraded",        skillCards.load(7, 0), w);
-    Load("frostBall",               skillCards.load(8, 0), w);
-    Load("frostBallUpgraded",       skillCards.load(9, 0), w);
-    Load("lightning",               skillCards.load(10, 0), w);
-    Load("lightningUpgraded",       skillCards.load(11, 0), w);
-    Load("double",                  skillCards.load(0, 1), w);
-    Load("doubleUpgraded",          skillCards.load(1, 1), w);
-    Load("poisonBall",              skillCards.load(2, 1), w);
-    Load("poisonBallUpgraded",      skillCards.load(3, 1), w);
-    Load("sift",                    skillCards.load(4, 1), w);
-    Load("siftUpgraded",            skillCards.load(5, 1), w);
-    Load("reflect",                 skillCards.load(6, 1), w);
-    Load("reflectUpgraded",         skillCards.load(7, 1), w);
-    Load("skim",                    skillCards.load(8, 1), w);
-    Load("skimUpgraded",            skillCards.load(9, 1), w);
-    Load("refresh",                 skillCards.load(10, 1), w);
-    Load("refreshUpgraded",         skillCards.load(11, 1), w);
-    Load("center",                  skillCards.load(0, 2), w);
-    Load("centerUpgraded",          skillCards.load(1, 2), w);
-    Load("gather",                  skillCards.load(2, 2), w);
-    Load("gatherUpgraded",          skillCards.load(3, 2), w);
-    Load("concentrate",             skillCards.load(4, 2), w);
-    Load("concentrateUpgraded",     skillCards.load(5, 2), w);
-    Load("recharge",                skillCards.load(6, 2), w);
-    Load("rechargeUpgraded",        skillCards.load(7, 2), w);
-    Load("attain",                  skillCards.load(8, 2), w);
-    Load("attainUpgraded",          skillCards.load(9, 2), w);
-    Load("ren",                     skillCards.load(10, 2), w);
-    Load("renUpgraded",             skillCards.load(11, 2), w);
-    Load("surge",                   skillCards.load(0, 3), w);
-    Load("surgeUpgraded",           skillCards.load(1, 3), w);
-    Load("massStun",                skillCards.load(2, 3), w);
-    Load("massStunUpgraded",        skillCards.load(3, 3), w);
+    Load("study",                   skillCards.load(6, 0), w);
+    Load("studyUpgraded",           skillCards.load(7, 0), w);
+
+    Load("center",                  skillCards.load(0, 1), w);
+    Load("centerUpgraded",          skillCards.load(1, 1), w);
+    Load("double",                  skillCards.load(2, 1), w);
+    Load("doubleUpgraded",          skillCards.load(3, 1), w);
+
+    Load("sift",                    skillCards.load(0, 2), w);
+    Load("siftUpgraded",            skillCards.load(1, 2), w);
+    Load("reflect",                 skillCards.load(2, 2), w);
+    Load("reflectUpgraded",         skillCards.load(3, 2), w);
+    Load("skim",                    skillCards.load(4, 2), w);
+    Load("skimUpgraded",            skillCards.load(5, 2), w);
+    Load("refresh",                 skillCards.load(6, 2), w);
+    Load("refreshUpgraded",         skillCards.load(7, 2), w);
+
+    Load("fireBall",                skillCards.load(0, 3), w);
+    Load("fireBallUpgraded",        skillCards.load(1, 3), w);
+    Load("frostBall",               skillCards.load(2, 3), w);
+    Load("frostBallUpgraded",       skillCards.load(3, 3), w);
+    Load("lightning",               skillCards.load(4, 3), w);
+    Load("lightningUpgraded",       skillCards.load(5, 3), w);
+    Load("poisonBall",              skillCards.load(6, 3), w);
+    Load("poisonBallUpgraded",      skillCards.load(7, 3), w);
+
+    Load("gather",                  skillCards.load(0, 4), w);
+    Load("gatherUpgraded",          skillCards.load(1, 4), w);
+    Load("concentrate",             skillCards.load(2, 4), w);
+    Load("concentrateUpgraded",     skillCards.load(3, 4), w);
+    Load("recharge",                skillCards.load(4, 4), w);
+    Load("rechargeUpgraded",        skillCards.load(5, 4), w);
+    Load("attain",                  skillCards.load(6, 4), w);
+    Load("attainUpgraded",          skillCards.load(7, 4), w);
+    
+    Load("ren",                     skillCards.load(0, 5), w);
+    Load("renUpgraded",             skillCards.load(1, 5), w);
+    Load("surge",                   skillCards.load(2, 5), w);
+    Load("surgeUpgraded",           skillCards.load(3, 5), w);
+    Load("massStun",                skillCards.load(4, 5), w);
+    Load("massStunUpgraded",        skillCards.load(5, 5), w);
 
     SpriteSheet auraCards("res/textures/AuraCards.png", 440, 560);
     Load("lifeAura",                    auraCards.load(0, 0), w);
@@ -666,7 +673,7 @@ void TowerDefense::LoadingScreen::Load(const std::string& path, std::shared_ptr<
     numLoaded++;
 
     //Render loadbar and text if percent has changed
-    int percent = (int)(((float)numLoaded / 576.0f) * 100.0f);
+    int percent = (int)(((float)numLoaded / 578.0f) * 100.0f);
     if (loadPercent != percent)
     {
         RenderProgress(window, "Loading... " + loadCategory, percent);
