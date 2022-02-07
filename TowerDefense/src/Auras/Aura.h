@@ -195,6 +195,19 @@ namespace TowerDefense
 			float m_Damage;
 		};
 
+		class ScholarFocus : public Aura
+		{
+		public:
+			ScholarFocus(int num);
+			void OnCardPlay(std::shared_ptr<Card> c) override;
+			void Combine(std::shared_ptr<Aura> other) override;
+			inline int GetNum() const { return m_Num; }
+			const std::string GetSaveData() const override;
+
+		private:
+			int m_Num;
+		};
+
 		class HolyPower : public Aura
 		{
 		public:

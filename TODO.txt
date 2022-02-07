@@ -1,5 +1,4 @@
 Current:
-	Add scholar upgrades at wizard tower
 	Add level 5 upgrades for scholar
 
 	Change towers to single use?

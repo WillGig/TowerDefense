@@ -8,6 +8,10 @@ TowerDefense::WizardTower::WizardTower()
 {
 	m_Tree = std::make_shared<WizardDamage>(1, nullptr);
 
+	auto focus1 = std::make_shared<ScholarFocus>(1, m_Tree);
+	focus1->AddChild(std::make_shared<ScholarFocus>(2, focus1));
+	m_Tree->AddChild(focus1);
+
 	auto damage2 = std::make_shared<WizardDamage>(2, m_Tree);
 	auto damage3 = std::make_shared<WizardDamage>(3, damage2);
 	damage3->AddChild(std::make_shared<WizardLevel10>(damage3));

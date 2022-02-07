@@ -197,6 +197,7 @@ void TowerDefense::LoadingScreen::LoadTextures(GLFWwindow* w)
     Load("critChance",          auras.load(1, 1), w);
     Load("critDamage",          auras.load(2, 1), w);
     Load("sight",               auras.load(3, 1), w);
+    Load("focusUp",             auras.load(4, 1), w);
 
     SpriteSheet plusMinus("res/textures/PlusMinus.png", 64, 64);
     Load("plus",            plusMinus.load(0, 0), w);
@@ -299,6 +300,10 @@ void TowerDefense::LoadingScreen::LoadTextures(GLFWwindow* w)
     Load("MultiShotSkill1Selected",         skillTreeSkills.load(1, 3), w);
     Load("MultiShotSkill2",                 skillTreeSkills.load(0, 4), w);
     Load("MultiShotSkill2Selected",         skillTreeSkills.load(1, 4), w);
+    Load("FocusSkill1",                     skillTreeSkills.load(2, 3), w);
+    Load("FocusSkill1Selected",             skillTreeSkills.load(3, 3), w);
+    Load("FocusSkill2",                     skillTreeSkills.load(2, 4), w);
+    Load("FocusSkill2Selected",             skillTreeSkills.load(3, 4), w);
     Load("Level10Skill",                    skillTreeSkills.load(6, 0), w);
     Load("Level10SkillSelected",            skillTreeSkills.load(7, 0), w);
 
@@ -661,7 +666,7 @@ void TowerDefense::LoadingScreen::Load(const std::string& path, std::shared_ptr<
     numLoaded++;
 
     //Render loadbar and text if percent has changed
-    int percent = (int)(((float)numLoaded / 571.0f) * 100.0f);
+    int percent = (int)(((float)numLoaded / 576.0f) * 100.0f);
     if (loadPercent != percent)
     {
         RenderProgress(window, "Loading... " + loadCategory, percent);

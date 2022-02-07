@@ -238,6 +238,8 @@
     <ClCompile Include="src\auras\Sight.cpp" />
     <ClCompile Include="src\cards\EchoLocation.cpp" />
     <ClCompile Include="src\cards\quirks\SuperSenses.cpp" />
+    <ClCompile Include="src\scenes\base_scenes\skill_scenes\skill_trees\ScholarFocus.cpp" />
+    <ClCompile Include="src\auras\ScholarFocus.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\artifacts\Artifact.h" />

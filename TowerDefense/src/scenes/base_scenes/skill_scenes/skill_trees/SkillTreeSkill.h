@@ -92,6 +92,13 @@ namespace TowerDefense
 		void Apply() override;
 	};
 
+	class ScholarFocus : public SkillTreeSkill
+	{
+	public:
+		ScholarFocus(int level, std::shared_ptr<SkillTreeSkill> parent);
+		void Apply() override;
+	};
+
 	class HolyPower : public SkillTreeSkill
 	{
 	public:

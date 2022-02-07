@@ -344,6 +344,12 @@ void TowerDefense::Load::LoadGame(int slot)
 				{
 					player.AddCombatAura(std::make_shared<Aura::Sight>());
 				}
+				else if (name == "Scholar Focus")
+				{
+					std::getline(saveFile, line);
+					int num = std::stoi(line);
+					player.AddCombatAura(std::make_shared<Aura::ScholarFocus>(num));
+				}
 			}
 
 			//Combats

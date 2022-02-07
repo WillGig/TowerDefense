@@ -210,6 +210,7 @@
     <ClCompile Include="src\Auras\MultiShot.cpp" />
     <ClCompile Include="src\auras\MusicPower.cpp" />
     <ClCompile Include="src\auras\PoisonWeapons.cpp" />
+    <ClCompile Include="src\auras\ScholarFocus.cpp" />
     <ClCompile Include="src\auras\Sight.cpp" />
     <ClCompile Include="src\auras\Storm.cpp" />
     <ClCompile Include="src\auras\StunAttacks.cpp" />
@@ -342,6 +343,7 @@
     <ClCompile Include="src\scenes\base_scenes\skill_scenes\skill_trees\HolyPower.cpp" />
     <ClCompile Include="src\scenes\base_scenes\skill_scenes\skill_trees\Level10.cpp" />
     <ClCompile Include="src\scenes\base_scenes\skill_scenes\skill_trees\MusicPower.cpp" />
+    <ClCompile Include="src\scenes\base_scenes\skill_scenes\skill_trees\ScholarFocus.cpp" />
     <ClCompile Include="src\scenes\base_scenes\skill_scenes\skill_trees\SkillTreeSkill.cpp" />
     <ClCompile Include="src\scenes\base_scenes\skill_scenes\skill_trees\MultiShot.cpp" />
     <ClCompile Include="src\scenes\base_scenes\skill_scenes\skill_trees\WizardDamage.cpp" />
