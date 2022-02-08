@@ -45,7 +45,8 @@ void TowerDefense::MapEditor::Update()
 	if (tile && Input::GetLeftMouseClicked())
 	{
 		int x = (int)((tile->GetX() - Board::Get().GetX()) / Board::TILESIZE);
-		int y = (int)((tile->GetY() - Board::Get().GetY()) / Board::TILESIZE);
+		int y = (int)((tile->GetY() - Board::Get().GetY() + 1) / Board::TILESIZE);
+		std::cout << y << std::endl;
 		Board::Get().SetTile(x, y, m_CurrentTile);
 	}
 		
