@@ -15,7 +15,8 @@ TowerDefense::MainMenu::MainMenu()
 		std::make_unique<Button>(400.0f, 350.0f, 200, 50, "newGameButton"),
 		std::make_unique<Button>(400.0f, 300.0f, 200, 50, "loadGameButton"),
 		std::make_unique<Button>(400.0f, 250.0f, 200, 50, "settingsButton"),
-		std::make_unique<Button>(400.0f, 200.0f, 200, 50, "exitButton"),
+		std::make_unique<Button>(400.0f, 200.0f, 200, 50, "mapEditorButton"),
+		std::make_unique<Button>(400.0f, 150.0f, 200, 50, "exitButton"),
 	};
 }
 
@@ -41,8 +42,11 @@ void TowerDefense::MainMenu::Update()
 	//Settings Menu
 	else if (m_Buttons[2]->IsClicked())
 		SetScene(SceneType::SETTINGS);
-	//Exit
+	//Map Editor
 	else if (m_Buttons[3]->IsClicked())
+		SetScene(SceneType::MAPEDITOR);
+	//Exit
+	else if (m_Buttons[4]->IsClicked())
 		Stop();
 }
 

@@ -1,6 +1,13 @@
 #pragma once
 #include "Tile.h"
 
+#define EMPTY		0xffffff
+#define PATH		0xffff00
+#define STARTTILE   0x00ff00
+#define ENDTILE     0xff0000
+#define ROCK		0xA5A5A5
+#define TREE		0x007F0E
+
 namespace TowerDefense
 {
 	class Board
@@ -13,10 +20,18 @@ namespace TowerDefense
 
 		void Render();
 
+		void LoadMapNumber(int num);
+
 		void LoadMap(const std::string& file);
 
 		//Selects a random map file from res/maps and loads it
 		void LoadRandomMap();
+
+		//Only to be used for design in the map editor
+		//NOT to be called during combat
+		void Clear();
+		void SetTile(int x, int y, int tile);
+		void Save(int mapNumber);
 
 		//Returns true if the currently held tower can fit in the selected space
 		bool ValidPlace();
@@ -40,9 +55,12 @@ namespace TowerDefense
 		//Necessary to unbind static and singleton GLFW textures before calling glfwTerminate
 		void CleanUp();
 
-	private:
+		inline float GetX() const { return m_X; }
+		inline float GetY() const { return m_Y; }
+
 		static int TILESIZE;
 
+	private:
 		Board(int width, int height);
 
 		void SetTileImage(int x, int y, int tileImage);

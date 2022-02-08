@@ -37,6 +37,8 @@ void TowerDefense::LoadingScreen::LoadTextures(GLFWwindow* w)
     Load("menuConfirmSelected",     mainMenuButtons.load(3, 5), w);
     Load("menuCancel",              mainMenuButtons.load(2, 6), w);
     Load("menuCancelSelected",      mainMenuButtons.load(3, 6), w);
+    Load("mapEditorButton",         mainMenuButtons.load(0, 7), w);
+    Load("mapEditorButtonSelected", mainMenuButtons.load(1, 7), w);
 
     SpriteSheet xButton("res/textures/XButton.png", 50, 50);
     Load("xButton",                     xButton.load(0, 0), w);
@@ -133,6 +135,36 @@ void TowerDefense::LoadingScreen::LoadTextures(GLFWwindow* w)
     Load("buildTempleSelected",             buildButtons.load(1, 11), w);
     Load("buildAlchemyLabSelected",         buildButtons.load(1, 12), w);
     Load("buildMusicHallSelected",          buildButtons.load(1, 13), w);
+
+    SpriteSheet mapEditingUI("res/textures/MapEditingUI.png", 80, 80);
+    Load("saveMap",             mapEditingUI.load(0, 0), w);
+    Load("saveMapSelected",     mapEditingUI.load(1, 0), w);
+    Load("deleteMap",           mapEditingUI.load(2, 0), w);
+    Load("deleteMapSelected",   mapEditingUI.load(3, 0), w);
+    Load("previousMap",         mapEditingUI.load(4, 0), w);
+    Load("previousMapSelected", mapEditingUI.load(5, 0), w);
+    Load("nextMap",             mapEditingUI.load(6, 0), w);
+    Load("nextMapSelected",     mapEditingUI.load(7, 0), w);
+    Load("newMap",              mapEditingUI.load(8, 0), w);
+    Load("newMapSelected",      mapEditingUI.load(9, 0), w);
+    Load("undoChange",          mapEditingUI.load(0, 1), w);
+    Load("undoChangeSelected",  mapEditingUI.load(1, 1), w);
+    Load("mapToMenu",           mapEditingUI.load(2, 1), w);
+    Load("mapToMenuSelected",   mapEditingUI.load(3, 1), w);
+
+    SpriteSheet tiles("res/textures/tiles.png", 64, 64);
+    Load("emptyTile",           tiles.load(0, 0), w);
+    Load("emptyTileSelected",   tiles.load(0, 0), w);
+    Load("pathTile",            tiles.load(1, 0), w);
+    Load("pathTileSelected",    tiles.load(1, 0), w);
+    Load("startTile",           tiles.load(2, 0), w);
+    Load("startTileSelected",   tiles.load(2, 0), w);
+    Load("endTile",             tiles.load(3, 0), w);
+    Load("endTileSelected",     tiles.load(3, 0), w);
+    Load("rockTile",            tiles.load(4, 0), w);
+    Load("rockTileSelected",    tiles.load(4, 0), w);
+    Load("treeTile",            tiles.load(5, 0), w);
+    Load("treeTileSelected",    tiles.load(5, 0), w);
 
     SpriteSheet combatButtons("res/textures/CombatButtons.png", 384, 128);
     Load("startButton",         combatButtons.load(0, 0), w);
@@ -673,7 +705,7 @@ void TowerDefense::LoadingScreen::Load(const std::string& path, std::shared_ptr<
     numLoaded++;
 
     //Render loadbar and text if percent has changed
-    int percent = (int)(((float)numLoaded / 578.0f) * 100.0f);
+    int percent = (int)(((float)numLoaded / 606.0f) * 100.0f);
     if (loadPercent != percent)
     {
         RenderProgress(window, "Loading... " + loadCategory, percent);

@@ -3,13 +3,6 @@
 #include "TowerDefense.h"
 #include "Player.h"
 
-#define EMPTY   0xffffff
-#define PATH    0xffff00
-#define START   0x00ff00
-#define END     0xff0000
-#define ROCK    0xA5A5A5
-#define TREE    0x007F0E
-
 int TowerDefense::Board::TILESIZE = 32;
 
 TowerDefense::Board::Board(int width, int height)
@@ -49,7 +42,7 @@ TowerDefense::Board::Board(int width, int height)
             }
             xOffSet += TILESIZE;
 
-            m_Tiles->push_back(std::make_shared<Tile>(m_X + i * TILESIZE, m_Y + j * TILESIZE, TILESIZE, TILESIZE));
+            m_Tiles->push_back(std::make_shared<Tile>(m_X + i * TILESIZE, m_Y + j * TILESIZE, TILESIZE, TILESIZE, EMPTY));
         }
         yOffSet += TILESIZE;
         xOffSet = 0;
@@ -128,6 +121,11 @@ void TowerDefense::Board::Render()
         m_SelectedTile->Render();
 }
 
+void TowerDefense::Board::LoadMapNumber(int num)
+{
+    LoadMap("res/maps/map" + std::to_string(num) + ".png");
+}
+
 void TowerDefense::Board::LoadMap(const std::string& file)
 {
     stbi_set_flip_vertically_on_load(0);
@@ -170,35 +168,17 @@ void TowerDefense::Board::LoadMap(const std::string& file)
             int bX = x;
             int bY = height - 1 - y;
 
-            switch (rgb)
+            SetTile(bX, bY, rgb);
+
+            if (rgb == STARTTILE)
             {
-            case START:
-                SetTileImage(bX, bY, 1);
-                m_Tiles->at(bX + bY * m_Width)->SetOccupied(true);
                 startX = x;
                 startY = y;
-                break;
-            case END:
-                SetTileImage(bX, bY, 1);
-                m_Tiles->at(bX + bY * m_Width)->SetOccupied(true);
+            }
+            if (rgb == ENDTILE)
+            {
                 endX = x;
                 endY = y;
-                break;
-            case PATH:
-                SetTileImage(bX, bY, 1);
-                m_Tiles->at(bX + bY * m_Width)->SetOccupied(true);
-                break;
-            case ROCK:
-                SetTileImage(bX, bY, 2);
-                m_Tiles->at(bX + bY * m_Width)->SetOccupied(true);
-                break;
-            case TREE:
-                SetTileImage(bX, bY, 3);
-                m_Tiles->at(bX + bY * m_Width)->SetOccupied(true);
-                break;
-            default:
-                SetTileImage(bX, bY, 0);
-                m_Tiles->at(bX + bY * m_Width)->SetOccupied(false);
             }
         }
     }
@@ -208,16 +188,12 @@ void TowerDefense::Board::LoadMap(const std::string& file)
     {
         std::cout << "Failed to find path start for map " << file << std::endl;
         stbi_image_free(data);
-        std::cout << "Loading default map" << std::endl;
-        LoadMap("res/maps/map0.png");
         return;
     }
     else if (endX == -1)
     {
         std::cout << "Failed to find path end for map " << file << std::endl;
         stbi_image_free(data);
-        std::cout << "Loading default map" << std::endl;
-        LoadMap("res/maps/map0.png");
         return;
     }
 
@@ -239,8 +215,6 @@ void TowerDefense::Board::LoadMap(const std::string& file)
             {
                 std::cout << "Error: path end not found" << std::endl;
                 stbi_image_free(data);
-                std::cout << "Loading default map" << std::endl;
-                LoadMap("res/maps/map0.png");
                 return;
             }
 
@@ -266,7 +240,7 @@ void TowerDefense::Board::LoadMap(const std::string& file)
             long rgb = ((r & 0xff) << 16) + ((g & 0xff) << 8) + (b & 0xff);
 
             //Move to next tile in path
-            if (rgb == PATH || rgb == END)
+            if (rgb == PATH || rgb == ENDTILE)
             {
                 currentX = xPos;
                 currentY = yPos;
@@ -307,6 +281,80 @@ void TowerDefense::Board::LoadRandomMap()
    
     int map = (int)(Random::GetFloat() * numMaps);
     LoadMap("res/maps/map" + std::to_string(map) + ".png");
+}
+
+void TowerDefense::Board::Clear()
+{
+    for (int y = 0; y < m_Height; y++)
+    {
+        for (int x = 0; x < m_Width; x++)
+        {
+            SetTileImage(x, y, 0);
+            m_Tiles->at(x + y * m_Width)->SetOccupied(false);
+            m_Tiles->at(x + y * m_Width)->SetTexture(EMPTY);
+        }
+    }
+}
+
+void TowerDefense::Board::SetTile(int x, int y, int tile)
+{
+    switch (tile)
+    {
+    case PATH:
+        SetTileImage(x, y, 1);
+        m_Tiles->at(x + y * m_Width)->SetOccupied(true);
+        break;
+    case STARTTILE:
+        SetTileImage(x, y, 2);
+        m_Tiles->at(x + y * m_Width)->SetOccupied(true);
+        break;
+    case ENDTILE:
+        SetTileImage(x, y, 3);
+        m_Tiles->at(x + y * m_Width)->SetOccupied(true);
+        break;
+    case ROCK:
+        SetTileImage(x, y, 4);
+        m_Tiles->at(x + y * m_Width)->SetOccupied(true);
+        break;
+    case TREE:
+        SetTileImage(x, y, 5);
+        m_Tiles->at(x + y * m_Width)->SetOccupied(true);
+        break;
+    default:
+        SetTileImage(x, y, 0);
+        m_Tiles->at(x + y * m_Width)->SetOccupied(false);
+    };
+    m_Tiles->at(x + y * m_Width)->SetTexture(tile);
+}
+
+void TowerDefense::Board::Save(int mapNumber)
+{
+    uint8_t* img = new uint8_t[20 * 10 * 3];
+
+    for (int y = 0; y < m_Height; y++)
+    {
+        for (int x = 0; x < m_Width; x++)
+        {
+            int rgb = m_Tiles->at(x + y * m_Width)->GetTexture();
+
+            int r = (rgb >> 16) & 0xff;
+            int g = (rgb >> 8) & 0xff;
+            int b = (rgb) & 0xff;
+
+            int iX = x;
+            int iY = m_Height - 1 - y;
+
+            img[(iX + iY * m_Width) * 3] = r;
+            img[(iX + iY * m_Width) * 3 + 1] = g;
+            img[(iX + iY * m_Width) * 3 + 2] = b;
+        }
+    }
+
+    std::string path = "res/maps/map" + std::to_string(mapNumber) + ".png";
+
+    stbi_write_png(path.c_str(), m_Width, m_Height, 3, img, m_Width * 3);
+
+    delete[] img;
 }
 
 bool TowerDefense::Board::Contains(float x, float y) const
@@ -391,19 +439,19 @@ std::unique_ptr<float[]> TowerDefense::Board::GetPositions(unsigned int tileNumb
 
     pos[0] = (-width / 2 + xOff);
     pos[1] = (-height / 2 + yOff);
-    pos[2] = ((coords.first - width / 2) / 128.0f);
+    pos[2] = ((coords.first - width / 2) / 256.0f);
     pos[3] = ((coords.second - height / 2) / 32.0f);
     pos[4] = (width / 2 + xOff);
     pos[5] = (-height / 2 + yOff);
-    pos[6] = ((coords.first + width / 2) / 128.0f);
+    pos[6] = ((coords.first + width / 2) / 256.0f);
     pos[7] = ((coords.second - height / 2) / 32.0f);
     pos[8] = (width / 2 + xOff);
     pos[9] = (height / 2 + yOff);
-    pos[10] = ((coords.first + width / 2) / 128.0f);
+    pos[10] = ((coords.first + width / 2) / 256.0f);
     pos[11] = ((coords.second + height / 2) / 32.0f);
     pos[12] = (-width / 2 + xOff);
     pos[13] = (height / 2 + yOff);
-    pos[14] = ((coords.first - width / 2) / 128.0f);
+    pos[14] = ((coords.first - width / 2) / 256.0f);
     pos[15] = ((coords.second + height / 2) / 32.0f);
 
     return pos;
@@ -418,6 +466,8 @@ std::pair<float, float> TowerDefense::Board::GetCoords(unsigned int tileNumber)
     case 1: return std::make_pair<float, float>(48.0f, 16.0f);
     case 2: return std::make_pair<float, float>(80.0f, 16.0f);
     case 3: return std::make_pair<float, float>(112.0f, 16.0f);
+    case 4: return std::make_pair<float, float>(144.0f, 16.0f);
+    case 5: return std::make_pair<float, float>(176.0f, 16.0f);
     }
 
     std::cout << "Error Tile " << tileNumber << " not found!" << std::endl;

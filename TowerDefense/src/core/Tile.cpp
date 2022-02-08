@@ -1,8 +1,9 @@
 #include "pch.h"
 #include "Tile.h"
 
-TowerDefense::Tile::Tile(float x, float y, int width, int height)
-	:m_X(x), m_Y(y), m_Width(width), m_Height(height), m_Occupied(false), m_ContainedObject()
+TowerDefense::Tile::Tile(float x, float y, int width, int height, int texture)
+	:m_X(x), m_Y(y), m_Width(width), m_Height(height), m_Texture(texture), 
+	m_Occupied(false), m_ContainedObject()
 {
 
 }

@@ -354,6 +354,7 @@
     <ClCompile Include="src\scenes\base_scenes\skill_scenes\WizardTower.cpp" />
     <ClCompile Include="src\scenes\InGameSettings.cpp" />
     <ClCompile Include="src\scenes\LoadMenu.cpp" />
+    <ClCompile Include="src\scenes\MapEditor.cpp" />
     <ClCompile Include="src\scenes\NewGameMenu.cpp" />
     <ClCompile Include="src\scenes\random_events\CaveBat.cpp" />
     <ClCompile Include="src\scenes\random_events\FrogPrince.cpp" />
@@ -533,6 +534,7 @@
     <ClInclude Include="src\scenes\base_scenes\skill_scenes\skill_trees\SkillTreeSkill.h" />
     <ClInclude Include="src\scenes\InGameSettings.h" />
     <ClInclude Include="src\scenes\LoadMenu.h" />
+    <ClInclude Include="src\scenes\MapEditor.h" />
     <ClInclude Include="src\scenes\NewGameMenu.h" />
     <ClInclude Include="src\scenes\random_events\RandomEvent.h" />
     <ClInclude Include="src\scenes\Combat.h" />
@@ -580,6 +582,7 @@
     <ClInclude Include="src\engine\VertexArray.h" />
     <ClInclude Include="src\engine\VertexBuffer.h" />
     <ClInclude Include="src\engine\VertexBufferLayout.h" />
+    <ClInclude Include="src\vendor\stb_image\stb_image_write.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -6,7 +6,7 @@ namespace TowerDefense
 	class Tile
 	{
 	public:
-		Tile(float x, float y, int width, int height);
+		Tile(float x, float y, int width, int height, int Texture);
 		inline bool IsOccupied() { return (m_ContainedObject != nullptr) || m_Occupied; }
 		inline std::shared_ptr<Entity> GetContainedObject() const { return m_ContainedObject; }
 		void SetContainedObject(std::shared_ptr<Entity> object);
@@ -16,9 +16,11 @@ namespace TowerDefense
 		inline float GetY() const { return m_Y; }
 		inline int GetWidth() const { return m_Width; }
 		inline int GetHeight() const { return m_Height; }
+		inline int GetTexture() const { return m_Texture; }
+		inline void SetTexture(int tex) { m_Texture = tex; }
 	private:
 		float m_X, m_Y;
-		int m_Width, m_Height;
+		int m_Width, m_Height, m_Texture;
 
 		//May not be true even if there is a tower in the tile. Used for keeping track of non-objects such as path tiles
 		//Always use IsOccupied() to check if a tile is available

@@ -240,6 +240,7 @@
     <ClCompile Include="src\cards\quirks\SuperSenses.cpp" />
     <ClCompile Include="src\scenes\base_scenes\skill_scenes\skill_trees\ScholarFocus.cpp" />
     <ClCompile Include="src\auras\ScholarFocus.cpp" />
+    <ClCompile Include="src\scenes\MapEditor.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\artifacts\Artifact.h" />
@@ -345,6 +346,8 @@
     <ClInclude Include="src\scenes\base_scenes\skill_scenes\skill_trees\SkillTreeSkill.h" />
     <ClInclude Include="src\utils\StringUtils.h" />
     <ClInclude Include="src\scenes\base_scenes\skill_scenes\SkillScene.h" />
+    <ClInclude Include="src\scenes\MapEditor.h" />
+    <ClInclude Include="src\vendor\stb_image\stb_image_write.h" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="res\textures\AnimationEffects.png" />
