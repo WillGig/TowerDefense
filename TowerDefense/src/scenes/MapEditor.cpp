@@ -4,34 +4,39 @@
 #include "core/Board.h"
 
 TowerDefense::MapEditor::MapEditor()
+	:m_CurrentTileHighlight(std::make_unique<Rectangle>(0.0f, 0.0f, 30.0f, 30.0f))
 {	
 	m_Buttons =
 	{
 		std::make_unique<Button>(40.0f, 40.0f, 40, 40, "saveMap"),
-		std::make_unique<Button>(100.0f, 40.0f, 40, 40, "deleteMap"),
-		std::make_unique<Button>(160.0f, 40.0f, 40, 40, "previousMap"),
-		std::make_unique<Button>(220.0f, 40.0f, 40, 40, "nextMap"),
-		std::make_unique<Button>(280.0f, 40.0f, 40, 40, "newMap"),
-		std::make_unique<Button>(340.0f, 40.0f, 40, 40, "undoChange"),
+		std::make_unique<Button>(90.0f, 40.0f, 40, 40, "deleteMap"),
+		std::make_unique<Button>(140.0f, 40.0f, 40, 40, "previousMap"),
+		std::make_unique<Button>(190.0f, 40.0f, 40, 40, "nextMap"),
+		std::make_unique<Button>(240.0f, 40.0f, 40, 40, "newMap"),
+		std::make_unique<Button>(290.0f, 40.0f, 40, 40, "undoChange"),
 		std::make_unique<Button>(760.0f, 40.0f, 40, 40, "mapToMenu")
 	};
 
 	m_Tiles =
 	{
-		std::make_unique<Button>(80.0f, 150.0f, 25, 25, "emptyTile"),
-		std::make_unique<Button>(110.0f, 150.0f, 25, 25, "pathTile"),
-		std::make_unique<Button>(140.0f, 150.0f, 25, 25, "startTile"),
-		std::make_unique<Button>(170.0f, 150.0f, 25, 25, "endTile"),
-		std::make_unique<Button>(200.0f, 150.0f, 25, 25, "rockTile"),
-		std::make_unique<Button>(230.0f, 150.0f, 25, 25, "treeTile")
+		std::make_unique<Button>(80.0f,  200.0f, 25, 25, "emptyTile"),
+		std::make_unique<Button>(110.0f, 200.0f, 25, 25, "pathTile"),
+		std::make_unique<Button>(140.0f, 200.0f, 25, 25, "startTile"),
+		std::make_unique<Button>(170.0f, 200.0f, 25, 25, "endTile"),
+		std::make_unique<Button>(200.0f, 200.0f, 25, 25, "rockTile"),
+		std::make_unique<Button>(230.0f, 200.0f, 25, 25, "treeTile")
 	};
 }
 
 void TowerDefense::MapEditor::Render()
 {
 	Board::Get().Render();
+	if (m_PotentialTile)
+		m_PotentialTile->Render();
+
 	for (unsigned int i = 0; i < m_Buttons.size(); i++)
 		m_Buttons[i]->Render();
+	m_CurrentTileHighlight->Render();
 	for (unsigned int i = 0; i < m_Tiles.size(); i++)
 		m_Tiles[i]->Render();
 	m_CurrentMapName->Render();
@@ -43,28 +48,35 @@ void TowerDefense::MapEditor::Update()
 	//Check if Tile on board is clicked
 	board.Update();
 	auto tile = board.GetCurrentTile();
-	if (tile && Input::GetLeftMouseClicked())
+	if (tile)
 	{
-		//Get Tile coords
-		int x = (int)((tile->GetX() - board.GetX()) / Board::TILESIZE);
-		int y = (int)((tile->GetY() - board.GetY() + 1) / Board::TILESIZE);
-
-		//Check if tile has already been changed this click
-		bool containsTile = false;
-		for (Tile t : m_CurrentChange)
-			if (t.GetX() == x && t.GetY() == y)
-			{
-				containsTile = true;
-				break;
-			}
-				
-		//Change tile and add to history
-		if (!containsTile)
+		m_PotentialTile = std::make_unique<Image>(m_CurrentTileTexture, tile->GetX(), tile->GetY(), Board::TILESIZE, Board::TILESIZE, 0.0f);
+		
+		if (Input::GetLeftMouseClicked())
 		{
-			m_CurrentChange.push_back(Tile((float)x, (float)y, 0, 0, tile->GetTexture()));
-			board.SetTile(x, y, m_CurrentTile);
+			//Get Tile coords
+			int x = (int)((tile->GetX() - board.GetX()) / Board::TILESIZE);
+			int y = (int)((tile->GetY() - board.GetY() + 1) / Board::TILESIZE);
+
+			//Check if tile has already been changed this click
+			bool containsTile = false;
+			for (Tile t : m_CurrentChange)
+				if (t.GetX() == x && t.GetY() == y)
+				{
+					containsTile = true;
+					break;
+				}
+
+			//Change tile and add to history
+			if (!containsTile)
+			{
+				m_CurrentChange.push_back(Tile((float)x, (float)y, 0, 0, tile->GetTexture()));
+				board.SetTile(x, y, m_CurrentTile);
+			}
 		}
 	}
+	else if(m_PotentialTile)
+			m_PotentialTile.reset();
 
 	//When mouse is released, add change to undo history
 	if (!Input::GetLeftMouseClicked() && m_CurrentChange.size() > 0)
@@ -80,26 +92,38 @@ void TowerDefense::MapEditor::Update()
 	if (m_Tiles[0]->IsClicked())
 	{
 		m_CurrentTile = EMPTY;
+		m_CurrentTileTexture = "emptyTile";
+		m_CurrentTileHighlight->SetPosition(m_Tiles[0]->GetX(), m_Tiles[0]->GetY(), 0.0f);
 	}
 	else if (m_Tiles[1]->IsClicked())
 	{
 		m_CurrentTile = PATH;
+		m_CurrentTileTexture = "pathTile";
+		m_CurrentTileHighlight->SetPosition(m_Tiles[1]->GetX(), m_Tiles[1]->GetY(), 0.0f);
 	}
 	else if (m_Tiles[2]->IsClicked())
 	{
 		m_CurrentTile = STARTTILE;
+		m_CurrentTileTexture = "startTile";
+		m_CurrentTileHighlight->SetPosition(m_Tiles[2]->GetX(), m_Tiles[2]->GetY(), 0.0f);
 	}
 	else if (m_Tiles[3]->IsClicked())
 	{
 		m_CurrentTile = ENDTILE;
+		m_CurrentTileTexture = "endTile";
+		m_CurrentTileHighlight->SetPosition(m_Tiles[3]->GetX(), m_Tiles[3]->GetY(), 0.0f);
 	}
 	else if (m_Tiles[4]->IsClicked())
 	{
 		m_CurrentTile = ROCK;
+		m_CurrentTileTexture = "rockTile";
+		m_CurrentTileHighlight->SetPosition(m_Tiles[4]->GetX(), m_Tiles[4]->GetY(), 0.0f);
 	}
 	else if (m_Tiles[5]->IsClicked())
 	{
 		m_CurrentTile = TREE;
+		m_CurrentTileTexture = "treeTile";
+		m_CurrentTileHighlight->SetPosition(m_Tiles[5]->GetX(), m_Tiles[5]->GetY(), 0.0f);
 	}
 
 	for (unsigned int i = 0; i < m_Buttons.size(); i++)
@@ -165,7 +189,7 @@ void TowerDefense::MapEditor::Update()
 		m_CurrentMapName = std::make_unique<Text>("res/maps/map" + std::to_string(m_CurrentMap) + ".png", 400.0f, 575.0f, 14.0f, 0.0f);
 	}
 	//Undo Last Change
-	else if (m_Buttons[5]->IsClicked())
+	else if (m_Buttons[5]->IsClicked() || (Input::GetKeyPressed(GLFW_KEY_LEFT_CONTROL) && Input::GetKeyPressedAndSetFalse(GLFW_KEY_Z)))
 	{
 		if (m_UndoHistory.size() > 0)
 		{
@@ -186,10 +210,13 @@ void TowerDefense::MapEditor::Update()
 void TowerDefense::MapEditor::OnSwitch()
 {
 	//Change Background Color
-	Renderer::Get().Clear(237.0f / 255.0f, 225.0f / 255.0f, 190.0f / 255.0f, 1.0f);
+	//Renderer::Get().Clear(237.0f / 255.0f, 225.0f / 255.0f, 190.0f / 255.0f, 1.0f);
 
 	m_CurrentMap = 0;
 	m_NumMaps = 0;
+	m_CurrentTile = 0;
+	m_CurrentTileTexture = "emptyTile";
+	m_CurrentTileHighlight->SetPosition(m_Tiles[0]->GetX(), m_Tiles[0]->GetY(), 0.0f);
 
 	bool exists = true;
 	while (exists)
@@ -212,6 +239,7 @@ void TowerDefense::MapEditor::SetMap(int m)
 {
 	Board::Get().LoadMapNumber(m);
 	m_CurrentMapName = std::make_unique<Text>("res/maps/map" + std::to_string(m) + ".png", 400.0f, 575.0f, 14.0f, 0.0f);
+	m_CurrentMapName->SetColor(1.0f, 1.0f, 1.0f, 1.0f);
 	m_CurrentChange = std::vector<Tile>();
 	m_UndoHistory = std::stack<std::vector<Tile>>();
 }
