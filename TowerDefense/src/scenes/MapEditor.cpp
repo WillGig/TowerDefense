@@ -39,15 +39,38 @@ void TowerDefense::MapEditor::Render()
 
 void TowerDefense::MapEditor::Update()
 {
+	Board& board = Board::Get();
 	//Check if Tile on board is clicked
-	Board::Get().Update();
-	auto tile = Board::Get().GetCurrentTile();
+	board.Update();
+	auto tile = board.GetCurrentTile();
 	if (tile && Input::GetLeftMouseClicked())
 	{
-		int x = (int)((tile->GetX() - Board::Get().GetX()) / Board::TILESIZE);
-		int y = (int)((tile->GetY() - Board::Get().GetY() + 1) / Board::TILESIZE);
-		std::cout << y << std::endl;
-		Board::Get().SetTile(x, y, m_CurrentTile);
+		//Get Tile coords
+		int x = (int)((tile->GetX() - board.GetX()) / Board::TILESIZE);
+		int y = (int)((tile->GetY() - board.GetY() + 1) / Board::TILESIZE);
+
+		//Check if tile has already been changed this click
+		bool containsTile = false;
+		for (Tile t : m_CurrentChange)
+			if (t.GetX() == x && t.GetY() == y)
+			{
+				containsTile = true;
+				break;
+			}
+				
+		//Change tile and add to history
+		if (!containsTile)
+		{
+			m_CurrentChange.push_back(Tile((float)x, (float)y, 0, 0, tile->GetTexture()));
+			board.SetTile(x, y, m_CurrentTile);
+		}
+	}
+
+	//When mouse is released, add change to undo history
+	if (!Input::GetLeftMouseClicked() && m_CurrentChange.size() > 0)
+	{
+		m_UndoHistory.push(m_CurrentChange);
+		m_CurrentChange = std::vector<Tile>();
 	}
 		
 
@@ -85,7 +108,7 @@ void TowerDefense::MapEditor::Update()
 	//Save Current Map
 	if (m_Buttons[0]->IsClicked())
 	{
-		Board::Get().Save(m_CurrentMap);
+		board.Save(m_CurrentMap);
 	}
 	//Delete Current Map
 	else if (m_Buttons[1]->IsClicked())
@@ -137,14 +160,21 @@ void TowerDefense::MapEditor::Update()
 		m_CurrentMap = m_NumMaps;
 		m_NumMaps++;
 
-		Board::Get().Clear();
-		Board::Get().Save(m_CurrentMap);
+		board.Clear();
+		board.Save(m_CurrentMap);
 		m_CurrentMapName = std::make_unique<Text>("res/maps/map" + std::to_string(m_CurrentMap) + ".png", 400.0f, 575.0f, 14.0f, 0.0f);
 	}
 	//Undo Last Change
 	else if (m_Buttons[5]->IsClicked())
 	{
-		//TODO
+		if (m_UndoHistory.size() > 0)
+		{
+			//Restore old tile data from undo history
+			auto oldTiles = m_UndoHistory.top();
+			for (Tile t : oldTiles)
+				board.SetTile((int)t.GetX(), (int)t.GetY(), t.GetTexture());
+			m_UndoHistory.pop();
+		}
 	}
 	//Return to Main Menu
 	else if (m_Buttons[6]->IsClicked())
@@ -182,4 +212,6 @@ void TowerDefense::MapEditor::SetMap(int m)
 {
 	Board::Get().LoadMapNumber(m);
 	m_CurrentMapName = std::make_unique<Text>("res/maps/map" + std::to_string(m) + ".png", 400.0f, 575.0f, 14.0f, 0.0f);
+	m_CurrentChange = std::vector<Tile>();
+	m_UndoHistory = std::stack<std::vector<Tile>>();
 }

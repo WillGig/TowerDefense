@@ -1,5 +1,6 @@
 #pragma once
 #include "Scene.h"
+#include "core/Tile.h"
 
 namespace TowerDefense
 {
@@ -19,5 +20,8 @@ namespace TowerDefense
 		std::array<std::unique_ptr<TowerDefense::Button>, 6> m_Tiles;
 
 		std::unique_ptr<Text> m_CurrentMapName;
+
+		std::stack<std::vector<Tile>> m_UndoHistory;
+		std::vector<Tile> m_CurrentChange;
 	};
 }
