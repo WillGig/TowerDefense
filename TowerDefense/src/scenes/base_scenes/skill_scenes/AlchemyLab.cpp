@@ -4,7 +4,7 @@
 #include "scenes/InGameSettings.h"
 
 TowerDefense::AlchemyLab::AlchemyLab()
-	:SkillScene("experimentButton", "Make something explode", 0)
+	:SkillScene("experimentButton", "Make something explode", 3)
 {
 	m_Tree = std::make_shared<AlchemistDamage>(1, nullptr);
 

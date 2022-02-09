@@ -4,7 +4,7 @@
 #include "scenes/InGameSettings.h"
 
 TowerDefense::WizardTower::WizardTower()
-	:SkillScene("studyButton", "Conduct your research", 0)
+	:SkillScene("studyButton", "Conduct your research", 3)
 {
 	m_Tree = std::make_shared<WizardDamage>(1, nullptr);
 

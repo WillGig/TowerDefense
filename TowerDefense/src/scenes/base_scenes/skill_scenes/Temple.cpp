@@ -4,7 +4,7 @@
 #include "scenes/InGameSettings.h"
 
 TowerDefense::Temple::Temple()
-	:SkillScene("meditateButton", "Strengthen your resolve", 0)
+	:SkillScene("meditateButton", "Strengthen your resolve", 3)
 {
 	m_Tree = std::make_shared<HolyPower>(1, nullptr);
 

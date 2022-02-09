@@ -1,19 +1,20 @@
 Current:
-	map editor?
-
 	Add level 5 upgrades for scholar
+
+	Doubler lag issue with longer maps
+
+	Summoned towers should be able to see invisible enemies
+	if the summoner can
 
 	Change towers to single use?
 
 	Add more skills to skill trees
-	Change skills to skill points instead of gold
-	How to get skill points?
 
 	Add second towers for buildings
 	 - music hall		Singer/siren
 	 - alchemy lab		Tinkerer?
 
-	-More Enemies(Days 21-30):
+	More Enemies(Days 21-30):
 		- Rats
 		- Oozes
 		- Bugs
@@ -80,14 +81,12 @@ Soon:
 	Make it clear where income is coming from
 	Right click on enemies precombat for details
 	Add day 20 bosses and non-rat combats
-	New Trait: Sharp-Eyes - can see invisible enemies
 	Change text renderer to include color in vertex data to allow coloring of specific letters/words
 	Allow right clicking on smithing upgrades to show detailed versions of cards
 
 Long Term:
 	Specific bosses for every 10 days for each faction
 	No duplicate cards in card selections\shops?
-	Add more maps/paths
 	Make Base buttons change when they are used?
 	Add more groups of enemies to fight pools
 		- Add more orcs/goblins and move to their own category of enemies with spearate fight pools
@@ -102,8 +101,7 @@ Long Term:
 		Melee Towers that fight enemies???
 		Fewer towers with branching class upgrades? Learn new spells?
 	Better graphics for towers
-	change image for enemies depending on the direction they face
-
+	
 Far away:
 	idle and cast animations for towers
 	Enemy walk animations

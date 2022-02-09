@@ -6,7 +6,7 @@ namespace TowerDefense
 	class SkillTreeSkill : public Button, public std::enable_shared_from_this<SkillTreeSkill>
 	{
 	public:
-		SkillTreeSkill(const std::string& image, const std::string& name, int cost, std::shared_ptr<SkillTreeSkill> parent);
+		SkillTreeSkill(const std::string& image, const std::string& name, std::shared_ptr<SkillTreeSkill> parent);
 
 		void Update() override;
 
@@ -29,10 +29,6 @@ namespace TowerDefense
 
 		inline const std::string& GetName() const { return m_Name; }
 
-		inline int GetCost() const { return m_Cost; }
-
-		bool HasCost() const;
-
 		void SetRequirementText(const std::string& text);
 
 		const std::string GetSkillsSelected() const;
@@ -40,13 +36,14 @@ namespace TowerDefense
 
 		int GetNumInTree() const;
 
+		int GetNumApplied() const;
+
 	private:
 		bool m_Applied;
-		int m_Cost;
 		std::string m_Name;
 
 		std::unique_ptr<Image> m_InfoImage;
-		std::unique_ptr<Text> m_NameText, m_RequirementText, m_CostText;
+		std::unique_ptr<Text> m_NameText, m_RequirementText;
 
 		std::shared_ptr<SkillTreeSkill> m_Parent;
 		std::vector<std::shared_ptr<SkillTreeSkill>> m_Children;

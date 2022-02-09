@@ -4,7 +4,7 @@
 #include "scenes/InGameSettings.h"
 
 TowerDefense::ArcheryRange::ArcheryRange()
-	:SkillScene("archeryButton", "Practice your aim", 0)
+	:SkillScene("archeryButton", "Practice your aim", 3)
 {
 	m_Tree = std::make_shared<ArcherDamage>(1, nullptr);
 

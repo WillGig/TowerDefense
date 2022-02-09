@@ -37,7 +37,15 @@ void TowerDefense::SkillScene::Update()
 	if (!player.DeckShowing() && !player.ArtifactsShowing())
 	{
 		InGameSettings::Get().UpdateButton();
+
+		int oldApplied = m_Tree->GetNumApplied();
 		m_Tree->Update();
+		if (oldApplied < m_Tree->GetNumApplied())
+		{
+			m_ActivityReady = m_ActivityCoolDown;
+			m_Exit = true;
+		}
+
 		m_BackToCamp->Update();
 		if (m_BackToCamp->IsClicked())
 			m_Exit = true;

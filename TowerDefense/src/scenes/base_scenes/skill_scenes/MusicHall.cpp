@@ -4,7 +4,7 @@
 #include "scenes/InGameSettings.h"
 
 TowerDefense::MusicHall::MusicHall()
-	:SkillScene("composeButton", "Express yourself", 0)
+	:SkillScene("composeButton", "Express yourself", 3)
 {
 	m_Tree = std::make_shared<MusicPower>(1, nullptr);
 

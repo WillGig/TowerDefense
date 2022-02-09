@@ -2,11 +2,10 @@
 #include "SkillTreeSkill.h"
 #include "core/Player.h"
 
-TowerDefense::SkillTreeSkill::SkillTreeSkill(const std::string& image, const std::string& name, int cost, std::shared_ptr<SkillTreeSkill> parent)
-	:Button(0, 0, 64, 64, image), m_Applied(false), m_Cost(cost), m_Name(name),
+TowerDefense::SkillTreeSkill::SkillTreeSkill(const std::string& image, const std::string& name, std::shared_ptr<SkillTreeSkill> parent)
+	:Button(0, 0, 64, 64, image), m_Applied(false), m_Name(name),
 	m_InfoImage(std::make_unique<Image>("TowerInfo", 0.0f, 0.0f, 200, 180, 0.0f)),
 	m_Parent(parent), m_Children(), m_NameText(std::make_unique<Text>(name, 0.0f, 0.0f, 12.0f, 190.0f)),
-	m_CostText(std::make_unique<Text>("Cost: " + std::to_string(cost) + " Gold", 0.0f, 0.0f, 12.0f, 190.0f)),
 	m_InfoText(std::make_unique<Text>("", 0.0f, 0.0f, 12.0f, 190.0f))
 {
 	if (parent)
@@ -22,19 +21,17 @@ void TowerDefense::SkillTreeSkill::Update()
 	if (m_Parent && !m_Parent->IsApplied())
 		return;
 
-	//Return if unnaffordable
-	if (!m_Applied && !HasCost())
-		return;
-
 	Button::Update();
 	
+	if (m_Applied)
+		return;
+
 	if (IsClicked())
 	{
 		if (!m_Applied)
 		{
 			Apply();
 			m_Applied = true;
-			Player::Get().ChangeResource(-m_Cost, Resource::GOLD);
 			for (auto l : m_Lines)
 				l->SetColor(1.0f, 1.0f, 1.0f, 1.0f);
 			for (auto child : m_Children)
@@ -65,7 +62,6 @@ void TowerDefense::SkillTreeSkill::RenderInfo() const
 	m_InfoImage->Render();
 	m_NameText->Render();
 	m_InfoText->Render();
-	m_CostText->Render();
 	if(m_RequirementText)
 		m_RequirementText->Render();
 }
@@ -85,7 +81,6 @@ void TowerDefense::SkillTreeSkill::SetPosition(float x, float y, float treeWidth
 		m_NameText->SetPosition(120.0f, 180.0f, 0.0f);
 		m_InfoImage->SetPosition(120.0f, 110.0f, 0.0f);
 		m_InfoText->SetPosition(120.0f, 130.0f, 0.0f);
-		m_CostText->SetPosition(120.0f, 70.0f, 0.0f);
 		if (m_RequirementText)
 			m_RequirementText->SetPosition(120.0f, 40.0f, 0.0f);
 	}
@@ -94,7 +89,6 @@ void TowerDefense::SkillTreeSkill::SetPosition(float x, float y, float treeWidth
 		m_NameText->SetPosition(800.0f - 120.0f, 180.0f, 0.0f);
 		m_InfoImage->SetPosition(800.0f - 120.0f, 110.0f, 0.0f);
 		m_InfoText->SetPosition(800.0f - 120.0f, 130.0f, 0.0f);
-		m_CostText->SetPosition(800.0f - 120.0f, 70.0f, 0.0f);
 		if (m_RequirementText)
 			m_RequirementText->SetPosition(800.0f - 120.0f, 40.0f, 0.0f);
 	}
@@ -117,11 +111,6 @@ void TowerDefense::SkillTreeSkill::SetPosition(float x, float y, float treeWidth
 void TowerDefense::SkillTreeSkill::AddChild(std::shared_ptr<SkillTreeSkill> child) 
 { 
 	m_Children.push_back(child);
-}
-
-bool TowerDefense::SkillTreeSkill::HasCost() const
-{
-	return Player::Get().GetResource(Resource::GOLD) > m_Cost - 1;
 }
 
 std::shared_ptr<const TowerDefense::SkillTreeSkill> TowerDefense::SkillTreeSkill::GetSelectedSkill() const
@@ -189,6 +178,22 @@ int TowerDefense::SkillTreeSkill::GetNumInTree() const
 
 	for (auto child : m_Children)
 		num += child->GetNumInTree();
+
+	return num;
+}
+
+int TowerDefense::SkillTreeSkill::GetNumApplied() const
+{
+	if (!m_Applied)
+		return 0;
+
+	if (m_Children.size() == 0)
+		return 1;
+
+	int num = 1;
+
+	for (auto child : m_Children)
+		num += child->GetNumApplied();
 
 	return num;
 }

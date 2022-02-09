@@ -4,7 +4,7 @@
 #include "auras/Aura.h"
 
 TowerDefense::AlchemistDamage::AlchemistDamage(int level, std::shared_ptr<SkillTreeSkill> parent)
-	: SkillTreeSkill("DamageSkill" + std::to_string(level), "Alchemist Damage " + std::to_string(level), 300, parent)
+	: SkillTreeSkill("DamageSkill" + std::to_string(level), "Alchemist Damage " + std::to_string(level), parent)
 {
 	m_InfoText = std::make_unique<Text>("Increase Alchemist\ndamage by 1", 0.0f, 0.0f, 12.0f, 190.0f);
 }
