@@ -1,10 +1,14 @@
 Current:
 	Add level 5 upgrades for scholar
 
-	Doubler lag issue with longer maps
-
-	Summoned towers should be able to see invisible enemies
-	if the summoner can
+	make enemies in precombat and postcombat look better with more than 7 enemies
+	
+	Fix Bugs:
+		Tavern not refreshing after 5 days if heroes are not bought
+		cleric aura buff not showing up?
+		Doubler lag issue with longer maps
+		Summoned towers should be able to see invisible enemies
+		if the summoner can
 
 	Change towers to single use?
 

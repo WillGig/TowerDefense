@@ -187,6 +187,7 @@ void TowerDefense::MapEditor::Update()
 		board.Clear();
 		board.Save(m_CurrentMap);
 		m_CurrentMapName = std::make_unique<Text>("res/maps/map" + std::to_string(m_CurrentMap) + ".png", 400.0f, 575.0f, 14.0f, 0.0f);
+		m_CurrentMapName->SetColor(1.0f, 1.0f, 1.0f, 1.0f);
 	}
 	//Undo Last Change
 	else if (m_Buttons[5]->IsClicked() || ((Input::GetKeyPressed(GLFW_KEY_LEFT_CONTROL) || Input::GetKeyPressed(GLFW_KEY_RIGHT_CONTROL)) && Input::GetKeyPressedAndSetFalse(GLFW_KEY_Z)))

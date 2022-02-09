@@ -22,9 +22,6 @@ void TowerDefense::SkillTreeSkill::Update()
 		return;
 
 	Button::Update();
-	
-	if (m_Applied)
-		return;
 
 	if (IsClicked())
 	{

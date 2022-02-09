@@ -12,8 +12,11 @@ TowerDefense::Wave::Wave(const int enemies[], int size)
 
 	for (int i = 0; i + 1 < size; i += 2) {
 		m_Delay->push_back(enemies[i + 1]);
-		int type = enemies[i];
-		m_Enemies->push_back(GetEnemy(type));
+		auto enemy = GetEnemy(enemies[i]);
+		if (enemy)
+			m_Enemies->push_back(enemy);
+		else
+			std::cout << "Error reading enemy" << std::endl;
 	}
 }
 
