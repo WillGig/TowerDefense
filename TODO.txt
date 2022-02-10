@@ -6,8 +6,6 @@ Current:
 	Fix Bugs:
 		cleric and bard aura buff not showing up?
 		Doubler lag issue with longer maps
-		Summoned towers should be able to see invisible enemies
-		if the summoner can
 		Conjurer with buffs can crash game - no open tiles?
 
 	Change starter deck to have less towers and more skills

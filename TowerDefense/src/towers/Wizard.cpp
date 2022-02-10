@@ -168,6 +168,8 @@ void TowerDefense::Tower::Wizard::Summon()
 	auto tile = GetRandomTile();
 	//TODO: Get random summon
 	auto summon = GetRandomSummon();
+	if (CanSeeInvisibility())
+		summon->SetSeeInvisilitity(true);
 	tile->SetContainedObject(summon);
 	summon->SetX(tile->GetX());
 	summon->SetY(tile->GetY());
