@@ -4,13 +4,17 @@ Current:
 	make enemies in precombat and postcombat look better with more than 7 enemies
 	
 	Fix Bugs:
-		Tavern not refreshing after 5 days if heroes are not bought
-		cleric aura buff not showing up?
+		cleric and bard aura buff not showing up?
 		Doubler lag issue with longer maps
 		Summoned towers should be able to see invisible enemies
 		if the summoner can
+		Conjurer with buffs can crash game - no open tiles?
 
+	Change starter deck to have less towers and more skills
+	Change fireballs (and similar) to free
 	Change towers to single use?
+
+	Need batch rendering for projectiles (particle system?)
 
 	Add more skills to skill trees
 

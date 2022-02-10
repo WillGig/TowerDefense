@@ -87,10 +87,10 @@ void TowerDefense::Player::Reset()
     //Starter Deck
     for (int i = 0; i < 8; i++)
         AddToDeck(std::make_shared<Focus>(false));
-    for (int i = 0; i < 4; i++)
-        AddToDeck(std::make_shared<ArcherCard>());
+    for (int i = 0; i < 6; i++)
+        AddToDeck(std::make_shared<FireBall>());
     for (int i = 0; i < 2; i++)
-        AddToDeck(std::make_shared<PotOfGreed>());
+        AddToDeck(std::make_shared<ArcherCard>());
 }
 
 void TowerDefense::Player::SetEnergy(int energy)

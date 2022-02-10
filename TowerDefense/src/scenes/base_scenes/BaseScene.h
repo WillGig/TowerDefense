@@ -112,7 +112,6 @@ namespace TowerDefense
 		void OnSwitch() override;
 		inline std::string GetName() override { return "Tavern"; }
 	private:
-		bool m_HeroTaken;
 		std::unique_ptr<TowerDefense::CardChoice> m_TavernChoice;
 		std::unique_ptr<Button> m_Confirm, m_Cancel;
 	};

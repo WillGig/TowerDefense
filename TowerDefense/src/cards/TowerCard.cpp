@@ -7,6 +7,7 @@
 TowerDefense::TowerCard::TowerCard(const std::string& name, int cost, const std::string& image, const std::string& upgradedImage)
 	:Card(name, CardType::TOWER, cost, image, upgradedImage)
 {
+	m_Exhausts = true;
 }
 
 void TowerDefense::TowerCard::Render()
