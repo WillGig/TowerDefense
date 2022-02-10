@@ -8,6 +8,7 @@ TowerDefense::TowerCard::TowerCard(const std::string& name, int cost, const std:
 	:Card(name, CardType::TOWER, cost, image, upgradedImage)
 {
 	m_Exhausts = true;
+	AddInfoCard(std::make_shared<InfoTile>("exhaustInfo"));
 }
 
 void TowerDefense::TowerCard::Render()

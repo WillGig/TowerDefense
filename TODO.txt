@@ -1,7 +1,4 @@
 Current:
-	Change starter deck to have less towers and more skills
-	Change towers to single use?
-
 	Add level 5 upgrades for scholar
 
 	make enemies in precombat and postcombat look better with more than 7 enemies
@@ -36,6 +33,7 @@ Current:
 	 - piercing shots for rangers
 	 - rain of arrows for rangers (fire x arrows in a line)
 	 - stunning/slowing attacks
+	 - bigger explosions for alchemists
 
 	Add Scouting
 	
