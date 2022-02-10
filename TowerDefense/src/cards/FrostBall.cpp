@@ -7,7 +7,7 @@
 #include "enemies/States/State.h"
 
 TowerDefense::FrostBall::FrostBall()
-	:Card("Frost Ball", CardType::SKILL, 20, "frostBall", "frostBallUpgraded"),
+	:Card("Frost Ball", CardType::SKILL, 0, "frostBall", "frostBallUpgraded"),
 	m_SlowPercent(0.8f), m_Radius(75.0f), m_SlowTime(180), 
 	m_Circle(std::make_unique<Circle>(0.0f, 0.0f, m_Radius))
 {

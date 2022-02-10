@@ -6,7 +6,7 @@
 #include "core/Board.h"
 
 TowerDefense::PoisonBall::PoisonBall()
-	:Card("Poison Ball", CardType::SKILL, 20, "poisonBall", "poisonBallUpgraded"),
+	:Card("Poison Ball", CardType::SKILL, 0, "poisonBall", "poisonBallUpgraded"),
 	m_PoisonAmount(1.0f), m_Radius(75.0f), m_PoisonTime(180),
 	m_Circle(std::make_unique<Circle>(0.0f, 0.0f, m_Radius))
 {

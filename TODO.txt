@@ -1,16 +1,13 @@
 Current:
+	Change starter deck to have less towers and more skills
+	Change towers to single use?
+
 	Add level 5 upgrades for scholar
 
 	make enemies in precombat and postcombat look better with more than 7 enemies
-	
-	Fix Bugs:
+	Lag issues:
+		Need batch rendering for projectiles (particle system?)
 		Doubler lag issue with longer maps
-
-	Change starter deck to have less towers and more skills
-	Change fireballs (and similar) to free
-	Change towers to single use?
-
-	Need batch rendering for projectiles (particle system?)
 
 	Add more skills to skill trees
 

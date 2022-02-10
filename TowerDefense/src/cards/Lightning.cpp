@@ -5,7 +5,7 @@
 #include "LightningBolt.h"
 
 TowerDefense::Lightning::Lightning()
-	:Card("Lightning", CardType::SKILL, 20, "lightning", "lightningUpgraded"),
+	:Card("Lightning", CardType::SKILL, 0, "lightning", "lightningUpgraded"),
 	m_Damage(5.0f), m_Range(50.0f)
 {
 	m_Exhausts = true;
