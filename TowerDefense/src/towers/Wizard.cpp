@@ -166,6 +166,10 @@ bool TowerDefense::Tower::Wizard::Contains(std::vector<std::shared_ptr<Enemy::En
 void TowerDefense::Tower::Wizard::Summon()
 {
 	auto tile = GetRandomTile();
+	if (!tile)
+		return;
+	SetRotation(FindDirection(tile->GetX(), tile->GetY()));
+
 	//TODO: Get random summon
 	auto summon = GetRandomSummon();
 	if (CanSeeInvisibility())
@@ -179,33 +183,24 @@ void TowerDefense::Tower::Wizard::Summon()
 //Find random unoccupied tile within range of wizard tower
 std::shared_ptr<TowerDefense::Tile> TowerDefense::Tower::Wizard::GetRandomTile()
 {
-	std::shared_ptr<Tile> tile;
-
 	auto tiles = Board::Get().GetTiles();
 
-	while (!tile)
+	std::vector<std::shared_ptr<Tile>> options;
+
+	for (unsigned int i = 0; i < tiles->size(); i++)
 	{
-		float distance = Random::GetFloat() * GetRange()/2;
-		float angle = Random::GetFloat() * PI * 2;
+		auto t = tiles->at(i);
+		if (t->IsOccupied())
+			continue;
 
-		float x = m_X + distance * cos(angle);
-		float y = m_Y + distance * sin(angle);
-
-		for (unsigned int i = 0; i < tiles->size(); i++)
-		{
-			if (tiles->at(i)->Contains(x, y))
-			{
-				auto t = tiles->at(i);
-				if (!t->IsOccupied())
-				{
-					tile = t;
-					SetRotation(angle * 360.0f / (PI * 2) - 90.0f);
-				}
-				break;
-			}
-		}
+		if (GetDistance(t->GetX(), t->GetY()) < GetRange())
+			options.push_back(t);
 	}
-	return tile;
+
+	if (options.size() == 0)
+		return nullptr;
+
+	return options[(int)(Random::Get().GetFloat() * options.size())];
 }
 
 //Return random ghost tower based on summon power level
