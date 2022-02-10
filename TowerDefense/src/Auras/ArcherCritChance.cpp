@@ -5,7 +5,7 @@
 #include "towers/Ranger.h"
 
 TowerDefense::Aura::ArcherCritChance::ArcherCritChance(float chance)
-	:Aura("critChance", "Archers and Rangers\ngain " + Utils::TruncateFloat(chance*100, 1) + "% crit chance"),
+	:Aura("ArcherCritChance", "critChance", "Archers and Rangers\ngain " + Utils::TruncateFloat(chance*100, 1) + "% crit chance"),
 	m_Chance(chance)
 {}
 

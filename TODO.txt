@@ -4,9 +4,7 @@ Current:
 	make enemies in precombat and postcombat look better with more than 7 enemies
 	
 	Fix Bugs:
-		cleric and bard aura buff not showing up?
 		Doubler lag issue with longer maps
-		Conjurer with buffs can crash game - no open tiles?
 
 	Change starter deck to have less towers and more skills
 	Change fireballs (and similar) to free

@@ -5,7 +5,7 @@
 #include "towers/Cleric.h"
 
 TowerDefense::Aura::HolyPower::HolyPower(float power)
-	:Aura("damageUp", "Paladins and Clerics\ngain " + Utils::TruncateFloat(power, 1) + " magic"),
+	:Aura("HolyPower", "damageUp", "Paladins and Clerics\ngain " + Utils::TruncateFloat(power, 1) + " magic"),
 	m_Power(power)
 {}
 

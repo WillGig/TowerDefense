@@ -3,7 +3,7 @@
 #include "scenes/Combat.h"
 
 TowerDefense::Aura::DeathExplosions::DeathExplosions(int damage)
-	:Aura("deathExplosions", "All enemies explode dealing\n" + std::to_string(damage) + " damage to nearby\nenemies"),
+	:Aura("DeathExplosions", "deathExplosions", "All enemies explode dealing\n" + std::to_string(damage) + " damage to nearby\nenemies"),
 	m_Damage(damage), m_Radius(75)
 {
 }

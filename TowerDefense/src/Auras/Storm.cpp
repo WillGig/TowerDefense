@@ -4,7 +4,7 @@
 #include "cards/LightningBolt.h"
 
 TowerDefense::Aura::Storm::Storm(int damage)
-	:Aura("storm", "Playing cards strikes\nenemies with lightning\ndealing " + std::to_string(damage) + " damage"),
+	:Aura("Storm", "storm", "Playing cards strikes\nenemies with lightning\ndealing " + std::to_string(damage) + " damage"),
 	m_Damage(damage)
 {
 }

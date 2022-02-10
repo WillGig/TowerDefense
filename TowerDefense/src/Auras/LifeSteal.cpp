@@ -3,7 +3,7 @@
 #include "core/Player.h"
 
 TowerDefense::Aura::LifeSteal::LifeSteal(int steal)
-	:Aura("lifeSteal", "Heal " + std::to_string(steal) + " health for\nevery enemy killed"), m_LifeSteal(steal)
+	:Aura("LifeSteal", "lifeSteal", "Heal " + std::to_string(steal) + " health for\nevery enemy killed"), m_LifeSteal(steal)
 {
 }
 

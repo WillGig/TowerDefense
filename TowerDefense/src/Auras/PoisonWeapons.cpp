@@ -3,7 +3,7 @@
 #include "towers/Tower.h"
 
 TowerDefense::Aura::PoisonWeapons::PoisonWeapons(float poisonDamage, int poisonDuration)
-	:Aura("poisonWeapons", "Towers with Physical\nDamage Apply " + Utils::TruncateFloat(poisonDamage, 1) + " Poison"),
+	:Aura("PoisonWeapons", "poisonWeapons", "Towers with Physical\nDamage Apply " + Utils::TruncateFloat(poisonDamage, 1) + " Poison"),
 	m_PoisonDamage(poisonDamage), m_PoisonDuration(poisonDuration)
 {
 }

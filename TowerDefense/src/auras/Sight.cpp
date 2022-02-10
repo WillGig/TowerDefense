@@ -3,7 +3,7 @@
 #include "cards/TowerCard.h"
 
 TowerDefense::Aura::Sight::Sight()
-	:Aura("sight", "All towers can see\ninvisible enemies.")
+	:Aura("Sight", "sight", "All towers can see\ninvisible enemies.")
 {}
 
 void TowerDefense::Aura::Sight::OnCardPlay(std::shared_ptr<Card> c)

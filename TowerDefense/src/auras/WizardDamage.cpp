@@ -4,7 +4,7 @@
 #include "towers/Wizard.h"
 
 TowerDefense::Aura::WizardDamage::WizardDamage(float damage)
-	:Aura("damageUp", "Wizards\ndeal " + Utils::TruncateFloat(damage, 1) + " extra damage"),
+	:Aura("WizardDamge", "damageUp", "Wizards\ndeal " + Utils::TruncateFloat(damage, 1) + " extra damage"),
 	m_Damage(damage)
 {}
 

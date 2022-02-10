@@ -3,7 +3,7 @@
 #include "scenes/Combat.h"
 
 TowerDefense::Aura::ConstantDamage::ConstantDamage(float damage, int time)
-	:Aura("constantDamage", "Deal " + Utils::TruncateFloat(damage, 1) + " Damage every " + Utils::TruncateFloat((float)time/60.0f, 1) + "\nSeconds to All Enemies"),
+	:Aura("ConstantDamage", "constantDamage", "Deal " + Utils::TruncateFloat(damage, 1) + " Damage every " + Utils::TruncateFloat((float)time/60.0f, 1) + "\nSeconds to All Enemies"),
 	m_Damage(damage), m_Time(time), m_NextDamage(0)
 {
 }

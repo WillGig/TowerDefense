@@ -4,7 +4,7 @@
 #include "towers/Bard.h"
 
 TowerDefense::Aura::MusicPower::MusicPower(float power)
-	:Aura("damageUp", "Bards gain " + Utils::TruncateFloat(power, 1) + " magic"),
+	:Aura("MusicPower", "damageUp", "Bards gain " + Utils::TruncateFloat(power, 1) + " magic"),
 	m_Power(power)
 {}
 

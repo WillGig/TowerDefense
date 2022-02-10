@@ -4,7 +4,7 @@
 #include "towers/Alchemist.h"
 
 TowerDefense::Aura::AlchemistDamage::AlchemistDamage(float damage)
-	:Aura("damageUp", "Alchemists\ndeal " + Utils::TruncateFloat(damage, 1) + " extra damage"),
+	:Aura("AlchemistDamge", "damageUp", "Alchemists\ndeal " + Utils::TruncateFloat(damage, 1) + " extra damage"),
 	m_Damage(damage)
 {}
 

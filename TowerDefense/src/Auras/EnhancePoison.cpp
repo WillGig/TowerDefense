@@ -3,7 +3,7 @@
 #include "towers/Tower.h"
 
 TowerDefense::Aura::EnhancePoison::EnhancePoison(float extraDamage)
-	:Aura("enhancePoison", "All poisons deal " + Utils::TruncateFloat(extraDamage*2, 1) + "\nextra damage per second"), m_ExtraDamage(extraDamage)
+	:Aura("EnhancePoison", "enhancePoison", "All poisons deal " + Utils::TruncateFloat(extraDamage*2, 1) + "\nextra damage per second"), m_ExtraDamage(extraDamage)
 {
 }
 

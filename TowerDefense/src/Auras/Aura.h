@@ -9,7 +9,7 @@ namespace TowerDefense
 		class Aura : public Entity
 		{
 		public:
-			Aura(const std::string name, const std::string info);
+			Aura(const std::string name, const std::string texture, const std::string info);
 			void Render() override;
 			virtual void Update() override;
 			virtual void Combine(std::shared_ptr<Aura> other) = 0;

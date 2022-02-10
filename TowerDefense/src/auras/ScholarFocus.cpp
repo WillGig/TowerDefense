@@ -4,7 +4,7 @@
 #include "towers/Scholar.h"
 
 TowerDefense::Aura::ScholarFocus::ScholarFocus(int num)
-	:Aura("focusUp", "Scholars\ngenerate " + std::to_string(num) + " extra Focus"),
+	:Aura("ScholarFocus", "focusUp", "Scholars\ngenerate " + std::to_string(num) + " extra Focus"),
 	m_Num(num)
 {}
 

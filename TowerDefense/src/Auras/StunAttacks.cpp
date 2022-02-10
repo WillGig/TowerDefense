@@ -3,7 +3,7 @@
 #include "towers/Tower.h"
 
 TowerDefense::Aura::StunAttacks::StunAttacks(int stunDuration)
-	:Aura("stunAttacks", "All Towers stun their\ntargets for " + Utils::TruncateFloat((float)stunDuration/60.0f, 1) + " seconds"),
+	:Aura("StunAttacks", "stunAttacks", "All Towers stun their\ntargets for " + Utils::TruncateFloat((float)stunDuration/60.0f, 1) + " seconds"),
 	m_StunDuration(stunDuration)
 {
 }

@@ -4,7 +4,7 @@
 #include "towers/Archer.h"
 
 TowerDefense::Aura::MultiShot::MultiShot(int extraShots)
-	:Aura("multiShot", "Archers gain + " + std::to_string(extraShots) + " Multishot"),
+	:Aura("MultiShot", "multiShot", "Archers gain + " + std::to_string(extraShots) + " Multishot"),
 	m_ExtraShots(extraShots)
 {}
 

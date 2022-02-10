@@ -5,7 +5,7 @@
 #include "towers/Ranger.h"
 
 TowerDefense::Aura::ArcherCritDamage::ArcherCritDamage(float damage)
-	:Aura("critDamage", "Archers and Rangers\ngain " + Utils::TruncateFloat(damage * 100, 1) + "% crit damage"),
+	:Aura("ArcherCritDamage", "critDamage", "Archers and Rangers\ngain " + Utils::TruncateFloat(damage * 100, 1) + "% crit damage"),
 	m_Damage(damage)
 {}
 
